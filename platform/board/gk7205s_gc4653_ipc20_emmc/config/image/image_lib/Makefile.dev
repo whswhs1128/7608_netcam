@@ -1,0 +1,218 @@
+################################################################################
+################################################################################
+##
+## Makefile -- makefile for image library
+##
+## (C) Copyright 2012-2015 by Goke Microelectronics Co.,Ltd
+##
+## Version: $Id: Makefile.dev 3 2017-09-04 09:29:58Z fengxuequan $
+##
+## Mandatory settings:
+##
+## o TOPDIR      = the toplevel directory (using slashes as path separator)
+## o TARGET      = the machine qualifier to generate code for
+##
+################################################################################
+################################################################################
+
+
+################################################################################
+# source files
+################################################################################
+
+ifeq ($(ISP3A_LIBRARY), default)
+CCFLAGS_USER += -DISP3A_LIBRARY_DEFAULT
+endif
+
+ifeq ($(ISP3A_LIBRARY), goke)
+CCFLAGS_USER += -DISP3A_LIBRARY_GOKE
+endif
+
+SOURCES += tuning/src/tuning_json.c
+#SOURCES += tuning/src/tuning.c
+SOURCES += isp3a/src/algo/isp_ae.c
+SOURCES += isp3a/src/algo/isp_af.c
+SOURCES += isp3a/src/algo/isp_priv.c
+SOURCES += isp3a/src/algo/isp_awb.c
+SOURCES += isp3a/src/algo/isp_param_ctl.c
+SOURCES += isp3a/src/algo/isp_lib.c
+SOURCES += isp3a/src/algo/isp_hardware.c
+SOURCES += isp3a/src/algo/isp_control.c
+SOURCES += isp3a/src/algo/isp_tone_curve.c
+
+########################################################################
+##
+## imx035_tamrondf300_af_param.c --> if.c
+## iu072f_af_param.c             --> fip.c
+## iu072f_distance_table.c       --> fit.c
+## mf_af_param.c                 --> mfp.c
+## mf_distance_table.c           --> mft.c
+## ov5650_sy3510a_af_param.c     --> osp.c
+## ov5653_sy6310_af_param.c      --> so6p.c
+## sy3510a_distance_table.c      --> pst.c
+## sy6310_distance_table.c       --> tvt.c
+## tamrondf300_distance_table.c  --> tpt.c
+##
+########################################################################
+
+SOURCES += isp3a/src/algo/af_params/if.c
+SOURCES += isp3a/src/algo/af_params/fip.c
+SOURCES += isp3a/src/algo/af_params/fit.c
+SOURCES += isp3a/src/algo/af_params/mfp.c
+SOURCES += isp3a/src/algo/af_params/mft.c
+SOURCES += isp3a/src/algo/af_params/osp.c
+SOURCES += isp3a/src/algo/af_params/so6p.c
+SOURCES += isp3a/src/algo/af_params/pst.c
+SOURCES += isp3a/src/algo/af_params/tvt.c
+SOURCES += isp3a/src/algo/af_params/tpt.c
+SOURCES += isp3a/src/algo/af_params/Foctek_D14_02812IR_p.c
+SOURCES += isp3a/src/algo/af_params/Foctek_D14_02812IR_t.c
+SOURCES += isp3a/src/algo/af_params/yutong_YT30031FB_p.c
+SOURCES += isp3a/src/algo/af_params/yutong_YT30031FB_t.c
+SOURCES += isp3a/src/algo/af_params/yutong_YT30021FB_p.c
+SOURCES += isp3a/src/algo/af_params/yutong_YT30021FB_t.c
+SOURCES += isp3a/src/algo/af_params/YS05IR_F1F18_p.c
+SOURCES += isp3a/src/algo/af_params/YS05IR_F1F18_t.c
+########################################################################
+##
+## iu072f_docmd.c                --> fi.c
+## mf_docmd.c                    --> mf.c
+## sy3510a_ad5839_docmd.c        --> syad.c
+## sy3510a_pt5110_docmd.c        --> ps.c
+## sy6310_lv8481cs_docmd.c       --> tv.c
+## tamrondf300_r2a30404np_docmd.c--> tp.c
+##
+########################################################################
+
+SOURCES += isp3a/src/algo/lens_drivers/fi.c
+SOURCES += isp3a/src/algo/lens_drivers/mf.c
+SOURCES += isp3a/src/algo/lens_drivers/syad.c
+SOURCES += isp3a/src/algo/lens_drivers/ps.c
+SOURCES += isp3a/src/algo/lens_drivers/tv.c
+SOURCES += isp3a/src/algo/lens_drivers/tp.c
+SOURCES += isp3a/src/algo/lens_drivers/Foctek_D14_02812IR.c
+SOURCES += isp3a/src/algo/lens_drivers/yutong_YT30031FB.c
+SOURCES += isp3a/src/algo/lens_drivers/yutong_YT30021FB.c
+SOURCES += isp3a/src/algo/lens_drivers/YS05IR_F1F18.c
+
+SOURCES += isp3a/src/drv/isp_drv.c
+SOURCES += isp3a/src/drv/isp_drv_priv.c
+SOURCES += isp3a/src/drv/isp_thread_manage.c
+
+SOURCES += api/adi_isp.c
+SOURCES += api/param_load.c
+
+
+################################################################################
+# headers to be installed
+################################################################################
+HEADERS += include/*.h
+
+
+################################################################################
+# sub directory name for installed header
+################################################################################
+HEADER_SUBDIR = image
+
+
+################################################################################
+# define library name
+################################################################################
+LIBRARY = libimage
+
+
+################################################################################
+# define user cc flags
+################################################################################
+ifneq ($(_GKRELEASE_), y)
+CCFLAGS_USER += -DIMAGEDEBUG
+else
+#CCFLAGS_USER += -DTUNING_FUNC_CLOSE
+endif
+
+ifeq ($(ISP3A_LIBRARY), default)
+CCFLAGS_USER += -DISP3A_LIBRARY_DEFAULT
+endif
+
+ifeq ($(ISP3A_LIBRARY), goke)
+CCFLAGS_USER += -DISP3A_LIBRARY_GOKE
+endif
+
+CCFLAGS_USER += -O2
+CCFLAGS_USER += -I include
+CCFLAGS_USER += -I tuning/include
+CCFLAGS_USER += -I isp3a/include
+CCFLAGS_USER += -I isp3a/src/include
+CCFLAGS_USER += -I calibration/include
+CCFLAGS_USER += -I $(SDK_TOP)/adi/include
+CCFLAGS_USER += -I $(SDK_TOP)/linux/kernel/drv/include
+
+################################################################################
+# define user lint flags
+################################################################################
+
+LINTFLAGS_USER +=
+
+################################################################################
+# define user ld flags
+################################################################################
+
+################################################################################
+# define local file to be installed
+################################################################################
+
+
+################################################################################
+# define user targets
+################################################################################
+
+default: install
+
+clean: clean-version clean-objects clean-library clean-all
+
+build: make-version build-objects build-library install-library
+
+headers: install-headers
+
+install: build install-library install-headers
+
+make-version: force
+	@/bin/sh ./scripts/mkversion.sh 
+
+clean-version: force
+	@/bin/sh ./scripts/mkversion.sh clean
+
+all: clean build install
+
+################################################################################
+# include internal definitions and rules
+################################################################################
+
+  RELEASE_SUBDIR = $(SUBDIR)
+  RELEASE_FILES += Makefile Makefile.rel
+  RELEASE_FILES += $(wildcard include/adi_isp.h)
+  RELEASE_FILES += lib/$(C_LIBRARY)/$(LIBRARY)$(LIBRARY_EXT)
+  RELEASE_FILES += lib/$(C_LIBRARY)/$(LIBRARY)$(SHARED_EXT)
+  
+
+release: release-glibc release-uClibc info
+
+release-glibc:
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) "release libisp3a for glibc ..."
+	@$(SUBMAKE) release-lib-prepare C_LIBRARY=glibc
+	@$(SUBMAKE) release-files  C_LIBRARY=glibc
+
+release-uClibc:
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) "release libisp3a for uClibc ..."
+	@$(SUBMAKE) release-lib-prepare C_LIBRARY=uClibc
+	@$(SUBMAKE) release-files C_LIBRARY=uClibc
+
+doc: $(DIRECTORIES:%=subdir-doc-%)
+
+info: force
+	@echo $(DIRECTORIES)
+
+release-lib-prepare: clean make-version build-library install-release-library
+

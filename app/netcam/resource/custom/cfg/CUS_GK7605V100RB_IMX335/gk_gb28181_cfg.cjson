@@ -1,0 +1,28 @@
+{
+    "gb28181":{
+	    "ServerIP":	"gateway.mj.sctel.com.cn",
+		"ServerIPProperty":		{"type":"STRING","mode":"rw","min":1,"max":50,"def":"gateway.mj.sctel.com.cn","opt":""},
+		"ServerPort":	5060,
+		"ServerPortProperty":	{"type":"U32","mode":"rw","min":1,"max":65535,"def":5060,"opt":""},
+		"ServerUID":"51000000002006000002",
+		"ServerUIDProperty":{"type":"STRING","mode":"rw","min":1,"max":50,"def":"51000000002006000002","opt":""},
+		"ServerPwd":	"2KE496r8a",
+		"ServerPwdProperty":	{"type":"STRING","mode":"rw","min":1,"max":50,"def":"2KE496r8a","opt":""},
+		"ServerDomain":	"34020000",
+		"ServerDomainProperty":	{"type":"STRING","mode":"rw","min":1,"max":50,"def":"34020000","opt":""},
+		"DevicePort":	5060,
+		"DevicePortProperty":	{"type":"U32","mode":"rw","min":1,"max":65535,"def":5060,"opt":""},
+		"DeviceUID":	"0000000000000000000",
+		"DeviceUIDProperty":	{"type":"STRING","mode":"rw","min":1,"max":50,"def":"0000000000000000000","opt":""},
+		"Expire":	3600,
+		"ExpireProperty":		{"type":"U32","mode":"rw","min":1,"max":65535,"def":3600,"opt":""},
+		"DevHBCycle":	30,
+		"DevHBCycleProperty":	{"type":"U32","mode":"rw","min":1,"max":65535,"def":30,"opt":""},
+		"DevHBOutTimes":	3,
+		"DevHBOutTimesProperty":	{"type":"U32","mode":"rw","min":1,"max":65535,"def":3,"opt":""},
+		"GBWarnEnable":	1,
+		"GBWarnEnableProperty":	{"type":"U8","mode":"rw","min":0,"max":1,"def":1,"opt":""},
+		"AlarmID":	"0000000000000000000",
+		"AlarmIDProperty":		{"type":"STRING","mode":"rw","min":1,"max":50,"def":"0000000000000000000","opt":""}
+    }
+}

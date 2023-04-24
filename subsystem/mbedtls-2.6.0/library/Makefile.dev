@@ -1,0 +1,146 @@
+################################################################################
+################################################################################
+##
+## Makefile -- internal development Makefile for subsystem/mbedtls
+##
+## (C) Copyright 2012-2014 by Goke Microelectronics Co.,Ltd
+##
+## Mandatory settings:
+##
+## o TOPDIR      = the toplevel directory (using slashes as path separator)
+## o TARGET      = the machine qualifier to generate code for
+##
+################################################################################
+################################################################################
+
+
+################################################################################
+# source files
+################################################################################
+
+
+
+SOURCES +=	aes.c		aesni.c		arc4.c		\
+		asn1parse.c	asn1write.c	base64.c	\
+		bignum.c	blowfish.c	camellia.c	\
+		ccm.c		cipher.c	cipher_wrap.c	\
+		cmac.c		ctr_drbg.c	des.c		\
+		dhm.c		ecdh.c		ecdsa.c		\
+		ecjpake.c	ecp.c				\
+		ecp_curves.c	entropy.c	entropy_poll.c	\
+		error.c		gcm.c		havege.c	\
+		hmac_drbg.c	md.c		md2.c		\
+		md4.c		md5.c		md_wrap.c	\
+		memory_buffer_alloc.c		oid.c		\
+		padlock.c	pem.c		pk.c		\
+		pk_wrap.c	pkcs12.c	pkcs5.c		\
+		pkparse.c	pkwrite.c	platform.c	\
+		ripemd160.c	rsa.c		sha1.c		\
+		sha256.c	sha512.c	threading.c	\
+		timing.c	version.c			\
+		version_features.c		xtea.c mbedtls_ssl_api.c
+
+SOURCES +=	certs.c		pkcs11.c	x509.c		\
+		x509_create.c	x509_crl.c	x509_crt.c	\
+		x509_csr.c	x509write_crt.c	x509write_csr.c
+
+SOURCES +=	debug.c		net_sockets.c		\
+		ssl_cache.c	ssl_ciphersuites.c	\
+		ssl_cli.c	ssl_cookie.c		\
+		ssl_srv.c	ssl_ticket.c		\
+		ssl_tls.c
+
+
+
+################################################################################
+# define local file to be installed
+################################################################################
+
+################################################################################
+# headers to be installed
+################################################################################
+
+HEADERS += $(wildcard ../include/mbedtls/*.h)
+
+################################################################################
+# sub directory name for installed header
+################################################################################
+HEADER_SUBDIR = subsystem/mbedtls
+
+################################################################################
+# define user cc flags
+################################################################################
+
+#CCFLAGS_USER += -O3 -Wno-array-bounds
+CCFLAGS_USER += -I../include -I ./src -I ./src/sys -Dunix
+
+
+
+################################################################################
+# define user lint flags
+################################################################################
+
+
+
+
+################################################################################
+# define user ld flags
+################################################################################
+
+
+################################################################################
+# define library name
+################################################################################
+
+LIBRARY = libmbedtls
+
+################################################################################
+# define local file install location
+# if this was commented out, the target will be installed into the default
+# location:
+#   $(ROOTFS_TOP)/usr/local/bin/
+################################################################################
+
+################################################################################
+# define user targets
+################################################################################
+
+default: install
+
+clean: clean-objects clean-library clean-all
+
+build:  build-objects build-library install-library
+
+headers: install-headers
+
+install: build install-library install-headers 
+
+all: clean build install
+
+################################################################################
+# include internal definitions and rules
+################################################################################
+
+  RELEASE_SUBDIR = $(SUBDIR)
+  RELEASE_FILES += $(SOURCES)
+  RELEASE_FILES += $(wildcard src/*/*.h   )
+  RELEASE_FILES += $(wildcard src/*/*/*.h   )
+  RELEASE_FILES += $(wildcard include/*.h   )
+  RELEASE_FILES += Makefile
+  #RELEASE_FILES += Makefile.dev
+
+  RELEASE_LIBS += $(wildcard include/*.h   )
+  RELEASE_LIBS += $(wildcard build/*/lib/*.a)
+  RELEASE_LIBS += $(wildcard Makefile)
+  RELEASE_LIBS += $(wildcard Makefile.rel)
+ 
+ifeq ($(RELEASE-library-only),NO)
+release: doc release-files
+else
+release: release-libs
+endif
+
+info: force
+	@echo $(DIRECTORIES)
+
+release-lib-prepare: clean build-library install-release-library

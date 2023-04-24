@@ -1,0 +1,64 @@
+{
+    "pwm":{
+	    "pwm_mode":	0,
+		"pwm_modeProperty":	{"type":"U8","mode":"rw","min":0,"max":2,"def":0,"opt":"0-close 1-open 2-auto"},
+		"pwm_duty":	50,
+		"pwm_dutyProperty":	{"type":"U8","mode":"rw","min":1,"max":99,"def":50,"opt":""},
+		"level":0,
+		"levelProperty":{"type":"U8","mode":"rw","min":0,"max":5,"def":0,"opt":""},
+		"pwm_Freq":	10000,
+		"pwm_FreqProperty":	{"type":"U32","mode":"rw","min":1000,"max":20000,"def":10000,"opt":""}
+    },
+	"autolight":[
+	    {
+	        "level":0,
+	        "levelProperty":{"type":"U8","mode":"rw","min":0,"max":5,"def":0,"opt":""},
+			"pwm_duty":	10,
+			"pwm_dutyProperty":	{"type":"U8","mode":"rw","min":1,"max":99,"def":50,"opt":""},
+            "gain":300,
+            "gainProperty":{"type":"U32","mode":"rw","min":0,"max":65536,"def":0,"opt":""},
+            "Dvalue":200,
+            "DvalueProperty":{"type":"U32","mode":"rw","min":0,"max":65536,"def":0,"opt":""}
+	    },
+	    {
+	        "level":1,
+	        "levelProperty":{"type":"U8","mode":"rw","min":0,"max":5,"def":0,"opt":""},
+			"pwm_duty":	20,
+			"pwm_dutyProperty":	{"type":"U8","mode":"rw","min":1,"max":99,"def":50,"opt":""},
+            "gain":500,
+            "gainProperty":{"type":"U32","mode":"rw","min":0,"max":65536,"def":0,"opt":""},
+            "Dvalue":300,
+            "DvalueProperty":{"type":"U32","mode":"rw","min":0,"max":65536,"def":0,"opt":""}
+	    },
+		{
+	        "level":2,
+	        "levelProperty":{"type":"U8","mode":"rw","min":0,"max":5,"def":0,"opt":""},
+			"pwm_duty":	30,
+			"pwm_dutyProperty":	{"type":"U8","mode":"rw","min":1,"max":99,"def":50,"opt":""},
+            "gain":700,
+            "gainProperty":{"type":"U32","mode":"rw","min":0,"max":65536,"def":0,"opt":""},
+            "Dvalue":500,
+            "DvalueProperty":{"type":"U32","mode":"rw","min":0,"max":65536,"def":0,"opt":""}
+	    },
+		{
+	        "level":3,
+	        "levelProperty":{"type":"U8","mode":"rw","min":0,"max":5,"def":0,"opt":""},
+			"pwm_duty":	40,
+			"pwm_dutyProperty":	{"type":"U8","mode":"rw","min":1,"max":99,"def":50,"opt":""},
+            "gain":900,
+            "gainProperty":{"type":"U32","mode":"rw","min":0,"max":65536,"def":0,"opt":""},
+            "Dvalue":700,
+            "DvalueProperty":{"type":"U32","mode":"rw","min":0,"max":65536,"def":0,"opt":""}
+	    },
+		{
+	        "level":4,
+	        "levelProperty":{"type":"U8","mode":"rw","min":0,"max":5,"def":0,"opt":""},
+			"pwm_duty":	50,
+			"pwm_dutyProperty":	{"type":"U8","mode":"rw","min":1,"max":99,"def":50,"opt":""},
+            "gain":1100,
+            "gainProperty":{"type":"U32","mode":"rw","min":0,"max":65536,"def":0,"opt":""},
+            "Dvalue":900,
+            "DvalueProperty":{"type":"U32","mode":"rw","min":0,"max":65536,"def":0,"opt":""}
+	    }
+	]
+}

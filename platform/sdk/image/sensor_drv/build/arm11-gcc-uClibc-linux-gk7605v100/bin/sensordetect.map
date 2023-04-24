@@ -1,0 +1,4 @@
+Archive member included to satisfy reference by file (symbol)
+
+/home/ginger/yianyun/install/arm11-gcc-uClibc-linux-gk7605v100/lib/libadi.a(adi_priv.o)
+                              build/arm11-gcc-uClibc-linux-gk7605v100/obj/sensordetect.o (gadi_priv_driver_get_fd)

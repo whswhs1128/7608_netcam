@@ -1,0 +1,7 @@
+./protoc --nanopb_out=. mojingCMD.proto
+
+
+repeated 类型的需要定义一个同名的mojingCMD.options文件
+protobuf.GetVideoConfigResponse.Resolution max_count:5		// 1920x1080,1280x960,1280x720	
+
+其中max_count来表示repeated个数

@@ -1,0 +1,896 @@
+
+Allocating common symbols
+Common symbol       size              file
+
+imageArr            0x780             build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_image.o
+video2Arr           0x1e00            build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_video.o
+gGkSessionGlobal    0x2d0             build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_sock.o
+audioArr            0x280             build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_video.o
+DefaultNetbuf       0x8               build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_snap.o
+
+Discarded input sections
+
+ .note.GNU-stack
+                0x0000000000000000        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_session.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_utility.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_sock.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_protocol.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_media.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_pb.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_user.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_system.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_image.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_update.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_audio.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_sd.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_network.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_alarm.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_md.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_snap.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_video.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_record.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_channel.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_ptz.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_session.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_utility.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_sock.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_protocol.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_media.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_pb.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_user.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_system.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_image.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_update.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_audio.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_sd.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_network.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_alarm.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_md.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_snap.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_video.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_record.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_channel.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_ptz.o
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/libgcc.a
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/../../../../aarch64-linux-gnu/lib/../lib64/libgcc_s.so
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/libc.so
+START GROUP
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/lib/libc.so.6
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/libc_nonshared.a
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/lib/ld-linux-aarch64.so.1
+END GROUP
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/libgcc.a
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/../../../../aarch64-linux-gnu/lib/../lib64/libgcc_s.so
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+                0x0000000000000190                . = (SEGMENT_START ("text-segment", 0x0) + SIZEOF_HEADERS)
+
+.note.gnu.build-id
+ *(.note.gnu.build-id)
+
+.hash           0x0000000000000190      0xb08
+ *(.hash)
+ .hash          0x0000000000000190      0xb08 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.gnu.hash       0x0000000000000c98      0x7c0
+ *(.gnu.hash)
+ .gnu.hash      0x0000000000000c98      0x7c0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.dynsym         0x0000000000001458     0x2958
+ *(.dynsym)
+ .dynsym        0x0000000000001458     0x2958 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.dynstr         0x0000000000003db0     0x1c4d
+ *(.dynstr)
+ .dynstr        0x0000000000003db0     0x1c4d /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.gnu.version    0x00000000000059fe      0x372
+ *(.gnu.version)
+ .gnu.version   0x00000000000059fe      0x372 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.gnu.version_d  0x0000000000005d70        0x0
+ *(.gnu.version_d)
+ .gnu.version_d
+                0x0000000000005d70        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.gnu.version_r  0x0000000000005d70       0x20
+ *(.gnu.version_r)
+ .gnu.version_r
+                0x0000000000005d70       0x20 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.rela.dyn       0x0000000000005d90      0xc60
+ *(.rela.init)
+ *(.rela.text .rela.text.* .rela.gnu.linkonce.t.*)
+ *(.rela.fini)
+ *(.rela.rodata .rela.rodata.* .rela.gnu.linkonce.r.*)
+ *(.rela.data .rela.data.* .rela.gnu.linkonce.d.*)
+ .rela.data.rel.local
+                0x0000000000005d90      0x918 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *(.rela.tdata .rela.tdata.* .rela.gnu.linkonce.td.*)
+ *(.rela.tbss .rela.tbss.* .rela.gnu.linkonce.tb.*)
+ *(.rela.ctors)
+ *(.rela.dtors)
+ *(.rela.got)
+ .rela.got      0x00000000000066a8      0x318 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *(.rela.bss .rela.bss.* .rela.gnu.linkonce.b.*)
+ *(.rela.ifunc)
+ .rela.ifunc    0x00000000000069c0        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .rela.init_array
+                0x00000000000069c0       0x18 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .rela.fini_array
+                0x00000000000069d8       0x18 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.rela.plt       0x00000000000069f0     0x23b8
+ *(.rela.plt)
+ .rela.plt      0x00000000000069f0     0x23b8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *(.rela.iplt)
+
+.init           0x0000000000008da8       0x14
+ *(SORT_NONE(.init))
+ .init          0x0000000000008da8        0xc /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+                0x0000000000008da8                _init
+ .init          0x0000000000008db4        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+
+.plt            0x0000000000008dc0     0x17f0
+ *(.plt)
+ .plt           0x0000000000008dc0     0x17f0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *(.iplt)
+
+.text           0x000000000000a5b0     0xfd58
+ *(.text.unlikely .text.*_unlikely .text.unlikely.*)
+ *(.text.exit .text.exit.*)
+ *(.text.startup .text.startup.*)
+ *(.text.hot .text.hot.*)
+ *(SORT_BY_NAME(.text.sorted.*))
+ *(.text .stub .text.* .gnu.linkonce.t.*)
+ .text          0x000000000000a5b0       0x14 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *fill*         0x000000000000a5c4        0x4 1f2003d5
+ .text          0x000000000000a5c8       0xbc /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ *fill*         0x000000000000a684        0x4 1f2003d5
+ .text          0x000000000000a688      0xc24 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_session.o
+                0x000000000000a890                Gk_TalkLoop
+                0x000000000000aa00                Gk_Talk
+                0x000000000000acd0                GkSendProcess
+                0x000000000000b0a0                cms_notify_alarm_md
+                0x000000000000b0c0                cms_alarm_cb_func
+                0x000000000000b138                gk_cms_start
+                0x000000000000b230                gk_cms_stop
+ *fill*         0x000000000000b2ac        0x4 1f2003d5
+ .text          0x000000000000b2b0     0x1004 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_utility.o
+                0x000000000000b2b0                tcp_select_send
+                0x000000000000b4c8                GkSockSend
+                0x000000000000b528                GkSockSendFrame
+                0x000000000000b530                GkSockSendTalk
+                0x000000000000b538                safe_tcp_recv
+                0x000000000000b5f0                tcp_select_recv
+                0x000000000000b850                GkSockRecv
+                0x000000000000b858                GetTimetick
+                0x000000000000b908                CreateTcpSock
+                0x000000000000b9f0                SetSockAttr
+                0x000000000000bb30                BoardCastSendTo
+                0x000000000000bc60                CreateBroadcastSock
+                0x000000000000be08                CreateMulticastSock
+                0x000000000000c0c8                PrintStringToUInt
+                0x000000000000c148                RecvExtData
+                0x000000000000c240                gk_cms_rate_to_data
+                0x000000000000c268                gk_cms_data_to_rate
+                0x000000000000c280                gk_cms_float_rate_to_data
+                0x000000000000c298                gk_cms_data_to_float_rate
+ *fill*         0x000000000000c2b4        0x4 1f2003d5
+ .text          0x000000000000c2b8     0x17bc build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_sock.o
+                0x000000000000c2b8                IsSessionIdExist
+                0x000000000000c340                GenSessionInt
+                0x000000000000c378                GkSessionGlobalInit
+                0x000000000000c3e8                GkSessionGlobalUninit
+                0x000000000000c3f8                GkAddMainSock
+                0x000000000000c510                GkCloseMainSock
+                0x000000000000c7b8                GkCloseAllSock
+                0x000000000000c928                GkAddTalkSock
+                0x000000000000c9d0                GkAddPbSock
+                0x000000000000caa0                GkGetTalkSock
+                0x000000000000cb38                GkGetPbSock
+                0x000000000000cbd0                GkCloseTalkSock
+                0x000000000000ccc8                GkClosePbSock
+                0x000000000000cdc0                GkAddLvSock
+                0x000000000000cf20                GkCloseLvSock
+                0x000000000000d0c8                GkSetLvSockStatus
+                0x000000000000d1c0                GkGetLvSocket
+                0x000000000000d2a0                GkGetLvSockStatus
+                0x000000000000d380                GkGetSessionIdBySock
+                0x000000000000d418                GkGetLvSockByIndex
+                0x000000000000d4e0                GkCloseLvSockByIndex
+                0x000000000000d620                GkCloseAllSockByIndex
+                0x000000000000d7d8                GkIsHaveLvSock
+                0x000000000000d830                GkGetMainSockByIndex
+                0x000000000000d8a0                GkCloseMainSockByIndex
+                0x000000000000da58                GkGetSessionStreamNumber
+ *fill*         0x000000000000da74        0x4 1f2003d5
+ .text          0x000000000000da78     0x2880 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_protocol.o
+                0x000000000000da78                Gk_CmsNotify
+                0x000000000000dc30                cms_notify_to_all_client
+                0x000000000000dca0                GkCmsCmdResq
+                0x000000000000dda0                GkCmsCmdResqByIndex
+                0x000000000000ded0                GkHandleMediaRequest
+                0x000000000000e030                Gk_LogOn
+                0x000000000000e540                Gk_KeepAlive
+                0x000000000000e578                Gk_MediaClose
+                0x000000000000e5f8                PrintDmsTime
+                0x000000000000e648                Gk_SetIFrame
+                0x000000000000e700                GkGetIFrameRequest
+                0x000000000000e730                Gk_Reboot
+                0x000000000000e740                Gk_Shundown
+                0x000000000000e750                GkDealCmdDispatch
+ .text          0x00000000000102f8      0x344 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_media.o
+                0x00000000000102f8                GkSockSendToAll
+                0x0000000000010378                GkSendFrameUnit
+                0x0000000000010478                GkSendOneFrame
+                0x0000000000010638                GkSendFrame
+ *fill*         0x000000000001063c        0x4 1f2003d5
+ .text          0x0000000000010640      0xb44 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_pb.o
+                0x0000000000010640                Gk_CmsPbControl
+                0x0000000000010988                Gk_Playback
+ *fill*         0x0000000000011184        0x4 1f2003d5
+ .text          0x0000000000011188      0x1a4 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_user.o
+                0x0000000000011188                Gk_CmsSetUser
+                0x0000000000011200                Gk_CmsGetUser
+ *fill*         0x000000000001132c        0x4 1f2003d5
+ .text          0x0000000000011330     0x1284 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_system.o
+                0x0000000000011330                Gk_CmsGetDevice
+                0x00000000000114a8                Gk_CmsSetDevice
+                0x0000000000011650                Gk_CmsGetDefDevice
+                0x0000000000011838                Gk_CmsGetZoneAndDst
+                0x0000000000011908                Gk_CmsSetZoneAndDst
+                0x00000000000119a0                Gk_CmsGetNtp
+                0x0000000000011a80                Gk_CmsDefNtp
+                0x0000000000011b60                Gk_CmsSetNtp
+                0x0000000000011be0                Gk_CmsGetSystime
+                0x0000000000011c68                Gk_CmsSetSystime
+                0x0000000000011d08                Gk_GetSystime
+                0x0000000000011dd0                Gk_SetSystime
+                0x0000000000011e88                Gk_CmsGetMaintain
+                0x0000000000011ef0                Gk_CmsSetMaintain
+                0x0000000000011f70                Gk_CmsGetException
+                0x0000000000011fc8                Gk_CmsSetException
+                0x0000000000012018                Gk_CmsGetRestore
+                0x0000000000012048                Gk_CmsSetRestore
+                0x0000000000012090                Gk_CmsSetSave
+                0x00000000000120d8                Gk_CmsSave
+                0x00000000000120e0                Gk_CmsRestore
+                0x00000000000120f0                Gk_CmsTestSpeaker
+                0x0000000000012100                Gk_CmsTestIRCut
+                0x00000000000121d0                Gk_CmsTestWhiteLed
+                0x0000000000012200                Gk_CmsTestGetTestResult
+                0x0000000000012240                Gk_CmsTestSetTestResult
+                0x0000000000012298                Gk_CmsTestCmd
+                0x0000000000012438                Gk_CmsGetLog
+                0x0000000000012568                Gk_CmsGetAFOffset
+                0x0000000000012590                Gk_CmsSetAFOffset
+                0x0000000000012598                Gk_CmsGetFactoryKeyTestStatus
+                0x00000000000125a8                Gk_CmsSetFactoryKeyTestResult
+ *fill*         0x00000000000125b4        0x4 1f2003d5
+ .text          0x00000000000125b8      0xd9c build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_image.o
+                0x00000000000125b8                cms_image_get_def_map
+                0x0000000000012610                cms_image_get_def_val
+                0x00000000000126c8                Gk_CmsGetColorSupport
+                0x0000000000012868                Gk_CmsGetColor
+                0x0000000000012978                Gk_CmsSetColor
+                0x0000000000012980                Gk_CmsGetDefColor
+                0x0000000000012b18                Gk_CmsGetEnhancedColorSupport
+                0x0000000000012c40                Gk_CmsGetEnhancedColor
+                0x0000000000012dc0                Gk_CmsGetDayNightDetection
+                0x0000000000012e18                Gk_CmsSetDayNightDetection
+                0x0000000000012ee8                Gk_CmsSetColorSingle
+ *fill*         0x0000000000013354        0x4 1f2003d5
+ .text          0x0000000000013358      0x574 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_update.o
+                0x00000000000134d0                Gk_CmdUpgradeData
+                0x0000000000013890                Gk_CmdUpgradeReq
+                0x00000000000138c8                Gk_CmdUpgradeResp
+ *fill*         0x00000000000138cc        0x4 1f2003d5
+ .text          0x00000000000138d0      0x180 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_audio.o
+                0x00000000000138d0                write_audio_from_file
+                0x0000000000013a48                Gk_CmsWriteAudioData
+ .text          0x0000000000013a50      0x568 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_sd.o
+                0x0000000000013a50                Gk_CmsGetFilelist
+                0x0000000000013ce8                Gk_GetNas
+                0x0000000000013d78                Gk_SetNas
+                0x0000000000013dc8                Gk_CmsGetHd
+                0x0000000000013e68                Gk_CmsSetHd
+                0x0000000000013eb8                Gk_CmsHdFormat
+                0x0000000000013f08                Gk_CmsHdGetFormatStaus
+                0x0000000000013fa0                Gk_CmsUnloadDisk
+ .text          0x0000000000013fb8     0x1990 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_network.o
+                0x0000000000013fb8                get_hw_array
+                0x0000000000014158                Gk_CmsGetFtp
+                0x0000000000014220                Gk_CmsSetFtp
+                0x00000000000142c8                Gk_CmsTestFtp
+                0x00000000000143d8                Gk_CmsGetLan
+                0x0000000000014550                Gk_CmsSetLan
+                0x0000000000014658                Gk_CmsGetDefLan
+                0x0000000000014778                Gk_CmsGetRtsp
+                0x00000000000147d8                Gk_CmsSetRtsp
+                0x0000000000014838                Gk_CmsGetEmail
+                0x0000000000014950                Gk_CmsSetEmail
+                0x0000000000014a60                Gk_CmsTestEmail
+                0x0000000000014ba8                Gk_CmsGetWifiSiteList
+                0x0000000000014d80                Gk_CmsSetWifiWpsStart
+                0x0000000000014e10                Gk_CmsGetWifi
+                0x0000000000015070                Gk_CmsSetWifi
+                0x00000000000152f8                Gk_CmsTestWifiConnect
+                0x00000000000154c8                Gk_CmsGetPPPOECFG
+                0x0000000000015530                Gk_CmsSetPPPOECFG
+                0x0000000000015578                Gk_CmsGetP2PCFG
+                0x0000000000015670                Gk_CmsSetP2PCFG
+                0x0000000000015728                Gk_CmsGetFacCFG
+                0x0000000000015770                Gk_CmsSetFacCFG
+                0x0000000000015800                Gk_CmsGetDDSCFG
+                0x0000000000015860                Gk_CmsSetDDSCFG
+                0x00000000000158b0                Gk_CmsGetMobileCenterInfo
+                0x0000000000015900                Gk_CmsSetMobileCenterInfo
+ .text          0x0000000000015948      0x394 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_alarm.o
+                0x0000000000015948                Gk_CmsGetAlarmout
+                0x00000000000159a0                Gk_CmsGetAlarmoutState
+                0x00000000000159d0                Gk_CmsGetAlarmin
+                0x0000000000015b28                Gk_CmsSetAlarmout
+                0x0000000000015b70                Gk_CmsAlarmoutControl
+                0x0000000000015bb8                Gk_CmsSetAlarmin
+ *fill*         0x0000000000015cdc        0x4 1f2003d5
+ .text          0x0000000000015ce0      0x550 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_md.o
+                0x0000000000015ce0                Gk_CmsGetMd
+                0x0000000000015e98                Gk_CmsSetMd
+                0x0000000000016100                Gk_CmsGetVlost
+                0x0000000000016150                Gk_CmsSetVlost
+                0x0000000000016198                Gk_CmsGetHideAlarm
+                0x00000000000161e8                Gk_CmsSetHideAlarm
+ .text          0x0000000000016230      0x778 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_snap.o
+                0x00000000000165e0                Gk_CmsGetSnap
+                0x00000000000166b8                Gk_CmsGetSnapEvent
+                0x0000000000016720                GkInitTimeSnap
+                0x00000000000167b0                Gk_CmsSetSnap
+                0x00000000000168e0                Gk_CmsSetSnapEvent
+                0x0000000000016958                Gk_CmsDoSnapshot
+ .text          0x00000000000169a8     0x18a8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_video.o
+                0x00000000000169d8                cms_audio_get_def_map
+                0x00000000000169e0                cms_video_get_def_map
+                0x0000000000016a38                cms_get_element_from_map
+                0x0000000000016b38                cms_get_resolution
+                0x0000000000016e48                cms_resolution_to_format
+                0x0000000000016f28                cms_get_video
+                0x0000000000017138                cms_get_audio
+                0x0000000000017158                cms_get_stream_attr
+                0x0000000000017210                cms_get_def_val
+                0x00000000000172f0                cms_get_stream_def_attr
+                0x0000000000017790                cms_set_stream_attr
+                0x0000000000017ae0                Gk_CmsGetStreamSupport
+                0x0000000000017d78                Gk_CmsGetVideo
+                0x0000000000017f78                Gk_CmsGetDefVideo
+                0x00000000000180c0                Gk_CmsSetVideo
+ .text          0x0000000000018250      0x980 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_record.o
+                0x0000000000018250                Gk_CmsGetRecDayInMonth
+                0x0000000000018328                schedule_time_15_to_30
+                0x0000000000018400                schedule_time_30_to_15
+                0x00000000000184f8                Gk_CmsGetRecord
+                0x0000000000018608                Gk_CmsGetDefRecord
+                0x00000000000186e0                Gk_CmsSetRecord
+                0x0000000000018890                Gk_CmsGetRecordStreamMode
+                0x00000000000188c8                Gk_CmsSetRecordStreamMode
+                0x0000000000018950                Gk_CmsGetRecordMode
+                0x00000000000189d0                Gk_CmsSetRecordMode
+                0x0000000000018a20                Gk_CmdRecControl
+                0x0000000000018b28                Gk_CmsRecordStart
+                0x0000000000018b88                Gk_CmsRecordStop
+ .text          0x0000000000018bd0      0x594 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_channel.o
+                0x0000000000018bd0                Gk_CmsGetOsd
+                0x0000000000018d28                Gk_CmsGetShelter
+                0x0000000000018e48                Gk_CmsSetOsd
+                0x0000000000018fe8                Gk_CmsSetShelter
+ *fill*         0x0000000000019164        0x4 1f2003d5
+ .text          0x0000000000019168     0x11a0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_ptz.o
+                0x0000000000019168                Gk_CmsGetAllPreset
+                0x0000000000019230                Gk_CmsGetCruise
+                0x0000000000019310                Gk_CmsSetCruise
+                0x0000000000019440                Gk_CmsPtzControl
+                0x0000000000019e40                Gk_CmsGetRs232
+                0x0000000000019eb0                Gk_CmsGetDefRs232
+                0x0000000000019f90                Gk_CmsSetRs232
+                0x000000000001a040                Gk_CmsGetPtzDecode
+                0x000000000001a100                Gk_CmsSetPtzDecode
+                0x000000000001a1e8                Gk_CmsGetDefPtzDecode
+ .text          0x000000000001a308        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+ .text          0x000000000001a308        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+ *(.gnu.warning)
+
+.fini           0x000000000001a308       0x10
+ *(SORT_NONE(.fini))
+ .fini          0x000000000001a308        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+                0x000000000001a308                _fini
+ .fini          0x000000000001a310        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+                [!provide]                        PROVIDE (__etext = .)
+                [!provide]                        PROVIDE (_etext = .)
+                [!provide]                        PROVIDE (etext = .)
+
+.rodata         0x000000000001a318     0x7bc4
+ *(.rodata .rodata.* .gnu.linkonce.r.*)
+ .rodata.str1.8
+                0x000000000001a318      0xa49 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_session.o
+ *fill*         0x000000000001ad61        0x7 
+ .rodata.str1.8
+                0x000000000001ad68      0x803 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_utility.o
+                                        0x833 (size before relaxing)
+ *fill*         0x000000000001b56b        0x5 
+ .rodata.str1.8
+                0x000000000001b570      0x2d2 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_sock.o
+ *fill*         0x000000000001b842        0x6 
+ .rodata.str1.8
+                0x000000000001b848     0x28e6 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_protocol.o
+                                       0x2916 (size before relaxing)
+ *fill*         0x000000000001e12e        0x2 
+ .rodata.str1.8
+                0x000000000001e130       0x52 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_media.o
+ *fill*         0x000000000001e182        0x6 
+ .rodata.str1.8
+                0x000000000001e188      0x960 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_pb.o
+                                        0x990 (size before relaxing)
+ .rodata.str1.8
+                0x000000000001eae8       0x4b build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_user.o
+                                         0x7b (size before relaxing)
+ *fill*         0x000000000001eb33        0x5 
+ .rodata        0x000000000001eb38       0x84 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_system.o
+                0x000000000001eb38                gk_cms_time_zone
+ *fill*         0x000000000001ebbc        0x4 
+ .rodata.str1.8
+                0x000000000001ebc0      0x2b3 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_system.o
+                                        0x2fb (size before relaxing)
+ *fill*         0x000000000001ee73        0x5 
+ .rodata.str1.8
+                0x000000000001ee78      0x4c7 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_image.o
+                                        0x4f7 (size before relaxing)
+ *fill*         0x000000000001f33f        0x1 
+ .rodata.str1.8
+                0x000000000001f340      0x280 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_update.o
+                                        0x310 (size before relaxing)
+ .rodata.str1.8
+                0x000000000001f5c0       0xb6 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_audio.o
+ *fill*         0x000000000001f676        0x2 
+ .rodata        0x000000000001f678       0x10 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_sd.o
+ .rodata.str1.8
+                0x000000000001f688       0xf6 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_sd.o
+                                        0x186 (size before relaxing)
+ *fill*         0x000000000001f77e        0x2 
+ .rodata.str1.8
+                0x000000000001f780      0x709 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_network.o
+                                        0x751 (size before relaxing)
+ *fill*         0x000000000001fe89        0x7 
+ .rodata.str1.8
+                0x000000000001fe90       0x1e build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_alarm.o
+                                         0x4a (size before relaxing)
+ *fill*         0x000000000001feae        0x2 
+ .rodata.str1.8
+                0x000000000001feb0       0x69 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_md.o
+                                         0x99 (size before relaxing)
+ *fill*         0x000000000001ff19        0x7 
+ .rodata.str1.8
+                0x000000000001ff20      0x257 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_snap.o
+                                        0x287 (size before relaxing)
+ *fill*         0x0000000000020177        0x1 
+ .rodata.str1.8
+                0x0000000000020178     0x110d build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_video.o
+                                       0x1142 (size before relaxing)
+ *fill*         0x0000000000021285        0x3 
+ .rodata.str1.8
+                0x0000000000021288      0x25d build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_record.o
+                                        0x28d (size before relaxing)
+ *fill*         0x00000000000214e5        0x3 
+ .rodata.str1.8
+                0x00000000000214e8       0xb2 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_channel.o
+                                        0x102 (size before relaxing)
+ *fill*         0x000000000002159a        0x2 
+ .rodata        0x000000000002159c       0x44 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_ptz.o
+ .rodata.str1.8
+                0x00000000000215e0      0x8fc build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_ptz.o
+                                        0x92c (size before relaxing)
+
+.rodata1
+ *(.rodata1)
+
+.eh_frame_hdr   0x0000000000021edc      0x734
+ *(.eh_frame_hdr)
+ .eh_frame_hdr  0x0000000000021edc      0x734 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+                0x0000000000021edc                __GNU_EH_FRAME_HDR
+ *(.eh_frame_entry .eh_frame_entry.*)
+
+.eh_frame       0x0000000000022610     0x3310
+ *(.eh_frame)
+ .eh_frame      0x0000000000022610       0x78 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ .eh_frame      0x0000000000022688      0x290 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_session.o
+                                        0x2a0 (size before relaxing)
+ .eh_frame      0x0000000000022918      0x410 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_utility.o
+                                        0x428 (size before relaxing)
+ .eh_frame      0x0000000000022d28      0x5d0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_sock.o
+                                        0x5e0 (size before relaxing)
+ .eh_frame      0x00000000000232f8      0x350 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_protocol.o
+                                        0x368 (size before relaxing)
+ .eh_frame      0x0000000000023648       0xd0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_media.o
+                                         0xe8 (size before relaxing)
+ .eh_frame      0x0000000000023718       0xe0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_pb.o
+                                         0xf8 (size before relaxing)
+ .eh_frame      0x00000000000237f8       0x78 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_user.o
+                                         0x90 (size before relaxing)
+ .eh_frame      0x0000000000023870      0x500 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_system.o
+                                        0x510 (size before relaxing)
+ .eh_frame      0x0000000000023d70      0x258 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_image.o
+                                        0x268 (size before relaxing)
+ .eh_frame      0x0000000000023fc8      0x138 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_update.o
+                                        0x150 (size before relaxing)
+ .eh_frame      0x0000000000024100       0x60 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_audio.o
+                                         0x78 (size before relaxing)
+ .eh_frame      0x0000000000024160      0x1b8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_sd.o
+                                        0x1c8 (size before relaxing)
+ .eh_frame      0x0000000000024318      0x698 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_network.o
+                                        0x6b0 (size before relaxing)
+ .eh_frame      0x00000000000249b0      0x100 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_alarm.o
+                                        0x118 (size before relaxing)
+ .eh_frame      0x0000000000024ab0      0x120 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_md.o
+                                        0x130 (size before relaxing)
+ .eh_frame      0x0000000000024bd0      0x1c8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_snap.o
+                                        0x1e0 (size before relaxing)
+ .eh_frame      0x0000000000024d98      0x4a8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_video.o
+                                        0x4c0 (size before relaxing)
+ .eh_frame      0x0000000000025240      0x238 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_record.o
+                                        0x250 (size before relaxing)
+ .eh_frame      0x0000000000025478      0x118 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_channel.o
+                                        0x128 (size before relaxing)
+ .eh_frame      0x0000000000025590      0x38c build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_ptz.o
+                                        0x3a0 (size before relaxing)
+ .eh_frame      0x000000000002591c        0x4 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+ *(.eh_frame.*)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.gnu_extab
+ *(.gnu_extab*)
+
+.exception_ranges
+ *(.exception_ranges*)
+                0x0000000000035cf8                . = DATA_SEGMENT_ALIGN (CONSTANT (MAXPAGESIZE), CONSTANT (COMMONPAGESIZE))
+
+.eh_frame
+ *(.eh_frame)
+ *(.eh_frame.*)
+
+.gnu_extab
+ *(.gnu_extab)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.exception_ranges
+ *(.exception_ranges*)
+
+.tdata
+ *(.tdata .tdata.* .gnu.linkonce.td.*)
+
+.tbss
+ *(.tbss .tbss.* .gnu.linkonce.tb.*)
+ *(.tcommon)
+
+.preinit_array
+ *(.preinit_array)
+
+.init_array     0x0000000000035cf8        0x8
+ *(SORT_BY_INIT_PRIORITY(.init_array.*) SORT_BY_INIT_PRIORITY(.ctors.*))
+ *(.init_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .ctors)
+ .init_array    0x0000000000035cf8        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+
+.fini_array     0x0000000000035d00        0x8
+ *(SORT_BY_INIT_PRIORITY(.fini_array.*) SORT_BY_INIT_PRIORITY(.dtors.*))
+ *(.fini_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .dtors)
+ .fini_array    0x0000000000035d00        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+
+.ctors
+ *crtbegin.o(.ctors)
+ *crtbegin?.o(.ctors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .ctors)
+ *(SORT_BY_NAME(.ctors.*))
+ *(.ctors)
+
+.dtors
+ *crtbegin.o(.dtors)
+ *crtbegin?.o(.dtors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .dtors)
+ *(SORT_BY_NAME(.dtors.*))
+ *(.dtors)
+
+.jcr
+ *(.jcr)
+
+.data.rel.ro    0x0000000000035d08        0x0
+ *(.data.rel.ro.local* .gnu.linkonce.d.rel.ro.local.*)
+ *(.data.rel.ro .data.rel.ro.* .gnu.linkonce.d.rel.ro.*)
+ .data.rel.ro   0x0000000000035d08        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.dynamic        0x0000000000035d08      0x1d0
+ *(.dynamic)
+ .dynamic       0x0000000000035d08      0x1d0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+                0x0000000000035d08                _DYNAMIC
+
+.got            0x0000000000035ed8      0x110
+ *(.got)
+ .got           0x0000000000035ed8      0x110 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+                0x0000000000035ed8                _GLOBAL_OFFSET_TABLE_
+ *(.igot)
+                0x0000000000035fe8                . = DATA_SEGMENT_RELRO_END (., 0x18)
+
+.got.plt        0x0000000000035fe8      0xc00
+ *(.got.plt)
+ .got.plt       0x0000000000035fe8      0xc00 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *(.igot.plt)
+
+.data           0x0000000000036be8      0x700
+                [!provide]                        PROVIDE (__data_start = .)
+ *(.data .data.* .gnu.linkonce.d.*)
+ .data          0x0000000000036be8        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .data          0x0000000000036be8        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ .data.rel.local
+                0x0000000000036be8        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+                0x0000000000036be8                __dso_handle
+ .data          0x0000000000036bf0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_session.o
+ .data          0x0000000000036bf0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_utility.o
+ .data          0x0000000000036bf0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_sock.o
+ .data          0x0000000000036bf0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_protocol.o
+ .data          0x0000000000036bf0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_media.o
+ .data          0x0000000000036bf0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_pb.o
+ .data          0x0000000000036bf0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_user.o
+ .data          0x0000000000036bf0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_system.o
+ .data          0x0000000000036bf0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_image.o
+ .data          0x0000000000036bf0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_update.o
+ .data          0x0000000000036bf0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_audio.o
+ .data          0x0000000000036bf0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_sd.o
+ .data          0x0000000000036bf0        0x4 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_network.o
+                0x0000000000036bf0                serverKeyRet
+ .data          0x0000000000036bf4        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_alarm.o
+ .data          0x0000000000036bf4        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_md.o
+ .data          0x0000000000036bf4        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_snap.o
+ .data          0x0000000000036bf4        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_video.o
+ *fill*         0x0000000000036bf4        0x4 
+ .data.rel.local
+                0x0000000000036bf8      0x6f0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_video.o
+                0x0000000000036bf8                m_videoformat
+                0x0000000000036e98                m_payloadname
+ .data          0x00000000000372e8        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_record.o
+ .data          0x00000000000372e8        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_channel.o
+ .data          0x00000000000372e8        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_ptz.o
+ .data          0x00000000000372e8        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+ .data          0x00000000000372e8        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+
+.tm_clone_table
+                0x00000000000372e8        0x0
+ .tm_clone_table
+                0x00000000000372e8        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ .tm_clone_table
+                0x00000000000372e8        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+
+.data1
+ *(.data1)
+                [!provide]                        PROVIDE (_edata = .)
+                [!provide]                        PROVIDE (edata = .)
+                0x00000000000372e8                . = .
+                [!provide]                        PROVIDE (__bss_start = .)
+                [!provide]                        PROVIDE (__bss_start__ = .)
+
+.bss            0x00000000000372e8     0x2c50
+ *(.dynbss)
+ .dynbss        0x00000000000372e8        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *(.bss .bss.* .gnu.linkonce.b.*)
+ .bss           0x00000000000372e8        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .bss           0x00000000000372e8        0x1 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ *fill*         0x00000000000372e9        0x7 
+ .bss           0x00000000000372f0       0x40 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_session.o
+                0x0000000000037300                gk_talk_mutex
+ .bss           0x0000000000037330       0x30 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_utility.o
+                0x0000000000037330                gk_send_cmd_mutex
+ .bss           0x0000000000037360       0x38 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_sock.o
+                0x0000000000037368                gGkSessionGlobal_mutex
+ .bss           0x0000000000037398        0x8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_protocol.o
+ .bss           0x00000000000373a0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_media.o
+ .bss           0x00000000000373a0       0x6c build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_pb.o
+                0x00000000000373d8                pb_getframe_x
+                0x0000000000037408                is_step
+ .bss           0x000000000003740c        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_user.o
+ *fill*         0x000000000003740c        0x4 
+ .bss           0x0000000000037410       0x50 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_system.o
+ .bss           0x0000000000037460        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_image.o
+ .bss           0x0000000000037460        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_update.o
+ .bss           0x0000000000037460        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_audio.o
+ .bss           0x0000000000037460        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_sd.o
+ .bss           0x0000000000037460        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_network.o
+ .bss           0x0000000000037460        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_alarm.o
+ .bss           0x0000000000037460        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_md.o
+ .bss           0x0000000000037460        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_snap.o
+ .bss           0x0000000000037460        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_video.o
+ .bss           0x0000000000037460        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_record.o
+ .bss           0x0000000000037460        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_channel.o
+ .bss           0x0000000000037460        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_ptz.o
+ .bss           0x0000000000037460        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+ .bss           0x0000000000037460        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+ *(COMMON)
+ COMMON         0x0000000000037460      0x2d0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_sock.o
+                0x0000000000037460                gGkSessionGlobal
+ COMMON         0x0000000000037730      0x780 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_image.o
+                0x0000000000037730                imageArr
+ COMMON         0x0000000000037eb0        0x8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_snap.o
+                0x0000000000037eb0                DefaultNetbuf
+ COMMON         0x0000000000037eb8     0x2080 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_video.o
+                0x0000000000037eb8                video2Arr
+                0x0000000000039cb8                audioArr
+                0x0000000000039f38                . = ALIGN ((. != 0x0)?0x8:0x1)
+                [!provide]                        PROVIDE (_bss_end__ = .)
+                [!provide]                        PROVIDE (__bss_end__ = .)
+                0x0000000000039f38                . = ALIGN (0x8)
+                0x0000000000039f38                . = SEGMENT_START ("ldata-segment", .)
+                0x0000000000039f38                . = ALIGN (0x8)
+                [!provide]                        PROVIDE (__end__ = .)
+                [!provide]                        PROVIDE (_end = .)
+                [!provide]                        PROVIDE (end = .)
+                0x0000000000039f38                . = DATA_SEGMENT_END (.)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment        0x0000000000000000       0x16
+ *(.comment)
+ .comment       0x0000000000000000       0x16 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+                                         0x17 (size before relaxing)
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_session.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_utility.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_sock.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_protocol.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_media.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_pb.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_user.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_system.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_image.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_update.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_audio.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_sd.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_network.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_alarm.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_md.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_snap.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_video.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_record.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_channel.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_ptz.o
+ .comment       0x0000000000000016       0x17 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+
+.gnu.build.attributes
+ *(.gnu.build.attributes .gnu.build.attributes.*)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges
+ *(.debug_aranges)
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info
+ *(.debug_info .gnu.linkonce.wi.*)
+
+.debug_abbrev
+ *(.debug_abbrev)
+
+.debug_line
+ *(.debug_line .debug_line.* .debug_line_end)
+
+.debug_frame
+ *(.debug_frame)
+
+.debug_str
+ *(.debug_str)
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges
+ *(.debug_ranges)
+
+.debug_macro
+ *(.debug_macro)
+
+.debug_addr
+ *(.debug_addr)
+
+.ARM.attributes
+ *(.ARM.attributes)
+ *(.gnu.attributes)
+
+.note.gnu.arm.ident
+ *(.note.gnu.arm.ident)
+
+/DISCARD/
+ *(.note.GNU-stack)
+ *(.gnu_debuglink)
+ *(.gnu.lto_*)
+OUTPUT(build/arm11-gcc-uClibc-linux-gk7605v100/lib/libapp_gkcms.so elf64-littleaarch64)
+LOAD linker stubs

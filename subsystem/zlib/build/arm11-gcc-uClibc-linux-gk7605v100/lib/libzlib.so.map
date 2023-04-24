@@ -1,0 +1,614 @@
+
+Discarded input sections
+
+ .note.GNU-stack
+                0x0000000000000000        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/csp_zlib.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/adler32.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/compress.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/crc32.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/deflate.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/gzio.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/inffast.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/inflate.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/infback.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/inftrees.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/trees.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/uncompr.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/zutil.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/csp_zlib.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/adler32.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/compress.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/crc32.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/deflate.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/gzio.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/inffast.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/inflate.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/infback.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/inftrees.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/trees.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/uncompr.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/zutil.o
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/libgcc.a
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/../../../../aarch64-linux-gnu/lib/../lib64/libgcc_s.so
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/libc.so
+START GROUP
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/lib/libc.so.6
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/libc_nonshared.a
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/lib/ld-linux-aarch64.so.1
+END GROUP
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/libgcc.a
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/../../../../aarch64-linux-gnu/lib/../lib64/libgcc_s.so
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+                0x0000000000000190                . = (SEGMENT_START ("text-segment", 0x0) + SIZEOF_HEADERS)
+
+.note.gnu.build-id
+ *(.note.gnu.build-id)
+
+.hash           0x0000000000000190      0x32c
+ *(.hash)
+ .hash          0x0000000000000190      0x32c /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.gnu.hash       0x00000000000004c0      0x27c
+ *(.gnu.hash)
+ .gnu.hash      0x00000000000004c0      0x27c /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.dynsym         0x0000000000000740      0x9c0
+ *(.dynsym)
+ .dynsym        0x0000000000000740      0x9c0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.dynstr         0x0000000000001100      0x447
+ *(.dynstr)
+ .dynstr        0x0000000000001100      0x447 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.gnu.version    0x0000000000001548       0xd0
+ *(.gnu.version)
+ .gnu.version   0x0000000000001548       0xd0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.gnu.version_d  0x0000000000001618        0x0
+ *(.gnu.version_d)
+ .gnu.version_d
+                0x0000000000001618        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.gnu.version_r  0x0000000000001618       0x20
+ *(.gnu.version_r)
+ .gnu.version_r
+                0x0000000000001618       0x20 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.rela.dyn       0x0000000000001638      0x3a8
+ *(.rela.init)
+ *(.rela.text .rela.text.* .rela.gnu.linkonce.t.*)
+ *(.rela.fini)
+ *(.rela.rodata .rela.rodata.* .rela.gnu.linkonce.r.*)
+ *(.rela.data .rela.data.* .rela.gnu.linkonce.d.*)
+ .rela.data.rel.local
+                0x0000000000001638       0x90 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .rela.data.rel.ro.local
+                0x00000000000016c8      0x1e0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *(.rela.tdata .rela.tdata.* .rela.gnu.linkonce.td.*)
+ *(.rela.tbss .rela.tbss.* .rela.gnu.linkonce.tb.*)
+ *(.rela.ctors)
+ *(.rela.dtors)
+ *(.rela.got)
+ .rela.got      0x00000000000018a8      0x108 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *(.rela.bss .rela.bss.* .rela.gnu.linkonce.b.*)
+ *(.rela.ifunc)
+ .rela.ifunc    0x00000000000019b0        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .rela.init_array
+                0x00000000000019b0       0x18 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .rela.fini_array
+                0x00000000000019c8       0x18 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.rela.plt       0x00000000000019e0      0x4f8
+ *(.rela.plt)
+ .rela.plt      0x00000000000019e0      0x4f8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *(.rela.iplt)
+
+.init           0x0000000000001ed8       0x14
+ *(SORT_NONE(.init))
+ .init          0x0000000000001ed8        0xc /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+                0x0000000000001ed8                _init
+ .init          0x0000000000001ee4        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+
+.plt            0x0000000000001ef0      0x370
+ *(.plt)
+ .plt           0x0000000000001ef0      0x370 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *(.iplt)
+
+.text           0x0000000000002260     0x98d8
+ *(.text.unlikely .text.*_unlikely .text.unlikely.*)
+ *(.text.exit .text.exit.*)
+ *(.text.startup .text.startup.*)
+ *(.text.hot .text.hot.*)
+ *(SORT_BY_NAME(.text.sorted.*))
+ *(.text .stub .text.* .gnu.linkonce.t.*)
+ .text          0x0000000000002260       0x14 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *fill*         0x0000000000002274        0x4 1f2003d5
+ .text          0x0000000000002278       0xbc /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ *fill*         0x0000000000002334        0x4 1f2003d5
+ .text          0x0000000000002338      0x610 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/csp_zlib.o
+                0x0000000000002338                gzalloc
+                0x0000000000002348                gzfree
+                0x0000000000002350                zlib_print_error
+                0x0000000000002430                gcsp_zlib_get_version
+                0x0000000000002448                gcsp_zlib_compress
+                0x0000000000002598                gcsp_zlib_uncompress
+                0x0000000000002710                gcsp_zlib_img_uncompress
+ .text          0x0000000000002948      0x1c8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/adler32.o
+                0x0000000000002948                adler32
+ .text          0x0000000000002b10       0xfc build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/compress.o
+                0x0000000000002b10                compress2
+                0x0000000000002bf0                compress
+                0x0000000000002bf8                compressBound
+ *fill*         0x0000000000002c0c        0x4 1f2003d5
+ .text          0x0000000000002c10      0x318 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/crc32.o
+                0x0000000000002c10                get_crc_table
+                0x0000000000002c20                crc32
+ .text          0x0000000000002f28     0x2084 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/deflate.o
+                0x0000000000003f40                deflateSetDictionary
+                0x0000000000004098                deflateReset
+                0x00000000000041e8                deflatePrime
+                0x0000000000004220                deflateBound
+                0x0000000000004270                deflate
+                0x00000000000048e8                deflateParams
+                0x0000000000004a00                deflateEnd
+                0x0000000000004ac8                deflateInit2_
+                0x0000000000004d88                deflateInit_
+                0x0000000000004da8                deflateCopy
+ *fill*         0x0000000000004fac        0x4 1f2003d5
+ .text          0x0000000000004fb0     0x16bc build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/gzio.o
+                0x0000000000005848                gzopen
+                0x0000000000005850                gzdopen
+                0x00000000000058b0                gzsetparams
+                0x0000000000005958                gzread
+                0x0000000000005cf0                gzgetc
+                0x0000000000005d18                gzungetc
+                0x0000000000005d70                gzgets
+                0x0000000000005e30                gzwrite
+                0x0000000000005f30                gzprintf
+                0x0000000000006048                gzputc
+                0x0000000000006078                gzputs
+                0x00000000000060b0                gzflush
+                0x0000000000006110                gzrewind
+                0x00000000000061b0                gzseek
+                0x0000000000006400                gztell
+                0x0000000000006410                gzeof
+                0x0000000000006450                gzclose
+                0x0000000000006500                gzerror
+                0x0000000000006640                gzclearerr
+ *fill*         0x000000000000666c        0x4 1f2003d5
+ .text          0x0000000000006670      0x520 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/inffast.o
+                0x0000000000006670                inflate_fast
+ .text          0x0000000000006b90     0x1dc0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/inflate.o
+                0x0000000000006d08                inflateReset
+                0x0000000000006d50                inflateInit2_
+                0x0000000000006e68                inflateInit_
+                0x0000000000006e78                inflate
+                0x00000000000083a0                inflateEnd
+                0x0000000000008400                inflateSetDictionary
+                0x0000000000008520                inflateSync
+                0x00000000000087a0                inflateSyncPoint
+                0x00000000000087d8                inflateCopy
+ .text          0x0000000000008950      0xf70 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/infback.o
+                0x0000000000008950                inflateBackInit_
+                0x0000000000008a38                inflateBack
+                0x0000000000009878                inflateBackEnd
+ .text          0x00000000000098c0      0x488 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/inftrees.o
+                0x00000000000098c0                inflate_table
+ .text          0x0000000000009d48     0x1ca8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/trees.o
+                0x000000000000af60                _tr_init
+                0x000000000000b000                _tr_stored_block
+                0x000000000000b150                _tr_align
+                0x000000000000b358                _tr_flush_block
+                0x000000000000b930                _tr_tally
+ .text          0x000000000000b9f0      0x100 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/uncompr.o
+                0x000000000000b9f0                uncompress
+ .text          0x000000000000baf0       0x48 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/zutil.o
+                0x000000000000baf0                zlibVersion
+                0x000000000000bb00                zlibCompileFlags
+                0x000000000000bb08                zError
+                0x000000000000bb20                zcalloc
+                0x000000000000bb30                zcfree
+ .text          0x000000000000bb38        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+ .text          0x000000000000bb38        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+ *(.gnu.warning)
+
+.fini           0x000000000000bb38       0x10
+ *(SORT_NONE(.fini))
+ .fini          0x000000000000bb38        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+                0x000000000000bb38                _fini
+ .fini          0x000000000000bb40        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+                [!provide]                        PROVIDE (__etext = .)
+                [!provide]                        PROVIDE (_etext = .)
+                [!provide]                        PROVIDE (etext = .)
+
+.rodata         0x000000000000bb48     0x62b5
+ *(.rodata .rodata.* .gnu.linkonce.r.*)
+ .rodata.str1.8
+                0x000000000000bb48      0x2dd build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/csp_zlib.o
+ .rodata.str1.8
+                0x000000000000be25        0x6 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/compress.o
+ *fill*         0x000000000000be25        0x3 
+ .rodata        0x000000000000be28     0x4000 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/crc32.o
+ .rodata        0x000000000000fe28       0x35 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/deflate.o
+                0x000000000000fe28                deflate_copyright
+ *fill*         0x000000000000fe5d        0x3 
+ .rodata.str1.8
+                0x000000000000fe60       0x23 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/gzio.o
+                                         0x33 (size before relaxing)
+ *fill*         0x000000000000fe83        0x5 
+ .rodata.str1.8
+                0x000000000000fe88       0x54 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/inffast.o
+ *fill*         0x000000000000fedc        0x4 
+ .rodata        0x000000000000fee0      0x8e6 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/inflate.o
+ *fill*         0x00000000000107c6        0x2 
+ .rodata.str1.8
+                0x00000000000107c8      0x18f build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/inflate.o
+                                        0x1e7 (size before relaxing)
+ *fill*         0x0000000000010957        0x1 
+ .rodata        0x0000000000010958      0x8a6 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/infback.o
+ .rodata.str1.8
+                0x00000000000111fe      0x12e build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/infback.o
+ *fill*         0x00000000000111fe        0x2 
+ .rodata        0x0000000000011200      0x12f build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/inftrees.o
+                0x0000000000011300                inflate_copyright
+ *fill*         0x000000000001132f        0x1 
+ .rodata        0x0000000000011330      0xa3c build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/trees.o
+                0x0000000000011a20                _length_code
+                0x0000000000011b20                _dist_code
+ .rodata.str1.8
+                0x0000000000011d6c        0x6 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/uncompr.o
+ *fill*         0x0000000000011d6c        0x4 
+ .rodata.str1.8
+                0x0000000000011d70       0x8d build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/zutil.o
+                                         0x9d (size before relaxing)
+
+.rodata1
+ *(.rodata1)
+
+.eh_frame_hdr   0x0000000000011e00      0x2ec
+ *(.eh_frame_hdr)
+ .eh_frame_hdr  0x0000000000011e00      0x2ec /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+                0x0000000000011e00                __GNU_EH_FRAME_HDR
+ *(.eh_frame_entry .eh_frame_entry.*)
+
+.eh_frame       0x00000000000120f0     0x1650
+ *(.eh_frame)
+ .eh_frame      0x00000000000120f0       0x78 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ .eh_frame      0x0000000000012168      0x200 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/csp_zlib.o
+                                        0x210 (size before relaxing)
+ .eh_frame      0x0000000000012368       0x30 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/adler32.o
+                                         0x40 (size before relaxing)
+ .eh_frame      0x0000000000012398       0x80 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/compress.o
+                                         0x90 (size before relaxing)
+ .eh_frame      0x0000000000012418       0x28 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/crc32.o
+                                         0x40 (size before relaxing)
+ .eh_frame      0x0000000000012440      0x4a0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/deflate.o
+                                        0x4b8 (size before relaxing)
+ .eh_frame      0x00000000000128e0      0x6a0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/gzio.o
+                                        0x6b8 (size before relaxing)
+ .eh_frame      0x0000000000012f80       0x90 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/inffast.o
+                                         0xa8 (size before relaxing)
+ .eh_frame      0x0000000000013010      0x2e8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/inflate.o
+                                        0x2f8 (size before relaxing)
+ .eh_frame      0x00000000000132f8      0x108 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/infback.o
+                                        0x120 (size before relaxing)
+ .eh_frame      0x0000000000013400       0xb8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/inftrees.o
+                                         0xd0 (size before relaxing)
+ .eh_frame      0x00000000000134b8      0x1a8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/trees.o
+                                        0x1c0 (size before relaxing)
+ .eh_frame      0x0000000000013660       0x78 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/uncompr.o
+                                         0x88 (size before relaxing)
+ .eh_frame      0x00000000000136d8       0x64 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/zutil.o
+                                         0x78 (size before relaxing)
+ .eh_frame      0x000000000001373c        0x4 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+ *(.eh_frame.*)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.gnu_extab
+ *(.gnu_extab*)
+
+.exception_ranges
+ *(.exception_ranges*)
+                0x0000000000023cb8                . = DATA_SEGMENT_ALIGN (CONSTANT (MAXPAGESIZE), CONSTANT (COMMONPAGESIZE))
+
+.eh_frame
+ *(.eh_frame)
+ *(.eh_frame.*)
+
+.gnu_extab
+ *(.gnu_extab)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.exception_ranges
+ *(.exception_ranges*)
+
+.tdata
+ *(.tdata .tdata.* .gnu.linkonce.td.*)
+
+.tbss
+ *(.tbss .tbss.* .gnu.linkonce.tb.*)
+ *(.tcommon)
+
+.preinit_array
+ *(.preinit_array)
+
+.init_array     0x0000000000023cb8        0x8
+ *(SORT_BY_INIT_PRIORITY(.init_array.*) SORT_BY_INIT_PRIORITY(.ctors.*))
+ *(.init_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .ctors)
+ .init_array    0x0000000000023cb8        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+
+.fini_array     0x0000000000023cc0        0x8
+ *(SORT_BY_INIT_PRIORITY(.fini_array.*) SORT_BY_INIT_PRIORITY(.dtors.*))
+ *(.fini_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .dtors)
+ .fini_array    0x0000000000023cc0        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+
+.ctors
+ *crtbegin.o(.ctors)
+ *crtbegin?.o(.ctors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .ctors)
+ *(SORT_BY_NAME(.ctors.*))
+ *(.ctors)
+
+.dtors
+ *crtbegin.o(.dtors)
+ *crtbegin?.o(.dtors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .dtors)
+ *(SORT_BY_NAME(.dtors.*))
+ *(.dtors)
+
+.jcr
+ *(.jcr)
+
+.data.rel.ro    0x0000000000023cc8       0xf0
+ *(.data.rel.ro.local* .gnu.linkonce.d.rel.ro.local.*)
+ .data.rel.ro.local
+                0x0000000000023cc8       0xa0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/deflate.o
+ .data.rel.ro.local
+                0x0000000000023d68       0x50 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/zutil.o
+                0x0000000000023d68                z_errmsg
+ *(.data.rel.ro .data.rel.ro.* .gnu.linkonce.d.rel.ro.*)
+ .data.rel.ro   0x0000000000023db8        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.dynamic        0x0000000000023db8      0x1d0
+ *(.dynamic)
+ .dynamic       0x0000000000023db8      0x1d0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+                0x0000000000023db8                _DYNAMIC
+
+.got            0x0000000000023f88       0x60
+ *(.got)
+ .got           0x0000000000023f88       0x60 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+                0x0000000000023f88                _GLOBAL_OFFSET_TABLE_
+ *(.igot)
+                0x0000000000023fe8                . = DATA_SEGMENT_RELRO_END (., 0x18)
+
+.got.plt        0x0000000000023fe8      0x1c0
+ *(.got.plt)
+ .got.plt       0x0000000000023fe8      0x1c0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *(.igot.plt)
+
+.data           0x00000000000241a8       0x68
+                [!provide]                        PROVIDE (__data_start = .)
+ *(.data .data.* .gnu.linkonce.d.*)
+ .data          0x00000000000241a8        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .data          0x00000000000241a8        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ .data.rel.local
+                0x00000000000241a8        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+                0x00000000000241a8                __dso_handle
+ .data          0x00000000000241b0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/csp_zlib.o
+ .data          0x00000000000241b0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/adler32.o
+ .data          0x00000000000241b0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/compress.o
+ .data          0x00000000000241b0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/crc32.o
+ .data          0x00000000000241b0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/deflate.o
+ .data          0x00000000000241b0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/gzio.o
+ .data          0x00000000000241b0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/inffast.o
+ .data          0x00000000000241b0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/inflate.o
+ .data          0x00000000000241b0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/infback.o
+ .data          0x00000000000241b0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/inftrees.o
+ .data          0x00000000000241b0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/trees.o
+ .data.rel.local
+                0x00000000000241b0       0x60 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/trees.o
+ .data          0x0000000000024210        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/uncompr.o
+ .data          0x0000000000024210        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/zutil.o
+ .data          0x0000000000024210        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+ .data          0x0000000000024210        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+
+.tm_clone_table
+                0x0000000000024210        0x0
+ .tm_clone_table
+                0x0000000000024210        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ .tm_clone_table
+                0x0000000000024210        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+
+.data1
+ *(.data1)
+                [!provide]                        PROVIDE (_edata = .)
+                [!provide]                        PROVIDE (edata = .)
+                0x0000000000024210                . = .
+                [!provide]                        PROVIDE (__bss_start = .)
+                [!provide]                        PROVIDE (__bss_start__ = .)
+
+.bss            0x0000000000024210        0x8
+ *(.dynbss)
+ .dynbss        0x0000000000024210        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *(.bss .bss.* .gnu.linkonce.b.*)
+ .bss           0x0000000000024210        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .bss           0x0000000000024210        0x1 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ .bss           0x0000000000024211        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/csp_zlib.o
+ .bss           0x0000000000024211        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/adler32.o
+ .bss           0x0000000000024211        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/compress.o
+ .bss           0x0000000000024211        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/crc32.o
+ .bss           0x0000000000024211        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/deflate.o
+ .bss           0x0000000000024211        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/gzio.o
+ .bss           0x0000000000024211        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/inffast.o
+ .bss           0x0000000000024211        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/inflate.o
+ .bss           0x0000000000024211        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/infback.o
+ .bss           0x0000000000024211        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/inftrees.o
+ .bss           0x0000000000024211        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/trees.o
+ .bss           0x0000000000024211        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/uncompr.o
+ .bss           0x0000000000024211        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/zutil.o
+ .bss           0x0000000000024211        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+ .bss           0x0000000000024211        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+ *(COMMON)
+                0x0000000000024218                . = ALIGN ((. != 0x0)?0x8:0x1)
+ *fill*         0x0000000000024211        0x7 
+                [!provide]                        PROVIDE (_bss_end__ = .)
+                [!provide]                        PROVIDE (__bss_end__ = .)
+                0x0000000000024218                . = ALIGN (0x8)
+                0x0000000000024218                . = SEGMENT_START ("ldata-segment", .)
+                0x0000000000024218                . = ALIGN (0x8)
+                [!provide]                        PROVIDE (__end__ = .)
+                [!provide]                        PROVIDE (_end = .)
+                [!provide]                        PROVIDE (end = .)
+                0x0000000000024218                . = DATA_SEGMENT_END (.)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment        0x0000000000000000       0x16
+ *(.comment)
+ .comment       0x0000000000000000       0x16 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+                                         0x17 (size before relaxing)
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/csp_zlib.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/adler32.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/compress.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/crc32.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/deflate.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/gzio.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/inffast.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/inflate.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/infback.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/inftrees.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/trees.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/uncompr.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/zutil.o
+ .comment       0x0000000000000016       0x17 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+
+.gnu.build.attributes
+ *(.gnu.build.attributes .gnu.build.attributes.*)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges
+ *(.debug_aranges)
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info
+ *(.debug_info .gnu.linkonce.wi.*)
+
+.debug_abbrev
+ *(.debug_abbrev)
+
+.debug_line
+ *(.debug_line .debug_line.* .debug_line_end)
+
+.debug_frame
+ *(.debug_frame)
+
+.debug_str
+ *(.debug_str)
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges
+ *(.debug_ranges)
+
+.debug_macro
+ *(.debug_macro)
+
+.debug_addr
+ *(.debug_addr)
+
+.ARM.attributes
+ *(.ARM.attributes)
+ *(.gnu.attributes)
+
+.note.gnu.arm.ident
+ *(.note.gnu.arm.ident)
+
+/DISCARD/
+ *(.note.GNU-stack)
+ *(.gnu_debuglink)
+ *(.gnu.lto_*)
+OUTPUT(build/arm11-gcc-uClibc-linux-gk7605v100/lib/libzlib.so elf64-littleaarch64)
+LOAD linker stubs

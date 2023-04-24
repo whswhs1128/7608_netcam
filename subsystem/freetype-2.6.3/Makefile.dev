@@ -1,0 +1,77 @@
+################################################################################
+################################################################################
+##
+## Makefile -- makefile for freetype library
+##
+## (C) Copyright 2012-2014 by Goke Microelectronics Co.,Ltd
+##
+## Mandatory settings:
+##
+## o TOPDIR      = the toplevel directory (using slashes as path separator)
+## o TARGET      = the machine qualifier to generate code for
+##
+################################################################################
+################################################################################
+
+FREETYPE_DIR := $(shell pwd)
+
+LIBRARY = libfreetype
+
+HEADER_SUBDIR = subsystem/freetype
+
+target_local_rule = $(FREETYPE_DIR)/lib/$(C_LIBRARY)/libfreetype.a
+################################################################################
+# define user targets
+################################################################################
+
+default: install
+
+clean: force
+	rm freetype-2.6.3 -rf;
+	rm lib -rf;
+	rm inc -rf;
+
+build: $(target_local_rule) install-library-released
+$(target_local_rule):
+	@rm freetype-2.6.3 -rf;
+	@tar -xf freetype-2.6.3.tar.bz2;
+	@mkdir -p $(FREETYPE_DIR)/freetype-2.6.3/install/;
+	@mkdir -p lib/$(C_LIBRARY);
+	pushd freetype-2.6.3/;\
+             ./configure  --host=arm-gcc6.3-linux-uclibceabi CFLAGS="$(CCFLAGS) -I$(INSTALL_HEADER_DIR)/subsystem/zlib/" \
+        LDFLAGS="$(LDFLAGS)" --prefix=$(FREETYPE_DIR)/freetype-2.6.3/install/ \
+	--disable-gtk-doc --disable-gtk-doc-html --disable-doc --disable-docs --disable-documentation \
+	--with-xmlto=no --with-fop=no --disable-dependency-tracking --enable-ipv6  --enable-static --enable-shared  \
+	--with-zlib --without-bzip2 --without-png ZLIB_LIBS=$(INSTALL_LIBRARY_DIR); \
+	make -j 20 > /dev/null; \
+        make install > /dev/null;\
+	popd
+	cp -a $(FREETYPE_DIR)/freetype-2.6.3/install/lib/* lib/$(C_LIBRARY)
+	@mkdir -p $(INSTALL_INCLUDE_DIR)
+	@cp -a $(FREETYPE_DIR)/freetype-2.6.3/install/include/freetype2/* $(INSTALL_INCLUDE_DIR)
+	@cp -a $(FREETYPE_DIR)/freetype-2.6.3/install/include/freetype2 inc
+
+headers:
+
+install: build install-library-released
+
+all: clean build install
+
+################################################################################
+# include internal definitions and rules
+################################################################################
+
+  RELEASE_SUBDIR = $(SUBDIR)
+  RELEASE_FILES += Makefile.rel
+  RELEASE_FILES += $(wildcard inc/*.h   )
+  RELEASE_FILES += $(wildcard inc/freetype/*.h   )
+  RELEASE_FILES += $(wildcard inc/freetype/config/*.h   )
+  RELEASE_FILES += Makefile
+  RELEASE_FILES += lib/$(C_LIBRARY)/$(LIBRARY)$(LIBRARY_EXT)
+  RELEASE_FILES += lib/$(C_LIBRARY)/$(LIBRARY)$(SHARED_EXT)
+
+release: release-lib-prepare  doc release-files $(DIRECTORIES:%=subdir-release-%)
+
+doc:
+
+release-lib-prepare: clean build install-release-library

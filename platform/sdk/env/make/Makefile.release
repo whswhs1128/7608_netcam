@@ -1,0 +1,25 @@
+################################################################################
+################################################################################
+##
+## Makefile.release -- release version definition
+##
+## (C) Copyright 2012-2015 by Goke Microelectronics Co.,Ltd
+##
+##
+## This include makefile simply defines the current release version.
+##
+## RELEASE_MAJOR and RELEASE_MINOR simply define a numeric value which
+## will can used in the make environment in the form
+##   RELEASE_DIR = $(TOPDIR)/RELEASE-v$(RELEASE_MAJOR).$(RELEASE_MINOR)
+##
+################################################################################
+################################################################################
+
+  CCFLAGS += -DRELEASE_MAJOR=$(RELEASE_MAJOR)
+  CCFLAGS += -DRELEASE_MINOR=$(RELEASE_MINOR)
+  CCFLAGS += -DRELEASE_PATCH=$(RELEASE_PATCH)
+
+  VARIABLES += RELEASE_MAJOR
+  VARIABLES += RELEASE_MINOR
+  VARIABLES += RELEASE_PATCH
+

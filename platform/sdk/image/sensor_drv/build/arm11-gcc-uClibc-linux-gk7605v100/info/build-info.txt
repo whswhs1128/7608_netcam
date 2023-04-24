@@ -1,0 +1,11 @@
+CC.............: /opt/linux/x86-arm/aarch64-mix210-linux/bin/aarch64-mix210-linux-gcc
+CCFLAGS........: -Wall -I/home/ginger/yianyun/install/arm11-gcc-uClibc-linux-gk7605v100/include -I/home/ginger/yianyun/install/arm11-gcc-uClibc-linux-gk7605v100/include/subsystem -I /opt/linux/x86-arm/aarch64-mix210-linux/bin/arm-gk720x-linux-uclibcgnueabi/sysroot/usr/include -DRELEASE_MAJOR= -DRELEASE_MINOR= -DRELEASE_PATCH=
+CCFLAGS_C......:
+CCFLAGS_AS.....: -x assembler-with-cpp
+CCFLAGS_USER...: -O3 -I /home/ginger/yianyun/platform/sdk/adi/include -I /home/ginger/yianyun/platform/sdk/image/image_lib/include
+AR.............: /opt/linux/x86-arm/aarch64-mix210-linux/bin/aarch64-mix210-linux-ar
+ARFLAGS........: crs
+ARFLAGS_USER...:
+LD.............: /opt/linux/x86-arm/aarch64-mix210-linux/bin/aarch64-mix210-linux-gcc
+LDFLAGS........: -Wall -I/home/ginger/yianyun/install/arm11-gcc-uClibc-linux-gk7605v100/include -I/home/ginger/yianyun/install/arm11-gcc-uClibc-linux-gk7605v100/include/subsystem -I /opt/linux/x86-arm/aarch64-mix210-linux/bin/arm-gk720x-linux-uclibcgnueabi/sysroot/usr/include -DRELEASE_MAJOR= -DRELEASE_MINOR= -DRELEASE_PATCH= -Wl,-Map,build/arm11-gcc-uClibc-linux-gk7605v100/info/build-info.txt.map -L/home/ginger/yianyun/install/arm11-gcc-uClibc-linux-gk7605v100/lib
+LDFLAGS_USER...:

@@ -1,0 +1,294 @@
+################################################################################
+################################################################################
+##
+## Makefile.host.linux -- linux host bin tools definition
+##
+## (C) Copyright 2012-2013 by Guoke Microelectronics Co.,Ltd
+##
+################################################################################
+################################################################################
+
+################################################################################
+#
+# make version specific settings
+#
+################################################################################
+
+TOOL_EXT       ?=
+MAKE            = make
+MAKEFLAGS      ?=
+MAKEFLAGS_USER  =
+SUBMAKE         = $(MAKE) --no-print-directory TARGET=$(TARGET) REPORT=$(REPORT) MISRA=$(MISRA) DEPEND=$(DEPEND)
+
+  VARIABLES += TOOL_EXT
+  VARIABLES += MAKE
+  VARIABLES += MAKEFLAGS
+  VARIABLES += MAKEFLAGS_USER
+  VARIABLES += SUBMAKE
+
+ SHELL           = /bin/bash
+# SHELLFLAGS      =
+# SHELLFLAGS_USER =
+#
+#   VARIABLES += SHELL
+#   VARIABLES += SHELLFLAGS
+#   VARIABLES += SHELLFLAGS_USER
+
+MKDIR            = mkdir$(TOOL_EXT)
+MKDIRFLAGS       = -p
+MKDIRFLAGS_USER ?=
+
+  VARIABLES += MKDIR
+  VARIABLES += MKDIRFLAGS
+  VARIABLES += MKDIRFLAGS_USER
+
+DELETE            = rm$(TOOL_EXT)
+DELETEFLAGS       = -rf
+DELETEFLAGS_USER ?=
+
+  VARIABLES += DELETE
+  VARIABLES += DELETEFLAGS
+  VARIABLES += DELETEFLAGS_USER
+
+RMDIR            = rm$(TOOL_EXT)
+RMDIRFLAGS       = -rf
+RMDIRFLAGS_USER ?=
+
+  VARIABLES += RMDIR
+  VARIABLES += RMDIRFLAGS
+  VARIABLES += RMDIRFLAGS_USER
+
+COPY            = cp$(TOOL_EXT)
+COPYFLAGS       =
+COPYFLAGS_USER ?=
+
+  VARIABLES += COPY
+  VARIABLES += COPYFLAGS
+  VARIABLES += COPYFLAGS_USER
+
+MCOPY            = cp$(TOOL_EXT)
+MCOPYFLAGS       = -r
+MCOPYFLAGS_USER ?=
+
+  VARIABLES += MCOPY
+  VARIABLES += MCOPYFLAGS
+  VARIABLES += MCOPYFLAGS_USER
+
+GZIP            = gzip$(TOOL_EXT)
+GZIPFLAGS       =
+GZIPFLAGS_USER ?=
+
+  VARIABLES += GZIP
+  VARIABLES += GZIPFLAGS
+  VARIABLES += GZIPLAGS_USER
+
+ZIP            = zip$(TOOL_EXT)
+ZIPTMPDIR      = ./.ziptmp
+ZIPFLAGS       =
+ZIPFLAGS_USER ?=
+
+  VARIABLES += ZIP
+  VARIABLES += ZIPTMPDIR
+  VARIABLES += ZIPFLAGS
+  VARIABLES += ZIPLAGS_USER
+
+PERL            = perl$(TOOL_EXT)
+PERLFLAGS       =
+PERLFLAGS_USER ?=
+
+  VARIABLES += PERL
+  VARIABLES += PERLFLAGS
+  VARIABLES += PERLFLAGS_USER
+
+JAVA            = java$(TOOL_EXT)
+JAVAFLAGS       =
+JAVAFLAGS_USER ?=
+JAVA_HOME       = $(SDKHOME-win32-java)
+
+export JAVA_HOME
+
+  VARIABLES += JAVA
+  VARIABLES += JAVAFLAGS
+  VARIABLES += JAVAFLAGS_USER
+  VARIABLES += JAVA_HOME
+
+DOXYGEN            = doxygen$(TOOL_EXT)
+DOXYGENFLAGS       =
+DOXYGENFLAGS_USER ?=
+
+  VARIABLES += DOXYGEN
+  VARIABLES += DOXYGENFLAGS
+  VARIABLES += DOXYGENFLAGS_USER
+
+LATEX            = latex$(TOOL_EXT)
+LATEXFLAGS       =
+LATEXFLAGS_USER ?=
+
+  VARIABLES += LATEX
+  VARIABLES += LATEXFLAGS
+  VARIABLES += LATEXFLAGS_USER
+
+ELF2HEX            = $(TOPDIR)/env/bin/M-linux/elfconv$(TOOL_EXT)
+ELF2HEXFLAGS       = -verbose
+ELF2HEXFLAGS_USER ?=
+
+  VARIABLES += ELF2HEX
+  VARIABLES += ELF2HEXFLAGS
+  VARIABLES += ELF2HEXFLAGS_USER
+
+LINT           = lint$(TOOL_EXT)
+LINTFLAGS      += -v
+LINTFLAGS      += -b
+LINTFLAGS      += $($(filter -I%,$(LINTFLAGS_USER)):-I%=-i%)
+LINTFLAGS      += -i/usr/include
+LINTFLAGS      += -i$(TOPDIR)/env/lint
+LINTFLAGS      += fapi.lnt
+LINTFLAGS      += $(filter -I%,$(CCFLAGS))
+LINTFLAGS      += $(filter -I%,$(CCFLAGS_USER))
+LINTFLAGS      += $(filter -U%,$(CCFLAGS))
+LINTFLAGS      += $(filter -D%,$(CCFLAGS))
+LINTFLAGS      += $(filter -U%,$(CCFLAGS_USER))
+LINTFLAGS      += $(filter -D%,$(CCFLAGS_USER))
+LINTFLAGS      += -d__LINT__=1
+LINTFLAGS      += -i$(dir $(word 1,$(DOLLAR^)))
+LINTFLAGS      += +dINLINE=
+LINTFLAGS      += +macros
+LINTFLAGS_USER ?=
+#
+# some more LINTFLAGS may be added within the
+# SDK specific makefiles like:
+#   Makefile.target.arm11-realview
+#   Makefile.target.arc700-metaware
+#
+
+  VARIABLES += LINT
+  VARIABLES += LINTFLAGS
+  VARIABLES += LINTFLAGS_USER
+
+BEAUTIFY            = cb
+BEAUTIFYFLAGS      += -i4
+BEAUTIFYFLAGS      += -ts4
+BEAUTIFYFLAGS      += -lp
+BEAUTIFYFLAGS      += -bad
+BEAUTIFYFLAGS      += -bap
+BEAUTIFYFLAGS      += -bbb
+BEAUTIFYFLAGS      += -sob
+BEAUTIFYFLAGS      += -l80
+BEAUTIFYFLAGS      += -lc90
+BEAUTIFYFLAGS      += -bl
+BEAUTIFYFLAGS      += -bli0
+BEAUTIFYFLAGS      += -hnl
+BEAUTIFYFLAGS      += -ncdw
+BEAUTIFYFLAGS      += -cbi4
+BEAUTIFYFLAGS      += -cli4
+BEAUTIFYFLAGS      += -nsaf
+BEAUTIFYFLAGS      += -nsai
+BEAUTIFYFLAGS      += -nsaw
+BEAUTIFYFLAGS      += -prs
+BEAUTIFYFLAGS      += -bls
+BEAUTIFYFLAGS      += -bs
+BEAUTIFYFLAGS      += -lp
+BEAUTIFYFLAGS      += -di1
+BEAUTIFYFLAGS      += -nbc
+BEAUTIFYFLAGS      += -ncs
+BEAUTIFYFLAGS      += -nut
+BEAUTIFYFLAGS      += -npcs
+BEAUTIFYFLAGS      += -npsl
+BEAUTIFYFLAGS      += -sbi0
+BEAUTIFYFLAGS      += -ss
+BEAUTIFYFLAGS_USER ?=
+
+  VARIABLES += BEAUTIFY
+  VARIABLES += BEAUTIFYFLAGS
+  VARIABLES += BEAUTIFYFLAGS_USER
+
+CVS            = cvs$(TOOL_EXT)
+CVSFLAGS       =
+CVSFLAGS_USER ?=
+
+  VARIABLES += CVS
+  VARIABLES += CVSFLAGS
+  VARIABLES += CVSFLAGS_USER
+
+SVN            = svn$(TOOL_EXT)
+SVNFLAGS       =
+SVNFLAGS_USER ?=
+
+  VARIABLES += SVN
+  VARIABLES += SVNFLAGS
+  VARIABLES += SVNFLAGS_USER
+
+EXECUTE            = $(TOPDIR)/env/bin/M-linux/execute$(TOOL_EXT)
+EXECUTEFLAGS       =
+EXECUTEFLAGS      += -gk6202
+#EXECUTEFLAGS      += -initsdram -verbose
+EXECUTEFLAGS      += -verbose
+EXECUTEFLAGS      += -dll=$(DEBUGPORT_DLL)
+EXECUTEFLAGS      += -port=USB1:3000000:SYSFREQ=400000000:STARTBAUD=115200:BAUDRATE=3000000:RAMBASE=0x80000:LOGFILE=0
+#EXECUTEFLAGS      += -cpu=arc4 -as211start=0x41000000 -arm11start=0xF0000000
+EXECUTEFLAGS      += -bootmode=direct
+#EXECUTEFLAGS      += -load=0x00100000 -jump=0x00100000
+EXECUTEFLAGS      += -uartrxgpio=17 -uarttxgpio=16
+EXECUTEFLAGS      += -flashbase=0x00000000
+EXECUTEFLAGS      += -flashchannel=0
+EXECUTEFLAGS      += -flasher=$(TOPDIR)/env/bin/M-linux/flasher.out
+
+EXECUTE_RVS_FILE  += -rvsfile=$(RVSFILE)
+
+
+EXECUTEFLAGS_USER ?=
+
+  VARIABLES += EXECUTE
+  VARIABLES += EXECUTEFLAGS
+  VARIABLES += EXECUTEFLAGS_USER
+
+FLIMGEN            = $(TOPDIR)/env/bin/M-linux/flimgen$(TOOL_EXT)
+FLIMGENFLAGS       =
+FLIMGENFLAGS_USER ?=
+
+  VARIABLES += FLIMGEN
+  VARIABLES += FLIMGENFLAGS
+  VARIABLES += FLIMGENFLAGS_USER
+
+FLIMDUMP            = $(TOPDIR)/env/bin/M-linux/flimdump$(TOOL_EXT)
+FLIMDUMPFLAGS       =
+FLIMDUMPFLAGS_USER ?=
+
+  VARIABLES += FLIMDUMP
+  VARIABLES += FLIMDUMPFLAGS
+  VARIABLES += FLIMDUMPFLAGS_USER
+
+BIMGEN             = $(TOPDIR)/env/bin/M-linux/bimgen$(TOOL_EXT)
+BIMGENFLAGS        =
+BIMGENFLAGS_USER  ?=
+
+  VARIABLES += BIMGEN
+  VARIABLES += BIMGENFLAGS
+  VARIABLES += BIMGENFLAGS_USER
+
+FWCONV             = $(TOPDIR)/env/bin/M-linux/fwconv$(TOOL_EXT)
+FWCONVFLAGS        =
+FWCONVFLAGS_USER  ?=
+
+  VARIABLES += FWCONV
+  VARIABLES += FWCONVFLAGS
+  VARIABLES += FWCONVFLAGS_USER
+
+FLASHER            = $(EXECUTE)
+FLASHERFLAGS       =
+FLASHERFLAGS_USER ?=
+
+  VARIABLES += FLASHER
+  VARIABLES += FLASHERFLAGS
+  VARIABLES += FLASHERFLAGS_USER
+
+DEBUGPORT_DLL = /usr/local/lib/libusbport.so
+JTAGPORT_DLL  = $(TOPDIR)/env/bin/M-linux/jtagport.so
+
+ECHO       = echo
+NEWLINE    = $(ECHO) ""
+ECHOPREFIX = "\#\#\#"
+LINE78     = "======================================================================"
+SEPARATOR  = $(ECHO) $(ECHOPREFIX) $(LINE78)
+SPACE      =
+BLANK      = $(SPACE) $(SPACE)

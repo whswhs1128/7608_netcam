@@ -1,0 +1,436 @@
+
+Discarded input sections
+
+ .note.GNU-stack
+                0x0000000000000000        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/httpd.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/httpClient.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/httpd.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/httpClient.o
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/libgcc.a
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/../../../../aarch64-linux-gnu/lib/../lib64/libgcc_s.so
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/libc.so
+START GROUP
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/lib/libc.so.6
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/libc_nonshared.a
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/lib/ld-linux-aarch64.so.1
+END GROUP
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/libgcc.a
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/../../../../aarch64-linux-gnu/lib/../lib64/libgcc_s.so
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+                0x0000000000000190                . = (SEGMENT_START ("text-segment", 0x0) + SIZEOF_HEADERS)
+
+.note.gnu.build-id
+ *(.note.gnu.build-id)
+
+.hash           0x0000000000000190      0x23c
+ *(.hash)
+ .hash          0x0000000000000190      0x23c /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.gnu.hash       0x00000000000003d0       0xbc
+ *(.gnu.hash)
+ .gnu.hash      0x00000000000003d0       0xbc /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.dynsym         0x0000000000000490      0x6f0
+ *(.dynsym)
+ .dynsym        0x0000000000000490      0x6f0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.dynstr         0x0000000000000b80      0x30d
+ *(.dynstr)
+ .dynstr        0x0000000000000b80      0x30d /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.gnu.version    0x0000000000000e8e       0x94
+ *(.gnu.version)
+ .gnu.version   0x0000000000000e8e       0x94 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.gnu.version_d  0x0000000000000f28        0x0
+ *(.gnu.version_d)
+ .gnu.version_d
+                0x0000000000000f28        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.gnu.version_r  0x0000000000000f28       0x20
+ *(.gnu.version_r)
+ .gnu.version_r
+                0x0000000000000f28       0x20 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.rela.dyn       0x0000000000000f48       0xd8
+ *(.rela.init)
+ *(.rela.text .rela.text.* .rela.gnu.linkonce.t.*)
+ *(.rela.fini)
+ *(.rela.rodata .rela.rodata.* .rela.gnu.linkonce.r.*)
+ *(.rela.data .rela.data.* .rela.gnu.linkonce.d.*)
+ .rela.data.rel.local
+                0x0000000000000f48       0x18 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *(.rela.tdata .rela.tdata.* .rela.gnu.linkonce.td.*)
+ *(.rela.tbss .rela.tbss.* .rela.gnu.linkonce.tb.*)
+ *(.rela.ctors)
+ *(.rela.dtors)
+ *(.rela.got)
+ .rela.got      0x0000000000000f60       0x90 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *(.rela.bss .rela.bss.* .rela.gnu.linkonce.b.*)
+ *(.rela.ifunc)
+ .rela.ifunc    0x0000000000000ff0        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .rela.init_array
+                0x0000000000000ff0       0x18 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .rela.fini_array
+                0x0000000000001008       0x18 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.rela.plt       0x0000000000001020      0x570
+ *(.rela.plt)
+ .rela.plt      0x0000000000001020      0x570 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *(.rela.iplt)
+
+.init           0x0000000000001590       0x14
+ *(SORT_NONE(.init))
+ .init          0x0000000000001590        0xc /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+                0x0000000000001590                _init
+ .init          0x000000000000159c        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+
+.plt            0x00000000000015b0      0x3c0
+ *(.plt)
+ .plt           0x00000000000015b0      0x3c0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *(.iplt)
+
+.text           0x0000000000001970     0x3110
+ *(.text.unlikely .text.*_unlikely .text.unlikely.*)
+ *(.text.exit .text.exit.*)
+ *(.text.startup .text.startup.*)
+ *(.text.hot .text.hot.*)
+ *(SORT_BY_NAME(.text.sorted.*))
+ *(.text .stub .text.* .gnu.linkonce.t.*)
+ .text          0x0000000000001970       0x14 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *fill*         0x0000000000001984        0x4 1f2003d5
+ .text          0x0000000000001988       0xbc /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ .text          0x0000000000001a44     0x13e8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/httpd.o
+                0x0000000000001a44                accept_request
+                0x0000000000001d00                bad_request
+                0x0000000000001e68                cat
+                0x0000000000001ee4                cannot_execute
+                0x000000000000203c                error_die
+                0x0000000000002058                execute_cgi
+                0x0000000000002334                get_line
+                0x0000000000002448                headers
+                0x0000000000002590                not_found
+                0x0000000000002858                serve_file
+                0x0000000000002934                startup
+                0x0000000000002a94                unimplemented
+                0x0000000000002d1c                httpd_thread
+                0x0000000000002dc4                goke_httpd_start
+ .text          0x0000000000002e2c     0x1c54 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/httpClient.o
+                0x0000000000002e2c                strstri
+                0x0000000000003684                goke_http_form_data_create
+                0x00000000000036b4                goke_http_form_data_add
+                0x00000000000037b4                http_tcp_select_send
+                0x0000000000003a40                goke_http_form_data_request
+                0x0000000000004330                goke_http_request
+                0x00000000000046b0                goke_http_binary_request
+ .text          0x0000000000004a80        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+ .text          0x0000000000004a80        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+ *(.gnu.warning)
+
+.fini           0x0000000000004a80       0x10
+ *(SORT_NONE(.fini))
+ .fini          0x0000000000004a80        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+                0x0000000000004a80                _fini
+ .fini          0x0000000000004a88        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+                [!provide]                        PROVIDE (__etext = .)
+                [!provide]                        PROVIDE (_etext = .)
+                [!provide]                        PROVIDE (etext = .)
+
+.rodata         0x0000000000004a90      0xa9c
+ *(.rodata .rodata.* .gnu.linkonce.r.*)
+ .rodata        0x0000000000004a90      0x3ef build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/httpd.o
+ *fill*         0x0000000000004e7f        0x1 
+ .rodata        0x0000000000004e80      0x6ac build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/httpClient.o
+
+.rodata1
+ *(.rodata1)
+
+.eh_frame_hdr   0x000000000000552c       0xec
+ *(.eh_frame_hdr)
+ .eh_frame_hdr  0x000000000000552c       0xec /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+                0x000000000000552c                __GNU_EH_FRAME_HDR
+ *(.eh_frame_entry .eh_frame_entry.*)
+
+.eh_frame       0x0000000000005618      0x40c
+ *(.eh_frame)
+ .eh_frame      0x0000000000005618       0x78 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ .eh_frame      0x0000000000005690      0x210 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/httpd.o
+                                        0x220 (size before relaxing)
+ .eh_frame      0x00000000000058a0      0x180 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/httpClient.o
+                                        0x198 (size before relaxing)
+ .eh_frame      0x0000000000005a20        0x4 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+ *(.eh_frame.*)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.gnu_extab
+ *(.gnu_extab*)
+
+.exception_ranges
+ *(.exception_ranges*)
+                0x0000000000015dd0                . = DATA_SEGMENT_ALIGN (CONSTANT (MAXPAGESIZE), CONSTANT (COMMONPAGESIZE))
+
+.eh_frame
+ *(.eh_frame)
+ *(.eh_frame.*)
+
+.gnu_extab
+ *(.gnu_extab)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.exception_ranges
+ *(.exception_ranges*)
+
+.tdata
+ *(.tdata .tdata.* .gnu.linkonce.td.*)
+
+.tbss
+ *(.tbss .tbss.* .gnu.linkonce.tb.*)
+ *(.tcommon)
+
+.preinit_array
+ *(.preinit_array)
+
+.init_array     0x0000000000015dd0        0x8
+ *(SORT_BY_INIT_PRIORITY(.init_array.*) SORT_BY_INIT_PRIORITY(.ctors.*))
+ *(.init_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .ctors)
+ .init_array    0x0000000000015dd0        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+
+.fini_array     0x0000000000015dd8        0x8
+ *(SORT_BY_INIT_PRIORITY(.fini_array.*) SORT_BY_INIT_PRIORITY(.dtors.*))
+ *(.fini_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .dtors)
+ .fini_array    0x0000000000015dd8        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+
+.ctors
+ *crtbegin.o(.ctors)
+ *crtbegin?.o(.ctors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .ctors)
+ *(SORT_BY_NAME(.ctors.*))
+ *(.ctors)
+
+.dtors
+ *crtbegin.o(.dtors)
+ *crtbegin?.o(.dtors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .dtors)
+ *(SORT_BY_NAME(.dtors.*))
+ *(.dtors)
+
+.jcr
+ *(.jcr)
+
+.data.rel.ro    0x0000000000015de0        0x0
+ *(.data.rel.ro.local* .gnu.linkonce.d.rel.ro.local.*)
+ *(.data.rel.ro .data.rel.ro.* .gnu.linkonce.d.rel.ro.*)
+ .data.rel.ro   0x0000000000015de0        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.dynamic        0x0000000000015de0      0x1d0
+ *(.dynamic)
+ .dynamic       0x0000000000015de0      0x1d0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+                0x0000000000015de0                _DYNAMIC
+
+.got            0x0000000000015fb0       0x38
+ *(.got)
+ .got           0x0000000000015fb0       0x38 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+                0x0000000000015fb0                _GLOBAL_OFFSET_TABLE_
+ *(.igot)
+                0x0000000000015fe8                . = DATA_SEGMENT_RELRO_END (., 0x18)
+
+.got.plt        0x0000000000015fe8      0x1e8
+ *(.got.plt)
+ .got.plt       0x0000000000015fe8      0x1e8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *(.igot.plt)
+
+.data           0x00000000000161d0       0xc0
+                [!provide]                        PROVIDE (__data_start = .)
+ *(.data .data.* .gnu.linkonce.d.*)
+ .data          0x00000000000161d0        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .data          0x00000000000161d0        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ .data.rel.local
+                0x00000000000161d0        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+                0x00000000000161d0                __dso_handle
+ .data          0x00000000000161d8        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/httpd.o
+ .data          0x00000000000161d8       0xb8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/httpClient.o
+ .data          0x0000000000016290        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+ .data          0x0000000000016290        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+
+.tm_clone_table
+                0x0000000000016290        0x0
+ .tm_clone_table
+                0x0000000000016290        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ .tm_clone_table
+                0x0000000000016290        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+
+.data1
+ *(.data1)
+                [!provide]                        PROVIDE (_edata = .)
+                [!provide]                        PROVIDE (edata = .)
+                0x0000000000016290                . = .
+                [!provide]                        PROVIDE (__bss_start = .)
+                [!provide]                        PROVIDE (__bss_start__ = .)
+
+.bss            0x0000000000016290      0x418
+ *(.dynbss)
+ .dynbss        0x0000000000016290        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *(.bss .bss.* .gnu.linkonce.b.*)
+ .bss           0x0000000000016290        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .bss           0x0000000000016290        0x1 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ *fill*         0x0000000000016291        0x7 
+ .bss           0x0000000000016298       0x10 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/httpd.o
+                0x0000000000016298                indexImg
+ .bss           0x00000000000162a8      0x400 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/httpClient.o
+ .bss           0x00000000000166a8        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+ .bss           0x00000000000166a8        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+ *(COMMON)
+                0x00000000000166a8                . = ALIGN ((. != 0x0)?0x8:0x1)
+                [!provide]                        PROVIDE (_bss_end__ = .)
+                [!provide]                        PROVIDE (__bss_end__ = .)
+                0x00000000000166a8                . = ALIGN (0x8)
+                0x00000000000166a8                . = SEGMENT_START ("ldata-segment", .)
+                0x00000000000166a8                . = ALIGN (0x8)
+                [!provide]                        PROVIDE (__end__ = .)
+                [!provide]                        PROVIDE (_end = .)
+                [!provide]                        PROVIDE (end = .)
+                0x00000000000166a8                . = DATA_SEGMENT_END (.)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment        0x0000000000000000       0x16
+ *(.comment)
+ .comment       0x0000000000000000       0x16 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+                                         0x17 (size before relaxing)
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/httpd.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/httpClient.o
+ .comment       0x0000000000000016       0x17 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+
+.gnu.build.attributes
+ *(.gnu.build.attributes .gnu.build.attributes.*)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x0000000000000000       0x60
+ *(.debug_aranges)
+ .debug_aranges
+                0x0000000000000000       0x30 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/httpd.o
+ .debug_aranges
+                0x0000000000000030       0x30 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/httpClient.o
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info     0x0000000000000000     0x1ebe
+ *(.debug_info .gnu.linkonce.wi.*)
+ .debug_info    0x0000000000000000      0xef3 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/httpd.o
+ .debug_info    0x0000000000000ef3      0xfcb build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/httpClient.o
+
+.debug_abbrev   0x0000000000000000      0x49d
+ *(.debug_abbrev)
+ .debug_abbrev  0x0000000000000000      0x25c build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/httpd.o
+ .debug_abbrev  0x000000000000025c      0x241 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/httpClient.o
+
+.debug_line     0x0000000000000000      0x9b8
+ *(.debug_line .debug_line.* .debug_line_end)
+ .debug_line    0x0000000000000000      0x463 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/httpd.o
+ .debug_line    0x0000000000000463      0x555 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/httpClient.o
+
+.debug_frame
+ *(.debug_frame)
+
+.debug_str      0x0000000000000000      0xc6a
+ *(.debug_str)
+ .debug_str     0x0000000000000000      0x86a build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/httpd.o
+                                        0x95b (size before relaxing)
+ .debug_str     0x000000000000086a      0x400 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/httpClient.o
+                                        0x901 (size before relaxing)
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges
+ *(.debug_ranges)
+
+.debug_macro
+ *(.debug_macro)
+
+.debug_addr
+ *(.debug_addr)
+
+.ARM.attributes
+ *(.ARM.attributes)
+ *(.gnu.attributes)
+
+.note.gnu.arm.ident
+ *(.note.gnu.arm.ident)
+
+/DISCARD/
+ *(.note.GNU-stack)
+ *(.gnu_debuglink)
+ *(.gnu.lto_*)
+OUTPUT(build/arm11-gcc-uClibc-linux-gk7605v100/lib/libhttp_client.so elf64-littleaarch64)
+LOAD linker stubs

@@ -1,0 +1,1568 @@
+
+Allocating common symbols
+Common symbol       size              file
+
+lv_style_btn_ina    0x50              build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_style.o
+lv_style_transp     0x50              build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_style.o
+lv_style_title_label
+                    0x50              build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_style.o
+lv_style_transp_tight
+                    0x50              build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_style.o
+lv_style_plain_color
+                    0x50              build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_style.o
+lv_style_pretty     0x50              build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_style.o
+lv_style_pretty_color
+                    0x50              build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_style.o
+lv_style_scr        0x50              build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_style.o
+lv_style_btn_tgl_rel
+                    0x50              build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_style.o
+lv_style_btn_tgl_pr
+                    0x50              build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_style.o
+lv_style_scr_transp
+                    0x50              build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_style.o
+lv_style_transp_fit
+                    0x50              build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_style.o
+lv_style_btn_rel    0x50              build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_style.o
+lv_style_plain      0x50              build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_style.o
+lv_style_btn_pr     0x50              build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_style.o
+
+Discarded input sections
+
+ .note.GNU-stack
+                0x0000000000000000        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_group.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_indev.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_obj.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_refr.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_style.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_vdb.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_draw/lv_draw_vbasic.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_draw/lv_draw.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_draw/lv_draw_rbasic.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_hal/lv_hal_disp.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_hal/lv_hal_indev.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_hal/lv_hal_tick.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_font.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_circ.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_area.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_task.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_fs.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_anim.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_mem.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_ll.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_color.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_txt.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_ufs.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_trigo.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_math.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_fonts/lv_font_dejavu_20.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_bar.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_cb.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_ddlist.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_kb.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_line.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_mbox.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_roller.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_tabview.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_btn.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_chart.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_gauge.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_label.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_list.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_slider.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_ta.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_btnm.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_cont.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_img.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_led.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_lmeter.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_page.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_sw.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_win.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_themes/lv_theme_alien.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_themes/lv_theme.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_themes/lv_theme_default.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_themes/lv_theme_night.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_themes/lv_theme_templ.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_themes/lv_theme_zen.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_themes/lv_theme_material.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_group.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_indev.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_obj.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_refr.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_style.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_vdb.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_draw/lv_draw_vbasic.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_draw/lv_draw.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_draw/lv_draw_rbasic.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_hal/lv_hal_disp.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_hal/lv_hal_indev.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_hal/lv_hal_tick.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_font.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_circ.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_area.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_task.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_fs.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_anim.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_mem.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_ll.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_color.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_txt.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_ufs.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_trigo.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_math.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_fonts/lv_font_dejavu_20.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_bar.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_cb.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_ddlist.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_kb.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_line.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_mbox.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_roller.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_tabview.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_btn.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_chart.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_gauge.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_label.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_list.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_slider.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_ta.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_btnm.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_cont.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_img.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_led.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_lmeter.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_page.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_sw.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_win.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_themes/lv_theme_alien.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_themes/lv_theme.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_themes/lv_theme_default.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_themes/lv_theme_night.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_themes/lv_theme_templ.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_themes/lv_theme_zen.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_themes/lv_theme_material.o
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/libgcc.a
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/../../../../aarch64-linux-gnu/lib/../lib64/libgcc_s.so
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/libc.so
+START GROUP
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/lib/libc.so.6
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/libc_nonshared.a
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/lib/ld-linux-aarch64.so.1
+END GROUP
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/libgcc.a
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/../../../../aarch64-linux-gnu/lib/../lib64/libgcc_s.so
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+                0x0000000000000190                . = (SEGMENT_START ("text-segment", 0x0) + SIZEOF_HEADERS)
+
+.note.gnu.build-id
+ *(.note.gnu.build-id)
+
+.hash           0x0000000000000190     0x1070
+ *(.hash)
+ .hash          0x0000000000000190     0x1070 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.gnu.hash       0x0000000000001200      0xe38
+ *(.gnu.hash)
+ .gnu.hash      0x0000000000001200      0xe38 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.dynsym         0x0000000000002038     0x3198
+ *(.dynsym)
+ .dynsym        0x0000000000002038     0x3198 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.dynstr         0x00000000000051d0     0x24d3
+ *(.dynstr)
+ .dynstr        0x00000000000051d0     0x24d3 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.gnu.version    0x00000000000076a4      0x422
+ *(.gnu.version)
+ .gnu.version   0x00000000000076a4      0x422 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.gnu.version_d  0x0000000000007ac8        0x0
+ *(.gnu.version_d)
+ .gnu.version_d
+                0x0000000000007ac8        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.gnu.version_r  0x0000000000007ac8       0x20
+ *(.gnu.version_r)
+ .gnu.version_r
+                0x0000000000007ac8       0x20 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.rela.dyn       0x0000000000007ae8     0x13e0
+ *(.rela.init)
+ *(.rela.text .rela.text.* .rela.gnu.linkonce.t.*)
+ *(.rela.fini)
+ *(.rela.rodata .rela.rodata.* .rela.gnu.linkonce.r.*)
+ *(.rela.data .rela.data.* .rela.gnu.linkonce.d.*)
+ .rela.data.rel.local
+                0x0000000000007ae8      0xf48 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .rela.data.rel.ro.local
+                0x0000000000008a30       0xc0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .rela.data.rel
+                0x0000000000008af0       0x78 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *(.rela.tdata .rela.tdata.* .rela.gnu.linkonce.td.*)
+ *(.rela.tbss .rela.tbss.* .rela.gnu.linkonce.tb.*)
+ *(.rela.ctors)
+ *(.rela.dtors)
+ *(.rela.got)
+ .rela.got      0x0000000000008b68      0x330 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *(.rela.bss .rela.bss.* .rela.gnu.linkonce.b.*)
+ *(.rela.ifunc)
+ .rela.ifunc    0x0000000000008e98        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .rela.init_array
+                0x0000000000008e98       0x18 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .rela.fini_array
+                0x0000000000008eb0       0x18 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.rela.plt       0x0000000000008ec8     0x1c08
+ *(.rela.plt)
+ .rela.plt      0x0000000000008ec8     0x1c08 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *(.rela.iplt)
+
+.init           0x000000000000aad0       0x14
+ *(SORT_NONE(.init))
+ .init          0x000000000000aad0        0xc /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+                0x000000000000aad0                _init
+ .init          0x000000000000aadc        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+
+.plt            0x000000000000aaf0     0x12d0
+ *(.plt)
+ .plt           0x000000000000aaf0     0x12d0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *(.iplt)
+
+.text           0x000000000000bdc0    0x2399c
+ *(.text.unlikely .text.*_unlikely .text.unlikely.*)
+ *(.text.exit .text.exit.*)
+ *(.text.startup .text.startup.*)
+ *(.text.hot .text.hot.*)
+ *(SORT_BY_NAME(.text.sorted.*))
+ *(.text .stub .text.* .gnu.linkonce.t.*)
+ .text          0x000000000000bdc0       0x14 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *fill*         0x000000000000bdd4        0x4 1f2003d5
+ .text          0x000000000000bdd8       0xbc /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ *fill*         0x000000000000be94        0x4 1f2003d5
+ .text          0x000000000000be98      0x694 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_group.o
+                0x000000000000bf58                lv_group_create
+                0x000000000000bfa8                lv_group_red_mode_create
+                0x000000000000bff8                lv_group_del
+                0x000000000000c070                lv_group_focus_obj
+                0x000000000000c168                lv_group_focus_next
+                0x000000000000c238                lv_group_add_obj
+                0x000000000000c298                lv_group_remove_obj
+                0x000000000000c348                lv_group_focus_prev
+                0x000000000000c418                lv_group_focus_freeze
+                0x000000000000c440                lv_group_set_style_mod_cb
+                0x000000000000c460                lv_group_set_focus_cb
+                0x000000000000c468                lv_group_mod_style
+                0x000000000000c4b0                lv_group_get_focused
+                0x000000000000c4d0                lv_group_send_data
+                0x000000000000c500                lv_group_get_style_mod_cb
+                0x000000000000c508                lv_group_get_focus_cb
+                0x000000000000c510                lv_group_get_cur_key_type
+                0x000000000000c520                lv_group_set_cur_key_type
+ *fill*         0x000000000000c52c        0x4 1f2003d5
+ .text          0x000000000000c530      0xcd8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_indev.o
+                0x000000000000cf38                lv_indev_get_act
+                0x000000000000cf48                lv_indev_reset
+                0x000000000000cf98                lv_indev_init
+                0x000000000000cfc8                lv_indev_reset_lpr
+                0x000000000000d000                lv_indev_enable
+                0x000000000000d060                lv_indev_set_cursor
+                0x000000000000d0b8                lv_indev_set_group
+                0x000000000000d0d0                lv_indev_set_button_points
+                0x000000000000d0e8                lv_indev_get_point
+                0x000000000000d118                lv_indev_is_dragging
+                0x000000000000d148                lv_indev_get_vect
+                0x000000000000d178                lv_indev_get_inactive_time
+                0x000000000000d1f8                lv_indev_wait_release
+ .text          0x000000000000d208     0x17d8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_obj.o
+                0x000000000000d2b0                lv_obj_set_click
+                0x000000000000d2c0                lv_obj_set_top
+                0x000000000000d2d0                lv_obj_set_drag
+                0x000000000000d308                lv_obj_set_drag_throw
+                0x000000000000d318                lv_obj_set_drag_parent
+                0x000000000000d328                lv_obj_set_protect
+                0x000000000000d338                lv_obj_clear_protect
+                0x000000000000d350                lv_obj_set_signal_func
+                0x000000000000d358                lv_obj_set_design_func
+                0x000000000000d360                lv_obj_allocate_ext_attr
+                0x000000000000d390                lv_obj_set_free_num
+                0x000000000000d398                lv_obj_set_free_ptr
+                0x000000000000d3a0                lv_scr_act
+                0x000000000000d3b0                lv_layer_top
+                0x000000000000d3c0                lv_layer_sys
+                0x000000000000d3d0                lv_obj_get_parent
+                0x000000000000d4d0                lv_obj_get_screen
+                0x000000000000d508                lv_obj_get_child
+                0x000000000000d520                lv_obj_get_child_back
+                0x000000000000d538                lv_obj_count_children
+                0x000000000000d580                lv_obj_get_coords
+                0x000000000000d590                lv_obj_get_x
+                0x000000000000d5c0                lv_obj_get_y
+                0x000000000000d5f0                lv_obj_get_width
+                0x000000000000d608                lv_obj_get_height
+                0x000000000000d620                lv_obj_get_ext_size
+                0x000000000000d628                lv_obj_get_hidden
+                0x000000000000d638                lv_obj_invalidate
+                0x000000000000d748                lv_obj_del
+                0x000000000000d8b8                lv_obj_clean
+                0x000000000000d908                lv_scr_load
+                0x000000000000d918                lv_obj_set_pos
+                0x000000000000da18                lv_obj_set_x
+                0x000000000000da48                lv_obj_set_y
+                0x000000000000da78                lv_obj_align
+                0x000000000000dea8                lv_obj_create
+                0x000000000000e0e8                lv_obj_set_parent
+                0x000000000000e188                lv_obj_set_size
+                0x000000000000e258                lv_obj_set_width
+                0x000000000000e288                lv_obj_set_height
+                0x000000000000e2b8                lv_obj_refresh_style
+                0x000000000000e368                lv_obj_set_style
+                0x000000000000e410                lv_obj_report_style_mod
+                0x000000000000e470                lv_init
+                0x000000000000e510                lv_obj_set_hidden
+                0x000000000000e570                lv_obj_refresh_ext_size
+                0x000000000000e5a8                lv_obj_get_click
+                0x000000000000e5b8                lv_obj_get_top
+                0x000000000000e5c8                lv_obj_get_drag
+                0x000000000000e5d8                lv_obj_get_drag_throw
+                0x000000000000e5e8                lv_obj_get_drag_parent
+                0x000000000000e5f8                lv_obj_get_protect
+                0x000000000000e600                lv_obj_is_protected
+                0x000000000000e618                lv_obj_get_signal_func
+                0x000000000000e620                lv_obj_get_design_func
+                0x000000000000e628                lv_obj_get_ext_attr
+                0x000000000000e630                lv_obj_get_type
+                0x000000000000e6e0                lv_obj_get_free_num
+                0x000000000000e6e8                lv_obj_get_free_ptr
+                0x000000000000e6f0                lv_obj_get_group
+                0x000000000000e6f8                lv_obj_get_style
+ .text          0x000000000000e9e0      0x960 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_refr.o
+                0x000000000000f178                lv_refr_init
+                0x000000000000f1c0                lv_inv_area
+                0x000000000000f2f0                lv_refr_set_monitor_cb
+                0x000000000000f300                lv_refr_set_round_cb
+                0x000000000000f310                lv_refr_get_buf_size
+                0x000000000000f320                lv_refr_pop_from_buf
+ .text          0x000000000000f340      0x394 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_style.o
+                0x000000000000f340                lv_style_init
+                0x000000000000f6a8                lv_style_copy
+ *fill*         0x000000000000f6d4        0x4 1f2003d5
+ .text          0x000000000000f6d8       0x70 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_vdb.o
+                0x000000000000f6d8                lv_vdb_get
+                0x000000000000f6f8                lv_vdb_flush
+                0x000000000000f738                lv_flush_ready
+ .text          0x000000000000f748     0x12d8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_draw/lv_draw_vbasic.o
+                0x000000000000f748                lv_vpx
+                0x000000000000f930                lv_vfill
+                0x000000000000fcb8                lv_vletter
+                0x00000000000102e8                lv_vmap
+ .text          0x0000000000010a20     0x5244 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_draw/lv_draw.o
+                0x0000000000012aa0                lv_draw_rect
+                0x0000000000014c10                lv_draw_label
+                0x0000000000015040                lv_draw_img
+                0x0000000000015398                lv_draw_line
+ *fill*         0x0000000000015c64        0x4 1f2003d5
+ .text          0x0000000000015c68      0x8e8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_draw/lv_draw_rbasic.o
+                0x0000000000015c68                lv_rfill
+                0x0000000000015d08                lv_rpx
+                0x0000000000015d48                lv_rletter
+                0x0000000000016208                lv_rletter_set_background
+                0x0000000000016218                lv_rmap
+ .text          0x0000000000016550      0x12c build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_hal/lv_hal_disp.o
+                0x0000000000016550                lv_disp_drv_init
+                0x0000000000016560                lv_disp_drv_register
+                0x00000000000165d8                lv_disp_set_active
+                0x00000000000165f8                lv_disp_get_active
+                0x0000000000016608                lv_disp_next
+                0x0000000000016620                lv_disp_fill
+                0x0000000000016640                lv_disp_flush
+                0x0000000000016660                lv_disp_map
+ *fill*         0x000000000001667c        0x4 1f2003d5
+ .text          0x0000000000016680       0xec build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_hal/lv_hal_indev.o
+                0x0000000000016680                lv_indev_drv_init
+                0x0000000000016690                lv_indev_drv_register
+                0x0000000000016728                lv_indev_next
+                0x0000000000016748                lv_indev_read
+ *fill*         0x000000000001676c        0x4 1f2003d5
+ .text          0x0000000000016770       0xbc build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_hal/lv_hal_tick.o
+                0x0000000000016770                lv_tick_inc
+                0x00000000000167e0                lv_tick_get
+                0x0000000000016808                lv_tick_elaps
+ *fill*         0x000000000001682c        0x4 1f2003d5
+ .text          0x0000000000016830      0x2a0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_font.o
+                0x0000000000016830                lv_font_add
+                0x0000000000016850                lv_font_init
+                0x0000000000016860                lv_font_get_bitmap
+                0x00000000000168c0                lv_font_get_width
+                0x0000000000016928                lv_font_get_bpp
+                0x0000000000016968                lv_font_get_bitmap_continuous
+                0x00000000000169a8                lv_font_get_bitmap_sparse
+                0x0000000000016a28                lv_font_get_width_continuous
+                0x0000000000016a60                lv_font_get_width_sparse
+ .text          0x0000000000016ad0       0x90 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_circ.o
+                0x0000000000016ad0                lv_circ_init
+                0x0000000000016af0                lv_circ_cont
+                0x0000000000016b08                lv_circ_next
+ .text          0x0000000000016b60      0x2c4 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_area.o
+                0x0000000000016b60                lv_area_set
+                0x0000000000016b78                lv_area_set_width
+                0x0000000000016b90                lv_area_set_height
+                0x0000000000016ba8                lv_area_set_pos
+                0x0000000000016c00                lv_area_get_size
+                0x0000000000016c28                lv_area_union
+                0x0000000000016ca8                lv_area_join
+                0x0000000000016d10                lv_area_is_point_on
+                0x0000000000016d68                lv_area_is_on
+                0x0000000000016dc8                lv_area_is_in
+ *fill*         0x0000000000016e24        0x4 1f2003d5
+ .text          0x0000000000016e28      0x484 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_task.o
+                0x0000000000016e28                lv_task_create
+                0x0000000000016f18                lv_task_del
+                0x0000000000016fb8                lv_task_handler
+                0x0000000000017130                lv_task_set_prio
+                0x00000000000171f8                lv_task_set_period
+                0x0000000000017200                lv_task_ready
+                0x0000000000017230                lv_task_once
+                0x0000000000017240                lv_task_reset
+                0x0000000000017268                lv_task_enable
+                0x0000000000017278                lv_task_init
+                0x00000000000172a0                lv_task_get_idle
+ *fill*         0x00000000000172ac        0x4 1f2003d5
+ .text          0x00000000000172b0      0x8e8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_fs.o
+                0x0000000000017310                lv_fs_init
+                0x0000000000017320                lv_fs_open
+                0x0000000000017440                lv_fs_close
+                0x00000000000174b0                lv_fs_remove
+                0x0000000000017578                lv_fs_read
+                0x00000000000175d8                lv_fs_write
+                0x0000000000017638                lv_fs_seek
+                0x0000000000017660                lv_fs_tell
+                0x0000000000017688                lv_fs_size
+                0x00000000000176b8                lv_fs_dir_open
+                0x0000000000017780                lv_fs_dir_read
+                0x00000000000177b0                lv_fs_dir_close
+                0x0000000000017840                lv_fs_free
+                0x00000000000178b8                lv_fs_add_drv
+                0x00000000000178f0                lv_fs_get_letters
+                0x0000000000017980                lv_fs_get_ext
+                0x0000000000017a10                lv_fs_up
+                0x0000000000017ad0                lv_fs_get_last
+ .text          0x0000000000017b98        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_anim.o
+ .text          0x0000000000017b98      0x4f8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_mem.o
+                0x0000000000017b98                lv_mem_init
+                0x0000000000017bb0                lv_mem_alloc
+                0x0000000000017c98                lv_mem_free
+                0x0000000000017d88                lv_mem_defrag
+                0x0000000000017ea0                lv_mem_monitor
+                0x0000000000017f70                lv_mem_get_size
+                0x0000000000017f98                lv_mem_realloc
+ .text          0x0000000000018090      0x490 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_ll.o
+                0x0000000000018090                lv_ll_init
+                0x00000000000180b0                lv_ll_ins_head
+                0x0000000000018120                lv_ll_ins_tail
+                0x0000000000018198                lv_ll_get_head
+                0x00000000000181b0                lv_ll_get_tail
+                0x00000000000181c8                lv_ll_get_next
+                0x00000000000181e8                lv_ll_get_prev
+                0x0000000000018200                lv_ll_ins_prev
+                0x00000000000182c8                lv_ll_rem
+                0x00000000000183a8                lv_ll_clear
+                0x0000000000018410                lv_ll_chg_list
+                0x0000000000018470                lv_ll_swap
+                0x0000000000018478                lv_ll_move_before
+ .text          0x0000000000018520      0x274 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_color.o
+                0x0000000000018520                lv_color_hsv_to_rgb
+                0x0000000000018690                lv_color_rgb_to_hsv
+ *fill*         0x0000000000018794        0x4 1f2003d5
+ .text          0x0000000000018798      0xadc build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_txt.o
+                0x0000000000018798                lv_txt_is_cmd
+                0x0000000000018820                lv_txt_utf8_size
+                0x0000000000018870                lv_txt_unicode_to_utf8
+                0x0000000000018938                lv_txt_utf8_next
+                0x0000000000018aa0                lv_txt_get_width
+                0x0000000000018be8                lv_txt_utf8_prev
+                0x0000000000018c78                lv_txt_get_next_line
+                0x0000000000018e90                lv_txt_get_size
+                0x0000000000019000                txt_utf8_get_byte_id
+                0x0000000000019070                lv_txt_ins
+                0x0000000000019100                lv_txt_cut
+                0x0000000000019188                lv_txt_utf8_get_char_id
+                0x0000000000019200                lv_txt_get_length
+ *fill*         0x0000000000019274        0x4 1f2003d5
+ .text          0x0000000000019278      0x74c build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_ufs.o
+                0x0000000000019278                lv_ufs_ready
+                0x0000000000019288                lv_ufs_close
+                0x00000000000192a8                lv_ufs_tell
+                0x00000000000192b8                lv_ufs_size
+                0x00000000000192d0                lv_ufs_dir_open
+                0x00000000000192e8                lv_ufs_dir_close
+                0x0000000000019378                lv_ufs_open
+                0x0000000000019480                lv_ufs_dir_read
+                0x00000000000194f8                lv_ufs_remove
+                0x0000000000019590                lv_ufs_read
+                0x0000000000019650                lv_ufs_seek
+                0x00000000000196e0                lv_ufs_trunc
+                0x0000000000019738                lv_ufs_free
+                0x0000000000019778                lv_ufs_write
+                0x0000000000019828                lv_ufs_init
+                0x0000000000019908                lv_ufs_create_const
+ *fill*         0x00000000000199c4        0x4 1f2003d5
+ .text          0x00000000000199c8       0xd8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_trigo.o
+                0x00000000000199c8                lv_trigo_sin
+ .text          0x0000000000019aa0      0x120 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_math.o
+                0x0000000000019aa0                lv_math_num_to_str
+ .text          0x0000000000019bc0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_fonts/lv_font_dejavu_20.o
+ .text          0x0000000000019bc0      0x5b4 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_bar.o
+                0x0000000000019bc0                lv_bar_set_value
+                0x0000000000019c30                lv_bar_set_range
+                0x0000000000019cf0                lv_bar_set_style
+                0x0000000000019d60                lv_bar_create
+                0x0000000000019ed0                lv_bar_get_value
+                0x0000000000019ee8                lv_bar_get_min_value
+                0x0000000000019f00                lv_bar_get_max_value
+                0x0000000000019f18                lv_bar_get_style
+ *fill*         0x000000000001a174        0x4 1f2003d5
+ .text          0x000000000001a178      0x734 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_cb.o
+                0x000000000001a440                lv_cb_set_text
+                0x000000000001a468                lv_cb_set_style
+                0x000000000001a5c0                lv_cb_create
+                0x000000000001a7d0                lv_cb_get_text
+                0x000000000001a7e8                lv_cb_get_style
+ *fill*         0x000000000001a8ac        0x4 1f2003d5
+ .text          0x000000000001a8b0      0xef4 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_ddlist.o
+                0x000000000001ad60                lv_ddlist_set_options
+                0x000000000001ae10                lv_ddlist_set_selected
+                0x000000000001ae88                lv_ddlist_set_action
+                0x000000000001aeb0                lv_ddlist_set_fix_height
+                0x000000000001aef8                lv_ddlist_set_hor_fit
+                0x000000000001af60                lv_ddlist_set_anim_time
+                0x000000000001af78                lv_ddlist_set_style
+                0x000000000001b018                lv_ddlist_create
+                0x000000000001b290                lv_ddlist_get_options
+                0x000000000001b2a8                lv_ddlist_get_selected
+                0x000000000001b2c0                lv_ddlist_get_selected_str
+                0x000000000001b3c8                lv_ddlist_get_action
+                0x000000000001b3e0                lv_ddlist_get_fix_height
+                0x000000000001b3f8                lv_ddlist_get_anim_time
+                0x000000000001b410                lv_ddlist_get_style
+                0x000000000001b718                lv_ddlist_open
+                0x000000000001b760                lv_ddlist_close
+ *fill*         0x000000000001b7a4        0x4 1f2003d5
+ .text          0x000000000001b7a8      0x7b8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_kb.o
+                0x000000000001b820                lv_kb_set_ta
+                0x000000000001bb78                lv_kb_set_mode
+                0x000000000001bbf0                lv_kb_set_cursor_manage
+                0x000000000001bc78                lv_kb_set_ok_action
+                0x000000000001bca0                lv_kb_set_hide_action
+                0x000000000001bcc8                lv_kb_set_style
+                0x000000000001bd08                lv_kb_create
+                0x000000000001be98                lv_kb_get_ta
+                0x000000000001beb0                lv_kb_get_mode
+                0x000000000001bec8                lv_kb_get_cursor_manage
+                0x000000000001bee8                lv_kb_get_ok_action
+                0x000000000001bf00                lv_kb_get_hide_action
+                0x000000000001bf18                lv_kb_get_style
+ .text          0x000000000001bf60      0x518 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_line.o
+                0x000000000001c198                lv_line_set_points
+                0x000000000001c248                lv_line_set_auto_size
+                0x000000000001c2a8                lv_line_set_y_invert
+                0x000000000001c300                lv_line_get_auto_size
+                0x000000000001c320                lv_line_get_y_inv
+                0x000000000001c340                lv_line_create
+ .text          0x000000000001c478      0x80c build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_mbox.o
+                0x000000000001c478                lv_mbox_set_action
+                0x000000000001c4a0                lv_mbox_set_anim_time
+                0x000000000001c4b8                lv_mbox_start_auto_close
+                0x000000000001c4c0                lv_mbox_stop_auto_close
+                0x000000000001c4c8                lv_mbox_set_style
+                0x000000000001c600                lv_mbox_create
+                0x000000000001c768                lv_mbox_get_text
+                0x000000000001c780                lv_mbox_get_from_btn
+                0x000000000001c7d0                lv_mbox_get_anim_time
+                0x000000000001c7e8                lv_mbox_get_style
+                0x000000000001cb58                lv_mbox_add_btns
+                0x000000000001cc50                lv_mbox_set_text
+ *fill*         0x000000000001cc84        0x4 1f2003d5
+ .text          0x000000000001cc88      0xb74 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_roller.o
+                0x000000000001cf08                lv_roller_set_selected
+                0x000000000001d228                lv_roller_set_visible_row_count
+                0x000000000001d270                lv_roller_set_style
+                0x000000000001d290                lv_roller_create
+                0x000000000001d410                lv_roller_get_hor_fit
+                0x000000000001d428                lv_roller_get_style
+ *fill*         0x000000000001d7fc        0x4 1f2003d5
+ .text          0x000000000001d800     0x12d4 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_tabview.o
+                0x000000000001d990                lv_tabview_set_tab_act
+                0x000000000001dc40                lv_tabview_set_tab_load_action
+                0x000000000001dc68                lv_tabview_set_sliding
+                0x000000000001dc98                lv_tabview_set_anim_time
+                0x000000000001dcb0                lv_tabview_get_tab_act
+                0x000000000001dcc8                lv_tabview_get_tab_count
+                0x000000000001dce0                lv_tabview_get_tab
+                0x000000000001dd58                lv_tabview_get_tab_load_action
+                0x000000000001dd70                lv_tabview_get_sliding
+                0x000000000001df58                lv_tabview_get_anim_time
+                0x000000000001df70                lv_tabview_get_style
+                0x000000000001e390                lv_tabview_add_tab
+                0x000000000001e5e0                lv_tabview_set_style
+                0x000000000001e738                lv_tabview_create
+ *fill*         0x000000000001ead4        0x4 1f2003d5
+ .text          0x000000000001ead8      0x928 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_btn.o
+                0x000000000001ead8                lv_btn_set_toggle
+                0x000000000001eb08                lv_btn_set_state
+                0x000000000001eb58                lv_btn_toggle
+                0x000000000001ebf8                lv_btn_set_action
+                0x000000000001ec38                lv_btn_set_style
+                0x000000000001ed48                lv_btn_create
+                0x000000000001eef8                lv_btn_get_state
+                0x000000000001ef10                lv_btn_get_toggle
+                0x000000000001f328                lv_btn_get_action
+                0x000000000001f360                lv_btn_get_style
+ .text          0x000000000001f400     0x110c build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_chart.o
+                0x000000000001fe08                lv_chart_create
+                0x000000000001ffa0                lv_chart_add_series
+                0x0000000000020030                lv_chart_set_div_line_count
+                0x0000000000020098                lv_chart_set_series_opa
+                0x00000000000200e0                lv_chart_set_series_width
+                0x0000000000020128                lv_chart_set_series_darking
+                0x0000000000020170                lv_chart_get_type
+                0x0000000000020190                lv_chart_get_point_cnt
+                0x00000000000201a8                lv_chart_get_series_opa
+                0x00000000000201c0                lv_chart_get_series_width
+                0x00000000000201d8                lv_chart_get_series_darking
+                0x00000000000201f0                lv_chart_refresh
+                0x00000000000201f8                lv_chart_set_range
+                0x0000000000020260                lv_chart_set_type
+                0x00000000000202b8                lv_chart_set_point_count
+                0x00000000000203e8                lv_chart_init_points
+                0x0000000000020448                lv_chart_set_points
+                0x0000000000020490                lv_chart_set_next
+ *fill*         0x000000000002050c        0x4 1f2003d5
+ .text          0x0000000000020510      0xa28 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_gauge.o
+                0x0000000000020b78                lv_gauge_set_needle_count
+                0x0000000000020c28                lv_gauge_set_value
+                0x0000000000020cf0                lv_gauge_set_scale
+                0x0000000000020d28                lv_gauge_create
+                0x0000000000020eb8                lv_gauge_get_value
+                0x0000000000020f08                lv_gauge_get_needle_count
+                0x0000000000020f20                lv_gauge_get_label_count
+ .text          0x0000000000020f38     0x1344 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_label.o
+                0x0000000000021128                lv_label_set_align
+                0x0000000000021180                lv_label_set_body_draw
+                0x00000000000211e0                lv_label_get_text
+                0x00000000000211f8                lv_label_get_long_mode
+                0x0000000000021210                lv_label_get_align
+                0x0000000000021230                lv_label_get_recolor
+                0x0000000000021250                lv_label_get_no_break
+                0x0000000000021270                lv_label_get_body_draw
+                0x0000000000021290                lv_label_get_anim_speed
+                0x00000000000212a8                lv_label_get_letter_pos
+                0x0000000000021520                lv_label_get_letter_on
+                0x0000000000021b68                lv_label_set_text
+                0x0000000000021c30                lv_label_set_array_text
+                0x0000000000021ce8                lv_label_set_static_text
+                0x0000000000021d48                lv_label_set_long_mode
+                0x0000000000021de8                lv_label_set_recolor
+                0x0000000000021e40                lv_label_create
+                0x0000000000022048                lv_label_set_no_break
+                0x00000000000220a0                lv_label_set_anim_speed
+                0x00000000000220f8                lv_label_ins_text
+                0x00000000000221b8                lv_label_cut_text
+                0x0000000000022220                lv_label_set_offset_x
+                0x0000000000022250                lv_label_set_offset_y
+ *fill*         0x000000000002227c        0x4 1f2003d5
+ .text          0x0000000000022280     0x12a8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_list.o
+                0x0000000000022308                lv_list_add
+                0x0000000000022510                lv_list_param3_add
+                0x00000000000227c0                lv_list_set_anim_time
+                0x00000000000227e0                lv_list_get_btn_label
+                0x0000000000022860                lv_list_get_btn_text
+                0x0000000000022888                lv_list_get_btn_img
+                0x0000000000022908                lv_list_get_anim_time
+                0x0000000000022920                lv_list_get_style
+                0x0000000000022e60                lv_list_set_style
+                0x0000000000022fc8                lv_list_create
+                0x0000000000023240                lv_list_up
+                0x0000000000023338                lv_list_down
+                0x00000000000233f0                lv_list_focus
+                0x0000000000023420                lv_list_focus_by_text
+ .text          0x0000000000023528      0xba4 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_slider.o
+                0x0000000000023528                lv_slider_set_action
+                0x0000000000023550                lv_slider_set_knob_in
+                0x00000000000235a8                lv_slider_set_style
+                0x0000000000023648                lv_slider_create
+                0x00000000000237b0                lv_slider_get_value
+                0x00000000000237f0                lv_slider_get_action
+                0x0000000000023808                lv_slider_is_dragged
+                0x0000000000023828                lv_slider_get_knob_in
+                0x0000000000023848                lv_slider_get_style
+ *fill*         0x00000000000240cc        0x4 1f2003d5
+ .text          0x00000000000240d0     0x1738 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_ta.o
+                0x0000000000024250                lv_ta_set_cursor_pos
+                0x0000000000024430                lv_ta_del_char
+                0x0000000000024548                lv_ta_set_text
+                0x0000000000024600                lv_ta_set_cursor_type
+                0x0000000000024648                lv_ta_set_pwd_mode
+                0x0000000000024730                lv_ta_set_one_line
+                0x0000000000024890                lv_ta_set_style
+                0x0000000000024930                lv_ta_get_text
+                0x0000000000024960                lv_ta_get_label
+                0x0000000000024978                lv_ta_get_cursor_pos
+                0x0000000000024e68                lv_ta_add_char
+                0x0000000000024f20                lv_ta_add_text
+                0x0000000000024fe8                lv_ta_get_cursor_type
+                0x0000000000025000                lv_ta_get_pwd_mode
+                0x0000000000025020                lv_ta_get_one_line
+                0x0000000000025040                lv_ta_get_style
+                0x00000000000250c0                lv_ta_create
+                0x0000000000025348                lv_ta_cursor_right
+                0x0000000000025378                lv_ta_cursor_left
+                0x00000000000253b8                lv_ta_cursor_down
+                0x0000000000025468                lv_ta_cursor_up
+ .text          0x0000000000025808     0x12dc build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_btnm.o
+                0x00000000000258d0                lv_btnm_set_action
+                0x00000000000258f8                lv_btnm_set_toggle
+                0x0000000000025978                lv_btnm_set_style
+                0x0000000000025a68                lv_btnm_get_map
+                0x0000000000025a80                lv_btnm_get_action
+                0x0000000000025a98                lv_btnm_get_toggled
+                0x0000000000025ac8                lv_btnm_get_style
+                0x0000000000025ea8                lv_btnm_set_map
+                0x0000000000026280                lv_btnm_create
+                0x0000000000026480                cut_ctrl_byte
+ *fill*         0x0000000000026ae4        0x4 1f2003d5
+ .text          0x0000000000026ae8      0xe94 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_cont.o
+                0x0000000000026d98                lv_cont_create
+                0x0000000000026e98                lv_cont_set_layout
+                0x0000000000026ef8                lv_cont_set_fit
+                0x0000000000026fa0                lv_cont_get_layout
+                0x0000000000027940                lv_cont_get_hor_fit
+                0x0000000000027960                lv_cont_get_ver_fit
+ *fill*         0x000000000002797c        0x4 1f2003d5
+ .text          0x0000000000027980      0x754 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_img.o
+                0x0000000000027b48                lv_img_set_auto_size
+                0x0000000000027b78                lv_img_get_src_type
+                0x0000000000027bc0                lv_img_get_file_name
+                0x0000000000027c00                lv_img_get_auto_size
+                0x0000000000027c20                lv_img_set_src
+                0x0000000000027e78                lv_img_create
+ *fill*         0x00000000000280d4        0x4 1f2003d5
+ .text          0x00000000000280d8      0x504 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_led.o
+                0x0000000000028428                lv_led_create
+                0x0000000000028530                lv_led_set_bright
+                0x0000000000028578                lv_led_on
+                0x0000000000028580                lv_led_off
+                0x0000000000028588                lv_led_get_bright
+                0x00000000000285a0                lv_led_toggle
+ *fill*         0x00000000000285dc        0x4 1f2003d5
+ .text          0x00000000000285e0      0x838 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_lmeter.o
+                0x0000000000028ae8                lv_lmeter_create
+                0x0000000000028c08                lv_lmeter_set_value
+                0x0000000000028c78                lv_lmeter_set_range
+                0x0000000000028d38                lv_lmeter_set_scale
+                0x0000000000028da0                lv_lmeter_get_value
+                0x0000000000028db8                lv_lmeter_get_min_value
+                0x0000000000028dd0                lv_lmeter_get_max_value
+                0x0000000000028de8                lv_lmeter_get_line_count
+                0x0000000000028e00                lv_lmeter_get_scale_angle
+ .text          0x0000000000028e18     0x148c build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_page.o
+                0x0000000000029a58                lv_page_set_rel_action
+                0x0000000000029a80                lv_page_set_pr_action
+                0x0000000000029aa8                lv_page_set_sb_mode
+                0x0000000000029b10                lv_page_set_style
+                0x0000000000029bd0                lv_page_get_scrl
+                0x0000000000029be8                lv_page_get_sb_mode
+                0x0000000000029c08                lv_page_get_style
+                0x0000000000029c78                lv_page_create
+                0x000000000002a0f0                lv_page_glue_obj
+                0x000000000002a120                lv_page_focus
+ *fill*         0x000000000002a2a4        0x4 1f2003d5
+ .text          0x000000000002a2a8      0x634 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_sw.o
+                0x000000000002a2a8                lv_sw_on
+                0x000000000002a308                lv_sw_off
+                0x000000000002a618                lv_sw_set_style
+                0x000000000002a6e8                lv_sw_create
+                0x000000000002a848                lv_sw_get_style
+ *fill*         0x000000000002a8dc        0x4 1f2003d5
+ .text          0x000000000002a8e0      0xe48 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_win.o
+                0x000000000002a8e0                lv_win_set_layout
+                0x000000000002a910                lv_win_set_sb_mode
+                0x000000000002a938                lv_win_get_title
+                0x000000000002a950                lv_win_get_btn_size
+                0x000000000002a968                lv_win_get_layout
+                0x000000000002a988                lv_win_get_sb_mode
+                0x000000000002a9a0                lv_win_get_width
+                0x000000000002a9e8                lv_win_get_from_btn
+                0x000000000002aa00                lv_win_close_action
+                0x000000000002aa20                lv_win_get_style
+                0x000000000002ae28                lv_win_add_btn
+                0x000000000002aee0                lv_win_set_title
+                0x000000000002af58                lv_win_set_btn_size
+                0x000000000002afa0                lv_win_set_style
+                0x000000000002b128                lv_win_create
+                0x000000000002b410                lv_win_notitle_create
+                0x000000000002b6f8                lv_win_focus
+ .text          0x000000000002b728     0x1114 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_themes/lv_theme_alien.o
+                0x000000000002b728                lv_theme_alien_init
+                0x000000000002c830                lv_theme_get_alien
+ *fill*         0x000000000002c83c        0x4 1f2003d5
+ .text          0x000000000002c840       0x1c build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_themes/lv_theme.o
+                0x000000000002c840                lv_theme_set_current
+                0x000000000002c850                lv_theme_get_current
+ *fill*         0x000000000002c85c        0x4 1f2003d5
+ .text          0x000000000002c860      0x53c build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_themes/lv_theme_default.o
+                0x000000000002c860                lv_theme_default_init
+                0x000000000002cd90                lv_theme_get_default
+ *fill*         0x000000000002cd9c        0x4 1f2003d5
+ .text          0x000000000002cda0      0xd0c build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_themes/lv_theme_night.o
+                0x000000000002cda0                lv_theme_night_init
+                0x000000000002daa0                lv_theme_get_deafult
+ .text          0x000000000002daac        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_themes/lv_theme_templ.o
+ *fill*         0x000000000002daac        0x4 1f2003d5
+ .text          0x000000000002dab0      0xe7c build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_themes/lv_theme_zen.o
+                0x000000000002dab0                lv_theme_zen_init
+                0x000000000002e920                lv_theme_get_zen
+ *fill*         0x000000000002e92c        0x4 1f2003d5
+ .text          0x000000000002e930      0xe2c build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_themes/lv_theme_material.o
+                0x000000000002e930                lv_theme_material_init
+                0x000000000002f750                lv_theme_get_material
+ .text          0x000000000002f75c        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+ .text          0x000000000002f75c        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+ *(.gnu.warning)
+
+.fini           0x000000000002f75c       0x10
+ *(SORT_NONE(.fini))
+ .fini          0x000000000002f75c        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+                0x000000000002f75c                _fini
+ .fini          0x000000000002f764        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+                [!provide]                        PROVIDE (__etext = .)
+                [!provide]                        PROVIDE (_etext = .)
+                [!provide]                        PROVIDE (etext = .)
+
+.rodata         0x000000000002f770    0xa459a
+ *(.rodata .rodata.* .gnu.linkonce.r.*)
+ .rodata        0x000000000002f770       0x1a build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_group.o
+ *fill*         0x000000000002f78a        0x2 
+ .rodata        0x000000000002f78c       0x2a build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_obj.o
+ *fill*         0x000000000002f7b6        0x2 
+ .rodata.str1.8
+                0x000000000002f7b8        0x7 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_obj.o
+ *fill*         0x000000000002f7bf        0x1 
+ .rodata        0x000000000002f7c0       0x32 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_style.o
+ *fill*         0x000000000002f7f2        0x6 
+ .rodata        0x000000000002f7f8       0x98 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_draw/lv_draw.o
+ .rodata.str1.8
+                0x000000000002f890       0x10 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_draw/lv_draw.o
+ .rodata.str1.8
+                0x000000000002f8a0       0x10 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_fs.o
+                                          0x1 (size before relaxing)
+ .rodata.str1.8
+                0x000000000002f8a0        0x8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_txt.o
+ .rodata        0x000000000002f8a8       0xb4 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_trigo.o
+ *fill*         0x000000000002f95c        0x4 
+ .rodata        0x000000000002f960    0xa3d43 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_fonts/lv_font_dejavu_20.o
+ *fill*         0x00000000000d36a3        0x5 
+ .rodata.str1.8
+                0x00000000000d36a8        0x7 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_bar.o
+ *fill*         0x00000000000d36af        0x1 
+ .rodata.str1.8
+                0x00000000000d36b0       0x12 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_cb.o
+ *fill*         0x00000000000d36c2        0x6 
+ .rodata.str1.8
+                0x00000000000d36c8       0x2b build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_ddlist.o
+ *fill*         0x00000000000d36f3        0x5 
+ .rodata.str1.8
+                0x00000000000d36f8      0x37a build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_kb.o
+                                        0x38a (size before relaxing)
+ *fill*         0x00000000000d3a72        0x6 
+ .rodata.str1.8
+                0x00000000000d3a78        0x8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_line.o
+ .rodata.str1.8
+                0x00000000000d3a80       0x10 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_mbox.o
+ .rodata.str1.8
+                0x00000000000d3a90        0xa build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_roller.o
+ *fill*         0x00000000000d3a9a        0x6 
+ .rodata.str1.8
+                0x00000000000d3aa0        0xb build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_tabview.o
+                                         0x11 (size before relaxing)
+ *fill*         0x00000000000d3aab        0x5 
+ .rodata.str1.8
+                0x00000000000d3ab0        0x7 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_btn.o
+ *fill*         0x00000000000d3ab7        0x1 
+ .rodata.str1.8
+                0x00000000000d3ab8        0x9 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_chart.o
+ *fill*         0x00000000000d3ac1        0x7 
+ .rodata.str1.8
+                0x00000000000d3ac8        0x9 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_gauge.o
+ *fill*         0x00000000000d3ad1        0x7 
+ .rodata.str1.8
+                0x00000000000d3ad8       0x12 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_label.o
+ .rodata.str1.8
+                0x00000000000d3aea        0x1 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_list.o
+ *fill*         0x00000000000d3aea        0x6 
+ .rodata.str1.8
+                0x00000000000d3af0        0xa build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_slider.o
+ *fill*         0x00000000000d3afa        0x6 
+ .rodata.str1.8
+                0x00000000000d3b00       0x16 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_ta.o
+ *fill*         0x00000000000d3b16        0x2 
+ .rodata.str1.8
+                0x00000000000d3b18       0x25 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_btnm.o
+                                         0x31 (size before relaxing)
+ *fill*         0x00000000000d3b3d        0x3 
+ .rodata.str1.8
+                0x00000000000d3b40        0x8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_cont.o
+ .rodata.str1.8
+                0x00000000000d3b48        0x7 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_img.o
+                                          0xf (size before relaxing)
+ *fill*         0x00000000000d3b4f        0x1 
+ .rodata.str1.8
+                0x00000000000d3b50        0x7 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_led.o
+ *fill*         0x00000000000d3b57        0x1 
+ .rodata.str1.8
+                0x00000000000d3b58        0xa build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_lmeter.o
+ *fill*         0x00000000000d3b62        0x6 
+ .rodata.str1.8
+                0x00000000000d3b68        0x8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_page.o
+ .rodata.str1.8
+                0x00000000000d3b70        0x6 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_sw.o
+ *fill*         0x00000000000d3b76        0x2 
+ .rodata.str1.8
+                0x00000000000d3b78        0xb build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_win.o
+ *fill*         0x00000000000d3b83        0x5 
+ .rodata        0x00000000000d3b88       0x52 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_themes/lv_theme_alien.o
+ *fill*         0x00000000000d3bda        0x6 
+ .rodata        0x00000000000d3be0       0x2a build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_themes/lv_theme_default.o
+ *fill*         0x00000000000d3c0a        0x6 
+ .rodata        0x00000000000d3c10       0x3a build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_themes/lv_theme_night.o
+ *fill*         0x00000000000d3c4a        0x6 
+ .rodata        0x00000000000d3c50       0x5a build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_themes/lv_theme_zen.o
+ *fill*         0x00000000000d3caa        0x6 
+ .rodata        0x00000000000d3cb0       0x5a build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_themes/lv_theme_material.o
+
+.rodata1
+ *(.rodata1)
+
+.eh_frame_hdr   0x00000000000d3d0c     0x12a4
+ *(.eh_frame_hdr)
+ .eh_frame_hdr  0x00000000000d3d0c     0x12a4 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+                0x00000000000d3d0c                __GNU_EH_FRAME_HDR
+ *(.eh_frame_entry .eh_frame_entry.*)
+
+.eh_frame       0x00000000000d4fb0     0x76dc
+ *(.eh_frame)
+ .eh_frame      0x00000000000d4fb0       0x78 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ .eh_frame      0x00000000000d5028      0x2c8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_group.o
+                                        0x2d8 (size before relaxing)
+ .eh_frame      0x00000000000d52f0      0x2f8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_indev.o
+                                        0x310 (size before relaxing)
+ .eh_frame      0x00000000000d55e8      0x920 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_obj.o
+                                        0x938 (size before relaxing)
+ .eh_frame      0x00000000000d5f08      0x290 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_refr.o
+                                        0x2a8 (size before relaxing)
+ .eh_frame      0x00000000000d6198       0x40 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_style.o
+                                         0x58 (size before relaxing)
+ .eh_frame      0x00000000000d61d8       0x58 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_vdb.o
+                                         0x68 (size before relaxing)
+ .eh_frame      0x00000000000d6230      0x198 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_draw/lv_draw_vbasic.o
+                                        0x1b0 (size before relaxing)
+ .eh_frame      0x00000000000d63c8      0x208 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_draw/lv_draw.o
+                                        0x220 (size before relaxing)
+ .eh_frame      0x00000000000d65d0      0x148 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_draw/lv_draw_rbasic.o
+                                        0x158 (size before relaxing)
+ .eh_frame      0x00000000000d6718       0xd0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_hal/lv_hal_disp.o
+                                         0xe8 (size before relaxing)
+ .eh_frame      0x00000000000d67e8       0x70 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_hal/lv_hal_indev.o
+                                         0x80 (size before relaxing)
+ .eh_frame      0x00000000000d6858       0x68 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_hal/lv_hal_tick.o
+                                         0x78 (size before relaxing)
+ .eh_frame      0x00000000000d68c0       0xf8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_font.o
+                                        0x108 (size before relaxing)
+ .eh_frame      0x00000000000d69b8       0x40 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_circ.o
+                                         0x50 (size before relaxing)
+ .eh_frame      0x00000000000d69f8       0xe0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_area.o
+                                         0xf0 (size before relaxing)
+ .eh_frame      0x00000000000d6ad8      0x1f0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_task.o
+                                        0x208 (size before relaxing)
+ .eh_frame      0x00000000000d6cc8      0x378 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_fs.o
+                                        0x388 (size before relaxing)
+ .eh_frame      0x00000000000d7040       0xb0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_mem.o
+                                         0xc0 (size before relaxing)
+ .eh_frame      0x00000000000d70f0      0x210 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_ll.o
+                                        0x220 (size before relaxing)
+ .eh_frame      0x00000000000d7300       0x28 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_color.o
+                                         0x40 (size before relaxing)
+ .eh_frame      0x00000000000d7328      0x330 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_txt.o
+                                        0x340 (size before relaxing)
+ .eh_frame      0x00000000000d7658      0x320 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_ufs.o
+                                        0x338 (size before relaxing)
+ .eh_frame      0x00000000000d7978       0x18 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_trigo.o
+                                         0x28 (size before relaxing)
+ .eh_frame      0x00000000000d7990       0x18 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_math.o
+                                         0x28 (size before relaxing)
+ .eh_frame      0x00000000000d79a8      0x228 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_bar.o
+                                        0x240 (size before relaxing)
+ .eh_frame      0x00000000000d7bd0      0x228 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_cb.o
+                                        0x238 (size before relaxing)
+ .eh_frame      0x00000000000d7df8      0x4e0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_ddlist.o
+                                        0x4f8 (size before relaxing)
+ .eh_frame      0x00000000000d82d8      0x2a8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_kb.o
+                                        0x2b8 (size before relaxing)
+ .eh_frame      0x00000000000d8580      0x1d8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_line.o
+                                        0x1e8 (size before relaxing)
+ .eh_frame      0x00000000000d8758      0x320 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_mbox.o
+                                        0x338 (size before relaxing)
+ .eh_frame      0x00000000000d8a78      0x260 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_roller.o
+                                        0x270 (size before relaxing)
+ .eh_frame      0x00000000000d8cd8      0x528 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_tabview.o
+                                        0x538 (size before relaxing)
+ .eh_frame      0x00000000000d9200      0x2c0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_btn.o
+                                        0x2d0 (size before relaxing)
+ .eh_frame      0x00000000000d94c0      0x438 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_chart.o
+                                        0x448 (size before relaxing)
+ .eh_frame      0x00000000000d98f8      0x240 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_gauge.o
+                                        0x258 (size before relaxing)
+ .eh_frame      0x00000000000d9b38      0x5c8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_label.o
+                                        0x5d8 (size before relaxing)
+ .eh_frame      0x00000000000da100      0x498 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_list.o
+                                        0x4a8 (size before relaxing)
+ .eh_frame      0x00000000000da598      0x2d0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_slider.o
+                                        0x2e8 (size before relaxing)
+ .eh_frame      0x00000000000da868      0x640 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_ta.o
+                                        0x650 (size before relaxing)
+ .eh_frame      0x00000000000daea8      0x3d8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_btnm.o
+                                        0x3e8 (size before relaxing)
+ .eh_frame      0x00000000000db280      0x2c8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_cont.o
+                                        0x2e0 (size before relaxing)
+ .eh_frame      0x00000000000db548      0x190 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_img.o
+                                        0x1a8 (size before relaxing)
+ .eh_frame      0x00000000000db6d8      0x168 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_led.o
+                                        0x178 (size before relaxing)
+ .eh_frame      0x00000000000db840      0x238 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_lmeter.o
+                                        0x250 (size before relaxing)
+ .eh_frame      0x00000000000dba78      0x470 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_page.o
+                                        0x480 (size before relaxing)
+ .eh_frame      0x00000000000dbee8      0x1a0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_sw.o
+                                        0x1b0 (size before relaxing)
+ .eh_frame      0x00000000000dc088      0x418 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_win.o
+                                        0x428 (size before relaxing)
+ .eh_frame      0x00000000000dc4a0       0x58 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_themes/lv_theme_alien.o
+                                         0x70 (size before relaxing)
+ .eh_frame      0x00000000000dc4f8       0x28 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_themes/lv_theme.o
+                                         0x40 (size before relaxing)
+ .eh_frame      0x00000000000dc520       0x60 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_themes/lv_theme_default.o
+                                         0x70 (size before relaxing)
+ .eh_frame      0x00000000000dc580       0x58 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_themes/lv_theme_night.o
+                                         0x70 (size before relaxing)
+ .eh_frame      0x00000000000dc5d8       0x58 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_themes/lv_theme_zen.o
+                                         0x70 (size before relaxing)
+ .eh_frame      0x00000000000dc630       0x58 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_themes/lv_theme_material.o
+                                         0x70 (size before relaxing)
+ .eh_frame      0x00000000000dc688        0x4 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+ *(.eh_frame.*)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.gnu_extab
+ *(.gnu_extab*)
+
+.exception_ranges
+ *(.exception_ranges*)
+                0x00000000000eccb0                . = DATA_SEGMENT_ALIGN (CONSTANT (MAXPAGESIZE), CONSTANT (COMMONPAGESIZE))
+
+.eh_frame
+ *(.eh_frame)
+ *(.eh_frame.*)
+
+.gnu_extab
+ *(.gnu_extab)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.exception_ranges
+ *(.exception_ranges*)
+
+.tdata
+ *(.tdata .tdata.* .gnu.linkonce.td.*)
+
+.tbss
+ *(.tbss .tbss.* .gnu.linkonce.tb.*)
+ *(.tcommon)
+
+.preinit_array
+ *(.preinit_array)
+
+.init_array     0x00000000000eccb0        0x8
+ *(SORT_BY_INIT_PRIORITY(.init_array.*) SORT_BY_INIT_PRIORITY(.ctors.*))
+ *(.init_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .ctors)
+ .init_array    0x00000000000eccb0        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+
+.fini_array     0x00000000000eccb8        0x8
+ *(SORT_BY_INIT_PRIORITY(.fini_array.*) SORT_BY_INIT_PRIORITY(.dtors.*))
+ *(.fini_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .dtors)
+ .fini_array    0x00000000000eccb8        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+
+.ctors
+ *crtbegin.o(.ctors)
+ *crtbegin?.o(.ctors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .ctors)
+ *(SORT_BY_NAME(.ctors.*))
+ *(.ctors)
+
+.dtors
+ *crtbegin.o(.dtors)
+ *crtbegin?.o(.dtors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .dtors)
+ *(SORT_BY_NAME(.dtors.*))
+ *(.dtors)
+
+.jcr
+ *(.jcr)
+
+.data.rel.ro    0x00000000000eccc0       0x40
+ *(.data.rel.ro.local* .gnu.linkonce.d.rel.ro.local.*)
+ .data.rel.ro.local
+                0x00000000000eccc0       0x40 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_draw/lv_draw.o
+ *(.data.rel.ro .data.rel.ro.* .gnu.linkonce.d.rel.ro.*)
+ .data.rel.ro   0x00000000000ecd00        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.dynamic        0x00000000000ecd00      0x1d0
+ *(.dynamic)
+ .dynamic       0x00000000000ecd00      0x1d0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+                0x00000000000ecd00                _DYNAMIC
+
+.got            0x00000000000eced0      0x118
+ *(.got)
+ .got           0x00000000000eced0      0x118 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+                0x00000000000eced0                _GLOBAL_OFFSET_TABLE_
+ *(.igot)
+                0x00000000000ecfe8                . = DATA_SEGMENT_RELRO_END (., 0x18)
+
+.got.plt        0x00000000000ecfe8      0x970
+ *(.got.plt)
+ .got.plt       0x00000000000ecfe8      0x970 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *(.igot.plt)
+
+.data           0x00000000000ed958      0x5b0
+                [!provide]                        PROVIDE (__data_start = .)
+ *(.data .data.* .gnu.linkonce.d.*)
+ .data          0x00000000000ed958        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .data          0x00000000000ed958        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ .data.rel.local
+                0x00000000000ed958        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+                0x00000000000ed958                __dso_handle
+ .data          0x00000000000ed960        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_group.o
+ .data          0x00000000000ed960        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_indev.o
+ .data          0x00000000000ed960        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_obj.o
+ .data          0x00000000000ed960        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_refr.o
+ .data          0x00000000000ed960        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_style.o
+ .data          0x00000000000ed960        0x4 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_vdb.o
+ *fill*         0x00000000000ed964        0x4 
+ .data.rel.local
+                0x00000000000ed968       0x10 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_vdb.o
+ .data          0x00000000000ed978       0x20 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_draw/lv_draw_vbasic.o
+ .data          0x00000000000ed998        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_draw/lv_draw.o
+ .data          0x00000000000ed998       0x20 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_draw/lv_draw_rbasic.o
+ .data          0x00000000000ed9b8        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_hal/lv_hal_disp.o
+ .data          0x00000000000ed9b8        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_hal/lv_hal_indev.o
+ .data          0x00000000000ed9b8        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_hal/lv_hal_tick.o
+ .data          0x00000000000ed9b8        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_font.o
+ .data          0x00000000000ed9b8        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_circ.o
+ .data          0x00000000000ed9b8        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_area.o
+ .data          0x00000000000ed9b8        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_task.o
+ .data          0x00000000000ed9b8        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_fs.o
+ .data          0x00000000000ed9b8        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_anim.o
+ .data          0x00000000000ed9b8        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_mem.o
+ .data          0x00000000000ed9b8        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_ll.o
+ .data          0x00000000000ed9b8        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_color.o
+ .data          0x00000000000ed9b8        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_txt.o
+ .data          0x00000000000ed9b8        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_ufs.o
+ .data          0x00000000000ed9b8        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_trigo.o
+ .data          0x00000000000ed9b8        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_math.o
+ .data          0x00000000000ed9b8        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_fonts/lv_font_dejavu_20.o
+ .data.rel      0x00000000000ed9b8       0x48 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_fonts/lv_font_dejavu_20.o
+                0x00000000000ed9b8                lv_font_dejavu_20
+ .data          0x00000000000eda00        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_bar.o
+ .data          0x00000000000eda00        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_cb.o
+ .data          0x00000000000eda00        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_ddlist.o
+ .data          0x00000000000eda00        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_kb.o
+ .data.rel.local
+                0x00000000000eda00      0x4c8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_kb.o
+ .data          0x00000000000edec8        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_line.o
+ .data          0x00000000000edec8        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_mbox.o
+ .data          0x00000000000edec8        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_roller.o
+ .data          0x00000000000edec8        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_tabview.o
+ .data.rel.local
+                0x00000000000edec8        0x8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_tabview.o
+ .data          0x00000000000eded0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_btn.o
+ .data          0x00000000000eded0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_chart.o
+ .data          0x00000000000eded0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_gauge.o
+ .data          0x00000000000eded0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_label.o
+ .data          0x00000000000eded0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_list.o
+ .data          0x00000000000eded0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_slider.o
+ .data          0x00000000000eded0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_ta.o
+ .data          0x00000000000eded0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_btnm.o
+ .data.rel.local
+                0x00000000000eded0       0x38 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_btnm.o
+ .data          0x00000000000edf08        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_cont.o
+ .data          0x00000000000edf08        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_img.o
+ .data          0x00000000000edf08        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_led.o
+ .data          0x00000000000edf08        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_lmeter.o
+ .data          0x00000000000edf08        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_page.o
+ .data          0x00000000000edf08        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_sw.o
+ .data          0x00000000000edf08        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_win.o
+ .data          0x00000000000edf08        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_themes/lv_theme_alien.o
+ .data          0x00000000000edf08        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_themes/lv_theme.o
+ .data          0x00000000000edf08        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_themes/lv_theme_default.o
+ .data          0x00000000000edf08        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_themes/lv_theme_night.o
+ .data          0x00000000000edf08        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_themes/lv_theme_templ.o
+ .data          0x00000000000edf08        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_themes/lv_theme_zen.o
+ .data          0x00000000000edf08        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_themes/lv_theme_material.o
+ .data          0x00000000000edf08        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+ .data          0x00000000000edf08        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+
+.tm_clone_table
+                0x00000000000edf08        0x0
+ .tm_clone_table
+                0x00000000000edf08        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ .tm_clone_table
+                0x00000000000edf08        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+
+.data1
+ *(.data1)
+                [!provide]                        PROVIDE (_edata = .)
+                [!provide]                        PROVIDE (edata = .)
+                0x00000000000edf08                . = .
+                [!provide]                        PROVIDE (__bss_start = .)
+                [!provide]                        PROVIDE (__bss_start__ = .)
+
+.bss            0x00000000000edf08    0x6e630
+ *(.dynbss)
+ .dynbss        0x00000000000edf08        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *(.bss .bss.* .gnu.linkonce.b.*)
+ .bss           0x00000000000edf08        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .bss           0x00000000000edf08        0x1 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ .bss           0x00000000000edf09        0x1 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_group.o
+ *fill*         0x00000000000edf0a        0x6 
+ .bss           0x00000000000edf10        0x8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_indev.o
+ .bss           0x00000000000edf18       0x30 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_obj.o
+ .bss           0x00000000000edf48      0x160 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_refr.o
+ .bss           0x00000000000ee0a8        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_style.o
+ .bss           0x00000000000ee0a8     0x4b00 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_vdb.o
+ .bss           0x00000000000f2ba8        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_draw/lv_draw_vbasic.o
+ .bss           0x00000000000f2ba8        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_draw/lv_draw.o
+ .bss           0x00000000000f2ba8        0x2 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_draw/lv_draw_rbasic.o
+ *fill*         0x00000000000f2baa        0x6 
+ .bss           0x00000000000f2bb0       0x10 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_hal/lv_hal_disp.o
+ .bss           0x00000000000f2bc0        0x8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_hal/lv_hal_indev.o
+ .bss           0x00000000000f2bc8        0x8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_hal/lv_hal_tick.o
+ .bss           0x00000000000f2bd0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_font.o
+ .bss           0x00000000000f2bd0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_circ.o
+ .bss           0x00000000000f2bd0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_area.o
+ .bss           0x00000000000f2bd0       0x2c build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_task.o
+ *fill*         0x00000000000f2bfc        0x4 
+ .bss           0x00000000000f2c00       0x18 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_fs.o
+ .bss           0x00000000000f2c18        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_anim.o
+ .bss           0x00000000000f2c18    0x64008 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_mem.o
+ .bss           0x0000000000156c20        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_ll.o
+ .bss           0x0000000000156c20        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_color.o
+ .bss           0x0000000000156c20        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_txt.o
+ .bss           0x0000000000156c20       0x20 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_ufs.o
+ .bss           0x0000000000156c40        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_trigo.o
+ .bss           0x0000000000156c40        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_math.o
+ .bss           0x0000000000156c40        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_fonts/lv_font_dejavu_20.o
+ .bss           0x0000000000156c40       0x10 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_bar.o
+ .bss           0x0000000000156c50       0x18 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_cb.o
+ .bss           0x0000000000156c68       0x18 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_ddlist.o
+ .bss           0x0000000000156c80        0x8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_kb.o
+ .bss           0x0000000000156c88        0x8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_line.o
+ .bss           0x0000000000156c90        0x8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_mbox.o
+ .bss           0x0000000000156c98       0x10 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_roller.o
+ .bss           0x0000000000156ca8       0x18 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_tabview.o
+ .bss           0x0000000000156cc0        0x8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_btn.o
+ .bss           0x0000000000156cc8       0x10 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_chart.o
+ .bss           0x0000000000156cd8       0x10 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_gauge.o
+ .bss           0x0000000000156ce8        0x8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_label.o
+ .bss           0x0000000000156cf0       0x20 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_list.o
+ .bss           0x0000000000156d10       0x10 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_slider.o
+ .bss           0x0000000000156d20       0x20 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_ta.o
+ .bss           0x0000000000156d40       0x10 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_btnm.o
+ .bss           0x0000000000156d50        0x8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_cont.o
+ .bss           0x0000000000156d58        0x8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_img.o
+ .bss           0x0000000000156d60       0x10 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_led.o
+ .bss           0x0000000000156d70        0x8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_lmeter.o
+ .bss           0x0000000000156d78       0x10 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_page.o
+ .bss           0x0000000000156d88        0x8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_sw.o
+ .bss           0x0000000000156d90       0x58 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_win.o
+ .bss           0x0000000000156de8     0x12e8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_themes/lv_theme_alien.o
+ .bss           0x00000000001580d0        0x8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_themes/lv_theme.o
+ .bss           0x00000000001580d8      0x608 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_themes/lv_theme_default.o
+ .bss           0x00000000001586e0      0xfc8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_themes/lv_theme_night.o
+ .bss           0x00000000001596a8        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_themes/lv_theme_templ.o
+ .bss           0x00000000001596a8     0x1568 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_themes/lv_theme_zen.o
+ .bss           0x000000000015ac10     0x1478 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_themes/lv_theme_material.o
+ .bss           0x000000000015c088        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+ .bss           0x000000000015c088        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+ *(COMMON)
+ COMMON         0x000000000015c088      0x4b0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_style.o
+                0x000000000015c088                lv_style_btn_ina
+                0x000000000015c0d8                lv_style_transp
+                0x000000000015c128                lv_style_title_label
+                0x000000000015c178                lv_style_transp_tight
+                0x000000000015c1c8                lv_style_plain_color
+                0x000000000015c218                lv_style_pretty
+                0x000000000015c268                lv_style_pretty_color
+                0x000000000015c2b8                lv_style_scr
+                0x000000000015c308                lv_style_btn_tgl_rel
+                0x000000000015c358                lv_style_btn_tgl_pr
+                0x000000000015c3a8                lv_style_scr_transp
+                0x000000000015c3f8                lv_style_transp_fit
+                0x000000000015c448                lv_style_btn_rel
+                0x000000000015c498                lv_style_plain
+                0x000000000015c4e8                lv_style_btn_pr
+                0x000000000015c538                . = ALIGN ((. != 0x0)?0x8:0x1)
+                [!provide]                        PROVIDE (_bss_end__ = .)
+                [!provide]                        PROVIDE (__bss_end__ = .)
+                0x000000000015c538                . = ALIGN (0x8)
+                0x000000000015c538                . = SEGMENT_START ("ldata-segment", .)
+                0x000000000015c538                . = ALIGN (0x8)
+                [!provide]                        PROVIDE (__end__ = .)
+                [!provide]                        PROVIDE (_end = .)
+                [!provide]                        PROVIDE (end = .)
+                0x000000000015c538                . = DATA_SEGMENT_END (.)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment        0x0000000000000000       0x16
+ *(.comment)
+ .comment       0x0000000000000000       0x16 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+                                         0x17 (size before relaxing)
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_group.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_indev.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_obj.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_refr.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_style.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_vdb.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_draw/lv_draw_vbasic.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_draw/lv_draw.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_draw/lv_draw_rbasic.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_hal/lv_hal_disp.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_hal/lv_hal_indev.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_hal/lv_hal_tick.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_font.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_circ.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_area.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_task.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_fs.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_anim.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_mem.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_ll.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_color.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_txt.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_ufs.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_trigo.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_math.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_fonts/lv_font_dejavu_20.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_bar.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_cb.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_ddlist.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_kb.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_line.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_mbox.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_roller.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_tabview.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_btn.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_chart.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_gauge.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_label.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_list.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_slider.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_ta.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_btnm.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_cont.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_img.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_led.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_lmeter.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_page.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_sw.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_win.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_themes/lv_theme_alien.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_themes/lv_theme.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_themes/lv_theme_default.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_themes/lv_theme_night.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_themes/lv_theme_templ.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_themes/lv_theme_zen.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_themes/lv_theme_material.o
+ .comment       0x0000000000000016       0x17 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+
+.gnu.build.attributes
+ *(.gnu.build.attributes .gnu.build.attributes.*)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges
+ *(.debug_aranges)
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info
+ *(.debug_info .gnu.linkonce.wi.*)
+
+.debug_abbrev
+ *(.debug_abbrev)
+
+.debug_line
+ *(.debug_line .debug_line.* .debug_line_end)
+
+.debug_frame
+ *(.debug_frame)
+
+.debug_str
+ *(.debug_str)
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges
+ *(.debug_ranges)
+
+.debug_macro
+ *(.debug_macro)
+
+.debug_addr
+ *(.debug_addr)
+
+.ARM.attributes
+ *(.ARM.attributes)
+ *(.gnu.attributes)
+
+.note.gnu.arm.ident
+ *(.note.gnu.arm.ident)
+
+/DISCARD/
+ *(.note.GNU-stack)
+ *(.gnu_debuglink)
+ *(.gnu.lto_*)
+OUTPUT(build/arm11-gcc-uClibc-linux-gk7605v100/lib/liblvgl.so elf64-littleaarch64)
+LOAD linker stubs

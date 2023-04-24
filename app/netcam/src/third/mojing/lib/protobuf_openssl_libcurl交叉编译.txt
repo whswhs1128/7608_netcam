@@ -1,0 +1,19 @@
+1. openssl 编译
+./config --cross-compile-prefix=/opt/goke/toolchain/uClibc_gcc4.8.5/arm-gk720x-linux/bin/arm-gk720x-linux-uclibcgnueabi- --prefix=/home/goke/work/lib/ no-asm shared
+
+2.libcurl编译，注意--prefix与openssl一致
+./configure --with-ssl=/home/goke/work/lib/ --host=arm-linux CC=/opt/goke/toolchain/uClibc_gcc4.8.5/arm-gk720x-linux/bin/arm-gk720x-linux-uclibcgnueabi-gcc --prefix=/home/goke/work/lib/
+
+3.protobuf 编译
+
+首先编译出本地（x86）版本的protobuf库和编译器（protoc）:
+./configure --prefix=/usr/local
+make
+make check
+make install
+
+为了在ARM平台上使用protobuf，需要交叉编译protobuf库。
+只需按照如下方式更改配置：
+./configure --prefix=/home/goke/work/lib --host=arm-linux CC=CC=/opt/goke/toolchain/uClibc_gcc4.8.5/arm-gk720x-linux/bin/arm-gk720x-linux-uclibcgnueabi-gcc CXX=CC=/opt/goke/toolchain/uClibc_gcc4.8.5/arm-gk720x-linux/bin/arm-gk720x-linux-uclibcgnueabi-g++ --with-protoc=/usr/local/bin/protoc
+make 
+make install 

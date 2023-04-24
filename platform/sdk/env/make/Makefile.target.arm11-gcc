@@ -1,0 +1,216 @@
+################################################################################
+################################################################################
+##
+## Makefile -- Linux GNU GCC specific ARM11 settings
+##
+## (C) Copyright 2012-2013 by Goke Microelectronics Co.,Ltd
+##
+## This include makefile defines internal make variables to support
+## the cross tool chain for ARM11 GCC running under linux (/opt/crosstool_4.x.x).
+##
+################################################################################
+################################################################################
+
+SDKHOME-arm11-gnuarm ?= SDKHOME-arm11-gnuarm-UNDEFINED
+#SDKHOME               = $(TOOLCHAIN_DIR)/$(C_LIBRARY)_gcc4.8.5/arm-gk720x-linux
+SDKHOME               = $(TOOLCHAIN_DIR)
+#TARGET_SUBDIR         = M-$(TARGET)
+
+  VARIABLES += SDKHOME
+#  VARIABLES += TARGET_SUBDIR
+
+OBJECT_EXT  = .o
+LIBRARY_EXT = .a
+PROGRAM_EXT =
+DLL_EXT     = .so
+SHARED_EXT  = .so
+
+  VARIABLES += OBJECT_EXT
+  VARIABLES += LIBRARY_EXT
+  VARIABLES += PROGRAM_EXT
+  VARIABLES += DLL_EXT
+
+#NEWPATH = "$(subst /,\\,$(SDKHOME)\bin);$(PATH)"
+#PATH := $(NEWPATH)
+#export PATH
+
+CODE_SEGMENT_READONLY ?= 0
+  VARIABLES += CODE_SEGMENT_READONLY
+
+#PROGRAM_MEMORY_START ?= $(ARM_PROGRAM_MEMORY_START)
+#PROGRAM_MEMORY_BYTES ?= $(ARM_PROGRAM_MEMORY_BYTES)
+#PROGRAM_STACK_BYTES  ?= $(ARM_PROGRAM_STACK_BYTES)
+#PROGRAM_HEAP_BYTES   ?= $(ARM_PROGRAM_HEAP_BYTES)
+#PROGRAM_LOAD_ADDRESS ?= $(ARM_PROGRAM_LOAD_ADDRESS)
+#ifdef PROFILE
+#PROGRAM_STARTUP      ?= $(INSTALL_LIBRARY_DIR)/libstartup$(LIBRARY_PROFILE_EXT)
+#else
+#PROGRAM_STARTUP      ?= $(INSTALL_LIBRARY_DIR)/libstartup$(LIBRARY_DEBUG_EXT)
+#endif
+
+#CCTARGET   = arm-elf
+#CCTARGET   = arm-none-eabi
+ifeq ($(C_LIBRARY), glibc)
+#CCTARGET   = arm-gk720x-linux-gnueabi
+CCTARGET   = aarch64-mix210-linux
+else
+#CCTARGET   = arm-gk720x-linux-uclibcgnueabi
+CCTARGET   = aarch64-mix210-linux
+endif
+
+#CCTARGET   = arm-none-linux-gnueabi
+#CC         = $(SDKHOME)/bin/$(CCTARGET)-gcc$(TOOL_EXT)
+#CXX        = $(SDKHOME)/bin/$(CCTARGET)-g++$(TOOL_EXT)
+CC         = $(SDKHOME)/$(CCTARGET)-gcc
+CXX        = $(SDKHOME)/$(CCTARGET)-g++
+#CCVERSION := $(shell "$(CC)" -dumpversion)
+
+
+################################################################################
+#CCFLAGS   += -D$(BOARD)
+#CCFLAGS   += -DBOARDNAME="\"$(BOARDNAME)\""
+#CCFLAGS   += -DBOARD_INCLUDE_FILE="\"boards/$(BOARDNAME).h\""
+#CCFLAGS   += -D$(DECODER)
+CCFLAGS   += -Wall
+CCFLAGS	  += -fgnu89-inline
+CCFLAGS   += -fPIC
+
+ifeq ($(CODE_SEGMENT_READONLY),1)
+CCFLAGS     += -DCODE_SEGMENT_READONLY=$(CODE_SEGMENT_READONLY)
+endif
+#CCDEBUG   += -gdwarf-2
+CCDEBUG   += -g
+CCDEBUG   += -O0
+CCGPROF   += $(CCDEBUG)
+CCGPROF   += -finstrument-functions
+CCFLAGS_C  =
+CCFLAGS_AS = -x assembler-with-cpp
+CCFLAGS_PP = -E
+CC_out     = -o $(SPACE)
+
+  VARIABLES += CC
+  VARIABLES += CCFLAGS
+  VARIABLES += CCDEBUG
+  VARIABLES += CCGPROF
+  VARIABLES += CCFLAGS_C
+  VARIABLES += CCFLAGS_AS
+  VARIABLES += CC_out
+  VARIABLES += CCFLAGS_USER
+
+#AR       = $(SDKHOME)/bin/$(CCTARGET)-ar$(TOOL_EXT)
+AR       = $(SDKHOME)/$(CCTARGET)-ar
+ARFLAGS  = crs
+AR_out   = $(SPACE)
+
+  VARIABLES += AR
+  VARIABLES += ARFLAGS
+  VARIABLES += AR_out
+  VARIABLES += ARFLAGS_USER
+
+LINTFLAGS += -cgnu
+LINTFLAGS += -i$(TOPDIR)/env/lint
+LINTFLAGS += gk-arm11.lnt
+
+LD       = $(CC)
+LDFLAGS  = $(CCFLAGS)
+LDFLAGS += -Wl,-Map,$@.map
+#LDFLAGS += -L$(BUILD_LIBRARY_SUBDIR)
+LDFLAGS += -L$(INSTALL_LIBRARY_DIR)
+#LDFLAGS += -static
+LDDEBUG  = -g
+LDGPROF  = -p
+LD_out   = $(CC_out)
+#LD_crt   = $(INSTALL_LIBRARY_DIR)/arm1176_start_gcc.o
+LD_group = -Wl,--start-group
+LD_grend = $(PROGRAM_STARTUP) -lc  -lgcc -lm  -lpthread $(LDFLAGS_USER) -Wl,--end-group
+
+  VARIABLES += LD
+  VARIABLES += LDFLAGS
+  VARIABLES += LDDEBUG
+  VARIABLES += LD_out
+  VARIABLES += LD_crt
+  VARIABLES += LD_group
+  VARIABLES += LD_grend
+  VARIABLES += LDFLAGS_USER
+
+  VARIABLES += LD
+  VARIABLES += LDFLAGS
+  VARIABLES += LDDEBUG
+  VARIABLES += LD_out
+  VARIABLES += LD_crt
+  VARIABLES += LD_group
+  VARIABLES += LD_grend
+  VARIABLES += LDFLAGS_USER
+
+
+MAKEDEPEND       = perl $(TOPDIR)/env/make/mkdepend.pl
+MAKEDEPENDFLAGS += --normal
+MAKEDEPENDFLAGS += --cpp='$(CC) -E'
+MAKEDEPENDFLAGS += --oext=$(OBJECT_EXT)
+MAKEDEPENDFLAGS += --odbgext=$(OBJECT_DEBUG_EXT)
+MAKEDEPENDFLAGS += --osubdir=$(BUILD_OBJECT_SUBDIR)
+MAKEDEPENDFLAGS += --cppflags='$(subst \,/,$(CCFLAGS)) $(subst \,/,$(CCFLAGS_USER))'
+
+  VARIABLES += MAKEDEPEND
+  VARIABLES += MAKEDEPENDFLAGS
+  VARIABLES += MAKEDEPENDFLAGS_USER
+
+#ELFDUMP      = $(SDKHOME)/bin/$(CCTARGET)-objdump$(TOOL_EXT)
+ELFDUMP      = $(SDKHOME)/$(CCTARGET)-objdump
+ELFDUMPFLAGS = --all -D
+ELFDUMP_out  = >$(SPACE)
+
+  VARIABLES += ELFDUMP
+  VARIABLES += ELFDUMPFLAGS
+  VARIABLES += ELFDUMP_out
+  VARIABLES += ELFDUMPFLAGS_USER
+
+#SYMDUMP      = $(SDKHOME)/bin/$(CCTARGET)-nm$(TOOL_EXT)
+SYMDUMP      = $(SDKHOME)/$(CCTARGET)-nm
+SYMDUMPFLAGS = --portability --size-sort
+SYMDUMP_out  = >$(SPACE)
+
+  VARIABLES += SYMDUMP
+  VARIABLES += SYMDUMPFLAGS
+  VARIABLES += SYMDUMP_out
+  VARIABLES += SYMDUMPFLAGS_USER
+
+#STRIP      = $(SDKHOME)/bin/$(CCTARGET)-strip$(TOOL_EXT)
+STRIP      = $(SDKHOME)/$(CCTARGET)-strip
+STRIPFLAGS = --strip-all
+STRIP_out  = -o$(SPACE)
+
+  VARIABLES += STRIP
+  VARIABLES += STRIPFLAGS
+  VARIABLES += STRIP_out
+  VARIABLES += STRIPFLAGS_USER
+
+#GDBSERVER        = $(TOPDIR)/env/bin/M-$(HOST)/gdbserver$(TOOL_EXT)
+#GDBSERVERFLAGS   = -verbose
+#GDBSERVERFLAGS  += -dll=$(JTAGPORT_DLL)
+#GDBSERVERFLAGS  += $(JTAGPORT_FLAGS)
+
+#DBG       = $(SDKHOME)/bin/$(CCTARGET)-insight$(TOOL_EXT)
+#DBGFLAGS  = --directory=$(BUILD_PROGRAM_SUBDIR)
+#DBGFLAGS += --command=$(BUILD_PROGRAM_SUBDIR)/.gdbinit
+#DBGFLAGS += --nx
+#DBGSCRIPT = $(BUILD_PROGRAM_SUBDIR)/.gdbinit
+
+  VARIABLES += DBG
+  VARIABLES += DBGFLAGS
+  VARIABLES += DBGFLAGS_USER
+  VARIABLES += DBGSCRIPT
+
+#TARGET_SUPPORTS_CCACHE = 1
+
+  VARIABLES += TARGET_SUPPORTS_CCACHE
+  OSSPREBUILD = $(TOPDIR)/linux/rootfs/oss-prebuild-gk720x-$(C_LIBRARY)
+  ifeq ($(C_LIBRARY), glibc)
+  SDKINC   =  $(SDKHOME)/arm-gk720x-linux-gnueabi/sysroot/usr/include
+  else
+  SDKINC   =  $(SDKHOME)/arm-gk720x-linux-uclibcgnueabi/sysroot/usr/include
+  endif
+  CCFLAGS  += -I$(INSTALL_DIR)/$(TARGET)-$(C_LIBRARY)-$(HOST)-$(DECODER)/include
+  CCFLAGS  += -I$(INSTALL_DIR)/$(TARGET)-$(C_LIBRARY)-$(HOST)-$(DECODER)/include/subsystem
+  CCFLAGS  += -I $(SDKINC)
+

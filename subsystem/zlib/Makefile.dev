@@ -1,0 +1,78 @@
+################################################################################
+################################################################################
+##
+## Makefile -- makefile for zlib library
+##
+## (C) Copyright 2012-2014 by Goke Microelectronics Co.,Ltd
+##
+## Mandatory settings:
+##
+## o TOPDIR      = the toplevel directory (using slashes as path separator)
+## o TARGET      = the machine qualifier to generate code for
+##
+################################################################################
+################################################################################
+
+
+
+
+LIBRARY = libzlib
+
+HEADERS +=  $(wildcard inc/*.h)
+HEADER_SUBDIR = subsystem/zlib
+
+ZVER = 121
+ZDIR = ./src/zlib$(ZVER)
+
+CCFLAGS_USER += -I ./inc -I $(ZDIR)
+CCFLAGS_USER += -I $(INSTALL_HEADER_DIR)/platform/sdk/
+
+SOURCES  = ./src/csp_zlib.c
+SOURCES += $(ZDIR)/adler32.c
+SOURCES += $(ZDIR)/compress.c
+SOURCES += $(ZDIR)/crc32.c
+SOURCES += $(ZDIR)/deflate.c
+SOURCES += $(ZDIR)/gzio.c
+SOURCES += $(ZDIR)/inffast.c
+SOURCES += $(ZDIR)/inflate.c
+SOURCES += $(ZDIR)/infback.c
+SOURCES += $(ZDIR)/inftrees.c
+SOURCES += $(ZDIR)/trees.c
+SOURCES += $(ZDIR)/uncompr.c
+SOURCES += $(ZDIR)/zutil.c
+
+
+CCFLAGS += -O2
+
+################################################################################
+# define user targets
+################################################################################
+
+default: install
+
+clean: clean-objects clean-library clean-all
+
+build:  build-objects build-library install-library
+
+headers: install-headers
+
+install: build install-library install-headers
+
+all: clean build install
+
+################################################################################
+# include internal definitions and rules
+################################################################################
+
+  RELEASE_SUBDIR = $(SUBDIR)
+  RELEASE_FILES += Makefile.rel
+  RELEASE_FILES += $(wildcard include/*.h   )
+  RELEASE_FILES += Makefile
+  RELEASE_FILES += lib/$(LIBRARY)$(LIBRARY_EXT)
+  RELEASE_FILES += lib/$(LIBRARY)$(SHARED_EXT)
+
+release: release-lib-prepare  doc release-files $(DIRECTORIES:%=subdir-release-%)
+
+doc:
+
+release-lib-prepare: clean build-library install-release-library

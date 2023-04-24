@@ -1,0 +1,12 @@
+{
+    "sys_info": {
+        "device_name":  "gkipc",
+        "device_type":  "gk7605v100_gc4653_1916m_v2_com",
+        "chip_type":    "gk7605v100",
+        "sensor_type":  "gc4653",
+        "svn_version":  "111",
+        "make_date":    "2023-04-24 09:26:24",
+        "upgrade_version":    "v1.0.111.20230424092624",
+        "author":       "root" 
+    }
+}

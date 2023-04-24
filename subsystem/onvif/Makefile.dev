@@ -1,0 +1,137 @@
+################################################################################
+################################################################################
+##
+## Makefile -- internal development Makefile for subsystem/onvif
+##
+## (C) Copyright 2012-2014 by Goke Microelectronics Co.,Ltd
+##
+## Mandatory settings:
+##
+## o TOPDIR      = the toplevel directory (using slashes as path separator)
+## o TARGET      = the machine qualifier to generate code for
+##
+################################################################################
+################################################################################
+include ../../app/netcam/module_config
+
+################################################################################
+# source files
+################################################################################
+
+SOURCES += src/soap_proc.c
+SOURCES += src/soap_parse.c
+SOURCES += src/soap_packet.c
+#SOURCES += src/delaytask.c
+SOURCES += src/config.c
+SOURCES += src/event_handle.c
+SOURCES += src/onvif_priv.c
+SOURCES += src/onvif_device.c
+SOURCES += src/onvif_media.c
+SOURCES += src/onvif_deviceio.c
+SOURCES += src/onvif_image.c
+SOURCES += src/onvif_event.c
+SOURCES += src/onvif_ptz.c
+SOURCES += src/onvif_analytics.c
+SOURCES += src/onvif.c
+
+SOURCES += src/sys/base64.c
+SOURCES += src/sys/mpool.c
+SOURCES += src/sys/sha1.c
+SOURCES += src/sys/word_analyse.c
+SOURCES += src/sys/xml.c
+SOURCES += src/sys/http_client.c
+SOURCES += src/sys/http_server.c
+SOURCES += src/sys/http_parse.c
+SOURCES += src/sys/http_bm.c
+
+################################################################################
+# define local file to be installed
+################################################################################
+
+################################################################################
+# headers to be installed
+################################################################################
+
+HEADERS += $(wildcard include/*.h)
+
+################################################################################
+# sub directory name for installed header
+################################################################################
+HEADER_SUBDIR = subsystem/onvif
+
+################################################################################
+# define user cc flags
+################################################################################
+
+CCFLAGS_USER += -O3 -Wno-array-bounds
+CCFLAGS_USER += -I./include -I ./src -I ./src/sys 
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/subsystem/json
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/subsystem/mediabuffer
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/sdk
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/subsystem/eventalarm
+
+
+################################################################################
+# define user lint flags
+################################################################################
+
+
+
+
+################################################################################
+# define user ld flags
+################################################################################
+
+
+################################################################################
+# define library name
+################################################################################
+
+LIBRARY = libonvif
+
+################################################################################
+# define local file install location
+# if this was commented out, the target will be installed into the default
+# location:
+#   $(ROOTFS_TOP)/usr/local/bin/
+################################################################################
+
+################################################################################
+# define user targets
+################################################################################
+
+default: install
+
+clean: clean-objects clean-library clean-all
+
+build:  build-objects build-library install-library
+
+headers: install-headers
+
+install: build install-library install-headers 
+
+all: clean build install
+
+################################################################################
+# include internal definitions and rules
+################################################################################
+
+  RELEASE_SUBDIR = $(SUBDIR)
+  RELEASE_FILES += $(HEADERS)
+  RELEASE_FILES += Makefile Makefile.rel
+  RELEASE_FILES += lib/$(LIBRARY)$(LIBRARY_EXT)
+  RELEASE_FILES += lib/$(LIBRARY)$(SHARED_EXT)
+
+release: release-lib-prepare release-files $(DIRECTORIES:%=subdir-release-%) info
+
+doc: $(DIRECTORIES:%=subdir-doc-%)
+
+info: force
+	@echo $(DIRECTORIES)
+
+release-lib-prepare: clean build-library install-release-library
+
+
+include $(TOPDIR)/env/make/Makefile.rules
+-include $(TOPDIR)/env/make/Makfile.dep
+

@@ -1,0 +1,41 @@
+################################################################################
+################################################################################
+##
+## Makefile -- makefile for libamr library
+##
+## (C) Copyright 2012-2014 by Goke Microelectronics Co.,Ltd
+##
+##
+## Mandatory settings:
+##
+## o TOPDIR      = the toplevel directory (using slashes as path separator)
+## o TARGET      = the machine qualifier to generate code for
+##
+################################################################################
+################################################################################
+
+
+LIBRARY = libamr
+
+HEADERS += include/*.h
+
+HEADER_SUBDIR = subsystem/acodec/amr/libamr
+
+
+################################################################################
+# define user targets
+################################################################################
+
+default: install
+
+clean: 
+
+build: install
+
+headers: install-headers
+
+#install: install-library-released install-headers
+install: install-headers	#xqq
+
+all: install
+

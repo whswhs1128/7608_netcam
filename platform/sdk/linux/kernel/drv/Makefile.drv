@@ -1,0 +1,56 @@
+################################################################################
+################################################################################
+##
+## Makefile -- C Flags and rules for drivers.
+##
+## (C) Copyright 2012-2015 by Goke Microelectronics Co.,Ltd
+##
+################################################################################
+################################################################################
+
+PRIVATE_KERNEL_TOP   = $(SDK_TOP)/linux/kernel/3.4.43
+DEVMODE_MAKEFILE     = $(SDK_TOP)/linux/kernel/drv/Makefile.dev
+
+LINUX_KERNELRELEASE  = $(shell cat $(PRIVATE_KERNEL_TOP)/include/config/kernel.release 2> /dev/null)
+DEVMODE              = $(shell [ -f $(DEVMODE_MAKEFILE) ] && echo y)
+
+#PWD := $(shell pwd)
+#MAKE := make
+KDIR = $(PRIVATE_KERNEL_TOP)
+
+PRIVATE_CFLAGS += -I$(SDK_TOP)/linux/kernel/drv/include
+PRIVATE_CFLAGS += -I$(KDIR)/arch/arm/mach-gk7101 -I$(KDIR)/arch/arm/mach-gk7101/include/mach -I$(KDIR)/arch/arm/plat-goke/include/plat
+PRIVATE_CFLAGS += -Wformat-extra-args
+export PRIVATE_CFLAGS
+
+
+.PHONY: build-kernel-modules clean-kernel-modules install-kernel-modules
+
+ifeq ($(DEVMODE), y)
+build-kernel-modules: check-module-sym
+	@cp -a $(ROOTFS_TOP)/lib/modules/$(LINUX_KERNELRELEASE)/source/Module.symvers $(PWD)/
+	@$(MAKE) --no-print-directory -C $(PRIVATE_KERNEL_TOP) M=$(PWD) modules
+	@$(STRIP) -x $(PWD)/*.ko
+	@cp -a $(PWD)/Module.symvers $(ROOTFS_TOP)/lib/modules/$(LINUX_KERNELRELEASE)/source/Module.symvers
+
+clean-kernel-modules:
+	@$(MAKE) --no-print-directory -C $(PRIVATE_KERNEL_TOP) M=$(PWD) clean
+
+install-kernel-modules:
+	@$(MAKE) --no-print-directory -C $(PRIVATE_KERNEL_TOP) M=$(PWD) modules_install INSTALL_MOD_PATH=$(ROOTFS_TOP)
+else
+build-kernel-modules:
+
+clean-kernel-modules:
+
+install-kernel-modules:
+	@mkdir -p $(ROOTFS_TOP)/lib/modules/$(LINUX_KERNELRELEASE)/extra
+	@cp $(PWD)/*.ko $(ROOTFS_TOP)/lib/modules/$(LINUX_KERNELRELEASE)/extra/ -f
+endif
+
+check-module-sym:
+ifeq ($(shell [ -f $(ROOTFS_TOP)/lib/modules/$(LINUX_KERNELRELEASE)/source/Module.symvers ] && echo y), y)
+else
+	@echo "Module.symvers nonexist, now install the initial one!"
+	@$(MAKE) --no-print-directory -C $(PRIVATE_KERNEL_TOP) modules_install INSTALL_MOD_PATH=$(ROOTFS_TOP)
+endif

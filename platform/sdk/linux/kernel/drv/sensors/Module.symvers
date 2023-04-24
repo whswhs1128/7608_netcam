@@ -1,0 +1,7 @@
+0x00000000	sensor_write_reg_group_ex	./sensor/sensor	EXPORT_SYMBOL
+0x00000000	sensor_registry_api	./sensor/sensor	EXPORT_SYMBOL
+0x00000000	sensor_unregistry_api	./sensor/sensor	EXPORT_SYMBOL
+0x00000000	sensor_read_reg_ex	./sensor/sensor	EXPORT_SYMBOL
+0x00000000	sensor_write_reg_ex	./sensor/sensor	EXPORT_SYMBOL
+0x00000000	sensor_get_video_mode	./sensor/sensor	EXPORT_SYMBOL
+0x00000000	sensor_get_agc_info	./sensor/sensor	EXPORT_SYMBOL

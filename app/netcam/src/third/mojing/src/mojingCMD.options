@@ -1,0 +1,50 @@
+protobuf.GetVideoConfigResponse.Resolution max_count:5		// 1920x1080,1280x960,1280x720	
+protobuf.GetVideoConfigResponse.Resolution max_size:10
+protobuf.GetVideoConfigResponse.ImageQuality max_count:4	// 最低,低,中,高	
+protobuf.GetVideoConfigResponse.ImageQuality max_size:6
+protobuf.GetVideoConfigResponse.FrameRateLimit max_count:4	//10,15,20,25
+protobuf.GetVideoConfigResponse.FrameRateLimit max_size:3
+protobuf.GetVideoConfigResponse.EncodeType max_count:3	// H264,H265,MJPEG
+protobuf.GetVideoConfigResponse.EncodeType max_size:6
+
+protobuf.GetImageConfigResponse.Types max_count:3	    // 白天、黑夜
+
+protobuf.ImageType.Params max_count:5                   //图像配置参数,比如锐度、对比度之类
+
+protobuf.SetImageConfigRequest.Types max_count:3	    // 白天、黑夜
+
+protobuf.OSDConfigResponse.Compositions max_count:6 //  魔镜规范6行，分别显示省、市、县、所队、地点、其它
+
+protobuf.SetOSDConfigRequest.Compositions max_count:6 //  魔镜规范6行，分别显示省、市、县、所队、地点、其它
+
+protobuf.GetMDStatusResponse.SmartType  max_count:4     //1=人形、2=电动车
+protobuf.GetMDStatusResponse.DefenceTime max_count:7    //星期几（0-6），0为星期天
+
+protobuf.SetMDStatusRequest.SmartType  max_count:4     //1=人形、2=电动车
+protobuf.SetMDStatusRequest.DefenceTime max_count:7    //星期几（0-6），0为星期天
+
+protobuf.TimeDurationList.TimeDuration max_count:24     //时间段，最长24个时间段，理论应该是没有限制
+protobuf.TimeDurationList.TimeDuration max_size:16      //[00:00-12:00, 13:00-14:00, 15:00-16:00, 17:00-18:00]
+
+protobuf.GetAreaAlarmStatusResponse.SmartType   max_count:4     //1=人形、2=电动车
+protobuf.GetAreaAlarmStatusResponse.Action   max_count:5     //预留，动作值1=进入，2=离开，当前仅要求进入产生事件告警（人形出现也算进入）
+protobuf.GetAreaAlarmStatusResponse.AreaGroup   max_count:3     //区域，当前默认仅需支持1个区域
+protobuf.GetAreaAlarmStatusResponse.DefenceTime   max_count:7   //星期几（0-6），0为星期天
+
+protobuf.Area.Points    max_count:6                         //当前仅需支持4个点的坐标，按先后顺序画线，最后一个坐标与第一个坐标相连。Points值说明：[ ”x1,y1”,”x2,y2”,”x3,y3”,”x4,y4”]
+protobuf.Area.Points    max_size:10
+
+protobuf.SetAreaAlarmStatusRequest.SmartType   max_count:4     //1=人形、2=电动车
+protobuf.SetAreaAlarmStatusRequest.Action   max_count:5     //预留，动作值1=进入，2=离开，当前仅要求进入产生事件告警（人形出现也算进入）
+protobuf.SetAreaAlarmStatusRequest.AreaGroup   max_count:3     //区域，当前默认仅需支持1个区域
+protobuf.SetAreaAlarmStatusRequest.DefenceTime   max_count:7   //星期几（0-6），0为星期天
+
+protobuf.GetEventAlarmOutResponse.AudioAlarmFiles   max_count:8     //告警声音文件，声音告警开关为关的时候也需要返回数据
+
+protobuf.GetNightVisionConfigResponse.SupportedLightTypes    max_count:4        //设备支持的夜视模式，取值范围包括，1=红外，2=全彩（补光），3=智能全彩，4=星光（不补光）
+
+protobuf.GetLocalStorageConfigResponse.DefenceTime   max_count:7   //星期几（0-6），0为星期天
+
+protobuf.SetLocalStorageConfigRequest.DefenceTime   max_count:7   //星期几（0-6），0为星期天
+
+protobuf.NetInfoResponse.NetCards   max_count:2   //网卡信息

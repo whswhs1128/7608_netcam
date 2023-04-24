@@ -1,0 +1,21 @@
+#!/bin/sh
+#
+# Start mount....
+#
+
+if [ -f "/mnt/sd_card/app_update.bin" ]; then
+	echo "run: upgrade_flash /mnt/sd_card/app_update.bin"
+	/usr/local/bin/upgrade_flash /mnt/sd_card/app_update.bin
+	var=$?
+	rm /mnt/sd_card/app_update.bin
+    if [ "$var" -eq 0 ]; then
+		echo "app_update success..."
+		reboot -f
+	else
+		echo "app_update failed..."
+	fi
+fi
+
+/usr/local/bin/mount.sh
+
+

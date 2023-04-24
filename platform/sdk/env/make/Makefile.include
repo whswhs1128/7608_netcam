@@ -1,0 +1,27 @@
+################################################################################
+################################################################################
+##
+## Makefile -- common includes
+##
+## (C) Copyright 2012-2013 by Guoke Microelectronics Co.,Ltd
+##
+## This include makefile includes all required sub makefiles.
+##
+################################################################################
+################################################################################
+
+include $(TOPDIR)/env/make/Makefile.target.$(TARGET)
+include $(TOPDIR)/env/make/Makefile.host.$(HOST)
+-include $(TOPDIR)/env/make/Makefile.decoder.$(DECODER)
+include $(TOPDIR)/env/make/Makefile.common
+-include $(TOPDIR)/env/make/Makefile.release
+
+ifeq ("$(DEBUGGER)","")
+  DEBUGGER = $(TARGET)
+endif
+
+ifeq ("$(DEBUGGER)","$(TARGET)")
+-include $(TOPDIR)/env/make/Makefile.debugger.$(TARGET)
+else
+-include $(TOPDIR)/env/make/Makefile.debugger.$(DEBUGGER)
+endif

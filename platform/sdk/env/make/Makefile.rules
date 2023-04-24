@@ -1,0 +1,1371 @@
+################################################################################
+################################################################################
+##
+## Makefile.rules -- common rules
+##
+## (C) Copyright 2012-2013 by Goke Microelectronics Co.,Ltd
+##
+## Version: $Id: Makefile.rules 3 2017-09-04 09:29:58Z fengxuequan $
+##
+## This include makefile defines internal make rules to clean, build, install
+## etc.
+##
+################################################################################
+################################################################################
+
+
+ifdef ARM
+  TARGET = $(DEFAULT_ARM11_SDK)
+endif
+
+include $(TOPDIR)/env/make/Makefile.include
+
+clean-objects: force
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Deleting object files
+	-$(ATSIGN)$(DELETE) $(DELETEFLAGS) \
+	    $(BUILD_OBJECTS) \
+	    $(BUILD_DEBUG_OBJECTS) \
+	    $(BUILD_PROFILE_OBJECTS)
+
+clean-library: force
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Deleting library files
+	-$(ATSIGN)$(DELETE) $(DELETEFLAGS) \
+	    $(BUILD_LIBRARY) \
+	    $(BUILD_SHARED_LIBRARY) \
+	    $(BUILD_DEBUG_LIBRARY) \
+	    $(BUILD_PROFILE_LIBRARY) \
+	    $(BUILD_INFO)
+
+clean-dll: force
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Deleting library files
+	-$(ATSIGN)$(DELETE) $(DELETEFLAGS) \
+	    $(BUILD_DLL) \
+	    $(BUILD_DEBUG_DLL)
+
+clean-program: force
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Deleting program files
+	-$(ATSIGN)$(DELETE) $(DELETEFLAGS) \
+	    $(BUILD_PROGRAM) \
+	    $(BUILD_DEBUG_PROGRAM) \
+	    $(BUILD_ELFDUMP_PROGRAM) \
+	    $(BUILD_DEBUG_ELFDUMP_PROGRAM) \
+	    $(BUILD_PROFILE_PROGRAM) \
+	    $(BUILD_PROFILE_ELFDUMP_PROGRAM) \
+	    $(BUILD_INFO)
+
+clean-all: force
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Deleting generated files
+	-$(ATSIGN)$(DELETE) $(DELETEFLAGS) $(BUILD_OBJECT_SUBDIR)/*
+#	-$(ATSIGN)$(DELETE) $(DELETEFLAGS) $(BUILD_LIBRARY_SUBDIR)/*
+#	-$(ATSIGN)$(DELETE) $(DELETEFLAGS) $(BUILD_PROGRAM_SUBDIR)/*
+
+clean-install-dir: force
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Deleting install directory
+	-$(ATSIGN)$(DELETE) $(DELETEFLAGS) ${INSTALL_DIR}/*
+
+################################################################################
+#
+# building rules
+#
+################################################################################
+
+ifdef PROFILE
+  build-objects: $(BUILD_OBJECTS) $(BUILD_DEBUG_OBJECTS) $(BUILD_PROFILE_OBJECTS)
+  build-library: $(BUILD_LIBRARY) $(BUILD_DEBUG_LIBRARY) $(BUILD_PROFILE_LIBRARY)
+  build-program: $(BUILD_PROFILE_PROGRAM) $(BUILD_PROFILE_ELFDUMP_PROGRAM) build-debugger-script
+  build-dll:     $(BUILD_DLL) $(BUILD_DEBUG_DLL)
+else
+  ifndef NODEBUG
+    build-objects: $(BUILD_OBJECTS)
+    build-library: $(BUILD_LIBRARY) $(BUILD_SHARED_LIBRARY)
+
+#   ifndef NOELFDUMP
+#     build-program: $(BUILD_PROGRAM) $(BUILD_DEBUG_PROGRAM) $(BUILD_ELFDUMP_PROGRAM) $(BUILD_DEBUG_ELFDUMP_PROGRAM) build-debugger-script
+#     build-dll:     $(BUILD_DLL)     $(BUILD_DEBUG_DLL)
+#   else
+      build-program: $(BUILD_PROGRAM)
+      build-dll:     $(BUILD_DLL)     $(BUILD_DEBUG_DLL)
+#   endif
+  else
+    build-objects: $(BUILD_OBJECTS)
+    build-library: $(BUILD_LIBRARY) $(BUILD_SHARED_LIBRARY)
+    ifndef NOELFDUMP
+      build-program: $(BUILD_PROGRAM) $(BUILD_ELFDUMP_PROGRAM)
+    else
+      build-program: $(BUILD_PROGRAM)
+    endif
+    build-dll:     $(BUILD_DLL)
+  endif
+endif
+
+build-elfdump-library: $(BUILD_ELFDUMP_LIBRARY)
+ifdef PROFILE
+  build-elfdump-program: $(BUILD_ELFDUMP_PROGRAM) $(BUILD_PROFILE_ELFDUMP_PROGRAM)
+else
+  build-elfdump-program: $(BUILD_ELFDUMP_PROGRAM)
+endif
+build-debug-elfdump-program: $(BUILD_DEBUG_ELFDUMP_PROGRAM)
+build-profile-elfdump-program: $(BUILD_PROFILE_ELFDUMP_PROGRAM)
+# build-s3hex-program: $(BUILD_S3HEX_PROGRAM)
+# build-intelhex-program: $(BUILD_INTELHEX_PROGRAM)
+# build-mqsim-program: $(BUILD_MQSIM_PROGRAM)
+# build-patvhd-program: $(BUILD_PATVHD_PROGRAM)
+# build-patve-program: $(BUILD_PATVE_PROGRAM)
+# build-spansion-program: $(BUILD_SPANSION_PROGRAM)
+# build-image-program: $(BUILD_IMAGE_PROGRAM)
+# build-firmware-program: $(BUILD_FIRMWARE_PROGRAM)
+build-strip-program: $(BUILD_STRIP_PROGRAM)
+build-symbol-program: $(BUILD_SYMBOL_PROGRAM)
+build-docs:
+build-info: $(BUILD_INFO)
+
+# .PHONY: check-sources
+# check-sources : $(SOURCES)
+# 	@$(NEWLINE)
+# 	@$(ECHO) $(ECHOPREFIX) Checking MISRA rules
+# 	-$(ATSIGN)$(LINT) $(LINTFLAGS) $(LINTFLAGS_USER) $(SOURCES)
+#
+# build-debugger-script:
+#
+# $(BUILD_OBJECT_SUBDIR)/%.c.lint : %.c
+# 	@$(NEWLINE)
+# 	@$(ECHO) $(ECHOPREFIX) Checking MISRA rules [$(word 1,$(DOLLAR^))]
+# 	@$(ECHO) $(ECHOPREFIX) "-->" [$@]
+# 	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(dir $@)
+# 	-$(ATSIGN)$(LINT) $(LINTFLAGS) $(LINTFLAGS_USER) $(word 1,$(DOLLAR^))
+
+$(BUILD_OBJECT_SUBDIR)/%$(OBJECT_EXT) : %.c
+ifeq ($(MISRA),1)
+  ifndef NOMISRA
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Checking MISRA rules [$(word 1,$(DOLLAR^))]
+	@$(ECHO) $(ECHOPREFIX) "-->" [$@]
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(dir $@)
+	-$(ATSIGN)$(LINT) $(LINTFLAGS) $(LINTFLAGS_USER) $(word 1,$(DOLLAR^))
+  endif
+endif
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Compiling 'C' [$(word 1,$(DOLLAR^))]
+	@$(ECHO) $(ECHOPREFIX) "-->" [$@]
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(dir $@)
+	$(ATSIGN)$(CCACHE)$(CC) $(CCFLAGS) $(CCFLAGS_C) $(CCFLAGS_USER) $(CCFLAGS_NODBG) $(CC_out)$(DOLLAR@) -c $(word 1,$(DOLLAR^))
+
+$(BUILD_OBJECT_SUBDIR)/%$(OBJECT_DEBUG_EXT) : %.c
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Compiling/debug 'C' [$(word 1,$(DOLLAR^))]
+	@$(ECHO) $(ECHOPREFIX) "-->" [$@]
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(dir $@)
+	$(ATSIGN)$(CCACHE)$(CC) $(CCFLAGS) $(CCFLAGS_C) $(CCDEBUG) -D__DEBUG__=1 $(CCFLAGS_USER) $(CC_out)$(DOLLAR@) -c $(word 1,$(DOLLAR^))
+
+$(BUILD_OBJECT_SUBDIR)/%$(OBJECT_PROFILE_EXT) : %.c
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Compiling/profile 'C' [$(word 1,$(DOLLAR^))]
+	@$(ECHO) $(ECHOPREFIX) "-->" [$@]
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(dir $@)
+	$(ATSIGN)$(CCACHE)$(CC) $(CCFLAGS) $(CCFLAGS_C) $(CCGPROF) -D__GPROF__=1 -D__DEBUG__=1 $(CCFLAGS_USER) $(CC_out)$(DOLLAR@) -c $(word 1,$(DOLLAR^))
+
+$(BUILD_OBJECT_SUBDIR)/%$(OBJECT_EXT) : %.cpp
+ifeq ($(MISRA),1)
+  ifndef NOMISRA
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Checking MISRA rules [$(word 1,$(DOLLAR^))]
+	@$(ECHO) $(ECHOPREFIX) "-->" [$@]
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(dir $@)
+	-$(ATSIGN)$(LINT) $(LINTFLAGS) $(LINTFLAGS_USER) $(word 1,$(DOLLAR^))
+  endif
+endif
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Compiling 'C++' [$(word 1,$(DOLLAR^))]
+	@$(ECHO) $(ECHOPREFIX) "-->" [$@]
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(dir $@)
+	$(ATSIGN)$(CCACHE)$(CXX) $(CCFLAGS) $(CCFLAGS_CPP) $(CCFLAGS_USER) $(CC_out)$(DOLLAR@) -c $(word 1,$(DOLLAR^))
+
+$(BUILD_OBJECT_SUBDIR)/%$(OBJECT_DEBUG_EXT) : %.cpp
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Compiling/debug 'C++' [$(word 1,$(DOLLAR^))]
+	@$(ECHO) $(ECHOPREFIX) "-->" [$@]
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(dir $@)
+	$(ATSIGN)$(CCACHE)$(CXX) $(CCFLAGS) $(CCFLAGS_CPP) $(CCDEBUG) -D__DEBUG__=1 $(CCFLAGS_USER) $(CC_out)$(DOLLAR@) -c $(word 1,$(DOLLAR^))
+
+$(BUILD_OBJECT_SUBDIR)/%$(OBJECT_PROFILE_EXT) : %.cpp
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Compiling/profile 'C++' [$(word 1,$(DOLLAR^))]
+	@$(ECHO) $(ECHOPREFIX) "-->" [$@]
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(dir $@)
+	$(ATSIGN)$(CCACHE)$(CXX) $(CCFLAGS) $(CCFLAGS_CPP) $(CCGPROF) -D__GPROF__=1 -D__DEBUG__=1 $(CCFLAGS_USER) $(CC_out)$(DOLLAR@) -c $(word 1,$(DOLLAR^))
+
+$(BUILD_OBJECT_SUBDIR)/%$(OBJECT_EXT) : %.s
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Compiling 'ASM' [$(word 1,$(DOLLAR^))]
+	@$(ECHO) $(ECHOPREFIX) "-->" [$@]
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(dir $@)
+	$(ATSIGN)$(CC) $(CCFLAGS) $(CCFLAGS_USER) $(CCFLAGS_AS) $(CCFLAGS_NODBG) $(CC_out)$(DOLLAR@) -c $(word 1,$(DOLLAR^))
+
+$(BUILD_OBJECT_SUBDIR)/%$(OBJECT_DEBUG_EXT) : %.s
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Compiling/debug 'ASM' [$(word 1,$(DOLLAR^))]
+	@$(ECHO) $(ECHOPREFIX) "-->" [$@]
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(dir $@)
+	$(ATSIGN)$(CC) $(CCFLAGS) $(CCFLAGS_USER) $(CCFLAGS_AS) $(CCDEBUG) -D__DEBUG__=1 $(CC_out)$(DOLLAR@) -c $(word 1,$(DOLLAR^))
+
+$(BUILD_OBJECT_SUBDIR)/%$(OBJECT_PROFILE_EXT) : %.s
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Compiling/profile 'ASM' [$(word 1,$(DOLLAR^))]
+	@$(ECHO) $(ECHOPREFIX) "-->" [$@]
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(dir $@)
+	$(ATSIGN)$(CC) $(CCFLAGS) $(CCFLAGS_USER) $(CCFLAGS_AS) $(CCGPROF) -D__GPROF__=1 -D__DEBUG__=1 $(CC_out)$(DOLLAR@) -c $(word 1,$(DOLLAR^))
+
+$(BUILD_PROGRAM_STARTUP_OBJECT) : $(STARTUP)
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Compiling 'STARTUP' [$(word 1,$(DOLLAR^))]
+	@$(ECHO) $(ECHOPREFIX) "-->" [$@]
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(dir $@)
+	$(ATSIGN)$(CC) $(CCFLAGS) $(CCFLAGS_USER) $(CCFLAGS_AS) $(CCFLAGS_NODBG) $(CC_out)$(DOLLAR@) -c $(word 1,$(DOLLAR^))
+
+$(BUILD_OBJECT_SUBDIR)/%$(OBJECT_EXT) : %.asm
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Compiling [$(word 1,$(DOLLAR^))]
+	@$(ECHO) $(ECHOPREFIX) "-->" [$@]
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(dir $@)
+	$(ATSIGN)$(CC) $(CCFLAGS) $(CCFLAGS_USER) $(CCFLAGS_AS) $(CC_out)$(DOLLAR@) -c $(word 1,$(DOLLAR^))
+
+$(BUILD_OBJECT_SUBDIR)/%$(OBJECT_DEBUG_EXT) : %.asm
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Compiling/debug [$(word 1,$(DOLLAR^))]
+	@$(ECHO) $(ECHOPREFIX) "-->" [$@]
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(dir $@)
+	$(ATSIGN)$(CC) $(CCFLAGS) $(CCFLAGS_USER) $(CCFLAGS_AS) $(CCDEBUG) -D__DEBUG__=1 $(CC_out)$(DOLLAR@) -c $(word 1,$(DOLLAR^))
+
+$(BUILD_OBJECT_SUBDIR)/%$(OBJECT_PROFILE_EXT) : %.asm
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Compiling/profile [$(word 1,$(DOLLAR^))]
+	@$(ECHO) $(ECHOPREFIX) "-->" [$@]
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(dir $@)
+	$(ATSIGN)$(CC) $(CCFLAGS) $(CCFLAGS_USER) $(CCFLAGS_AS) $(CCGPROF) -D__GPROF__=1 -D__DEBUG__=1 $(CC_out)$(DOLLAR@) -c $(word 1,$(DOLLAR^))
+
+$(BUILD_INFO) : force
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Creating build information file [$(DOLLAR@)]
+	@$(MKDIR) $(MKDIRFLAGS) $(dir $@)
+	@$(ECHO) CC.............: $(CC)           >  $@
+	@$(ECHO) CCFLAGS........: $(CCFLAGS)      >> $@
+	@$(ECHO) CCFLAGS_C......: $(CCFLAGS_C)    >> $@
+	@$(ECHO) CCFLAGS_AS.....: $(CCFLAGS_AS)   >> $@
+	@$(ECHO) CCFLAGS_USER...: $(CCFLAGS_USER) >> $@
+	@$(ECHO) AR.............: $(AR)           >> $@
+	@$(ECHO) ARFLAGS........: $(ARFLAGS)      >> $@
+	@$(ECHO) ARFLAGS_USER...: $(ARFLAGS_USER) >> $@
+	@$(ECHO) LD.............: $(LD)           >> $@
+	@$(ECHO) LDFLAGS........: $(LDFLAGS)      >> $@
+	@$(ECHO) LDFLAGS_USER...: $(LDFLAGS_USER) >> $@
+
+$(BUILD_LIBRARY) : $(BUILD_LIBRARY_OBJECTS)
+	@$(SUBMAKE) $(BUILD_INFO)
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Archiving [$(DOLLAR@)]
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(dir $@)
+	$(ATSIGN)$(AR) $(ARFLAGS) $(ARFLAGS_USER) $(AR_out)$(DOLLAR@) $(BUILD_LIBRARY_OBJECTS)
+
+$(BUILD_DEBUG_LIBRARY) : $(BUILD_DEBUG_LIBRARY_OBJECTS)
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Archiving/debug [$(DOLLAR@)]
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(dir $@)
+	$(ATSIGN)$(AR) $(ARFLAGS) $(ARFLAGS_USER) $(AR_out)$(DOLLAR@) $(BUILD_DEBUG_LIBRARY_OBJECTS)
+
+$(BUILD_SHARED_LIBRARY) : $(BUILD_LIBRARY_OBJECTS)
+	@$(SUBMAKE) $(BUILD_INFO)
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Archiving [$(DOLLAR@)]
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(dir $@)
+	$(ATSIGN)$(LD) $(LDFLAGS) $(LDFLAGS_USER) -shared $(LD_out)$(DOLLAR@) $(BUILD_LIBRARY_OBJECTS)
+
+$(BUILD_SHARED_DEBUG_LIBRARY) : $(BUILD_DEBUG_LIBRARY_OBJECTS)
+	@$(SUBMAKE) $(BUILD_INFO)
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Archiving [$(DOLLAR@)]
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(dir $@)
+	$(ATSIGN)$(LD) $(LDFLAGS) $(LDFLAGS_USER) -shared $(LD_out)$(DOLLAR@) $(BUILD_DEBUG_LIBRARY_OBJECTS)
+
+$(BUILD_PROFILE_LIBRARY) : $(BUILD_PROFILE_LIBRARY_OBJECTS)
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Archiving/profile [$(DOLLAR@)]
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(dir $@)
+	$(ATSIGN)$(AR) $(ARFLAGS) $(ARFLAGS_USER) $(AR_out)$(DOLLAR@) $(BUILD_PROFILE_LIBRARY_OBJECTS)
+
+$(BUILD_ELFDUMP_LIBRARY) : $(BUILD_LIBRARY)
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Creating ELF dump [$(DOLLAR@)]
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(dir $@)
+	$(ATSIGN)$(ELFDUMP) $(ELFDUMPFLAGS) $(ELFDUMPFLAGS_USER) $(DOLLAR^) $(ELFDUMP_out)$(DOLLAR@)
+
+$(BUILD_DEBUG_ELFDUMP_LIBRARY) : $(BUILD_DEBUG_LIBRARY)
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Creating/debug ELF dump [$(DOLLAR@)]
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(dir $@)
+	$(ATSIGN)$(ELFDUMP) $(ELFDUMPFLAGS) $(ELFDUMPFLAGS_USER) $(DOLLAR^) $(ELFDUMP_out)$(DOLLAR@)
+
+$(BUILD_PROFILE_ELFDUMP_LIBRARY) : $(BUILD_PROFILE_LIBRARY)
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Creating/profile ELF dump [$(DOLLAR@)]
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(dir $@)
+	$(ATSIGN)$(ELFDUMP) $(ELFDUMPFLAGS) $(ELFDUMPFLAGS_USER) $(DOLLAR^) $(ELFDUMP_out)$(DOLLAR@)
+
+$(BUILD_PROGRAM) : $(BUILD_PROGRAM_OBJECTS) $(BUILD_PROGRAM_LIBRARIES) $(BUILD_PROGRAM_STARTUP_OBJECT)
+	@$(SUBMAKE) $(BUILD_INFO)
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Linking [$(DOLLAR@)]
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(dir $@)
+	$(ATSIGN)$(LD) $(LDFLAGS) $(LD_out)$(DOLLAR@) $(LD_crt) $(BUILD_PROGRAM_OBJECTS) $(LD_group) $(BUILD_PROGRAM_LIBRARIES) $(LDFLAGS_USER) $(LD_grend) $(BUILD_PROGRAM_SPECIAL_LIBRARIES) $(LD_brk)
+
+$(BUILD_DEBUG_PROGRAM) : $(BUILD_DEBUG_PROGRAM_OBJECTS) $(BUILD_DEBUG_PROGRAM_LIBRARIES) $(BUILD_PROGRAM_STARTUP_OBJECT)
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Linking/debug [$(DOLLAR@)]
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(dir $@)
+	$(ATSIGN)$(LD) $(LDFLAGS) $(LDDEBUG) $(LD_out)$(DOLLAR@) $(BUILD_DEBUG_PROGRAM_OBJECTS) $(LD_crt) $(LD_group) $(BUILD_DEBUG_PROGRAM_LIBRARIES) $(LDFLAGS_USER) $(LD_grend) $(BUILD_DEBUG_PROGRAM_SPECIAL_LIBRARIES) $(LD_brk)
+
+$(BUILD_PROFILE_PROGRAM) : $(BUILD_PROFILE_PROGRAM_OBJECTS) $(BUILD_PROFILE_PROGRAM_LIBRARIES) $(BUILD_PROGRAM_STARTUP_OBJECT)
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Linking/profile [$(DOLLAR@)]
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(dir $@)
+	$(ATSIGN)$(LD) $(LDFLAGS) $(LDGPROF) $(LDFLAGS_USER) $(LD_out)$(DOLLAR@) $(BUILD_PROFILE_PROGRAM_OBJECTS) $(LD_crt) $(LD_group) $(BUILD_PROFILE_PROGRAM_LIBRARIES) $(LD_grend) $(BUILD_PROFILE_PROGRAM_SPECIAL_LIBRARIES) $(LD_brk)
+
+$(BUILD_ELFDUMP_PROGRAM) : $(BUILD_PROGRAM)
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Creating ELF dump [$(DOLLAR@)]
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(dir $@)
+	-$(ATSIGN)$(ELFDUMP) $(ELFDUMPFLAGS) $(ELFDUMPFLAGS_USER) $(DOLLAR^) $(ELFDUMP_out)$(DOLLAR@)
+
+$(BUILD_DEBUG_ELFDUMP_PROGRAM) : $(BUILD_DEBUG_PROGRAM)
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Creating/debug ELF dump [$(DOLLAR@)]
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(dir $@)
+	-$(ATSIGN)$(ELFDUMP) $(ELFDUMPFLAGS) $(ELFDUMPFLAGS_USER) $(DOLLAR^) $(ELFDUMP_out)$(DOLLAR@)
+
+$(BUILD_PROFILE_ELFDUMP_PROGRAM) : $(BUILD_PROFILE_PROGRAM)
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Creating/profile ELF dump [$(DOLLAR@)]
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(dir $@)
+	-$(ATSIGN)$(ELFDUMP) $(ELFDUMPFLAGS) $(ELFDUMPFLAGS_USER) $(DOLLAR^) $(ELFDUMP_out)$(DOLLAR@)
+
+$(BUILD_STRIP_PROGRAM) : $(BUILD_PROGRAM)
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Stripping program [$(DOLLAR@)]
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(dir $@)
+	$(ATSIGN)$(STRIP) $(STRIPFLAGS) $(STRIPFLAGS_USER) $(DOLLAR^) $(STRIP_out)$(DOLLAR@)
+
+build-firmware-program:
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Copying firmware [$(DOLLAR@)]
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(dir $@)
+	$(ATSIGN)$(ATSIGN)$(COPY) $(COPYFLAGS) $(BUILD_S3HEX_PROGRAM) $(BUILD_FIRMWARE_PROGRAM)
+
+# $(BUILD_S3HEX_PROGRAM) : $(BUILD_PROGRAM)
+# 	@$(NEWLINE)
+# 	@$(ECHO) $(ECHOPREFIX) Creating S3HEX format [$(DOLLAR@)]
+# 	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(dir $@)
+# 	$(ATSIGN)$(ELF2HEX) $(ELF2HEXFLAGS) -in=$(DOLLAR^) -s3hex=$(DOLLAR@) $(ELF2HEXFLAGS_USER) $(ELF2HEXFLAGS_S3HEX)
+
+build-s3hex-program:
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Creating S3HEX format [$(BUILD_S3HEX_PROGRAM)]
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(dir $@)
+	$(ATSIGN)$(ELF2HEX) $(ELF2HEXFLAGS) -in=$(BUILD_PROGRAM) -s3hex=$(BUILD_S3HEX_PROGRAM) $(ELF2HEXFLAGS_USER) $(ELF2HEXFLAGS_S3HEX)
+
+build-bin-program:
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Creating BIN format [$(BUILD_IMAGE_PROGRAM)]
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(dir $@)
+ifneq ("$(TARGET)","arc4-metaware")
+	$(ATSIGN)$(ELF2HEX) $(ELF2HEXFLAGS) -in=$(BUILD_PROGRAM) -bin=$(BUILD_IMAGE_PROGRAM) $(ELF2HEXFLAGS_USER) $(ELF2HEXFLAGS_BIN)
+else
+	$(ATSIGN)$(ELF2HEX) $(ELF2HEXFLAGS) -bin=$(BUILD_IMAGE_PROGRAM) $(ELF2HEXFLAGS_USER) $(ELF2HEXFLAGS_BIN) $(BUILD_PROGRAM)
+endif
+
+build-mrs-program:
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Creating IMG format [$(BUILD_MRS_PROGRAM)]
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(dir $@)
+ifneq ("$(TARGET)","arc4-metaware")
+	@$(ECHO) $(ECHOPREFIX) Don't support in this environment.
+else
+	$(ATSIGN)$(ELF2IMG) $(ELF2IMGFLAGS) -img=$(BUILD_MRS_PROGRAM) $(ELF2IMGFLAGS_USER) $(BUILD_PROGRAM)
+endif
+
+build-intelhex-program:
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Creating INTELHEX format [$(BUILD_INTELHEX_PROGRAM)]
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(dir $@)
+	$(ATSIGN)$(ELF2HEX) $(ELF2HEXFLAGS) -in=$(BUILD_PROGRAM) -ihex=$(BUILD_INTELHEX_PROGRAM) -ihex-wordbytes=8 $(ELF2HEXFLAGS_USER) $(ELF2HEXFLAGS_INTELHEX)
+
+build-mqsim-program:
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Creating MQSIM format [$(BUILD_MQSIM_PROGRAM)]
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(dir $@)
+	$(ATSIGN)$(ELF2HEX) $(ELF2HEXFLAGS) -in=$(BUILD_PROGRAM) -mqsim=$(BUILD_MQSIM_PROGRAM) -mqsim-wordbytes=4 -mqsim-offset=0x0 $(ELF2HEXFLAGS_USER) $(ELF2HEXFLAGS_QSIM)
+
+build-patvhd-program:
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Creating PAT_VHD format [$(BUILD_PATVHD_PROGRAM)]
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(dir $@)
+	$(ATSIGN)$(ELF2HEX) $(ELF2HEXFLAGS) -in=$(BUILD_PROGRAM) -patvhd=$(BUILD_PATVHD_PROGRAM) -patvhd-wordbytes=8 $(ELF2HEXFLAGS_USER) $(ELF2HEXFLAGS_PATVHD)
+
+build-patve-program:
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Creating PAT_VE format [$(BUILD_PATVE_PROGRAM)]
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(dir $@)
+	$(ATSIGN)$(ELF2HEX) $(ELF2HEXFLAGS) -in=$(BUILD_PROGRAM) -patve=$(BUILD_PATVE_PROGRAM) -patve-wordbytes=4 $(ELF2HEXFLAGS_USER) $(ELF2HEXFLAGS_PATVE)
+
+build-spansion-program:
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Creating SPANSION format [$(DOLLAR@)]
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(dir $@)
+	$(ATSIGN)$(ELF2HEX) $(ELF2HEXFLAGS) -in=$(BUILD_PROGRAM) -spansion=$(BUILD_SPANSION_PROGRAM) -spansion-wordbytes=4 $(ELF2HEXFLAGS_USER) $(ELF2HEXFLAGS_SPANSION)
+
+$(BUILD_SYMBOL_PROGRAM) : $(BUILD_PROGRAM)
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Creating SYMBOL format [$(DOLLAR@)]
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(dir $@)
+	$(ATSIGN)$(SYMDUMP) $(SYMDUMPFLAGS) $(SYMDUMPFLAGS_USER) $(DOLLAR^) $(SYMDUMP_out)$(DOLLAR@)
+
+$(BUILD_DLL) : $(BUILD_DLL_OBJECTS)
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Linking DLL [$(DOLLAR@)]
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(dir $@)
+	$(ATSIGN)$(LD) $(LD_dll) $(LDFLAGS) $(LDFFLAGS_USER) $(LD_out)$(DOLLAR@) $(DOLLAR^) $(BUILD_DLL_LIBRARIES) $(BUILD_DLL_SPECIAL_LIBRARIES)
+
+$(BUILD_DEBUG_DLL) : $(BUILD_DEBUG_DLL_OBJECTS)
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Linking/debug DLL [$(DOLLAR@)]
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(dir $@)
+	$(ATSIGN)$(LD) $(LD_dll) $(LDFLAGS) $(LDDEBUG) $(LDFLAGS_USER) $(LD_out)$(DOLLAR@) $(DOLLAR^) $(BUILD_DEBUG_DLL_LIBRARIES) $(BUILD_DEBUG_DLL_SPECIAL_LIBRARIES)
+
+$(BUILD_ELFDUMP_DLL) : $(BUILD_DLL)
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Creating ELF dump [$(DOLLAR@)]
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(dir $@)
+	$(ATSIGN)$(ELFDUMP) $(ELFDUMPFLAGS) $(ELFDUMPFLAGS_USER) $(DOLLAR^) $(ELFDUMP_out)$(DOLLAR@)
+
+################################################################################
+#
+# installation rules
+#
+################################################################################
+
+ifdef PROFILE
+  install-objects: $(INSTALL_OBJECTS) $(INSTALL_DEBUG_OBJECTS) $(INSTALL_PROFILE_OBJECTS)
+  install-library: $(INSTALL_LIBRARY) $(INSTALL_DEBUG_LIBRARY) $(INSTALL_PROFILE_LIBRARY)
+  install-program: $(INSTALL_PROGRAM)
+  install-bin: $(INSTALL_BIN)
+else
+    ifndef NODEBUG
+      install-objects: $(INSTALL_OBJECTS)
+      install-library: $(INSTALL_LIBRARY) $(INSTALL_SHARED_LIBRARY)
+      install-program: $(INSTALL_PROGRAM)
+      install-bin: $(INSTALL_BIN)
+    else
+      install-objects: $(INSTALL_OBJECTS)
+      install-library: $(INSTALL_LIBRARY) $(INSTALL_SHARED_LIBRARY)
+      install-program: $(INSTALL_PROGRAM)
+      install-bin: $(INSTALL_BIN)
+    endif
+endif
+
+install-headers: $(INSTALL_DIR)/$(INSTALL_INCLUDE_SUBDIR)/.dummy
+install-elfdump-program: $(INSTALL_ELFDUMP_PROGRAM)
+install-debug-program: $(INSTALL_DEBUG_PROGRAM)
+install-profile-program: $(INSTALL_PROFILE_PROGRAM)
+install-strip-program: $(INSTALL_STRIP_PROGRAM)
+install-image-program: $(INSTALL_IMAGE_PROGRAM)
+install-s3hex-program: $(INSTALL_S3HEX_PROGRAM)
+install-intelhex-program: $(INSTALL_INTELHEX_PROGRAM)
+install-symbol-program: $(INSTALL_SYMBOL_PROGRAM)
+install-firmware-program: $(INSTALL_FIRMWARE_PROGRAM)
+install-docs: $(INSTALL_DOCS)
+install-release-library: $(INSTALL_RELEASE_LIBRARY) $(INSTALL_RELEASE_SHARED_LIBRARY)
+
+.PHONY: $(INSTALL_DIR)/$(INSTALL_INCLUDE_SUBDIR)/.dummy
+
+$(INSTALL_DIR)/$(INSTALL_INCLUDE_SUBDIR)/.dummy : $(HEADERS)
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Installing headers [$(HEADERS)]
+	@$(ECHO) $(ECHOPREFIX) "-->" [$(INSTALL_DIR)/$(INSTALL_INCLUDE_SUBDIR)/]
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(dir $@)
+	$(ATSIGN)$(MCOPY) $(MCOPYFLAGS) $(HEADERS) $(INSTALL_DIR)/$(INSTALL_INCLUDE_SUBDIR)
+#	@$(ECHO) $(ECHOPREFIX) Removing installed SVN folders
+#	@$(ECHO) $(ECHOPREFIX) "-->" [$(INSTALL_DIR)/$(INSTALL_INCLUDE_SUBDIR)/*/$(SVN_SUBDIR)]
+#	$(ATSIGN)$(DELETE) $(DELETEFLAGS) \
+#	    $(INSTALL_DIR)/$(INSTALL_INCLUDE_SUBDIR)/$(SVN_SUBDIR) \
+#	    $(INSTALL_DIR)/$(INSTALL_INCLUDE_SUBDIR)/*/$(SVN_SUBDIR) \
+#	    $(INSTALL_DIR)/$(INSTALL_INCLUDE_SUBDIR)/*/*/$(SVN_SUBDIR) \
+#	    $(INSTALL_DIR)/$(INSTALL_INCLUDE_SUBDIR)/*/*/*/$(SVN_SUBDIR)
+
+#$(INSTALL_DIR)/$(INSTALL_INCLUDE_SUBDIR)/%.h : $(BUILD_SOURCE_SUBDIR)/%.h
+#	@$(NEWLINE)
+#	@$(ECHO) $(ECHOPREFIX) Installing header [$^]
+#	@$(ECHO) $(ECHOPREFIX) "-->" [$@]
+#	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(dir $@)
+#	$(ATSIGN)$(COPY) $(COPYFLAGS) $^ $@
+#
+#$(INSTALL_DIR)/$(INSTALL_INCLUDE_SUBDIR)/%.h  : $($(BUILD_HEADER_SUBDIR))/%.h
+#	@$(NEWLINE)
+#	@$(ECHO) $(ECHOPREFIX) Installing header [$^]
+#	@$(ECHO) $(ECHOPREFIX) "-->" [$@]
+#	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(dir $@)
+#	$(ATSIGN)$(COPY) $(COPYFLAGS) $^ $@
+
+$(INSTALL_LIBRARY_DIR)/%: $(BUILD_LIBRARY_SUBDIR)/% force
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Installing library [$(word 1,$^)]
+	@$(ECHO) $(ECHOPREFIX) "-->" [$@]
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(dir $@)
+	$(ATSIGN)$(COPY) $(COPYFLAGS) $(word 1,$^) $@
+
+$(INSTALL_PROGRAM_DIR)/%: $(BUILD_PROGRAM_SUBDIR)/% force
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Installing program [$(word 1,$^)]
+	@$(ECHO) $(ECHOPREFIX) "-->" [$@]
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(dir $@)
+	$(ATSIGN)$(COPY) $(COPYFLAGS) $(word 1,$^) $@
+#	@$(ECHO) $(ECHOPREFIX) "-->" [$(INSTALL_BIN_DIR)/$(notdir $@)]
+#	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(INSTALL_BIN_DIR)
+#	$(ATSIGN)$(COPY) $(COPYFLAGS) $(word 1,$^) $(INSTALL_BIN_DIR)
+
+$(INSTALL_BIN_DIR)/%: $(BUILD_PROGRAM_SUBDIR)/% force
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Installing program [$(word 1,$^)]
+	@$(ECHO) $(ECHOPREFIX) "-->" [$@]
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(INSTALL_BIN_DIR)
+	$(ATSIGN)$(COPY) $(COPYFLAGS) $(word 1,$^) $(INSTALL_BIN_DIR)
+
+$(INSTALL_FIRMWARE_PROGRAM): force
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Installing firmware [$(BUILD_FIRMWARE_PROGRAM)]
+	@$(ECHO) $(ECHOPREFIX) "-->" [$@]
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(dir $@)
+	$(ATSIGN)$(COPY) $(COPYFLAGS) $(BUILD_FIRMWARE_PROGRAM) $@
+
+install-file: force
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Install local files [$(LOCAL_FILE)]
+	@$(ECHO) $(ECHOPREFIX) "-->" [$(INSTALL_LOCAL_FILE_DIR)]
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(INSTALL_LOCAL_FILE_DIR)
+	$(ATSIGN)$(COPY) $(COPYFLAGS) $(LOCAL_FILE) $(INSTALL_LOCAL_FILE_DIR) $(COPYFLAGS_USER)
+
+$(INSTALL_RELEASE_LIBRARY): force
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Install release library files [$(BUILD_LIBRARY)]
+	@$(ECHO) $(ECHOPREFIX) "-->" [$(dir $(INSTALL_RELEASE_LIBRARY))]
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(dir $(INSTALL_RELEASE_LIBRARY))
+	$(ATSIGN)$(COPY) $(COPYFLAGS) $(BUILD_LIBRARY) $(dir $(INSTALL_RELEASE_LIBRARY)) $(COPYFLAGS_USER)
+
+$(INSTALL_RELEASE_SHARED_LIBRARY): force
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Install release shared library files [$(BUILD_SHARED_LIBRARY)]
+	@$(ECHO) $(ECHOPREFIX) "-->" [$(dir $(INSTALL_RELEASE_LIBRARY))]
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(dir $(INSTALL_RELEASE_LIBRARY))
+	$(ATSIGN)$(COPY) $(COPYFLAGS) $(BUILD_SHARED_LIBRARY) $(dir $(INSTALL_RELEASE_LIBRARY)) $(COPYFLAGS_USER)
+
+install-library-released: force
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Install release library files [$(INSTALL_RELEASE_LIBRARY)]
+	@$(ECHO) $(ECHOPREFIX) "-->" [$(INSTALL_LIBRARY_DIR)]
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(INSTALL_LIBRARY_DIR)
+	$(ATSIGN)$(COPY) $(COPYFLAGS) $(INSTALL_RELEASE_LIBRARY) $(INSTALL_LIBRARY_DIR) $(COPYFLAGS_USER)
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Install release shared library files [$(INSTALL_RELEASE_SHARED_LIBRARY)]
+	@$(ECHO) $(ECHOPREFIX) "-->" [$(INSTALL_LIBRARY_DIR)]
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(INSTALL_LIBRARY_DIR)
+	$(ATSIGN)$(COPY) $(COPYFLAGS) $(INSTALL_RELEASE_SHARED_LIBRARY) $(INSTALL_LIBRARY_DIR) $(COPYFLAGS_USER)
+
+install-shared-library-released: force
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Install release shared library files [$(INSTALL_RELEASE_SHARED_LIBRARY)]
+	@$(ECHO) $(ECHOPREFIX) "-->" [$(INSTALL_LIBRARY_DIR)]
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(INSTALL_LIBRARY_DIR)
+	$(ATSIGN)$(COPY) $(COPYFLAGS) $(INSTALL_RELEASE_SHARED_LIBRARY) $(INSTALL_LIBRARY_DIR) $(COPYFLAGS_USER)
+	
+#install-file: force
+#	$(NEWLINE)
+#	$(ECHO) $(ECHOPREFIX) Installing [$(LOCAL_FILE)]
+#	$(ECHO) $(ECHOPREFIX) "-->" [$(INSTALL_FILE)]
+#	(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(dir $(INSTALL_FILE))
+#	(ATSIGN)$(COPY) $(COPYFLAGS) $(LOCAL_FILE) $(INSTALL_FILE)
+
+# $(INSTALL_DIR)/$(INSTALL_FIRMWARE_SUBDIR)/%: $(BUILD_FIRMWARE_SUBDIR)/% force
+# 	@$(NEWLINE)
+# 	@$(ECHO) $(ECHOPREFIX) Installing program [$(word 1,$^)]
+# 	@$(ECHO) $(ECHOPREFIX) "-->" [$@]
+# 	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(dir $@)
+# 	$(ATSIGN)$(COPY) $(COPYFLAGS) $(word 1,$^) $@
+#
+# $(INSTALL_FIRMWARE_DIR)/%: $(BUILD_FIRMWARE_SUBDIR)/% force
+# 	@$(NEWLINE)
+# 	@$(ECHO) $(ECHOPREFIX) Installing firmware [$(word 1,$^)]
+# 	@$(ECHO) $(ECHOPREFIX) "-->" [$@]
+# 	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(dir $@)
+# 	$(ATSIGN)$(COPY) $(COPYFLAGS) $(word 1,$^) $@
+
+################################################################################
+#
+# RVS/MAC file rules
+#
+################################################################################
+
+build-mac-file : $(MACFILE)
+
+$(MACFILE): $(wildcard $(TOPDIR)/Config.mak.$(USERNAME)) $(wildcard $(TOPDIR)/Config.mak)
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Generating [$@]
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(dir $@)
+	$(ATSIGN)echo "setup: $(MAC_REGISTER_47_32) = $(MAC_ADDRESS_47_32) # $(MAC_COMMENT_47_32)" >  $@
+	$(ATSIGN)echo "setup: $(MAC_REGISTER_31_00) = $(MAC_ADDRESS_31_00) # $(MAC_COMMENT_31_00)" >> $@
+
+clean-mac-file : force
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Deleting [$(MACFILE)]
+	$(ATSIGN)$(DELETE) $(DELETEFLAGS) $(MACFILE)
+
+################################################################################
+#
+# svn update release rules
+#
+################################################################################
+update-svn-topdir : force
+ifeq ($(HOST),win32)
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Updating SVN source tree [$(TOPDIR)]
+	$(SVN) $(SVNFLAGS) update $(SVNFLAGS_USER) --force -r HEAD $(TOPDIR)
+else
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Updating SVN source tree is not supported on host $(HOST)
+endif
+
+update-svn : force
+ifeq ($(HOST),win32)
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Updating SVN source tree [./]
+	$(SVN) $(SVNFLAGS) update $(SVNFLAGS_USER) --force -r HEAD .
+else
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Updating SVN source tree is not supported on host $(HOST)
+endif
+
+cleanup-svn-topdir : force
+ifeq ($(HOST),win32)
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Cleaning up SVN source tree [$(TOPDIR)]
+	$(SVN) $(SVNFLAGS) cleanup $(SVNFLAGS_USER) $(TOPDIR)
+else
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Updating SVN source tree is not supported on host $(HOST)
+endif
+
+cleanup-svn : force
+ifeq ($(HOST),win32)
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Cleaning up SVN source tree [./]
+	$(SVN) $(SVNFLAGS) cleanup $(SVNFLAGS_USER) .
+else
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Updating SVN source tree is not supported on host $(HOST)
+endif
+
+################################################################################
+#
+# release rules
+#
+################################################################################
+
+release-files : $(RELEASE_FILES:%=$(RELEASE_DIR)/$(RELEASE_SUBDIR)/%)
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Removing released SVN folders
+	@$(ECHO) $(ECHOPREFIX) "-->" [$(RELEASE_DIR)/$(RELEASE_SUBDIR)/*/$(SVN_SUBDIR)]
+	$(ATSIGN)$(DELETE) $(DELETEFLAGS) \
+	    $(RELEASE_DIR)/$(RELEASE_SUBDIR)/$(SVN_SUBDIR) \
+	    $(RELEASE_DIR)/$(RELEASE_SUBDIR)/*/$(SVN_SUBDIR) \
+	    $(RELEASE_DIR)/$(RELEASE_SUBDIR)/*/*/$(SVN_SUBDIR) \
+	    $(RELEASE_DIR)/$(RELEASE_SUBDIR)/*/*/*/$(SVN_SUBDIR) \
+	    $(RELEASE_DIR)/$(RELEASE_SUBDIR)/*/*/*/*/$(SVN_SUBDIR) \
+	    $(RELEASE_DIR)/$(RELEASE_SUBDIR)/*/*/*/*/*/$(SVN_SUBDIR) \
+	    $(RELEASE_DIR)/$(RELEASE_SUBDIR)/*/*/*/*/*/*/$(SVN_SUBDIR) \
+	    $(RELEASE_DIR)/$(RELEASE_SUBDIR)/*/*/*/*/*/*/*/$(SVN_SUBDIR)
+#	$(ATSIGN)$(COPY) $(COPYFLAGS) $(RELEASE_INFO_FILE) $(RELEASE_DIR)/$(RELEASE_SUBDIR)
+
+release-addon-files : $(RELEASE_ADDON_FILES)
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Removing released SVN folders
+	@$(ECHO) $(ECHOPREFIX) "-->" [$(RELEASE_ADDON_SUBDIR)/*/$(SVN_SUBDIR)]
+	$(ATSIGN)$(DELETE) $(DELETEFLAGS) \
+	    $(RELEASE_ADDON_SUBDIR)/$(SVN_SUBDIR) \
+	    $(RELEASE_ADDON_SUBDIR)/*/$(SVN_SUBDIR) \
+	    $(RELEASE_ADDON_SUBDIR)/*/*/$(SVN_SUBDIR) \
+	    $(RELEASE_ADDON_SUBDIR)/*/*/*/$(SVN_SUBDIR) \
+	    $(RELEASE_ADDON_SUBDIR)/*/*/*/*/$(SVN_SUBDIR) \
+	    $(RELEASE_ADDON_SUBDIR)/*/*/*/*/*/$(SVN_SUBDIR) \
+	    $(RELEASE_ADDON_SUBDIR)/*/*/*/*/*/*/$(SVN_SUBDIR) \
+	    $(RELEASE_ADDON_SUBDIR)/*/*/*/*/*/*/*/$(SVN_SUBDIR)
+
+release-root-scripts : $(ROOT_SCRIPTS)
+
+release-clean : force
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Clean release directory [$(RELEASE_DIR)]
+	$(ATSIGN)$(DELETE) $(DELETEFLAGS) $(RELEASE_DIR)/*
+
+release-remove-dir : force
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Removing release directory [$(RELEASE_DIR)]
+	$(ATSIGN)$(DELETE) $(DELETEFLAGS) $(RELEASE_DIR)
+
+release-addon-clean : force
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Removing release directory [$(RELEASE_ADDON_SUBDIR)]
+	$(ATSIGN)$(DELETE) $(DELETEFLAGS) $(RELEASE_ADDON_SUBDIR)
+
+release-zip : release-txt force
+ifeq ($(HOST),win32)
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Creating release ZIP file [$(RELEASE_ZIP)]
+	$(ATSIGN)$(DELETE) $(DELETEFLAGS) $(RELEASE_ZIP)
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(ZIPTMPDIR)
+	$(ATSIGN)$(ZIP) $(ZIPFLAGS) $(ZIPFLAGS_USER) $(RELEASE_ZIP) $(RELEASE_DIR)
+	$(ATSIGN)$(DELETE) $(DELETEFLAGS) $(ZIPTMPDIR)
+else
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Creating release ZIP file not supported on host $(HOST)
+endif
+
+release-bz2 : release-txt force
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Creating release BZ2 file [$(RELEASE_BZ2)]
+	$(ATSIGN)$(DELETE) $(DELETEFLAGS) $(RELEASE_BZ2)
+	cd $(dir $(RELEASE_BZ2)) && tar cjf  $(notdir $(RELEASE_BZ2)) $(notdir $(RELEASE_DIR))
+
+release-patch-zip : force
+ifeq ($(HOST),win32)
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Creating release-patch ZIP file [$(RELEASE_PATCH_ZIP)]
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(RELEASE_DIR)/../$(ZIPTMPDIR)
+	$(ATSIGN)cd $(RELEASE_DIR)/.. && $(ZIP) $(ZIPFLAGS) $(ZIPFLAGS_USER) $(RELEASE_PATCH_ZIP) $(RELEASE_PATCH_FILES:%=$(notdir $(RELEASE_DIR))/%)
+	$(ATSIGN)$(DELETE) $(DELETEFLAGS) $(RELEASE_DIR)/../$(ZIPTMPDIR)
+else
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Creating release ZIP file not supported on host $(HOST)
+endif
+
+release-addon-zip : force
+ifeq ($(HOST),win32)
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Creating release-addon ZIP file [$(RELEASE_ADDON_ZIP)]
+	$(ATSIGN)$(DELETE) $(DELETEFLAGS) $(RELEASE_ADDON_ZIP)
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(ZIPTMPDIR)
+	$(ATSIGN)$(ZIP) $(ZIPFLAGS) $(ZIPFLAGS_USER) $(RELEASE_ADDON_ZIP) $(RELEASE_ADDON_SUBDIR)
+	$(ATSIGN)$(DELETE) $(DELETEFLAGS) $(ZIPTMPDIR)
+	@$(ECHO) $(ECHOPREFIX) Copying release-addon ZIP file to [$(dir $(RELEASE_ZIP))]
+	$(ATSIGN)$(COPY) $(RELEASE_ADDON_ZIP) $(dir $(RELEASE_ZIP))
+	$(ATSIGN)$(DELETE) $(DELETEFLAGS) $(RELEASE_ADDON_ZIP)
+else
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Creating release ZIP file not supported on host $(HOST)
+endif
+
+release-txt : force
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Creating release notes file [$(RELEASE_TXT)]
+	$(ATSIGN)$(DELETE) $(DELETEFLAGS) $(RELEASE_TXT)
+	$(ATSIGN)$(ATSIGN)$(COPY) $(COPYFLAGS) $(TOPDIR)/ReleaseNotes.txt $(RELEASE_TXT)
+
+release-info : $(RELEASE_INFO_FILE)
+
+$(RELEASE_INFO_FILE): force
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Generating release information [$(RELEASE_INFO_FILE)]
+	$(ATSIGN)$(ECHO) 'Release name = $(RELEASE_TAG)' > $(RELEASE_INFO_FILE)
+	$(ATSIGN)$(ECHO) 'Release date = $(SYSTEM_DATE)' >> $(RELEASE_INFO_FILE)
+	$(ATSIGN)$(SVN) info $(TOPDIR)|$(PERL) -ne "if(m/Revision/){s,Revision.,SVN revision =,;print}" >> $(RELEASE_INFO_FILE)
+
+release-svn-tag : force
+ifeq ($(HOST),win32)
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Creating SVN release tag [$(RELEASE_TAG)]
+	$(ATSIGN)$(SVN) $(SVNFLAGS) $(SVNFLAGS_USER) tag -c -F -R $(RELEASE_TAG) $(TOPDIR)\*
+else
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Creating SVN release tag not supported on host $(HOST)
+endif
+
+release-svn-commit : force
+ifeq ($(HOST),win32)
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Auto-committing all SVN sources [$(RELEASE_TAG)]
+	$(ATSIGN)$(SVN) $(SVNFLAGS) $(SVNFLAGS_USER) commit -m "auto-commit for $(RELEASE_TAG)" $(TOPDIR)\*
+else
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Creating SVN release tag not supported on host $(HOST)
+endif
+
+$(RELEASE_DIR)/$(RELEASE_SUBDIR)/%: % force
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Releasing [$(word 1,$^)]
+	@$(ECHO) $(ECHOPREFIX) "-->" [$@]
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(dir $@)
+	$(ATSIGN)$(COPY) -r $(COPYFLAGS) $(word 1,$^) $(dir $@)
+
+$(RELEASE_ADDON_SUBDIR)/%: $(TOPDIR)/% force
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Releasing addon [$(word 1,$^)]
+	@$(ECHO) $(ECHOPREFIX) "-->" [$@]
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(dir $@)
+	$(ATSIGN)$(COPY) -r $(COPYFLAGS) $(word 1,$^) $(dir $@)
+
+release-ftp-mirror: force
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Copying [v$(RELEASE_MAJOR).$(RELEASE_MINOR)]
+	@$(ECHO) $(ECHOPREFIX) "-->" [$(RELEASE_FTPMIRROR_DIR)]
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(dir $@)
+	$(COPY) $(COPYFLAGS) $(RELEASE_ZIP) $(RELEASE_TXT) $(RELEASE_FTPMIRROR_DIR)/software
+	$(COPY) $(COPYFLAGS) $(RELEASE_DDM) $(RELEASE_FTPMIRROR_DIR)/.
+
+release-patch-ftp-mirror: force
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Copying [v$(RELEASE_MAJOR).$(RELEASE_MINOR)_p$(RELEASE_PATCH)]
+	@$(ECHO) $(ECHOPREFIX) "-->" [$(RELEASE_FTPMIRROR_DIR)]
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(dir $@)
+	$(COPY) $(COPYFLAGS) $(RELEASE_PATCH_ZIP) $(RELEASE_FTPMIRROR_DIR)/software
+
+################################################################################
+#
+# program execution rules
+#
+################################################################################
+
+execute-program: $(BUILD_PROGRAM)
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Executing [$(BUILD_PROGRAM)]
+	$(ATSIGN) $(EXECUTE) $(EXECUTEFLAGS) $(EXECUTE_RVS_FILE) $(EXECUTE_ADD_FILES) $(EXECUTE_PROG)$(BUILD_PROGRAM) $(EXECUTEFLAGS_USER)
+
+execute-profile-program: $(BUILD_PROFILE_PROGRAM)
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Executing [$(BUILD_PROFILE_PROGRAM)]
+	$(ATSIGN) $(EXECUTE) $(EXECUTEFLAGS) $(EXECUTE_RVS_FILE) $(EXECUTE_ADD_FILES) $(EXECUTE_PROG)$(BUILD_PROFILE_PROGRAM) $(EXECUTEFLAGS_USER)
+
+execute-program-noreset: $(BUILD_PROGRAM)
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Executing [$(BUILD_PROGRAM)]
+	$(ATSIGN) $(EXECUTE) $(EXECUTEFLAGS) $(EXECUTE_RVS_FILE) $(EXECUTE_ADD_FILES) $(EXECUTE_PROG)$(BUILD_PROGRAM) $(EXECUTEFLAGS_USER) -noreset
+
+debug-program: $(BUILD_DEBUG_PROGRAM)
+ifneq ("$(TARGET)","arc4-metaware")
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Preparing memory interface [$(notdir $(EXECUTE_RVS_FILE))]
+	$(ATSIGN) $(EXECUTE) $(EXECUTEFLAGS) $(EXECUTE_RVS_FILE) $(EXECUTE_ADD_FILES) -quiet $(EXECUTEFLAGS_USER)
+endif
+	@$(NEWLINE)
+ifneq ("$(GDBSERVER)","")
+	@$(ECHO) $(ECHOPREFIX) Starting GDB-Server
+	$(ATSIGN) cmd /C start /high $(GDBSERVER) $(GDBSERVERFLAGS)
+endif
+	@$(ECHO) $(ECHOPREFIX) Debugging [$(BUILD_DEBUG_PROGRAM)]
+ifeq ($(DBG_out),USE_CMD_SCRIPT)
+	$(ATSIGN) $(DBG) $(DBGFLAGS) $(DBGFLAGS_USER)
+else
+	$(ATSIGN) $(DBG) $(DBGFLAGS) $(DBGFLAGS_USER) $(DBG_out)"./$(BUILD_DEBUG_PROGRAM)" $(PROGRAM_ARGS)
+endif
+
+profile-program: $(BUILD_PROFILE_PROGRAM)
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Preparing memory interface [$(notdir $(EXECUTE_RVS_FILE))]
+	$(ATSIGN) $(EXECUTE) $(EXECUTEFLAGS) $(EXECUTE_RVS_FILE) $(EXECUTE_ADD_FILES) -quiet $(EXECUTEFLAGS_USER)
+	@$(NEWLINE)
+ifneq ("$(GDBSERVER)","")
+	@$(ECHO) $(ECHOPREFIX) Starting GDB-Server
+	$(ATSIGN) cmd /C start /high $(GDBSERVER) $(GDBSERVERFLAGS)
+endif
+	@$(ECHO) $(ECHOPREFIX) Debugging [$(BUILD_PROFILE_PROGRAM)]
+ifeq ($(DBG_out),USE_CMD_SCRIPT)
+	$(ATSIGN) $(DBG) $(DBGFLAGS) $(DBGFLAGS_USER)
+else
+	$(ATSIGN) $(DBG) $(DBGFLAGS) $(DBGFLAGS_USER) $(DBG_out)"./$(BUILD_PROFILE_PROGRAM)" $(PROGRAM_ARGS)
+endif
+
+debug-program-noreset: $(BUILD_DEBUG_PROGRAM)
+	@$(NEWLINE)
+ifneq ("$(GDBSERVER)","")
+	@$(ECHO) $(ECHOPREFIX) Starting GDB-Server
+	$(ATSIGN) cmd /C start /high $(GDBSERVER) $(GDBSERVERFLAGS)
+	@$(NEWLINE)
+endif
+	@$(ECHO) $(ECHOPREFIX) Debugging [$(BUILD_DEBUG_PROGRAM)]
+ifeq ($(DBG_out),USE_CMD_SCRIPT)
+	$(ATSIGN) $(DBG) $(DBGFLAGS) $(DBGFLAGS_USER)
+else
+	$(ATSIGN) $(DBG) $(DBGFLAGS) $(DBGFLAGS_USER) $(DBG_out)"./$(BUILD_DEBUG_PROGRAM)" $(PROGRAM_ARGS)
+endif
+
+.PHONY: help-show-rbl-msg
+HELP_RULES += help-show-rbl-msg
+help-show-rbl-msg: force
+	@$(NEWLINE)
+	@$(ECHO) "[$(@:help-%=%)]"
+	@$(ECHO) "  Extracts and displays the rom boot loader messages from the"
+	@$(ECHO) "  target, it uses the the make variables EXECUTE, EXECUTEFLAGS"
+	@$(ECHO) "  EXECUTE_RVS_FILE, and EXECUTEFLAGS_USER."
+
+show-rbl-msg: force
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Executing [$(BUILD_PROGRAM)]
+	$(ATSIGN) $(EXECUTE) $(EXECUTEFLAGS) $(EXECUTE_RVS_FILE) $(EXECUTEFLAGS_USER) -rblmsg -noflashreset
+
+show-rbl-msg-loop: force
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Executing [$(BUILD_PROGRAM)]
+	$(ATSIGN) $(EXECUTE) $(EXECUTEFLAGS) $(EXECUTE_RVS_FILE) $(EXECUTEFLAGS_USER) -rblmsgloop -flashreset -watchdog=disable
+
+flash-program:
+
+flash-erase: force
+	@$(NEWLINE)
+	@$(ECHO) "Erase magic id from flash [$(BUILD_FLASH_IMAGE)]"
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(dir $(BUILD_FLASH_IMAGE))
+	@$(ECHO) "" > $(BUILD_FLASH_IMAGE)
+	$(ATSIGN) $(FLASHER) $(FLASHERFLAGS) $(FLASHERFLAGS_USER) -flasherase
+
+flash-format: force
+	@$(NEWLINE)
+	@$(ECHO) "Format the entire flash [$(BUILD_FLASH_IMAGE)]"
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(dir $(BUILD_FLASH_IMAGE))
+	@$(ECHO) "" > $(BUILD_FLASH_IMAGE)
+	$(ATSIGN) $(FLASHER) $(FLASHERFLAGS) $(FLASHERFLAGS_USER) -flashformat
+
+clean-flash-image: force
+	@$(NEWLINE)
+	@$(ECHO) "Deleting flash image file [$(FLIMGEN_IMAGE_FILE)]"
+	-$(ATSIGN)$(DELETE) $(DELETEFLAGS) $(FLIMGEN_IMAGE_FILE)
+
+burn-flash-image: build-flash-image
+	@$(NEWLINE)
+	@$(ECHO) "Burning binary flash image file [$(BUILD_FLASH_IMAGE)]"
+	$(ATSIGN) $(FLASHER) $(FLASHERFLAGS) $(FLASHERFLAGS_USER)
+
+build-flash-image: $(FLIMGEN_IMAGE_FILE)
+
+$(FLIMGEN_IMAGE_FILE):
+	@$(NEWLINE)
+	@$(ECHO) "Generating binary flash image file [$@]"
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(dir $@)
+	$(ATSIGN) $(FLIMGEN) $(FLIMGENFLAGS) $(FLIMGEN_RVS_FILE) $(FLIMGEN_ELF_FILES) $(FLIMGEN_BIN_FILES) $(FLIMGENFLAGS_USER)
+
+clean-flash-image-dump: force
+	@$(NEWLINE)
+	@$(ECHO) "Deleting flash image dump [$(FLIMDUMP_IMAGE_FILE)]"
+	-$(ATSIGN)$(DELETE) $(DELETEFLAGS) $(FLIMDUMP_IMAGE_FILE)
+
+build-flash-image-dump: $(FLIMDUMP_IMAGE_FILE)
+
+$(FLIMDUMP_IMAGE_FILE): build-flash-image
+	@$(NEWLINE)
+	@$(ECHO) "Generating flash image dump file [$@]"
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(dir $@)
+	$(ATSIGN) $(FLIMDUMP) $(FLIMDUMPFLAGS) $(FLIMDUMPFLAGS_USER)
+
+clean-booter-slot-image: force
+	-$(ATSIGN)$(DELETE) $(DELETEFLAGS) $(BUILD_BOOTER_SLOT_IMAGE)
+
+burn-booter-slot-image: force
+	@$(NEWLINE)
+	@$(ECHO) "Burning binary booter flash slot image file [$@]"
+	$(ATSIGN) $(EXECUTE) $(EXECUTEFLAGS) \
+	          -flash \
+	          -flashinfo=$(FLASHER_INFO_BASE) \
+	          -flashtype=$(FLASHTYPE) \
+	          -flashbase=$(FLASHBASE) \
+	          -flashoffset=$(BOOTER_SLOT_OFFSET) \
+	          -bin=$(BOOTER_SLOT_IMAGE)@RAW,$(FLASHER_IMAGE_BASE),,LOAD \
+	          -elf=$(FLASHER_PROGRAM) \
+	          $(EXECUTE_RVS_FILE) \
+	          $(EXECUTEFLAGS_USER) \
+	          -wait=polling
+
+build-booter-slot-image: $(BUILD_BOOTER_SLOT_IMAGE)
+
+$(BUILD_BOOTER_SLOT_IMAGE):
+	@$(NEWLINE)
+	@$(ECHO) "Generating booter slot image file [$@]"
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(dir $@)
+	$(ATSIGN) $(BIMGEN) $(BIMGENFLAGS) $(BIMGENFLAGS_USER)
+
+ifeq ("$(FLASHTYPE)","32bit@32")
+  dump-flash : dump-sflash
+else
+    ifeq ("$(FLASHTYPE)","n8bit@8")
+        dump-flash : dump-nflash
+    else
+        dump-flash : dump-pflash
+    endif
+endif
+
+dump-pflash:  $(EXTRACT_PFLASH_ASCDATA)
+dump-sflash:  $(EXTRACT_SFLASH_ASCDATA)
+dump-nflash:  $(EXTRACT_NFLASH_ASCDATA)
+dump-memory:  $(EXTRACT_MEMORY_IMAGE)
+dump-flimgen: $(BUILD_FLASH_IMAGE_DUMP)
+
+$(EXTRACT_PFLASH_IMAGE): force
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Extracting parallel flash dump to [$@]
+	$(ATSIGN)$(TOPDIR)/env/bin/M-$(HOST)/memdump.exe \
+	         -verbose -dll=$(DEBUGPORT_DLL) $(DEBUGPORT_FLAGS) \
+	         -start=$(FLASHBASE) -kbytes=$(FLASHKBYTES) -out=$@
+
+$(EXTRACT_PFLASH_ASCDATA): $(EXTRACT_PFLASH_IMAGE)
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Converting parallel flash dump [$<] to [$@]
+	$(ATSIGN)$(TOPDIR)/env/bin/M-$(HOST)/elfconv.exe -in-bin=$< -ascdata=$@
+
+$(EXTRACT_SFLASH_IMAGE): force
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Extracting serial flash dump to [$@]
+	$(ATSIGN)$(TOPDIR)/env/bin/M-$(HOST)/memdump.exe \
+	         -verbose -dll=$(DEBUGPORT_DLL) $(DEBUGPORT_FLAGS) \
+	         -start=0x00000000 -kbytes=$(FLASHKBYTES) -out=$@ -sflash
+
+$(EXTRACT_SFLASH_ASCDATA): $(EXTRACT_SFLASH_IMAGE)
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Converting serial flash dump [$<] to [$@]
+	$(ATSIGN)$(TOPDIR)/env/bin/M-$(HOST)/elfconv.exe -in-bin=$< -ascdata=$@
+
+$(EXTRACT_NFLASH_IMAGE): force
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Extracting nand flash dump to [$@]
+	$(ATSIGN)$(TOPDIR)/env/bin/M-$(HOST)/memdump.exe \
+	         -verbose -dll=$(DEBUGPORT_DLL) $(DEBUGPORT_FLAGS) \
+	         -start=0x00000000 -kbytes=$(FLASHKBYTES) -out=$@ -nflash
+
+$(EXTRACT_NFLASH_ASCDATA): $(EXTRACT_NFLASH_IMAGE)
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Converting nand flash dump [$<] to [$@]
+	$(ATSIGN)$(TOPDIR)/env/bin/M-$(HOST)/elfconv.exe -in-bin=$< -ascdata=$@
+
+$(EXTRACT_MEMORY_IMAGE): force
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Extracting memory flash dump to [$@]
+	@$(ECHO) $(ECHOPREFIX) using MEMDUMP_ADDRESS=$(MEMDUMP_ADDRESS) MEMDUMP_KBYTES=$(MEMDUMP_KBYTES)
+	$(ATSIGN)$(TOPDIR)/env/bin/M-$(HOST)/memdump.exe \
+	         -verbose -dll=$(DEBUGPORT_DLL) $(DEBUGPORT_FLAGS):NORESET \
+	         -start=$(MEMDUMP_ADDRESS) -kbytes=$(MEMDUMP_KBYTES) -out=$@ -noreset
+
+execute-readuid: force
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Reading unique device id [$@]
+	$(ATSIGN)$(TOPDIR)/env/bin/M-$(HOST)/readuid.exe -password=$(DEBUGPORT_PASSWORD) -noreset
+
+execute-pvaccess: force
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Execute Pvaccess [$@]
+	$(ATSIGN)$(TOPDIR)/env/bin/M-$(HOST)/pvaccess.exe \
+	                                     -dll=$(DEBUGPORT_DLL) \
+	                                     $(DEBUGPORT_FLAGS) \
+	                                     $(EXECUTE_RVS_FILE) \
+	                                     -password=$(DEBUGPORT_PASSWORD) \
+
+################################################################################
+#
+# source code documentation rules
+#
+################################################################################
+
+.PHONY: doc-create-directories
+doc-create-directories: force
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Creating documentation directories [$(MKDIRFLAGS) $(TOPDIR)/docs/pdf/...]
+#	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(TOPDIR)/docs/online/general/
+#	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(TOPDIR)/docs/online/common/images/
+#	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(TOPDIR)/docs/online/$(DOXYGEN_OPT_SECTIONS)/html/
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(TOPDIR)/docs/pdf/
+
+.PHONY: test-doc-create-directories
+test-doc-create-directories: force
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Creating test documentation directories [$(MKDIRFLAGS) /build/docs/online/...]
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) build/docs/online/general/
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) build/docs/online/common/images
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) build/docs/online/TEST/html/
+
+.PHONY: doc-copy-common
+doc-copy-common: force
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Copy common documentation [$(TOPDIR)/env/doxygen/]
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(TOPDIR)/docs/pdf
+	$(ATSIGN)$(COPY) $(COPYFLAGS) \
+			$(TOPDIR)/env/doxygen/up.dox \
+			dox/
+	$(ATSIGN)$(COPY) $(COPYFLAGS) \
+			$(TOPDIR)/tools/dox/Flashtool.pdf \
+			$(TOPDIR)/tools/dox/MergeTools.pdf \
+			$(TOPDIR)/tools/dox/UPDTools.pdf \
+			$(TOPDIR)/tools/dox/ResPackage.pdf \
+		    	$(TOPDIR)/tools/dox/FontConvert.pdf \
+		    	$(TOPDIR)/tools/dox/XGUIBuilder.pdf \
+		$(TOPDIR)/docs/pdf
+
+.PHONY: doc-copy-placeholder
+doc-copy-placeholder-%: force
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Copy documentation placeholder [$(TOPDIR)/docs/online/$(@:doc-copy-placeholder-%=%)]
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(TOPDIR)/docs/online/$(@:doc-copy-placeholder-%=%)
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(TOPDIR)/docs/online/$(@:doc-copy-placeholder-%=%)/html
+	$(ATSIGN)$(COPY) $(COPYFLAGS) $(TOPDIR)/docs/common/main_placeholder.html $(TOPDIR)/docs/online/$(@:doc-copy-placeholder-%=%)/html/main.html
+
+.PHONY: test-doc-copy-common
+test-doc-copy-common: force
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Copy test common documentation [/build/docs/common/]
+	$(ATSIGN)$(COPY) $(COPYFLAGS) \
+	    $(TOPDIR)/docs/common/images/key.png \
+	    $(TOPDIR)/docs/common/images/sub_key.png \
+	    $(TOPDIR)/docs/common/images/up.png \
+	    $(TOPDIR)/docs/common/images/key_bar_top.png \
+	    $(TOPDIR)/docs/common/images/key_bar_middle.png \
+	    $(TOPDIR)/docs/common/images/key_bar_bottom.png \
+	    $(TOPDIR)/docs/common/images/fujitsu.png \
+	    $(TOPDIR)/docs/common/images/fujitsu_logo.png \
+	    $(TOPDIR)/docs/common/images/under_construction.png build/docs/online/common/images/
+
+.PHONY: doc-clean-svn
+doc-clean-svn: force
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Removing installed SVN folders
+	@$(ECHO) $(ECHOPREFIX) "-->" [$(TOPDIR)/docs/online/general/*/$(SVN_SUBDIR)]
+	@$(DELETE) $(DELETEFLAGS) \
+	    $(TOPDIR)/docs/online/general/*/$(SVN_SUBDIR) \
+	    $(TOPDIR)/docs/online/general/*/*/$(SVN_SUBDIR) \
+	    $(TOPDIR)/docs/online/general/*/*/*/$(SVN_SUBDIR) \
+	    $(TOPDIR)/docs/online/general/*/*/*/*/$(SVN_SUBDIR)
+
+.PHONY: test-doc-clean-svn
+test-doc-clean-svn: force
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Removing installed SVN folders
+	@$(ECHO) $(ECHOPREFIX) "-->" [build/docs/general/*/$(SVN_SUBDIR)]
+	@$(DELETE) $(DELETEFLAGS) \
+	    build/docs/online/general/*/$(SVN_SUBDIR) \
+	    build/docs/online/general/*/*/$(SVN_SUBDIR) \
+	    build/docs/online/general/*/*/*/$(SVN_SUBDIR) \
+	    build/docs/online/general/*/*/*/*/$(SVN_SUBDIR)
+
+.PHONY: clean-doc-all
+clean-doc-all: force
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Removing all generated online documentations
+	@$(ECHO) $(ECHOPREFIX) "-->" [$(TOPDIR)/docs/online]
+	$(ATSIGN)$(DELETE) $(DELETEFLAGS) $(TOPDIR)/docs/online/
+
+.PHONY: clean-doc-online
+clean-doc-online: force
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Removing generated online documentation files
+	@$(ECHO) $(ECHOPREFIX) "-->" [$(TOPDIR)/docs/online/$(DOXYGEN_OPT_SECTIONS)/]
+	$(ATSIGN)$(DELETE) $(DELETEFLAGS) $(TOPDIR)/docs/online/$(DOXYGEN_OPT_SECTIONS)/
+
+.PHONY: clean-test-doc-online
+clean-test-doc-online: force
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Removing generated test online documentation files
+	@$(ECHO) $(ECHOPREFIX) "-->" [/build/docs/online/]
+	$(ATSIGN)$(DELETE) $(DELETEFLAGS) build/docs/online/
+
+
+.PHONY: build-doc
+build-doc: doc-prepare-common doc-generate-html doc-generate-pdf
+
+.PHONY: build-test-doc
+build-test-doc: clean-test-doc-online test-doc-prepare-common test-doc-generate-html
+
+.PHONY: doc-prepare-common
+doc-prepare-common: doc-create-directories \
+                    doc-copy-common $(DIRECTORIES:%=subdir-doc-%) \
+                    doc-clean-svn \
+
+.PHONY: test-doc-prepare-common
+test-doc-prepare-common: test-doc-create-directories \
+                         test-doc-copy-common $(DIRECTORIES:%=subdir-doc-%) \
+                         test-doc-clean-svn \
+
+.PHONY: doc-html
+#doc-html: doc-prepare-common doc-generate-html
+doc-html: doc-copy-common doc-generate-html
+
+.PHONY: doc-pdf
+#doc-pdf: doc-prepare-common doc-generate-pdf
+doc-pdf: doc-copy-common doc-generate-pdf
+
+.PHONY: doc-generate-html
+doc-generate-html:
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Generating HTML documentation
+#	@$(ECHO) $(ECHOPREFIX) "-->" [$(TOPDIR)/docs/online/$(DOXYGEN_OPT_SECTIONS)/html/]
+	@$(ECHO) $(ECHOPREFIX) "-->" [./docs/html/]
+	-$(ATSIGN)$(DOXYGEN) $(DOXYGENFLAGS) $(DOXYGENFLAGS_USER) $(DOXYGEN_CONFIG_HTML)
+#	-$(ATSIGN)$(DOXYGEN) $(DOXYGENFLAGS) $(DOXYGENFLAGS_USER) $(DOXYGEN_CONFIG_HTML) 2>&1
+
+.PHONY: test-doc-generate-html
+test-doc-generate-html:
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Generating TEST HTML documentation
+	@$(ECHO) $(ECHOPREFIX) "-->" [/build/docs/online/TEST/html/]
+	-$(ATSIGN)$(DOXYGEN) $(DOXYGENFLAGS) $(DOXYGENFLAGS_USER) $(DOXYGEN_CONFIG_TEST_HTML) 2>&1
+
+.PHONY: doc-generate-pdf
+doc-generate-pdf:
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Generating PDF documentation
+	@$(ECHO) $(ECHOPREFIX) "-->" [$(TOPDIR)/docs/pdf/]
+	$(ATSIGN)$(DOXYGEN) $(DOXYGENFLAGS) $(DOXYGENFLAGS_USER) $(DOXYGEN_CONFIG_PDF)
+	$(ATSIGN)$(PERL) $(TOPDIR)/env/doxygen/refman_modification.pl docs/pdf/refman.tex
+#	-$(ATSIGN)cd docs/online/$(DOXYGEN_OPT_SECTIONS)/pdf && $(LATEX) $(LATEXFLAGS) $(LATEXFLAGS_USER)
+#	-$(ATSIGN)cd docs/online/$(DOXYGEN_OPT_SECTIONS)/pdf && $(LATEX) $(LATEXFLAGS) $(LATEXFLAGS_USER)
+#	-$(ATSIGN)cd docs/online/$(DOXYGEN_OPT_SECTIONS)/pdf && $(LATEX) $(LATEXFLAGS) $(LATEXFLAGS_USER)
+	-$(ATSIGN)cd docs/pdf && $(LATEX) $(LATEXFLAGS) $(LATEXFLAGS_USER)
+	-$(ATSIGN)cd docs/pdf && $(LATEX) $(LATEXFLAGS) $(LATEXFLAGS_USER)
+	-$(ATSIGN)cd docs/pdf && $(LATEX) $(LATEXFLAGS) $(LATEXFLAGS_USER)
+	$(ATSIGN)$(COPY) $(COPYFLAGS) docs/pdf/refman.pdf docs/pdf/GOKE_SDK_Documentation.pdf
+	@$(DELETE) $(DELETEFLAGS) \
+	    docs/pdf/refman.pdf \
+	    docs/pdf/Makefile \
+	    docs/pdf/*.aux \
+	    docs/pdf/*.idx \
+	    docs/pdf/*.log \
+	    docs/pdf/*.out \
+	    docs/pdf/*.sty \
+	    docs/pdf/*.tex \
+	    docs/pdf/*.toc \
+	    docs/pdf/*.ttf \
+	    docs/pdf/*.png \
+	    docs/pdf/*.jpg \
+	    docs/pdf/*.eps \
+	    docs/pdf/*.dot \
+	    docs/pdf/*.md5 \
+		docs/pdf/*.bak \
+		docs/pdf/*.bat
+
+################################################################################
+#
+# short-cut rules
+#
+################################################################################
+
+lib library: build-library
+
+prog program: build-program
+
+dump elfdump: build-elfdump-program build-debug-elfdump-program
+
+ifdef PROFILE
+  run exec execute: $(PRE_EXECUTE) execute-profile-program
+  debug: $(PRE_EXECUTE) profile-program
+else
+  run exec execute: $(PRE_EXECUTE) execute-program
+  debug: $(PRE_EXECUTE) debug-program
+endif
+
+debug-noreset: debug-program-noreset
+
+run-noreset: execute-program-noreset
+
+uid: execute-readuid
+
+pvaccess: execute-pvaccess
+
+# flash: clean-flash-image build-flash-image burn-flash-image
+
+################################################################################
+#
+# indent specific rules
+#
+################################################################################
+
+#beautify-c: $(SOURCES_BC)
+
+#%.c$(BEAUTIFY_EXT) : %.c force
+#	@$(NEWLINE)
+#	@$(ECHO) $(ECHOPREFIX) Beautifying [$(word 1,$(DOLLAR^))]
+#	@$(ECHO) $(ECHOPREFIX) "-->" [$(DOLLAR@)]
+#	$(ATSIGN)$(BEAUTIFY) $(BEAUTIFYFLAGS) $(BEAUTIFYFLAGS_USER) $(word 1,$(DOLLAR^)) -o $(DOLLAR@)
+
+################################################################################
+#
+# makefile dependency rules
+#
+################################################################################
+
+.PHONY: depend
+depend: force
+ifeq ($(DEPEND),1)
+  ifneq ("$(SOURCES)","")
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Creating dependency file [$(DEPENDENCY_FILENAME)]
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(dir $(DEPENDENCY_FILENAME))
+	$(ATSIGN)$(MAKEDEPEND) $(MAKEDEPENDFLAGS) $(MAKEDEPENDFLAGS_USER) $(SOURCES) > $(DEPENDENCY_FILENAME)
+  endif
+else
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Creating dependency file [$(DEPENDENCY_FILENAME)]
+	@$(ECHO) $(ECHOPREFIX) -- disabled by DEPEND=$(DEPEND)
+endif
+
+################################################################################
+#
+# makefile debugging/reporting rules
+#
+################################################################################
+
+.PHONY: macro
+macro: force
+	@$(ECHO) $(MACRO)="$($(MACRO))"
+
+.PHONY: plain-macro
+plain-macro: force
+	@$(ECHO) "$($(MACRO))"
+
+.PHONY: variables
+variables: variables_header $(VARIABLES:%=print-variable-%) variables_header
+
+print-variable-%: force
+	@$(ECHO) "$(@:print-variable-%=%)=$($(@:print-variable-%=%))"
+
+.PHONY: variables_header
+variables_header: environment_header
+	@$(NEWLINE)
+	@$(ECHO) Below is a list of internal variables used by make.
+	@$(NEWLINE)
+	@$(ECHO) $(LINE78)
+	@$(NEWLINE)
+
+.PHONY: variables_footer
+variables_footer: force
+	@$(NEWLINE)
+
+################################################################################
+#
+# deploy rules
+#
+################################################################################
+
+-include $(TOPDIR)/env/make/Makefile.deploy
+
+################################################################################
+#
+# help rules
+#
+################################################################################
+
+-include $(TOPDIR)/env/make/Makefile.help
+
+.PHONY: force
+force:

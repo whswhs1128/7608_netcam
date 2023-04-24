@@ -1,0 +1,75 @@
+################################################################################
+################################################################################
+##
+## Makefile -- Makefile for snd-soc-gk_ipcam module
+##
+## (C) Copyright 2012-2017 by Goke Microelectronics Co.,Ltd
+##
+## Version: $Id: Makefile 13657 2018-05-14 02:54:03Z yulindeng $
+##
+## Mandatory settings:
+##
+## o TOPDIR      = the toplevel directory (using slashes as path separator)
+## o TARGET      = the machine qualifier to generate code for
+## o DIRECTORIES = the list of sub directories to build
+##
+################################################################################
+################################################################################
+
+
+ALSA_CONFIG = $(shell grep -o "\bCONFIG_SOUND=y\b" ../../../3.4.43/.config 2> /dev/null | wc -l)
+
+################################################################################
+# project specific settings
+################################################################################
+
+
+################################################################################
+# include library specific targets ( if available )
+################################################################################
+
+################################################################################
+# define user targets
+################################################################################
+ifeq ($(ALSA_CONFIG), 1)
+default: build install
+
+clean: force
+	@$(MAKE) --no-print-directory -C $(PRIVATE_KERNEL_TOP) M=$(PWD) clean
+
+build: force
+	@$(MAKE) --no-print-directory -C $(PRIVATE_KERNEL_TOP) M=$(PWD) modules
+	@$(STRIP) -x $(PWD)/*.ko
+
+install: force
+	@$(MAKE) install-kernel-modules
+else
+default:
+
+clean:
+
+build: 
+
+install:
+endif
+
+headers: $(DIRECTORIES:%=subdir-headers-%)
+depend: $(DIRECTORIES:%=subdir-depend-%)
+
+all: clean headers build install
+
+################################################################################
+# include internal definitions and rules
+################################################################################
+
+
+
+
+
+################################################################################
+# local directory specific rules
+################################################################################
+
+include $(TOPDIR)/linux/kernel/drv/Makefile.drv
+
+

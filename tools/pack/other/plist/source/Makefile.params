@@ -1,0 +1,14 @@
+CORSS_COMPLIED = arm-goke-linux-uclibcgnueabi-
+#CORSS_COMPLIED = 
+CFLAGS= -I./include \
+        -lpthread
+EXTRA_CFLAGS =
+LIBRARYS =
+
+GCC=$(CORSS_COMPLIED)gcc
+AR=$(CORSS_COMPLIED)ar
+RANLIB=$(CORSS_COMPLIED)ranlib
+STRIP=$(CORSS_COMPLIED)strip
+
+####################################################
+

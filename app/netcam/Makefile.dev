@@ -1,0 +1,896 @@
+################################################################################
+################################################################################
+##
+## Makefile -- makefile for application ctlserver
+##
+## (C) Copyright 2012-2014 by Goke Microelectronics Co.,Ltd
+##
+## Mandatory settings:
+##
+## o TOPDIR      = the toplevel directory (using slashes as path separator)
+## o TARGET      = the machine qualifier to generate code for
+##
+################################################################################
+################################################################################
+TOPDIR = ../..
+SUBDIR = app/netcam
+
+include $(TOPDIR)/env/make/Makefile.config
+include module_config
+
+LIBRARY = libmain
+
+
+
+ifeq ($(SUPPORT_RTSP_CONFIG),y)
+LIBRARIES += rtspLib
+SOURCES += src/rtsp/gk_rtsp.c
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/subsystem/minirtsp
+LIBRARIES += md5
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/subsystem/md5
+endif
+
+ifeq ($(SUPPORT_ONVIF_CONFIG),y)
+LIBRARIES += onvif
+LIBRARIES += app_onvif
+endif
+
+ifeq ($(SUPPORT_HTTP_CONFIG),y)
+LIBRARIES += httpserver
+endif
+
+#ifeq ($(SUPPORT_NTP_CONFIG),y)
+#LIBRARIES += ntpclient
+#endif
+
+ifeq ($(SUPPORT_CMS_CONFIG),y)
+LIBRARIES += app_gkcms
+endif
+
+ifeq ($(SUPPORT_LOCAL_REC),y)
+LIBRARIES +=  app_avi
+endif
+
+ifeq ($(SUPPORT_REC_PCM),y)
+SOURCES += $(wildcard src/audio_test/*.c)
+endif
+
+ifeq ($(SUPPORT_OLD_CMS_CONFIG),y)
+CCFLAGS_USER += -I src/gk_cms
+SOURCES += $(wildcard src/cms/*.c)
+endif
+
+
+#SOURCES += src/third/uvc/uvc_common.c
+#SOURCES += src/third/uvc/uvc_yst.c
+
+
+ifeq ($(SUPPORT_DAHUA_CONFIG),y)
+#CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/netpt/dahua/
+#LDFLAGS_USER += -ldahua -L./lib/libdahua/
+SOURCES += src/third/dahua/dahua_session.c
+endif
+
+ifeq ($(SUPPORT_XMAI_CONFIG),y)
+#SOURCES += src/third/xmai/util_sock.c
+SOURCES += src/third/xmai/xmai_session.c
+SOURCES += src/third/xmai/xmai_message.c
+CCFLAGS_USER += -I src/gk_cms
+#CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/netpt/xmai/
+#LDFLAGS_USER += -lxmai -L./lib/libxmai/
+endif
+
+ifeq ($(SUPPORT_HIK_CONFIG),y)
+LIBRARIES += app_hik
+#LDFLAGS_USER += -lapp_hik -L lib
+endif
+
+
+
+ifeq ($(SUPPORT_YUNNI_P2P),y)
+LIBRARIES += app_yunni_p2p
+LIBRARIES += dbc 
+LIBRARIES += BPPP_API_GKX
+endif
+
+ifeq ($(SUPPORT_GK_SEARCH),y)
+LIBRARIES += app_gk_search_ipc
+CCFLAGS_USER += -I src/third/ulucu/lib/inc
+#SOURCES += src/search/ipcsearch.c
+CCFLAGS_USER += -I src/search
+endif
+
+ifeq ($(SUPPORT_DANA_CONFIG),y)
+LIBRARIES += app_dana
+LIBRARIES += dana_video_plus
+endif
+
+ifeq ($(SUPPORT_GOOLINK_CONFIG),y)
+#LIBRARIES += app_goolink
+SOURCES += src/third/goolink/src/audioRecorder.c
+SOURCES += src/third/goolink/src/goolink_server.c
+SOURCES += src/third/goolink/src/goolink_cc_switch.cpp
+SOURCES += src/third/goolink/src/transparent.cpp
+LIBRARIES += terminal
+
+CCFLAGS_USER += -I src/third/goolink/inc
+CCFLAGS_USER += -I src/third/goolink/src
+LDFLAGS_USER += -lvoice_transfer -L src/third/goolink/lib
+endif
+
+ifeq ($(SUPPORT_TUTK_CONFIG),y)
+#LIBRARIES += app_tutk
+SOURCES += src/third/tutk/src/tutk_server.c
+#SOURCES += src/third/tutk/src/doorbell_func.c
+SOURCES += src/third/tutk/src/tutk_push_func.c
+SOURCES += src/third/tutk/src/tutk_jiguang_push_ssl.c
+SOURCES += src/third/tutk/src/tutk_net_update.c
+
+LIBRARIES += AVAPIs
+LIBRARIES += IOTCAPIs
+#LIBRARIES += mbedtls
+LDFLAGS_USER += -lmbedtls
+
+LDFLAGS_USER += -lopus -Llib
+
+CCFLAGS_USER += -I src/third/tutk/inc
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/subsystem/mediabuffer
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/subsystem/mbedtls
+CCFLAGS_USER += -I src/search/inc
+CCFLAGS_USER += -I src/factory_test
+endif
+
+ifeq ($(SUPPORT_MTWS_P2P),y)
+SOURCES += src/third/mtws/src/phone_mtws.c
+SOURCES += src/third/mtws/src/mtws_base64.c
+CCFLAGS_USER += -I src/third/mtws/inc
+CCFLAGS_USER += -I src/gk_cms
+CCFLAGS_USER += -I inc/cfg
+CCFLAGS_USER += -I src/search/inc
+LDFLAGS_USER += -lp2p  -L src/third/mtws/lib
+endif
+
+
+ifeq ($(SUPPORT_DEFAULT_WORKQUEUE),y)
+LIBRARIES += workqueue
+endif
+
+ifeq ($(SUPPORT_ULUCU_CONFIG),y)
+LIBRARIES += json
+LIBRARIES += app_ulucu
+LIBRARIES += ulk_net_ext
+LIBRARIES += faad
+LIBRARIES += iconv
+CCFLAGS_USER += -I src/third/ulucu/lib/inc
+endif
+
+ifeq ($(SUPPORT_ECHO_CANCEL),y)
+#CCFLAGS_USER += -I$(TOPDIR)/sdk/GK7101/include/ 
+#LDFLAGS_USER += -laec -L$(TOPDIR)/tools/pdk/GK710X_PDK/v1.1.2/aec/
+CCFLAGS_USER += -I$(GK_PDK_PATH)/aec/
+LDFLAGS_USER += -L$(GK_PDK_PATH)/aec/ -lap
+endif
+
+ifeq ($(SUPPORT_RF433_CONFIG),y)
+CCFLAGS_USER += -I src/rf433
+SOURCES += $(wildcard src/rf433/*.c)
+endif
+
+ifeq ($(SUPPORT_FACTORY_TEST),y)
+CCFLAGS_USER += -I src/factory_test
+SOURCES += $(wildcard src/factory_test/*.c)
+endif
+
+ifeq ($(SUPPORT_PPCS_CONFIG),y)
+CCFLAGS_USER += -I src/third/ppcs/inc
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/subsystem/mediabuffer
+SOURCES += src/third/ppcs/src/doorbell_func.c
+LIBRARIES += PPCS_API
+LIBRARIES += app_ppcs
+LIBRARIES += ad_pcm
+LIBRARIES += ppcs_search
+endif
+
+
+ifeq ($(SUPPORT_GKVISION),y)
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/subsystem/vision
+CCFLAGS_USER += -I$(TOPDIR)/app/netcam/src/gkvision
+LDFLAGS_USER += -lstdc++
+SOURCES += src/gkvision/gkvision.c
+
+#OML
+USE_OML=n
+ifeq ($(USE_OML),y)
+	CCFLAGS_USER += -I$(TOPDIR)/app/netcam/src/gkvision/include
+	CCFLAGS_USER += -DUSE_OML
+	SOURCES += src/gkvision/SampleMbd.c
+	LIBRARIES += eOkaoMbd eOkao eOkaoFr eOkaoDt eOkaoPt eOkaoCo
+else
+	#LIBRARIES += ncnn vision
+endif
+endif
+
+#ifeq ($(SUPPORT_GB28181),y)
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/subsystem
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/subsystem/osipparser2/headers
+CCFLAGS_USER += -I src/third/gb28181/include
+LIBRARIES += osip2 osipparser2 eXosip2		
+SOURCES += src/third/gb28181/ite_gb28181_rtp.c
+SOURCES += src/third/gb28181/ite_gb28181_sip.c
+SOURCES += src/third/gb28181/ite_gb28181_app.c
+SOURCES += src/third/gb28181/ite_gb28181_playback.c
+#endif
+
+ifeq ($(SUPPORT_MOJING),y)
+SOURCES += src/third/mojing/src/mojing.c
+
+SOURCES += src/third/mojing/src/uuid4.c
+
+ifneq ($(USE_NANOPB),y)
+	SOURCES += src/third/mojing/src/mojingCMD.cpp
+	LIBRARIES += protobuf-lite
+else
+	SOURCES += src/third/mojing/src/mojingCMD.pb.c
+	SOURCES += src/third/mojing/src/pb/pb_encode.c
+	SOURCES += src/third/mojing/src/pb/pb_decode.c
+	SOURCES += src/third/mojing/src/pb/pb_common.c
+	CCFLAGS_USER += -I$(TOPDIR)/app/netcam/src/third/mojing/src/pb
+endif
+
+#SOURCES += src/third/mojing/src/SSLHandle.cpp
+
+#LIBRARIES += jsoncpp
+#LIBRARIES += protobuf
+
+#LIBRARIES += ssl
+#LIBRARIES += crypto
+#LIBRARIES += mojing
+#LIBRARIES += curl
+
+LIBRARIES += md5
+#CCFLAGS_USER += -I$(TOPDIR)/app/netcam/src/third/mojing/inc
+CCFLAGS_USER += -I$(TOPDIR)/app/netcam/src/third/mojing/inc
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/subsystem/md5
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/subsystem/mbedtls
+
+#LDFLAGS_USER +=  -lstdc++
+ifeq ($(SUPPORT_MOFANG_PLUGIN),y)
+LDFLAGS_USER += -lmbedtls
+else
+LIBRARIES += mbedtls
+endif
+#USE_C++_LIB = y
+endif
+
+ifeq ($(SUPPORT_MOFANG),y)
+CCFLAGS_USER += -I src/third/mofang/inc
+LIBRARIES += crypto
+LIBRARIES += mofang
+endif
+
+ifeq ($(SUPPORT_MOFANG_PLUGIN),y)
+CCFLAGS_USER += -I src/third/mofangPlugin/inc
+LDFLAGS_USER += -lmbedtls
+LIBRARIES += mofangPlugin
+endif
+
+ifeq ($(SUPPORT_GOKE_UPGRADE),y)
+SOURCES += src/third/upgrade/goke_upgrade.c
+LIBRARIES += mbedtls
+#LDFLAGS_USER += -lmbedtls
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/subsystem/mbedtls
+CCFLAGS_USER += -I$(TOPDIR)/app/netcam/src/third/upgrade/inc
+
+ifeq ($(SUPPORT_SERVER_KEY),y)
+LIBRARIES += serverkey
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/subsystem/serverkey
+endif
+endif
+
+ifeq ($(SUPPORT_GOKE_SHARE_INFO),y)
+SOURCES += src/third/gokeShareInfo/gokeShareInfo.c
+endif
+
+ifeq ($(SUPPORT_GOKE_SERVER),y)
+SOURCES += src/third/gokeServer/gokeServer.c
+endif
+
+
+
+ifeq ($(SUPPORT_GK6323_FACE),y)
+SOURCES += src/third/face6323/face6323.c
+SOURCES += src/third/face6323/face_fb.c
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/app/netcam/src/third/face6323/inc
+endif
+
+ifeq ($(SUPPORT_ENCRYPT_AUTHOR),y)
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/app/netcam/src/third/encrypt
+LIBRARIES += app_encrypt
+LIBRARIES += dx8api_armgcc
+endif
+
+ifeq ($(SUPPORT_WAVE_CHANNEL),y)
+LIBRARIES += wavechannel
+endif
+LIBRARIES +=app_cfg
+LIBRARIES +=app_update
+
+ifeq ($(SUPPORT_LVGL),y)
+LIBRARIES += app_ui
+LIBRARIES += lvgl
+LIBRARIES += jpeg
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/app/netcam/src/ui/inc
+endif
+
+ifeq ($(SUPPORT_K24C02_EEPROM),y)
+LIBRARIES += k24c02_eeprom
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/app/netcam/src/third/k24c02_eeprom
+endif
+
+ifeq ($(SUPPORT_SHELL),y)
+SOURCES += src/shell/shell.c
+SOURCES += src/shell/shell_start.c
+SOURCES += src/shell/shell_ircut.c
+SOURCES += src/shell/shell_wifi.c
+SOURCES += src/shell/shell_isp.c
+SOURCES += src/shell/shell_ptz.c
+SOURCES += src/shell/shell_upgrade.c
+SOURCES += src/shell/shell_ftp.c
+SOURCES += src/shell/shell_bplustree.c
+endif
+
+################################################################################
+# source files
+################################################################################
+
+
+SOURCES += src/common/main.c
+SOURCES += src/common/netcam_sys.c
+
+#video source file
+SOURCES += src/video/netcam_video.c
+SOURCES += src/video/netcam_video_web_stream.c
+
+#audio souce file
+#SOURCES += src/audio/netcam_audio.c	xqq no audio
+
+#timer source file
+SOURCES += src/image/netcam_image.c
+SOURCES += src/timer/netcam_timer.c
+SOURCES += src/autolight/netcam_autolight.c
+
+
+#osd source files
+SOURCES += src/osd/netcam_osd.c
+
+#http source files
+ifneq ($(NOT_SUPPORT_WEB),y)
+SOURCES += src/http/netcam_http_web.c
+endif
+
+#network source files
+SOURCES += src/net/netcam_network.c
+SOURCES += src/net/net_arp.c
+SOURCES += src/net/net_dhcp.c
+SOURCES += src/net/net_arping.c
+
+#ptz source files
+SOURCES += src/ptz/netcam_ptz.c
+
+#md source files
+SOURCES += src/md/netcam_motion_detect.c
+
+#watchdog
+SOURCES += src/watchdog/netcam_watchdog.c
+
+#maintain
+SOURCES += src/work_callback/system_handle.c
+
+#main
+ifeq ($(SUPPORT_MAIL),y)
+CCFLAGS_USER += -I src/mail
+SOURCES += src/mail/netcam_mail.c
+endif
+
+#upnp, heyong 2015.9.28
+#ifeq ($(SUPPORT_UPNP),y)
+#endif
+
+ifeq ($(SUPPORT_OPENSSL),y)
+LIBRARIES += crypto
+LIBRARIES += ssl
+endif
+
+#yudp, heyong 2015.12.2
+ifeq ($(SUPPORT_YUDP),y)
+SOURCES += src/yudp/yudp_host.c 
+endif
+
+CCFLAGS_USER += -I src/common_venc
+CCFLAGS_USER += -I src/venc_audio/adp
+CCFLAGS_USER += -I src/venc_audio
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/gmp
+LIBRARIES += rtsp
+LIBRARIES += ss_snap
+LIBRARIES += ss_extend_stats
+LIBRARIES += ss_calcflicker
+LIBRARIES += ss_snap
+LIBRARIES += ss_dsp
+LIBRARIES += ss_klad
+LIBRARIES += ss_mcf
+LIBRARIES += detail_ap
+LIBRARIES += ss_mcfcalibrate
+LIBRARIES += hdr_ap
+LIBRARIES += ss_fisheye_calibrate
+LIBRARIES += mfnr_ap
+LIBRARIES += ss_motionfusion
+LIBRARIES += ss_uvc
+LIBRARIES += ss_mcf_vi
+LIBRARIES += ss_tde
+LIBRARIES += ss_pos_query
+LIBRARIES += ss_photo
+LIBRARIES += sfnr_ap
+LIBRARIES += ss_pciv
+LIBRARIES += ss_acs
+LIBRARIES += ss_avsconvert
+LIBRARIES += ss_avslut
+LIBRARIES += ss_bnr
+LIBRARIES += ss_cipher
+LIBRARIES += ss_crb
+LIBRARIES += ss_dnvqe
+LIBRARIES += ss_dpu_match
+LIBRARIES += ss_dpu_rect
+LIBRARIES += ss_drc
+
+
+#SOURCES += src/common_venc/*.c
+SOURCES += src/common_venc/loadbmp.c
+SOURCES += src/common_venc/sample_comm_audio.c
+SOURCES += src/common_venc/sample_comm_isp.c
+SOURCES += src/common_venc/sample_comm_mipi_tx.c
+SOURCES += src/common_venc/sample_comm_region.c
+SOURCES += src/common_venc/sample_comm_sys.c
+SOURCES += src/common_venc/sample_comm_vdec.c
+SOURCES += src/common_venc/sample_comm_venc.c
+SOURCES += src/common_venc/sample_comm_vi.c
+SOURCES += src/common_venc/sample_comm_vo.c
+SOURCES += src/common_venc/sample_comm_vpss.c
+SOURCES += src/venc_audio/sample_audio.c
+SOURCES += src/venc_audio/sample_venc_aenc.c
+SOURCES += src/venc_audio/adp/audio_aac_adp.c
+SOURCES += src/venc_audio/adp/audio_dl_adp.c
+
+
+#QRCODE link wifi 
+#ifeq ($(SUPPORT_QRCODE_LINK),y)
+#endif
+
+#ZRAM
+#ifeq ($(SUPPORT_ZRAM),y)
+#endif
+
+#ftp source files
+#SOURCES += src/ftp/netcam_ftp.c
+
+#ntp source files
+SOURCES += src/ntpclient/ntp_client.c
+
+#bplustree source files
+SOURCES += src/bplustree/bplustree.c
+################################################################################
+# define define user cc flags for App
+################################################################################
+
+CCFLAGS_USER += -I./inc 
+CCFLAGS_USER += -I./inc/cfg
+
+#update include files
+CCFLAGS_USER += -I src/update
+
+#overlayer include files
+CCFLAGS_USER += -I src/overlayer
+
+#network source files
+CCFLAGS_USER += -I src/net/include
+
+#typeface source files
+CCFLAGS_USER += -I src/common
+
+#ftp include files
+CCFLAGS_USER += -I src/ftp
+
+#bplustree include files
+CCFLAGS_USER += -I src/bplustree
+
+CCFLAGS_USER += -I src/search/inc
+
+CCFLAGS_USER += -I src/ui/inc
+################################################################################
+# define define user cc flags for Lib
+################################################################################
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/adi
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/image
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/platform/sdk
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/platform/api/inc	#xqq
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/subsystem/mediabuffer
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/subsystem/minirtsp
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/subsystem/json
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/subsystem/onvif
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/subsystem/http
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/subsystem/g711
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/subsystem/adpcm
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/subsystem/ntpclient
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/subsystem/eventalarm
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/subsystem/log
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/subsystem/utility
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/subsystem/workqueue
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/subsystem/wireless
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/subsystem/osd
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/subsystem/ftp
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/subsystem/mail
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/subsystem/upnp
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/subsystem/yudp
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/subsystem/ftp
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/subsystem/mail
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/subsystem/zbar
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/subsystem/xml
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/subsystem/wavechannel
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/subsystem/lvgl-5.1.1
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/subsystem/jpeg
+################################################################################
+# define define user ld flags
+################################################################################
+
+#LDFLAGS_USER += -lpthread -lrt -lresolv -ljpeg
+
+LDFLAGS_USER += -lpthread -lrt -lresolv -ldl
+LDFLAGS_USER += -lm -lrtsp 
+
+################################################################################
+# define library used
+################################################################################
+
+#LIBRARIES += app_cfg
+ifeq ($(DECODER), GK720X)
+LIBRARIES += adi
+LIBRARIES += image
+#else ifeq ($(DECODER), gk7205v200)
+#else ifeq ($(DECODER), gk7605v100)
+else ifneq ($(findstring $(DECODER), gk7205v200 gk7605v100 gk7205v300),)
+LDFLAGS_USER  += -ldl -lstdc++ -lm
+#LIBRARIES += ae
+#LIBRARIES += isp
+#LIBRARIES += dehaze
+#LIBRARIES += drc
+#LIBRARIES += ldci
+#LIBRARIES += awb
+#LIBRARIES += ir_auto
+#LIBRARIES += sns_imx327
+#LIBRARIES += sns_imx307
+#LIBRARIES += sns_imx307_2l
+#LIBRARIES += sns_imx327_2l
+#LIBRARIES += sns_imx335
+#LIBRARIES += sns_sc4236
+#LIBRARIES += sns_sc2235
+#LIBRARIES += sns_sc2231
+#LIBRARIES += sns_sc3235
+#LIBRARIES += sns_gc2053
+#LIBRARIES += sns_gc2053_forcar
+#LIBRARIES += sns_os05a
+#LIBRARIES += sns_f37
+#LIBRARIES += sns_gc4653_2l
+#LIBRARIES += sns_sc500ai
+#LIBRARIES += sns_sc3335
+#LIBRARIES += gk_api
+#LIBRARIES += gk_isp
+#LIBRARIES += gk_awb
+#LIBRARIES += gk_ae
+#LIBRARIES += securec
+#LIBRARIES += upvqe
+#LIBRARIES += dnvqe
+#LIBRARIES += voice_engine
+#LIBRARIES += vqe_res
+#LIBRARIES += vqe_record
+#LIBRARIES += vqe_hpf
+#LIBRARIES += vqe_anr
+#LIBRARIES += vqe_aec
+#LIBRARIES += vqe_agc
+#LIBRARIES += vqe_eq
+#LIBRARIES += aac_dec	xqq
+LIBRARIES += sns_imx485
+LIBRARIES += sns_os04a10
+LIBRARIES += sns_os05a10_2l_slave
+LIBRARIES += sns_os08a20
+LIBRARIES += sns_sc850sl
+LIBRARIES += sns_os08b10
+LIBRARIES += sns_gc4653
+LIBRARIES += sns_imx347_slave
+LIBRARIES += vqe_aec
+LIBRARIES += vqe_agc
+LIBRARIES += vqe_anr
+LIBRARIES += vqe_eq
+LIBRARIES += vqe_hpf
+LIBRARIES += vqe_record
+LIBRARIES += vqe_res
+LIBRARIES += vqe_wnr
+LIBRARIES += ss_isp
+LIBRARIES += ss_ive
+LIBRARIES += vqe_talkv2
+LIBRARIES += ss_ldci
+LIBRARIES += ss_dehaze
+LIBRARIES += ss_ae
+LIBRARIES += ss_ir_auto
+LIBRARIES += ss_hdmi
+LIBRARIES += ss_awb
+LIBRARIES += ot_isp
+LIBRARIES += securec
+LIBRARIES += ss_voice_engine
+LIBRARIES += ss_otp
+LIBRARIES += _pqcontrol
+LIBRARIES += ss_mpi
+LIBRARIES += ss_upvqe
+LIBRARIES += aac_enc
+LIBRARIES += aac_comm
+LIBRARIES += aac_sbr_dec
+LIBRARIES += aac_sbr_enc 
+LIBRARIES += aac_dec
+#LIBRARIES += gk_md
+#LIBRARIES += gk_ivp
+#LIBRARIES += gk_ive	xqq
+LIBRARIES += ss_md
+
+LIBRARIES += bin
+endif
+LIBRARIES += sdk
+LIBRARIES += mediaFifo
+LIBRARIES += rtspLib
+ifneq ($(SUPPORT_GOOLINK_CONFIG),y)
+LIBRARIES += json
+endif
+LIBRARIES += g711
+LIBRARIES += adpcm
+LIBRARIES += zlib
+LIBRARIES += eventalarm
+LIBRARIES += log
+LIBRARIES += utilityApi
+LIBRARIES += wctl
+LIBRARIES += osd
+ifeq ($(SUPPORT_VECTOR_FONT),y)
+LIBRARIES += freetype
+endif
+LIBRARIES += ftp
+LIBRARIES += mail
+#LIBRARIES += ftp
+LIBRARIES += upnp
+LIBRARIES += yudp
+LIBRARIES += zbar
+LIBRARIES += xml
+
+ifeq ($(release-software-subsystem-tuning), y)
+LIBRARIES += tuning
+endif
+
+#########http client lib#######
+LIBRARIES += http_client
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/app/netcam/src/http_client
+################################################################################
+# define target name
+################################################################################
+
+PROGRAM = netcam
+
+################################################################################
+# define user targets
+################################################################################
+
+default: install
+
+clean: clean-objects clean-all clean-pre
+
+#build: partition-info build-pre-library build-objects build-library install-library build-program
+
+build: build-pre-library build-objects build-library install-library build-program
+
+install-config-file:
+	@mkdir $(ROOTFS_TOP)/usr/local/bin -p
+	
+install: build install-config-file install-program install-bin install-program-priv
+
+headers:
+
+all: clean build install
+
+clean-pre:
+ifeq ($(SUPPORT_LOCAL_REC),y)
+	make -C src/avi clean
+endif
+ifeq ($(SUPPORT_CMS_CONFIG),y)
+	make -C src/gk_cms clean
+endif
+ifeq ($(SUPPORT_ONVIF_CONFIG),y)
+	make -C src/onvif clean
+endif
+ifeq ($(SUPPORT_DANA_CONFIG),y)
+	make -C src/third/dana clean
+endif
+ifeq ($(SUPPORT_GK_SEARCH),y)
+	make -C src/search/ clean
+endif
+	make -C src/update/ clean
+	make -C src/cfg/ clean
+ifeq ($(SUPPORT_YUNNI_P2P),y)
+	make -C src/third/yunni clean
+endif
+ifeq ($(SUPPORT_ULUCU_CONFIG),y)
+	make -C src/third/ulucu clean
+endif
+ifeq ($(SUPPORT_TUTK_CONFIG),y)
+	make -C src/third/tutk  clean
+endif
+ifeq ($(SUPPORT_HIK_CONFIG),y)
+	make -C src/third/hik  clean
+endif
+ifeq ($(SUPPORT_PPCS_CONFIG),y)
+	make -C src/third/ppcs  clean
+	make -C src/third/ppcs_search  clean
+endif
+ifeq ($(SUPPORT_GOOLINK_CONFIG),y)
+	make -C src/third/goolink  clean
+endif
+ifeq ($(SUPPORT_MOJING),y)
+	make -C src/third/mojing  clean
+endif   
+ifeq ($(SUPPORT_MOFANG_PLUGIN),y)
+	#@ln -s /lib/libmbedtls.so $(ROOTFS_TOP)/lib/libmbedcrypto.so 
+	make -C src/third/mofangPlugin  clean
+endif
+ifeq ($(SUPPORT_MOFANG),y)
+	make -C src/third/mofang  clean
+	rm -f $(ROOTFS_TOP)/lib/libmbedtls.so
+endif 
+ifeq ($(SUPPORT_ENCRYPT_AUTHOR),y)
+	make -C src/third/encrypt clean
+endif
+ifeq ($(SUPPORT_LVGL),y)
+	make -C src/ui clean
+endif
+ifeq ($(SUPPORT_K24C02_EEPROM),y)
+	make -C src/third/k24c02_eeprom clean		
+endif
+	make -C src/http_client clean
+	
+build-pre-library:
+ifeq ($(SUPPORT_LOCAL_REC),y)
+	make -C src/avi build
+endif
+ifeq ($(SUPPORT_CMS_CONFIG),y)
+	make -C src/gk_cms build
+endif
+ifeq ($(SUPPORT_ONVIF_CONFIG),y)
+	make -C src/onvif build
+endif
+ifeq ($(SUPPORT_DANA_CONFIG),y)
+	make -C src/third/dana build
+endif
+ifeq ($(SUPPORT_GK_SEARCH),y)
+	make -C src/search build
+endif
+	make -C src/update/ build
+	make -C src/cfg/ build
+ifeq ($(SUPPORT_YUNNI_P2P),y)
+	make -C src/third/yunni build
+endif
+ifeq ($(SUPPORT_ULUCU_CONFIG),y)
+	make -C src/third/ulucu build
+endif
+ifeq ($(SUPPORT_TUTK_CONFIG),y)
+	make -C src/third/tutk  build
+endif
+ifeq ($(SUPPORT_HIK_CONFIG),y)
+	make -C src/third/hik  build
+endif
+ifeq ($(SUPPORT_PPCS_CONFIG),y)
+	make -C src/third/ppcs  build
+	make -C src/third/ppcs_search  build
+endif
+ifeq ($(SUPPORT_GOOLINK_CONFIG),y)
+	make -C src/third/goolink  build
+endif
+ifeq ($(SUPPORT_MOJING),y)
+	make -C src/third/mojing  build
+endif
+ifeq ($(SUPPORT_MOFANG),y)
+	make -C src/third/mofang  build
+endif
+ifeq ($(SUPPORT_MOFANG_PLUGIN),y)
+	@cp -f $(INSTALL_LIBRARY_DIR)/libmbedtls.so $(ROOTFS_TOP)/lib/
+	@cp -f src/third/mofangPlugin/sh/server_check.sh $(ROOTFS_TOP)/usr/local/bin/
+	@mkdir -p $(ROOTFS_TOP)/usr/local/defcfg/
+	@cp -f src/third/mofangPlugin/sh/Plugin $(ROOTFS_TOP)/usr/local/bin/
+	@ln -svf /usr/local/defcfg  ${ROOTFS_DIR}/mnt/mtd
+	make -C src/third/mofangPlugin  build
+endif
+ifeq ($(SUPPORT_ENCRYPT_AUTHOR),y)
+	make -C src/third/encrypt build	
+endif
+ifeq ($(SUPPORT_LVGL),y)
+	make -C src/ui build	
+endif
+ifeq ($(SUPPORT_K24C02_EEPROM),y)
+	make -C src/third/k24c02_eeprom build	
+endif
+	make -C src/http_client build
+	
+install-program-priv:
+
+ifneq ($(NOT_SUPPORT_WEB),y)
+	@$(NEWLINE)
+	@$(NEWLINE) "Install web to $(ROOTFS_TOP)/opt/resource"
+	@$(NEWLINE)
+	@mkdir  $(ROOTFS_TOP)/opt/resource -p
+	@rm -rf web/snapshot_dir/web.jpg
+	@ln -s /tmp/web_snapshot2.jpg web/snapshot_dir/web.jpg
+	@rm -rf web/snapshot/onvif.jpg
+	@ln -s /tmp/onvif_snapshot.jpg web/snapshot/onvif.jpg
+	@cp -rf  web  $(ROOTFS_TOP)/opt/resource/
+	@cp  web/js/function.js $(ROOTFS_TOP)/opt/resource/web/js/function.js -f
+endif
+	@sudo chmod 777 resource/S60zram
+	@sudo chmod 777 resource/S90ipc
+#	@sudo chmod 777 resource/init.sh
+#	@cp -f  resource/init.sh $(ROOTFS_TOP)/usr/local/bin/
+	@rm -f  $(ROOTFS_TOP)/usr/local/bin/startup.sh
+	@cp -a  resource/S60zram $(ROOTFS_TOP)/etc/init.d/
+	@cp -a  resource/S90ipc $(ROOTFS_TOP)/etc/init.d/
+	@mkdir  $(ROOTFS_TOP)/opt/resource/font -p
+ifeq ($(SUPPORT_VECTOR_FONT),y)
+	@cp -af  resource/font/DroidSansFallback.ttf $(ROOTFS_TOP)/opt/resource/font
+else	
+	@cp -af  resource/font/asc* $(ROOTFS_TOP)/opt/resource/font
+	@cp -af  resource/font/hzk* $(ROOTFS_TOP)/opt/resource/font
+endif
+	@mkdir -p $(ROOTFS_TOP)/opt/resource/dana/
+	@cp -a  resource/danale.conf $(ROOTFS_TOP)/opt/resource/dana/
+	@mkdir  $(ROOTFS_TOP)/opt/custom -p
+	@mkdir  $(ROOTFS_TOP)/opt/custom/cfg -p
+	@mkdir  $(ROOTFS_TOP)/opt/custom/cfg/onvif -p
+	@cp -af resource/custom/onvif/$(CHIP)/* $(ROOTFS_TOP)/opt/custom/cfg/onvif
+	@mkdir  $(ROOTFS_TOP)/opt/resource/audio -p
+	@cp -af resource/audio $(ROOTFS_TOP)/opt/resource -rf
+	@mkdir  $(ROOTFS_TOP)/opt/resource/pq_bin -p
+	@cp -af resource/pq_bin/pq_bin_$(SENSOR).bin $(ROOTFS_TOP)/opt/resource/pq_bin/pq_bin.bin -rf
+	@mkdir $(ROOTFS_TOP)/usr/local/defcfg -p
+	@echo "CUSTOM_BOARD_SENSOR:$(CUSTOM_BOARD_SENSOR)"
+	@cp resource/custom/cfg/$(CUSTOM_BOARD_SENSOR)/* $(ROOTFS_TOP)/usr/local/defcfg/
+ifneq ("$(CUSTOM_BOARD_PROJECT)","$(CUSTOM_BOARD_SENSOR)")
+	@echo "Modify CUSTOM_BOARD_SENSOR:$(CUSTOM_BOARD_PROJECT)"
+	@sed -i 's/\("CUSTOM_BOAD":"\).*/\1'"$(CUSTOM_BOARD_PROJECT)"'",/g' $(ROOTFS_TOP)/usr/local/defcfg/sdk_cfg.cjson
+	@sed -i 's/\("NAME":"\).*/\1'"$(CUSTOM_BOARD_PROJECT)"'",/g' $(ROOTFS_TOP)/usr/local/defcfg/sdk_cfg.cjson
+endif
+	@mkdir $(ROOTFS_TOP)/usr/local/defcfg/onvif -p
+	@cp -af resource/custom/onvif/$(CHIP)/* $(ROOTFS_TOP)/usr/local/defcfg/onvif
+
+################################################################################
+# include internal definitions and rules
+################################################################################
+
+  RELEASE_SUBDIR = $(SUBDIR)
+  RELEASE_FILES += $(SOURCES)
+  RELEASE_FILES += Makefile
+  RELEASE_FILES += Makefile.rel
+  RELEASE_FILES += $(wildcard src/*.h)
+  RELEASE_FILES += $(wildcard src/sys/*.h)
+  RELEASE_FILES += $(wildcard *.xml)
+  RELEASE_FILES += $(wildcard configs/*)
+  RELEASE_FILES += $(wildcard configs/*/*)
+
+release: release-files $(DIRECTORIES:%=subdir-release-%) info
+
+doc: $(DIRECTORIES:%=subdir-doc-%)
+
+info: force
+	@echo $(DIRECTORIES)
+
+
+partition-info:
+	@/bin/bash partition_info.sh    

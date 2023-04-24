@@ -1,0 +1,76 @@
+################################################################################
+################################################################################
+##
+## Makefile -- release Makefile for subsystem/onvif
+##
+## (C) Copyright 2012-2014 by Goke Microelectronics Co.,Ltd
+##
+## Mandatory settings:
+##
+## o TOPDIR      = the toplevel directory (using slashes as path separator)
+## o TARGET      = the machine qualifier to generate code for
+##
+################################################################################
+################################################################################
+
+
+################################################################################
+# define local file to be installed
+################################################################################
+LOCAL_FILE += configs/mediastatic.xml
+LOCAL_FILE += configs/mediadynamic.xml
+LOCAL_FILE += configs/imaging.xml
+LOCAL_FILE += configs/discover.xml
+LOCAL_FILE += configs/device.xml
+
+################################################################################
+# headers to be installed
+################################################################################
+HEADERS += include/*.h include/gk7101
+
+################################################################################
+# sub directory name for installed header
+################################################################################
+HEADER_SUBDIR = subsystem/onvif
+
+################################################################################
+# define user lint flags
+################################################################################
+
+################################################################################
+# define user ld flags
+################################################################################
+
+################################################################################
+# define library name
+################################################################################
+LIBRARY = libonvif
+
+################################################################################
+# define local file install location
+# if this was commented out, the target will be installed into the default
+# location:
+#   $(ROOTFS_TOP)/usr/local/bin/
+################################################################################
+
+INSTALL_LOCAL_FILE_DIR = $(ROOTFS_TOP)/usr/local/bin
+
+################################################################################
+# define user targets
+################################################################################
+
+default: install
+
+clean:
+
+build: install
+
+headers: install-headers
+
+install:  install-library-released install-headers install-file
+
+all:  install
+
+include $(TOPDIR)/env/make/Makefile.rules
+-include $(TOPDIR)/env/make/Makfile.dep
+

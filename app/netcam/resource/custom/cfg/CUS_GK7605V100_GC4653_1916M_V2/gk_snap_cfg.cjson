@@ -1,0 +1,40 @@
+{
+	"timerSnap":	{
+		"enable":	0,
+		"enableProperty":	{"type":"S32","mode":"rw","min":0,"max":1,"def":0,"opt":""},
+		"scheduleTime":	["0:0-23:59", "0:0-23:59", "0:0-23:59", "0:0-23:59", "0:0-23:59", "0:0-23:59", "0:0-23:59", "0:0-23:59", "0:0-23:59", "0:0-23:59", "0:0-23:59", "0:0-23:59", "0:0-23:59", "0:0-23:59", "0:0-23:59", "0:0-23:59", "0:0-23:59", "0:0-23:59", "0:0-23:59", "0:0-23:59", "0:0-23:59", "0:0-23:59", "0:0-23:59", "0:0-23:59", "0:0-23:59", "0:0-23:59", "0:0-23:59", "0:0-23:59"],
+		"scheduleTimeProperty":	{"type":"STIME","mode":"rw","min":0,"max":28,"def":"0","opt":""},
+		"interval":	10000,
+		"intervalProperty":	{"type":"S32","mode":"rw","min":0,"max":1000000,"def":10000,"opt":""},
+		"nums":	1,
+		"numsProperty":	{"type":"S32","mode":"rw","min":1,"max":30,"def":1,"opt":""},
+		"pictureQuality":	2,
+		"pictureQualityProperty":	{"type":"S32","mode":"rw","min":0,"max":4,"def":2,"opt":""},
+		"imageSize":	0,
+		"imageSizeProperty":	{"type":"S32","mode":"rw","min":0,"max":4,"def":0,"opt":"0: 1080p 1: 720p 2 D1 3£ºCIF£¬4£ºQCIF"},
+		"snapShotImageType":	0,
+		"snapShotImageTypeProperty":	{"type":"S32","mode":"rw","min":0,"max":1,"def":0,"opt":"0 JPEG£»1 bmp"},
+		"storagerMode":	0,
+		"storagerModeProperty":	{"type":"S32","mode":"rw","min":0,"max":2,"def":0,"opt":"0 local£»1 ftp; 2 local|ftp"},
+		"channelID":	3,
+		"channelIDProperty":	{"type":"S32","mode":"rw","min":3,"max":3,"def":3,"opt":"channel id for snapshort"}
+	},
+	"eventSnap":	{
+		"enable":	0,
+		"enableProperty":	{"type":"S32","mode":"rw","min":0,"max":1,"def":0,"opt":""},
+		"interval":	0,
+		"intervalProperty":	{"type":"S32","mode":"rw","min":0,"max":1000,"def":0,"opt":""},
+		"nums":	1,
+		"numsProperty":	{"type":"S32","mode":"rw","min":1,"max":30,"def":1,"opt":""},
+		"pictureQuality":	100,
+		"pictureQualityProperty":	{"type":"S32","mode":"rw","min":0,"max":100,"def":100,"opt":""},
+		"imageSize":	0,
+		"imageSizeProperty":	{"type":"S32","mode":"rw","min":0,"max":4,"def":0,"opt":"0: 1080p 1: 720p 2 D1 3£ºCIF£¬4£ºQCIF"},
+		"snapShotImageType":	0,
+		"snapShotImageTypeProperty":	{"type":"S32","mode":"rw","min":0,"max":1,"def":0,"opt":"0 JPEG£»1 bmp"},
+		"storagerMode":	0,
+		"storagerModeProperty":	{"type":"S32","mode":"rw","min":0,"max":2,"def":0,"opt":"0 local£»1 ftp; 2 local|ftp"},
+		"channelID":	3,
+		"channelIDProperty":	{"type":"S32","mode":"rw","min":3,"max":3,"def":3,"opt":"channel id for snapshort"}
+	}
+}

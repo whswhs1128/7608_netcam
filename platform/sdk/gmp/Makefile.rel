@@ -1,0 +1,49 @@
+################################################################################
+################################################################################
+##
+## Makefile -- makefile for MPP
+##
+## (C) Copyright 2020-2022 by Goke Microelectronics Co.,Ltd
+##
+##
+## Mandatory settings:
+##
+## o TOPDIR      = the toplevel directory (using slashes as path separator)
+## o TARGET      = the machine qualifier to generate code for
+##
+################################################################################
+################################################################################
+
+
+HEADER_SUBDIR = gmp
+
+HEADERS += include/*.h
+################################################################################
+# define local file to be installed
+################################################################################
+GMP_DRV = $(wildcard ko/*.ko)
+
+################################################################################
+# define user targets
+################################################################################
+
+default: install
+
+clean: 
+
+build: install
+
+headers: install-headers
+
+install: install-headers
+	@echo "### Installing $(HEADER_SUBDIR) lib to $(INSTALL_LIBRARY_DIR)"
+	@mkdir -p $(INSTALL_LIBRARY_DIR)
+	@cp -a lib/share/*.so $(INSTALL_LIBRARY_DIR)
+	@cp -a lib/static/*.a $(INSTALL_LIBRARY_DIR)
+	@echo "### cp ko/* $(ROOTFS_TOP)/$(HEADER_SUBDIR)"
+	@mkdir -p $(ROOTFS_TOP)/$(HEADER_SUBDIR)
+	@cp -a ko/* $(ROOTFS_TOP)/$(HEADER_SUBDIR)
+
+all: install
+
+

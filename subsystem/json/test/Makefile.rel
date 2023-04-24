@@ -1,0 +1,115 @@
+################################################################################
+################################################################################
+##
+## Makefile -- makefile for ADI test application
+##
+## (C) Copyright 2012-2014 by Goke Microelectronics Co.,Ltd
+##
+## Mandatory settings:
+##
+## o TOPDIR      = the toplevel directory (using slashes as path separator)
+## o TARGET      = the machine qualifier to generate code for
+##
+################################################################################
+################################################################################
+
+
+################################################################################
+# source files
+################################################################################
+
+SOURCES += src/main.c
+SOURCES += src/shell.c
+SOURCES += src/parser.c
+SOURCES += src/video.c
+SOURCES += src/audio.c
+SOURCES += src/isp.c
+SOURCES += src/gpio.c
+SOURCES += src/spi.c
+SOURCES += src/osd.c
+SOURCES += src/pm.c
+SOURCES += src/pda.c
+SOURCES += src/ir.c
+################################################################################
+# define define user cc flags
+################################################################################
+
+CCFLAGS_USER += -O3 -DDEBUG -g
+CCFLAGS_USER += -I $(TOPDIR)/adi/include
+CCFLAGS_USER += -I $(OSSPREBUILD)/freetype-2.4.11/include/freetype2
+CCFLAGS_USER += -I $(TOPDIR)/subsystem/osd/include
+
+
+################################################################################
+# define define user ld flags
+################################################################################
+
+LDFLAGS_USER += -lrt
+LDFLAGS_USER += -L $(OSSPREBUILD)/freetype-2.4.11/lib
+LDFLAGS_USER += -lfreetype
+LDFLAGS_USER += -L $(OSSPREBUILD)/zlib-1.2.7/lib
+LDFLAGS_USER += -lz
+################################################################################
+# define library used
+################################################################################
+
+LIBRARIES  = adi osd isp3a
+
+################################################################################
+# define target name
+################################################################################
+
+PROGRAM = adidemo
+
+################################################################################
+# define local file to be installed
+################################################################################
+LOCAL_FILE += configs/video.cfg
+
+################################################################################
+# define local file install location
+# if this was commented out, the target will be installed into the default
+# location:
+#   $(ROOTFS_TOP)/usr/local/bin/
+################################################################################
+
+INSTALL_LOCAL_FILE_DIR = $(ROOTFS_TOP)/etc/videoconfig
+
+################################################################################
+# define target install location
+# if this was commented out, the target will be installed into the default
+# location:
+#   $(ROOTFS_TOP)/usr/local/bin/
+################################################################################
+
+# INSTALL_BIN_DIR =
+
+################################################################################
+# define user targets
+################################################################################
+
+default: install
+
+clean: clean-objects clean-all
+
+build:  build-objects build-program
+
+install: build install-program install-file install-bin
+
+headers:
+
+all: clean build install
+
+  RELEASE_SUBDIR = $(SUBDIR)
+  RELEASE_FILES += Makefile
+  RELEASE_FILES += $(SOURCES)
+  RELEASE_FILES += $(wildcard src/*.h)
+  RELEASE_FILES += $(wildcard configs/*)
+
+release: release-files $(DIRECTORIES:%=subdir-release-%) info
+
+doc: $(DIRECTORIES:%=subdir-doc-%)
+
+info: force
+	@echo $(DIRECTORIES)
+

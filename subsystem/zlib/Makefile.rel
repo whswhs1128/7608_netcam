@@ -1,0 +1,46 @@
+################################################################################
+################################################################################
+##
+## Makefile -- makefile for tuning library
+##
+## (C) Copyright 2012-2014 by Goke Microelectronics Co.,Ltd
+##
+## Mandatory settings:
+##
+## o TOPDIR      = the toplevel directory (using slashes as path separator)
+## o TARGET      = the machine qualifier to generate code for
+##
+################################################################################
+################################################################################
+
+
+
+LIBRARY = libzlib
+
+HEADERS += $(wildcard inc/*.h)
+HEADER_SUBDIR = subsystem/zlib
+
+
+################################################################################
+# define user targets
+################################################################################
+
+default: install
+
+clean:
+
+build: install
+
+headers: install-headers
+
+install:  install-headers
+	@mkdir -p $(INSTALL_LIBRARY_DIR)
+	@cp lib/*  $(INSTALL_LIBRARY_DIR)/ -a
+
+all: install
+
+################################################################################
+# include internal definitions and rules
+################################################################################
+
+

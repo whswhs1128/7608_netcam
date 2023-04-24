@@ -1,0 +1,593 @@
+
+Discarded input sections
+
+ .note.GNU-stack
+                0x0000000000000000        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/avi_utility.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/mmc_api.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/avi_read_api.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/avi_rec.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/avi_search_api.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/avi_write_api.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/avi_utility.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/mmc_api.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/avi_read_api.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/avi_rec.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/avi_search_api.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/avi_write_api.o
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/libgcc.a
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/../../../../aarch64-linux-gnu/lib/../lib64/libgcc_s.so
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/libc.so
+START GROUP
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/lib/libc.so.6
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/libc_nonshared.a
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/lib/ld-linux-aarch64.so.1
+END GROUP
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/libgcc.a
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/../../../../aarch64-linux-gnu/lib/../lib64/libgcc_s.so
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+                0x0000000000000190                . = (SEGMENT_START ("text-segment", 0x0) + SIZEOF_HEADERS)
+
+.note.gnu.build-id
+ *(.note.gnu.build-id)
+
+.hash           0x0000000000000190      0x6bc
+ *(.hash)
+ .hash          0x0000000000000190      0x6bc /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.gnu.hash       0x0000000000000850      0x4b0
+ *(.gnu.hash)
+ .gnu.hash      0x0000000000000850      0x4b0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.dynsym         0x0000000000000d00     0x15c0
+ *(.dynsym)
+ .dynsym        0x0000000000000d00     0x15c0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.dynstr         0x00000000000022c0      0xd1e
+ *(.dynstr)
+ .dynstr        0x00000000000022c0      0xd1e /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.gnu.version    0x0000000000002fde      0x1d0
+ *(.gnu.version)
+ .gnu.version   0x0000000000002fde      0x1d0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.gnu.version_d  0x00000000000031b0        0x0
+ *(.gnu.version_d)
+ .gnu.version_d
+                0x00000000000031b0        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.gnu.version_r  0x00000000000031b0       0x20
+ *(.gnu.version_r)
+ .gnu.version_r
+                0x00000000000031b0       0x20 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.rela.dyn       0x00000000000031d0      0x2a0
+ *(.rela.init)
+ *(.rela.text .rela.text.* .rela.gnu.linkonce.t.*)
+ *(.rela.fini)
+ *(.rela.rodata .rela.rodata.* .rela.gnu.linkonce.r.*)
+ *(.rela.data .rela.data.* .rela.gnu.linkonce.d.*)
+ .rela.data.rel.local
+                0x00000000000031d0       0x18 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *(.rela.tdata .rela.tdata.* .rela.gnu.linkonce.td.*)
+ *(.rela.tbss .rela.tbss.* .rela.gnu.linkonce.tb.*)
+ *(.rela.ctors)
+ *(.rela.dtors)
+ *(.rela.got)
+ .rela.got      0x00000000000031e8      0x258 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *(.rela.bss .rela.bss.* .rela.gnu.linkonce.b.*)
+ *(.rela.ifunc)
+ .rela.ifunc    0x0000000000003440        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .rela.init_array
+                0x0000000000003440       0x18 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .rela.fini_array
+                0x0000000000003458       0x18 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.rela.plt       0x0000000000003470      0xed0
+ *(.rela.plt)
+ .rela.plt      0x0000000000003470      0xed0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *(.rela.iplt)
+
+.init           0x0000000000004340       0x14
+ *(SORT_NONE(.init))
+ .init          0x0000000000004340        0xc /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+                0x0000000000004340                _init
+ .init          0x000000000000434c        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+
+.plt            0x0000000000004360      0xa00
+ *(.plt)
+ .plt           0x0000000000004360      0xa00 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *(.iplt)
+
+.text           0x0000000000004d60     0xad38
+ *(.text.unlikely .text.*_unlikely .text.unlikely.*)
+ *(.text.exit .text.exit.*)
+ *(.text.startup .text.startup.*)
+ *(.text.hot .text.hot.*)
+ *(SORT_BY_NAME(.text.sorted.*))
+ *(.text .stub .text.* .gnu.linkonce.t.*)
+ .text          0x0000000000004d60       0x14 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *fill*         0x0000000000004d74        0x4 1f2003d5
+ .text          0x0000000000004d78       0xbc /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ *fill*         0x0000000000004e34        0x4 1f2003d5
+ .text          0x0000000000004e38      0xac8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/avi_utility.o
+                0x0000000000004e38                write_char
+                0x0000000000004e68                write_int32
+                0x0000000000004e98                write_fourcc
+                0x0000000000004ea0                avi_write_data
+                0x0000000000004ec8                read_char
+                0x0000000000004ef0                read_int32
+                0x0000000000004f18                read_fourcc
+                0x0000000000004f20                avi_utility_read_data
+                0x0000000000004f48                avi_set_32
+                0x0000000000004f68                avi_substring
+                0x0000000000004ff0                last_index_at
+                0x0000000000005050                avi_get_ch_num
+                0x0000000000005060                avi_get_start_time
+                0x00000000000050a8                avi_get_stop_time
+                0x00000000000050f0                get_date_str
+                0x0000000000005158                get_nowtime_str
+                0x00000000000051c8                get_nowtime_uint
+                0x0000000000005208                get_nowhm_str
+                0x0000000000005268                tm_to_dmstime
+                0x0000000000005288                tm_add_seconds
+                0x0000000000005330                time_to_u64t
+                0x0000000000005388                u64t_to_time
+                0x0000000000005508                u64t_add_seconds
+                0x00000000000055e0                cal_time_sub
+                0x00000000000056b0                get_u64t_now_time
+                0x00000000000056f8                time_to_str
+                0x0000000000005758                get_time_to_u64t
+                0x00000000000057a0                gk_cms_ssleep
+                0x00000000000057f8                gk_cms_msleep
+                0x0000000000005888                avi_get_sys_runtime
+ .text          0x0000000000005900     0x1b80 build/arm11-gcc-uClibc-linux-gk7605v100/obj/mmc_api.o
+                0x0000000000005ba8                grd_sd_get_free_size
+                0x0000000000005c18                grd_sd_get_free_size_last
+                0x0000000000005c28                grd_sd_get_all_size_ioctl
+                0x0000000000005cf0                grd_sd_get_all_size
+                0x0000000000005d50                grd_sd_get_all_size_last
+                0x0000000000005d60                grd_sd_is_mount
+                0x0000000000005dd0                grd_sd_mount
+                0x0000000000005ed8                grd_sd_remount
+                0x0000000000005fc8                grd_sd_umount
+                0x0000000000006070                is_fix_format_file
+                0x0000000000006110                is_fix_format_path
+                0x0000000000006210                is_avi_dir_format
+                0x0000000000006310                is_avi_file_format
+                0x0000000000006438                is_avi_file_path_format
+                0x00000000000064b0                grd_sd_is_device_exist
+                0x0000000000006508                grd_sd_check_device_node
+                0x00000000000065f0                mmc_sdcard_write_detect
+                0x0000000000006620                grd_sd_get_format_process
+                0x0000000000006630                mmc_get_sdcard_stauts
+                0x0000000000006640                grd_sd_init
+                0x00000000000066f0                mmc_set_sdcard_status
+                0x0000000000006768                grd_sd_format
+                0x0000000000006c40                mmc_checkFsckReset
+                0x0000000000006cd0                mmc_sdcard_status_check
+                0x0000000000007050                grd_sd_del_oldest_avi_file
+                0x0000000000007418                mmc_set_sdcard_status_error
+                0x0000000000007420                mmc_sdcard_status_check_init
+                0x0000000000007470                mmc_sdcard_status_check_exit
+ .text          0x0000000000007480     0x3b28 build/arm11-gcc-uClibc-linux-gk7605v100/obj/avi_read_api.o
+                0x00000000000082d0                fix_all_avi_file
+                0x0000000000008988                avi_pb_open
+                0x0000000000008ca0                print_pb_handle
+                0x0000000000008df0                print_frame_node
+                0x0000000000008e98                avi_pb_seek_by_percent
+                0x0000000000008fa0                avi_pb_seek_by_time
+                0x0000000000009360                avi_get_frame_loop
+                0x0000000000009730                avi_get_frame_by_no
+                0x0000000000009c08                cal_pb_all_time
+                0x0000000000009d70                cal_pb_seek_time
+                0x000000000000a128                timetick_to_time
+                0x000000000000a1a0                create_pb_handle
+                0x000000000000a200                avi_check_file_index
+                0x000000000000a470                avi_pb_slide_to_next_file
+                0x000000000000a570                avi_pb_slide_to_next_file_by_time
+                0x000000000000a5a8                avi_pb_get_frame
+                0x000000000000a838                avi_pb_set_speed
+                0x000000000000a880                avi_pb_start
+                0x000000000000a8b8                avi_pb_restart
+                0x000000000000a920                avi_pb_pause
+                0x000000000000a948                avi_pb_close
+                0x000000000000aa08                avi_pb_get_pos
+                0x000000000000aa20                avi_pb_set_pos
+                0x000000000000ab38                avi_pb_seek
+                0x000000000000ac20                avi_pb_get_time
+                0x000000000000ae00                avi_mv_pic
+ .text          0x000000000000afa8     0x1dc4 build/arm11-gcc-uClibc-linux-gk7605v100/obj/avi_rec.o
+                0x000000000000bea8                thread_record_create
+                0x000000000000bfc8                thread_record_close
+                0x000000000000c0a0                is_thread_record_running
+                0x000000000000c0b8                motion_rec_start
+                0x000000000000c228                alarm_rec_start
+                0x000000000000c3c0                sche_rec_start
+                0x000000000000c4e0                sche_rec_stop
+                0x000000000000c4f0                do_schedule_recode_by_slice
+                0x000000000000c630                sche2_rec_start
+                0x000000000000c708                sche2_rec_stop
+                0x000000000000c760                do_schedule_recode_by_period
+                0x000000000000c938                manu_rec_start_fixtime
+                0x000000000000cab0                manu_rec_start_alltime
+                0x000000000000cba0                manu_rec_stop
+                0x000000000000cc28                local_record_init
+                0x000000000000ccf0                local_record_uninit
+ *fill*         0x000000000000cd6c        0x4 1f2003d5
+ .text          0x000000000000cd70     0x1294 build/arm11-gcc-uClibc-linux-gk7605v100/obj/avi_search_api.o
+                0x000000000000d170                get_file_size
+                0x000000000000d230                is_empty_list
+                0x000000000000d248                get_len_list
+                0x000000000000d268                print_index_node
+                0x000000000000d300                print_node
+                0x000000000000d320                print_list
+                0x000000000000d3e8                print_finddata
+                0x000000000000d500                search_close
+                0x000000000000d5c0                get_file_node
+                0x000000000000d670                search_file_by_time
+                0x000000000000d9c0                search_day_by_month
+                0x000000000000dbb0                write_manage_info
+ *fill*         0x000000000000e004        0x4 1f2003d5
+ .text          0x000000000000e008     0x1a90 build/arm11-gcc-uClibc-linux-gk7605v100/obj/avi_write_api.o
+                0x000000000000e008                avi_record_check_file
+                0x000000000000eb50                avi_add_index
+                0x000000000000f090                avi_record_open
+                0x000000000000f530                avi_record_write
+                0x000000000000f5a0                avi_record_close
+                0x000000000000f958                avi_reocrd_check_file_stoped
+                0x000000000000f970                avi_record_write_cache
+ .text          0x000000000000fa98        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+ .text          0x000000000000fa98        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+ *(.gnu.warning)
+
+.fini           0x000000000000fa98       0x10
+ *(SORT_NONE(.fini))
+ .fini          0x000000000000fa98        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+                0x000000000000fa98                _fini
+ .fini          0x000000000000faa0        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+                [!provide]                        PROVIDE (__etext = .)
+                [!provide]                        PROVIDE (_etext = .)
+                [!provide]                        PROVIDE (etext = .)
+
+.rodata         0x000000000000faa8     0x43a1
+ *(.rodata .rodata.* .gnu.linkonce.r.*)
+ .rodata.str1.8
+                0x000000000000faa8       0x65 build/arm11-gcc-uClibc-linux-gk7605v100/obj/avi_utility.o
+ *fill*         0x000000000000fb0d        0x3 
+ .rodata.str1.8
+                0x000000000000fb10      0xa19 build/arm11-gcc-uClibc-linux-gk7605v100/obj/mmc_api.o
+ *fill*         0x0000000000010529        0x7 
+ .rodata.str1.8
+                0x0000000000010530     0x13f3 build/arm11-gcc-uClibc-linux-gk7605v100/obj/avi_read_api.o
+                                       0x143b (size before relaxing)
+ *fill*         0x0000000000011923        0x5 
+ .rodata.str1.8
+                0x0000000000011928     0x142f build/arm11-gcc-uClibc-linux-gk7605v100/obj/avi_rec.o
+                                       0x143f (size before relaxing)
+ *fill*         0x0000000000012d57        0x1 
+ .rodata.str1.8
+                0x0000000000012d58      0x6ed build/arm11-gcc-uClibc-linux-gk7605v100/obj/avi_search_api.o
+                                        0x79d (size before relaxing)
+ *fill*         0x0000000000013445        0x3 
+ .rodata        0x0000000000013448       0x10 build/arm11-gcc-uClibc-linux-gk7605v100/obj/avi_write_api.o
+ .rodata.str1.8
+                0x0000000000013458      0x9f1 build/arm11-gcc-uClibc-linux-gk7605v100/obj/avi_write_api.o
+                                        0xad9 (size before relaxing)
+
+.rodata1
+ *(.rodata1)
+
+.eh_frame_hdr   0x0000000000013e4c      0x44c
+ *(.eh_frame_hdr)
+ .eh_frame_hdr  0x0000000000013e4c      0x44c /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+                0x0000000000013e4c                __GNU_EH_FRAME_HDR
+ *(.eh_frame_entry .eh_frame_entry.*)
+
+.eh_frame       0x0000000000014298     0x20f4
+ *(.eh_frame)
+ .eh_frame      0x0000000000014298       0x78 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ .eh_frame      0x0000000000014310      0x470 build/arm11-gcc-uClibc-linux-gk7605v100/obj/avi_utility.o
+                                        0x480 (size before relaxing)
+ .eh_frame      0x0000000000014780      0x6c0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/mmc_api.o
+                                        0x6d0 (size before relaxing)
+ .eh_frame      0x0000000000014e40      0x950 build/arm11-gcc-uClibc-linux-gk7605v100/obj/avi_read_api.o
+                                        0x960 (size before relaxing)
+ .eh_frame      0x0000000000015790      0x4e0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/avi_rec.o
+                                        0x4f8 (size before relaxing)
+ .eh_frame      0x0000000000015c70      0x408 build/arm11-gcc-uClibc-linux-gk7605v100/obj/avi_search_api.o
+                                        0x420 (size before relaxing)
+ .eh_frame      0x0000000000016078      0x310 build/arm11-gcc-uClibc-linux-gk7605v100/obj/avi_write_api.o
+                                        0x328 (size before relaxing)
+ .eh_frame      0x0000000000016388        0x4 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+ *(.eh_frame.*)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.gnu_extab
+ *(.gnu_extab*)
+
+.exception_ranges
+ *(.exception_ranges*)
+                0x0000000000026d38                . = DATA_SEGMENT_ALIGN (CONSTANT (MAXPAGESIZE), CONSTANT (COMMONPAGESIZE))
+
+.eh_frame
+ *(.eh_frame)
+ *(.eh_frame.*)
+
+.gnu_extab
+ *(.gnu_extab)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.exception_ranges
+ *(.exception_ranges*)
+
+.tdata
+ *(.tdata .tdata.* .gnu.linkonce.td.*)
+
+.tbss
+ *(.tbss .tbss.* .gnu.linkonce.tb.*)
+ *(.tcommon)
+
+.preinit_array
+ *(.preinit_array)
+
+.init_array     0x0000000000026d38        0x8
+ *(SORT_BY_INIT_PRIORITY(.init_array.*) SORT_BY_INIT_PRIORITY(.ctors.*))
+ *(.init_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .ctors)
+ .init_array    0x0000000000026d38        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+
+.fini_array     0x0000000000026d40        0x8
+ *(SORT_BY_INIT_PRIORITY(.fini_array.*) SORT_BY_INIT_PRIORITY(.dtors.*))
+ *(.fini_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .dtors)
+ .fini_array    0x0000000000026d40        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+
+.ctors
+ *crtbegin.o(.ctors)
+ *crtbegin?.o(.ctors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .ctors)
+ *(SORT_BY_NAME(.ctors.*))
+ *(.ctors)
+
+.dtors
+ *crtbegin.o(.dtors)
+ *crtbegin?.o(.dtors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .dtors)
+ *(SORT_BY_NAME(.dtors.*))
+ *(.dtors)
+
+.jcr
+ *(.jcr)
+
+.data.rel.ro    0x0000000000026d48        0x0
+ *(.data.rel.ro.local* .gnu.linkonce.d.rel.ro.local.*)
+ *(.data.rel.ro .data.rel.ro.* .gnu.linkonce.d.rel.ro.*)
+ .data.rel.ro   0x0000000000026d48        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.dynamic        0x0000000000026d48      0x1d0
+ *(.dynamic)
+ .dynamic       0x0000000000026d48      0x1d0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+                0x0000000000026d48                _DYNAMIC
+
+.got            0x0000000000026f18       0xd0
+ *(.got)
+ .got           0x0000000000026f18       0xd0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+                0x0000000000026f18                _GLOBAL_OFFSET_TABLE_
+ *(.igot)
+                0x0000000000026fe8                . = DATA_SEGMENT_RELRO_END (., 0x18)
+
+.got.plt        0x0000000000026fe8      0x508
+ *(.got.plt)
+ .got.plt       0x0000000000026fe8      0x508 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *(.igot.plt)
+
+.data           0x00000000000274f0       0x1c
+                [!provide]                        PROVIDE (__data_start = .)
+ *(.data .data.* .gnu.linkonce.d.*)
+ .data          0x00000000000274f0        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .data          0x00000000000274f0        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ .data.rel.local
+                0x00000000000274f0        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+                0x00000000000274f0                __dso_handle
+ .data          0x00000000000274f8        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/avi_utility.o
+ .data          0x00000000000274f8        0x4 build/arm11-gcc-uClibc-linux-gk7605v100/obj/mmc_api.o
+ .data          0x00000000000274fc        0x4 build/arm11-gcc-uClibc-linux-gk7605v100/obj/avi_read_api.o
+                0x00000000000274fc                avi_pb_speed
+ .data          0x0000000000027500        0x8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/avi_rec.o
+                0x0000000000027504                rec_buf_size
+ .data          0x0000000000027508        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/avi_search_api.o
+ .data          0x0000000000027508        0x4 build/arm11-gcc-uClibc-linux-gk7605v100/obj/avi_write_api.o
+ .data          0x000000000002750c        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+ .data          0x000000000002750c        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+
+.tm_clone_table
+                0x0000000000027510        0x0
+ .tm_clone_table
+                0x0000000000027510        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ .tm_clone_table
+                0x0000000000027510        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+
+.data1
+ *(.data1)
+                [!provide]                        PROVIDE (_edata = .)
+                [!provide]                        PROVIDE (edata = .)
+                0x0000000000027510                . = .
+                [!provide]                        PROVIDE (__bss_start = .)
+                [!provide]                        PROVIDE (__bss_start__ = .)
+
+.bss            0x0000000000027510      0x418
+ *(.dynbss)
+ .dynbss        0x0000000000027510        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *(.bss .bss.* .gnu.linkonce.b.*)
+ .bss           0x0000000000027510        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .bss           0x0000000000027510        0x1 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ .bss           0x0000000000027511        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/avi_utility.o
+ *fill*         0x0000000000027511        0x7 
+ .bss           0x0000000000027518      0x190 build/arm11-gcc-uClibc-linux-gk7605v100/obj/mmc_api.o
+                0x00000000000276a0                format_process
+                0x00000000000276a4                grd_sd_is_formated
+ .bss           0x00000000000276a8        0x4 build/arm11-gcc-uClibc-linux-gk7605v100/obj/avi_read_api.o
+                0x00000000000276a8                avi_flag_pause
+ *fill*         0x00000000000276ac        0x4 
+ .bss           0x00000000000276b0      0x1c0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/avi_rec.o
+                0x0000000000027808                rec_duration
+                0x0000000000027810                readerId
+                0x0000000000027818                rec_func_pid
+                0x0000000000027820                rec_pthread_running
+                0x0000000000027828                rec_time_mutex_t
+                0x0000000000027858                rec_module_init
+                0x000000000002785c                data_array_pos
+                0x0000000000027860                data_array_index
+                0x0000000000027868                data_array
+ .bss           0x0000000000027870        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/avi_search_api.o
+ .bss           0x0000000000027870       0xb1 build/arm11-gcc-uClibc-linux-gk7605v100/obj/avi_write_api.o
+ .bss           0x0000000000027921        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+ .bss           0x0000000000027921        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+ *(COMMON)
+                0x0000000000027928                . = ALIGN ((. != 0x0)?0x8:0x1)
+ *fill*         0x0000000000027921        0x7 
+                [!provide]                        PROVIDE (_bss_end__ = .)
+                [!provide]                        PROVIDE (__bss_end__ = .)
+                0x0000000000027928                . = ALIGN (0x8)
+                0x0000000000027928                . = SEGMENT_START ("ldata-segment", .)
+                0x0000000000027928                . = ALIGN (0x8)
+                [!provide]                        PROVIDE (__end__ = .)
+                [!provide]                        PROVIDE (_end = .)
+                [!provide]                        PROVIDE (end = .)
+                0x0000000000027928                . = DATA_SEGMENT_END (.)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment        0x0000000000000000       0x16
+ *(.comment)
+ .comment       0x0000000000000000       0x16 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+                                         0x17 (size before relaxing)
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/avi_utility.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/mmc_api.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/avi_read_api.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/avi_rec.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/avi_search_api.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/avi_write_api.o
+ .comment       0x0000000000000016       0x17 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+
+.gnu.build.attributes
+ *(.gnu.build.attributes .gnu.build.attributes.*)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges
+ *(.debug_aranges)
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info
+ *(.debug_info .gnu.linkonce.wi.*)
+
+.debug_abbrev
+ *(.debug_abbrev)
+
+.debug_line
+ *(.debug_line .debug_line.* .debug_line_end)
+
+.debug_frame
+ *(.debug_frame)
+
+.debug_str
+ *(.debug_str)
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges
+ *(.debug_ranges)
+
+.debug_macro
+ *(.debug_macro)
+
+.debug_addr
+ *(.debug_addr)
+
+.ARM.attributes
+ *(.ARM.attributes)
+ *(.gnu.attributes)
+
+.note.gnu.arm.ident
+ *(.note.gnu.arm.ident)
+
+/DISCARD/
+ *(.note.GNU-stack)
+ *(.gnu_debuglink)
+ *(.gnu.lto_*)
+OUTPUT(build/arm11-gcc-uClibc-linux-gk7605v100/lib/libapp_avi.so elf64-littleaarch64)
+LOAD linker stubs

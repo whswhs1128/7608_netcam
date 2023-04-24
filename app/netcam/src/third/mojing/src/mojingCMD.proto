@@ -1,0 +1,520 @@
+syntax = "proto3";
+
+package protobuf;
+
+message RegisterRequest {
+    string DeviceID = 1; //设备ID
+    int64 RegisterTime = 2; //注册时间戳
+}
+
+
+message RegisterResponseWithNonce {
+    int32 Code = 1; //响应代码
+    string Message = 2; //响应消息
+    string nonce = 3; //验证随机数
+}
+
+
+message RegisterRequestWithAuth {
+    string DeviceID = 1; //设备ID
+    int64 RegisterTime = 2; //注册时间
+    string Auth = 3; //验证信息
+    int32 PingSpan = 4; //心跳间隔时间
+}
+
+
+message RegisterResponse {
+    int32 Code = 1; //响应消息
+    string Message = 2; //响应代码
+}
+
+
+message UploadDeviceInfoRequest {
+    string DeviceID = 1; //设备ID
+	string DeviceName = 2; //设备名称
+    string FirmwareVersion = 3; //固件版本信息
+    string FirmwareMD5 = 4; //固件文件MD5码
+    string SoftwareVersion = 5; //软件版本信息
+    string SoftwareMD5 = 6; //软件文件MD5码
+	string HardwareVersion = 7;//硬件版本号
+}
+
+
+message UploadDeviceInfoResponse {
+    int32 Code = 1; //响应消息
+    string Message = 2; //响应代码
+}
+
+
+message Ping {
+    int64 Time = 1;
+}
+
+
+message Pong {
+    int32 Code = 1; //响应消息
+    string Message = 2; //响应代码
+}
+
+
+message DeviceUpdateRequest {
+    int32 UpdateType = 1; //更新类型(0:固件;1:软件)
+    string wareURL = 2; //文件存放路径
+    string wareVersion = 3; //文件版本
+    string wareMD5 = 4; //文件MD5值
+    string TaskID = 5; //本次升级任务ID
+	int32 KeepSilence = 6; //是否静默升级（0：非静默；1：静默）
+}
+
+
+message DeviceUpdateResponse {
+    int32 Code = 1; //响应消息
+    string Message = 2; //响应代码
+}
+
+
+message DeviceUpdateNotify {
+    int32 UpdateType = 1; //更新类型(0:固件;1:软件)
+    string TaskID = 2; //升级任务ID
+    string wareVersion = 3; //文件版本
+    string wareMD5 = 4; //文件MD5值
+    int64 UpdateTime = 5; //升级时间
+}
+
+message OperateResponse{
+    int32 Code = 1; //响应消息
+    string Message = 2; //响应代码
+}
+
+message GetSDCardInfoRequest{
+	int64 Date =1;  //Unix时间
+}
+
+message GetSDCardInfoResponse{
+	int32 Code = 1;   //响应消息
+	string Message = 2;  //响应代码
+	int32 SDStat =3;    //(0:无卡，1:有卡未初始化，3:有卡已初始化)
+	int32 SDCardSize = 4;  //单位GB
+	int32 SDCardAvailableSize = 5;//单位MB
+	int32 SDCardUsedSize = 6;  //单位MB
+}
+
+message FormatSDCardRequest{
+    int64 Date = 1;
+}
+
+message DownLoadStatRequest{
+	int32 DownLoadStat = 1;
+	string Message = 2;
+}
+
+message FromatSDCardStatNotify{
+	int32 FromatSDCardStat = 1;
+	string Message = 2;
+}
+
+message GetCloudStorageInfoRequest{
+    string DeviceID = 1;
+	int64 Time  = 2;
+}
+
+message GetCloudStorageInfoResponse{
+    int32 Code = 1;
+	string Message = 2;
+	int32 CloudStorageType  = 3;
+    int32 StreamType  = 4;
+    int32 PreStorageTime  = 5;
+    int32 KeepTime  = 6;
+}
+
+message CloudStorageInfoChangeNotify{
+    string DeviceID  = 1;
+    int32 CloudStorageType  = 2;
+    int32 StreamType  = 3;
+    int32 PreStorageTime  = 4;
+    int32 KeepTime  = 5;
+}
+
+message GetCloudStorageAddrRequest{
+    string DeviceID  = 1;
+    int32 CloudStorageType  = 2;
+    int32 StreamType  = 3;
+    int32 PreStorageTime  = 4;
+    int32 KeepTime  = 5;
+    string StreamDesc  = 6;
+    int64 StartTime  = 7;
+}
+
+message GetCloudStorageAddrResponse{
+    int32 Code  = 1;
+    string Message  = 2;
+    int32 SSRC  = 3;
+    string AddrIP  = 4;
+    int32 AddrPort  = 5;
+    int32 TransType  = 6;
+    string TaskID  = 7;
+}
+
+message CloudStorageEndNotify{
+    string DeviceID  = 1;
+    string TaskID  = 2;
+    int64 StartTime  =3;
+    int64 EndTime  = 4;
+}
+
+//3.2.3.4音视频配置 3100
+message GetVideoConfigRequest{
+	int32 StreamType = 1;
+	string ChannelCode = 2;
+}
+
+message GetVideoConfigResponse{
+	int32 Code = 1;
+	string Message = 2;
+	string CurrResolution = 3;
+	repeated string Resolution = 4;
+	string CurrImageQuality = 5;
+	repeated string ImageQuality = 6;
+	int32 RateType = 7;
+	string RateLimit = 8;
+	int32 Rate = 9;
+	int32 IframeInterval = 10;
+	repeated int32 FrameRateLimit = 11;
+	int32 CurrFrameRate = 12;
+	repeated string EncodeType = 13;
+	string CurrEncode = 14;
+}
+
+//3.2.3.4.3配置设备视频项请求 3102
+message SetVideoConfigRequest{
+	string ChannelCode = 1;
+	string CurrResolution = 2;
+	string CurrImageQuality = 3;
+	int32 RateType = 4;
+	int32 Rate = 5;
+	int32 IframeInterval = 6;
+	int32 CurrFrameRate = 7;
+	string CurrEncode = 8;
+	int32 StreamType = 9;
+}
+
+//3.2.3.5图像配置 3200
+message GetImageConfigRequest{
+	string ChannelCode = 1;
+}
+
+message GetImageConfigResponse{
+	int32 Code = 1;
+	string Message = 2;
+	int32 Model = 3;
+	repeated ImageType Types = 4;
+}
+
+message ImageType{
+	string Type = 1;
+	repeated ImageParam Params = 2;
+}
+
+message ImageParam{
+	int32 Current = 1;
+	string Name = 2;
+}
+
+//3.2.3.5.3设置图像配置请求   3202
+message SetImageConfigRequest{
+	string ChannelCode = 1;
+	int32 Model = 2;
+	repeated ImageType Types = 3;
+}
+
+//3.2.3.5.1获取OSD配置请求 3204
+message DeviceChannelInfoRequest{
+	string ChannelCode = 1;
+	string DeviceCode = 2;
+}
+
+message OSDConfigResponse{
+	int32 Code = 1;
+	string Message = 2;
+	int32 WeekDisplay = 3;
+	int32 DateDisplay = 4;
+	int32 ChannelDisplay = 5;
+	string Channel = 6;
+	repeated Composition Compositions = 7;
+}
+
+message Composition{
+	int32 Index = 1;
+	string Name = 2;
+	int32 Display = 3;
+}
+
+//3.2.3.5.3设置OSD配置请求 3206
+message SetOSDConfigRequest{
+	string ChannelCode = 1;
+	int32 WeekDisplay = 2;
+	int32 DateDisplay = 3;
+	int32 ChannelDisplay = 4;
+	string Channel = 5;
+	repeated Composition Compositions = 6;
+}
+
+//3.2.3.6事件配置 3300
+message GetMDStatusResponse{
+	int32 Code = 1;
+	string Message = 2;
+	int32 EventStatus = 3;
+	int32 Sensitivity = 4;
+	int32 ScreenShotStatus = 5;
+	int32 SmartStatus = 6;
+	repeated int32 SmartType = 7;
+	int32 DefenceStatus = 8;
+	repeated TimeDurationList DefenceTime = 9;
+}
+
+message TimeDurationList{
+	repeated string TimeDuration = 1;
+	int32 WeekDay = 2;
+}
+
+//3.2.3.6.3设置移动侦测事件状态请求 3302
+message SetMDStatusRequest{
+	int32 EventStatus = 1;
+	int32 Sensitivity = 2;
+	int32 ScreenShotStatus = 3;
+	int32 SmartStatus = 4;
+	repeated int32 SmartType = 5;
+	int32 DefenceStatus = 6;
+	repeated TimeDurationList DefenceTime = 7;
+}
+
+//3.2.3.6.6获取区域入侵事件状态响应 3304
+message GetAreaAlarmStatusRequest{
+    int32 PresetPosition = 1;
+}
+
+message GetAreaAlarmStatusResponse{
+	int32 Code = 1;
+	string Message = 2;
+	int32 EventStatus = 3;
+	int32 Sensitivity = 4;
+	int32 SmartStatus = 5;
+	repeated int32 SmartType = 6;
+	repeated int32 Action = 7;
+	repeated Area AreaGroup = 8;
+	int32 ScreenShotStatus = 9;
+	int32 DefenceStatus = 10;
+	repeated TimeDurationList DefenceTime = 11;
+	int32 ShowArea = 12;
+}
+
+message Area{
+	repeated string Points = 1;
+	string Resolution = 2;
+}
+
+//3.2.3.6.7设置区域入侵事件状态请求 3306
+message SetAreaAlarmStatusRequest{
+	int32 EventStatus = 1;
+	int32 Sensitivity = 2;
+	int32 SmartStatus = 3;
+	repeated int32 SmartType = 4;
+	repeated int32 Action = 5;
+	repeated Area AreaGroup = 6;
+	int32 ScreenShotStatus = 7;
+	int32 DefenceStatus = 8;
+	repeated TimeDurationList DefenceTime = 9;
+	int32 ShowArea = 10;
+	int32 PresetPosition = 11;
+}
+
+//3.2.3.6.9获取事件告警输出配置请求 3308
+message GetEventAlarmOutRequest{
+	int32 EventType = 1;
+}
+
+message GetEventAlarmOutResponse{
+	int32 Code = 1;
+	string Message = 2;
+	int32 GBAlarmStatus = 3;
+	int32 AudioAlarmStatus = 4;
+	repeated AudioAlarmFile AudioAlarmFiles = 5;
+	int32 AudioPlayCount = 6;
+	int32 LightAlarmStatus = 7;
+	int32 LightAlarmType = 8;
+	int32 LightAlarmFrequency = 9;
+	int32 LightAlarmTime = 10;
+}
+
+message AudioAlarmFile{
+	int32 Index = 1;
+	string Name = 2;
+	int32 Status = 3;
+	int32 Type = 4;
+}
+
+//3.2.3.6.11设置事件告警输出配置请求 3310
+message SetEventAlarmOutRequest{
+	int32 EventType = 1;
+	int32 GBAlarmStatus = 2;
+	int32 AudioAlarmStatus = 3;
+	int32 AudioAlarmFileIndex = 4;
+	int32 AudioPlayCount = 5;
+	int32 LightAlarmStatus = 6;
+	int32 LightAlarmType = 7;
+	int32 LightAlarmFrequency = 8;
+	int32 LightAlarmTime = 9;
+}
+
+//3.2.3.6.1声光告警手动操作请求 3312
+message SetManualAlarmRequest{
+	int32 Type = 1;
+}
+
+//3.2.3.6.15告警声音文件云端更新请求 3314
+message SetAudioAlarmFileRequest{
+	int32 Action = 1;
+	string FileUrl = 2;
+	string FileMD5 = 3;
+	string FileName = 4;
+	int32 FileIndex = 5;
+	string TaskID = 6;
+}
+
+//3.2.3.6.17告警声音文件替换通知 3316
+message AudioAlarmFileUpdateNotify{
+	int32 UpdateType = 1;
+	string TaskID = 2;
+	string Message = 3;
+}
+
+//3.2.3.7.1获取夜视配置请求 3400
+message GetNightVisionConfigResponse{
+	int32 Code = 1;
+	string Message = 2;
+	repeated int32 SupportedLightTypes = 3;
+	int32 CurrentLightType = 4;
+	int32 LightnessType = 5;
+}
+
+//3.2.3.7.3设置夜视类型请求 3402
+message SetNightLightTypeRequest{
+	int32 LightType = 1;
+}
+
+//3.2.3.7.5设置夜视补光灯亮度请求 3404
+message SetLightnessRequest{
+	int32 Lightness = 1;
+}
+
+//3.2.3.8.1获取设备音量配置请求 3500
+message GetAudioConfigResponse{
+	int32 Code = 1;
+	string Message = 2;
+	int32 AudioOutStatus = 3;
+	int32 AudioOut = 4;
+	int32 AudioInStatus = 5;
+	int32 AudioIn = 6;
+}
+
+//3.2.3.8.1设置设备音量配置请求 3502
+message SetAudioConfigRequest{
+	int32 Type = 1;
+	int32 Status = 2;
+	int32 Value = 3;
+}
+
+//3.2.3.9.1获取设备本地录像配置请求  3600
+message GetLocalStorageConfigResponse{
+	int32 Code = 1;
+	string Message = 2;
+	int32 StreamType = 3;
+	int32 StorageType = 4;
+	repeated TimeDurationList DefenceTime = 5;
+}
+
+//3.2.3.9.3设置本地录像配置请求   3602
+message SetLocalStorageConfigRequest{
+	int32 StreamType = 1;
+	int32 StorageType = 2;
+	repeated TimeDurationList DefenceTime = 3;
+}
+
+//事件上报开关请求 5010
+message SetEventUploadRequest{
+	int32 UploadStatus = 1;
+	string Host = 2;
+	int32 Port = 3;
+}
+
+//3.2.5.2.1获取国标配置请求  5020
+message GetGBConfigResponse{
+	int32 Code = 1;
+	string Message = 2;
+	string SipHost = 3;
+	int32 SipPort = 4;
+	int32 HeartBeatNum = 5;
+	int32 HearBeatTime = 6;
+	string SipServerID = 7;
+}
+
+//3.2.5.3.1修改国标配置请求  5022
+message UpdateGBConfigRequest{
+	string SipHost = 1;
+	int32 SipPort = 2;
+	int32 HeartBeatNum = 3;
+	int32 HearBeatTime = 4;
+	string SipServerID = 5;
+	string GBPassword = 6;
+}
+
+//3.2.5.4.1获取NTP配置请求  5060
+message GetTimingConfigResponse{
+	int32 Code = 1;
+	string Message = 2;
+	string NTPHost = 3;
+	int32 NTPPort = 4;
+	int32 TimingInterval = 5;
+}
+
+//3.2.5.4.3设置NTP配置请求 5062
+message SetTimingConfigRequest{
+	string NTPHost = 1;
+	int32 NTPPort = 2;
+	int32 TimingInterval = 3;
+	string PassWord = 4;
+}
+
+//3.2.5.7.1读取设备网络信息请求  5080
+message NetInfoResponse{
+	int32 Code = 1;
+	string Message = 2;
+	repeated NetCardInfo NetCards = 3;
+}
+
+message NetCardInfo{
+	string IP = 1;
+	string Mac = 2;
+	int32 IsDynamic = 3;
+	int32 Status = 4;
+	int32 NetCardType = 5;
+}
+
+//3.2.5.7.3修改设备网络信息请求    5082
+message UpdateNetInfoRequest{
+	string Mac = 1;
+	int32 Conversion = 2;
+}
+
+//3.2.5.8.1读取设备ONVIF信息请求  5090
+message GetDeviceOnvifResponse{
+	int32 Code = 1;
+	string Message = 2;
+	int32 Status = 3;
+	string Version = 4;
+}
+
+//3.2.5.8.3设置ONVIF开关请求 5092
+message SetDeviceOnvifRequest{
+	int32 Status = 1;
+}

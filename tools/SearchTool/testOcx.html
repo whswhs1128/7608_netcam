@@ -1,0 +1,107 @@
+﻿<HTML>
+<HEAD>
+<TITLE>GKIPCWebPlugin Test</TITLE>
+</HEAD>
+<OBJECT ID="GKIPCWebPlugin" WIDTH=960 HEIGHT=540 classid="CLSID:02A9E28E-AE20-4692-A22B-C1113730F769">
+</OBJECT>
+<script type="text/javascript">
+  var obj = document.getElementById("GKIPCWebPlugin");
+  var ipDefault = "192.168.10.125";
+  var ipAddr;
+  
+function GetQueryString(name)
+{
+     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+     var r = window.location.search.substr(1).match(reg);
+     if(r!=null)return  unescape(r[2]); return null;
+}
+
+  function startOcx()
+  {
+	//alert("ConnectToBoard");
+	//obj.ShowRate(1);
+	
+	//var ret = obj.ConnectToBoard("192.168.30.100", 1234);
+    ipAddr = GetQueryString("ip");
+    if (ipAddr == null)
+    {
+        ipAddr = ipDefault;
+    }
+    //alert(ipAddr);
+	setTimeout("CONNECT()", 10);
+	//alert(ret);
+  }
+  function CONNECT()
+  {
+	  var ret1 = obj.InitPlugin();
+		var ret = obj.ConnectToBoard(ipAddr, 1234);
+		ret = obj.SetIpcStreamId(0);
+		ret = obj.SetAutoReconnect(true);
+	//alert(ret);
+		//obj.ShowRate(1);
+		//setTimeout("ShowRate(1)", 5);
+  }
+  function stopOcx()
+  {
+	obj.DeinitPlugin();
+  }
+  function recordType(type)
+  {
+	var ret;
+	//alert(type);
+	if(type == 'h264')
+	{
+		//alert("H264");
+		ret = obj.SetRecordType(0);
+	}
+	else
+	{
+		//alert("AVI");
+		ret = obj.SetRecordType(1);
+	}
+  }
+  function record(rec)
+  {
+	//alert(rec);
+	var ret = obj.Record(rec);
+  }
+  function SetStreamId(id)
+  {
+	//alert(rec);
+	var ret = obj.SetIpcStreamId(id);
+  }
+  
+  function GetVer()
+  {
+	//alert(rec);
+	var ret = obj.GetVersion();
+	//if(ret != '1507211110')
+	//{
+	//	alert("Activex 控件需要升级，请下载并重新安装");
+	//	return;
+	//}
+	alert(ret);
+  }
+  function ShowRate(show)
+  {
+	//alert(show);
+	var ret = obj.ShowRate(show);
+  }
+  function SetDisplaySize(width, height)
+  {
+	var ret = obj.SetDisplaySize(width, height);
+  }
+  function GetRate()
+  {
+	var ret = obj.GetRate();
+	alert(ret);
+  }
+  //  
+</script>
+<body onload="startOcx()" onunload="stopOcx()"> 
+
+<h1>PREVIEW</h1>
+
+<button type="button" onclick="CONNECT()">CONNECT</button>
+</body>
+</HTML>

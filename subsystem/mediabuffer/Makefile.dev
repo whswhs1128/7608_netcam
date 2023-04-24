@@ -1,0 +1,61 @@
+################################################################################
+################################################################################
+##
+## Makefile -- makefile for mediabuffer library
+##
+## (C) Copyright 2012-2014 by Goke Microelectronics Co.,Ltd
+##
+## Mandatory settings:
+##
+## o TOPDIR      = the toplevel directory (using slashes as path separator)
+## o TARGET      = the machine qualifier to generate code for
+##
+################################################################################
+################################################################################
+
+
+
+
+LIBRARY = libmediaFifo
+
+HEADERS +=  $(wildcard inc/*.h)
+HEADER_SUBDIR = subsystem/mediabuffer
+
+SOURCES  += $(wildcard src/*.c)
+
+
+CCFLAGS_USER += -I src -I inc -I$(TOPDIR)/sdk/inc
+CCFLAGS_USER += -I$(TOPDIR)/app/netcam/inc/
+
+################################################################################
+# define user targets
+################################################################################
+
+default: install
+
+clean: clean-objects clean-library clean-all
+
+build:  build-objects build-library install-library
+
+headers: install-headers
+
+install: build install-library install-headers
+
+all: clean build install
+
+################################################################################
+# include internal definitions and rules
+################################################################################
+
+  RELEASE_SUBDIR = $(SUBDIR)
+  RELEASE_FILES += Makefile.rel
+  RELEASE_FILES += $(wildcard inc/*.h   )
+  RELEASE_FILES += Makefile
+  RELEASE_FILES += lib/$(LIBRARY)$(LIBRARY_EXT)
+  RELEASE_FILES += lib/$(LIBRARY)$(SHARED_EXT)
+
+release: release-lib-prepare  doc release-files $(DIRECTORIES:%=subdir-release-%)
+
+doc:
+
+release-lib-prepare: clean build-library install-release-library

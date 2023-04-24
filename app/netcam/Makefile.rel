@@ -1,0 +1,279 @@
+################################################################################
+################################################################################
+##
+## Makefile -- makefile for application ctlserver
+##
+## (C) Copyright 2012-2014 by Goke Microelectronics Co.,Ltd
+##
+## Mandatory settings:
+##
+## o TOPDIR      = the toplevel directory (using slashes as path separator)
+## o TARGET      = the machine qualifier to generate code for
+##
+################################################################################
+################################################################################
+TOPDIR = ../..
+SUBDIR = app/netcam
+
+include $(TOPDIR)/env/make/Makefile.config
+include module_config
+
+LIBRARIES += main
+LIBRARIES += utilityApi
+LIBRARIES += workqueue
+LIBRARIES += json
+LIBRARIES += log
+LIBRARIES += pt
+LIBRARIES += httpserver
+LIBRARIES += gksdk
+LIBRARIES += gksdk_d
+LIBRARIES += zlib
+LIBRARIES += onvif
+LIBRARIES += mediaFifo
+LIBRARIES += adpcm
+LIBRARIES += rtspLib
+LIBRARIES += g711
+LIBRARIES += ntpclient
+LIBRARIES += gkbase64
+
+LIBRARIES += dbc
+LIBRARIES += BPPP_API_GKX
+
+LIBRARIES += gksdk
+LIBRARIES += gksdk_d
+
+
+ifeq ($(SUPPORT_ONVIF_CONFIG),y)
+CCFLAGS_USER += -DMODULE_SUPPORT_ONVIF
+LIBRARIES += onvif
+endif
+
+ifeq ($(SUPPORT_HTTP_CONFIG),y)
+CCFLAGS_USER += -DMODULE_SUPPORT_HTTP
+LIBRARIES += httpserver
+endif
+
+ifeq ($(SUPPORT_NTP_CONFIG),y)
+CCFLAGS_USER += -DMODULE_SUPPORT_NTP
+LIBRARIES += ntpclient
+endif
+
+ifeq ($(SUPPORT_CMS_CONFIG),y)
+CCFLAGS_USER += -DMODULE_SUPPORT_CMS
+CCFLAGS_USER += -I src/gk_cms
+CCFLAGS_USER += -I src/gk_cms/gk_cms_net
+endif
+
+ifeq ($(SUPPORT_LOCAL_REC),y)
+CCFLAGS_USER += -DMODULE_SUPPORT_LOCAL_REC
+CCFLAGS_USER += -I src/avi
+endif
+
+ifeq ($(SUPPORT_REC_PCM),y)
+CCFLAGS_USER += -DMODULE_SUPPORT_REC_PCM
+endif
+
+ifeq ($(SUPPORT_OLD_CMS_CONFIG),y)
+CCFLAGS_USER += -DMODULE_SUPPORT_OLD_CMS
+endif
+
+ifeq ($(SUPPORT_DAHUA_CONFIG),y)
+CCFLAGS_USER += -DMODULE_SUPPORT_DAHUA
+endif
+
+ifeq ($(SUPPORT_XMAI_CONFIG),y)
+CCFLAGS_USER += -DMODULE_SUPPORT_XMAI
+endif
+
+ifeq ($(SUPPORT_LOCAL_WATCHDOG),y)
+CCFLAGS_USER += -DMODULE_SUPPORT_LOCAL_WATCHDOG
+endif
+
+ifeq ($(SUPPORT_YUNNI_CONFIG),y)
+CCFLAGS_USER += -DMODULE_SUPPORT_YUNNI
+CCFLAGS_USER += -I src/third/product_test/inc
+LDFLAGS_USER += -L src/third/yunni/lib
+endif
+
+ifeq ($(SUPPORT_ULUCU_CONFIG),y)
+CCFLAGS_USER += -DMODULE_SUPPORT_ULUCU
+LDFLAGS_USER += -L src/third/ulucu/lib
+endif
+
+ifeq ($(SUPPORT_DANA_CONFIG),y)
+CCFLAGS_USER += -DMODULE_SUPPORT_DANA
+include  src/third/dana/Makefile
+endif
+
+ifeq ($(SUPPORT_DEFAULT_WORKQUEUE),y)
+CCFLAGS_USER += -DMODULE_SUPPORT_WORKQUEUE
+LIBRARIES += workqueue
+endif
+
+ifeq ($(SUPPORT_RF433_CONFIG),y)
+CCFLAGS_USER += -DMODULE_SUPPORT_RF433
+CCFLAGS_USER += -I src/rf433/*.h
+SOURCES += $(wildcard src/rf433/*.c)
+endif
+
+ifeq ($(SUPPORT_FACTORY_TEST),y)
+CCFLAGS_USER += -DMODULE_SUPPORT_FACTORY_TEST
+CCFLAGS_USER += -I src/factory_test/*.h
+SOURCES += $(wildcard src/factory_test/*.c)
+endif
+
+ifeq ($(SUPPORT_AP_STA),y)
+CCFLAGS_USER += -DAP_STA_SUPPORT
+endif
+################################################################################
+# source files
+################################################################################
+
+
+
+################################################################################
+# define define user cc flags for App
+################################################################################
+
+CCFLAGS_USER += -I./inc 
+CCFLAGS_USER += -I./inc/cfg
+
+#update include files
+CCFLAGS_USER += -I src/update
+
+#overlayer include files
+CCFLAGS_USER += -I src/overlayer
+
+#network source files
+CCFLAGS_USER += -I src/net/include
+
+#typeface source files
+CCFLAGS_USER += -I src/common
+
+#ftp include files
+CCFLAGS_USER += -I src/ftp
+
+################################################################################
+# define define user cc flags for Lib
+################################################################################
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/subsystem/mediabuffer
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/subsystem/minirtsp
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/subsystem/json
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/subsystem/onvif
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/subsystem/http
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/subsystem/g711
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/subsystem/adpcm
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/subsystem/base64
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/subsystem/ntpclient
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/subsystem/eventalarm
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/subsystem/log
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/platform/sdk
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/subsystem/utility
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/subsystem/workqueue
+
+
+################################################################################
+# define define user ld flags
+################################################################################
+
+LDFLAGS_USER += -lpthread -lrt -lresolv
+LDFLAGS_USER += -lm 
+
+
+################################################################################
+# define library used
+################################################################################
+
+LIBRARIES += gksdk
+LIBRARIES += mediaFifo
+LIBRARIES += rtspLib
+LIBRARIES += json
+LIBRARIES += g711
+LIBRARIES += adpcm
+LIBRARIES += gkbase64
+LIBRARIES += zlib
+LIBRARIES += pt
+LIBRARIES += log
+LIBRARIES += utilityApi
+
+ifeq ($(release-software-subsystem-tuning), y)
+LIBRARIES += tuning
+endif
+
+################################################################################
+# define target name
+################################################################################
+
+PROGRAM = netcam
+
+################################################################################
+# define user targets
+################################################################################
+
+default: install
+
+clean: clean-objects clean-all
+
+build: build-objects build-program
+
+
+install-config-file:
+	@mkdir $(ROOTFS_TOP)/usr/local/bin -p
+	
+install: install_third_lib build install-config-file install-program install-bin install-program-priv
+
+install_third_lib:
+	echo "-------------guixing ---------"
+	@cp  ${TOPDIR}/third_lib/* ${INSTALL_LIBRARY_DIR}
+
+headers:
+
+all: clean build install
+
+install-program-priv:
+	@$(NEWLINE)
+	@$(NEWLINE) "Install web to $(ROOTFS_TOP)/opt/resource"
+	@$(NEWLINE)
+	@mkdir  $(ROOTFS_TOP)/opt/resource -p
+	@rm -rf web/Download/web.jpg
+	@ln -s /tmp/web_snapshot2.jpg web/Download/web.jpg
+	@rm -rf web/snapshot/onvif.jpg
+	@ln -s /tmp/onvif_snapshot.jpg web/snapshot/onvif.jpg
+	@cp -rf  web  $(ROOTFS_TOP)/opt/resource/
+	@cp  web/js/function.js $(ROOTFS_TOP)/opt/resource/web/js/function.js -f
+	@sudo chmod 777 resource/S90ipc
+	@sudo chmod 777 resource/init.sh
+	@cp -f  resource/init.sh $(ROOTFS_TOP)/usr/local/bin/
+	@rm -f  $(ROOTFS_TOP)/usr/local/bin/startup.sh
+	@cp -a  resource/S90ipc $(ROOTFS_TOP)/etc/init.d/
+	@cp -af  resource/font $(ROOTFS_TOP)/opt/resource/
+	@mkdir -p $(ROOTFS_TOP)/opt/resource/dana/
+	@cp -a  resource/danale.conf $(ROOTFS_TOP)/opt/resource/dana/
+	@mkdir  $(ROOTFS_TOP)/opt/custom -p
+	@mkdir  $(ROOTFS_TOP)/opt/custom/cfg -p
+	@mkdir  $(ROOTFS_TOP)/opt/custom/onvif -p
+	@cp -af resource/custom/onvif/$(DECODER)/* $(ROOTFS_TOP)/opt/custom/onvif
+	
+
+################################################################################
+# include internal definitions and rules
+################################################################################
+
+  RELEASE_SUBDIR = $(SUBDIR)
+  RELEASE_FILES += $(SOURCES)
+  RELEASE_FILES += Makefile
+  RELEASE_FILES += Makefile.rel
+  RELEASE_FILES += $(wildcard src/*.h)
+  RELEASE_FILES += $(wildcard src/sys/*.h)
+  RELEASE_FILES += $(wildcard *.xml)
+  RELEASE_FILES += $(wildcard configs/*)
+  RELEASE_FILES += $(wildcard configs/*/*)
+
+release: release-files $(DIRECTORIES:%=subdir-release-%) info
+
+doc: $(DIRECTORIES:%=subdir-doc-%)
+
+info: force
+	@echo $(DIRECTORIES)
+
+

@@ -1,0 +1,5 @@
+#!/bin/sh
+
+echo 8M > /sys/block/zram0/disksize
+mkswap /dev/zram0
+swapon /dev/zram0

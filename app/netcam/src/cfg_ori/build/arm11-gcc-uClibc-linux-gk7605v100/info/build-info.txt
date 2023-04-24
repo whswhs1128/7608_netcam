@@ -1,0 +1,11 @@
+CC.............: /opt/linux/x86-arm/aarch64-mix210-linux/bin/aarch64-mix210-linux-gcc
+CCFLAGS........: -Wall -fgnu89-inline -fPIC -I/home/xieqianqian/yianyun/install/arm11-gcc-uClibc-linux-gk7605v100/include -I/home/xieqianqian/yianyun/install/arm11-gcc-uClibc-linux-gk7605v100/include/subsystem -I /opt/linux/x86-arm/aarch64-mix210-linux/bin/arm-gk720x-linux-uclibcgnueabi/sysroot/usr/include -DRELEASE_MAJOR= -DRELEASE_MINOR= -DRELEASE_PATCH=
+CCFLAGS_C......:
+CCFLAGS_AS.....: -x assembler-with-cpp
+CCFLAGS_USER...: -DMODULE_SUPPORT_UPGRADE_OUT -DMODULE_SUPPORT_RTSP -DMODULE_SUPPORT_ONVIF -DMODULE_SUPPORT_HTTP -DMODULE_SUPPORT_NTP -DMODULE_SUPPORT_CMS -DMODULE_SUPPORT_LOCAL_REC -DMODULE_SUPPORT_GK_SEARCH -DMODULE_SUPPORT_WORKQUEUE -DMODULE_SUPPORT_FACTORY_TEST -DMODULE_SUPPORT_GKVISION -DMODULE_SUPPORT_GB28181 -DMOJING_USE_PROTOBUF -DMODULE_SUPPORT_SERVER_KEY -DMODULE_SUPPORT_200W_2_300W -I ../../../../app/netcam/inc -I ../../../../app/netcam/inc/cfg -I/home/xieqianqian/yianyun/install/arm11-gcc-uClibc-linux-gk7605v100/include/platform/sdk -I/home/xieqianqian/yianyun/install/arm11-gcc-uClibc-linux-gk7605v100/include/subsystem/json -I/home/xieqianqian/yianyun/install/arm11-gcc-uClibc-linux-gk7605v100/include/subsystem/wireless -I/home/xieqianqian/yianyun/install/arm11-gcc-uClibc-linux-gk7605v100/include/subsystem/utility -I/home/xieqianqian/yianyun/install/arm11-gcc-uClibc-linux-gk7605v100/include/app/netcam/src/update -O2
+AR.............: /opt/linux/x86-arm/aarch64-mix210-linux/bin/aarch64-mix210-linux-ar
+ARFLAGS........: crs
+ARFLAGS_USER...:
+LD.............: /opt/linux/x86-arm/aarch64-mix210-linux/bin/aarch64-mix210-linux-gcc
+LDFLAGS........: -Wall -fgnu89-inline -fPIC -I/home/xieqianqian/yianyun/install/arm11-gcc-uClibc-linux-gk7605v100/include -I/home/xieqianqian/yianyun/install/arm11-gcc-uClibc-linux-gk7605v100/include/subsystem -I /opt/linux/x86-arm/aarch64-mix210-linux/bin/arm-gk720x-linux-uclibcgnueabi/sysroot/usr/include -DRELEASE_MAJOR= -DRELEASE_MINOR= -DRELEASE_PATCH= -Wl,-Map,build/arm11-gcc-uClibc-linux-gk7605v100/info/build-info.txt.map -L/home/xieqianqian/yianyun/install/arm11-gcc-uClibc-linux-gk7605v100/lib
+LDFLAGS_USER...:

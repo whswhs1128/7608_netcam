@@ -1,0 +1,59 @@
+################################################################################
+################################################################################
+##
+## Makefile -- makefile for tuning library
+##
+## (C) Copyright 2012-2014 by Goke Microelectronics Co.,Ltd
+##
+## Mandatory settings:
+##
+## o TOPDIR      = the toplevel directory (using slashes as path separator)
+## o TARGET      = the machine qualifier to generate code for
+##
+################################################################################
+################################################################################
+
+LIBRARY = libjpeg
+
+HEADERS +=  $(wildcard inc/*.h)
+HEADER_SUBDIR = subsystem/jpeg
+
+CCFLAGS_USER += -O2
+CCFLAGS_USER += -I inc
+
+################################################################################
+# define user targets
+################################################################################
+
+default: install
+
+clean: clean-objects clean-library clean-all
+
+build:  install-jpeg
+
+headers: install-headers 
+
+install: install-jpeg install-headers 
+
+all: clean build install
+
+install-jpeg:
+	cp ./lib/*.a $(INSTALL_LIBRARY_DIR)
+	cp ./lib/*.so $(INSTALL_LIBRARY_DIR)
+
+################################################################################
+# include internal definitions and rules
+################################################################################
+
+  RELEASE_SUBDIR = $(SUBDIR)
+  RELEASE_FILES += Makefile.rel
+  RELEASE_FILES += $(wildcard include/*.h   )
+  RELEASE_FILES += Makefile
+  RELEASE_FILES += lib/$(LIBRARY)$(LIBRARY_EXT)
+  RELEASE_FILES += lib/$(LIBRARY)$(SHARED_EXT)
+
+release: release-lib-prepare  doc release-files $(DIRECTORIES:%=subdir-release-%)
+
+doc:
+
+release-lib-prepare: clean build-library install-release-library

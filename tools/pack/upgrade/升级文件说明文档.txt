@@ -1,0 +1,89 @@
+
+升级配置文件说明文档
+
+1. 升级打包/解包PC工具的使用。
+    a) pack_upgrade_tool 为升级打包/解包程序。
+       打包命令： pack_upgrade_tool -p <升级配置文件名> <打包生成的镜像文件名>
+	   说    明： -p 选项为打包升级程序命令。 <升级配置文件名> 为配置好的配置文件。 <打包生成的镜像文件名> 为要生成的镜像文件名。
+	   
+	   解包命令:  pack_upgrade_tool -u <已打包生成的镜像文件名>
+	   说    明： -u 选项为解包升级程序命令。 <打包生成的镜像文件名> 为已生成的镜像文件名。解包后,可以在本地生成打包进升级镜像的文件。
+
+2. 升级配置文件说明。
+	升级配置文件，是升级打包PC工具，制作升级镜像的唯一依据。如下对升级配置文件的每个section(段)，和段内的各个元素进行说明。
+    a) 文件的段规则。每个段名必须以[XXX]开始，[XXX_END] 结束。但目前该升级配置文件仅支持两种段。即
+	   [FIRMWARE] --- [FIRMWARE_END] 和 [FLASHx] --- [FLASHx_END]
+	
+	b) [FIRMWARE] 固件段说明。
+	   固件段是以[FIRMWARE]开始，[FIRMWARE_END] 结束。开始/结束的段名不能改变。其中包含了多个元素，如：
+       [FIRMWARE]
+       magic=GK7101_IPCAM_FIRMWARE  # 幻数，参与升级文件的校验。改幻数也是写死在升级打包/解包PC工具和板端升级程序中的
+       Platform=GK7101              # 芯片平台。GK7101
+       machine_type=W7101_IPCAMERA  # 产品类型。往往指产品编号
+       image_ver=V_1.1.0            # 镜像版本号。
+       flash_size=0x800000          # 所要升级的flash容易大小。注意: 应用16进制给出! 8MB，8012KB等表示都是错误的！
+       upgrade_num=7                # 所以打包和升级分区数量。 注意: 该数量有多少个，就必须有多少个[FLASHx]对应的段！二者必须对应！
+       [FIRMWARE_END]
+	
+	c) [FLASHx] flash烧写段说明。
+	   flash烧写段是以[FLASHx]开始，[FLASHx_END] 结束。开始/结束的段名不能改变。其中包含了多个元素，如：
+       [FLASH4]
+       upgrade_flag=1           # 该段升级标志。0: 表示该段内不升级，也不打包到升级文件中. 1: 表示该段升级，且打包进升级文件中.
+       mtd_part=/dev/mtd4       # 需要升级的MTD分区设备。如要升级kernel分区，则对应镜像分区表对应的则是 /dev/mtd4 分区.
+       mtd_name=kernel          # 需要升级的MTD分区名字。如kernel, uboot, rootfs...
+       mtd_addr=0xe0000         # 需要升级的flash起始地址。注意该偏移地址是相对于整个FLASH的容量，从0开始的起始地址。且只接受16进制表示.
+       mtd_size=0x150000        # 需要升级的MTD分区大小。  注意该大小仅为MTD容量大小。且只接受16进制表示.
+       mtd_offset=0             # 相对该分区内的偏移地址。(目前再为使用，设置为0)。只接受16进制表示.
+       block=1                  # 该分区所占用的块。(目前再为使用，设置为1)。只接受10进制表示
+       upgrade_file=./zImage    # 需要打包进升级文件的镜像地址。若是相对地址则是相对于PC工具的相对地址，也可以是绝对路径。
+       format_rom=0             # 使用rom格式打包。(目前再为使用，设置为0)。
+       format_bin=0             # 使用bin格式打包。(目前再为使用，设置为0)。
+       [FLASH4_END]
+	注意: 在填写每个flash烧写段时，一定要注意flash_size，upgrade_num，mtd_part，mtd_addr，mtd_size，mtd_offset不能填写错误，且相互地址空间不用重叠。
+
+3. 升级文件中，各个镜像的头信息。
+   最终在IPC板端，升级工具用升级文件对各个MTD分区进行升级，就是通过升级文件中的各个镜像前的头部信息进行指导操作的。
+   该头部信息，实际上是通过原来在制作升级文件时，解析升级配置文件得到的，并打入了各个镜像文件的头部。这些头部信息实际上是一个结构体。如下：
+   /* 
+    * 该结构体要求4字节对其, 用于写入升级文件的头部 
+    * 注意该结构体是写入在升级文件中的，为了避免产生
+    * 版本前后兼容问题,  所以该结构体一旦确定尽量不要修改
+    * 为此, 已经预留出了64 个字节的保留位, 方便以后扩展. 4字节对其
+    */
+    struct gk_upgrade_header
+    {
+        char  magic_num[32];        /* 幻数             */
+        char  image_ver[32];        /* 镜像版本号       */
+        char  Platform[32];         /* 平台类型         */
+        char  machine_type[32];     /* 产品类型         */
+    
+        unsigned int  upgrade_flag; /* 升级标志, 0:表示不升级; 1:表示升级  */
+        unsigned int  flash_size;   /* 整个flash 容量大小 */
+        unsigned int  file_type;    /* 升级文件类型       */
+        unsigned int  file_size;    /* 升级文件大小不包括头(gk_file_header) */
+        unsigned int  file_crc32;   /* 升级文件crc32校验和                  */
+    
+        unsigned int  mtd_addr;     /* 擦写偏移位置 (相对整个flash容量如: 8MB or 16MB)       */
+        unsigned int  mtd_offset;   /* 要升级的所在分区内的便宜地址, 而非整体flash的偏移地址 */
+        unsigned int  mtd_size;     /* 升级文件指定flash 分区的大小 */
+        unsigned int  mtd_num;      /* 升级文件指定flash 分区号     */
+        char          mtd_part[32]; /* 指定要升级的MTD 分区设备如: /dev/mtd3      */
+        char          mtd_name[32]; /* 指定要升级的MTD 分区名子如: rootfs , uboot */
+    
+        char          reserve[64];
+    };
+    typedef struct gk_upgrade_header GK_UPGRADE_HEADER_S;
+
+	
+4. IPC板端，升级程序的使用。
+   在板端的升级程序。upgrade_flash <升级文件名>
+   注意使用升级程序时，最好是关闭MTD分区上应用，且将MTD分区umount掉之后再进行。
+   
+
+
+
+
+
+
+
+

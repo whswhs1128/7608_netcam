@@ -1,0 +1,242 @@
+################################################################################
+################################################################################
+##
+## Makefile.rules.rootfs -- special rules to build rootfs and rootfs image
+##
+## (C) Copyright 2012-2015 by Goke Microelectronics Co.,Ltd
+##
+## Version: $Id: Makefile.target.rootfs 3 2017-09-04 09:29:58Z fengxuequan $
+##
+################################################################################
+################################################################################
+
+ROOTFS_STATUS_FILE         := $(ROOTFS_SCRIPT_DIR)/rootfs-info.sh
+NETCONFIG                   := $(ROOTFS_DIR)/etc/network/interfaces
+FAKEROOT_SCRIPT             := $(FILESYSTEM_DIR)/_fakeroot.fs
+DEVICE_TABLE                := configs/device_table.txt
+UBINIZE_CFG                 := configs/ubinize.ini
+
+MAKEDEVS                    := tools/makedevs
+MKUBIFS                     := tools/mkfs.ubifs
+UBINIZE                     := tools/ubinize
+MKJFFS2                     := tools/mkfs.jffs2
+MKYAFFS2                    := tools/mkyaffs2image
+MKSQUASHFS                  := tools/mksquashfs
+
+TARGETS                     := build_minirootfs
+
+OSS_PACKAGE_SUFFIX 	     :=.tar.bz2
+OSS_PACKAGE                 := $(filter-out minirootfs_$(C_LIBRARY), \
+								$(patsubst %$(OSS_PACKAGE_SUFFIX), %, \
+								$(notdir $(wildcard $(PREBUILD_DIR)/*$(OSS_PACKAGE_SUFFIX)))))
+PHONY                       :=
+
+
+include $(FILESYSTEM_DIR)/rootfs.mak
+
+###############################################################################
+#
+# rules for rootfs and rootfs image
+#
+###############################################################################
+[FROM] := a b c d e f g h i j k l m n o p q r s t u v w x y z . -
+[TO]   := A B C D E F G H I J K L M N O P Q R S T U V W X Y Z _ _
+
+UPPERCASE = $(strip $(eval __tmp := $1) \
+        $(foreach p, $(join $(addsuffix :,$([FROM])),$([TO])),$(eval __tmp := \
+                $(subst $(word 1,$(subst :, ,$p)),$(word 2,$(subst :, ,$p)),$(__tmp)))) \
+        $(__tmp))
+
+define CONFIG_TARGET
+ifeq ($($(addsuffix _SUPPORT,$(call UPPERCASE,$(1)))),1)
+TARGETS += $(patsubst %,add-%,$(1))
+endif
+$(call UPPERCASE,$(1)) := $(1)
+endef
+
+define TARGET_DEPEND
+$(foreach p,$(1),$(patsubst %,add-%,$($(patsubst %_SUPPORT,%,$(p)))))
+endef
+
+define REMOVE_TARGET
+	$(ATSIGN)tar tjf $(1) > $(ROOTFS_SCRIPT_DIR)/$(2).tmp
+	$(ATSIGN)$(ECHO) ROOTFS_DIR=$(ROOTFS_DIR) > $(ROOTFS_SCRIPT_DIR)/$(2).sh
+	$(ATSIGN)sed -i '1i \#\!\/bin\/bash' $(ROOTFS_SCRIPT_DIR)/$(2).sh
+	$(ATSIGN)sed -i "1G" $(ROOTFS_SCRIPT_DIR)/$(2).sh
+	$(ATSIGN)sed '/\/$$$$/d' $(ROOTFS_SCRIPT_DIR)/$(2).tmp >> $(ROOTFS_SCRIPT_DIR)/$(2).sh
+	$(ATSIGN)sed -i '/\/$$$$/d;4,$$$$ s/^/rm -f $$$$ROOTFS_DIR\//' $(ROOTFS_SCRIPT_DIR)/$(2).sh
+	$(ATSIGN)sed -i '/\/$$$$/!d' $(ROOTFS_SCRIPT_DIR)/$(2).tmp
+	$(ATSIGN)sed -i 's/^/$$$$ROOTFS_DIR\//' $(ROOTFS_SCRIPT_DIR)/$(2).tmp
+	$(ATSIGN)sed -i '1i The following may be legacy directory:' $(ROOTFS_SCRIPT_DIR)/$(2).tmp
+	$(ATSIGN)sed -i ':a s/^.\{1,77\}$$$$/ & /;ta'  $(ROOTFS_SCRIPT_DIR)/$(2).tmp
+	$(ATSIGN)sed -i '/usr\/ /d;/lib\/ /d;/bin\/ /d;/sbin\/ /d;/share\/ /d;/etc\/ /d;/var\/ /d;/tmp\/ /d' $(ROOTFS_SCRIPT_DIR)/$(2).tmp
+	$(ATSIGN)if [ `cat $(ROOTFS_SCRIPT_DIR)/$(2).tmp | wc -l` -gt 1 ]; then \
+	sed '1 s/^/echo -e "\\033[31m/;s/ $$$$/\\033[0m"/;2, $$$$d' $(ROOTFS_SCRIPT_DIR)/$(2).tmp >> $(ROOTFS_SCRIPT_DIR)/$(2).sh; \
+	sed '1d;2,$$$$ s/^/echo "/;s/ $$$$/"/' $(ROOTFS_SCRIPT_DIR)/$(2).tmp >> $(ROOTFS_SCRIPT_DIR)/$(2).sh; \
+	fi;
+	$(ATSIGN)$(DELETE) $(DELETEFLAGS) $(ROOTFS_SCRIPT_DIR)/$(2).tmp
+	$(ATSIGN)chmod +x $(ROOTFS_SCRIPT_DIR)/$(2).sh
+	$(ATSIGN)$(ROOTFS_SCRIPT_DIR)/$(2).sh
+endef
+
+define STATUS_UNINSTALL
+	$(ATSIGN)sed -i '/$(1)/d' $(ROOTFS_STATUS_FILE)
+endef
+
+define STATUS_INSTALL
+	$(ATSIGN)if [ 0 -eq $$(shell cat $(ROOTFS_STATUS_FILE) | grep -c $(1)) ];then sed -i '$$$$a echo -e "\\033[32m $(1) install \\033[0m"' $(ROOTFS_STATUS_FILE); fi
+endef
+
+
+define ROOTFS_OSS_TARGET
+PHONY += $(patsubst %,add-%,$(1)) $(patsubst %,remove-%,$(1))
+$(patsubst %,add-%,$(1)): $(call TARGET_DEPEND,$($(addsuffix _DEPEND,$(call UPPERCASE,$(1)))))
+	$(ATSIGN)$(ECHO) "-->install $(1)"
+	$(call STATUS_INSTALL,$(1))
+	$(ATSIGN)tar xjf $(PREBUILD_DIR)/$(1)$(OSS_PACKAGE_SUFFIX) -C $(ROOTFS_DIR)
+ifeq ($(wildcard $(ROOTFS_SCRIPT_DIR)/*$(1).sh),)
+$(patsubst %,remove-%,$(1)):
+	$(ATSIGN)$(ECHO) "-->uninstall $(1)..."
+	$(call STATUS_UNINSTALL,$(1))
+	$(call REMOVE_TARGET,$(PREBUILD_DIR)/$(1)$(OSS_PACKAGE_SUFFIX),$$@)
+else
+$(patsubst %,remove-%,$(1)):
+	$(ATSIGN)$(ECHO) "-->uninstall $(1)..."
+	$(call STATUS_UNINSTALL,$(1))
+	$(ATSIGN)$(ROOTFS_SCRIPT_DIR)/$$@.sh;
+endif
+endef
+
+$(foreach p,$(OSS_PACKAGE),$(eval $(call CONFIG_TARGET,$(p))))
+$(foreach p,$(OSS_PACKAGE),$(eval $(call ROOTFS_OSS_TARGET,$(p))))
+
+ifneq ($(strip $(ETH0_CONFIG)),)
+TARGETS += network_eth0
+endif
+
+ifneq ($(strip $(FONTS_LIBRARY)),)
+TARGETS += fonts
+endif
+
+PHONY += build_fs
+build_fs: $(TARGETS)
+
+PHONY += rootfs-image
+rootfs-image: $(FILE_SYSTEM)
+
+PHONY += rootfs-info
+rootfs-info:
+ifneq ($(wildcard $(ROOTFS_STATUS_FILE)),)
+	$(ATSIGN)$(ROOTFS_STATUS_FILE)
+endif
+
+PHONY += rootfs-list
+rootfs-list:
+	$(ATSIGN)$(ECHO) $(OSS_PACKAGE)
+
+
+PHONY += bf_prepare
+bf_prepare:
+	-$(ATSIGN)$(DELETE) $(DELETEFLAGS) $(ROOTFS_SCRIPT_DIR)
+	$(ATSIGN)$(ECHO) install rootfs...
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(ROOTFS_DIR)
+	$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(ROOTFS_SCRIPT_DIR)
+	$(ATSIGN)touch $(ROOTFS_STATUS_FILE)
+	$(ATSIGN)$(ECHO) echo rootfs oss install status: > $(ROOTFS_STATUS_FILE)
+	$(ATSIGN)chmod +x $(ROOTFS_STATUS_FILE)
+
+PHONY += build_minirootfs
+build_minirootfs: bf_prepare
+	$(ATSIGN)$(ECHO) "-->build minirootfs_$(C_LIBRARY)"
+	$(ATSIGN)tar -xjf $(PREBUILD_DIR)/minirootfs_$(C_LIBRARY).tar.bz2 -C $(ROOTFS_DIR)
+	-$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(ROOTFS_DIR)/lib
+	-$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(ROOTFS_DIR)/usr/local
+	-$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(ROOTFS_DIR)/usr/bin
+	-$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(ROOTFS_DIR)/usr/lib
+
+PHONY += fonts
+fonts:
+	-$(ATSIGN)$(MKDIR) $(MKDIRFLAGS) $(ROOTFS_DIR)/usr/share/fonts
+	-$(ATSIGN)$(COPY)  -a $(PREBUILD_DIR)/resource/$(FONTS_LIBRARY) $(ROOTFS_DIR)/usr/share/fonts
+
+PHONY += network_eth0
+network_eth0:
+	$(ATSIGN)$(ECHO) "config eth0:"
+	$(ATSIGN)$(ECHO) "	address $(ETH0_ADDRESS)"
+	$(ATSIGN)$(ECHO) "	netmast $(ETH0_IP_MASK)"
+	$(ATSIGN)$(ECHO) "	gateway $(ETH0_GW_ADDRESS)"
+	$(ATSIGN)$(ECHO) "" >> $(NETCONFIG)
+	$(ATSIGN)$(ECHO) "auto eth0" >> $(NETCONFIG)
+ifeq ($(ETH0_CONFIG), dynamic)
+	$(ATSIGN)$(ECHO) "iface eth0 inet dhcp" >> $(NETCONFIG)
+else
+ifeq ($(ETH0_CONFIG), static)
+ifneq ($(ETH0_ADDRESS), )
+ifneq ($(ETH0_ADDRESS), )
+	$(ATSIGN)$(ECHO) "iface eth0 inet static" >> $(NETCONFIG)
+	$(ATSIGN)$(ECHO) "address $(ETH0_ADDRESS)" >> $(NETCONFIG)
+	$(ATSIGN)$(ECHO) "netmask $(ETH0_IP_MASK)" >> $(NETCONFIG)
+ifneq ($(ETH0_GW_ADDRESS), )
+	$(ATSIGN)$(ECHO) "gateway $(ETH0_GW_ADDRESS)" >> $(NETCONFIG)
+endif
+endif
+endif
+endif
+endif
+
+PHONY += bfi_prepare
+bfi_prepare:
+	-$(ATSIGN)$(DELETE) $(DELETEFLAGS) $(FAKEROOT_SCRIPT)
+	-$(ATSIGN)$(DELETE) $(DELETEFLAGS) $(FILESYSTEM_DIR)/fakerootfs
+	-$(ATSIGN)$(DELETE) $(DELETEFLAGS) $(FILESYSTEM_DIR)/ubifs.img
+	-$(ATSIGN)$(DELETE) $(DELETEFLAGS) $(FILESYSTEM_DIR)/ubi.img
+	-$(ATSIGN)$(DELETE) $(DELETEFLAGS) $(FILESYSTEM_DIR)/squashfs.img
+	-$(ATSIGN)$(DELETE) $(DELETEFLAGS) $(FILESYSTEM_DIR)/.rootfs.mak.swo
+	-$(ATSIGN)$(DELETE) $(DELETEFLAGS) $(FILESYSTEM_DIR)/rootfs.tar.bz2
+	$(ATSIGN)sudo $(COPY) -afr $(ROOTFS_DIR) $(FILESYSTEM_DIR)/fakerootfs
+	$(ATSIGN)sudo chown $(USER):$(USER) $(FILESYSTEM_DIR)/fakerootfs -R
+	$(ATSIGN)touch $(FAKEROOT_SCRIPT)
+
+PHONY += ubifs
+ubifs: bfi_prepare
+	$(ATSIGN)$(ECHO) "Build UBI..."
+	$(ATSIGN)$(ECHO) "cd $(FILESYSTEM_DIR)" >> $(FAKEROOT_SCRIPT)
+	$(ATSIGN)$(ECHO) "$(MAKEDEVS) -d $(DEVICE_TABLE) $(FILESYSTEM_DIR)/fakerootfs" >> $(FAKEROOT_SCRIPT)
+	$(ATSIGN)$(ECHO) "$(MKUBIFS) -r fakerootfs $(UBI_MIN_IO_SIZE) $(UBI_LEB_SIZE) \
+	 $(UBI_MAX_LEB_CNT) -o ubifs.img" >> $(FAKEROOT_SCRIPT)
+	$(ATSIGN)$(ECHO) "$(UBINIZE) -o ubi.img $(UBI_PEB_SIZE) $(UBI_MIN_IO_SIZE) \
+	 $(UBI_SUB_PAGE_SIZE)  $(UBINIZE_CFG)" >> $(FAKEROOT_SCRIPT)
+	$(ATSIGN)chmod +x $(FAKEROOT_SCRIPT)
+	$(ATSIGN)fakeroot -- $(FAKEROOT_SCRIPT)
+	$(ATSIGN)$(DELETE) $(DELETEFLAGS) $(FAKEROOT_SCRIPT)
+
+PHONY += jffs2
+jffs2: bfi_prepare
+	$(ATSIGN)$(ECHO) "Build JFFS2..."
+	$(ATSIGN)$(ECHO) "cd $(FILESYSTEM_DIR)" >> $(FAKEROOT_SCRIPT)
+	$(ATSIGN)$(ECHO) "$(MAKEDEVS) -d $(DEVICE_TABLE) $(FILESYSTEM_DIR)/fakerootfs" >> $(FAKEROOT_SCRIPT)
+	$(ATSIGN)$(ECHO) "$(MKJFFS2) $(JFFS2_OPTIONS) -r fakerootfs  $(JFFS2_ERASE_BLOCK_SIZE)  -o jffs2.img" >> $(FAKEROOT_SCRIPT)
+	$(ATSIGN)chmod +x $(FAKEROOT_SCRIPT)
+	$(ATSIGN)fakeroot -- $(FAKEROOT_SCRIPT)
+	$(ATSIGN)$(DELETE) $(DELETEFLAGS) $(FAKEROOT_SCRIPT)
+PHONY += yaffs2
+yaffs2: bfi_prepare
+	$(ATSIGN)$(ECHO) "Build YAFFS2..."
+	$(ATSIGN)$(ECHO) "cd $(FILESYSTEM_DIR)" >> $(FAKEROOT_SCRIPT)
+	$(ATSIGN)$(ECHO) "$(MAKEDEVS) -d $(DEVICE_TABLE) $(FILESYSTEM_DIR)/fakerootfs" >> $(FAKEROOT_SCRIPT)
+	$(ATSIGN)$(ECHO) "$(MKYAFFS2) fakerootfs yaffs2.img $(ECC_TYPE)" >> $(FAKEROOT_SCRIPT)
+	$(ATSIGN)chmod +x $(FAKEROOT_SCRIPT)
+	$(ATSIGN)fakeroot -- $(FAKEROOT_SCRIPT)
+	$(ATSIGN)$(DELETE) $(DELETEFLAGS) $(FAKEROOT_SCRIPT)
+PHONY += squashfs
+squashfs: bfi_prepare
+	$(ATSIGN)$(ECHO) "Build SquashFS..."
+	$(ATSIGN)$(ECHO) "cd $(FILESYSTEM_DIR)" >> $(FAKEROOT_SCRIPT)
+	$(ATSIGN)$(ECHO) "$(MAKEDEVS) -d $(DEVICE_TABLE) $(FILESYSTEM_DIR)/fakerootfs" >> $(FAKEROOT_SCRIPT)
+	$(ATSIGN)$(ECHO) "$(MKSQUASHFS) fakerootfs squashfs.img $(SQUASHFS_BLOCK_SIZE)" >> $(FAKEROOT_SCRIPT)
+	$(ATSIGN)chmod +x $(FAKEROOT_SCRIPT)
+	$(ATSIGN)fakeroot -- $(FAKEROOT_SCRIPT)
+	$(ATSIGN)$(DELETE) $(DELETEFLAGS) $(FAKEROOT_SCRIPT)
+
+.PHONY: $(PHONY)
+

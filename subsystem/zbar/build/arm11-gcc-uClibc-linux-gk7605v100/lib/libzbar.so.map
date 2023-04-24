@@ -1,0 +1,657 @@
+
+Discarded input sections
+
+ .note.GNU-stack
+                0x0000000000000000        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/decoder.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/img_scanner.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/scanner.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/image.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/refcnt.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/error.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/symbol.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/decoder/qr_finder.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/qrcode/bch15_5.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/qrcode/binarize.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/qrcode/isaac.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/qrcode/qrdec.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/qrcode/qrdectxt.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/qrcode/rs.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/qrcode/util.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/decoder.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/img_scanner.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/scanner.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/image.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/refcnt.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/error.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/symbol.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/decoder/qr_finder.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/qrcode/bch15_5.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/qrcode/binarize.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/qrcode/isaac.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/qrcode/qrdec.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/qrcode/qrdectxt.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/qrcode/rs.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/qrcode/util.o
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/libgcc.a
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/../../../../aarch64-linux-gnu/lib/../lib64/libgcc_s.so
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/libc.so
+START GROUP
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/lib/libc.so.6
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/libc_nonshared.a
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/lib/ld-linux-aarch64.so.1
+END GROUP
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/libgcc.a
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/../../../../aarch64-linux-gnu/lib/../lib64/libgcc_s.so
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+                0x0000000000000190                . = (SEGMENT_START ("text-segment", 0x0) + SIZEOF_HEADERS)
+
+.note.gnu.build-id
+ *(.note.gnu.build-id)
+
+.hash           0x0000000000000190      0x468
+ *(.hash)
+ .hash          0x0000000000000190      0x468 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.gnu.hash       0x00000000000005f8      0x408
+ *(.gnu.hash)
+ .gnu.hash      0x00000000000005f8      0x408 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.dynsym         0x0000000000000a00      0xdf8
+ *(.dynsym)
+ .dynsym        0x0000000000000a00      0xdf8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.dynstr         0x00000000000017f8      0xb58
+ *(.dynstr)
+ .dynstr        0x00000000000017f8      0xb58 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.gnu.version    0x0000000000002350      0x12a
+ *(.gnu.version)
+ .gnu.version   0x0000000000002350      0x12a /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.gnu.version_d  0x0000000000002480        0x0
+ *(.gnu.version_d)
+ .gnu.version_d
+                0x0000000000002480        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.gnu.version_r  0x0000000000002480       0x20
+ *(.gnu.version_r)
+ .gnu.version_r
+                0x0000000000002480       0x20 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.rela.dyn       0x00000000000024a0      0x450
+ *(.rela.init)
+ *(.rela.text .rela.text.* .rela.gnu.linkonce.t.*)
+ *(.rela.fini)
+ *(.rela.rodata .rela.rodata.* .rela.gnu.linkonce.r.*)
+ *(.rela.data .rela.data.* .rela.gnu.linkonce.d.*)
+ .rela.data.rel.local
+                0x00000000000024a0      0x150 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .rela.data.rel.ro.local
+                0x00000000000025f0      0x228 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *(.rela.tdata .rela.tdata.* .rela.gnu.linkonce.td.*)
+ *(.rela.tbss .rela.tbss.* .rela.gnu.linkonce.tb.*)
+ *(.rela.ctors)
+ *(.rela.dtors)
+ *(.rela.got)
+ .rela.got      0x0000000000002818       0xa8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *(.rela.bss .rela.bss.* .rela.gnu.linkonce.b.*)
+ *(.rela.ifunc)
+ .rela.ifunc    0x00000000000028c0        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .rela.init_array
+                0x00000000000028c0       0x18 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .rela.fini_array
+                0x00000000000028d8       0x18 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.rela.plt       0x00000000000028f0      0x7c8
+ *(.rela.plt)
+ .rela.plt      0x00000000000028f0      0x7c8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *(.rela.iplt)
+
+.init           0x00000000000030b8       0x14
+ *(SORT_NONE(.init))
+ .init          0x00000000000030b8        0xc /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+                0x00000000000030b8                _init
+ .init          0x00000000000030c4        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+
+.plt            0x00000000000030d0      0x550
+ *(.plt)
+ .plt           0x00000000000030d0      0x550 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *(.iplt)
+
+.text           0x0000000000003620    0x1a730
+ *(.text.unlikely .text.*_unlikely .text.unlikely.*)
+ *(.text.exit .text.exit.*)
+ *(.text.startup .text.startup.*)
+ *(.text.hot .text.hot.*)
+ *(SORT_BY_NAME(.text.sorted.*))
+ *(.text .stub .text.* .gnu.linkonce.t.*)
+ .text          0x0000000000003620       0x14 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *fill*         0x0000000000003634        0x4 1f2003d5
+ .text          0x0000000000003638       0xbc /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ .text          0x00000000000036f4      0x7f0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/decoder.o
+                0x00000000000037ac                zbar_decoder_create
+                0x000000000000380c                zbar_decoder_destroy
+                0x0000000000003848                zbar_decoder_reset
+                0x000000000000387c                zbar_decoder_new_scan
+                0x00000000000038cc                zbar_decoder_get_color
+                0x00000000000038ec                zbar_decoder_get_data
+                0x0000000000003904                zbar_decoder_get_data_length
+                0x000000000000391c                zbar_decoder_get_direction
+                0x0000000000003934                zbar_decoder_set_handler
+                0x0000000000003964                zbar_decoder_set_userdata
+                0x0000000000003988                zbar_decoder_get_userdata
+                0x00000000000039a0                zbar_decoder_get_type
+                0x00000000000039b8                zbar_decoder_get_modifiers
+                0x00000000000039d0                zbar_decode_width
+                0x0000000000003b50                zbar_decoder_get_configs
+                0x0000000000003c74                zbar_decoder_set_config
+                0x0000000000003d48                _zbar_decoder_buf_dump
+ .text          0x0000000000003ee4     0x1fb8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/img_scanner.o
+                0x000000000000403c                _zbar_image_scanner_recycle_syms
+                0x0000000000004254                zbar_image_scanner_recycle_image
+                0x0000000000004320                _zbar_image_scanner_alloc_sym
+                0x000000000000486c                _zbar_image_scanner_add_sym
+                0x0000000000004e04                zbar_image_scanner_create
+                0x0000000000004f24                zbar_image_scanner_destroy
+                0x0000000000005064                zbar_image_scanner_set_data_handler
+                0x00000000000050a4                zbar_image_scanner_set_config
+                0x00000000000052f8                zbar_image_scanner_enable_cache
+                0x000000000000535c                zbar_image_scanner_get_results
+                0x00000000000053b0                zbar_scan_image
+                0x0000000000005e34                zbar_calloc
+ .text          0x0000000000005e9c      0x948 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/scanner.o
+                0x0000000000005e9c                zbar_scanner_create
+                0x0000000000005ee0                zbar_scanner_destroy
+                0x0000000000005f00                zbar_scanner_reset
+                0x0000000000005f58                zbar_scanner_get_width
+                0x0000000000005f70                zbar_scanner_get_edge
+                0x0000000000005ff0                zbar_scanner_get_color
+                0x00000000000061e0                zbar_scanner_flush
+                0x00000000000062c4                zbar_scanner_new_scan
+                0x0000000000006358                zbar_scan_y
+                0x000000000000668c                zbar_scanner_get_state
+ .text          0x00000000000067e4      0x780 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/image.o
+                0x0000000000006900                zbar_image_create
+                0x0000000000006940                _zbar_image_free
+                0x0000000000006988                zbar_image_destroy
+                0x00000000000069ac                zbar_image_ref
+                0x00000000000069d4                zbar_image_get_format
+                0x00000000000069f0                zbar_image_get_sequence
+                0x0000000000006a08                zbar_image_get_width
+                0x0000000000006a20                zbar_image_get_height
+                0x0000000000006a38                zbar_image_get_size
+                0x0000000000006a8c                zbar_image_get_crop
+                0x0000000000006b20                zbar_image_get_data
+                0x0000000000006b38                zbar_image_get_data_length
+                0x0000000000006b50                zbar_image_set_format
+                0x0000000000006b78                zbar_image_set_sequence
+                0x0000000000006b9c                zbar_image_set_size
+                0x0000000000006c08                zbar_image_set_crop
+                0x0000000000006cf4                zbar_image_free_data
+                0x0000000000006d94                zbar_image_set_data
+                0x0000000000006de4                zbar_image_set_userdata
+                0x0000000000006e08                zbar_image_get_userdata
+                0x0000000000006e20                zbar_image_copy
+                0x0000000000006eb8                zbar_image_get_symbols
+                0x0000000000006ed0                zbar_image_set_symbols
+                0x0000000000006f30                zbar_image_first_symbol
+ .text          0x0000000000006f64        0x8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/refcnt.o
+                0x0000000000006f64                _zbar_refcnt_init
+ .text          0x0000000000006f6c      0x558 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/error.o
+                0x0000000000006f6c                zbar_version
+                0x0000000000006fb0                zbar_set_verbosity
+                0x0000000000006fd4                zbar_increase_verbosity
+                0x000000000000702c                _zbar_error_spew
+                0x0000000000007080                _zbar_get_error_code
+                0x00000000000070a0                _zbar_error_string
+ *fill*         0x00000000000074c4        0x4 1f2003d5
+ .text.stub     0x00000000000074c8       0x10 linker stubs
+ .text          0x00000000000084c8     0x1340 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/symbol.o
+                0x000000000000854c                zbar_get_symbol_name
+                0x0000000000008668                zbar_get_addon_name
+                0x0000000000008680                zbar_get_config_name
+                0x0000000000008780                zbar_get_modifier_name
+                0x00000000000087c8                zbar_get_orientation_name
+                0x0000000000008844                _zbar_get_symbol_hash
+                0x00000000000088c4                _zbar_symbol_free
+                0x0000000000008954                zbar_symbol_ref
+                0x0000000000008984                zbar_symbol_get_type
+                0x000000000000899c                zbar_symbol_get_configs
+                0x00000000000089b4                zbar_symbol_get_modifiers
+                0x00000000000089cc                zbar_symbol_get_data
+                0x00000000000089e4                zbar_symbol_get_data_length
+                0x00000000000089fc                zbar_symbol_get_count
+                0x0000000000008a14                zbar_symbol_get_quality
+                0x0000000000008a2c                zbar_symbol_get_loc_size
+                0x0000000000008a44                zbar_symbol_get_loc_x
+                0x0000000000008a8c                zbar_symbol_get_loc_y
+                0x0000000000008ad4                zbar_symbol_get_orientation
+                0x0000000000008aec                zbar_symbol_next
+                0x0000000000008b18                zbar_symbol_get_components
+                0x0000000000008b30                zbar_symbol_first_component
+                0x0000000000008b70                zbar_base64_encode
+                0x0000000000008d78                zbar_symbol_xml
+                0x00000000000096b4                _zbar_symbol_set_create
+                0x00000000000096e4                _zbar_symbol_set_free
+                0x0000000000009750                zbar_symbol_set_ref
+                0x000000000000979c                zbar_symbol_set_get_size
+                0x00000000000097b4                zbar_symbol_set_first_symbol
+                0x00000000000097f0                zbar_symbol_set_first_unfiltered
+ .text          0x0000000000009808      0x3a4 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/decoder/qr_finder.o
+                0x0000000000009914                _zbar_decoder_get_qr_finder_line
+                0x000000000000992c                _zbar_find_qr
+ .text          0x0000000000009bac      0x778 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/qrcode/bch15_5.o
+                0x000000000000a1b8                bch15_5_correct
+                0x000000000000a290                bch15_5_encode
+ .text          0x000000000000a324      0x638 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/qrcode/binarize.o
+                0x000000000000a324                qr_binarize
+ .text          0x000000000000a95c      0xf28 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/qrcode/isaac.o
+                0x000000000000b3a8                isaac_init
+                0x000000000000b7b8                isaac_next_uint32
+                0x000000000000b814                isaac_next_uint
+ .text          0x000000000000b884     0xefc4 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/qrcode/qrdec.o
+                0x000000000000b8bc                _zbar_qr_create
+                0x000000000000b8e8                _zbar_qr_destroy
+                0x000000000000b940                _zbar_qr_reset
+                0x0000000000018fb4                qr_code_data_list_init
+                0x0000000000018fe8                qr_code_data_list_clear
+                0x0000000000019fc4                qr_reader_match_centers
+                0x000000000001a60c                _zbar_qr_found_line
+                0x000000000001a700                _zbar_qr_decode
+ .text          0x000000000001a848     0x10c4 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/qrcode/qrdectxt.o
+                0x000000000001aa78                qr_code_data_list_extract_text
+ .text          0x000000000001b90c     0x1f80 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/qrcode/rs.o
+                0x000000000001b90c                rs_gf256_init
+                0x000000000001d230                rs_correct
+                0x000000000001d594                rs_compute_genpoly
+                0x000000000001d6ec                rs_encode
+ .text          0x000000000001d88c      0x4c4 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/qrcode/util.o
+                0x000000000001d88c                qr_isqrt
+                0x000000000001d924                qr_ihypot
+                0x000000000001dc08                qr_ilog
+ .text          0x000000000001dd50        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+ .text          0x000000000001dd50        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+ *(.gnu.warning)
+
+.fini           0x000000000001dd50       0x10
+ *(SORT_NONE(.fini))
+ .fini          0x000000000001dd50        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+                0x000000000001dd50                _fini
+ .fini          0x000000000001dd58        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+                [!provide]                        PROVIDE (__etext = .)
+                [!provide]                        PROVIDE (_etext = .)
+                [!provide]                        PROVIDE (etext = .)
+
+.rodata         0x000000000001dd60      0x97e
+ *(.rodata .rodata.* .gnu.linkonce.r.*)
+ .rodata        0x000000000001dd60       0x70 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/decoder.o
+ .rodata        0x000000000001ddd0      0x1be build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/error.o
+ *fill*         0x000000000001df8e        0x2 
+ .rodata        0x000000000001df90      0x49c build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/symbol.o
+ *fill*         0x000000000001e42c        0x4 
+ .rodata        0x000000000001e430       0x30 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/qrcode/bch15_5.o
+ .rodata        0x000000000001e460        0x8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/qrcode/isaac.o
+ .rodata        0x000000000001e468      0x24c build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/qrcode/qrdec.o
+ *fill*         0x000000000001e6b4        0x4 
+ .rodata        0x000000000001e6b8       0x26 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/qrcode/qrdectxt.o
+
+.rodata1
+ *(.rodata1)
+
+.eh_frame_hdr   0x000000000001e6e0      0x7a4
+ *(.eh_frame_hdr)
+ .eh_frame_hdr  0x000000000001e6e0      0x7a4 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+                0x000000000001e6e0                __GNU_EH_FRAME_HDR
+ *(.eh_frame_entry .eh_frame_entry.*)
+
+.eh_frame       0x000000000001ee88     0x1d50
+ *(.eh_frame)
+ .eh_frame      0x000000000001ee88       0x78 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ .eh_frame      0x000000000001ef00      0x2c0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/decoder.o
+                                        0x2d0 (size before relaxing)
+ .eh_frame      0x000000000001f1c0      0x2d8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/img_scanner.o
+                                        0x2f0 (size before relaxing)
+ .eh_frame      0x000000000001f498      0x1a0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/scanner.o
+                                        0x1b8 (size before relaxing)
+ .eh_frame      0x000000000001f638      0x2f8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/image.o
+                                        0x308 (size before relaxing)
+ .eh_frame      0x000000000001f930       0x18 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/refcnt.o
+                                         0x28 (size before relaxing)
+ .eh_frame      0x000000000001f948       0xb0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/error.o
+                                         0xc8 (size before relaxing)
+ .eh_frame      0x000000000001f9f8      0x360 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/symbol.o
+                                        0x378 (size before relaxing)
+ .eh_frame      0x000000000001fd58       0xb0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/decoder/qr_finder.o
+                                         0xc8 (size before relaxing)
+ .eh_frame      0x000000000001fe08       0xf0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/qrcode/bch15_5.o
+                                        0x100 (size before relaxing)
+ .eh_frame      0x000000000001fef8       0x28 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/qrcode/binarize.o
+                                         0x38 (size before relaxing)
+ .eh_frame      0x000000000001ff20       0xa0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/qrcode/isaac.o
+                                         0xb8 (size before relaxing)
+ .eh_frame      0x000000000001ffc0      0x858 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/qrcode/qrdec.o
+                                        0x870 (size before relaxing)
+ .eh_frame      0x0000000000020818       0xb8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/qrcode/qrdectxt.o
+                                         0xc8 (size before relaxing)
+ .eh_frame      0x00000000000208d0      0x2b0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/qrcode/rs.o
+                                        0x2c8 (size before relaxing)
+ .eh_frame      0x0000000000020b80       0x54 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/qrcode/util.o
+                                         0x68 (size before relaxing)
+ .eh_frame      0x0000000000020bd4        0x4 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+ *(.eh_frame.*)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.gnu_extab
+ *(.gnu_extab*)
+
+.exception_ranges
+ *(.exception_ranges*)
+                0x0000000000030d10                . = DATA_SEGMENT_ALIGN (CONSTANT (MAXPAGESIZE), CONSTANT (COMMONPAGESIZE))
+
+.eh_frame
+ *(.eh_frame)
+ *(.eh_frame.*)
+
+.gnu_extab
+ *(.gnu_extab)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.exception_ranges
+ *(.exception_ranges*)
+
+.tdata
+ *(.tdata .tdata.* .gnu.linkonce.td.*)
+
+.tbss
+ *(.tbss .tbss.* .gnu.linkonce.tb.*)
+ *(.tcommon)
+
+.preinit_array
+ *(.preinit_array)
+
+.init_array     0x0000000000030d10        0x8
+ *(SORT_BY_INIT_PRIORITY(.init_array.*) SORT_BY_INIT_PRIORITY(.ctors.*))
+ *(.init_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .ctors)
+ .init_array    0x0000000000030d10        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+
+.fini_array     0x0000000000030d18        0x8
+ *(SORT_BY_INIT_PRIORITY(.fini_array.*) SORT_BY_INIT_PRIORITY(.dtors.*))
+ *(.fini_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .dtors)
+ .fini_array    0x0000000000030d18        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+
+.ctors
+ *crtbegin.o(.ctors)
+ *crtbegin?.o(.ctors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .ctors)
+ *(SORT_BY_NAME(.ctors.*))
+ *(.ctors)
+
+.dtors
+ *crtbegin.o(.dtors)
+ *crtbegin?.o(.dtors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .dtors)
+ *(SORT_BY_NAME(.dtors.*))
+ *(.dtors)
+
+.jcr
+ *(.jcr)
+
+.data.rel.ro    0x0000000000030d20       0xb8
+ *(.data.rel.ro.local* .gnu.linkonce.d.rel.ro.local.*)
+ .data.rel.ro.local
+                0x0000000000030d20       0xb8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/error.o
+ *(.data.rel.ro .data.rel.ro.* .gnu.linkonce.d.rel.ro.*)
+ .data.rel.ro   0x0000000000030dd8        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.dynamic        0x0000000000030dd8      0x1d0
+ *(.dynamic)
+ .dynamic       0x0000000000030dd8      0x1d0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+                0x0000000000030dd8                _DYNAMIC
+
+.got            0x0000000000030fa8       0x40
+ *(.got)
+ .got           0x0000000000030fa8       0x40 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+                0x0000000000030fa8                _GLOBAL_OFFSET_TABLE_
+ *(.igot)
+                0x0000000000030fe8                . = DATA_SEGMENT_RELRO_END (., 0x18)
+
+.got.plt        0x0000000000030fe8      0x2b0
+ *(.got.plt)
+ .got.plt       0x0000000000030fe8      0x2b0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *(.igot.plt)
+
+.data           0x0000000000031298       0x70
+                [!provide]                        PROVIDE (__data_start = .)
+ *(.data .data.* .gnu.linkonce.d.*)
+ .data          0x0000000000031298        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .data          0x0000000000031298        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ .data.rel.local
+                0x0000000000031298        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+                0x0000000000031298                __dso_handle
+ .data          0x00000000000312a0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/decoder.o
+ .data          0x00000000000312a0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/img_scanner.o
+ .data          0x00000000000312a0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/scanner.o
+ .data          0x00000000000312a0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/image.o
+ .data          0x00000000000312a0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/refcnt.o
+ .data          0x00000000000312a0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/error.o
+ .data          0x00000000000312a0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/symbol.o
+ .data.rel.local
+                0x00000000000312a0       0x68 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/symbol.o
+ .data          0x0000000000031308        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/decoder/qr_finder.o
+ .data          0x0000000000031308        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/qrcode/bch15_5.o
+ .data          0x0000000000031308        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/qrcode/binarize.o
+ .data          0x0000000000031308        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/qrcode/isaac.o
+ .data          0x0000000000031308        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/qrcode/qrdec.o
+ .data          0x0000000000031308        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/qrcode/qrdectxt.o
+ .data          0x0000000000031308        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/qrcode/rs.o
+ .data          0x0000000000031308        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/qrcode/util.o
+ .data          0x0000000000031308        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+ .data          0x0000000000031308        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+
+.tm_clone_table
+                0x0000000000031308        0x0
+ .tm_clone_table
+                0x0000000000031308        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ .tm_clone_table
+                0x0000000000031308        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+
+.data1
+ *(.data1)
+                [!provide]                        PROVIDE (_edata = .)
+                [!provide]                        PROVIDE (edata = .)
+                0x0000000000031308                . = .
+                [!provide]                        PROVIDE (__bss_start = .)
+                [!provide]                        PROVIDE (__bss_start__ = .)
+
+.bss            0x0000000000031308       0x18
+ *(.dynbss)
+ .dynbss        0x0000000000031308        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *(.bss .bss.* .gnu.linkonce.b.*)
+ .bss           0x0000000000031308        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .bss           0x0000000000031308        0x1 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ *fill*         0x0000000000031309        0x7 
+ .bss           0x0000000000031310        0xc build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/decoder.o
+ .bss           0x000000000003131c        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/img_scanner.o
+ .bss           0x000000000003131c        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/scanner.o
+ .bss           0x000000000003131c        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/image.o
+ .bss           0x000000000003131c        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/refcnt.o
+ .bss           0x000000000003131c        0x4 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/error.o
+                0x000000000003131c                _zbar_verbosity
+ .bss           0x0000000000031320        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/symbol.o
+ .bss           0x0000000000031320        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/decoder/qr_finder.o
+ .bss           0x0000000000031320        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/qrcode/bch15_5.o
+ .bss           0x0000000000031320        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/qrcode/binarize.o
+ .bss           0x0000000000031320        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/qrcode/isaac.o
+ .bss           0x0000000000031320        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/qrcode/qrdec.o
+ .bss           0x0000000000031320        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/qrcode/qrdectxt.o
+ .bss           0x0000000000031320        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/qrcode/rs.o
+ .bss           0x0000000000031320        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/qrcode/util.o
+ .bss           0x0000000000031320        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+ .bss           0x0000000000031320        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+ *(COMMON)
+                0x0000000000031320                . = ALIGN ((. != 0x0)?0x8:0x1)
+                [!provide]                        PROVIDE (_bss_end__ = .)
+                [!provide]                        PROVIDE (__bss_end__ = .)
+                0x0000000000031320                . = ALIGN (0x8)
+                0x0000000000031320                . = SEGMENT_START ("ldata-segment", .)
+                0x0000000000031320                . = ALIGN (0x8)
+                [!provide]                        PROVIDE (__end__ = .)
+                [!provide]                        PROVIDE (_end = .)
+                [!provide]                        PROVIDE (end = .)
+                0x0000000000031320                . = DATA_SEGMENT_END (.)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment        0x0000000000000000       0x16
+ *(.comment)
+ .comment       0x0000000000000000       0x16 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+                                         0x17 (size before relaxing)
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/decoder.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/img_scanner.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/scanner.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/image.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/refcnt.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/error.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/symbol.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/decoder/qr_finder.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/qrcode/bch15_5.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/qrcode/binarize.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/qrcode/isaac.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/qrcode/qrdec.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/qrcode/qrdectxt.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/qrcode/rs.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/qrcode/util.o
+ .comment       0x0000000000000016       0x17 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+
+.gnu.build.attributes
+ *(.gnu.build.attributes .gnu.build.attributes.*)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges
+ *(.debug_aranges)
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info
+ *(.debug_info .gnu.linkonce.wi.*)
+
+.debug_abbrev
+ *(.debug_abbrev)
+
+.debug_line
+ *(.debug_line .debug_line.* .debug_line_end)
+
+.debug_frame
+ *(.debug_frame)
+
+.debug_str
+ *(.debug_str)
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges
+ *(.debug_ranges)
+
+.debug_macro
+ *(.debug_macro)
+
+.debug_addr
+ *(.debug_addr)
+
+.ARM.attributes
+ *(.ARM.attributes)
+ *(.gnu.attributes)
+
+.note.gnu.arm.ident
+ *(.note.gnu.arm.ident)
+
+/DISCARD/
+ *(.note.GNU-stack)
+ *(.gnu_debuglink)
+ *(.gnu.lto_*)
+OUTPUT(build/arm11-gcc-uClibc-linux-gk7605v100/lib/libzbar.so elf64-littleaarch64)
+LOAD linker stubs

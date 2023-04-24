@@ -1,0 +1,25 @@
+################################################################################
+################################################################################
+##
+## Config.release -- release environment package selector for software.
+##
+## (C) Copyright 2012-2015 by Goke Microelectronics Co.,Ltd
+##
+################################################################################
+################################################################################
+
+release-software-subsystem-acodec          = n
+release-software-subsystem-onvif           = n
+release-software-subsystem-rtsp            = n
+release-software-subsystem-osd             = n
+release-software-subsystem-web             = n
+release-software-subsystem-audio_process   = y
+release-software-subsystem-lcd_drv         = y
+release-software-subsystem-vision          = y
+release-software-subsystem-osip            = y
+
+release-software-applications-ctlserver    = n
+release-software-applications-sample       = n
+release-software-applications-adidemo      = n
+release-software-applications-onvifserver  = n
+

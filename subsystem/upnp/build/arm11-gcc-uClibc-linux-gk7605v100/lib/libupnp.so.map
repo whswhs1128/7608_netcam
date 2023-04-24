@@ -1,0 +1,642 @@
+
+Allocating common symbols
+Common symbol       size              file
+
+g_data              0xb84             build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/upnpc.o
+g_urls              0x28              build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/upnpc.o
+g_lanaddr           0x40              build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/upnpc.o
+
+Discarded input sections
+
+ .note.GNU-stack
+                0x0000000000000000        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/upnpdev.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/connecthostport.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/igd_desc_parse.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/minisoap.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/miniwget.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/miniupnpc.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/minixml.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/upnpc.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/upnpcommands.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/upnpreplyparse.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/minissdpc.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/upnperrors.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/portlistingparse.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/receivedata.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/upnpdev.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/connecthostport.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/igd_desc_parse.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/minisoap.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/miniwget.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/miniupnpc.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/minixml.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/upnpc.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/upnpcommands.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/upnpreplyparse.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/minissdpc.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/upnperrors.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/portlistingparse.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/receivedata.o
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/libgcc.a
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/../../../../aarch64-linux-gnu/lib/../lib64/libgcc_s.so
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/libc.so
+START GROUP
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/lib/libc.so.6
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/libc_nonshared.a
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/lib/ld-linux-aarch64.so.1
+END GROUP
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/libgcc.a
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/../../../../aarch64-linux-gnu/lib/../lib64/libgcc_s.so
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+                0x0000000000000190                . = (SEGMENT_START ("text-segment", 0x0) + SIZEOF_HEADERS)
+
+.note.gnu.build-id
+ *(.note.gnu.build-id)
+
+.hash           0x0000000000000190      0x398
+ *(.hash)
+ .hash          0x0000000000000190      0x398 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.gnu.hash       0x0000000000000528      0x27c
+ *(.gnu.hash)
+ .gnu.hash      0x0000000000000528      0x27c /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.dynsym         0x00000000000007a8      0xc48
+ *(.dynsym)
+ .dynsym        0x00000000000007a8      0xc48 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.dynstr         0x00000000000013f0      0x777
+ *(.dynstr)
+ .dynstr        0x00000000000013f0      0x777 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.gnu.version    0x0000000000001b68      0x106
+ *(.gnu.version)
+ .gnu.version   0x0000000000001b68      0x106 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.gnu.version_d  0x0000000000001c70        0x0
+ *(.gnu.version_d)
+ .gnu.version_d
+                0x0000000000001c70        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.gnu.version_r  0x0000000000001c70       0x20
+ *(.gnu.version_r)
+ .gnu.version_r
+                0x0000000000001c70       0x20 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.rela.dyn       0x0000000000001c90      0x2d0
+ *(.rela.init)
+ *(.rela.text .rela.text.* .rela.gnu.linkonce.t.*)
+ *(.rela.fini)
+ *(.rela.rodata .rela.rodata.* .rela.gnu.linkonce.r.*)
+ *(.rela.data .rela.data.* .rela.gnu.linkonce.d.*)
+ .rela.data.rel.local
+                0x0000000000001c90       0x18 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .rela.data.rel.ro.local
+                0x0000000000001ca8      0x150 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *(.rela.tdata .rela.tdata.* .rela.gnu.linkonce.td.*)
+ *(.rela.tbss .rela.tbss.* .rela.gnu.linkonce.tb.*)
+ *(.rela.ctors)
+ *(.rela.dtors)
+ *(.rela.got)
+ .rela.got      0x0000000000001df8      0x138 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *(.rela.bss .rela.bss.* .rela.gnu.linkonce.b.*)
+ *(.rela.ifunc)
+ .rela.ifunc    0x0000000000001f30        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .rela.init_array
+                0x0000000000001f30       0x18 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .rela.fini_array
+                0x0000000000001f48       0x18 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.rela.plt       0x0000000000001f60      0x810
+ *(.rela.plt)
+ .rela.plt      0x0000000000001f60      0x810 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *(.rela.iplt)
+
+.init           0x0000000000002770       0x14
+ *(SORT_NONE(.init))
+ .init          0x0000000000002770        0xc /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+                0x0000000000002770                _init
+ .init          0x000000000000277c        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+
+.plt            0x0000000000002790      0x580
+ *(.plt)
+ .plt           0x0000000000002790      0x580 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *(.iplt)
+
+.text           0x0000000000002d10     0x6e4c
+ *(.text.unlikely .text.*_unlikely .text.unlikely.*)
+ *(.text.exit .text.exit.*)
+ *(.text.startup .text.startup.*)
+ *(.text.hot .text.hot.*)
+ *(SORT_BY_NAME(.text.sorted.*))
+ *(.text .stub .text.* .gnu.linkonce.t.*)
+ .text          0x0000000000002d10       0x14 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *fill*         0x0000000000002d24        0x4 1f2003d5
+ .text          0x0000000000002d28       0xbc /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ *fill*         0x0000000000002de4        0x4 1f2003d5
+ .text          0x0000000000002de8       0x34 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/upnpdev.o
+                0x0000000000002de8                freeUPNPDevlist
+ *fill*         0x0000000000002e1c        0x4 1f2003d5
+ .text          0x0000000000002e20      0x37c build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/connecthostport.o
+                0x0000000000002e20                connecthostport
+ *fill*         0x000000000000319c        0x4 1f2003d5
+ .text          0x00000000000031a0      0x390 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/igd_desc_parse.o
+                0x00000000000031a0                IGDstartelt
+                0x0000000000003268                IGDendelt
+                0x0000000000003438                IGDdata
+ .text          0x0000000000003530      0x138 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/minisoap.o
+                0x0000000000003530                soapPostSubmit
+ .text          0x0000000000003668      0xd54 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/miniwget.o
+                0x0000000000003668                getHTTPResponse
+                0x0000000000003f90                parseURL
+                0x00000000000042c0                miniwget
+                0x0000000000004330                miniwget_getaddr
+ *fill*         0x00000000000043bc        0x4 1f2003d5
+ .text          0x00000000000043c0      0xd14 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/miniupnpc.o
+                0x0000000000004668                parserootdesc
+                0x00000000000046b0                simpleUPnPcommand2
+                0x0000000000004900                simpleUPnPcommand
+                0x0000000000004910                upnpDiscoverDevices
+                0x0000000000004ae8                upnpDiscover
+                0x0000000000004b30                upnpDiscoverAll
+                0x0000000000004b78                upnpDiscoverDevice
+                0x0000000000004ba0                GetUPNPUrls
+                0x0000000000004c48                FreeUPNPUrls
+                0x0000000000004cb0                UPNPIGD_IsConnected
+                0x0000000000004d28                UPNP_GetValidIGD
+                0x0000000000005018                UPNP_GetIGDFromUrl
+ *fill*         0x00000000000050d4        0x4 1f2003d5
+ .text          0x00000000000050d8      0x544 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/minixml.o
+                0x00000000000050d8                parsexml
+ *fill*         0x000000000000561c        0x4 1f2003d5
+ .text          0x0000000000005620      0x8b0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/upnpc.o
+                0x0000000000005620                protofix
+                0x00000000000058f8                is_int
+                0x0000000000005958                init_port_redirection
+                0x0000000000005b48                deinit_port_redirection
+                0x0000000000005b88                add_port_redirection
+                0x0000000000005c48                add_port_redirection_by_ip
+                0x0000000000005d08                del_port_redirection
+                0x0000000000005e08                del_all_port_redirection
+                0x0000000000005e10                set_port_redirection_state
+ .text          0x0000000000005ed0     0x2044 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/upnpcommands.o
+                0x0000000000005ee0                UPNP_GetTotalBytesSent
+                0x0000000000005f70                UPNP_GetTotalBytesReceived
+                0x0000000000006000                UPNP_GetTotalPacketsSent
+                0x0000000000006090                UPNP_GetTotalPacketsReceived
+                0x0000000000006120                UPNP_GetStatusInfo
+                0x00000000000062c0                UPNP_GetConnectionTypeInfo
+                0x00000000000063b8                UPNP_GetLinkLayerMaxBitRates
+                0x0000000000006518                UPNP_GetExternalIPAddress
+                0x0000000000006618                UPNP_AddPortMapping
+                0x0000000000006810                UPNP_AddAnyPortMapping
+                0x0000000000006a38                UPNP_DeletePortMapping
+                0x0000000000006b68                UPNP_DeletePortMappingRange
+                0x0000000000006cc0                UPNP_GetGenericPortMappingEntry
+                0x0000000000007048                UPNP_GetPortMappingNumberOfEntries
+                0x0000000000007130                UPNP_GetSpecificPortMappingEntry
+                0x0000000000007400                UPNP_GetListOfPortMappings
+                0x00000000000075a8                UPNP_GetFirewallStatus
+                0x00000000000076e0                UPNP_GetOutboundPinholeTimeout
+                0x0000000000007870                UPNP_AddPinhole
+                0x0000000000007a80                UPNP_UpdatePinhole
+                0x0000000000007b90                UPNP_DeletePinhole
+                0x0000000000007c80                UPNP_CheckPinholeWorking
+                0x0000000000007dd0                UPNP_GetPinholePackets
+ *fill*         0x0000000000007f14        0x4 1f2003d5
+ .text          0x0000000000007f18      0x2d0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/upnpreplyparse.o
+                0x00000000000080e0                ParseNameValue
+                0x0000000000008138                ClearNameValueList
+                0x0000000000008180                GetValueFromNameValueList
+ .text          0x00000000000081e8     0x1118 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/minissdpc.o
+                0x00000000000081e8                connectToMiniSSDPD
+                0x0000000000008290                disconnectFromMiniSSDPD
+                0x00000000000082b0                requestDevicesFromMiniSSDPD
+                0x0000000000008428                receiveDevicesFromMiniSSDPD
+                0x0000000000008960                getDevicesFromMiniSSDPD
+                0x0000000000008a00                ssdpDiscoverDevices
+ .text          0x0000000000009300      0x2a4 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/upnperrors.o
+                0x0000000000009300                strupnperror
+ *fill*         0x00000000000095a4        0x4 1f2003d5
+ .text          0x00000000000095a8      0x4c8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/portlistingparse.o
+                0x00000000000099e8                ParsePortListing
+                0x0000000000009a38                FreePortListing
+ .text          0x0000000000009a70       0xec build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/receivedata.o
+                0x0000000000009a70                receivedata
+ .text          0x0000000000009b5c        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+ .text          0x0000000000009b5c        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+ *(.gnu.warning)
+
+.fini           0x0000000000009b5c       0x10
+ *(SORT_NONE(.fini))
+ .fini          0x0000000000009b5c        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+                0x0000000000009b5c                _fini
+ .fini          0x0000000000009b64        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+                [!provide]                        PROVIDE (__etext = .)
+                [!provide]                        PROVIDE (_etext = .)
+                [!provide]                        PROVIDE (etext = .)
+
+.rodata         0x0000000000009b70     0x1355
+ *(.rodata .rodata.* .gnu.linkonce.r.*)
+ .rodata.str1.8
+                0x0000000000009b70       0x50 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/connecthostport.o
+ .rodata.str1.8
+                0x0000000000009bc0      0x128 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/igd_desc_parse.o
+ .rodata.str1.8
+                0x0000000000009ce8       0xdd build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/minisoap.o
+ *fill*         0x0000000000009dc5        0x3 
+ .rodata.str1.8
+                0x0000000000009dc8       0xd4 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/miniwget.o
+                                         0xdc (size before relaxing)
+ *fill*         0x0000000000009e9c        0x4 
+ .rodata.str1.8
+                0x0000000000009ea0      0x2b0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/miniupnpc.o
+                                        0x2f8 (size before relaxing)
+ .rodata.str1.8
+                0x000000000000a150       0x1c build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/minixml.o
+ *fill*         0x000000000000a16c        0x4 
+ .rodata        0x000000000000a170        0xc build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/upnpc.o
+ *fill*         0x000000000000a17c        0x4 
+ .rodata.str1.8
+                0x000000000000a180      0x318 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/upnpc.o
+ .rodata.str1.8
+                0x000000000000a498      0x57f build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/upnpcommands.o
+                                        0x597 (size before relaxing)
+ *fill*         0x000000000000aa17        0x1 
+ .rodata.str1.8
+                0x000000000000aa18        0xf build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/upnpreplyparse.o
+ *fill*         0x000000000000aa27        0x1 
+ .rodata        0x000000000000aa28       0x4d build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/minissdpc.o
+ *fill*         0x000000000000aa75        0x3 
+ .rodata.str1.8
+                0x000000000000aa78      0x11a build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/minissdpc.o
+                                        0x142 (size before relaxing)
+ *fill*         0x000000000000ab92        0x6 
+ .rodata.str1.8
+                0x000000000000ab98      0x2f5 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/upnperrors.o
+ *fill*         0x000000000000ae8d        0x3 
+ .rodata.str1.8
+                0x000000000000ae90       0x27 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/portlistingparse.o
+                                         0x9d (size before relaxing)
+ *fill*         0x000000000000aeb7        0x1 
+ .rodata.str1.8
+                0x000000000000aeb8        0xd build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/receivedata.o
+
+.rodata1
+ *(.rodata1)
+
+.eh_frame_hdr   0x000000000000aec8      0x29c
+ *(.eh_frame_hdr)
+ .eh_frame_hdr  0x000000000000aec8      0x29c /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+                0x000000000000aec8                __GNU_EH_FRAME_HDR
+ *(.eh_frame_entry .eh_frame_entry.*)
+
+.eh_frame       0x000000000000b168     0x1868
+ *(.eh_frame)
+ .eh_frame      0x000000000000b168       0x78 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ .eh_frame      0x000000000000b1e0       0x28 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/upnpdev.o
+                                         0x40 (size before relaxing)
+ .eh_frame      0x000000000000b208       0xb8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/connecthostport.o
+                                         0xc8 (size before relaxing)
+ .eh_frame      0x000000000000b2c0       0xd8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/igd_desc_parse.o
+                                         0xe8 (size before relaxing)
+ .eh_frame      0x000000000000b398       0x48 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/minisoap.o
+                                         0x60 (size before relaxing)
+ .eh_frame      0x000000000000b3e0      0x258 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/miniwget.o
+                                        0x268 (size before relaxing)
+ .eh_frame      0x000000000000b638      0x328 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/miniupnpc.o
+                                        0x340 (size before relaxing)
+ .eh_frame      0x000000000000b960       0x68 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/minixml.o
+                                         0x80 (size before relaxing)
+ .eh_frame      0x000000000000b9c8      0x250 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/upnpc.o
+                                        0x260 (size before relaxing)
+ .eh_frame      0x000000000000bc18      0x898 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/upnpcommands.o
+                                        0x8b0 (size before relaxing)
+ .eh_frame      0x000000000000c4b0      0x148 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/upnpreplyparse.o
+                                        0x158 (size before relaxing)
+ .eh_frame      0x000000000000c5f8      0x270 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/minissdpc.o
+                                        0x280 (size before relaxing)
+ .eh_frame      0x000000000000c868       0x18 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/upnperrors.o
+                                         0x28 (size before relaxing)
+ .eh_frame      0x000000000000c880      0x100 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/portlistingparse.o
+                                        0x118 (size before relaxing)
+ .eh_frame      0x000000000000c980       0x4c build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/receivedata.o
+                                         0x60 (size before relaxing)
+ .eh_frame      0x000000000000c9cc        0x4 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+ *(.eh_frame.*)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.gnu_extab
+ *(.gnu_extab*)
+
+.exception_ranges
+ *(.exception_ranges*)
+                0x000000000001ccc0                . = DATA_SEGMENT_ALIGN (CONSTANT (MAXPAGESIZE), CONSTANT (COMMONPAGESIZE))
+
+.eh_frame
+ *(.eh_frame)
+ *(.eh_frame.*)
+
+.gnu_extab
+ *(.gnu_extab)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.exception_ranges
+ *(.exception_ranges*)
+
+.tdata
+ *(.tdata .tdata.* .gnu.linkonce.td.*)
+
+.tbss
+ *(.tbss .tbss.* .gnu.linkonce.tb.*)
+ *(.tcommon)
+
+.preinit_array
+ *(.preinit_array)
+
+.init_array     0x000000000001ccc0        0x8
+ *(SORT_BY_INIT_PRIORITY(.init_array.*) SORT_BY_INIT_PRIORITY(.ctors.*))
+ *(.init_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .ctors)
+ .init_array    0x000000000001ccc0        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+
+.fini_array     0x000000000001ccc8        0x8
+ *(SORT_BY_INIT_PRIORITY(.fini_array.*) SORT_BY_INIT_PRIORITY(.dtors.*))
+ *(.fini_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .dtors)
+ .fini_array    0x000000000001ccc8        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+
+.ctors
+ *crtbegin.o(.ctors)
+ *crtbegin?.o(.ctors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .ctors)
+ *(SORT_BY_NAME(.ctors.*))
+ *(.ctors)
+
+.dtors
+ *crtbegin.o(.dtors)
+ *crtbegin?.o(.dtors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .dtors)
+ *(SORT_BY_NAME(.dtors.*))
+ *(.dtors)
+
+.jcr
+ *(.jcr)
+
+.data.rel.ro    0x000000000001ccd0       0xd8
+ *(.data.rel.ro.local* .gnu.linkonce.d.rel.ro.local.*)
+ .data.rel.ro.local
+                0x000000000001ccd0       0x38 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/miniupnpc.o
+ .data.rel.ro.local
+                0x000000000001cd08       0xa0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/portlistingparse.o
+ *(.data.rel.ro .data.rel.ro.* .gnu.linkonce.d.rel.ro.*)
+ .data.rel.ro   0x000000000001cda8        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.dynamic        0x000000000001cda8      0x1d0
+ *(.dynamic)
+ .dynamic       0x000000000001cda8      0x1d0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+                0x000000000001cda8                _DYNAMIC
+
+.got            0x000000000001cf78       0x70
+ *(.got)
+ .got           0x000000000001cf78       0x70 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+                0x000000000001cf78                _GLOBAL_OFFSET_TABLE_
+ *(.igot)
+                0x000000000001cfe8                . = DATA_SEGMENT_RELRO_END (., 0x18)
+
+.got.plt        0x000000000001cfe8      0x2c8
+ *(.got.plt)
+ .got.plt       0x000000000001cfe8      0x2c8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *(.igot.plt)
+
+.data           0x000000000001d2b0        0x8
+                [!provide]                        PROVIDE (__data_start = .)
+ *(.data .data.* .gnu.linkonce.d.*)
+ .data          0x000000000001d2b0        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .data          0x000000000001d2b0        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ .data.rel.local
+                0x000000000001d2b0        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+                0x000000000001d2b0                __dso_handle
+ .data          0x000000000001d2b8        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/upnpdev.o
+ .data          0x000000000001d2b8        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/connecthostport.o
+ .data          0x000000000001d2b8        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/igd_desc_parse.o
+ .data          0x000000000001d2b8        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/minisoap.o
+ .data          0x000000000001d2b8        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/miniwget.o
+ .data          0x000000000001d2b8        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/miniupnpc.o
+ .data          0x000000000001d2b8        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/minixml.o
+ .data          0x000000000001d2b8        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/upnpc.o
+ .data          0x000000000001d2b8        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/upnpcommands.o
+ .data          0x000000000001d2b8        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/upnpreplyparse.o
+ .data          0x000000000001d2b8        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/minissdpc.o
+ .data          0x000000000001d2b8        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/upnperrors.o
+ .data          0x000000000001d2b8        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/portlistingparse.o
+ .data          0x000000000001d2b8        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/receivedata.o
+ .data          0x000000000001d2b8        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+ .data          0x000000000001d2b8        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+
+.tm_clone_table
+                0x000000000001d2b8        0x0
+ .tm_clone_table
+                0x000000000001d2b8        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ .tm_clone_table
+                0x000000000001d2b8        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+
+.data1
+ *(.data1)
+                [!provide]                        PROVIDE (_edata = .)
+                [!provide]                        PROVIDE (edata = .)
+                0x000000000001d2b8                . = .
+                [!provide]                        PROVIDE (__bss_start = .)
+                [!provide]                        PROVIDE (__bss_start__ = .)
+
+.bss            0x000000000001d2b8      0xc00
+ *(.dynbss)
+ .dynbss        0x000000000001d2b8        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *(.bss .bss.* .gnu.linkonce.b.*)
+ .bss           0x000000000001d2b8        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .bss           0x000000000001d2b8        0x1 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ .bss           0x000000000001d2b9        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/upnpdev.o
+ .bss           0x000000000001d2b9        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/connecthostport.o
+ .bss           0x000000000001d2b9        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/igd_desc_parse.o
+ .bss           0x000000000001d2b9        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/minisoap.o
+ .bss           0x000000000001d2b9        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/miniwget.o
+ .bss           0x000000000001d2b9        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/miniupnpc.o
+ .bss           0x000000000001d2b9        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/minixml.o
+ *fill*         0x000000000001d2b9        0x7 
+ .bss           0x000000000001d2c0        0x8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/upnpc.o
+                0x000000000001d2c0                g_devlist
+ .bss           0x000000000001d2c8        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/upnpcommands.o
+ .bss           0x000000000001d2c8        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/upnpreplyparse.o
+ .bss           0x000000000001d2c8        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/minissdpc.o
+ .bss           0x000000000001d2c8        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/upnperrors.o
+ .bss           0x000000000001d2c8        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/portlistingparse.o
+ .bss           0x000000000001d2c8        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/receivedata.o
+ .bss           0x000000000001d2c8        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+ .bss           0x000000000001d2c8        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+ *(COMMON)
+ COMMON         0x000000000001d2c8      0xbf0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/upnpc.o
+                0x000000000001d2c8                g_data
+                0x000000000001de50                g_urls
+                0x000000000001de78                g_lanaddr
+                0x000000000001deb8                . = ALIGN ((. != 0x0)?0x8:0x1)
+                [!provide]                        PROVIDE (_bss_end__ = .)
+                [!provide]                        PROVIDE (__bss_end__ = .)
+                0x000000000001deb8                . = ALIGN (0x8)
+                0x000000000001deb8                . = SEGMENT_START ("ldata-segment", .)
+                0x000000000001deb8                . = ALIGN (0x8)
+                [!provide]                        PROVIDE (__end__ = .)
+                [!provide]                        PROVIDE (_end = .)
+                [!provide]                        PROVIDE (end = .)
+                0x000000000001deb8                . = DATA_SEGMENT_END (.)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment        0x0000000000000000       0x16
+ *(.comment)
+ .comment       0x0000000000000000       0x16 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+                                         0x17 (size before relaxing)
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/upnpdev.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/connecthostport.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/igd_desc_parse.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/minisoap.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/miniwget.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/miniupnpc.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/minixml.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/upnpc.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/upnpcommands.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/upnpreplyparse.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/minissdpc.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/upnperrors.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/portlistingparse.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/receivedata.o
+ .comment       0x0000000000000016       0x17 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+
+.gnu.build.attributes
+ *(.gnu.build.attributes .gnu.build.attributes.*)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges
+ *(.debug_aranges)
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info
+ *(.debug_info .gnu.linkonce.wi.*)
+
+.debug_abbrev
+ *(.debug_abbrev)
+
+.debug_line
+ *(.debug_line .debug_line.* .debug_line_end)
+
+.debug_frame
+ *(.debug_frame)
+
+.debug_str
+ *(.debug_str)
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges
+ *(.debug_ranges)
+
+.debug_macro
+ *(.debug_macro)
+
+.debug_addr
+ *(.debug_addr)
+
+.ARM.attributes
+ *(.ARM.attributes)
+ *(.gnu.attributes)
+
+.note.gnu.arm.ident
+ *(.note.gnu.arm.ident)
+
+/DISCARD/
+ *(.note.GNU-stack)
+ *(.gnu_debuglink)
+ *(.gnu.lto_*)
+OUTPUT(build/arm11-gcc-uClibc-linux-gk7605v100/lib/libupnp.so elf64-littleaarch64)
+LOAD linker stubs

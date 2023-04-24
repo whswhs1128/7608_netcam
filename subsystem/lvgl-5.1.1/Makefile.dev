@@ -1,0 +1,155 @@
+################################################################################
+################################################################################
+##
+## Makefile -- makefile for coap library
+##
+## (C) Copyright 2012-2014 by Goke Microelectronics Co.,Ltd
+##
+## Mandatory settings:
+##
+## o TOPDIR      = the toplevel directory (using slashes as path separator)
+## o TARGET      = the machine qualifier to generate code for
+##
+################################################################################
+################################################################################
+
+SUBDIR = subsystem/lvgl-5.1.1
+
+LIBRARY = liblvgl
+
+HEADERS +=  $(wildcard inc/*.h)
+HEADERS +=  $(wildcard inc/lv_core/*.h)
+HEADERS +=  $(wildcard inc/lv_draw/*.h)
+HEADERS +=  $(wildcard inc/lv_hal/*.h)
+HEADERS +=  $(wildcard inc/lv_misc/*.h)
+HEADERS +=  $(wildcard inc/lv_misc/lv_fonts/*.h)
+HEADERS +=  $(wildcard inc/lv_objx/*.h)
+HEADERS +=  $(wildcard inc/lv_themes/*.h)
+HEADER_SUBDIR = subsystem/lvgl-5.1.1
+
+CCFLAGS_USER += -I ./inc
+CCFLAGS_USER += -I ./inc/lv_core
+CCFLAGS_USER += -I ./inc/lv_draw
+CCFLAGS_USER += -I ./inc/lv_hal
+CCFLAGS_USER += -I ./inc/lv_misc
+CCFLAGS_USER += -I ./inc/lv_misc/lv_fonts
+CCFLAGS_USER += -I ./inc/lv_objx
+CCFLAGS_USER += -I ./inc/lv_themes
+
+SOURCES  += ./src/lv_core/lv_group.c
+SOURCES  += ./src/lv_core/lv_indev.c
+SOURCES  += ./src/lv_core/lv_obj.c
+SOURCES  += ./src/lv_core/lv_refr.c
+SOURCES  += ./src/lv_core/lv_style.c
+SOURCES  += ./src/lv_core/lv_vdb.c
+
+SOURCES  += ./src/lv_draw/lv_draw_vbasic.c
+SOURCES  += ./src/lv_draw/lv_draw.c
+SOURCES  += ./src/lv_draw/lv_draw_rbasic.c
+
+SOURCES  += ./src/lv_hal/lv_hal_disp.c
+SOURCES  += ./src/lv_hal/lv_hal_indev.c
+SOURCES  += ./src/lv_hal/lv_hal_tick.c
+
+SOURCES  += ./src/lv_misc/lv_font.c
+SOURCES  += ./src/lv_misc/lv_circ.c
+SOURCES  += ./src/lv_misc/lv_area.c
+SOURCES  += ./src/lv_misc/lv_task.c
+SOURCES  += ./src/lv_misc/lv_fs.c
+SOURCES  += ./src/lv_misc/lv_anim.c
+SOURCES  += ./src/lv_misc/lv_mem.c
+SOURCES  += ./src/lv_misc/lv_ll.c
+SOURCES  += ./src/lv_misc/lv_color.c
+SOURCES  += ./src/lv_misc/lv_txt.c
+SOURCES  += ./src/lv_misc/lv_ufs.c
+SOURCES  += ./src/lv_misc/lv_trigo.c
+SOURCES  += ./src/lv_misc/lv_math.c
+#SOURCES  += ./src/lv_misc/lv_fonts/lv_font_dejavu_10.c
+SOURCES  += ./src/lv_misc/lv_fonts/lv_font_dejavu_20.c
+#SOURCES  += ./src/lv_misc/lv_fonts/lv_font_dejavu_30.c
+#SOURCES  += ./src/lv_misc/lv_fonts/lv_font_dejavu_40.c
+#SOURCES  += ./src/lv_misc/lv_fonts/lv_font_dejavu_10_cyrillic.c
+#SOURCES  += ./src/lv_misc/lv_fonts/lv_font_dejavu_20_cyrillic.c
+#SOURCES  += ./src/lv_misc/lv_fonts/lv_font_dejavu_30_cyrillic.c
+#SOURCES  += ./src/lv_misc/lv_fonts/lv_font_dejavu_40_cyrillic.c
+#SOURCES  += ./src/lv_misc/lv_fonts/lv_font_dejavu_10_latin_sup.c
+#SOURCES  += ./src/lv_misc/lv_fonts/lv_font_dejavu_20_latin_sup.c
+#SOURCES  += ./src/lv_misc/lv_fonts/lv_font_dejavu_30_latin_sup.c
+#SOURCES  += ./src/lv_misc/lv_fonts/lv_font_dejavu_40_latin_sup.c
+#SOURCES  += ./src/lv_misc/lv_fonts/lv_font_symbol_10.c
+#SOURCES  += ./src/lv_misc/lv_fonts/lv_font_symbol_20.c
+#SOURCES  += ./src/lv_misc/lv_fonts/lv_font_symbol_30.c
+#SOURCES  += ./src/lv_misc/lv_fonts/lv_font_symbol_40.c
+#SOURCES  += ./src/lv_misc/lv_fonts/lv_font_WRJZY_20.c
+#SOURCES  += ./src/lv_misc/lv_fonts/lv_font_WRJZY_40.c
+
+SOURCES  += ./src/lv_objx/lv_bar.c
+SOURCES  += ./src/lv_objx/lv_cb.c
+SOURCES  += ./src/lv_objx/lv_ddlist.c
+SOURCES  += ./src/lv_objx/lv_kb.c
+SOURCES  += ./src/lv_objx/lv_line.c
+SOURCES  += ./src/lv_objx/lv_mbox.c
+SOURCES  += ./src/lv_objx/lv_roller.c
+SOURCES  += ./src/lv_objx/lv_tabview.c
+SOURCES  += ./src/lv_objx/lv_btn.c
+SOURCES  += ./src/lv_objx/lv_chart.c
+SOURCES  += ./src/lv_objx/lv_gauge.c
+SOURCES  += ./src/lv_objx/lv_label.c
+SOURCES  += ./src/lv_objx/lv_list.c
+SOURCES  += ./src/lv_objx/lv_slider.c
+SOURCES  += ./src/lv_objx/lv_ta.c
+SOURCES  += ./src/lv_objx/lv_btnm.c
+SOURCES  += ./src/lv_objx/lv_cont.c
+SOURCES  += ./src/lv_objx/lv_img.c
+SOURCES  += ./src/lv_objx/lv_led.c
+SOURCES  += ./src/lv_objx/lv_lmeter.c
+SOURCES  += ./src/lv_objx/lv_page.c
+SOURCES  += ./src/lv_objx/lv_sw.c
+SOURCES  += ./src/lv_objx/lv_win.c
+
+SOURCES  += ./src/lv_themes/lv_theme_alien.c
+SOURCES  += ./src/lv_themes/lv_theme.c
+SOURCES  += ./src/lv_themes/lv_theme_default.c
+SOURCES  += ./src/lv_themes/lv_theme_night.c
+SOURCES  += ./src/lv_themes/lv_theme_templ.c
+SOURCES  += ./src/lv_themes/lv_theme_zen.c
+SOURCES  += ./src/lv_themes/lv_theme_material.c
+
+#SOURCES  += ./test/lv_tutorial_porting.c
+
+CCFLAGS_USER += -I $(SDK_TOP)/adi/include
+CCFLAGS_USER += -I $(SDK_TOP)/netcam/src/third/face6323/inc
+
+CCFLAGS += -O2
+################################################################################
+# define user targets
+################################################################################
+
+default: install
+
+clean: clean-objects clean-library clean-all
+
+build:  build-objects build-library install-library
+
+headers: install-headers
+
+install: build install-library install-headers
+
+all: clean build install
+
+################################################################################
+# include internal definitions and rules
+################################################################################
+
+  RELEASE_SUBDIR = $(SUBDIR)
+  RELEASE_FILES += Makefile.rel
+  RELEASE_FILES += $(wildcard inc/*.h   )
+  RELEASE_FILES += Makefile
+  RELEASE_FILES += lib/$(LIBRARY)$(LIBRARY_EXT)
+  RELEASE_FILES += lib/$(LIBRARY)$(SHARED_EXT)
+
+release: release-lib-prepare  doc release-files $(DIRECTORIES:%=subdir-release-%)
+
+doc:
+
+release-lib-prepare: clean build-library install-release-library

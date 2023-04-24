@@ -1,0 +1,8 @@
+{
+	"mode":"burnin",
+	"ptz_loop":1,
+	"wifi_ssid":"GokeIpc_1",
+	"wifi_passwd":"goke1234",
+	"wifi_link_time":30,
+	"wifi_unlink_time":10
+}

@@ -1,0 +1,46 @@
+################################################################################
+################################################################################
+##
+## Makefile -- makefile for image library
+##
+## (C) Copyright 2012-2015 by Goke Microelectronics Co.,Ltd
+##
+## Version: $Id: Makefile.rel 3 2017-09-04 09:29:58Z fengxuequan $
+##
+## Mandatory settings:
+##
+## o TOPDIR      = the toplevel directory (using slashes as path separator)
+## o TARGET      = the machine qualifier to generate code for
+##
+################################################################################
+################################################################################
+
+
+LIBRARY = libimage
+
+HEADER_SUBDIR = image
+
+HEADERS += include/*.h
+################################################################################
+# define local file to be installed
+################################################################################
+
+COPYFLAGS_USER += -r
+
+################################################################################
+# define user targets
+################################################################################
+
+default: install
+
+clean: 
+
+build: install
+
+headers: install-headers
+
+install: install-library-released install-headers
+
+all: install
+
+

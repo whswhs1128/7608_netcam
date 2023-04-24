@@ -1,0 +1,31 @@
+#ifndef TUTK_ACCESS_EXPORT_H
+#define TUTK_ACCESS_EXPORT_H
+
+#define PUSH_MSG_TYPE_OFFSET (20)
+
+enum{
+	//BELL_WITH_WAIT_TIMEOUT,
+	BELL_CALL = 1,
+	BELL_ALARM = 2, // PIR motion detect
+	BELL_MOTION_DETECTIVE = 3,
+	BELL_REMOVE_ALARM = 7,
+	BELL_DEVICE_POWER_LOW = 8,
+	BELL_MAX_NUMBER =9,
+	BELL_DEVICE_ON_LINE = 20  // device online
+	//BELL_AGREE,
+	//BELL_CALL_WAIT_TIMEOUT,
+	//BELL_CALL_TIMEOUT,
+	//BELL_REST_TICK = 7,
+	//BELL_AGREE_ME = 8
+	//RF433_DEV_ALARM = 10000,
+	/*
+	type = RF433_DEV_ALARM + id
+	10000~10031
+	*/
+};
+
+
+int tutklib_start(void);
+void tutklib_exit(void);
+
+#endif //TUTK_ACCESS_EXPORT_H

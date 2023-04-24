@@ -1,0 +1,300 @@
+################################################################################
+################################################################################
+##
+## Makefile.rules -- help information rules
+##
+## (C) Copyright 2012-2015 by Goke Microelectronics Co.,Ltd
+##
+## Version: $Id: Makefile.help 3 2017-09-04 09:29:58Z fengxuequan $
+##
+## This include makefile defines help information display rules
+##
+################################################################################
+################################################################################
+
+################################################################################
+#
+# help for local makefile targets
+#
+################################################################################
+
+.PHONY: help-default
+HELP_RULES += help-default
+help-default: force
+	@$(NEWLINE)
+	@$(ECHO) "[$(@:help-%=%)]"
+	@$(ECHO) "  Project makefile specific target which should be executed"
+	@$(ECHO) "  if no specific target was given by the user."
+	@$(ECHO) "  To display the help screen [default] should depend on help"
+	@$(ECHO) "  ie: [default: help]"
+
+.PHONY: help-clean
+HELP_RULES += help-clean
+help-clean: force
+	@$(NEWLINE)
+	@$(ECHO) "[$(@:help-%=%)]"
+	@$(ECHO) "  Project makefile specific target to clean all objects."
+	@$(ECHO) "  To clean the objects of a library, [clean] should depend"
+	@$(ECHO) "  on [clean-objects] and [clean-library]."
+	@$(ECHO) "  Example:"
+	@$(ECHO) "    \"clean: clean-objects clean-library\""
+	@$(ECHO) "  To clean the objects of a program, [clean] should depend"
+	@$(ECHO) "  on [clean-objects] and [clean-program]."
+	@$(ECHO) "  Example:"
+	@$(ECHO) "    \"clean: clean-objects clean-program\""
+
+.PHONY: help-build
+HELP_RULES += help-build
+help-build: force
+	@$(NEWLINE)
+	@$(ECHO) "[$(@:help-%=%)]"
+	@$(ECHO) "  Project makefile specific target to build all required"
+	@$(ECHO) "  objects."
+	@$(ECHO) "  To build the objects for a library, [build] should depend"
+	@$(ECHO) "  on [build-objects] and [build-library]."
+	@$(ECHO) "  Example:"
+	@$(ECHO) "    \"build: build-objects build-library\""
+	@$(ECHO) "  To build the objects for a program, [build] should depend"
+	@$(ECHO) "  on [build-objects] and [build-program] and also maybe on"
+	@$(ECHO) "  [build-elfdump-program]."
+	@$(ECHO) "  Example:"
+	@$(ECHO) "    \"build: build-objects build-program build-elfdump-program\""
+
+.PHONY: help-install
+HELP_RULES += help-install
+help-install: force
+	@$(NEWLINE)
+	@$(ECHO) "[$(@:help-%=%)]"
+	@$(ECHO) "  Project makefile specific target to install all required"
+	@$(ECHO) "  files."
+	@$(ECHO) "  To install the files for a library, [install] should depend"
+	@$(ECHO) "  on [install-library] and [install-headers]."
+	@$(ECHO) "  Example:"
+	@$(ECHO) "    \"install: install-library install-headers\""
+	@$(ECHO) "  ie: [install: install-library install-headers]"
+	@$(ECHO) "  To install the files for a program, [install] should depend"
+	@$(ECHO) "  on [install-program] and [install-headers]."
+	@$(ECHO) "  ie: [install: install-program install-headers]"
+	@$(ECHO) "  Example:"
+	@$(ECHO) "    \"install: install-program install-headers\""
+
+################################################################################
+#
+# cleaning rules
+#
+################################################################################
+
+.PHONY: help-clean-objects
+HELP_RULES += help-clean-objects
+help-clean-objects: force
+	@$(NEWLINE)
+	@$(ECHO) "[$(@:help-%=%)]"
+	@$(ECHO) "  Cleans all local object files given in the make variables"
+	@$(ECHO) "  BUILD_OBJECTS and BUILD_DEBUG_OBJECTS."
+
+.PHONY: help-clean-library
+HELP_RULES += help-clean-library
+help-clean-library: force
+	@$(NEWLINE)
+	@$(ECHO) "[$(@:help-%=%)]"
+	@$(ECHO) "  Cleans the local library files given in the make variables"
+	@$(ECHO) "  BUILD_LIBRARY and BUILD_DEBUG_LIBRARY."
+
+.PHONY: help-clean-program
+HELP_RULES += help-clean-program
+help-clean-program: force
+	@$(NEWLINE)
+	@$(ECHO) "[$(@:help-%=%)]"
+	@$(ECHO) "  Cleans the local program files given in the make variables"
+	@$(ECHO) "  BUILD_PROGRAM, BUILD_DEBUG_PROGRAM and BUILD_ELFDUMP_PROGRAM."
+
+################################################################################
+#
+# building rules
+#
+################################################################################
+
+.PHONY: help-build-objects
+HELP_RULES += help-build-objects
+help-build-objects: force
+	@$(NEWLINE)
+	@$(ECHO) "[$(@:help-%=%)]"
+	@$(ECHO) "  Builds all local object files given in the make variables"
+	@$(ECHO) "  BUILD_OBJECTS and BUILD_DEBUG_OBJECTS."
+
+.PHONY: help-build-library
+HELP_RULES += help-build-library
+help-build-library: force
+	@$(NEWLINE)
+	@$(ECHO) "[$(@:help-%=%)]"
+	@$(ECHO) "  Builds the local library files given in the make variables"
+	@$(ECHO) "  BUILD_LIBRARY and BUILD_DEBUG_LIBRARY."
+
+.PHONY: help-build-program
+HELP_RULES += help-build-program
+help-build-program: force
+	@$(NEWLINE)
+	@$(ECHO) "[$(@:help-%=%)]"
+	@$(ECHO) "  Builds the local program files given in the make variables"
+	@$(ECHO) "  BUILD_PROGRAM and BUILD_DEBUG_PROGRAM."
+
+.PHONY: help-build-elfdump-program
+HELP_RULES += help-build-elfdump-program
+help-build-elfdump-program: force
+	@$(NEWLINE)
+	@$(ECHO) "[$(@:help-%=%)]"
+	@$(ECHO) "  Builds elf dumps of the local program files given in the make"
+	@$(ECHO) "  variables BUILD_ELFDUMP_PROGRAM."
+
+.PHONY: help-build-strip-program
+HELP_RULES += help-build-strip-program
+help-build-strip-program: force
+	@$(NEWLINE)
+	@$(ECHO) "[$(@:help-%=%)]"
+	@$(ECHO) "  builds stripped versions of the local program files given in"
+	@$(ECHO) "  variable BUILD_STRIP_PROGRAM"
+
+################################################################################
+#
+# source code documentation rules
+#
+################################################################################
+
+.PHONY: help-build-doc
+HELP_RULES += help-build-doc
+help-build-doc: force
+	@$(NEWLINE)
+	@$(ECHO) "[$(@:help-%=%)]"
+	@$(ECHO) "  Generates a doxygen based documentation using the doxygen"
+	@$(ECHO) "  program given in the make variables DOXYGEN, DOXYGENFLAGS"
+	@$(ECHO) "  and DOXYGENFLAGS_USER."
+
+.PHONY: help-build-test-doc
+HELP_RULES += help-build-test-doc
+help-build-test-doc: force
+	@$(NEWLINE)
+	@$(ECHO) "[$(@:help-%=%)]"
+	@$(ECHO) "  Generates a doxygen based test documentation using the doxygen"
+	@$(ECHO) "  program given in the make variables DOXYGEN, DOXYGENFLAGS"
+	@$(ECHO) "  and DOXYGENFLAGS_USER."
+
+################################################################################
+#
+# short-cut rules
+#
+################################################################################
+
+.PHONY: help-library
+HELP_RULES += help-library
+help-library: force
+	@$(NEWLINE)
+	@$(ECHO) "[$(@:help-%=%)]"
+	@$(ECHO) "  This is just a short-cut for [build-library]."
+
+.PHONY: help-program
+HELP_RULES += help-program
+help-program: force
+	@$(NEWLINE)
+	@$(ECHO) "[$(@:help-%=%)]"
+	@$(ECHO) "  This is just a short-cut for [build-program]."
+
+.PHONY: help-elfdump
+HELP_RULES += help-elfdump
+help-elfdump: force
+	@$(NEWLINE)
+	@$(ECHO) "[$(@:help-%=%)]"
+	@$(ECHO) "  This is just a short-cut for [build-elfdump-program]."
+
+.PHONY: help-run
+HELP_RULES += help-run
+help-run: force
+	@$(NEWLINE)
+	@$(ECHO) "[$(@:help-%=%)]"
+	@$(ECHO) "  This is just a short-cut for [execute-program]."
+
+.PHONY: help-debug
+HELP_RULES += help-debug-noreset
+help-debug-noreset: force
+	@$(NEWLINE)
+	@$(ECHO) "[$(@:help-%=%)]"
+	@$(ECHO) "  This is just a short-cut for [debug-program-noreset]."
+
+.PHONY: help-debug
+HELP_RULES += help-debug
+help-debug: force
+	@$(NEWLINE)
+	@$(ECHO) "[$(@:help-%=%)]"
+	@$(ECHO) "  This is just a short-cut for [debug-program]."
+
+.PHONY: help-flash
+HELP_RULES += help-flash
+help-flash: force
+	@$(NEWLINE)
+	@$(ECHO) "[$(@:help-%=%)]"
+	@$(ECHO) "  This is just a short-cut for the sequence"
+	@$(ECHO) "  [clean-flash-imagebuild-flash-image burn-flash-image]."
+
+################################################################################
+#
+# indent specific rules
+#
+################################################################################
+
+#.PHONY: help-beautify-c
+#HELP += help-beautify-c
+#help-beautify-c: force
+#	@$(NEWLINE)
+#	@$(ECHO) "[$(@:help-%=%)]"
+#	@$(ECHO) "  Generates C beuatified sources for all C files."
+
+################################################################################
+#
+# makefile dependency rules
+#
+################################################################################
+
+.PHONY: help-depend
+HELP += help-depend
+help-depend: force
+	@$(NEWLINE)
+	@$(ECHO) "[$(@:help-%=%)]"
+	@$(ECHO) "  Generates the dependency file [$(DEPENDENCY_FILENAME)]"
+	@$(ECHO) "  for the current project source files given in the make variable"
+	@$(ECHO) "  SOURCES."
+
+################################################################################
+#
+# makefile debugging/reporting rules
+#
+################################################################################
+
+.PHONY: environment_header
+environment_header: force
+	@$(NEWLINE)
+	@$(ECHO) $(LINE78)
+	@$(NEWLINE)
+	@$(ECHO) "(C) Copyright 2014 by Goke Microelectronics Co.,Ltd"
+	@$(NEWLINE)
+	@$(ECHO) "The Goke SDK development environment is based on a GNU style"
+	@$(ECHO) "make program, please make sure to use version 3.80 as version 3.81"
+	@$(ECHO) "does not work as expected. To find out the version of make simply"
+	@$(ECHO) "execute [make -v]."
+
+.PHONY: help
+help: help_header $(HELP_RULES) help_footer
+
+.PHONY: help_special
+help-special: help_header $(HELP_RULES_SPECIAL) help_footer
+
+.PHONY: help_header
+help_header: environment_header
+	@$(NEWLINE)
+	@$(ECHO) "Below is a list of all make targets available in the current makefile."
+	@$(ECHO) "Please call [make target_names...] to build the required target."
+	@$(NEWLINE)
+	@$(ECHO) $(LINE78)
+	@$(NEWLINE)
+
+.PHONY: help_footer
+help_footer: force
+	@$(NEWLINE)

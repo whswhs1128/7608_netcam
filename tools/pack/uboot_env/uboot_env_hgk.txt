@@ -1,0 +1,29 @@
+arch=arm
+baudrate=115200
+board=gk7605v100_gc4653_1916m_v2_com
+board_name=gk7605v100
+bootcmd=run sfboot
+bootdelay=0
+bootfile=uImage
+consoledev=ttyAMA0
+cpu=armv7
+ethact=eth0
+ethaddr=7a:4a:f2:af:82:8c
+gatewayip=192.168.10.1
+ipaddr=192.168.10.25
+loadaddr=0x41000000
+mem=64M
+netmask=255.255.255.0
+nfsserver=192.168.10.222
+nfsboot=setenv bootargs console=$\{consoledev\},$\{baudrate\} root=/dev/nfs rw nfsroot=$\{nfsserver\}:$\{rootpath\},nfsvers=3 ip=$\{ipaddr\}:$\{gatewayip\}:$\{netmask\}:$\{board_name\}:$\{ethact\} init=/linuxrc mem=$\{mem\}, mtdparts=$\{mtdparts\}; sf probe 0 0;sf read $\{loadaddr\} 0x100000 0x250000;bootm
+mtdparts=sfc:256k(Uboot),64k(Envs),704k(Config),2560k(Kernel),3840k(Rootfs),3840k(Resource),5056k(Backups),64k(User),16M@0(all)
+rootfstype=initrd=0x41280000,0x3c0000 root=/dev/ram init=/linuxrc
+rootpath=/home/nfs/rootfs_uClibc
+serverip=192.168.10.221
+sfboot=setenv bootargs console=null,115200 $\{rootfstype\} mem=$\{mem\}, mtdparts=$\{mtdparts\}; sf probe 0 0;sf read $\{loadaddr\} 0x100000 0x280000; sf read 0x41280000 0x380000 0x3c0000;bootm
+soc=goke
+stderr=serial
+stdin=serial
+stdout=serial
+vendor=gk7605v100
+verify=n

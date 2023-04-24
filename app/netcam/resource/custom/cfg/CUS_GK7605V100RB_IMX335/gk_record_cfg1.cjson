@@ -1,0 +1,24 @@
+{
+	"record":	{
+		"enable":	1,
+		"enableProperty":	{"type":"S32","mode":"rw","min":0,"max":1,"def":1,"opt":""},
+		"stream_no":	0,
+		"stream_noProperty":	{"type":"S32","mode":"rw","min":0,"max":3,"def":0,"opt":"0-3"},
+		"recordMode":	1,
+		"recordModeProperty":	{"type":"S32","mode":"rw","min":0,"max":3,"def":3,"opt":""},
+		"scheduleTime":	["0:0-23:59", "0:0-23:59", "0:0-23:59", "0:0-23:59", "0:0-23:59", "0:0-23:59", "0:0-23:59", "0:0-23:59", "0:0-23:59", "0:0-23:59", "0:0-23:59", "0:0-23:59", "0:0-23:59", "0:0-23:59", "0:0-23:59", "0:0-23:59", "0:0-23:59", "0:0-23:59", "0:0-23:59", "0:0-23:59", "0:0-23:59", "0:0-23:59", "0:0-23:59", "0:0-23:59", "0:0-23:59", "0:0-23:59", "0:0-23:59", "0:0-23:59"],
+		"scheduleTimeProperty":	{"type":"STIME","mode":"rw","min":0,"max":0,"def":"0","opt":""},
+		"scheduleSlice":	["4294967295", "4294967295", "4294967295", "4294967295", "4294967295", "4294967295", "4294967295", "4294967295", "4294967295", "4294967295", "4294967295", "4294967295", "4294967295", "4294967295", "4294967295", "4294967295", "4294967295", "4294967295", "4294967295", "4294967295", "4294967295"],
+		"scheduleSliceProperty":	{"type":"SLICE","mode":"rw","min":0,"max":0,"def":"4294967295","opt":""},
+		"preRecordTime":	2,
+		"preRecordTimeProperty":	{"type":"S32","mode":"rw","min":0,"max":10,"def":0,"opt":""},
+		"audioRecEnable":	1,
+		"audioRecEnableProperty":	{"type":"S32","mode":"rw","min":0,"max":1,"def":1,"opt":""},
+		"recAudioType":	2,
+		"recAudioTypeProperty":	{"type":"S32","mode":"rw","min":0,"max":3,"def":2,"opt":""},
+		"recordLen":	5,
+		"recordLenProperty":	{"type":"S32","mode":"rw","min":1,"max":1440,"def":5,"opt":""},
+		"recycleRecord":	1,
+		"recycleRecordProperty":	{"type":"S32","mode":"rw","min":0,"max":1,"def":1,"opt":""}
+	}
+}

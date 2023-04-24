@@ -1,0 +1,14 @@
+{
+	"user_0":	{
+		"enable":	1,
+		"enableProperty":	{"type":"S32","mode":"rw","min":0,"max":1,"def":1,"opt":""},
+		"userName":	"admin",
+		"userNameProperty":	{"type":"STRING","mode":"rw","min":1,"max":64,"def":"admin","opt":""},
+		"password":	"123456",
+		"passwordProperty":	{"type":"STRING","mode":"rw","min":1,"max":64,"def":"123456","opt":""},
+		"userRight":	2,
+		"userRightProperty":	{"type":"U32","mode":"rw","min":0,"max":2,"def":2,"opt":""},
+		"userLevel":    1,
+		"userLevelProperty":	{"type":"S32","mode":"rw","min":1,"max":5,"def":1,"opt":""}
+	}
+}

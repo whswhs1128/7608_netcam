@@ -1,0 +1,83 @@
+################################################################################
+################################################################################
+##
+## Makefile -- makefile for cloud app library
+##
+## (C) Copyright 2020-2023 by Goke Microelectronics Co.,Ltd
+##
+## Mandatory settings:
+##
+## o TOPDIR      = the toplevel directory (using slashes as path separator)
+## o TARGET      = the machine qualifier to generate code for
+##
+################################################################################
+################################################################################
+LIBRARY = libhttp_client
+
+HEADERS +=  inc/*.h
+
+HEADER_SUBDIR = $(SUBDIR)
+
+SOURCES += src/httpd.c
+SOURCES += src/httpClient.c
+
+CCFLAGS_USER += -g
+
+CCFLAGS_USER += -I./inc
+CCFLAGS_USER += -I ./inc/protocol
+CCFLAGS_USER += -I$(APPDIR)/inc
+CCFLAGS_USER += -I$(APPDIR)/inc/cfg
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/adi
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/image
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/platform/sdk
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/subsystem
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/subsystem/json
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/subsystem/wireless
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/subsystem/mediabuffer
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/subsystem/utility
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/subsystem/workqueue
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/subsystem/g711
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/subsystem/adpcm
+CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/subsystem/acodec/aac
+
+
+################################################################################
+# define user targets
+################################################################################
+
+default: install
+
+clean: clean-objects clean-library clean-all
+
+build:  build-objects build-library install-library install-release-library pre-install headers
+
+headers: install-headers
+
+install: build install-library install-release-library
+
+all: clean build install
+
+pre-install:
+	@echo ""
+	@echo "Install third lib ...."
+	@echo ""
+################################################################################
+# include internal definitions and rules
+################################################################################
+
+RELEASE_SUBDIR = $(SUBDIR)
+RELEASE_FILES += Makefile.rel
+RELEASE_FILES += Makefile
+RELEASE_FILES += $(wildcard inc)
+RELEASE_FILES += $(wildcard lib/*)
+
+release: release-lib-prepare  doc release-files $(DIRECTORIES:%=subdir-release-%)
+
+doc:
+
+release-lib-prepare: clean build-library install-release-library
+
+subdir-release-%:
+	@$(NEWLINE)
+	@$(ECHO) $(ECHOPREFIX) Submaking release [$(SUBDIR)/$(@:subdir-release-%=%)] for target [$(TARGET)]
+	@$(SUBMAKE) -C $(@:subdir-release-%=%) release TARGET=$(TARGET)

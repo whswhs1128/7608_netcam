@@ -1,0 +1,145 @@
+################################################################################
+################################################################################
+##
+## Makefile -- makefile for make sensor binary
+##
+## (C) Copyright 2012-2016 by Goke Microelectronics Co.,Ltd
+##
+## Mandatory settings:
+##
+## o TOPDIR      = the toplevel directory (using slashes as path separator)
+## o TARGET      = the machine qualifier to generate code for
+##
+################################################################################
+################################################################################
+
+
+################################################################################
+# sensor config files
+################################################################################
+
+################################################################################
+# source files
+################################################################################
+
+
+################################################################################
+# define define user cc flags
+################################################################################
+
+
+################################################################################
+# define define user ld flags
+################################################################################
+
+
+################################################################################
+# define local file to be installed
+################################################################################
+LOCAL_FILE += configs/color_reg.bin
+LOCAL_FILE += configs/color_matrix.bin
+LOCAL_FILE += configs/lens_shading.bin
+ifeq ($(SENSOR), all)
+  LOCAL_FILE += configs/sensors/imx122.bin 
+  LOCAL_FILE += configs/sensors/imx291.bin 
+  //LOCAL_FILE += configs/sensors/imx238.bin 
+  LOCAL_FILE += configs/sensors/ov2710.bin 
+  //LOCAL_FILE += configs/sensors/ov9750.bin 
+  //LOCAL_FILE += configs/sensors/ov9710.bin 
+  //LOCAL_FILE += configs/sensors/ov9732.bin 
+  LOCAL_FILE += configs/sensors/ov4689.bin 
+  LOCAL_FILE += configs/sensors/os04b10.bin 
+  LOCAL_FILE += configs/sensors/ov2735.bin 
+  LOCAL_FILE += configs/sensors/ar0130.bin 
+  //LOCAL_FILE += configs/sensors/ar0237.bin 
+  //LOCAL_FILE += configs/sensors/ar0330.bin 
+  //LOCAL_FILE += configs/sensors/jxh42.bin 
+  //LOCAL_FILE += configs/sensors/jxh61.bin 
+  //LOCAL_FILE += configs/sensors/jxh62.bin 
+  //LOCAL_FILE += configs/sensors/jxh65.bin 
+  //LOCAL_FILE += configs/sensors/jxf22.bin 
+  //LOCAL_FILE += configs/sensors/jxk02.bin 
+  //LOCAL_FILE += configs/sensors/jxk03.bin 
+  //LOCAL_FILE += configs/sensors/bg0701.bin 
+  LOCAL_FILE += configs/sensors/sc1035.bin 
+  LOCAL_FILE += configs/sensors/sc1135.bin 
+  LOCAL_FILE += configs/sensors/sc1235.bin 
+  LOCAL_FILE += configs/sensors/sc3035.bin 
+  LOCAL_FILE += configs/sensors/sc2035.bin
+  LOCAL_FILE += configs/sensors/sc2135.bin 
+  LOCAL_FILE += configs/sensors/sc1045.bin 
+  LOCAL_FILE += configs/sensors/sc1145.bin 
+  LOCAL_FILE += configs/sensors/sc2045.bin 
+  //LOCAL_FILE += configs/sensors/sp2307.bin 
+  //LOCAL_FILE += configs/sensors/gc1024.bin 
+  LOCAL_FILE += configs/sensors/gc1034.bin
+  LOCAL_FILE += configs/sensors/gc0328.bin 
+  LOCAL_FILE += configs/sensors/gc2033.bin 
+  LOCAL_FILE += configs/sensors/gc2053.bin 
+  LOCAL_FILE += configs/sensors/gc4633.bin 
+  LOCAL_FILE += configs/sensors/gc4623.bin 
+  LOCAL_FILE += configs/sensors/gc4653.bin 
+  //LOCAL_FILE += configs/sensors/mis1002.bin 
+  //LOCAL_FILE += configs/sensors/mis2003.bin 
+  //LOCAL_FILE += configs/sensors/nt99231.bin 
+  LOCAL_FILE += configs/sensors/sc2235.bin 
+  LOCAL_FILE += configs/sensors/sc2232.bin 
+  LOCAL_FILE += configs/sensors/sc4236.bin 
+  LOCAL_FILE += configs/sensors/sc5235.bin 
+  LOCAL_FILE += configs/sensors/mn168.bin 
+  LOCAL_FILE += configs/sensors/sc3235.bin 
+  LOCAL_FILE += configs/sensors/jxq03.bin 
+else
+  LOCAL_FILE += $(foreach name,$(SENSOR),configs/sensors/$(subst _mipi,,$(name)).bin)
+endif
+
+
+################################################################################
+# define library used
+################################################################################
+
+
+################################################################################
+# define target name
+################################################################################
+
+
+################################################################################
+# define user targets
+################################################################################
+
+default: install
+
+clean: force
+
+build:  force
+
+install: build install-config-files
+
+install-config-files:
+	@mkdir $(ROOTFS_TOP)/usr/local/bin/sensors -p
+	@cp $(LOCAL_FILE) $(ROOTFS_TOP)/usr/local/bin/sensors/
+
+headers:
+
+all: clean build install
+
+################################################################################
+# include internal definitions and rules
+################################################################################
+
+  RELEASE_SUBDIR = $(SUBDIR)
+  RELEASE_FILES += Makefile
+  RELEASE_FILES += Makefile.rel
+  RELEASE_FILES += $(LOCAL_FILE)
+
+release: release-files $(DIRECTORIES:%=subdir-release-%) info
+
+release-subdirs: $(DIRECTORIES:%=subdir-release-%)
+
+doc: $(DIRECTORIES:%=subdir-doc-%)
+
+info: force
+	@echo $(DIRECTORIES)
+
+

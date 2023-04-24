@@ -1,0 +1,911 @@
+
+Allocating common symbols
+Common symbol       size              file
+
+sdk_cfg             0xe4              build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_sdk.o
+runGB28181Cfg       0x148             build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_gb28181.o
+runPtzCfg           0x1c              build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_ptz.o
+runpwmCfg           0x44              build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_pwm.o
+runStoreCfg         0xc               build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_store.o
+runSnapCfg          0x200             build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_snap.o
+runSystemCfg        0x390             build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_system.o
+runMdCfg            0x1874            build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_md.o
+runChannelCfg       0x520             build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_channel.o
+runVideoCfg         0x3b0             build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_video.o
+runPtzDecCfg        0x3c              build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_ptz.o
+runRecordCfg        0x938             build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_record.o
+runPresetCfg        0x43c0            build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_ptz.o
+runP2PCfg           0x16c             build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_p2p.o
+runUserCfg          0x460             build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_user.o
+g_cfg_wr_mutex      0x30              build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_all.o
+g_systemInfo        0xe0              build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_system.o
+runImageCfg         0x2c              build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_image.o
+runAudioCfg         0x24              build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_audio.o
+runAlarmCfg         0xc78             build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_alarm.o
+runCruiseCfg        0x29c             build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_ptz.o
+runNetworkCfg       0x113c            build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_network.o
+
+Discarded input sections
+
+ .note.GNU-stack
+                0x0000000000000000        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_alarm.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_all.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_audio.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_channel.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_common.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_gb28181.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_image.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_md.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_network.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_p2p.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_ptz.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_pwm.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_record.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_sdk.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_snap.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_store.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_system.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_test.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_user.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_video.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_alarm.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_all.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_audio.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_channel.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_common.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_gb28181.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_image.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_md.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_network.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_p2p.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_ptz.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_pwm.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_record.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_sdk.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_snap.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_store.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_system.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_test.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_user.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_video.o
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/libgcc.a
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/../../../../aarch64-linux-gnu/lib/../lib64/libgcc_s.so
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/libc.so
+START GROUP
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/lib/libc.so.6
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/libc_nonshared.a
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/lib/ld-linux-aarch64.so.1
+END GROUP
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/libgcc.a
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/../../../../aarch64-linux-gnu/lib/../lib64/libgcc_s.so
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+                0x0000000000000190                . = (SEGMENT_START ("text-segment", 0x0) + SIZEOF_HEADERS)
+
+.note.gnu.build-id
+ *(.note.gnu.build-id)
+
+.hash           0x0000000000000190      0x868
+ *(.hash)
+ .hash          0x0000000000000190      0x868 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.gnu.hash       0x00000000000009f8      0x620
+ *(.gnu.hash)
+ .gnu.hash      0x00000000000009f8      0x620 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.dynsym         0x0000000000001018     0x1998
+ *(.dynsym)
+ .dynsym        0x0000000000001018     0x1998 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.dynstr         0x00000000000029b0      0xe86
+ *(.dynstr)
+ .dynstr        0x00000000000029b0      0xe86 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.gnu.version    0x0000000000003836      0x222
+ *(.gnu.version)
+ .gnu.version   0x0000000000003836      0x222 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.gnu.version_d  0x0000000000003a58        0x0
+ *(.gnu.version_d)
+ .gnu.version_d
+                0x0000000000003a58        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.gnu.version_r  0x0000000000003a58       0x20
+ *(.gnu.version_r)
+ .gnu.version_r
+                0x0000000000003a58       0x20 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.rela.dyn       0x0000000000003a78     0x9708
+ *(.rela.init)
+ *(.rela.text .rela.text.* .rela.gnu.linkonce.t.*)
+ *(.rela.fini)
+ *(.rela.rodata .rela.rodata.* .rela.gnu.linkonce.r.*)
+ *(.rela.data .rela.data.* .rela.gnu.linkonce.d.*)
+ .rela.data.rel.local
+                0x0000000000003a78       0x18 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .rela.data.rel
+                0x0000000000003a90     0x9078 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *(.rela.tdata .rela.tdata.* .rela.gnu.linkonce.td.*)
+ *(.rela.tbss .rela.tbss.* .rela.gnu.linkonce.tb.*)
+ *(.rela.ctors)
+ *(.rela.dtors)
+ *(.rela.got)
+ .rela.got      0x000000000000cb08      0x648 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *(.rela.bss .rela.bss.* .rela.gnu.linkonce.b.*)
+ *(.rela.ifunc)
+ .rela.ifunc    0x000000000000d150        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .rela.init_array
+                0x000000000000d150       0x18 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .rela.fini_array
+                0x000000000000d168       0x18 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.rela.plt       0x000000000000d180      0xeb8
+ *(.rela.plt)
+ .rela.plt      0x000000000000d180      0xeb8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *(.rela.iplt)
+
+.init           0x000000000000e038       0x14
+ *(SORT_NONE(.init))
+ .init          0x000000000000e038        0xc /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+                0x000000000000e038                _init
+ .init          0x000000000000e044        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+
+.plt            0x000000000000e050      0x9f0
+ *(.plt)
+ .plt           0x000000000000e050      0x9f0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *(.iplt)
+
+.text           0x000000000000ea40     0x8fec
+ *(.text.unlikely .text.*_unlikely .text.unlikely.*)
+ *(.text.exit .text.exit.*)
+ *(.text.startup .text.startup.*)
+ *(.text.hot .text.hot.*)
+ *(SORT_BY_NAME(.text.sorted.*))
+ *(.text .stub .text.* .gnu.linkonce.t.*)
+ .text          0x000000000000ea40       0x14 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *fill*         0x000000000000ea54        0x4 1f2003d5
+ .text          0x000000000000ea58       0xbc /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ *fill*         0x000000000000eb14        0x4 1f2003d5
+ .text          0x000000000000eb18      0x3cc build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_alarm.o
+                0x000000000000eb18                AlarmCfgPrint
+                0x000000000000ebc0                AlarmCfgSave
+                0x000000000000eca8                AlarmCfgLoadDefValue
+                0x000000000000ecf0                AlarmCfgLoad
+ *fill*         0x000000000000eee4        0x4 1f2003d5
+ .text          0x000000000000eee8      0xbdc build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_all.o
+                0x000000000000eee8                CfgSaveAll
+                0x000000000000ef60                CfgLoadAll
+                0x000000000000f0d8                CfgLoadDefValueAll
+                0x000000000000f150                CfgInit
+                0x000000000000f188                CfgUnInit
+                0x000000000000f1b8                get_param
+                0x000000000000f468                set_param
+                0x000000000000f718                schedule_time_to_slice
+                0x000000000000f980                reg_privete_cfg_api
+ *fill*         0x000000000000fac4        0x4 1f2003d5
+ .text          0x000000000000fac8      0x110 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_audio.o
+                0x000000000000fac8                AudioCfgPrint
+                0x000000000000faf8                AudioCfgSave
+                0x000000000000fb58                AudioCfgLoad
+                0x000000000000fbb8                AudioCfgLoadDefValue
+ .text          0x000000000000fbd8      0x6a8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_channel.o
+                0x000000000000fbd8                ChannelCfgPrint
+                0x000000000000fca8                ChannelCfgSave
+                0x000000000000fde0                ChannelCfgLoadDefValue
+                0x000000000000fe50                ChannelCfgLoad
+                0x0000000000010130                ChannelCfgLoadOverlayJson
+                0x00000000000101d8                ChannelCfgLoadCoverJson
+ .text          0x0000000000010280     0x2030 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_common.o
+                0x00000000000107c8                CfgWriteToFile
+                0x0000000000010928                CfgReadFromFile
+                0x0000000000010ae0                CfgReadJsonFile
+                0x0000000000010bf0                CfgLoadDefValue
+                0x0000000000010c28                CfgDataToCjsonByMap
+                0x0000000000011160                CfgCjsonToDataByMap
+                0x0000000000011558                CfgPrintMap
+                0x0000000000011808                CfgParseCjson
+                0x0000000000011848                CfgAddCjson
+                0x0000000000011888                CfgSave
+                0x0000000000011928                CfgLoad
+                0x0000000000011ae0                CfgGetDefByName
+                0x0000000000011dc8                is_in_schedule_slice
+                0x0000000000011eb8                timepoint_to_u64
+                0x0000000000011f68                is_in_schedule_timepoint
+                0x0000000000012070                is_in_schedule_timepoint_report
+                0x0000000000012180                is_in_schedule_timepoint_report_with_cnt
+ .text          0x00000000000122b0      0x5ac build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_gb28181.o
+                0x00000000000122b0                GB28181Cfg_get
+                0x00000000000122d8                GB28181Cfg_set
+                0x0000000000012300                GB28181CfgLoadDefValue
+                0x0000000000012320                GB28181CfgSave
+                0x0000000000012380                GB28181CfgPrint
+                0x00000000000123b0                gb28181_load_id_check
+                0x0000000000012430                gb28181_load_id
+                0x00000000000125d8                GB28181CfgLoad
+                0x00000000000126a0                GB28181CfgGetJsonSting
+                0x00000000000126b0                GB28181CfgCheckSave
+                0x00000000000127f8                GB28181Cfg_init
+ *fill*         0x000000000001285c        0x4 1f2003d5
+ .text          0x0000000000012860      0x178 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_image.o
+                0x0000000000012860                ImageCfgPrint
+                0x0000000000012890                ImageCfgSave
+                0x00000000000128f0                ImageCfgLoad
+                0x0000000000012950                ImageCfgLoadDefValue
+                0x0000000000012970                ImageCfgGetJosnString
+ .text          0x00000000000129d8      0x110 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_md.o
+                0x00000000000129d8                MdCfgPrint
+                0x0000000000012a08                MdCfgSave
+                0x0000000000012a68                MdCfgLoad
+                0x0000000000012ac8                MdCfgLoadDefValue
+ .text          0x0000000000012ae8      0xd98 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_network.o
+                0x0000000000012f28                NetworkCfgPrint
+                0x0000000000012ff8                wifiLinkParse
+                0x00000000000130f0                wifiLinkCreate
+                0x00000000000131e0                NetworkCfgSave
+                0x0000000000013310                NetworkCfgLoadDefValue
+                0x0000000000013390                NetworkCfgLoad
+                0x00000000000137b0                NetworkCfgGetJosnString
+ .text          0x0000000000013880      0x384 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_p2p.o
+                0x0000000000013880                P2PCfg_get
+                0x00000000000138a8                P2PCfg_set
+                0x0000000000013930                P2PCfgLoadDefValue
+                0x0000000000013960                P2PCfgLoad
+                0x0000000000013aa8                P2PCfgSave
+                0x0000000000013ba0                P2PCfg_init
+ *fill*         0x0000000000013c04        0x4 1f2003d5
+ .text          0x0000000000013c08      0x65c build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_ptz.o
+                0x0000000000013c08                PtzCfgPrint
+                0x0000000000013c38                PtzCfgSave
+                0x0000000000013c98                PtzCfgLoad
+                0x0000000000013cf8                PtzCfgLoadDefValue
+                0x0000000000013d18                PresetCruiseCfgDefault
+                0x0000000000013da0                PresetCruiseCfgSave
+                0x0000000000014008                PresetCruiseCfgLoad
+ *fill*         0x0000000000014264        0x4 1f2003d5
+ .text          0x0000000000014268      0x4b8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_pwm.o
+                0x0000000000014268                pwmCfgPrint
+                0x0000000000014300                pwmCfgSave
+                0x00000000000143e8                pwmCfgLoadDefValue
+                0x0000000000014440                pwmCfgLoad
+                0x00000000000146b8                pwmCfgGetJosnString
+ .text          0x0000000000014720      0x110 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_record.o
+                0x0000000000014720                RecordCfgPrint
+                0x0000000000014750                RecordCfgSave
+                0x00000000000147b0                RecordCfgLoad
+                0x0000000000014810                RecordCfgLoadDefValue
+ .text          0x0000000000014830      0xb08 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_sdk.o
+                0x0000000000015008                init_cfg_sdk
+ .text          0x0000000000015338      0x304 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_snap.o
+                0x0000000000015338                SnapCfgPrint
+                0x0000000000015390                SnapCfgSave
+                0x0000000000015448                SnapCfgLoadDefValue
+                0x0000000000015478                SnapCfgLoad
+ *fill*         0x000000000001563c        0x4 1f2003d5
+ .text          0x0000000000015640      0x110 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_store.o
+                0x0000000000015640                StoreCfgPrint
+                0x0000000000015670                StoreCfgSave
+                0x00000000000156d0                StoreCfgLoad
+                0x0000000000015730                StoreCfgLoadDefValue
+ .text          0x0000000000015750      0x764 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_system.o
+                0x00000000000157a0                SystemCfgPrint
+                0x0000000000015868                LoadSystemInfo
+                0x00000000000159a8                loadSpecialInfo
+                0x0000000000015ab0                SystemCfgSave
+                0x0000000000015bc0                SystemCfgLoadDefValue
+                0x0000000000015c18                SystemCfgLoad
+                0x0000000000015e68                SystemCfgGetNTPJsonSting
+                0x0000000000015e78                SytemCfgGetCjsonString
+ *fill*         0x0000000000015eb4        0x4 1f2003d5
+ .text          0x0000000000015eb8      0x768 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_test.o
+                0x0000000000015eb8                AudioCfgTest
+                0x0000000000015f20                ImageCfgTest
+                0x0000000000015f90                makeArray
+                0x0000000000016098                parseArray
+                0x0000000000016140                CjsonArrayTest
+                0x0000000000016170                VideoCfgTest
+                0x00000000000161c0                SystemCfgTest
+                0x0000000000016280                NetworkCfgTest
+                0x0000000000016330                ChannelCfgTest
+                0x00000000000163a0                MdCfgTest
+                0x0000000000016448                SnapCfgTest
+                0x0000000000016460                RecordCfgTest
+                0x00000000000164d8                PtzCfgTest
+                0x0000000000016528                AlarmCfgTest
+                0x00000000000165b0                UserCfgTest
+ .text          0x0000000000016620      0xc98 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_user.o
+                0x0000000000016620                UserCfgPrint
+                0x00000000000166b0                UserCfgSave
+                0x0000000000016830                UserCfgLoadDefValue
+                0x00000000000168c8                UserCfgLoad
+                0x0000000000016b30                UserIsExist
+                0x0000000000016bb8                UserAdd
+                0x0000000000016ce0                UserModify
+                0x0000000000016dc8                UserCheck
+                0x0000000000016e68                UserModifyByIndex
+                0x0000000000016f30                UserDel
+                0x0000000000017008                UserCfgLoadJson
+                0x0000000000017120                UserCfgSaveJson
+                0x0000000000017260                UserMatching_login
+ .text          0x00000000000172b8      0x774 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_video.o
+                0x00000000000172b8                VideoCfgPrint
+                0x00000000000173b0                VideoCfgSave
+                0x0000000000017540                VideoCfgLoadDefValue
+                0x0000000000017588                VideoCfgLoad
+                0x0000000000017970                videoCfgLoadStreamJson
+ .text          0x0000000000017a2c        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+ .text          0x0000000000017a2c        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+ *(.gnu.warning)
+
+.fini           0x0000000000017a2c       0x10
+ *(SORT_NONE(.fini))
+ .fini          0x0000000000017a2c        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+                0x0000000000017a2c                _fini
+ .fini          0x0000000000017a34        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+                [!provide]                        PROVIDE (__etext = .)
+                [!provide]                        PROVIDE (_etext = .)
+                [!provide]                        PROVIDE (etext = .)
+
+.rodata         0x0000000000017a40     0x4f96
+ *(.rodata .rodata.* .gnu.linkonce.r.*)
+ .rodata.str1.8
+                0x0000000000017a40      0x5dd build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_alarm.o
+                                        0x5e5 (size before relaxing)
+ *fill*         0x000000000001801d        0x3 
+ .rodata.str1.8
+                0x0000000000018020      0x1fc build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_all.o
+                                        0x214 (size before relaxing)
+ *fill*         0x000000000001821c        0x4 
+ .rodata.str1.8
+                0x0000000000018220      0x177 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_audio.o
+                                        0x17f (size before relaxing)
+ *fill*         0x0000000000018397        0x1 
+ .rodata.str1.8
+                0x0000000000018398      0x40f build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_channel.o
+                                        0x4ef (size before relaxing)
+ *fill*         0x00000000000187a7        0x1 
+ .rodata        0x00000000000187a8       0x50 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_common.o
+ .rodata.str1.8
+                0x00000000000187f8      0x3d1 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_common.o
+                                        0x4e9 (size before relaxing)
+ *fill*         0x0000000000018bc9        0x7 
+ .rodata.str1.8
+                0x0000000000018bd0      0x1e0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_gb28181.o
+                                        0x270 (size before relaxing)
+ .rodata.str1.8
+                0x0000000000018db0      0x245 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_image.o
+                                        0x2cd (size before relaxing)
+ *fill*         0x0000000000018ff5        0x3 
+ .rodata.str1.8
+                0x0000000000018ff8     0x1ae8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_md.o
+                                       0x1b90 (size before relaxing)
+ .rodata        0x000000000001aae0       0x12 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_network.o
+ *fill*         0x000000000001aaf2        0x6 
+ .rodata.str1.8
+                0x000000000001aaf8      0x52a build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_network.o
+                                        0x64a (size before relaxing)
+ *fill*         0x000000000001b022        0x6 
+ .rodata.str1.8
+                0x000000000001b028       0xa3 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_p2p.o
+ *fill*         0x000000000001b0cb        0x5 
+ .rodata        0x000000000001b0d0       0x14 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_ptz.o
+ *fill*         0x000000000001b0e4        0x4 
+ .rodata.str1.8
+                0x000000000001b0e8      0x43c build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_ptz.o
+                                        0x4d4 (size before relaxing)
+ *fill*         0x000000000001b524        0x4 
+ .rodata.str1.8
+                0x000000000001b528      0x1e9 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_pwm.o
+                                        0x341 (size before relaxing)
+ *fill*         0x000000000001b711        0x7 
+ .rodata.str1.8
+                0x000000000001b718      0x183 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_record.o
+                                        0x223 (size before relaxing)
+ *fill*         0x000000000001b89b        0x5 
+ .rodata.str1.8
+                0x000000000001b8a0      0x5d9 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_sdk.o
+                                        0x631 (size before relaxing)
+ *fill*         0x000000000001be79        0x7 
+ .rodata.str1.8
+                0x000000000001be80      0x122 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_snap.o
+                                        0x25d (size before relaxing)
+ *fill*         0x000000000001bfa2        0x6 
+ .rodata.str1.8
+                0x000000000001bfa8       0x8d build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_store.o
+                                        0x11d (size before relaxing)
+ *fill*         0x000000000001c035        0x3 
+ .rodata.str1.8
+                0x000000000001c038      0x468 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_system.o
+                                        0x5f0 (size before relaxing)
+ .rodata.str1.8
+                0x000000000001c4a0       0xb6 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_test.o
+                                         0xbe (size before relaxing)
+ *fill*         0x000000000001c556        0x2 
+ .rodata.str1.8
+                0x000000000001c558      0x10a build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_user.o
+                                        0x24a (size before relaxing)
+ *fill*         0x000000000001c662        0x6 
+ .rodata.str1.8
+                0x000000000001c668      0x36e build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_video.o
+                                        0x536 (size before relaxing)
+
+.rodata1
+ *(.rodata1)
+
+.eh_frame_hdr   0x000000000001c9d8      0x4bc
+ *(.eh_frame_hdr)
+ .eh_frame_hdr  0x000000000001c9d8      0x4bc /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+                0x000000000001c9d8                __GNU_EH_FRAME_HDR
+ *(.eh_frame_entry .eh_frame_entry.*)
+
+.eh_frame       0x000000000001ce98     0x1f90
+ *(.eh_frame)
+ .eh_frame      0x000000000001ce98       0x78 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ .eh_frame      0x000000000001cf10       0xb0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_alarm.o
+                                         0xc8 (size before relaxing)
+ .eh_frame      0x000000000001cfc0      0x1d8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_all.o
+                                        0x1e8 (size before relaxing)
+ .eh_frame      0x000000000001d198       0x98 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_audio.o
+                                         0xb0 (size before relaxing)
+ .eh_frame      0x000000000001d230      0x160 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_channel.o
+                                        0x178 (size before relaxing)
+ .eh_frame      0x000000000001d390      0x560 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_common.o
+                                        0x570 (size before relaxing)
+ .eh_frame      0x000000000001d8f0      0x220 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_gb28181.o
+                                        0x230 (size before relaxing)
+ .eh_frame      0x000000000001db10       0xc8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_image.o
+                                         0xe0 (size before relaxing)
+ .eh_frame      0x000000000001dbd8       0x98 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_md.o
+                                         0xb0 (size before relaxing)
+ .eh_frame      0x000000000001dc70      0x230 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_network.o
+                                        0x240 (size before relaxing)
+ .eh_frame      0x000000000001dea0      0x120 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_p2p.o
+                                        0x138 (size before relaxing)
+ .eh_frame      0x000000000001dfc0      0x178 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_ptz.o
+                                        0x188 (size before relaxing)
+ .eh_frame      0x000000000001e138      0x140 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_pwm.o
+                                        0x150 (size before relaxing)
+ .eh_frame      0x000000000001e278       0x98 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_record.o
+                                         0xb0 (size before relaxing)
+ .eh_frame      0x000000000001e310       0xf0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_sdk.o
+                                        0x100 (size before relaxing)
+ .eh_frame      0x000000000001e400       0xb0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_snap.o
+                                         0xc8 (size before relaxing)
+ .eh_frame      0x000000000001e4b0       0x98 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_store.o
+                                         0xb0 (size before relaxing)
+ .eh_frame      0x000000000001e548      0x1b0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_system.o
+                                        0x1c8 (size before relaxing)
+ .eh_frame      0x000000000001e6f8      0x2a0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_test.o
+                                        0x2b8 (size before relaxing)
+ .eh_frame      0x000000000001e998      0x338 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_user.o
+                                        0x350 (size before relaxing)
+ .eh_frame      0x000000000001ecd0      0x154 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_video.o
+                                        0x168 (size before relaxing)
+ .eh_frame      0x000000000001ee24        0x4 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+ *(.eh_frame.*)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.gnu_extab
+ *(.gnu_extab*)
+
+.exception_ranges
+ *(.exception_ranges*)
+                0x000000000002fbe8                . = DATA_SEGMENT_ALIGN (CONSTANT (MAXPAGESIZE), CONSTANT (COMMONPAGESIZE))
+
+.eh_frame
+ *(.eh_frame)
+ *(.eh_frame.*)
+
+.gnu_extab
+ *(.gnu_extab)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.exception_ranges
+ *(.exception_ranges*)
+
+.tdata
+ *(.tdata .tdata.* .gnu.linkonce.td.*)
+
+.tbss
+ *(.tbss .tbss.* .gnu.linkonce.tb.*)
+ *(.tcommon)
+
+.preinit_array
+ *(.preinit_array)
+
+.init_array     0x000000000002fbe8        0x8
+ *(SORT_BY_INIT_PRIORITY(.init_array.*) SORT_BY_INIT_PRIORITY(.ctors.*))
+ *(.init_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .ctors)
+ .init_array    0x000000000002fbe8        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+
+.fini_array     0x000000000002fbf0        0x8
+ *(SORT_BY_INIT_PRIORITY(.fini_array.*) SORT_BY_INIT_PRIORITY(.dtors.*))
+ *(.fini_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .dtors)
+ .fini_array    0x000000000002fbf0        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+
+.ctors
+ *crtbegin.o(.ctors)
+ *crtbegin?.o(.ctors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .ctors)
+ *(SORT_BY_NAME(.ctors.*))
+ *(.ctors)
+
+.dtors
+ *crtbegin.o(.dtors)
+ *crtbegin?.o(.dtors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .dtors)
+ *(SORT_BY_NAME(.dtors.*))
+ *(.dtors)
+
+.jcr
+ *(.jcr)
+
+.data.rel.ro    0x000000000002fbf8        0x0
+ *(.data.rel.ro.local* .gnu.linkonce.d.rel.ro.local.*)
+ *(.data.rel.ro .data.rel.ro.* .gnu.linkonce.d.rel.ro.*)
+ .data.rel.ro   0x000000000002fbf8        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.dynamic        0x000000000002fbf8      0x1d0
+ *(.dynamic)
+ .dynamic       0x000000000002fbf8      0x1d0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+                0x000000000002fbf8                _DYNAMIC
+
+.got            0x000000000002fdc8      0x220
+ *(.got)
+ .got           0x000000000002fdc8      0x220 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+                0x000000000002fdc8                _GLOBAL_OFFSET_TABLE_
+ *(.igot)
+                0x000000000002ffe8                . = DATA_SEGMENT_RELRO_END (., 0x18)
+
+.got.plt        0x000000000002ffe8      0x500
+ *(.got.plt)
+ .got.plt       0x000000000002ffe8      0x500 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *(.igot.plt)
+
+.data           0x00000000000304e8     0xb978
+                [!provide]                        PROVIDE (__data_start = .)
+ *(.data .data.* .gnu.linkonce.d.*)
+ .data          0x00000000000304e8        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .data          0x00000000000304e8        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ .data.rel.local
+                0x00000000000304e8        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+                0x00000000000304e8                __dso_handle
+ .data          0x00000000000304f0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_alarm.o
+ .data.rel      0x00000000000304f0      0xc40 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_alarm.o
+                0x00000000000304f0                alarmMojingMap
+                0x0000000000030970                alarmCfgMap
+                0x0000000000030c70                alarmOutMap
+                0x0000000000030e70                alarmInMap
+ .data          0x0000000000031130        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_all.o
+ .data          0x0000000000031130        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_audio.o
+ .data.rel      0x0000000000031130      0x2c0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_audio.o
+                0x0000000000031130                audioMap
+ .data          0x00000000000313f0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_channel.o
+ .data.rel      0x00000000000313f0     0x1800 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_channel.o
+                0x00000000000313f0                shelterRectMap
+                0x0000000000031af0                osdMap
+ .data          0x0000000000032bf0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_common.o
+ .data          0x0000000000032bf0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_gb28181.o
+ .data.rel      0x0000000000032bf0      0x340 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_gb28181.o
+                0x0000000000032bf0                gb28181Map
+ .data          0x0000000000032f30        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_image.o
+ .data.rel      0x0000000000032f30      0x6c0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_image.o
+                0x0000000000032f30                imageMap
+ .data          0x00000000000335f0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_md.o
+ .data.rel      0x00000000000335f0     0x3200 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_md.o
+                0x00000000000335f0                mdMap
+ .data          0x00000000000367f0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_network.o
+ .data.rel      0x00000000000367f0     0x1240 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_network.o
+                0x00000000000367f0                wirelessMap
+                0x0000000000036930                wifiLinkMap
+                0x0000000000036a30                portMap
+                0x0000000000036af0                ftpMap
+                0x0000000000036d30                emailMap
+                0x00000000000372f0                wifiMap
+                0x0000000000037670                lanMap
+ .data          0x0000000000037a30      0x16c build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_p2p.o
+ .data          0x0000000000037b9c        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_ptz.o
+ *fill*         0x0000000000037b9c        0x4 
+ .data.rel      0x0000000000037ba0      0x500 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_ptz.o
+                0x0000000000037ba0                ptzMap
+ .data          0x00000000000380a0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_pwm.o
+ .data.rel      0x00000000000380a0      0x780 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_pwm.o
+                0x00000000000380a0                pwmAlMap
+                0x00000000000386e0                pwmMap
+ .data          0x0000000000038820        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_record.o
+ .data.rel      0x0000000000038820      0x4c0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_record.o
+                0x0000000000038820                recordMap
+ .data          0x0000000000038ce0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_sdk.o
+ .data          0x0000000000038ce0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_snap.o
+ .data.rel      0x0000000000038ce0      0x4c0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_snap.o
+                0x0000000000038ce0                snapEventMap
+                0x0000000000038f20                snapTimerMap
+ .data          0x00000000000391a0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_store.o
+ .data.rel      0x00000000000391a0      0x100 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_store.o
+                0x00000000000391a0                storeMap
+ .data          0x00000000000392a0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_system.o
+ .data.rel      0x00000000000392a0      0xbc0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_system.o
+                0x00000000000392a0                maintainCfgMap
+                0x0000000000039460                ntpCfgMap
+                0x00000000000395a0                netDstCfgCfgMap
+                0x00000000000396e0                timezoneCfgMap
+                0x00000000000397a0                deviceInfoMap
+                0x0000000000039c60                systemInfoMap
+ .data          0x0000000000039e60        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_test.o
+ .data          0x0000000000039e60        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_user.o
+ .data.rel      0x0000000000039e60      0x180 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_user.o
+ .data          0x0000000000039fe0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_video.o
+ .data.rel      0x0000000000039fe0     0x1e80 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_video.o
+                0x000000000003a560                videoMap
+ .data          0x000000000003be60        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+ .data          0x000000000003be60        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+
+.tm_clone_table
+                0x000000000003be60        0x0
+ .tm_clone_table
+                0x000000000003be60        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ .tm_clone_table
+                0x000000000003be60        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+
+.data1
+ *(.data1)
+                [!provide]                        PROVIDE (_edata = .)
+                [!provide]                        PROVIDE (edata = .)
+                0x000000000003be60                . = .
+                [!provide]                        PROVIDE (__bss_start = .)
+                [!provide]                        PROVIDE (__bss_start__ = .)
+
+.bss            0x000000000003be60     0x9e88
+ *(.dynbss)
+ .dynbss        0x000000000003be60        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *(.bss .bss.* .gnu.linkonce.b.*)
+ .bss           0x000000000003be60        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .bss           0x000000000003be60        0x1 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ .bss           0x000000000003be61        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_alarm.o
+ *fill*         0x000000000003be61        0x7 
+ .bss           0x000000000003be68        0x8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_all.o
+ .bss           0x000000000003be70        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_audio.o
+ .bss           0x000000000003be70        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_channel.o
+ .bss           0x000000000003be70       0x30 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_common.o
+                0x000000000003be70                g_cfg_write_mutex
+ .bss           0x000000000003bea0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_gb28181.o
+ .bss           0x000000000003bea0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_image.o
+ .bss           0x000000000003bea0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_md.o
+ .bss           0x000000000003bea0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_network.o
+ .bss           0x000000000003bea0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_p2p.o
+ .bss           0x000000000003bea0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_ptz.o
+ .bss           0x000000000003bea0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_pwm.o
+ .bss           0x000000000003bea0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_record.o
+ .bss           0x000000000003bea0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_sdk.o
+ .bss           0x000000000003bea0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_snap.o
+ .bss           0x000000000003bea0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_store.o
+ .bss           0x000000000003bea0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_system.o
+ .bss           0x000000000003bea0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_test.o
+ .bss           0x000000000003bea0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_user.o
+ .bss           0x000000000003bea0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_video.o
+ .bss           0x000000000003bea0        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+ .bss           0x000000000003bea0        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+ *(COMMON)
+ COMMON         0x000000000003bea0      0xc78 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_alarm.o
+                0x000000000003bea0                runAlarmCfg
+ COMMON         0x000000000003cb18       0x30 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_all.o
+                0x000000000003cb18                g_cfg_wr_mutex
+ COMMON         0x000000000003cb48       0x24 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_audio.o
+                0x000000000003cb48                runAudioCfg
+ *fill*         0x000000000003cb6c        0x4 
+ COMMON         0x000000000003cb70      0x520 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_channel.o
+                0x000000000003cb70                runChannelCfg
+ COMMON         0x000000000003d090      0x148 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_gb28181.o
+                0x000000000003d090                runGB28181Cfg
+ COMMON         0x000000000003d1d8       0x2c build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_image.o
+                0x000000000003d1d8                runImageCfg
+ *fill*         0x000000000003d204        0x4 
+ COMMON         0x000000000003d208     0x1874 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_md.o
+                0x000000000003d208                runMdCfg
+ *fill*         0x000000000003ea7c        0x4 
+ COMMON         0x000000000003ea80     0x113c build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_network.o
+                0x000000000003ea80                runNetworkCfg
+ *fill*         0x000000000003fbbc        0x4 
+ COMMON         0x000000000003fbc0      0x16c build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_p2p.o
+                0x000000000003fbc0                runP2PCfg
+ *fill*         0x000000000003fd2c        0x4 
+ COMMON         0x000000000003fd30     0x46bc build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_ptz.o
+                0x000000000003fd30                runPtzCfg
+                0x000000000003fd50                runPtzDecCfg
+                0x000000000003fd90                runPresetCfg
+                0x0000000000044150                runCruiseCfg
+ *fill*         0x00000000000443ec        0x4 
+ COMMON         0x00000000000443f0       0x44 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_pwm.o
+                0x00000000000443f0                runpwmCfg
+ *fill*         0x0000000000044434        0x4 
+ COMMON         0x0000000000044438      0x938 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_record.o
+                0x0000000000044438                runRecordCfg
+ COMMON         0x0000000000044d70       0xe4 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_sdk.o
+                0x0000000000044d70                sdk_cfg
+ *fill*         0x0000000000044e54        0x4 
+ COMMON         0x0000000000044e58      0x200 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_snap.o
+                0x0000000000044e58                runSnapCfg
+ COMMON         0x0000000000045058        0xc build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_store.o
+                0x0000000000045058                runStoreCfg
+ *fill*         0x0000000000045064        0x4 
+ COMMON         0x0000000000045068      0x470 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_system.o
+                0x0000000000045068                runSystemCfg
+                0x00000000000453f8                g_systemInfo
+ COMMON         0x00000000000454d8      0x460 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_user.o
+                0x00000000000454d8                runUserCfg
+ COMMON         0x0000000000045938      0x3b0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_video.o
+                0x0000000000045938                runVideoCfg
+                0x0000000000045ce8                . = ALIGN ((. != 0x0)?0x8:0x1)
+                [!provide]                        PROVIDE (_bss_end__ = .)
+                [!provide]                        PROVIDE (__bss_end__ = .)
+                0x0000000000045ce8                . = ALIGN (0x8)
+                0x0000000000045ce8                . = SEGMENT_START ("ldata-segment", .)
+                0x0000000000045ce8                . = ALIGN (0x8)
+                [!provide]                        PROVIDE (__end__ = .)
+                [!provide]                        PROVIDE (_end = .)
+                [!provide]                        PROVIDE (end = .)
+                0x0000000000045ce8                . = DATA_SEGMENT_END (.)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment        0x0000000000000000       0x16
+ *(.comment)
+ .comment       0x0000000000000000       0x16 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+                                         0x17 (size before relaxing)
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_alarm.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_all.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_audio.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_channel.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_common.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_gb28181.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_image.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_md.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_network.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_p2p.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_ptz.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_pwm.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_record.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_sdk.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_snap.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_store.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_system.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_test.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_user.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_video.o
+ .comment       0x0000000000000016       0x17 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+
+.gnu.build.attributes
+ *(.gnu.build.attributes .gnu.build.attributes.*)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges
+ *(.debug_aranges)
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info
+ *(.debug_info .gnu.linkonce.wi.*)
+
+.debug_abbrev
+ *(.debug_abbrev)
+
+.debug_line
+ *(.debug_line .debug_line.* .debug_line_end)
+
+.debug_frame
+ *(.debug_frame)
+
+.debug_str
+ *(.debug_str)
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges
+ *(.debug_ranges)
+
+.debug_macro
+ *(.debug_macro)
+
+.debug_addr
+ *(.debug_addr)
+
+.ARM.attributes
+ *(.ARM.attributes)
+ *(.gnu.attributes)
+
+.note.gnu.arm.ident
+ *(.note.gnu.arm.ident)
+
+/DISCARD/
+ *(.note.GNU-stack)
+ *(.gnu_debuglink)
+ *(.gnu.lto_*)
+OUTPUT(build/arm11-gcc-uClibc-linux-gk7605v100/lib/libapp_cfg.so elf64-littleaarch64)
+LOAD linker stubs

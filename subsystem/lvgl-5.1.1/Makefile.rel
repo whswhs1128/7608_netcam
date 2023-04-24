@@ -1,0 +1,42 @@
+################################################################################
+################################################################################
+##
+## Makefile -- makefile for device driver library
+##
+## (C) Copyright 2012-2013 by Guoke Microelectronics Co.,Ltd
+##
+## Version: $Id: makefile 10 2014-09-24 10:07:03Z huangjunlei $
+##
+## Mandatory settings:
+##
+## o TOPDIR      = the toplevel directory (using slashes as path separator)
+## o TARGET      = the machine qualifier to generate code for
+##
+################################################################################
+################################################################################
+
+LIBRARY = liblvgl
+
+HEADERS += $(wildcard inc/*.h)
+HEADER_SUBDIR = subsystem/lvgl-5.1.1
+
+
+################################################################################
+# define user targets
+################################################################################
+
+default: install
+
+clean:
+
+build: install
+
+headers: install-headers
+
+install: install-library-released install-headers
+
+all: install
+
+################################################################################
+# include internal definitions and rules
+################################################################################

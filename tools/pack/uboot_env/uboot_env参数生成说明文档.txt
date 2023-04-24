@@ -1,0 +1,16 @@
+
+uboot_env参数生成说明文档
+
+#########################################################################
+#运行方式如:./uboot_env.sh 0 41  0:内部phytype 1:外部phytype 41内存大小 #
+# partinfo ------------ flash分区信息表                                 #
+# bootargs_flash ------ 从flash启动的bootargs                           #
+# bootcmd ------------- 从flash启动的bootcmd                            #
+# bootargs_nfs -------- 以nfs方式启动的bootargs                         #
+# bootcmd_nfs --------- 以nfs方式启动的bootcmd                          #
+#注意：修改分区信息时要对应修改partinfo和bootcmd                        #
+#########################################################################
+
+注意：修改partinfo信息时需要同步修改打包配置文件：
+tools/release_package/fast_make_package/flashmap_cfg.ini
+tools/release_package/flashmap_cfg/flashmap_cfg_wifi_sd.ini

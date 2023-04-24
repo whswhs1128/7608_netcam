@@ -1,0 +1,5 @@
+
+1、把ding_ping_config 目录放到SD卡中
+2、开机SD卡自动挂载(由mdev脚本自动挂载)
+3、如程序在SD卡中检测到 ding_ping_config 目录且目录里有rtwpriv和ding_ping.sh，且会自动进入WIFI定频模式。
+4、需要WIFI进入STA或AP模式时则拨掉SD卡或删除SD卡中定频配置目录 ding_ping_config后重启系统。

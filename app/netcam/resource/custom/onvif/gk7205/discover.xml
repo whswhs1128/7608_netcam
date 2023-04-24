@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Discover>
+	<Scopes>
+		<scope type="Fixed">onvif://www.onvif.org/type/NetworkVideoTransmitter</scope>
+		<scope type="Fixed">onvif://www.onvif.org/type/video_encoder</scope>
+		<scope type="Fixed">onvif://www.onvif.org/type/audio_encoder</scope>
+		<scope type="Fixed">onvif://www.onvif.org/type/video_analytics</scope>
+		<scope type="Fixed">onvif://www.onvif.org/type/ptz</scope>
+		<scope type="Configurable">onvif://www.onvif.org/name/GKIPC</scope>
+		<scope type="Configurable">onvif://www.onvif.org/hardware/HD-53NV1080HSD</scope>
+		<scope type="Configurable">onvif://www.onvif.org/location/Chengdu</scope>
+	</Scopes>
+	<DiscoveryMode>0</DiscoveryMode>
+	<Security>1</Security>
+	<Hostport>80</Hostport> <!--http port-->
+</Discover>

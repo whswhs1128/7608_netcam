@@ -1,0 +1,25 @@
+#!/bin/sh
+#
+# Start ipc 
+#
+#for ln -s /etc/resolv.conf /tmp/resolv.conf
+touch /tmp/resolv.conf
+case "$1" in
+  start)
+	echo "Starting ipc.."
+	chmod 777 /usr/local/bin/startup.sh
+	/usr/local/bin/startup.sh
+	;;
+  stop)
+	;;
+  restart|reload)
+	;;
+  *)
+	echo "Usage: $0 {start|stop|restart}"
+	echo "Starting ipc.."
+	chmod 777 /usr/local/bin/startup.sh
+	/usr/local/bin/startup.sh
+	;;
+esac
+
+exit $?

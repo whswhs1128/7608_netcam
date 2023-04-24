@@ -1,0 +1,1326 @@
+
+Allocating common symbols
+Common symbol       size              file
+
+g_EventCallBackRegister
+                    0x40              build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_priv.o
+g_webFlag           0x4               build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_priv.o
+g_onvif_cls         0x18              build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_priv.o
+addr_wlan0_new      0x10              build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_priv.o
+g_stEventPullMessage
+                    0x18              build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/event_handle.o
+g_ImageCallBackRegister
+                    0x40              build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_priv.o
+eventtHandleAarry   0x320             build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/event_handle.o
+addr_eth0_old       0x10              build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_priv.o
+addr_wlan0_old      0x10              build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_priv.o
+g_AnalyticsCallBackRegister
+                    0x28              build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_priv.o
+addr_eth0_new       0x10              build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_priv.o
+g_DevMngCallBackRegister
+                    0xf8              build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_priv.o
+g_MediaCallBackRegister
+                    0x170             build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_priv.o
+EventMutex          0x30              build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/event_handle.o
+g_GkIpc_OnvifInf    0x250             build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_priv.o
+g_DeviceIOCallBackRegister
+                    0x28              build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_priv.o
+g_stEventPullMessageRes
+                    0x50              build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/event_handle.o
+g_PtzCallBackRegister
+                    0x80              build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_priv.o
+g_http_srv          0x28              build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_priv.o
+
+Discarded input sections
+
+ .note.GNU-stack
+                0x0000000000000000        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/soap_proc.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/soap_parse.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/soap_packet.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/config.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/event_handle.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_priv.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_device.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_media.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_deviceio.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_image.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_event.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_ptz.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_analytics.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/base64.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/mpool.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/sha1.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/word_analyse.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/xml.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/http_client.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/http_server.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/http_parse.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/http_bm.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/soap_proc.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/soap_parse.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/soap_packet.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/config.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/event_handle.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_priv.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_device.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_media.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_deviceio.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_image.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_event.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_ptz.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_analytics.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/base64.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/mpool.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/sha1.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/word_analyse.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/xml.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/http_client.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/http_server.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/http_parse.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/http_bm.o
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/libgcc.a
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/../../../../aarch64-linux-gnu/lib/../lib64/libgcc_s.so
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/libc.so
+START GROUP
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/lib/libc.so.6
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/libc_nonshared.a
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/lib/ld-linux-aarch64.so.1
+END GROUP
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/libgcc.a
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/../../../../aarch64-linux-gnu/lib/../lib64/libgcc_s.so
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+                0x0000000000000190                . = (SEGMENT_START ("text-segment", 0x0) + SIZEOF_HEADERS)
+
+.note.gnu.build-id
+ *(.note.gnu.build-id)
+
+.hash           0x0000000000000190     0x1320
+ *(.hash)
+ .hash          0x0000000000000190     0x1320 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.gnu.hash       0x00000000000014b0     0x13c8
+ *(.gnu.hash)
+ .gnu.hash      0x00000000000014b0     0x13c8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.dynsym         0x0000000000002878     0x41b8
+ *(.dynsym)
+ .dynsym        0x0000000000002878     0x41b8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.dynstr         0x0000000000006a30     0x4bfc
+ *(.dynstr)
+ .dynstr        0x0000000000006a30     0x4bfc /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.gnu.version    0x000000000000b62c      0x57a
+ *(.gnu.version)
+ .gnu.version   0x000000000000b62c      0x57a /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.gnu.version_d  0x000000000000bba8        0x0
+ *(.gnu.version_d)
+ .gnu.version_d
+                0x000000000000bba8        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.gnu.version_r  0x000000000000bba8       0x20
+ *(.gnu.version_r)
+ .gnu.version_r
+                0x000000000000bba8       0x20 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.rela.dyn       0x000000000000bbc8      0xf90
+ *(.rela.init)
+ *(.rela.text .rela.text.* .rela.gnu.linkonce.t.*)
+ *(.rela.fini)
+ *(.rela.rodata .rela.rodata.* .rela.gnu.linkonce.r.*)
+ *(.rela.data .rela.data.* .rela.gnu.linkonce.d.*)
+ .rela.data.rel.local
+                0x000000000000bbc8      0x138 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .rela.data     0x000000000000bd00       0xa8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *(.rela.tdata .rela.tdata.* .rela.gnu.linkonce.td.*)
+ *(.rela.tbss .rela.tbss.* .rela.gnu.linkonce.tb.*)
+ *(.rela.ctors)
+ *(.rela.dtors)
+ *(.rela.got)
+ .rela.got      0x000000000000bda8      0xd80 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *(.rela.bss .rela.bss.* .rela.gnu.linkonce.b.*)
+ *(.rela.ifunc)
+ .rela.ifunc    0x000000000000cb28        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .rela.init_array
+                0x000000000000cb28       0x18 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .rela.fini_array
+                0x000000000000cb40       0x18 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.rela.plt       0x000000000000cb58     0x3108
+ *(.rela.plt)
+ .rela.plt      0x000000000000cb58     0x3108 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *(.rela.iplt)
+
+.init           0x000000000000fc60       0x14
+ *(SORT_NONE(.init))
+ .init          0x000000000000fc60        0xc /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+                0x000000000000fc60                _init
+ .init          0x000000000000fc6c        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+
+.plt            0x000000000000fc80     0x20d0
+ *(.plt)
+ .plt           0x000000000000fc80     0x20d0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *(.iplt)
+
+.text           0x0000000000011d50    0x3c7fc
+ *(.text.unlikely .text.*_unlikely .text.unlikely.*)
+ *(.text.exit .text.exit.*)
+ *(.text.startup .text.startup.*)
+ *(.text.hot .text.hot.*)
+ *(SORT_BY_NAME(.text.sorted.*))
+ *(.text .stub .text.* .gnu.linkonce.t.*)
+ .text          0x0000000000011d50       0x14 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *fill*         0x0000000000011d64        0x4 1f2003d5
+ .text          0x0000000000011d68       0xbc /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ *fill*         0x0000000000011e24        0x4 1f2003d5
+ .text          0x0000000000011e28     0xcfb0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/soap_proc.o
+                0x00000000000140f0                soap_Device_GetWsdlUrl
+                0x0000000000014290                soap_Device_GetServices
+                0x0000000000014398                soap_Device_GetCapabilities
+                0x00000000000144a0                soap_Device_GetServiceCapabilities
+                0x0000000000014648                soap_Device_SystemReboot
+                0x00000000000147d8                soap_Device_GetHostname
+                0x0000000000014980                soap_Device_SetHostname
+                0x0000000000014a58                soap_Device_GetDNS
+                0x0000000000014bf8                soap_Device_SetDNS
+                0x0000000000014cd0                soap_Device_GetNTP
+                0x0000000000014e70                soap_Device_SetNTP
+                0x0000000000014f48                soap_Device_GetNetworkInterfaces
+                0x00000000000150f0                soap_Device_SetNetworkInterfaces
+                0x00000000000151e0                soap_Device_GetNetworkProtocols
+                0x0000000000015378                soap_Device_SetNetworkProtocols
+                0x0000000000015448                soap_Device_GetNetworkDefaultGateway
+                0x00000000000155d8                soap_Device_SetNetworkDefaultGateway
+                0x00000000000156a8                soap_Device_GetSystemDateAndTime
+                0x0000000000015848                soap_Device_SetSystemDateAndTime
+                0x0000000000015918                soap_Device_GetDeviceInformation
+                0x0000000000015ac0                soap_Device_GetScopes
+                0x0000000000015c78                soap_Device_SetScopes
+                0x0000000000015e00                soap_Device_AddScopes
+                0x0000000000015f88                soap_Device_RemoveScopes
+                0x0000000000016118                soap_Device_GetDiscoveryMode
+                0x00000000000162c8                soap_Device_SetDiscoveryMode
+                0x0000000000016388                soap_Device_GetUsers
+                0x0000000000016530                soap_Device_CreateUsers
+                0x0000000000016618                soap_Device_DeleteUsers
+                0x00000000000166f0                soap_Device_SetUser
+                0x00000000000167d8                soap_Device_SetSystemFactoryDefault
+                0x0000000000016890                soap_DeviceIO_GetVideoSource
+                0x0000000000016a40                soap_DeviceIO_GetAudioSource
+                0x0000000000016bf0                soap_DeviceIO_GetRelayOutputs
+                0x0000000000016da0                soap_DeviceIO_SetRelayOutputSettings
+                0x0000000000016f40                soap_DeviceIO_SetRelayOutputState
+                0x00000000000170e0                soap_Media_GetServiceCapabilities
+                0x0000000000017270                soap_Media_CreateProfile
+                0x0000000000017360                soap_Media_GetProfile
+                0x0000000000017518                soap_Media_GetProfiles
+                0x00000000000176a8                soap_Media_DeleteProfile
+                0x0000000000017790                soap_Media_AddVideoSourceConfiguration
+                0x0000000000017898                soap_Media_AddVideoEncoderConfiguration
+                0x00000000000179a0                soap_Media_AddAudioSourceConfiguration
+                0x0000000000017aa8                soap_Media_AddAudioEncoderConfiguration
+                0x0000000000017bb0                soap_Media_AddPTZConfiguration
+                0x0000000000017cb8                soap_Media_RemoveVideoSourceConfiguration
+                0x0000000000017da0                soap_Media_RemoveVideoEncoderConfiguration
+                0x0000000000017e88                soap_Media_RemoveAudioSourceConfiguration
+                0x0000000000017f70                soap_Media_RemoveAudioEncoderConfiguration
+                0x0000000000018058                soap_Media_RemovePTZConfiguration
+                0x0000000000018208                soap_Media_GetVideoSourceConfigurations
+                0x00000000000183c0                soap_Media_GetVideoSourceConfiguration
+                0x00000000000184b8                soap_Media_GetCompatibleVideoSourceConfigurations
+                0x00000000000185e0                soap_Media_GetVideoSourceConfigurationOptions
+                0x00000000000186f8                soap_Media_SetVideoSourceConfiguration
+                0x0000000000018838                soap_Media_GetVideoEncoderConfigurations
+                0x00000000000189d8                soap_Media_GetVideoEncoderConfiguration
+                0x0000000000018ae8                soap_Media_GetCompatibleVideoEncoderConfigurations
+                0x0000000000018c08                soap_Media_GetVideoEncoderConfigurationOptions
+                0x0000000000018d40                soap_Media_SetVideoEncoderConfiguration
+                0x0000000000018eb0                soap_Media_GetGuaranteedNumberOfVideoEncoderInstances
+                0x0000000000018fa0                soap_Media_GetAudioSourceConfigurations
+                0x0000000000019148                soap_Media_GetAudioSourceConfiguration
+                0x0000000000019240                soap_Media_GetCompatibleAudioSourceConfigurations
+                0x0000000000019358                soap_Media_GetAudioSourceConfigurationOptions
+                0x0000000000019468                soap_Media_SetAudioSourceConfiguration
+                0x00000000000195a0                soap_Media_GetAudioEncoderConfigurations
+                0x0000000000019730                soap_Media_GetAudioEncoderConfiguration
+                0x0000000000019830                soap_Media_GetCompatibleAudioEncoderConfigurations
+                0x0000000000019950                soap_Media_GetAudioEncoderConfigurationOptions
+                0x0000000000019a60                soap_Media_SetAudioEncoderConfiguration
+                0x0000000000019bc8                soap_Media_GetMetadataConfigurations
+                0x0000000000019d08                soap_Media_GetMetadataConfiguration
+                0x0000000000019e48                soap_Media_GetCompatibleMetadataConfigurations
+                0x0000000000019f88                soap_Media_GetMetadataConfigurationOptions
+                0x000000000001a0c8                soap_Media_GetStreamUri
+                0x000000000001a1e0                soap_Media_GetSnapshotUri
+                0x000000000001a2f0                soap_Media_StartMulticastStreaming
+                0x000000000001a430                soap_Media_StopMulticastStreaming
+                0x000000000001a570                soap_Media_GetOSDOptions
+                0x000000000001a668                soap_Media_GetOSDs
+                0x000000000001a788                soap_Media_SetOSD
+                0x000000000001a880                soap_Media_DeleteOSD
+                0x000000000001a930                soap_Media_GetPrivacyMaskOptions
+                0x000000000001aa20                soap_Media_GetPrivacyMasks
+                0x000000000001ab20                soap_Media_DeletePrivacyMask
+                0x000000000001abd0                soap_Media_CreatePrivacyMask
+                0x000000000001ac80                soap_Event_GetServiceCapabilities
+                0x000000000001ae30                soap_Event_GetEventProperties
+                0x000000000001b000                soap_Event_Subscribe
+                0x000000000001b128                soap_Event_Unsubscribe
+                0x000000000001b1e0                soap_Event_Renew
+                0x000000000001b320                soap_Event_CreatePullPointSubscription
+                0x000000000001b448                soap_Event_PullMessages
+                0x000000000001b630                soap_Event_SetSynchronizationPoint
+                0x000000000001b6e8                soap_PTZ_GetServiceCapabilities
+                0x000000000001b870                soap_PTZ_GetNodes
+                0x000000000001ba18                soap_PTZ_GetNode
+                0x000000000001baf8                soap_PTZ_GetConfigurations
+                0x000000000001bc98                soap_PTZ_GetConfiguration
+                0x000000000001bd78                soap_PTZ_GetConfigurationOptions
+                0x000000000001be58                soap_PTZ_SetConfiguration
+                0x000000000001bf10                soap_PTZ_ContinuousMove
+                0x000000000001bfc0                soap_PTZ_Stop
+                0x000000000001c098                soap_PTZ_GetPresets
+                0x000000000001c1b8                soap_PTZ_SetPreset
+                0x000000000001c328                soap_PTZ_GotoPreset
+                0x000000000001c400                soap_PTZ_RemovePreset
+                0x000000000001c508                soap_PTZ_AbsoluteMove
+                0x000000000001c5c0                soap_PTZ_RelativeMove
+                0x000000000001c678                soap_PTZ_GetStatus
+                0x000000000001c798                soap_Imaging_GetServiceCapabilities
+                0x000000000001c920                soap_Imaging_GetImagingSettings
+                0x000000000001ca20                soap_Imaging_SetImagingSettings
+                0x000000000001cb00                soap_Imaging_GetOptions
+                0x000000000001cbf8                soap_Imaging_GetMoveOptions
+                0x000000000001cce8                soap_Imaging_Move
+                0x000000000001ced0                soap_Imaging_GetStatus
+                0x000000000001cfe8                soap_Imaging_Stop
+                0x000000000001d0d0                soap_VideoAnalytics_GetServiceCapabilities
+                0x000000000001d258                soap_VideoAnalytics_GetSupportedAnalyticsModules
+                0x000000000001d350                soap_VideoAnalytics_GetAnalyticsModules
+                0x000000000001d440                soap_VideoAnalytics_GetSupportedRules
+                0x000000000001d538                soap_VideoAnalytics_GetRules
+                0x000000000001d628                soap_proc_GetHttpPackage
+                0x000000000001d638                soap_proc_ReleaseHttpPackage
+                0x000000000001d668                soap_process
+ .text          0x000000000001edd8     0x5468 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/soap_parse.o
+                0x000000000001edd8                soap_get_tag_child_name
+                0x000000000001ee10                soap_match_tag
+                0x000000000001eeb0                soap_get_child_node
+                0x000000000001ef28                soap_get_next_node
+                0x000000000001efa0                soap_parse_request_GetCapabilities
+                0x000000000001f118                soap_parse_request_SetHostname
+                0x000000000001f160                soap_parse_request_SetDNS
+                0x000000000001f360                soap_parse_request_SetNTP
+                0x000000000001f5c8                soap_parse_request_SetNetworkInterfaces
+                0x000000000001f788                soap_parse_request_SetNetworkProtocols
+                0x000000000001f968                soap_parse_request_SetNetworkDefaultGateway
+                0x000000000001fac0                soap_parse_request_SetSystemDateAndTime
+                0x000000000001fcf0                soap_parse_request_SetScopes
+                0x000000000001fdc0                soap_parse_request_AddScopes
+                0x000000000001fe90                soap_parse_request_RemoveScopes
+                0x000000000001ff60                soap_parse_request_SetDiscoveryMode
+                0x0000000000020008                soap_parse_request_CreateUsers
+                0x00000000000201e8                soap_parse_request_DeleteUsers
+                0x00000000000202a8                soap_parse_request_SetUser
+                0x0000000000020488                soap_parse_request_SetSystemFactoryDefault
+                0x0000000000020548                soap_parse_request_CreateProfile
+                0x00000000000205b8                soap_parse_request_SetVideoSourceConfiguration
+                0x00000000000207a8                soap_parse_request_SetVideoEncoderConfiguration
+                0x0000000000020da8                soap_parse_request_SetAudioSourceConfiguration
+                0x0000000000020ef0                soap_parse_request_SetAudioEncoderConfiguration
+                0x0000000000021290                soap_parse_request_GetStreamUri
+                0x0000000000021448                soap_parse_request_GetOSDOptions
+                0x00000000000214a8                soap_parse_request_GetOSDs
+                0x0000000000021578                soap_parse_request_SetOSD
+                0x0000000000021908                soap_parse_request_DeleteOSD
+                0x0000000000021968                soap_parse_request_GetPrivacyMaskOptions
+                0x00000000000219c8                soap_parse_request_GetPrivacyMasks
+                0x0000000000021a28                soap_parse_request_DeletePrivacyMask
+                0x0000000000021a88                soap_parse_request_CreatePrivacyMask
+                0x0000000000021c48                soap_parse_request_Subscribe
+                0x0000000000021d38                soap_parse_request_CreatePullPointSubscription
+                0x0000000000021de8                soap_parse_request_GetImagingSettings
+                0x0000000000021e48                soap_parse_request_SetImagingSettings
+                0x00000000000226e8                soap_parse_request_GetOptions
+                0x0000000000022748                soap_parse_request_GetMoveOptions
+                0x00000000000227a8                soap_parse_request_Move
+                0x0000000000022b68                soap_parse_request_GetStatus
+                0x0000000000022bc8                soap_parse_request_ImageStop
+                0x0000000000022c28                soap_parse_request_GetNodes
+                0x0000000000022c50                soap_parse_request_GetNode
+                0x0000000000022cb0                soap_parse_request_GetConfiguration
+                0x0000000000022d10                soap_parse_request_GetConfigurationOptions
+                0x0000000000022d70                soap_parse_request_SetConfiguration
+                0x0000000000023490                soap_parse_request_AbsoluteMove
+                0x0000000000023768                soap_parse_request_RelativeMove
+                0x0000000000023a30                soap_parse_request_ContinuousMove
+                0x0000000000023bd8                soap_parse_request_PtzStop
+                0x0000000000023cf0                soap_parse_request_GotoPreset
+                0x0000000000023e50                soap_parse_request_SetRelayOutputSettings
+                0x0000000000023fd8                soap_parse_request_SetRelayOutputState
+                0x00000000000240c0                soap_parse_request_GetSupportedAnalyticsModules
+                0x0000000000024120                soap_parse_request_GetAnalyticsModules
+                0x0000000000024180                soap_parse_request_GetSupportedRules
+                0x00000000000241e0                soap_parse_request_GetRules
+ .text          0x0000000000024240     0xcaa8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/soap_packet.o
+                0x0000000000024930                soap_response_error
+                0x0000000000024aa8                soap_response_Device_GetServiceCapabilities
+                0x0000000000024d58                soap_packet_response_GetWsdlUrl
+                0x0000000000024e10                soap_packet_response_GetServices
+                0x0000000000025010                soap_packet_response_GetCapabilities
+                0x0000000000025490                soap_packet_response_SystemReboot
+                0x0000000000025548                soap_packet_response_GetHostname
+                0x0000000000025618                soap_packet_response_SetHostname
+                0x00000000000256c8                soap_packet_response_GetDNS
+                0x00000000000259c0                soap_packet_response_SetDNS
+                0x0000000000025a70                soap_packet_response_GetNTP
+                0x0000000000025d10                soap_packet_response_SetNTP
+                0x0000000000025dc0                soap_packet_response_GetNetworkInterfaces
+                0x0000000000026000                soap_packet_response_SetNetworkInterfaces
+                0x00000000000260d0                soap_packet_response_GetNetworkProtocols
+                0x00000000000262f0                soap_packet_response_SetNetworkProtocols
+                0x00000000000263a0                soap_packet_response_GetNetworkDefaultGateway
+                0x00000000000264d0                soap_packet_response_SetNetworkDefaultGateway
+                0x0000000000026580                soap_packet_response_GetSystemDateAndTime
+                0x00000000000266e8                soap_packet_response_SetSystemDateAndTime
+                0x0000000000026798                soap_packet_response_GetDeviceInformation
+                0x0000000000026860                soap_packet_response_GetScopes
+                0x00000000000269f8                soap_packet_response_SetScopes
+                0x0000000000026aa8                soap_packet_response_AddScopes
+                0x0000000000026b58                soap_packet_response_RemoveScopes
+                0x0000000000026cd0                soap_packet_response_GetDiscoveryMode
+                0x0000000000026da0                soap_packet_response_SetDiscoveryMode
+                0x0000000000026e50                soap_packet_response_GetUsers
+                0x0000000000027028                soap_packet_response_CreateUsers
+                0x00000000000270d8                soap_packet_response_DeleteUsers
+                0x0000000000027188                soap_packet_response_SetUser
+                0x0000000000027238                soap_packet_response_SetSystemFactoryDefault
+                0x00000000000272e8                soap_packet_response_GetVideoSources
+                0x0000000000027540                soap_packet_response_GetAudioSources
+                0x00000000000276c0                soap_packet_response_GetRelayOutputs
+                0x0000000000027848                soap_packet_response_SetRelayOutputSettings
+                0x0000000000027910                soap_packet_response_SetRelayOutputState
+                0x00000000000279d8                soap_response_Media_GetServiceCapabilities
+                0x0000000000027b50                soap_packet_response_CreateProfile
+                0x0000000000027c78                soap_packet_response_GetProfile
+                0x0000000000028030                soap_packet_response_GetProfiles
+                0x0000000000028460                soap_packet_response_DeleteProfile
+                0x0000000000028510                soap_packet_response_AddVideoSourceConfiguration
+                0x00000000000285c0                soap_packet_response_AddVideoEncoderConfiguration
+                0x0000000000028670                soap_packet_response_AddAudioSourceConfiguration
+                0x0000000000028720                soap_packet_response_AddAudioEncoderConfiguration
+                0x00000000000287d0                soap_packet_response_AddPTZConfiguration
+                0x0000000000028880                soap_packet_response_RemoveVideoSourceConfiguration
+                0x0000000000028930                soap_packet_response_RemoveVideoEncoderConfiguration
+                0x00000000000289e0                soap_packet_response_RemoveAudioSourceConfiguration
+                0x0000000000028a90                soap_packet_response_RemoveAudioEncoderConfiguration
+                0x0000000000028b40                soap_packet_response_RemovePTZConfiguration
+                0x0000000000028bf0                soap_packet_response_GetVideoSourceConfigurations
+                0x0000000000028d88                soap_packet_response_GetVideoSourceConfiguration
+                0x0000000000028ed0                soap_packet_response_GetCompatibleVideoSourceConfigurations
+                0x0000000000029068                soap_packet_response_GetVideoSourceConfigurationOptions
+                0x0000000000029210                soap_packet_response_SetVideoSourceConfiguration
+                0x00000000000292c0                soap_packet_response_GetVideoEncoderConfigurations
+                0x00000000000295a8                soap_packet_response_GetVideoEncoderConfiguration
+                0x0000000000029848                soap_packet_response_GetCompatibleVideoEncoderConfigurations
+                0x0000000000029b30                soap_packet_response_GetVideoEncoderConfigurationOptions
+                0x0000000000029fb0                soap_packet_response_SetVideoEncoderConfiguration
+                0x000000000002a060                soap_packet_response_GetGuaranteedNumberOfVideoEncoderInstances
+                0x000000000002a118                soap_packet_response_GetAudioSourceConfigurations
+                0x000000000002a298                soap_packet_response_GetAudioSourceConfiguration
+                0x000000000002a3c8                soap_packet_response_GetCompatibleAudioSourceConfigurations
+                0x000000000002a548                soap_packet_response_GetAudioSourceConfigurationOptions
+                0x000000000002a6f0                soap_packet_response_SetAudioSourceConfiguration
+                0x000000000002a7a0                soap_packet_response_GetAudioEncoderConfigurations
+                0x000000000002a990                soap_packet_response_GetAudioEncoderConfiguration
+                0x000000000002ab30                soap_packet_response_GetCompatibleAudioEncoderConfigurations
+                0x000000000002ad20                soap_packet_response_GetAudioEncoderConfigurationOptions
+                0x000000000002b000                soap_packet_response_SetAudioEncoderConfiguration
+                0x000000000002b0b0                soap_packet_response_GetMetadataConfigurations
+                0x000000000002b160                soap_packet_response_GetMetadataConfiguration
+                0x000000000002b210                soap_packet_response_GetCompatibleMetadataConfigurations
+                0x000000000002b2c0                soap_packet_response_GetMetadataConfigurationOptions
+                0x000000000002b370                soap_packet_response_GetStreamUri
+                0x000000000002b450                soap_packet_response_GetSnapshotUri
+                0x000000000002b530                soap_packet_response_StartMulticastStreaming
+                0x000000000002b5e0                soap_packet_response_StopMulticastStreaming
+                0x000000000002b690                soap_packet_response_GetOSDOptions
+                0x000000000002bbe0                soap_packet_response_GetOSDs
+                0x000000000002c0b8                soap_packet_response_SetOSD
+                0x000000000002c170                soap_packet_response_DeleteOSD
+                0x000000000002c220                soap_packet_response_GetPrivacyMaskOptions
+                0x000000000002c2f0                soap_packet_response_GetPrivacyMasks
+                0x000000000002c480                soap_packet_response_DeletePrivacyMask
+                0x000000000002c530                soap_packet_response_CreatePrivacyMask
+                0x000000000002c620                soap_response_Event_GetServiceCapabilities
+                0x000000000002c780                soap_packet_response_GetEventProperties
+                0x000000000002cab0                soap_packet_response_Subscribe
+                0x000000000002cc48                soap_packet_response_Unsubscribe
+                0x000000000002cd18                soap_packet_response_Renew
+                0x000000000002cea8                soap_packet_response_CreatePullPointSubscription
+                0x000000000002d050                soap_packet_response_PullMessages
+                0x000000000002d1d0                soap_packet_response_SetSynchronizationPoint
+                0x000000000002d2a0                soap_response_Imaging_GetServiceCapabilities
+                0x000000000002d3a8                soap_packet_response_GetImagingSettings
+                0x000000000002d578                soap_packet_response_SetImagingSettings
+                0x000000000002d640                soap_packet_response_GetOptions
+                0x000000000002da70                soap_packet_response_GetMoveOptions
+                0x000000000002dba0                soap_packet_response_Move
+                0x000000000002dc50                soap_response_Imaging_GetStatus
+                0x000000000002ddd8                soap_response_Imaging_Stop
+                0x000000000002de88                soap_response_PTZ_GetServiceCapabilities
+                0x000000000002dfa0                soap_packet_response_GetNodes
+                0x000000000002e5c8                soap_packet_response_GetNode
+                0x000000000002eb70                soap_packet_response_GetConfigurations
+                0x000000000002eda8                soap_packet_response_GetConfiguration
+                0x000000000002ef98                soap_packet_response_GetConfigurationOptions
+                0x000000000002f458                soap_packet_response_SetConfiguration
+                0x000000000002f508                soap_packet_response_ContinuousMove
+                0x000000000002f5b8                soap_response_PTZ_Stop
+                0x000000000002f668                soap_packet_response_GetPresets
+                0x000000000002f7c0                soap_packet_response_SetPreset
+                0x000000000002f878                soap_packet_response_GotoPreset
+                0x000000000002f928                soap_packet_response_RemovePreset
+                0x000000000002f9d8                soap_packet_response_AbsoluteMove
+                0x000000000002fa88                soap_packet_response_RelativeMove
+                0x000000000002fb38                soap_response_PTZ_GetStatus
+                0x000000000002fd40                soap_response_VideoAnalytics_GetServiceCapabilities
+                0x000000000002fe40                soap_packet_response_GetSupportedAnalyticsModules
+                0x0000000000030350                soap_packet_response_GetAnalyticsModules
+                0x00000000000305d0                soap_packet_response_GetSupportedRules
+                0x0000000000030a68                soap_packet_response_GetRules
+ *fill*         0x0000000000030ce8        0x8 1f2003d5
+ .text          0x0000000000030cf0     0x8748 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/config.o
+                0x0000000000030e38                config_Load_MediadynamicXml
+                0x0000000000032db0                config_Load_MediastaticXml
+                0x00000000000350d0                config_Load_ImagingXml
+                0x0000000000036190                config_Load_PtzXml
+                0x0000000000036370                config_Load_PtzPreset
+                0x0000000000036460                config_Save_DeviceXml
+                0x0000000000036950                config_Save_DiscoverXml
+                0x0000000000036c68                config_Save_MediaXml
+                0x00000000000385e8                config_GetPassword
+                0x0000000000038680                config_AddUser
+                0x0000000000038758                config_Load_DeviceXml
+                0x0000000000038ec8                config_FindUser
+                0x0000000000038f80                config_DeleteUser
+                0x0000000000039048                config_DeleteAllUsers
+                0x00000000000390d0                config_GetScope
+                0x0000000000039150                config_Load_DiscoverXml
+ *fill*         0x0000000000039438        0x8 1f2003d5
+ .text          0x0000000000039440     0x16bc build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/event_handle.o
+                0x000000000003a240                EventManagement_Init
+                0x000000000003a300                EventManagement_Subscribe
+                0x000000000003a5a8                EventManagement_Unsubscribe
+                0x000000000003a660                EventManagement_Renew
+                0x000000000003a6e8                EventManagement_CreatePullPointSubscription
+                0x000000000003a938                EventManagement_PullMessages
+                0x000000000003aac8                EventManagement_Exit
+ *fill*         0x000000000003aafc        0x4 1f2003d5
+ .text          0x000000000003ab00     0x1c98 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_priv.o
+                0x000000000003b3f8                GK_NVT_Env_Init
+                0x000000000003b450                GK_NVT_Signal_Init
+                0x000000000003b4f0                GK_NVT_Device_Init
+                0x000000000003b548                GK_NVT_Discover_Init
+                0x000000000003b588                GK_NVT_Media_Init
+                0x000000000003b6b0                GK_NVT_Imaging_Init
+                0x000000000003b6e8                GK_NVT_Ptz_Init
+                0x000000000003b720                GK_NVT_Event_Init
+                0x000000000003b740                GK_NVT_DevMng_Register
+                0x000000000003b808                GK_NVT_Media_Register
+                0x000000000003b8e0                GK_NVT_PTZ_Register
+                0x000000000003b968                GK_NVT_Image_Register
+                0x000000000003b9b0                GK_NVT_Analytics_Register
+                0x000000000003b9e8                GK_NVT_DeviceIO_Register
+                0x000000000003ba20                GK_NVT_Event_Register
+                0x000000000003ba68                GK_NVT_Start_UdpSoapService
+                0x000000000003baf8                GK_NVT_Start_HttpSoapService
+                0x000000000003bbb0                GK_NVT_SoapProc_InWeb
+                0x000000000003bc10                GK_NVT_SendHelloBye
+                0x000000000003c6f8                GK_NVT_SaveXmlConfig
+ *fill*         0x000000000003c798        0x8 1f2003d5
+ .text          0x000000000003c7a0     0x2e00 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_device.o
+                0x000000000003c7a0                config_network_dhcp_thread
+                0x000000000003c7f8                config_network_static_thread
+                0x000000000003c988                GK_NVT_DevMng_GetWsdlUrl
+                0x000000000003c9b0                GK_NVT_DevMng_GetServices
+                0x000000000003cbd8                GK_NVT_DevMng_GetCapabilities
+                0x000000000003cf10                GK_NVT_DevMng_GetServiceCapabilities
+                0x000000000003cf70                GK_NVT_DevMng_GetHostname
+                0x000000000003d088                GK_NVT_DevMng_SetHostname
+                0x000000000003d1a8                GK_NVT_DevMng_GetDNS
+                0x000000000003d3a8                GK_NVT_DevMng_SetDNS
+                0x000000000003d648                GK_NVT_DevMng_GetNTP
+                0x000000000003d6c8                GK_NVT_DevMng_SetNTP
+                0x000000000003d888                GK_NVT_DevMng_GetNetworkInterfaces
+                0x000000000003da40                GK_NVT_DevMng_SetNetworkInterfaces
+                0x000000000003dcd8                GK_NVT_DevMng_GetNetworkProtocols
+                0x000000000003dd50                GK_NVT_DevMng_SetNetworkProtocols
+                0x000000000003de80                GK_NVT_DevMng_GetNetworkDefaultGateway
+                0x000000000003df10                GK_NVT_DevMng_SetNetworkDefaultGateway
+                0x000000000003e0d8                GK_NVT_DevMng_SystemReboot
+                0x000000000003e118                GK_NVT_DevMng_GetSystemDateAndTime
+                0x000000000003e258                GK_NVT_DevMng_SetSystemDateAndTime
+                0x000000000003e550                GK_NVT_DevMng_GetDeviceInformation
+                0x000000000003e588                GK_NVT_DevMng_SetSystemFactoryDefault
+                0x000000000003e5e0                GK_NVT_DevMng_GetScopes
+                0x000000000003e6d0                GK_NVT_DevMng_GetDiscoveryMode
+                0x000000000003e700                GK_NVT_DevMng_SetDiscoveryMode
+                0x000000000003e738                devMng_MatchString
+                0x000000000003e798                devMng_RemoveConfigurableScope
+                0x000000000003e928                GK_NVT_DevMng_RemoveScopes
+                0x000000000003ea20                devMng_AddConfigurableScope
+                0x000000000003eaa8                GK_NVT_DevMng_SetScopes
+                0x000000000003ed48                GK_NVT_DevMng_AddScopes
+                0x000000000003ee50                devMng_SynUsers
+                0x000000000003ef38                GK_NVT_DevMng_GetUsers
+                0x000000000003f008                GK_NVT_DevMng_CreateUsers
+                0x000000000003f1d8                GK_NVT_DevMng_DeleteUsers
+                0x000000000003f368                GK_NVT_DevMng_SetUser
+ .text          0x000000000003f5a0     0x4b18 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_media.o
+                0x000000000003f8c8                GK_NVT_Media_GetServiceCapabilities
+                0x000000000003f910                GK_NVT_Media_CreateProfile
+                0x000000000003fb90                GK_NVT_Media_DeleteProfile
+                0x000000000003ffa8                GK_NVT_Media_AddVideoSourceConfiguration
+                0x0000000000040178                GK_NVT_Media_AddVideoEncoderConfiguration
+                0x0000000000040318                GK_NVT_Media_AddAudioSourceConfiguration
+                0x00000000000404d8                GK_NVT_Media_AddAudioEncoderConfiguration
+                0x00000000000406a8                GK_NVT_Media_AddPTZConfiguration
+                0x0000000000040880                GK_NVT_Media_RemoveVideoSourceConfiguration
+                0x00000000000409b8                GK_NVT_Media_RemoveVideoEncoderConfiguration
+                0x0000000000040ae8                GK_NVT_Media_RemoveAudioSourceConfiguration
+                0x0000000000040c38                GK_NVT_Media_RemoveAudioEncoderConfiguration
+                0x0000000000040d80                GK_NVT_Media_RemovePTZConfiguration
+                0x0000000000040ed0                GK_NVT_Media_GetVideoSourceConfigurations
+                0x0000000000040f30                GK_NVT_Media_GetVideoSourceConfiguration
+                0x0000000000041010                GK_NVT_Media_GetCompatibleVideoSourceConfigurations
+                0x0000000000041128                GK_NVT_Media_GetVideoSourceConfigurationOptions
+                0x00000000000412b8                GK_NVT_Media_SetVideoSourceConfiguration
+                0x0000000000041430                GK_NVT_Media_GetCompatibleVideoEncoderConfigurations
+                0x0000000000041550                GK_NVT_Media_GetVideoEncoderConfigurationOptions
+                0x00000000000416b8                GK_NVT_Media_GetGuaranteedNumberOfVideoEncoderInstances
+                0x00000000000417f8                GK_NVT_Media_GetAudioSourceConfigurations
+                0x0000000000041858                GK_NVT_Media_GetAudioSourceConfiguration
+                0x0000000000041930                GK_NVT_Media_GetCompatibleAudioSourceConfigurations
+                0x0000000000041a50                GK_NVT_Media_GetAudioSourceConfigurationOptions
+                0x0000000000041be0                GK_NVT_Media_SetAudioSourceConfiguration
+                0x0000000000041c80                GK_NVT_Media_GetCompatibleAudioEncoderConfigurations
+                0x0000000000041da8                GK_NVT_Media_GetAudioEncoderConfigurationOptions
+                0x0000000000041f48                GK_NVT_Media_GetStreamUri
+                0x0000000000042238                GK_NVT_Media_GetSnapshotUri
+                0x0000000000042390                GK_NVT_Media_GetOSDOptions
+                0x00000000000424a8                GK_NVT_Media_GetOSDs
+                0x0000000000042760                GK_NVT_Media_SetOSD
+                0x0000000000042930                GK_NVT_Media_DeleteOSD
+                0x0000000000042a00                GK_NVT_Media_GetPrivacyMaskOptions
+                0x0000000000042a70                GK_NVT_Media_GetPrivacyMasks
+                0x0000000000042bc0                GK_NVT_Media_DeletePrivacyMask
+                0x0000000000042cb8                GK_NVT_Media_CreatePrivacyMask
+                0x0000000000042e48                media_GetVideoEncoderConfigurations
+                0x0000000000043098                GK_NVT_Media_GetVideoEncoderConfigurations
+                0x0000000000043130                GK_NVT_Media_GetVideoEncoderConfiguration
+                0x0000000000043218                GK_NVT_Media_SetVideoEncoderConfiguration
+                0x00000000000437b8                media_GetAudioEncoderConfigurations
+                0x00000000000438f0                GK_NVT_Media_GetProfile
+                0x0000000000043a08                GK_NVT_Media_GetProfiles
+                0x0000000000043ab8                GK_NVT_Media_GetAudioEncoderConfigurations
+                0x0000000000043b78                GK_NVT_Media_GetAudioEncoderConfiguration
+                0x0000000000043c90                GK_NVT_Media_SetAudioEncoderConfiguration
+                0x0000000000044040                media_GetVideoEncoderConfigurationOptions
+                0x00000000000440b0                media_GetAudioEncoderConfigurationOptions
+ .text          0x00000000000440b8      0x614 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_deviceio.o
+                0x00000000000440b8                GK_NVT_DeviceIO_GetVideoSources
+                0x00000000000442a0                GK_NVT_DeviceIO_GetAudioSources
+                0x0000000000044398                GK_NVT_DeviceIO_GetRelayOutputs
+                0x0000000000044578                GK_NVT_DeviceIO_SetRelayOutputSettings
+                0x0000000000044640                GK_NVT_DeviceIO_SetRelayOutputState
+ *fill*         0x00000000000446cc        0x4 1f2003d5
+ .text          0x00000000000446d0      0x970 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_image.o
+                0x00000000000446d0                GK_NVT_Imaging_GetServiceCapabilities
+                0x00000000000446e0                GK_NVT_Image_GetImaging
+                0x0000000000044958                GK_NVT_Image_GetImagingSettings
+                0x00000000000449c0                GK_NVT_Image_SetImagingSettings
+                0x0000000000044ca0                GK_NVT_Image_GetOptions
+                0x0000000000044d00                GK_NVT_Image_Move
+                0x0000000000044f48                GK_NVT_Image_Stop
+                0x0000000000044f78                GK_NVT_Image_GetStatus
+                0x0000000000044fe8                GK_NVT_Image_GetMoveOptions
+ .text          0x0000000000045040      0x4f4 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_event.o
+                0x0000000000045040                GK_NVT_Event_GetServiceCapabilities
+                0x0000000000045080                GK_NVT_Event_GetEventProperties
+                0x0000000000045258                GK_NVT_Event_Subscribe
+                0x00000000000452c0                GK_NVT_Event_Unsubscribe
+                0x0000000000045360                GK_NVT_Event_Renew
+                0x00000000000453f0                GK_NVT_Event_CreatePullPointSubscription
+                0x0000000000045488                GK_NVT_Event_PullMessages
+                0x0000000000045520                GK_NVT_Event_SetSynchronizationPoint
+ *fill*         0x0000000000045534        0x4 1f2003d5
+ .text          0x0000000000045538     0x1e28 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_ptz.o
+                0x0000000000045538                GK_NVT_PTZ_GetServiceCapabilities
+                0x0000000000045550                GK_NVT_PTZ_GetNodes
+                0x00000000000455f8                GK_NVT_PTZ_GetNode
+                0x0000000000045710                GK_NVT_PTZ_GetConfigurations
+                0x00000000000457d0                GK_NVT_PTZ_GetConfiguration
+                0x00000000000458e0                GK_NVT_PTZ_GetConfigurationOptions
+                0x0000000000045a38                GK_NVT_PTZ_SetConfiguration
+                0x0000000000045bb8                GK_NVT_PTZ_ContinuousMove
+                0x0000000000045db0                GK_NVT_PTZ_Stop
+                0x0000000000045f68                GK_NVT_PTZ_GetPresets
+                0x00000000000461d8                GK_NVT_PTZ_SetPreset
+                0x00000000000465c0                GK_NVT_PTZ_GotoPreset
+                0x0000000000046868                GK_NVT_PTZ_RemovePreset
+                0x0000000000046ac8                GK_NVT_PTZ_AbsoluteMove
+                0x0000000000046d68                GK_NVT_PTZ_RelativeMove
+                0x0000000000047198                GK_NVT_PTZ_GetStatus
+ .text          0x0000000000047360      0x9bc build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_analytics.o
+                0x0000000000047360                GK_NVT_Analytics_GetServiceCapabilities
+                0x0000000000047380                GK_NVT_Analytics_GetSupportedRules
+                0x00000000000475f0                GK_NVT_Analytics_GetRules
+                0x0000000000047858                GK_NVT_Analytics_GetSupportedAnalyticsModules
+                0x0000000000047a80                GK_NVT_Analytics_GetAnalyticsModules
+ *fill*         0x0000000000047d1c        0x4 1f2003d5
+ .text          0x0000000000047d20      0x168 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif.o
+                0x0000000000047d20                onvif_start
+                0x0000000000047e80                onvif_stop
+ .text          0x0000000000047e88      0x438 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/base64.o
+                0x0000000000047e88                onvif_base64_encode
+                0x0000000000048008                onvif_base64_decode
+ .text          0x00000000000482c0      0xc98 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/mpool.o
+                0x00000000000482c0                mpool_ctx_freelist_init_assign
+                0x0000000000048428                mpool_ctx_freelist_init
+                0x0000000000048490                mpool_freelist_free
+                0x00000000000484d8                mpool_ctx_uselist_init
+                0x00000000000485b0                mpool_ctx_uselist_init_assign
+                0x0000000000048650                mpool_ctx_uselist_init_nm
+                0x0000000000048668                mpool_uselist_free
+                0x00000000000486b0                mpool_ctx_uselist_del_node_unlock
+                0x0000000000048730                mpool_lookup_next
+                0x0000000000048788                mpool_wait_mutex
+                0x00000000000487a0                mpool_lookup_start
+                0x00000000000487f0                mpool_post_mutex
+                0x0000000000048808                mpool_freelist_reinit
+                0x00000000000488f8                mpool_freelist_pop
+                0x0000000000048990                mpool_uselist_reinit
+                0x00000000000489f8                mpool_lookup_end
+                0x0000000000048a00                mpool_safe_node
+                0x0000000000048a60                mpool_freelist_push
+                0x0000000000048b50                mpool_freelist_push_tail
+                0x0000000000048c40                mpool_ctx_uselist_add
+                0x0000000000048cf8                mpool_ctx_uselist_add_head
+                0x0000000000048da8                mpool_idle_node
+                0x0000000000048de0                mpool_exist_node
+                0x0000000000048e18                mpool_used_node
+                0x0000000000048e60                mpool_ctx_uselist_del
+                0x0000000000048f00                mpool_ctx_uselist_del_unlock
+ *fill*         0x0000000000048f58        0x8 1f2003d5
+ .text          0x0000000000048f60     0x1290 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/sha1.o
+                0x0000000000049f40                sha1_starts
+                0x0000000000049f80                sha1_update
+                0x000000000004a0a0                sha1_finish
+ .text          0x000000000004a1f0      0x318 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/word_analyse.o
+                0x000000000004a1f0                GetSipLine
+                0x000000000004a328                GetLineWord
+ .text          0x000000000004a508     0x2280 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/xml.o
+                0x000000000004a508                stream_endElement
+                0x000000000004a538                stream_charData
+                0x000000000004ace8                xml_node_add_new
+                0x000000000004ad98                xml_node_add
+                0x000000000004ae08                xml_node_del
+                0x000000000004af28                xml_node_get_child
+                0x000000000004af90                xml_node_get_next
+                0x000000000004aff8                xml_node_set_data
+                0x000000000004b0c0                xml_attr_add
+                0x000000000004b1c8                stream_startElement
+                0x000000000004b258                xml_attr_del
+                0x000000000004b2b8                xml_attr_get
+                0x000000000004b328                xml_attr_get_data
+                0x000000000004b3a0                xml_cdata_set
+                0x000000000004b3e8                xml_calc_buf_len
+                0x000000000004b4d8                xml_write_buf
+                0x000000000004b640                xml_nwrite_buf
+                0x000000000004b8b8                xml_file_save
+                0x000000000004b900                stream_parse_header
+                0x000000000004b9b8                stream_parse_attr
+                0x000000000004bcc8                stream_parse_element_start
+                0x000000000004bfa8                stream_parse_element_end
+                0x000000000004c1d8                stream_parse_element
+                0x000000000004c4e8                stream_parse
+                0x000000000004c5a8                xml_stream_parse
+                0x000000000004c670                xml_file_parse_plus
+                0x000000000004c678                xml_file_parse
+ .text          0x000000000004c788      0x2b4 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/http_client.o
+                0x000000000004c8d0                http_client_socket_request
+ *fill*         0x000000000004ca3c        0x4 1f2003d5
+ .text          0x000000000004ca40      0xe48 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/http_server.o
+                0x000000000004d120                http_server_start
+                0x000000000004d2f8                http_server_deinit
+                0x000000000004d370                http_server_soapProc_InWeb
+ .text          0x000000000004d888      0x940 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/http_parse.o
+                0x000000000004dcc8                http_parse_is_http_msg
+                0x000000000004de40                http_parse_msg_header
+                0x000000000004e040                http_parse_msg_ctt
+                0x000000000004e0d0                http_parse_get_headline
+                0x000000000004e170                http_parse_get_cttdata
+ .text          0x000000000004e1c8      0x384 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/http_bm.o
+                0x000000000004e1c8                bm_free_ctx_hdrv
+                0x000000000004e248                http_bm_sysbuf_init
+                0x000000000004e2a8                http_bm_sysbuf_deinit
+                0x000000000004e2e8                http_bm_msgbuf_fl_init
+                0x000000000004e318                http_bm_msgbuf_fl_deinit
+                0x000000000004e348                http_bm_get_hdrvbuf
+                0x000000000004e358                http_bm_get_msgbuf
+                0x000000000004e408                http_bm_get_msglargebuf
+                0x000000000004e4b8                http_bm_free_httpmsg
+ .text          0x000000000004e54c        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+ .text          0x000000000004e54c        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+ *(.gnu.warning)
+
+.fini           0x000000000004e54c       0x10
+ *(SORT_NONE(.fini))
+ .fini          0x000000000004e54c        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+                0x000000000004e54c                _fini
+ .fini          0x000000000004e554        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+                [!provide]                        PROVIDE (__etext = .)
+                [!provide]                        PROVIDE (_etext = .)
+                [!provide]                        PROVIDE (etext = .)
+
+.rodata         0x000000000004e560    0x13687
+ *(.rodata .rodata.* .gnu.linkonce.r.*)
+ .rodata        0x000000000004e560      0x42a build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/soap_proc.o
+ *fill*         0x000000000004e98a        0x6 
+ .rodata.str1.8
+                0x000000000004e990     0x237f build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/soap_proc.o
+                                       0x2387 (size before relaxing)
+ *fill*         0x0000000000050d0f        0x1 
+ .rodata.str1.8
+                0x0000000000050d10      0xb91 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/soap_parse.o
+                                        0xdc9 (size before relaxing)
+ *fill*         0x00000000000518a1        0x7 
+ .rodata.str1.8
+                0x00000000000518a8     0x750b build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/soap_packet.o
+                                       0x760b (size before relaxing)
+ *fill*         0x0000000000058db3        0x5 
+ .rodata.str1.8
+                0x0000000000058db8     0x20d9 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/config.o
+                                       0x25c9 (size before relaxing)
+ *fill*         0x000000000005ae91        0x7 
+ .rodata.str1.8
+                0x000000000005ae98      0xa5d build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/event_handle.o
+                                        0xa8d (size before relaxing)
+ *fill*         0x000000000005b8f5        0x3 
+ .rodata.str1.8
+                0x000000000005b8f8     0x1522 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_priv.o
+                                       0x1542 (size before relaxing)
+ *fill*         0x000000000005ce1a        0x6 
+ .rodata.str1.8
+                0x000000000005ce20     0x18a1 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_device.o
+                                       0x1924 (size before relaxing)
+ *fill*         0x000000000005e6c1        0x7 
+ .rodata.str1.8
+                0x000000000005e6c8      0x739 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_media.o
+ *fill*         0x000000000005ee01        0x7 
+ .rodata.str1.8
+                0x000000000005ee08       0x51 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_deviceio.o
+ *fill*         0x000000000005ee59        0x7 
+ .rodata.str1.8
+                0x000000000005ee60      0x4a7 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_image.o
+ *fill*         0x000000000005f307        0x1 
+ .rodata.str1.8
+                0x000000000005f308      0x97b build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_event.o
+ *fill*         0x000000000005fc83        0x5 
+ .rodata.str1.8
+                0x000000000005fc88      0xa0c build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_ptz.o
+                                        0xab8 (size before relaxing)
+ *fill*         0x0000000000060694        0x4 
+ .rodata.str1.8
+                0x0000000000060698      0x20d build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_analytics.o
+                                        0x25d (size before relaxing)
+ *fill*         0x00000000000608a5        0x3 
+ .rodata.str1.8
+                0x00000000000608a8      0x262 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif.o
+ *fill*         0x0000000000060b0a        0x6 
+ .rodata        0x0000000000060b10      0x400 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/base64.o
+ .rodata.str1.8
+                0x0000000000060f10       0x41 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/base64.o
+ *fill*         0x0000000000060f51        0xf 
+ .rodata        0x0000000000060f60       0x12 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/word_analyse.o
+ *fill*         0x0000000000060f72        0x6 
+ .rodata.str1.8
+                0x0000000000060f78      0x1a2 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/xml.o
+                                        0x1aa (size before relaxing)
+ *fill*         0x000000000006111a        0x6 
+ .rodata.str1.8
+                0x0000000000061120      0x1d0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/http_client.o
+ .rodata.str1.8
+                0x00000000000612f0      0x547 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/http_server.o
+ *fill*         0x0000000000061837        0x1 
+ .rodata        0x0000000000061838      0x140 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/http_parse.o
+ .rodata.str1.8
+                0x0000000000061978      0x26f build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/http_parse.o
+                                        0x287 (size before relaxing)
+
+.rodata1
+ *(.rodata1)
+
+.eh_frame_hdr   0x0000000000061be8     0x12cc
+ *(.eh_frame_hdr)
+ .eh_frame_hdr  0x0000000000061be8     0x12cc /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+                0x0000000000061be8                __GNU_EH_FRAME_HDR
+ *(.eh_frame_entry .eh_frame_entry.*)
+
+.eh_frame       0x0000000000062eb8     0xb598
+ *(.eh_frame)
+ .eh_frame      0x0000000000062eb8       0x78 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ .eh_frame      0x0000000000062f30     0x3008 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/soap_proc.o
+                                       0x3018 (size before relaxing)
+ .eh_frame      0x0000000000065f38     0x1110 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/soap_parse.o
+                                       0x1120 (size before relaxing)
+ .eh_frame      0x0000000000067048     0x1d80 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/soap_packet.o
+                                       0x1d90 (size before relaxing)
+ .eh_frame      0x0000000000068dc8      0x908 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/config.o
+                                        0x920 (size before relaxing)
+ .eh_frame      0x00000000000696d0      0x378 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/event_handle.o
+                                        0x388 (size before relaxing)
+ .eh_frame      0x0000000000069a48      0x568 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_priv.o
+                                        0x578 (size before relaxing)
+ .eh_frame      0x0000000000069fb0      0xb28 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_device.o
+                                        0xb40 (size before relaxing)
+ .eh_frame      0x000000000006aad8     0x14e0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_media.o
+                                       0x14f8 (size before relaxing)
+ .eh_frame      0x000000000006bfb8      0x1c0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_deviceio.o
+                                        0x1d8 (size before relaxing)
+ .eh_frame      0x000000000006c178      0x1f0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_image.o
+                                        0x208 (size before relaxing)
+ .eh_frame      0x000000000006c368      0x138 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_event.o
+                                        0x148 (size before relaxing)
+ .eh_frame      0x000000000006c4a0      0x988 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_ptz.o
+                                        0x998 (size before relaxing)
+ .eh_frame      0x000000000006ce28      0x1f0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_analytics.o
+                                        0x200 (size before relaxing)
+ .eh_frame      0x000000000006d018       0x40 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif.o
+                                         0x58 (size before relaxing)
+ .eh_frame      0x000000000006d058       0x60 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/base64.o
+                                         0x70 (size before relaxing)
+ .eh_frame      0x000000000006d0b8      0x4c8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/mpool.o
+                                        0x4d8 (size before relaxing)
+ .eh_frame      0x000000000006d580       0xe0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/sha1.o
+                                         0xf0 (size before relaxing)
+ .eh_frame      0x000000000006d660       0x60 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/word_analyse.o
+                                         0x78 (size before relaxing)
+ .eh_frame      0x000000000006d6c0      0x7c8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/xml.o
+                                        0x7e0 (size before relaxing)
+ .eh_frame      0x000000000006de88       0x98 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/http_client.o
+                                         0xa8 (size before relaxing)
+ .eh_frame      0x000000000006df20      0x1a0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/http_server.o
+                                        0x1b8 (size before relaxing)
+ .eh_frame      0x000000000006e0c0      0x1f8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/http_parse.o
+                                        0x210 (size before relaxing)
+ .eh_frame      0x000000000006e2b8      0x194 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/http_bm.o
+                                        0x1a8 (size before relaxing)
+ .eh_frame      0x000000000006e44c        0x4 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+ *(.eh_frame.*)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.gnu_extab
+ *(.gnu_extab*)
+
+.exception_ranges
+ *(.exception_ranges*)
+                0x000000000007e980                . = DATA_SEGMENT_ALIGN (CONSTANT (MAXPAGESIZE), CONSTANT (COMMONPAGESIZE))
+
+.eh_frame
+ *(.eh_frame)
+ *(.eh_frame.*)
+
+.gnu_extab
+ *(.gnu_extab)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.exception_ranges
+ *(.exception_ranges*)
+
+.tdata
+ *(.tdata .tdata.* .gnu.linkonce.td.*)
+
+.tbss
+ *(.tbss .tbss.* .gnu.linkonce.tb.*)
+ *(.tcommon)
+
+.preinit_array
+ *(.preinit_array)
+
+.init_array     0x000000000007e980        0x8
+ *(SORT_BY_INIT_PRIORITY(.init_array.*) SORT_BY_INIT_PRIORITY(.ctors.*))
+ *(.init_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .ctors)
+ .init_array    0x000000000007e980        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+
+.fini_array     0x000000000007e988        0x8
+ *(SORT_BY_INIT_PRIORITY(.fini_array.*) SORT_BY_INIT_PRIORITY(.dtors.*))
+ *(.fini_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .dtors)
+ .fini_array    0x000000000007e988        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+
+.ctors
+ *crtbegin.o(.ctors)
+ *crtbegin?.o(.ctors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .ctors)
+ *(SORT_BY_NAME(.ctors.*))
+ *(.ctors)
+
+.dtors
+ *crtbegin.o(.dtors)
+ *crtbegin?.o(.dtors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .dtors)
+ *(SORT_BY_NAME(.dtors.*))
+ *(.dtors)
+
+.jcr
+ *(.jcr)
+
+.data.rel.ro    0x000000000007e990        0x0
+ *(.data.rel.ro.local* .gnu.linkonce.d.rel.ro.local.*)
+ *(.data.rel.ro .data.rel.ro.* .gnu.linkonce.d.rel.ro.*)
+ .data.rel.ro   0x000000000007e990        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.dynamic        0x000000000007e990      0x1d0
+ *(.dynamic)
+ .dynamic       0x000000000007e990      0x1d0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+                0x000000000007e990                _DYNAMIC
+
+.got            0x000000000007eb60      0x488
+ *(.got)
+ .got           0x000000000007eb60      0x488 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+                0x000000000007eb60                _GLOBAL_OFFSET_TABLE_
+ *(.igot)
+                0x000000000007efe8                . = DATA_SEGMENT_RELRO_END (., 0x18)
+
+.got.plt        0x000000000007efe8     0x1070
+ *(.got.plt)
+ .got.plt       0x000000000007efe8     0x1070 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *(.igot.plt)
+
+.data           0x0000000000080060     0x1730
+                [!provide]                        PROVIDE (__data_start = .)
+ *(.data .data.* .gnu.linkonce.d.*)
+ .data          0x0000000000080060        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .data          0x0000000000080060        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ .data.rel.local
+                0x0000000000080060        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+                0x0000000000080060                __dso_handle
+ .data          0x0000000000080068        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/soap_proc.o
+ .data          0x0000000000080068        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/soap_parse.o
+ .data          0x0000000000080068     0x1637 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/soap_packet.o
+                0x0000000000080068                audio_encoder_config
+                0x00000000000801d8                audio_source_config
+                0x0000000000080230                video_source_config
+                0x00000000000802c8                g_aszAnalyticsCapabilities
+                0x0000000000080338                g_aszEventCapabilities
+                0x0000000000080410                g_aszImageCapabilities
+                0x0000000000080450                g_aszPtzCapabilities
+                0x00000000000804b8                g_aszMediaCapabilities
+                0x00000000000805d0                g_aszDevCapabilities
+                0x0000000000080870                g_aszHik_cap
+                0x00000000000809c0                g_aszExDeviceIO_cap
+                0x0000000000080ab0                g_aszPtz_cap
+                0x0000000000080ae0                g_aszImage_cap
+                0x0000000000080b18                g_aszEvent_cap
+                0x0000000000080c28                g_aszAnalytics_cap
+                0x0000000000080cc0                g_aszDevice_cap
+                0x0000000000081090                g_aszMedia_cap
+                0x00000000000811e0                soap_tailer
+                0x00000000000811f8                soap_body
+                0x0000000000081208                soap_head
+                0x0000000000081240                onvif_xmlns
+                0x0000000000081678                xml_hdr
+ .data          0x000000000008169f        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/config.o
+ .data          0x000000000008169f        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/event_handle.o
+ *fill*         0x000000000008169f        0x1 
+ .data.rel.local
+                0x00000000000816a0       0x48 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/event_handle.o
+                0x00000000000816a0                g_Evt_Property
+                0x00000000000816b8                g_Evt_Topic
+ .data          0x00000000000816e8        0x4 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_priv.o
+ *fill*         0x00000000000816ec        0x4 
+ .data          0x00000000000816f0       0x40 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_device.o
+ .data          0x0000000000081730        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_media.o
+ .data          0x0000000000081730        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_deviceio.o
+ .data          0x0000000000081730        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_image.o
+ .data          0x0000000000081730        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_event.o
+ .data.rel.local
+                0x0000000000081730       0x10 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_event.o
+                0x0000000000081730                vt_msg_desc
+                0x0000000000081738                md_msg_desc
+ .data          0x0000000000081740        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_ptz.o
+ .data          0x0000000000081740        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_analytics.o
+ .data          0x0000000000081740        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif.o
+ .data          0x0000000000081740        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/base64.o
+ .data.rel.local
+                0x0000000000081740        0x8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/base64.o
+                0x0000000000081740                g_sysBase64
+ .data          0x0000000000081748        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/mpool.o
+ *fill*         0x0000000000081748        0x8 
+ .data          0x0000000000081750       0x40 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/sha1.o
+ .data          0x0000000000081790        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/word_analyse.o
+ .data          0x0000000000081790        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/xml.o
+ .data          0x0000000000081790        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/http_client.o
+ .data          0x0000000000081790        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/http_server.o
+ .data          0x0000000000081790        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/http_parse.o
+ .data          0x0000000000081790        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/http_bm.o
+ .data          0x0000000000081790        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+ .data          0x0000000000081790        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+
+.tm_clone_table
+                0x0000000000081790        0x0
+ .tm_clone_table
+                0x0000000000081790        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ .tm_clone_table
+                0x0000000000081790        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+
+.data1
+ *(.data1)
+                [!provide]                        PROVIDE (_edata = .)
+                [!provide]                        PROVIDE (edata = .)
+                0x0000000000081790                . = .
+                [!provide]                        PROVIDE (__bss_start = .)
+                [!provide]                        PROVIDE (__bss_start__ = .)
+
+.bss            0x0000000000081790     0x1ef0
+ *(.dynbss)
+ .dynbss        0x0000000000081790        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *(.bss .bss.* .gnu.linkonce.b.*)
+ .bss           0x0000000000081790        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .bss           0x0000000000081790        0x1 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ *fill*         0x0000000000081791        0x7 
+ .bss           0x0000000000081798       0x10 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/soap_proc.o
+ .bss           0x00000000000817a8        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/soap_parse.o
+ .bss           0x00000000000817a8        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/soap_packet.o
+ *fill*         0x00000000000817a8        0x8 
+ .bss           0x00000000000817b0      0x418 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/config.o
+                0x0000000000081bc0                XMLTree
+ .bss           0x0000000000081bc8       0x20 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/event_handle.o
+ .bss           0x0000000000081be8       0x34 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_priv.o
+ .bss           0x0000000000081c1c        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_device.o
+ .bss           0x0000000000081c1c        0x4 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_media.o
+ .bss           0x0000000000081c20        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_deviceio.o
+ .bss           0x0000000000081c20        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_image.o
+ .bss           0x0000000000081c20        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_event.o
+ .bss           0x0000000000081c20        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_ptz.o
+ .bss           0x0000000000081c20        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_analytics.o
+ .bss           0x0000000000081c20        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif.o
+ .bss           0x0000000000081c20        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/base64.o
+ .bss           0x0000000000081c20        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/mpool.o
+ .bss           0x0000000000081c20        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/sha1.o
+ .bss           0x0000000000081c20        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/word_analyse.o
+ .bss           0x0000000000081c20        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/xml.o
+ .bss           0x0000000000081c20        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/http_client.o
+ .bss           0x0000000000081c20     0x1000 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/http_server.o
+ .bss           0x0000000000082c20        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/http_parse.o
+ .bss           0x0000000000082c20       0x18 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/http_bm.o
+ .bss           0x0000000000082c38        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+ .bss           0x0000000000082c38        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+ *(COMMON)
+ COMMON         0x0000000000082c38      0x3b8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/event_handle.o
+                0x0000000000082c38                g_stEventPullMessage
+                0x0000000000082c50                eventtHandleAarry
+                0x0000000000082f70                EventMutex
+                0x0000000000082fa0                g_stEventPullMessageRes
+ COMMON         0x0000000000082ff0      0x690 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_priv.o
+                0x0000000000082ff0                g_EventCallBackRegister
+                0x0000000000083030                g_webFlag
+                0x0000000000083038                g_onvif_cls
+                0x0000000000083050                addr_wlan0_new
+                0x0000000000083060                g_ImageCallBackRegister
+                0x00000000000830a0                addr_eth0_old
+                0x00000000000830b0                addr_wlan0_old
+                0x00000000000830c0                g_AnalyticsCallBackRegister
+                0x00000000000830e8                addr_eth0_new
+                0x00000000000830f8                g_DevMngCallBackRegister
+                0x00000000000831f0                g_MediaCallBackRegister
+                0x0000000000083360                g_GkIpc_OnvifInf
+                0x00000000000835b0                g_DeviceIOCallBackRegister
+                0x00000000000835d8                g_PtzCallBackRegister
+                0x0000000000083658                g_http_srv
+                0x0000000000083680                . = ALIGN ((. != 0x0)?0x8:0x1)
+                [!provide]                        PROVIDE (_bss_end__ = .)
+                [!provide]                        PROVIDE (__bss_end__ = .)
+                0x0000000000083680                . = ALIGN (0x8)
+                0x0000000000083680                . = SEGMENT_START ("ldata-segment", .)
+                0x0000000000083680                . = ALIGN (0x8)
+                [!provide]                        PROVIDE (__end__ = .)
+                [!provide]                        PROVIDE (_end = .)
+                [!provide]                        PROVIDE (end = .)
+                0x0000000000083680                . = DATA_SEGMENT_END (.)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment        0x0000000000000000       0x16
+ *(.comment)
+ .comment       0x0000000000000000       0x16 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+                                         0x17 (size before relaxing)
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/soap_proc.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/soap_parse.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/soap_packet.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/config.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/event_handle.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_priv.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_device.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_media.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_deviceio.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_image.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_event.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_ptz.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_analytics.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/base64.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/mpool.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/sha1.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/word_analyse.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/xml.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/http_client.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/http_server.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/http_parse.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/http_bm.o
+ .comment       0x0000000000000016       0x17 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+
+.gnu.build.attributes
+ *(.gnu.build.attributes .gnu.build.attributes.*)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges
+ *(.debug_aranges)
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info
+ *(.debug_info .gnu.linkonce.wi.*)
+
+.debug_abbrev
+ *(.debug_abbrev)
+
+.debug_line
+ *(.debug_line .debug_line.* .debug_line_end)
+
+.debug_frame
+ *(.debug_frame)
+
+.debug_str
+ *(.debug_str)
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges
+ *(.debug_ranges)
+
+.debug_macro
+ *(.debug_macro)
+
+.debug_addr
+ *(.debug_addr)
+
+.ARM.attributes
+ *(.ARM.attributes)
+ *(.gnu.attributes)
+
+.note.gnu.arm.ident
+ *(.note.gnu.arm.ident)
+
+/DISCARD/
+ *(.note.GNU-stack)
+ *(.gnu_debuglink)
+ *(.gnu.lto_*)
+OUTPUT(build/arm11-gcc-uClibc-linux-gk7605v100/lib/libonvif.so elf64-littleaarch64)
+LOAD linker stubs

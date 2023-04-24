@@ -1,0 +1,572 @@
+
+Discarded input sections
+
+ .note.GNU-stack
+                0x0000000000000000        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./buff_utils/queue.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./buff_utils/ring_buff.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./checksum_utils/crc_codec.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./checksum_utils/parity_codec.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./kiss_fft/kiss_fastfir.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./kiss_fft/kiss_fft.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./kiss_fft/kiss_fftr.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./log_utils/wt_log.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./proto_utils/wt_proto_common.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./proto_utils/wt_proto_link_layer.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./proto_utils/wt_proto_physical_layer.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./transceiver/recv/wt_recv_link_layer.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./transceiver/recv/wt_recv_physical_layer.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./interface/wave_trans_recv.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./audio_codec/pcm_to_wav.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./buff_utils/queue.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./buff_utils/ring_buff.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./checksum_utils/crc_codec.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./checksum_utils/parity_codec.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./kiss_fft/kiss_fastfir.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./kiss_fft/kiss_fft.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./kiss_fft/kiss_fftr.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./log_utils/wt_log.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./proto_utils/wt_proto_common.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./proto_utils/wt_proto_link_layer.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./proto_utils/wt_proto_physical_layer.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./transceiver/recv/wt_recv_link_layer.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./transceiver/recv/wt_recv_physical_layer.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./interface/wave_trans_recv.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/./audio_codec/pcm_to_wav.o
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/libgcc.a
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/../../../../aarch64-linux-gnu/lib/../lib64/libgcc_s.so
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/libc.so
+START GROUP
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/lib/libc.so.6
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/libc_nonshared.a
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/lib/ld-linux-aarch64.so.1
+END GROUP
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/libgcc.a
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/../../../../aarch64-linux-gnu/lib/../lib64/libgcc_s.so
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+                0x0000000000000190                . = (SEGMENT_START ("text-segment", 0x0) + SIZEOF_HEADERS)
+
+.note.gnu.build-id
+ *(.note.gnu.build-id)
+
+.hash           0x0000000000000190      0x22c
+ *(.hash)
+ .hash          0x0000000000000190      0x22c /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.gnu.hash       0x00000000000003c0      0x1ac
+ *(.gnu.hash)
+ .gnu.hash      0x00000000000003c0      0x1ac /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.dynsym         0x0000000000000570      0x690
+ *(.dynsym)
+ .dynsym        0x0000000000000570      0x690 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.dynstr         0x0000000000000c00      0x462
+ *(.dynstr)
+ .dynstr        0x0000000000000c00      0x462 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.gnu.version    0x0000000000001062       0x8c
+ *(.gnu.version)
+ .gnu.version   0x0000000000001062       0x8c /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.gnu.version_d  0x00000000000010f0        0x0
+ *(.gnu.version_d)
+ .gnu.version_d
+                0x00000000000010f0        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.gnu.version_r  0x00000000000010f0       0x20
+ *(.gnu.version_r)
+ .gnu.version_r
+                0x00000000000010f0       0x20 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.rela.dyn       0x0000000000001110       0xd8
+ *(.rela.init)
+ *(.rela.text .rela.text.* .rela.gnu.linkonce.t.*)
+ *(.rela.fini)
+ *(.rela.rodata .rela.rodata.* .rela.gnu.linkonce.r.*)
+ *(.rela.data .rela.data.* .rela.gnu.linkonce.d.*)
+ .rela.data.rel.local
+                0x0000000000001110       0x18 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *(.rela.tdata .rela.tdata.* .rela.gnu.linkonce.td.*)
+ *(.rela.tbss .rela.tbss.* .rela.gnu.linkonce.tb.*)
+ *(.rela.ctors)
+ *(.rela.dtors)
+ *(.rela.got)
+ .rela.got      0x0000000000001128       0x90 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *(.rela.bss .rela.bss.* .rela.gnu.linkonce.b.*)
+ *(.rela.ifunc)
+ .rela.ifunc    0x00000000000011b8        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .rela.init_array
+                0x00000000000011b8       0x18 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .rela.fini_array
+                0x00000000000011d0       0x18 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.rela.plt       0x00000000000011e8      0x420
+ *(.rela.plt)
+ .rela.plt      0x00000000000011e8      0x420 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *(.rela.iplt)
+
+.init           0x0000000000001608       0x14
+ *(SORT_NONE(.init))
+ .init          0x0000000000001608        0xc /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+                0x0000000000001608                _init
+ .init          0x0000000000001614        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+
+.plt            0x0000000000001620      0x2e0
+ *(.plt)
+ .plt           0x0000000000001620      0x2e0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *(.iplt)
+
+.text           0x0000000000001900     0x29a8
+ *(.text.unlikely .text.*_unlikely .text.unlikely.*)
+ *(.text.exit .text.exit.*)
+ *(.text.startup .text.startup.*)
+ *(.text.hot .text.hot.*)
+ *(SORT_BY_NAME(.text.sorted.*))
+ *(.text .stub .text.* .gnu.linkonce.t.*)
+ .text          0x0000000000001900       0x14 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *fill*         0x0000000000001914        0x4 1f2003d5
+ .text          0x0000000000001918       0xbc /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ *fill*         0x00000000000019d4        0x4 1f2003d5
+ .text          0x00000000000019d8      0x160 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./buff_utils/queue.o
+                0x00000000000019d8                QueueCreate
+                0x0000000000001a00                QueueAppend
+                0x0000000000001a60                QueueRetrieve
+                0x0000000000001ac0                QueueClear
+                0x0000000000001b08                QueueDestroy
+                0x0000000000001b30                QueueLength
+ .text          0x0000000000001b38      0x2c8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./buff_utils/ring_buff.o
+                0x0000000000001b38                RingBuffCreate
+                0x0000000000001b98                RingBuffDestroy
+                0x0000000000001bc0                RingBuffWriteData
+                0x0000000000001ca8                RingBuffReadData
+ .text          0x0000000000001e00       0x64 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./checksum_utils/crc_codec.o
+                0x0000000000001e00                crc_16
+ *fill*         0x0000000000001e64        0x4 1f2003d5
+ .text          0x0000000000001e68       0x90 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./checksum_utils/parity_codec.o
+                0x0000000000001e68                ParityEncode
+                0x0000000000001ea8                ParityDecode
+ .text          0x0000000000001ef8      0x434 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./kiss_fft/kiss_fastfir.o
+                0x0000000000001f80                kiss_fastfir_alloc
+                0x00000000000021a8                kiss_fastfir
+ *fill*         0x000000000000232c        0x4 1f2003d5
+ .text          0x0000000000002330      0xc14 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./kiss_fft/kiss_fft.o
+                0x0000000000002a78                kiss_fft_alloc
+                0x0000000000002de8                kiss_fft_stride
+                0x0000000000002e88                kiss_fft
+                0x0000000000002e90                kiss_fft_cleanup
+                0x0000000000002e98                kiss_fft_next_fast_size
+ *fill*         0x0000000000002f44        0x4 1f2003d5
+ .text          0x0000000000002f48      0x3bc build/arm11-gcc-uClibc-linux-gk7605v100/obj/./kiss_fft/kiss_fftr.o
+                0x0000000000002f48                kiss_fftr_alloc
+                0x00000000000030f0                kiss_fftr
+                0x0000000000003218                kiss_fftri
+ .text          0x0000000000003304        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./log_utils/wt_log.o
+ .text          0x0000000000003304        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./proto_utils/wt_proto_common.o
+ *fill*         0x0000000000003304        0x4 1f2003d5
+ .text          0x0000000000003308      0x298 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./proto_utils/wt_proto_link_layer.o
+                0x0000000000003308                WTLinkCheckStCode
+                0x0000000000003330                WTLinkChecksumDecode
+                0x0000000000003398                WTLinkChecksumEncode
+                0x00000000000033a8                WTLinkPackageEncode
+                0x0000000000003410                WTLinkPackageDecode
+                0x0000000000003468                WTLinkFreqCodeWriteToPhyPackage
+                0x00000000000034e8                WTLinkFreqCodeReadFromPhyPackage
+ .text          0x00000000000035a0      0x718 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./proto_utils/wt_proto_physical_layer.o
+                0x00000000000035a0                GetFreqCodeFromFFTData
+                0x0000000000003758                WTPhyAnalysisNumToRealNum
+                0x0000000000003780                WTPhysicalPcmDecode
+                0x00000000000038a8                WTPhysicalPcmEncode
+ .text          0x0000000000003cb8      0x10c build/arm11-gcc-uClibc-linux-gk7605v100/obj/./transceiver/recv/wt_recv_link_layer.o
+                0x0000000000003cb8                WTRecvLinkLayerInit
+                0x0000000000003cd0                WTRecvLinkLayerExit
+                0x0000000000003cd8                WTRecvLinkLayerGetData
+ *fill*         0x0000000000003dc4        0x4 1f2003d5
+ .text          0x0000000000003dc8      0x3ac build/arm11-gcc-uClibc-linux-gk7605v100/obj/./transceiver/recv/wt_recv_physical_layer.o
+                0x0000000000003dc8                WTRecvPhyLayerInit
+                0x0000000000003e28                WTRecvPhyLayerExit
+                0x0000000000003e88                WTRecvPhyLayerSendPcm
+                0x0000000000004018                WTRecvPhyLayerGetData
+ *fill*         0x0000000000004174        0x4 1f2003d5
+ .text          0x0000000000004178       0x5c build/arm11-gcc-uClibc-linux-gk7605v100/obj/./interface/wave_trans_recv.o
+                0x0000000000004178                WaveTransRecvInit
+                0x00000000000041b0                WaveTransRecvExit
+                0x00000000000041c8                WaveTransRecvSetPcm
+                0x00000000000041d0                WaveTransRecvGetContext
+ *fill*         0x00000000000041d4        0x4 1f2003d5
+ .text          0x00000000000041d8       0xd0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./audio_codec/pcm_to_wav.o
+                0x00000000000041d8                PcmToWavGetWavSize
+                0x00000000000041e8                PcmToWavGetWavData
+ .text          0x00000000000042a8        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+ .text          0x00000000000042a8        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+ *(.gnu.warning)
+
+.fini           0x00000000000042a8       0x10
+ *(SORT_NONE(.fini))
+ .fini          0x00000000000042a8        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+                0x00000000000042a8                _fini
+ .fini          0x00000000000042b0        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+                [!provide]                        PROVIDE (__etext = .)
+                [!provide]                        PROVIDE (_etext = .)
+                [!provide]                        PROVIDE (etext = .)
+
+.rodata         0x00000000000042b8       0x38
+ *(.rodata .rodata.* .gnu.linkonce.r.*)
+ .rodata        0x00000000000042b8       0x20 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./checksum_utils/crc_codec.o
+                0x00000000000042b8                w_crc_tables_
+ .rodata.str1.8
+                0x00000000000042d8       0x18 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./proto_utils/wt_proto_link_layer.o
+
+.rodata1
+ *(.rodata1)
+
+.eh_frame_hdr   0x00000000000042f0      0x1b4
+ *(.eh_frame_hdr)
+ .eh_frame_hdr  0x00000000000042f0      0x1b4 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+                0x00000000000042f0                __GNU_EH_FRAME_HDR
+ *(.eh_frame_entry .eh_frame_entry.*)
+
+.eh_frame       0x00000000000044a8      0xb60
+ *(.eh_frame)
+ .eh_frame      0x00000000000044a8       0x78 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ .eh_frame      0x0000000000004520       0xe0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./buff_utils/queue.o
+                                         0xf0 (size before relaxing)
+ .eh_frame      0x0000000000004600      0x108 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./buff_utils/ring_buff.o
+                                        0x120 (size before relaxing)
+ .eh_frame      0x0000000000004708       0x18 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./checksum_utils/crc_codec.o
+                                         0x28 (size before relaxing)
+ .eh_frame      0x0000000000004720       0x28 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./checksum_utils/parity_codec.o
+                                         0x40 (size before relaxing)
+ .eh_frame      0x0000000000004748       0xf0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./kiss_fft/kiss_fastfir.o
+                                        0x100 (size before relaxing)
+ .eh_frame      0x0000000000004838      0x1e8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./kiss_fft/kiss_fft.o
+                                        0x1f8 (size before relaxing)
+ .eh_frame      0x0000000000004a20      0x100 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./kiss_fft/kiss_fftr.o
+                                        0x110 (size before relaxing)
+ .eh_frame      0x0000000000004b20       0xa8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./proto_utils/wt_proto_link_layer.o
+                                         0xb8 (size before relaxing)
+ .eh_frame      0x0000000000004bc8      0x1c0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./proto_utils/wt_proto_physical_layer.o
+                                        0x1d8 (size before relaxing)
+ .eh_frame      0x0000000000004d88       0x88 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./transceiver/recv/wt_recv_link_layer.o
+                                         0x98 (size before relaxing)
+ .eh_frame      0x0000000000004e10      0x140 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./transceiver/recv/wt_recv_physical_layer.o
+                                        0x158 (size before relaxing)
+ .eh_frame      0x0000000000004f50       0x70 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./interface/wave_trans_recv.o
+                                         0x88 (size before relaxing)
+ .eh_frame      0x0000000000004fc0       0x44 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./audio_codec/pcm_to_wav.o
+                                         0x58 (size before relaxing)
+ .eh_frame      0x0000000000005004        0x4 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+ *(.eh_frame.*)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.gnu_extab
+ *(.gnu_extab*)
+
+.exception_ranges
+ *(.exception_ranges*)
+                0x0000000000015dd0                . = DATA_SEGMENT_ALIGN (CONSTANT (MAXPAGESIZE), CONSTANT (COMMONPAGESIZE))
+
+.eh_frame
+ *(.eh_frame)
+ *(.eh_frame.*)
+
+.gnu_extab
+ *(.gnu_extab)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.exception_ranges
+ *(.exception_ranges*)
+
+.tdata
+ *(.tdata .tdata.* .gnu.linkonce.td.*)
+
+.tbss
+ *(.tbss .tbss.* .gnu.linkonce.tb.*)
+ *(.tcommon)
+
+.preinit_array
+ *(.preinit_array)
+
+.init_array     0x0000000000015dd0        0x8
+ *(SORT_BY_INIT_PRIORITY(.init_array.*) SORT_BY_INIT_PRIORITY(.ctors.*))
+ *(.init_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .ctors)
+ .init_array    0x0000000000015dd0        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+
+.fini_array     0x0000000000015dd8        0x8
+ *(SORT_BY_INIT_PRIORITY(.fini_array.*) SORT_BY_INIT_PRIORITY(.dtors.*))
+ *(.fini_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .dtors)
+ .fini_array    0x0000000000015dd8        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+
+.ctors
+ *crtbegin.o(.ctors)
+ *crtbegin?.o(.ctors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .ctors)
+ *(SORT_BY_NAME(.ctors.*))
+ *(.ctors)
+
+.dtors
+ *crtbegin.o(.dtors)
+ *crtbegin?.o(.dtors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .dtors)
+ *(SORT_BY_NAME(.dtors.*))
+ *(.dtors)
+
+.jcr
+ *(.jcr)
+
+.data.rel.ro    0x0000000000015de0        0x0
+ *(.data.rel.ro.local* .gnu.linkonce.d.rel.ro.local.*)
+ *(.data.rel.ro .data.rel.ro.* .gnu.linkonce.d.rel.ro.*)
+ .data.rel.ro   0x0000000000015de0        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.dynamic        0x0000000000015de0      0x1d0
+ *(.dynamic)
+ .dynamic       0x0000000000015de0      0x1d0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+                0x0000000000015de0                _DYNAMIC
+
+.got            0x0000000000015fb0       0x38
+ *(.got)
+ .got           0x0000000000015fb0       0x38 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+                0x0000000000015fb0                _GLOBAL_OFFSET_TABLE_
+ *(.igot)
+                0x0000000000015fe8                . = DATA_SEGMENT_RELRO_END (., 0x18)
+
+.got.plt        0x0000000000015fe8      0x178
+ *(.got.plt)
+ .got.plt       0x0000000000015fe8      0x178 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *(.igot.plt)
+
+.data           0x0000000000016160       0x8c
+                [!provide]                        PROVIDE (__data_start = .)
+ *(.data .data.* .gnu.linkonce.d.*)
+ .data          0x0000000000016160        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .data          0x0000000000016160        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ .data.rel.local
+                0x0000000000016160        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+                0x0000000000016160                __dso_handle
+ .data          0x0000000000016168        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./buff_utils/queue.o
+ .data          0x0000000000016168        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./buff_utils/ring_buff.o
+ .data          0x0000000000016168        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./checksum_utils/crc_codec.o
+ .data          0x0000000000016168        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./checksum_utils/parity_codec.o
+ .data          0x0000000000016168        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./kiss_fft/kiss_fastfir.o
+ .data          0x0000000000016168        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./kiss_fft/kiss_fft.o
+ .data          0x0000000000016168        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./kiss_fft/kiss_fftr.o
+ .data          0x0000000000016168        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./log_utils/wt_log.o
+ .data          0x0000000000016168       0x84 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./proto_utils/wt_proto_common.o
+                0x0000000000016168                compare_freq_list_
+ .data          0x00000000000161ec        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./proto_utils/wt_proto_link_layer.o
+ .data          0x00000000000161ec        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./proto_utils/wt_proto_physical_layer.o
+ .data          0x00000000000161ec        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./transceiver/recv/wt_recv_link_layer.o
+ .data          0x00000000000161ec        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./transceiver/recv/wt_recv_physical_layer.o
+ .data          0x00000000000161ec        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./interface/wave_trans_recv.o
+ .data          0x00000000000161ec        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./audio_codec/pcm_to_wav.o
+ .data          0x00000000000161ec        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+ .data          0x00000000000161ec        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+
+.tm_clone_table
+                0x00000000000161f0        0x0
+ .tm_clone_table
+                0x00000000000161f0        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ .tm_clone_table
+                0x00000000000161f0        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+
+.data1
+ *(.data1)
+                [!provide]                        PROVIDE (_edata = .)
+                [!provide]                        PROVIDE (edata = .)
+                0x00000000000161f0                . = .
+                [!provide]                        PROVIDE (__bss_start = .)
+                [!provide]                        PROVIDE (__bss_start__ = .)
+
+.bss            0x00000000000161f0      0x170
+ *(.dynbss)
+ .dynbss        0x00000000000161f0        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *(.bss .bss.* .gnu.linkonce.b.*)
+ .bss           0x00000000000161f0        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .bss           0x00000000000161f0        0x1 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ .bss           0x00000000000161f1        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./buff_utils/queue.o
+ .bss           0x00000000000161f1        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./buff_utils/ring_buff.o
+ .bss           0x00000000000161f1        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./checksum_utils/crc_codec.o
+ .bss           0x00000000000161f1        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./checksum_utils/parity_codec.o
+ .bss           0x00000000000161f1        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./kiss_fft/kiss_fastfir.o
+ .bss           0x00000000000161f1        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./kiss_fft/kiss_fft.o
+ .bss           0x00000000000161f1        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./kiss_fft/kiss_fftr.o
+ *fill*         0x00000000000161f1        0x7 
+ .bss           0x00000000000161f8        0x8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./log_utils/wt_log.o
+                0x00000000000161f8                log_fp_
+ .bss           0x0000000000016200        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./proto_utils/wt_proto_common.o
+ .bss           0x0000000000016200        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./proto_utils/wt_proto_link_layer.o
+ .bss           0x0000000000016200        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./proto_utils/wt_proto_physical_layer.o
+ .bss           0x0000000000016200        0x9 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./transceiver/recv/wt_recv_link_layer.o
+ *fill*         0x0000000000016209        0x7 
+ .bss           0x0000000000016210      0x150 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./transceiver/recv/wt_recv_physical_layer.o
+ .bss           0x0000000000016360        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./interface/wave_trans_recv.o
+ .bss           0x0000000000016360        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./audio_codec/pcm_to_wav.o
+ .bss           0x0000000000016360        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+ .bss           0x0000000000016360        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+ *(COMMON)
+                0x0000000000016360                . = ALIGN ((. != 0x0)?0x8:0x1)
+                [!provide]                        PROVIDE (_bss_end__ = .)
+                [!provide]                        PROVIDE (__bss_end__ = .)
+                0x0000000000016360                . = ALIGN (0x8)
+                0x0000000000016360                . = SEGMENT_START ("ldata-segment", .)
+                0x0000000000016360                . = ALIGN (0x8)
+                [!provide]                        PROVIDE (__end__ = .)
+                [!provide]                        PROVIDE (_end = .)
+                [!provide]                        PROVIDE (end = .)
+                0x0000000000016360                . = DATA_SEGMENT_END (.)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment        0x0000000000000000       0x16
+ *(.comment)
+ .comment       0x0000000000000000       0x16 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+                                         0x17 (size before relaxing)
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./buff_utils/queue.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./buff_utils/ring_buff.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./checksum_utils/crc_codec.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./checksum_utils/parity_codec.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./kiss_fft/kiss_fastfir.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./kiss_fft/kiss_fft.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./kiss_fft/kiss_fftr.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./log_utils/wt_log.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./proto_utils/wt_proto_common.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./proto_utils/wt_proto_link_layer.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./proto_utils/wt_proto_physical_layer.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./transceiver/recv/wt_recv_link_layer.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./transceiver/recv/wt_recv_physical_layer.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./interface/wave_trans_recv.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./audio_codec/pcm_to_wav.o
+ .comment       0x0000000000000016       0x17 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+
+.gnu.build.attributes
+ *(.gnu.build.attributes .gnu.build.attributes.*)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges
+ *(.debug_aranges)
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info
+ *(.debug_info .gnu.linkonce.wi.*)
+
+.debug_abbrev
+ *(.debug_abbrev)
+
+.debug_line
+ *(.debug_line .debug_line.* .debug_line_end)
+
+.debug_frame
+ *(.debug_frame)
+
+.debug_str
+ *(.debug_str)
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges
+ *(.debug_ranges)
+
+.debug_macro
+ *(.debug_macro)
+
+.debug_addr
+ *(.debug_addr)
+
+.ARM.attributes
+ *(.ARM.attributes)
+ *(.gnu.attributes)
+
+.note.gnu.arm.ident
+ *(.note.gnu.arm.ident)
+
+/DISCARD/
+ *(.note.GNU-stack)
+ *(.gnu_debuglink)
+ *(.gnu.lto_*)
+OUTPUT(build/arm11-gcc-uClibc-linux-gk7605v100/lib/libwavechannel.so elf64-littleaarch64)
+LOAD linker stubs

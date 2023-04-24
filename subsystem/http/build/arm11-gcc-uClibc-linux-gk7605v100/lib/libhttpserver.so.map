@@ -1,0 +1,640 @@
+
+Allocating common symbols
+Common symbol       size              file
+
+g_callback_list     0x10              build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_main.o
+thread_run          0x8               build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_main.o
+g_hpb_mgr           0x70              build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_main.o
+
+Discarded input sections
+
+ .note.GNU-stack
+                0x0000000000000000        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_class.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_const.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_decode.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_encode.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_list.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_llist.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_main.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_process_thread.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_read_thread.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_write_thread.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_compress.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/static_memory_pool.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/entry_queue.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/lf_thread_pool.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_utils.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_class.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_const.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_decode.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_encode.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_list.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_llist.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_main.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_process_thread.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_read_thread.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_write_thread.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_compress.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/static_memory_pool.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/entry_queue.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/lf_thread_pool.o
+LOAD build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_utils.o
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/libgcc.a
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/../../../../aarch64-linux-gnu/lib/../lib64/libgcc_s.so
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/libc.so
+START GROUP
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/lib/libc.so.6
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/libc_nonshared.a
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/lib/ld-linux-aarch64.so.1
+END GROUP
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/libgcc.a
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/../../../../aarch64-linux-gnu/lib/../lib64/libgcc_s.so
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+                0x0000000000000190                . = (SEGMENT_START ("text-segment", 0x0) + SIZEOF_HEADERS)
+
+.note.gnu.build-id
+ *(.note.gnu.build-id)
+
+.hash           0x0000000000000190      0x430
+ *(.hash)
+ .hash          0x0000000000000190      0x430 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.gnu.hash       0x00000000000005c0      0x270
+ *(.gnu.hash)
+ .gnu.hash      0x00000000000005c0      0x270 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.dynsym         0x0000000000000830      0xca8
+ *(.dynsym)
+ .dynsym        0x0000000000000830      0xca8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.dynstr         0x00000000000014d8      0x6eb
+ *(.dynstr)
+ .dynstr        0x00000000000014d8      0x6eb /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.gnu.version    0x0000000000001bc4      0x10e
+ *(.gnu.version)
+ .gnu.version   0x0000000000001bc4      0x10e /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.gnu.version_d  0x0000000000001cd8        0x0
+ *(.gnu.version_d)
+ .gnu.version_d
+                0x0000000000001cd8        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.gnu.version_r  0x0000000000001cd8       0x20
+ *(.gnu.version_r)
+ .gnu.version_r
+                0x0000000000001cd8       0x20 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.rela.dyn       0x0000000000001cf8     0x4650
+ *(.rela.init)
+ *(.rela.text .rela.text.* .rela.gnu.linkonce.t.*)
+ *(.rela.fini)
+ *(.rela.rodata .rela.rodata.* .rela.gnu.linkonce.r.*)
+ *(.rela.data .rela.data.* .rela.gnu.linkonce.d.*)
+ .rela.data.rel.local
+                0x0000000000001cf8     0x41d0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .rela.data.rel.ro.local
+                0x0000000000005ec8      0x2e8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *(.rela.tdata .rela.tdata.* .rela.gnu.linkonce.td.*)
+ *(.rela.tbss .rela.tbss.* .rela.gnu.linkonce.tb.*)
+ *(.rela.ctors)
+ *(.rela.dtors)
+ *(.rela.got)
+ .rela.got      0x00000000000061b0      0x168 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *(.rela.bss .rela.bss.* .rela.gnu.linkonce.b.*)
+ *(.rela.ifunc)
+ .rela.ifunc    0x0000000000006318        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .rela.init_array
+                0x0000000000006318       0x18 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .rela.fini_array
+                0x0000000000006330       0x18 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.rela.plt       0x0000000000006348      0xa38
+ *(.rela.plt)
+ .rela.plt      0x0000000000006348      0xa38 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *(.rela.iplt)
+
+.init           0x0000000000006d80       0x14
+ *(SORT_NONE(.init))
+ .init          0x0000000000006d80        0xc /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+                0x0000000000006d80                _init
+ .init          0x0000000000006d8c        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+
+.plt            0x0000000000006da0      0x6f0
+ *(.plt)
+ .plt           0x0000000000006da0      0x6f0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *(.iplt)
+
+.text           0x0000000000007490     0x74ac
+ *(.text.unlikely .text.*_unlikely .text.unlikely.*)
+ *(.text.exit .text.exit.*)
+ *(.text.startup .text.startup.*)
+ *(.text.hot .text.hot.*)
+ *(SORT_BY_NAME(.text.sorted.*))
+ *(.text .stub .text.* .gnu.linkonce.t.*)
+ .text          0x0000000000007490       0x14 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *fill*         0x00000000000074a4        0x4 1f2003d5
+ .text          0x00000000000074a8       0xbc /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ *fill*         0x0000000000007564        0x4 1f2003d5
+ .text          0x0000000000007568     0x1034 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_class.o
+                0x0000000000007808                insert_keyof_name
+                0x00000000000078a0                insert_keyof_value
+                0x0000000000007988                insert_stname
+                0x0000000000007a20                set_request_path_type
+                0x0000000000007ae0                get_http_tag
+                0x0000000000007b08                get_content_length
+                0x0000000000007b58                set_http_body
+                0x0000000000007bd0                add_http_tag
+                0x0000000000007d48                add_cache_control
+                0x0000000000007dd8                add_common_tag
+                0x0000000000008000                add_content_len
+                0x0000000000008060                print_packet_head
+                0x0000000000008068                print_http_parse_result
+                0x0000000000008070                print_respond_tag
+                0x0000000000008078                FREE_HTTP_BASE
+                0x00000000000082a8                RESET_HTTP_BASE
+                0x00000000000084e0                INIT_HTTP_BASE
+ *fill*         0x000000000000859c        0x4 1f2003d5
+ .text          0x00000000000085a0      0x140 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_const.o
+                0x00000000000085a0                error_code_mapping
+ .text          0x00000000000086e0     0x2e10 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_decode.o
+                0x00000000000089a0                http_message_needs_eof
+                0x00000000000089f8                http_should_keep_alive
+                0x0000000000008a48                http_parser_execute
+                0x000000000000b4b0                http_parser_init
+ .text          0x000000000000b4f0      0x5b4 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_encode.o
+                0x000000000000b4f0                get_http_packet_len
+                0x000000000000b5d8                encoding_body
+                0x000000000000b8e8                http_encode
+ *fill*         0x000000000000baa4        0x4 1f2003d5
+ .text          0x000000000000baa8       0x80 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_list.o
+                0x000000000000baa8                INIT_LIST_HEAD
+                0x000000000000bab0                __list_add
+                0x000000000000bac0                list_add_tail
+                0x000000000000bad8                list_add_head
+                0x000000000000baf0                __list_del
+                0x000000000000bb00                list_del
+                0x000000000000bb18                list_empty
+ .text          0x000000000000bb28      0x1cc build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_llist.o
+                0x000000000000bb28                llist_add_tail
+                0x000000000000bb98                llist_pop_entry
+                0x000000000000bc28                init_llist
+                0x000000000000bcd0                destroy_llist
+ *fill*         0x000000000000bcf4        0x4 1f2003d5
+ .text          0x000000000000bcf8      0xb10 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_main.o
+                0x000000000000bfe0                time_wait
+                0x000000000000c178                http_mini_server_run
+                0x000000000000c208                http_mini_server_init
+                0x000000000000c4f8                http_mini_add_cgi_callback
+                0x000000000000c618                http_mini_add_read_callback
+                0x000000000000c6d8                http_mini_server_exit
+ .text          0x000000000000c808      0x790 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_process_thread.o
+                0x000000000000ce78                process_data
+ .text          0x000000000000cf98      0x830 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_read_thread.o
+                0x000000000000d2e8                read_data
+                0x000000000000d588                fill_fdset
+                0x000000000000d6e8                handle_read_i
+ .text          0x000000000000d7c8      0x54c build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_write_thread.o
+                0x000000000000da60                write_data
+ *fill*         0x000000000000dd14        0x4 1f2003d5
+ .text          0x000000000000dd18      0x3c0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_compress.o
+                0x000000000000dd18                deflate_gzip
+                0x000000000000dee8                deflate_deflate
+                0x000000000000dfe0                inflate_gzip
+ .text          0x000000000000e0d8      0x144 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/static_memory_pool.o
+                0x000000000000e0d8                mem_allocate
+                0x000000000000e108                mem_deallocate
+                0x000000000000e120                create_static_mem_pool
+                0x000000000000e1f0                free_static_mem_pool
+ .text          0x000000000000e21c        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/entry_queue.o
+ *fill*         0x000000000000e21c        0x4 1f2003d5
+ .text          0x000000000000e220      0x5a4 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/lf_thread_pool.o
+                0x000000000000e470                lf_thread_pool_creat
+                0x000000000000e6e0                lf_thread_pool_free
+                0x000000000000e758                push_entry_in_pool
+ *fill*         0x000000000000e7c4        0x4 1f2003d5
+ .text          0x000000000000e7c8      0x174 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_utils.o
+                0x000000000000e7c8                str_tolower
+                0x000000000000e818                http_space_to_sys_space
+                0x000000000000e8b8                dump_chunk
+ .text          0x000000000000e93c        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+ .text          0x000000000000e93c        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+ *(.gnu.warning)
+
+.fini           0x000000000000e93c       0x10
+ *(SORT_NONE(.fini))
+ .fini          0x000000000000e93c        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+                0x000000000000e93c                _fini
+ .fini          0x000000000000e944        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+                [!provide]                        PROVIDE (__etext = .)
+                [!provide]                        PROVIDE (_etext = .)
+                [!provide]                        PROVIDE (etext = .)
+
+.rodata         0x000000000000e950     0x3b43
+ *(.rodata .rodata.* .gnu.linkonce.r.*)
+ .rodata.str1.8
+                0x000000000000e950      0x10f build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_class.o
+                                        0x113 (size before relaxing)
+ *fill*         0x000000000000ea5f        0x1 
+ .rodata.str1.8
+                0x000000000000ea60     0x24d7 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_const.o
+ *fill*         0x0000000000010f37        0x1 
+ .rodata        0x0000000000010f38      0x2c0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_decode.o
+ .rodata.str1.8
+                0x00000000000111f8      0x34b build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_decode.o
+                                        0x353 (size before relaxing)
+ *fill*         0x0000000000011543        0x5 
+ .rodata.str1.8
+                0x0000000000011548      0x194 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_encode.o
+ *fill*         0x00000000000116dc        0x4 
+ .rodata.str1.8
+                0x00000000000116e0       0x6c build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_llist.o
+ *fill*         0x000000000001174c        0x4 
+ .rodata.str1.8
+                0x0000000000011750      0x503 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_main.o
+ *fill*         0x0000000000011c53        0x5 
+ .rodata.str1.8
+                0x0000000000011c58      0x250 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_process_thread.o
+                                        0x268 (size before relaxing)
+ .rodata.str1.8
+                0x0000000000011ea8      0x184 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_read_thread.o
+ *fill*         0x000000000001202c        0x4 
+ .rodata.str1.8
+                0x0000000000012030      0x1a8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_write_thread.o
+ .rodata.str1.8
+                0x00000000000121d8        0x6 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_compress.o
+ *fill*         0x00000000000121de        0x2 
+ .rodata        0x00000000000121e0        0xe build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/lf_thread_pool.o
+ *fill*         0x00000000000121ee        0x2 
+ .rodata.str1.8
+                0x00000000000121f0      0x280 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/lf_thread_pool.o
+ .rodata.str1.8
+                0x0000000000012470       0x23 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_utils.o
+
+.rodata1
+ *(.rodata1)
+
+.eh_frame_hdr   0x0000000000012494      0x2ec
+ *(.eh_frame_hdr)
+ .eh_frame_hdr  0x0000000000012494      0x2ec /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+                0x0000000000012494                __GNU_EH_FRAME_HDR
+ *(.eh_frame_entry .eh_frame_entry.*)
+
+.eh_frame       0x0000000000012780     0x15d0
+ *(.eh_frame)
+ .eh_frame      0x0000000000012780       0x78 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ .eh_frame      0x00000000000127f8      0x618 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_class.o
+                                        0x630 (size before relaxing)
+ .eh_frame      0x0000000000012e10       0x28 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_const.o
+                                         0x40 (size before relaxing)
+ .eh_frame      0x0000000000012e38      0x190 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_decode.o
+                                        0x1a0 (size before relaxing)
+ .eh_frame      0x0000000000012fc8      0x168 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_encode.o
+                                        0x178 (size before relaxing)
+ .eh_frame      0x0000000000013130       0x90 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_list.o
+                                         0xa0 (size before relaxing)
+ .eh_frame      0x00000000000131c0       0xc0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_llist.o
+                                         0xd0 (size before relaxing)
+ .eh_frame      0x0000000000013280      0x2b8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_main.o
+                                        0x2c8 (size before relaxing)
+ .eh_frame      0x0000000000013538      0x160 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_process_thread.o
+                                        0x170 (size before relaxing)
+ .eh_frame      0x0000000000013698      0x280 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_read_thread.o
+                                        0x290 (size before relaxing)
+ .eh_frame      0x0000000000013918      0x128 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_write_thread.o
+                                        0x140 (size before relaxing)
+ .eh_frame      0x0000000000013a40       0xe8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_compress.o
+                                        0x100 (size before relaxing)
+ .eh_frame      0x0000000000013b28       0x90 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/static_memory_pool.o
+                                         0xa0 (size before relaxing)
+ .eh_frame      0x0000000000013bb8      0x118 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/lf_thread_pool.o
+                                        0x130 (size before relaxing)
+ .eh_frame      0x0000000000013cd0       0x7c build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_utils.o
+                                         0x90 (size before relaxing)
+ .eh_frame      0x0000000000013d4c        0x4 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+ *(.eh_frame.*)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.gnu_extab
+ *(.gnu_extab*)
+
+.exception_ranges
+ *(.exception_ranges*)
+                0x0000000000024c90                . = DATA_SEGMENT_ALIGN (CONSTANT (MAXPAGESIZE), CONSTANT (COMMONPAGESIZE))
+
+.eh_frame
+ *(.eh_frame)
+ *(.eh_frame.*)
+
+.gnu_extab
+ *(.gnu_extab)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.exception_ranges
+ *(.exception_ranges*)
+
+.tdata
+ *(.tdata .tdata.* .gnu.linkonce.td.*)
+
+.tbss
+ *(.tbss .tbss.* .gnu.linkonce.tb.*)
+ *(.tcommon)
+
+.preinit_array
+ *(.preinit_array)
+
+.init_array     0x0000000000024c90        0x8
+ *(SORT_BY_INIT_PRIORITY(.init_array.*) SORT_BY_INIT_PRIORITY(.ctors.*))
+ *(.init_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .ctors)
+ .init_array    0x0000000000024c90        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+
+.fini_array     0x0000000000024c98        0x8
+ *(SORT_BY_INIT_PRIORITY(.fini_array.*) SORT_BY_INIT_PRIORITY(.dtors.*))
+ *(.fini_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .dtors)
+ .fini_array    0x0000000000024c98        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+
+.ctors
+ *crtbegin.o(.ctors)
+ *crtbegin?.o(.ctors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .ctors)
+ *(SORT_BY_NAME(.ctors.*))
+ *(.ctors)
+
+.dtors
+ *crtbegin.o(.dtors)
+ *crtbegin?.o(.dtors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .dtors)
+ *(SORT_BY_NAME(.dtors.*))
+ *(.dtors)
+
+.jcr
+ *(.jcr)
+
+.data.rel.ro    0x0000000000024ca0       0xf8
+ *(.data.rel.ro.local* .gnu.linkonce.d.rel.ro.local.*)
+ .data.rel.ro.local
+                0x0000000000024ca0       0xf8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_decode.o
+ *(.data.rel.ro .data.rel.ro.* .gnu.linkonce.d.rel.ro.*)
+ .data.rel.ro   0x0000000000024d98        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+
+.dynamic        0x0000000000024d98      0x1d0
+ *(.dynamic)
+ .dynamic       0x0000000000024d98      0x1d0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+                0x0000000000024d98                _DYNAMIC
+
+.got            0x0000000000024f68       0x80
+ *(.got)
+ .got           0x0000000000024f68       0x80 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+                0x0000000000024f68                _GLOBAL_OFFSET_TABLE_
+ *(.igot)
+                0x0000000000024fe8                . = DATA_SEGMENT_RELRO_END (., 0x18)
+
+.got.plt        0x0000000000024fe8      0x380
+ *(.got.plt)
+ .got.plt       0x0000000000024fe8      0x380 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *(.igot.plt)
+
+.data           0x0000000000025368     0x15f8
+                [!provide]                        PROVIDE (__data_start = .)
+ *(.data .data.* .gnu.linkonce.d.*)
+ .data          0x0000000000025368        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .data          0x0000000000025368        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ .data.rel.local
+                0x0000000000025368        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+                0x0000000000025368                __dso_handle
+ .data          0x0000000000025370        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_class.o
+ .data          0x0000000000025370        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_const.o
+ .data.rel.local
+                0x0000000000025370     0x15f0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_const.o
+                0x0000000000025370                content_type
+                0x0000000000025dd0                file_suffix
+                0x0000000000026838                http_error
+ .data          0x0000000000026960        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_decode.o
+ .data          0x0000000000026960        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_encode.o
+ .data          0x0000000000026960        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_list.o
+ .data          0x0000000000026960        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_llist.o
+ .data          0x0000000000026960        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_main.o
+ .data          0x0000000000026960        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_process_thread.o
+ .data          0x0000000000026960        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_read_thread.o
+ .data          0x0000000000026960        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_write_thread.o
+ .data          0x0000000000026960        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_compress.o
+ .data          0x0000000000026960        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/static_memory_pool.o
+ .data          0x0000000000026960        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/entry_queue.o
+ .data          0x0000000000026960        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/lf_thread_pool.o
+ .data          0x0000000000026960        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_utils.o
+ .data          0x0000000000026960        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+ .data          0x0000000000026960        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+
+.tm_clone_table
+                0x0000000000026960        0x0
+ .tm_clone_table
+                0x0000000000026960        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ .tm_clone_table
+                0x0000000000026960        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+
+.data1
+ *(.data1)
+                [!provide]                        PROVIDE (_edata = .)
+                [!provide]                        PROVIDE (edata = .)
+                0x0000000000026960                . = .
+                [!provide]                        PROVIDE (__bss_start = .)
+                [!provide]                        PROVIDE (__bss_start__ = .)
+
+.bss            0x0000000000026960       0xb0
+ *(.dynbss)
+ .dynbss        0x0000000000026960        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *(.bss .bss.* .gnu.linkonce.b.*)
+ .bss           0x0000000000026960        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .bss           0x0000000000026960        0x1 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ .bss           0x0000000000026961        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_class.o
+ .bss           0x0000000000026961        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_const.o
+ .bss           0x0000000000026961        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_decode.o
+ .bss           0x0000000000026961        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_encode.o
+ .bss           0x0000000000026961        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_list.o
+ .bss           0x0000000000026961        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_llist.o
+ *fill*         0x0000000000026961        0x7 
+ .bss           0x0000000000026968       0x20 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_main.o
+                0x0000000000026970                g_read_thrpool
+                0x0000000000026978                _http_server_init
+                0x0000000000026980                http_server_path
+ .bss           0x0000000000026988        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_process_thread.o
+ .bss           0x0000000000026988        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_read_thread.o
+ .bss           0x0000000000026988        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_write_thread.o
+ .bss           0x0000000000026988        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_compress.o
+ .bss           0x0000000000026988        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/static_memory_pool.o
+ .bss           0x0000000000026988        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/entry_queue.o
+ .bss           0x0000000000026988        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/lf_thread_pool.o
+ .bss           0x0000000000026988        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_utils.o
+ .bss           0x0000000000026988        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+ .bss           0x0000000000026988        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+ *(COMMON)
+ COMMON         0x0000000000026988       0x88 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_main.o
+                0x0000000000026988                g_callback_list
+                0x0000000000026998                thread_run
+                0x00000000000269a0                g_hpb_mgr
+                0x0000000000026a10                . = ALIGN ((. != 0x0)?0x8:0x1)
+                [!provide]                        PROVIDE (_bss_end__ = .)
+                [!provide]                        PROVIDE (__bss_end__ = .)
+                0x0000000000026a10                . = ALIGN (0x8)
+                0x0000000000026a10                . = SEGMENT_START ("ldata-segment", .)
+                0x0000000000026a10                . = ALIGN (0x8)
+                [!provide]                        PROVIDE (__end__ = .)
+                [!provide]                        PROVIDE (_end = .)
+                [!provide]                        PROVIDE (end = .)
+                0x0000000000026a10                . = DATA_SEGMENT_END (.)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment        0x0000000000000000       0x16
+ *(.comment)
+ .comment       0x0000000000000000       0x16 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+                                         0x17 (size before relaxing)
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_class.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_const.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_decode.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_encode.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_list.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_llist.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_main.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_process_thread.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_read_thread.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_write_thread.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_compress.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/static_memory_pool.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/entry_queue.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/lf_thread_pool.o
+ .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http_utils.o
+ .comment       0x0000000000000016       0x17 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+
+.gnu.build.attributes
+ *(.gnu.build.attributes .gnu.build.attributes.*)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges
+ *(.debug_aranges)
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info
+ *(.debug_info .gnu.linkonce.wi.*)
+
+.debug_abbrev
+ *(.debug_abbrev)
+
+.debug_line
+ *(.debug_line .debug_line.* .debug_line_end)
+
+.debug_frame
+ *(.debug_frame)
+
+.debug_str
+ *(.debug_str)
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges
+ *(.debug_ranges)
+
+.debug_macro
+ *(.debug_macro)
+
+.debug_addr
+ *(.debug_addr)
+
+.ARM.attributes
+ *(.ARM.attributes)
+ *(.gnu.attributes)
+
+.note.gnu.arm.ident
+ *(.note.gnu.arm.ident)
+
+/DISCARD/
+ *(.note.GNU-stack)
+ *(.gnu_debuglink)
+ *(.gnu.lto_*)
+OUTPUT(build/arm11-gcc-uClibc-linux-gk7605v100/lib/libhttpserver.so elf64-littleaarch64)
+LOAD linker stubs

@@ -1,0 +1,61 @@
+################################################################################
+################################################################################
+##
+## Makefile -- makefile for tuning library
+##
+## (C) Copyright 2012-2014 by Goke Microelectronics Co.,Ltd
+##
+## Mandatory settings:
+##
+## o TOPDIR      = the toplevel directory (using slashes as path separator)
+## o TARGET      = the machine qualifier to generate code for
+##
+################################################################################
+################################################################################
+
+
+
+
+LIBRARY = libg711
+
+HEADERS +=  $(wildcard inc/*.h)
+HEADER_SUBDIR = subsystem/g711
+
+SOURCES  += src/g711.c
+
+CCFLAGS_USER += -O2
+CCFLAGS_USER += -I inc
+
+################################################################################
+# define user targets
+################################################################################
+
+default: install
+
+clean: clean-objects clean-library clean-all
+
+build:  build-objects build-library install-library
+
+headers: install-headers
+
+install: build install-library install-headers
+#	@cp -a ./build/arm11-gcc-linux-GK7101/lib/$(LIBRARY).so $(ROOTFS_TOP)/usr/lib
+
+all: clean build install
+
+################################################################################
+# include internal definitions and rules
+################################################################################
+
+  RELEASE_SUBDIR = $(SUBDIR)
+  RELEASE_FILES += Makefile.rel
+  RELEASE_FILES += $(wildcard include/*.h   )
+  RELEASE_FILES += Makefile
+  RELEASE_FILES += lib/$(LIBRARY)$(LIBRARY_EXT)
+  RELEASE_FILES += lib/$(LIBRARY)$(SHARED_EXT)
+
+release: release-lib-prepare  doc release-files $(DIRECTORIES:%=subdir-release-%)
+
+doc:
+
+release-lib-prepare: clean build-library install-release-library
