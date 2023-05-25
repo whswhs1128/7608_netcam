@@ -54,11 +54,7 @@ typedef enum ptz_msg_e {
     PTZ_CTRL_CMD_PRESET_CRUISE,
     PTZ_CTRL_CMD_HOR_CRUISE,
     PTZ_CTRL_CMD_VER_CRUISE,
-    PTZ_CTRL_CMD_HOR_VER_CRUISE,
-    PTZ_CTRL_CMD_ZOOM_WIDE,
-    PTZ_CTRL_CMD_ZOOM_TELE,
-    PTZ_CTRL_CMD_FOCUS_FAR,
-    PTZ_CTRL_CMD_FOCUS_NEAR
+    PTZ_CTRL_CMD_HOR_VER_CRUISE
 } ptz_ctrl_cmd_t;
 
 typedef struct ptz_ctrl_msg_s {
@@ -194,6 +190,12 @@ static int _ptz_goto_preset(int order, int speed)
     return 0;
 }
 
+static int _set_default_preset(void)
+{
+    netcam_ptz_set_preset(0, "ptz_default");
+    LOG_INFO("save ptz_default preset\n");
+    return 0;
+}
 static void *_ptz_thread(void *arg)
 {
 #define STOP_SLEE_100MS     100000
@@ -202,7 +204,7 @@ static void *_ptz_thread(void *arg)
     int i = 0;
     int reverse = 0;
     time_t start_time = 0;
-    time_t run_time = 0;
+    //time_t run_time = 0;
 	int count = 0;
 
     ptz_ctrl_msg_t cur_msg;
@@ -238,10 +240,11 @@ static void *_ptz_thread(void *arg)
             {
             	LOG_INFO("PTZ_CTRL_CMD_START sdk_ptz_start_and_goto_center!\n");
                 sdk_ptz_start_and_goto_center();
-            }
-            /* 如果预制点设置后,  开机默认跳到预制点0上. */
-            if (g_ptz.preset[0].enable) {
-                _ptz_goto_preset(0, cur_msg.speed);
+                
+                /* 如果预制点设置后,  开机默认跳到预制点0上. */
+                if (g_ptz.preset[0].enable) {
+                    _ptz_goto_preset(0, cur_msg.speed);
+                }
             }
             break;
         case PTZ_CTRL_CMD_UP:
@@ -267,18 +270,6 @@ static void *_ptz_thread(void *arg)
             break;
         case PTZ_CTRL_CMD_RIGHT_DOWN:
             sdk_ptz_right_down(cur_msg.step, cur_msg.speed);
-            break;
-        case PTZ_CTRL_CMD_ZOOM_WIDE:
-            //sdk_ptz_zoom_wide(cur_msg.step, cur_msg.speed);
-            break;
-        case PTZ_CTRL_CMD_ZOOM_TELE:
-            //sdk_ptz_zoom_tele(cur_msg.step, cur_msg.speed);
-            break;
-        case PTZ_CTRL_CMD_FOCUS_FAR:
-            //sdk_ptz_focus_far(cur_msg.step, cur_msg.speed);
-            break;
-        case PTZ_CTRL_CMD_FOCUS_NEAR:
-            //sdk_ptz_focus_near(cur_msg.step, cur_msg.speed);	xqq
             break;
         case PTZ_CTRL_CMD_GO_PRESET:
         case PTZ_CTRL_CMD_PRESET_CRUISE:
@@ -342,37 +333,58 @@ static void *_ptz_thread(void *arg)
             break;
         case PTZ_CTRL_CMD_HOR_VER_CRUISE:
             start_time = time(NULL);
+            int verReverse = 0;
             while (!g_ptz.ctrl_coming) {
+                int horStep = 0;
+                int verStep = 0;
                 while (!g_ptz.ctrl_coming) {
                     if (reverse)
-                        ret = sdk_ptz_left_up(cur_msg.step, cur_msg.speed);
+                        ret = sdk_ptz_left(cur_msg.step, cur_msg.speed);
                     else
-                        ret = sdk_ptz_right_up(cur_msg.step, cur_msg.speed);
+                        ret = sdk_ptz_right(cur_msg.step, cur_msg.speed);
+                    horStep += ret;
                     if (ret < 0) {
                         if (ret == SDK_PTZ_ERR_LEFT_END
                             || ret == SDK_PTZ_ERR_RIGHT_END)
                             reverse = !reverse;
                         break;
                     }
+                    printf("horStep:%d, %d\n", horStep, cfg_ptz->max_horizontal_step);
 
-                    NETCAM_PTZ_CURISE_LIMIT_TIME_CHECK(start_time);
-                }
-                usleep(50000);
-                while (!g_ptz.ctrl_coming) {
-                    if (reverse)
-                        ret = sdk_ptz_left_down(cur_msg.step, cur_msg.speed);
-                    else
-                        ret = sdk_ptz_right_down(cur_msg.step, cur_msg.speed);
-                    if (ret < 0) {
-                        if (ret == SDK_PTZ_ERR_LEFT_END
-                            || ret == SDK_PTZ_ERR_RIGHT_END)
-                            reverse = !reverse;
+                    if (horStep > cfg_ptz->max_horizontal_step)
+                    {
+                        printf("hor stop...\n");
+                        reverse = !reverse;
                         break;
                     }
 
                     NETCAM_PTZ_CURISE_LIMIT_TIME_CHECK(start_time);
+                    usleep(850000);
                 }
-                usleep(50000);
+                while (!g_ptz.ctrl_coming) {
+                    if (verReverse)
+                        ret = sdk_ptz_down(cur_msg.step, cur_msg.speed);
+                    else
+                        ret = sdk_ptz_up(cur_msg.step, cur_msg.speed);
+                    verStep += ret;
+                    if (ret < 0) {
+                        if (ret == SDK_PTZ_ERR_LEFT_END
+                            || ret == SDK_PTZ_ERR_RIGHT_END)
+                            horStep = !horStep;
+                        break;
+                    }
+                    printf("verStep:%d, %d\n", verStep, cfg_ptz->max_vertical_step);
+
+                    if (verStep > cfg_ptz->max_vertical_step)
+                    {
+                        printf("ver stop...\n");
+                        verReverse = !verReverse;
+                        break;
+                    }
+
+                    NETCAM_PTZ_CURISE_LIMIT_TIME_CHECK(start_time);
+                    usleep(850000);
+                }
             }
             break;
         default:
@@ -385,6 +397,7 @@ static void *_ptz_thread(void *arg)
         if (!g_ptz.ctrl_coming)
             g_ptz.ctrl.cmd = PTZ_CTRL_CMD_STOP;
         PTZ_CTRL_MSG_UNLOCK();
+        netcam_timer_add_task((TIMER_HANDLER)_set_default_preset, NETCAM_TIMER_FOUR_SEC, SDK_FALSE, SDK_TRUE);
     }
     LOG_INFO("ptz thread exit");
     return NULL;
@@ -396,8 +409,6 @@ static int _ptz_preset_cruise(ptz_preset_cruise_info_t *cruise_info, int count)
         LOG_ERR("params error %d(0~%d)\n", count, NETCAM_PTZ_MAX_PRESET_NUM);
         return -1;
     }
-    //if(sdk_ptz_call_preset(cruise_info->preset_order))	xqq
-       // return 0;
 
     PTZ_CTRL_MSG_LOCK();
     g_ptz.ctrl.cmd = PTZ_CTRL_CMD_GO_PRESET;
@@ -436,7 +447,7 @@ static int _ptz_send_cmd(ptz_ctrl_cmd_t cmd, int step, int speed)
     }
     #else
     if (speed <= 0)
-        speed = NETCAM_PTZ_MAX_SPEED;
+    speed = NETCAM_PTZ_MAX_SPEED;
     else if(speed > NETCAM_PTZ_MAX_SPEED) {
         speed = 0;
     }
@@ -459,30 +470,6 @@ static int _ptz_send_cmd(ptz_ctrl_cmd_t cmd, int step, int speed)
     PTZ_CTRL_MSG_UNLOCK();
     return 0;
 }
-
-#ifdef MODULE_SUPPORT_AF_LENS
-static int af_lens_handle(char *buf, int len)
-{
-    int i,enable=0;
-    char text[16]=" ";
-    //pelco_d_pack_t *pack = (pelco_d_pack_t *)buf;
-    LOG_INFO("af_lens_handle buf len:%d\n", len);
-    printf("buf date: ");
-    for (i = 0; i < len; ++i)
-        printf("%02hhX ", buf[i]);
-    printf("\n");
-    if(buf[2]==0x8A)
-    {
-        if(buf[5]!=0xFF && buf[5]!=0x0)
-        {
-            sprintf(text, "%dX", buf[5]);
-            enable=1;
-        }
-        netcam_osd_update_id_text(0.8, 0.8, 48, enable, text);
-    }
-    return 0;
-}
-#endif
 
 int netcam_ptz_init(void)
 {
@@ -536,9 +523,6 @@ int netcam_ptz_init(void)
 
 
     /* 用 ptz 结构做初始化 */
-    #ifdef MODULE_SUPPORT_AF_LENS
-    sdk_ptz_set_af_lens_cb(af_lens_handle);
-    #endif
     sdk_ptz_init(&ptz);
 
     pthread_mutex_init(&g_ptz.ctrl.lock, NULL);
@@ -586,8 +570,6 @@ int netcam_ptz_set_preset(int order, char *name)
         LOG_ERR("order error %d(0~%d)\n", order, NETCAM_PTZ_MAX_PRESET_NUM);
         return -1;
     }
-    //if(sdk_ptz_set_preset(order))	xqq
-        //return 0;
 
     PTZ_LOCK();
     if (name != NULL) {
@@ -617,8 +599,6 @@ int netcam_ptz_clr_preset(int order)
         LOG_ERR("order error %d(0~%d)\n", order, NETCAM_PTZ_MAX_PRESET_NUM);
         return -1;
     }
-    //if(sdk_ptz_del_preset(order))	xqq
-       // return 0;
 
     PTZ_LOCK();
     g_ptz.preset[order].enable = 0;
@@ -633,26 +613,6 @@ int netcam_ptz_start()
 {
     _ptz_send_cmd(PTZ_CTRL_CMD_START, 0, 0);
     return 0;
-}
-
-int netcam_ptz_zoom_wide(int step, int speed)
-{
-	return _ptz_send_cmd(PTZ_CTRL_CMD_ZOOM_WIDE, step, speed);
-}
-
-int netcam_ptz_zoom_tele(int step, int speed)
-{
-	return _ptz_send_cmd(PTZ_CTRL_CMD_ZOOM_TELE, step, speed);
-}
-
-int netcam_ptz_focus_far(int step, int speed)
-{
-	return _ptz_send_cmd(PTZ_CTRL_CMD_FOCUS_FAR, step, speed);
-}
-
-int netcam_ptz_focus_near(int step, int speed)
-{
-	return _ptz_send_cmd(PTZ_CTRL_CMD_FOCUS_NEAR, step, speed);
 }
 
 int netcam_ptz_up(int step, int speed)
@@ -751,8 +711,9 @@ int netcam_ptz_right_down(int step, int speed)
 
 int netcam_ptz_get_presets(ptz_preset_info_t *preset_info)
 {
-    if (!g_ptz.running)
+    if (!g_ptz.running){
         return -1;
+    }
 
 	if (preset_info == NULL) {
         LOG_ERR("Invalid parameters.");
@@ -788,7 +749,7 @@ int netcam_ptz_vertical_cruise(int speed)
 
 int netcam_ptz_hor_ver_cruise(int speed)
 {
-    _ptz_send_cmd(PTZ_CTRL_CMD_HOR_VER_CRUISE, 2, speed);
+    _ptz_send_cmd(PTZ_CTRL_CMD_HOR_VER_CRUISE, 180, speed);
     return 0;
 }
 
@@ -829,7 +790,7 @@ int netcam_ptz_stop(void)
     sdk_isp_set_af_zoom(0);
     sdk_isp_set_af_focus(0);
     #endif
-    //sdk_ptz_stop();	xqq
+    
     return 0;
 }
 

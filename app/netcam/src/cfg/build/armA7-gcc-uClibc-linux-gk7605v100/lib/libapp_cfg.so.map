@@ -1,0 +1,1613 @@
+
+As-needed library included to satisfy reference by file (symbol)
+
+ld-uClibc.so.0                build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_alarm.o (__stack_chk_guard)
+
+Allocating common symbols
+Common symbol       size              file
+
+runNetworkCfg       0x113c            build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_network.o
+runUserCfg          0x460             build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_user.o
+g_cfg_wr_mutex      0x18              build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_all.o
+runGB28181Cfg       0x148             build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_gb28181.o
+runRecordCfg        0x938             build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_record.o
+runImageCfg         0x2c              build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_image.o
+runPtzCfg           0x1c              build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_ptz.o
+runSystemCfg        0x390             build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_system.o
+runChannelCfg       0x520             build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_channel.o
+runPtzDecCfg        0x3c              build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_ptz.o
+runSnapCfg          0x200             build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_snap.o
+g_systemInfo        0xe0              build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_system.o
+runMdCfg            0x1874            build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_md.o
+runPresetCfg        0x43c0            build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_ptz.o
+runP2PCfg           0x16c             build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_p2p.o
+sdk_cfg             0xe4              build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_sdk.o
+runStoreCfg         0xc               build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_store.o
+runpwmCfg           0x44              build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_pwm.o
+runAlarmCfg         0xc78             build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_alarm.o
+runAudioCfg         0x24              build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_audio.o
+runVideoCfg         0x3b0             build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_video.o
+runCruiseCfg        0x29c             build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_ptz.o
+
+Discarded input sections
+
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crti.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../lib/gcc/arm-linux-uclibceabi/6.3.0/a7_softfp_neon-vfpv4/crtbeginS.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_alarm.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_all.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_audio.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_channel.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_common.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_gb28181.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_image.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_md.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_network.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_p2p.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_ptz.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_pwm.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_record.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_sdk.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_snap.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_store.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_system.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_test.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_user.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_video.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../lib/gcc/arm-linux-uclibceabi/6.3.0/a7_softfp_neon-vfpv4/crtendS.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crtn.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+LOAD /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crti.o
+LOAD /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../lib/gcc/arm-linux-uclibceabi/6.3.0/a7_softfp_neon-vfpv4/crtbeginS.o
+LOAD build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_alarm.o
+LOAD build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_all.o
+LOAD build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_audio.o
+LOAD build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_channel.o
+LOAD build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_common.o
+LOAD build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_gb28181.o
+LOAD build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_image.o
+LOAD build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_md.o
+LOAD build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_network.o
+LOAD build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_p2p.o
+LOAD build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_ptz.o
+LOAD build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_pwm.o
+LOAD build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_record.o
+LOAD build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_sdk.o
+LOAD build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_snap.o
+LOAD build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_store.o
+LOAD build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_system.o
+LOAD build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_test.o
+LOAD build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_user.o
+LOAD build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_video.o
+LOAD /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../lib/gcc/arm-linux-uclibceabi/6.3.0/a7_softfp_neon-vfpv4/libgcc.a
+LOAD /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../lib/gcc/arm-linux-uclibceabi/6.3.0/../../../../arm-linux-uclibceabi/lib/a7_softfp_neon-vfpv4/libgcc_s.so
+START GROUP
+LOAD /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../lib/gcc/arm-linux-uclibceabi/6.3.0/../../../../arm-linux-uclibceabi/lib/a7_softfp_neon-vfpv4/libgcc_s.so.1
+LOAD /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../lib/gcc/arm-linux-uclibceabi/6.3.0/a7_softfp_neon-vfpv4/libgcc.a
+END GROUP
+LOAD /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/libc.so
+START GROUP
+LOAD /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/lib/a7_softfp_neon-vfpv4/libc.so.0
+LOAD /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/uclibc_nonshared.a
+LOAD /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/lib/a7_softfp_neon-vfpv4/ld-uClibc.so.0
+END GROUP
+LOAD /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../lib/gcc/arm-linux-uclibceabi/6.3.0/a7_softfp_neon-vfpv4/libgcc.a
+LOAD /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../lib/gcc/arm-linux-uclibceabi/6.3.0/../../../../arm-linux-uclibceabi/lib/a7_softfp_neon-vfpv4/libgcc_s.so
+START GROUP
+LOAD /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../lib/gcc/arm-linux-uclibceabi/6.3.0/../../../../arm-linux-uclibceabi/lib/a7_softfp_neon-vfpv4/libgcc_s.so.1
+LOAD /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../lib/gcc/arm-linux-uclibceabi/6.3.0/a7_softfp_neon-vfpv4/libgcc.a
+END GROUP
+LOAD /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../lib/gcc/arm-linux-uclibceabi/6.3.0/a7_softfp_neon-vfpv4/crtendS.o
+LOAD /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crtn.o
+                0x00000000000000d4                . = (SEGMENT_START ("text-segment", 0x0) + SIZEOF_HEADERS)
+
+.note.gnu.build-id
+ *(.note.gnu.build-id)
+
+.hash           0x00000000000000d4      0x880
+ *(.hash)
+ .hash          0x00000000000000d4      0x880 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crti.o
+
+.gnu.hash
+ *(.gnu.hash)
+
+.dynsym         0x0000000000000954     0x1170
+ *(.dynsym)
+ .dynsym        0x0000000000000954     0x1170 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crti.o
+
+.dynstr         0x0000000000001ac4      0xecd
+ *(.dynstr)
+ .dynstr        0x0000000000001ac4      0xecd /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crti.o
+
+.gnu.version    0x0000000000002992        0x0
+ *(.gnu.version)
+ .gnu.version   0x0000000000002992        0x0 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crti.o
+
+.gnu.version_d  0x0000000000002994        0x0
+ *(.gnu.version_d)
+ .gnu.version_d
+                0x0000000000002994        0x0 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crti.o
+
+.gnu.version_r  0x0000000000002994        0x0
+ *(.gnu.version_r)
+ .gnu.version_r
+                0x0000000000002994        0x0 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crti.o
+
+.rel.dyn        0x0000000000002994     0x3278
+ *(.rel.init)
+ *(.rel.text .rel.text.* .rel.gnu.linkonce.t.*)
+ .rel.text      0x0000000000002994        0x0 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crti.o
+ *(.rel.fini)
+ *(.rel.rodata .rel.rodata.* .rel.gnu.linkonce.r.*)
+ *(.rel.data.rel.ro .rel.data.rel.ro.* .rel.gnu.linkonce.d.rel.ro.*)
+ *(.rel.data .rel.data.* .rel.gnu.linkonce.d.*)
+ .rel.data.rel.local
+                0x0000000000002994        0x8 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crti.o
+ .rel.data.rel.alarmCfgMap
+                0x000000000000299c       0xb0 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crti.o
+ .rel.data.rel.alarmInMap
+                0x0000000000002a4c       0xa0 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crti.o
+ .rel.data.rel.alarmMojingMap
+                0x0000000000002aec      0x198 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crti.o
+ .rel.data.rel.alarmOutMap
+                0x0000000000002c84       0x70 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crti.o
+ .rel.data.rel.audioMap
+                0x0000000000002cf4       0xb0 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crti.o
+ .rel.data.rel.osdMap
+                0x0000000000002da4      0x400 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crti.o
+ .rel.data.rel.shelterRectMap
+                0x00000000000031a4      0x180 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crti.o
+ .rel.data.rel.gb28181Map
+                0x0000000000003324       0xc8 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crti.o
+ .rel.data.rel.imageMap
+                0x00000000000033ec      0x1c0 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crti.o
+ .rel.data.rel.mdMap
+                0x00000000000035ac     0x1110 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crti.o
+ .rel.data.rel.emailMap
+                0x00000000000046bc      0x160 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crti.o
+ .rel.data.rel.ftpMap
+                0x000000000000481c       0x80 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crti.o
+ .rel.data.rel.lanMap
+                0x000000000000489c       0xe0 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crti.o
+ .rel.data.rel.portMap
+                0x000000000000497c       0x20 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crti.o
+ .rel.data.rel.wifiLinkMap
+                0x000000000000499c       0x30 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crti.o
+ .rel.data.rel.wifiMap
+                0x00000000000049cc       0xd0 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crti.o
+ .rel.data.rel.wirelessMap
+                0x0000000000004a9c       0x40 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crti.o
+ .rel.data.rel.ptzMap
+                0x0000000000004adc      0x130 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crti.o
+ .rel.data.rel.pwmAlMap
+                0x0000000000004c0c      0x140 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crti.o
+ .rel.data.rel.pwmMap
+                0x0000000000004d4c       0x40 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crti.o
+ .rel.data.rel.recordMap
+                0x0000000000004d8c      0x160 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crti.o
+ .rel.data.rel.snapEventMap
+                0x0000000000004eec       0x80 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crti.o
+ .rel.data.rel.snapTimerMap
+                0x0000000000004f6c       0x90 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crti.o
+ .rel.data.rel.storeMap
+                0x0000000000004ffc       0x48 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crti.o
+ .rel.data.rel.deviceInfoMap
+                0x0000000000005044      0x120 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crti.o
+ .rel.data.rel.maintainCfgMap
+                0x0000000000005164       0x60 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crti.o
+ .rel.data.rel.netDstCfgCfgMap
+                0x00000000000051c4       0x40 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crti.o
+ .rel.data.rel.ntpCfgMap
+                0x0000000000005204       0x40 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crti.o
+ .rel.data.rel.systemInfoMap
+                0x0000000000005244       0x70 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crti.o
+ .rel.data.rel.timezoneCfgMap
+                0x00000000000052b4       0x20 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crti.o
+ .rel.data.rel.adminMap
+                0x00000000000052d4       0x50 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crti.o
+ .rel.data.rel.viMap
+                0x0000000000005324       0xc0 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crti.o
+ .rel.data.rel.videoMap
+                0x00000000000053e4      0x580 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crti.o
+ .rel.data.rel.voutMap
+                0x0000000000005964       0x60 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crti.o
+ *(.rel.tdata .rel.tdata.* .rel.gnu.linkonce.td.*)
+ *(.rel.tbss .rel.tbss.* .rel.gnu.linkonce.tb.*)
+ *(.rel.ctors)
+ *(.rel.dtors)
+ *(.rel.got)
+ .rel.got       0x00000000000059c4      0x238 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crti.o
+ *(.rel.bss .rel.bss.* .rel.gnu.linkonce.b.*)
+ *(.rel.iplt)
+ .rel.iplt      0x0000000000005bfc        0x0 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crti.o
+ .rel.init_array
+                0x0000000000005bfc        0x8 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crti.o
+ .rel.fini_array
+                0x0000000000005c04        0x8 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crti.o
+
+.rela.dyn
+ *(.rela.init)
+ *(.rela.text .rela.text.* .rela.gnu.linkonce.t.*)
+ *(.rela.fini)
+ *(.rela.rodata .rela.rodata.* .rela.gnu.linkonce.r.*)
+ *(.rela.data .rela.data.* .rela.gnu.linkonce.d.*)
+ *(.rela.tdata .rela.tdata.* .rela.gnu.linkonce.td.*)
+ *(.rela.tbss .rela.tbss.* .rela.gnu.linkonce.tb.*)
+ *(.rela.ctors)
+ *(.rela.dtors)
+ *(.rela.got)
+ *(.rela.bss .rela.bss.* .rela.gnu.linkonce.b.*)
+ *(.rela.iplt)
+
+.rel.plt        0x0000000000005c0c      0x4f0
+ *(.rel.plt)
+ .rel.plt       0x0000000000005c0c      0x4f0 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crti.o
+
+.rela.plt
+ *(.rela.plt)
+
+.init           0x00000000000060fc       0x10
+ *(SORT(.init))
+ .init          0x00000000000060fc        0xc /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crti.o
+                0x00000000000060fc                _init
+ .init          0x0000000000006108        0x4 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crtn.o
+
+.plt            0x000000000000610c      0x77c
+ *(.plt)
+ .plt           0x000000000000610c      0x77c /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crti.o
+
+.iplt           0x0000000000006888        0x0
+ *(.iplt)
+ .iplt          0x0000000000006888        0x0 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crti.o
+
+.text           0x0000000000006888     0xa1d0
+ *(.text.unlikely .text.*_unlikely .text.unlikely.*)
+ *(.text.exit .text.exit.*)
+ *(.text.startup .text.startup.*)
+ *(.text.hot .text.hot.*)
+ *(.text .stub .text.* .gnu.linkonce.t.*)
+ .text          0x0000000000006888        0x0 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crti.o
+ .text          0x0000000000006888      0x1a4 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../lib/gcc/arm-linux-uclibceabi/6.3.0/a7_softfp_neon-vfpv4/crtbeginS.o
+ .text          0x0000000000006a2c        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_alarm.o
+ .text.AlarmCfgPrint
+                0x0000000000006a2c       0xd4 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_alarm.o
+                0x0000000000006a2c                AlarmCfgPrint
+ .text.AlarmCfgSave
+                0x0000000000006b00      0x104 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_alarm.o
+                0x0000000000006b00                AlarmCfgSave
+ .text.AlarmCfgLoadDefValue
+                0x0000000000006c04       0x58 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_alarm.o
+                0x0000000000006c04                AlarmCfgLoadDefValue
+ .text.AlarmCfgLoad
+                0x0000000000006c5c      0x268 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_alarm.o
+                0x0000000000006c5c                AlarmCfgLoad
+ .text          0x0000000000006ec4        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_all.o
+ .text.CfgSaveAll
+                0x0000000000006ec4       0x74 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_all.o
+                0x0000000000006ec4                CfgSaveAll
+ .text.CfgLoadAll
+                0x0000000000006f38      0x1e0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_all.o
+                0x0000000000006f38                CfgLoadAll
+ .text.CfgLoadDefValueAll
+                0x0000000000007118       0x74 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_all.o
+                0x0000000000007118                CfgLoadDefValueAll
+ .text.CfgInit  0x000000000000718c       0x44 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_all.o
+                0x000000000000718c                CfgInit
+ .text.CfgUnInit
+                0x00000000000071d0       0x3c build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_all.o
+                0x00000000000071d0                CfgUnInit
+ .text.get_param
+                0x000000000000720c      0x2fc build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_all.o
+                0x000000000000720c                get_param
+ .text.set_param
+                0x0000000000007508      0x2fc build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_all.o
+                0x0000000000007508                set_param
+ .text.schedule_time_to_slice
+                0x0000000000007804      0x270 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_all.o
+                0x0000000000007804                schedule_time_to_slice
+ .text.reg_privete_cfg_api
+                0x0000000000007a74      0x154 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_all.o
+                0x0000000000007a74                reg_privete_cfg_api
+ .text          0x0000000000007bc8        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_audio.o
+ .text.AudioCfgPrint
+                0x0000000000007bc8       0x48 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_audio.o
+                0x0000000000007bc8                AudioCfgPrint
+ .text.AudioCfgSave
+                0x0000000000007c10       0x70 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_audio.o
+                0x0000000000007c10                AudioCfgSave
+ .text.AudioCfgLoad
+                0x0000000000007c80       0x70 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_audio.o
+                0x0000000000007c80                AudioCfgLoad
+ .text.AudioCfgLoadDefValue
+                0x0000000000007cf0       0x28 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_audio.o
+                0x0000000000007cf0                AudioCfgLoadDefValue
+ .text          0x0000000000007d18        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_channel.o
+ .text.ChannelCfgPrint
+                0x0000000000007d18       0xe4 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_channel.o
+                0x0000000000007d18                ChannelCfgPrint
+ .text.ChannelCfgSave
+                0x0000000000007dfc      0x140 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_channel.o
+                0x0000000000007dfc                ChannelCfgSave
+ .text.ChannelCfgLoadDefValue
+                0x0000000000007f3c       0x70 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_channel.o
+                0x0000000000007f3c                ChannelCfgLoadDefValue
+ .text.ChannelCfgLoad
+                0x0000000000007fac      0x368 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_channel.o
+                0x0000000000007fac                ChannelCfgLoad
+ .text.ChannelCfgLoadOverlayJson
+                0x0000000000008314       0xb4 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_channel.o
+                0x0000000000008314                ChannelCfgLoadOverlayJson
+ .text.ChannelCfgLoadCoverJson
+                0x00000000000083c8       0x9c build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_channel.o
+                0x00000000000083c8                ChannelCfgLoadCoverJson
+ .text          0x0000000000008464        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_common.o
+ .text.CfgLoadDefValueItem
+                0x0000000000008464      0x220 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_common.o
+ .text.Cfg_Property_ByMap
+                0x0000000000008684      0x33c build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_common.o
+ .text.CfgWriteToFile
+                0x00000000000089c0      0x1a0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_common.o
+                0x00000000000089c0                CfgWriteToFile
+ .text.CfgReadFromFile
+                0x0000000000008b60      0x240 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_common.o
+                0x0000000000008b60                CfgReadFromFile
+ .text.CfgReadJsonFile
+                0x0000000000008da0      0x134 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_common.o
+                0x0000000000008da0                CfgReadJsonFile
+ .text.CfgLoadDefValue
+                0x0000000000008ed4       0x38 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_common.o
+                0x0000000000008ed4                CfgLoadDefValue
+ .text.CfgDataToCjsonByMap
+                0x0000000000008f0c      0x57c build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_common.o
+                0x0000000000008f0c                CfgDataToCjsonByMap
+ .text.CfgCjsonToDataByMap
+                0x0000000000009488      0x4d4 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_common.o
+                0x0000000000009488                CfgCjsonToDataByMap
+ .text.CfgPrintMap
+                0x000000000000995c      0x2a0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_common.o
+                0x000000000000995c                CfgPrintMap
+ .text.CfgParseCjson
+                0x0000000000009bfc       0x2c build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_common.o
+                0x0000000000009bfc                CfgParseCjson
+ .text.CfgAddCjson
+                0x0000000000009c28       0x2c build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_common.o
+                0x0000000000009c28                CfgAddCjson
+ .text.CfgSave  0x0000000000009c54       0x88 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_common.o
+                0x0000000000009c54                CfgSave
+ .text.CfgLoad  0x0000000000009cdc      0x1fc build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_common.o
+                0x0000000000009cdc                CfgLoad
+ .text.CfgGetDefByName
+                0x0000000000009ed8      0x274 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_common.o
+                0x0000000000009ed8                CfgGetDefByName
+ .text.is_in_schedule_slice
+                0x000000000000a14c      0x124 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_common.o
+                0x000000000000a14c                is_in_schedule_slice
+ .text.timepoint_to_u64
+                0x000000000000a270       0xdc build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_common.o
+                0x000000000000a270                timepoint_to_u64
+ .text.is_in_schedule_timepoint
+                0x000000000000a34c      0x190 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_common.o
+                0x000000000000a34c                is_in_schedule_timepoint
+ .text.is_in_schedule_timepoint_report
+                0x000000000000a4dc      0x190 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_common.o
+                0x000000000000a4dc                is_in_schedule_timepoint_report
+ .text.is_in_schedule_timepoint_report_with_cnt
+                0x000000000000a66c      0x1a0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_common.o
+                0x000000000000a66c                is_in_schedule_timepoint_report_with_cnt
+ .text          0x000000000000a80c        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_gb28181.o
+ .text.GB28181CfgLoadDefValue
+                0x000000000000a80c       0x28 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_gb28181.o
+                0x000000000000a80c                GB28181CfgLoadDefValue
+ .text.GB28181Cfg_get
+                0x000000000000a834       0x2c build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_gb28181.o
+                0x000000000000a834                GB28181Cfg_get
+ .text.GB28181Cfg_set
+                0x000000000000a860       0x30 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_gb28181.o
+                0x000000000000a860                GB28181Cfg_set
+ .text.GB28181CfgSave
+                0x000000000000a890       0x70 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_gb28181.o
+                0x000000000000a890                GB28181CfgSave
+ .text.GB28181CfgPrint
+                0x000000000000a900       0x48 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_gb28181.o
+                0x000000000000a900                GB28181CfgPrint
+ .text.gb28181_load_id_check
+                0x000000000000a948       0x50 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_gb28181.o
+                0x000000000000a948                gb28181_load_id_check
+ .text.gb28181_load_id
+                0x000000000000a998      0x1d8 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_gb28181.o
+                0x000000000000a998                gb28181_load_id
+ .text.GB28181CfgLoad
+                0x000000000000ab70       0xc4 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_gb28181.o
+                0x000000000000ab70                GB28181CfgLoad
+ .text.GB28181CfgGetJsonSting
+                0x000000000000ac34       0x1c build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_gb28181.o
+                0x000000000000ac34                GB28181CfgGetJsonSting
+ .text.GB28181CfgCheckSave
+                0x000000000000ac50      0x194 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_gb28181.o
+                0x000000000000ac50                GB28181CfgCheckSave
+ .text.GB28181Cfg_init
+                0x000000000000ade4       0xe0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_gb28181.o
+                0x000000000000ade4                GB28181Cfg_init
+ .text          0x000000000000aec4        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_image.o
+ .text.ImageCfgPrint
+                0x000000000000aec4       0x48 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_image.o
+                0x000000000000aec4                ImageCfgPrint
+ .text.ImageCfgSave
+                0x000000000000af0c       0x70 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_image.o
+                0x000000000000af0c                ImageCfgSave
+ .text.ImageCfgLoad
+                0x000000000000af7c       0x70 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_image.o
+                0x000000000000af7c                ImageCfgLoad
+ .text.ImageCfgLoadDefValue
+                0x000000000000afec       0x28 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_image.o
+                0x000000000000afec                ImageCfgLoadDefValue
+ .text.ImageCfgGetJosnString
+                0x000000000000b014       0x68 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_image.o
+                0x000000000000b014                ImageCfgGetJosnString
+ .text          0x000000000000b07c        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_md.o
+ .text.MdCfgPrint
+                0x000000000000b07c       0x48 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_md.o
+                0x000000000000b07c                MdCfgPrint
+ .text.MdCfgSave
+                0x000000000000b0c4       0x70 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_md.o
+                0x000000000000b0c4                MdCfgSave
+ .text.MdCfgLoad
+                0x000000000000b134       0x70 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_md.o
+                0x000000000000b134                MdCfgLoad
+ .text.MdCfgLoadDefValue
+                0x000000000000b1a4       0x28 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_md.o
+                0x000000000000b1a4                MdCfgLoadDefValue
+ .text          0x000000000000b1cc        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_network.o
+ .text.reset_net_default_dhcp
+                0x000000000000b1cc      0x260 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_network.o
+ .text.random_produce_mac.constprop.0
+                0x000000000000b42c      0x1e8 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_network.o
+ .text.NetworkCfgPrint
+                0x000000000000b614       0xf8 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_network.o
+                0x000000000000b614                NetworkCfgPrint
+ .text.wifiLinkParse
+                0x000000000000b70c       0xf0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_network.o
+                0x000000000000b70c                wifiLinkParse
+ .text.wifiLinkCreate
+                0x000000000000b7fc       0xf4 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_network.o
+                0x000000000000b7fc                wifiLinkCreate
+ .text.NetworkCfgSave
+                0x000000000000b8f0      0x160 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_network.o
+                0x000000000000b8f0                NetworkCfgSave
+ .text.NetworkCfgLoadDefValue
+                0x000000000000ba50       0xa0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_network.o
+                0x000000000000ba50                NetworkCfgLoadDefValue
+ .text.NetworkCfgLoad
+                0x000000000000baf0      0x4e0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_network.o
+                0x000000000000baf0                NetworkCfgLoad
+ .text.NetworkCfgGetJosnString
+                0x000000000000bfd0       0xd8 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_network.o
+                0x000000000000bfd0                NetworkCfgGetJosnString
+ .text          0x000000000000c0a8        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_p2p.o
+ .text.P2PCfg_get
+                0x000000000000c0a8       0x2c build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_p2p.o
+                0x000000000000c0a8                P2PCfg_get
+ .text.P2PCfg_set
+                0x000000000000c0d4       0x30 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_p2p.o
+                0x000000000000c0d4                P2PCfg_set
+ .text.P2PCfg_SetDefValue
+                0x000000000000c104       0x80 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_p2p.o
+ .text.P2PCfgLoadDefValue
+                0x000000000000c184       0x40 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_p2p.o
+                0x000000000000c184                P2PCfgLoadDefValue
+ .text.P2PCfgLoad
+                0x000000000000c1c4      0x188 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_p2p.o
+                0x000000000000c1c4                P2PCfgLoad
+ .text.P2PCfgSave
+                0x000000000000c34c      0x138 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_p2p.o
+                0x000000000000c34c                P2PCfgSave
+ .text.P2PCfg_init
+                0x000000000000c484       0xe0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_p2p.o
+                0x000000000000c484                P2PCfg_init
+ .text          0x000000000000c564        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_ptz.o
+ .text.PtzCfgPrint
+                0x000000000000c564       0x48 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_ptz.o
+                0x000000000000c564                PtzCfgPrint
+ .text.PtzCfgSave
+                0x000000000000c5ac       0x70 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_ptz.o
+                0x000000000000c5ac                PtzCfgSave
+ .text.PtzCfgLoad
+                0x000000000000c61c       0x70 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_ptz.o
+                0x000000000000c61c                PtzCfgLoad
+ .text.PtzCfgLoadDefValue
+                0x000000000000c68c       0x28 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_ptz.o
+                0x000000000000c68c                PtzCfgLoadDefValue
+ .text.PresetCruiseCfgDefault
+                0x000000000000c6b4       0x94 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_ptz.o
+                0x000000000000c6b4                PresetCruiseCfgDefault
+ .text.PresetCruiseCfgSave
+                0x000000000000c748      0x2c8 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_ptz.o
+                0x000000000000c748                PresetCruiseCfgSave
+ .text.PresetCruiseCfgLoad
+                0x000000000000ca10      0x288 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_ptz.o
+                0x000000000000ca10                PresetCruiseCfgLoad
+ .text          0x000000000000cc98        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_pwm.o
+ .text.pwmCfgPrint
+                0x000000000000cc98       0xac build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_pwm.o
+                0x000000000000cc98                pwmCfgPrint
+ .text.pwmCfgSave
+                0x000000000000cd44       0xf4 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_pwm.o
+                0x000000000000cd44                pwmCfgSave
+ .text.pwmCfgLoadDefValue
+                0x000000000000ce38       0x5c build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_pwm.o
+                0x000000000000ce38                pwmCfgLoadDefValue
+ .text.pwmCfgLoad
+                0x000000000000ce94      0x300 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_pwm.o
+                0x000000000000ce94                pwmCfgLoad
+ .text.pwmCfgGetJosnString
+                0x000000000000d194       0x68 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_pwm.o
+                0x000000000000d194                pwmCfgGetJosnString
+ .text          0x000000000000d1fc        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_record.o
+ .text.RecordCfgPrint
+                0x000000000000d1fc       0x48 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_record.o
+                0x000000000000d1fc                RecordCfgPrint
+ .text.RecordCfgSave
+                0x000000000000d244       0x70 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_record.o
+                0x000000000000d244                RecordCfgSave
+ .text.RecordCfgLoad
+                0x000000000000d2b4       0x70 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_record.o
+                0x000000000000d2b4                RecordCfgLoad
+ .text.RecordCfgLoadDefValue
+                0x000000000000d324       0x28 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_record.o
+                0x000000000000d324                RecordCfgLoadDefValue
+ .text          0x000000000000d34c        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_sdk.o
+ .text.cfg_sdk_load
+                0x000000000000d34c      0x904 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_sdk.o
+ .text.init_cfg_sdk
+                0x000000000000dc50      0x37c build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_sdk.o
+                0x000000000000dc50                init_cfg_sdk
+ .text          0x000000000000dfcc        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_snap.o
+ .text.SnapCfgPrint
+                0x000000000000dfcc       0x74 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_snap.o
+                0x000000000000dfcc                SnapCfgPrint
+ .text.SnapCfgSave
+                0x000000000000e040       0xc4 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_snap.o
+                0x000000000000e040                SnapCfgSave
+ .text.SnapCfgLoadDefValue
+                0x000000000000e104       0x38 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_snap.o
+                0x000000000000e104                SnapCfgLoadDefValue
+ .text.SnapCfgLoad
+                0x000000000000e13c      0x228 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_snap.o
+                0x000000000000e13c                SnapCfgLoad
+ .text          0x000000000000e364        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_store.o
+ .text.StoreCfgPrint
+                0x000000000000e364       0x48 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_store.o
+                0x000000000000e364                StoreCfgPrint
+ .text.StoreCfgSave
+                0x000000000000e3ac       0x70 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_store.o
+                0x000000000000e3ac                StoreCfgSave
+ .text.StoreCfgLoad
+                0x000000000000e41c       0x70 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_store.o
+                0x000000000000e41c                StoreCfgLoad
+ .text.StoreCfgLoadDefValue
+                0x000000000000e48c       0x28 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_store.o
+                0x000000000000e48c                StoreCfgLoadDefValue
+ .text          0x000000000000e4b4        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_system.o
+ .text.y_toupper
+                0x000000000000e4b4       0x54 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_system.o
+ .text.SystemCfgPrint
+                0x000000000000e508       0xfc build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_system.o
+                0x000000000000e508                SystemCfgPrint
+ .text.LoadSystemInfo
+                0x000000000000e604      0x150 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_system.o
+                0x000000000000e604                LoadSystemInfo
+ .text.loadSpecialInfo
+                0x000000000000e754      0x118 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_system.o
+                0x000000000000e754                loadSpecialInfo
+ .text.SystemCfgSave
+                0x000000000000e86c      0x13c build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_system.o
+                0x000000000000e86c                SystemCfgSave
+ .text.SystemCfgLoadDefValue
+                0x000000000000e9a8       0x6c build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_system.o
+                0x000000000000e9a8                SystemCfgLoadDefValue
+ .text.SystemCfgLoad
+                0x000000000000ea14      0x2cc build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_system.o
+                0x000000000000ea14                SystemCfgLoad
+ .text.SystemCfgGetNTPJsonSting
+                0x000000000000ece0       0x1c build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_system.o
+                0x000000000000ece0                SystemCfgGetNTPJsonSting
+ .text.SytemCfgGetCjsonString
+                0x000000000000ecfc       0x3c build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_system.o
+                0x000000000000ecfc                SytemCfgGetCjsonString
+ .text          0x000000000000ed38        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_test.o
+ .text.AudioCfgTest
+                0x000000000000ed38       0x78 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_test.o
+                0x000000000000ed38                AudioCfgTest
+ .text.ImageCfgTest
+                0x000000000000edb0       0x78 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_test.o
+                0x000000000000edb0                ImageCfgTest
+ .text.makeArray
+                0x000000000000ee28      0x134 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_test.o
+                0x000000000000ee28                makeArray
+ .text.parseArray
+                0x000000000000ef5c       0x70 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_test.o
+                0x000000000000ef5c                parseArray
+ .text.CjsonArrayTest
+                0x000000000000efcc       0x20 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_test.o
+                0x000000000000efcc                CjsonArrayTest
+ .text.VideoCfgTest
+                0x000000000000efec       0x58 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_test.o
+                0x000000000000efec                VideoCfgTest
+ .text.SystemCfgTest
+                0x000000000000f044       0xcc build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_test.o
+                0x000000000000f044                SystemCfgTest
+ .text.NetworkCfgTest
+                0x000000000000f110       0xc0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_test.o
+                0x000000000000f110                NetworkCfgTest
+ .text.ChannelCfgTest
+                0x000000000000f1d0       0x7c build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_test.o
+                0x000000000000f1d0                ChannelCfgTest
+ .text.MdCfgTest
+                0x000000000000f24c       0xbc build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_test.o
+                0x000000000000f24c                MdCfgTest
+ .text.SnapCfgTest
+                0x000000000000f308       0x10 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_test.o
+                0x000000000000f308                SnapCfgTest
+ .text.RecordCfgTest
+                0x000000000000f318       0xac build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_test.o
+                0x000000000000f318                RecordCfgTest
+ .text.PtzCfgTest
+                0x000000000000f3c4       0x58 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_test.o
+                0x000000000000f3c4                PtzCfgTest
+ .text.AlarmCfgTest
+                0x000000000000f41c       0xac build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_test.o
+                0x000000000000f41c                AlarmCfgTest
+ .text.UserCfgTest
+                0x000000000000f4c8       0x78 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_test.o
+                0x000000000000f4c8                UserCfgTest
+ .text          0x000000000000f540        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_user.o
+ .text.UserCfgPrint
+                0x000000000000f540       0xb4 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_user.o
+                0x000000000000f540                UserCfgPrint
+ .text.UserCfgSave
+                0x000000000000f5f4      0x1c8 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_user.o
+                0x000000000000f5f4                UserCfgSave
+ .text.UserCfgLoadDefValue
+                0x000000000000f7bc       0xc8 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_user.o
+                0x000000000000f7bc                UserCfgLoadDefValue
+ .text.UserCfgLoad
+                0x000000000000f884      0x2b0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_user.o
+                0x000000000000f884                UserCfgLoad
+ .text.UserIsExist
+                0x000000000000fb34       0x6c build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_user.o
+                0x000000000000fb34                UserIsExist
+ .text.UserAdd  0x000000000000fba0       0xcc build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_user.o
+                0x000000000000fba0                UserAdd
+ .text.UserModify
+                0x000000000000fc6c       0xac build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_user.o
+                0x000000000000fc6c                UserModify
+ .text.UserCheck
+                0x000000000000fd18       0x88 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_user.o
+                0x000000000000fd18                UserCheck
+ .text.UserModifyByIndex
+                0x000000000000fda0       0x98 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_user.o
+                0x000000000000fda0                UserModifyByIndex
+ .text.UserDel  0x000000000000fe38       0xc4 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_user.o
+                0x000000000000fe38                UserDel
+ .text.UserCfgLoadJson
+                0x000000000000fefc      0x124 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_user.o
+                0x000000000000fefc                UserCfgLoadJson
+ .text.UserCfgSaveJson
+                0x0000000000010020      0x160 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_user.o
+                0x0000000000010020                UserCfgSaveJson
+ .text.UserMatching_login
+                0x0000000000010180       0x98 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_user.o
+                0x0000000000010180                UserMatching_login
+ .text          0x0000000000010218        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_video.o
+ .text.VideoCfgPrint
+                0x0000000000010218      0x120 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_video.o
+                0x0000000000010218                VideoCfgPrint
+ .text.VideoCfgSave
+                0x0000000000010338      0x1b0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_video.o
+                0x0000000000010338                VideoCfgSave
+ .text.VideoCfgLoadDefValue
+                0x00000000000104e8       0x44 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_video.o
+                0x00000000000104e8                VideoCfgLoadDefValue
+ *fill*         0x000000000001052c        0x4 
+ .text.VideoCfgLoad
+                0x0000000000010530      0x46c build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_video.o
+                0x0000000000010530                VideoCfgLoad
+ .text.videoCfgLoadStreamJson
+                0x000000000001099c       0xbc build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_video.o
+                0x000000000001099c                videoCfgLoadStreamJson
+ .text          0x0000000000010a58        0x0 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../lib/gcc/arm-linux-uclibceabi/6.3.0/a7_softfp_neon-vfpv4/crtendS.o
+ .text          0x0000000000010a58        0x0 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crtn.o
+ *(.gnu.warning)
+ *(.glue_7t)
+ .glue_7t       0x0000000000010a58        0x0 linker stubs
+ *(.glue_7)
+ .glue_7        0x0000000000010a58        0x0 linker stubs
+ *(.vfp11_veneer)
+ .vfp11_veneer  0x0000000000010a58        0x0 linker stubs
+ *(.v4_bx)
+ .v4_bx         0x0000000000010a58        0x0 linker stubs
+
+.fini           0x0000000000010a58       0x10
+ *(SORT(.fini))
+ .fini          0x0000000000010a58        0xc /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crti.o
+                0x0000000000010a58                _fini
+ .fini          0x0000000000010a64        0x4 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crtn.o
+                [!provide]                        PROVIDE (__etext, .)
+                [!provide]                        PROVIDE (_etext, .)
+                [!provide]                        PROVIDE (etext, .)
+
+.rodata         0x0000000000010a68     0x48e4
+ *(.rodata .rodata.* .gnu.linkonce.r.*)
+ .rodata.AlarmCfgLoad.str1.4
+                0x0000000000010a68       0xb9 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_alarm.o
+ *fill*         0x0000000000010b21        0x3 
+ .rodata.AlarmCfgPrint.str1.4
+                0x0000000000010b24       0x86 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_alarm.o
+ *fill*         0x0000000000010baa        0x2 
+ .rodata.AlarmCfgSave.str1.4
+                0x0000000000010bac       0x8e build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_alarm.o
+ *fill*         0x0000000000010c3a        0x2 
+ .rodata.str1.4
+                0x0000000000010c3c      0x379 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_alarm.o
+                                        0x381 (size before relaxing)
+ *fill*         0x0000000000010fb5        0x3 
+ .rodata.CfgLoadAll.str1.4
+                0x0000000000010fb8       0xae build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_all.o
+                                         0xc2 (size before relaxing)
+ *fill*         0x0000000000011066        0x2 
+ .rodata.reg_privete_cfg_api.str1.4
+                0x0000000000011068       0xe0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_all.o
+ .rodata.schedule_time_to_slice.str1.4
+                0x0000000000011148       0x5f build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_all.o
+ *fill*         0x00000000000111a7        0x1 
+ .rodata.AudioCfgLoad.str1.4
+                0x00000000000111a8       0x3b build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_audio.o
+ *fill*         0x00000000000111e3        0x1 
+ .rodata.AudioCfgPrint.str1.4
+                0x00000000000111e4       0x38 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_audio.o
+ .rodata.AudioCfgSave.str1.4
+                0x000000000001121c       0x63 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_audio.o
+ *fill*         0x000000000001127f        0x1 
+ .rodata.str1.4
+                0x0000000000011280       0x73 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_audio.o
+                                         0x7f (size before relaxing)
+ *fill*         0x00000000000112f3        0x1 
+ .rodata.ChannelCfgLoad.str1.4
+                0x00000000000112f4       0xb7 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_channel.o
+                                        0x131 (size before relaxing)
+ *fill*         0x00000000000113ab        0x1 
+ .rodata.ChannelCfgLoadCoverJson.str1.4
+                0x00000000000113ac       0x44 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_channel.o
+ .rodata.ChannelCfgLoadOverlayJson.str1.4
+                0x00000000000113f0       0x15 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_channel.o
+ *fill*         0x0000000000011405        0x3 
+ .rodata.ChannelCfgPrint.str1.4
+                0x0000000000011408       0xb7 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_channel.o
+ *fill*         0x00000000000114bf        0x1 
+ .rodata.ChannelCfgSave.str1.4
+                0x00000000000114c0       0x42 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_channel.o
+                                         0x92 (size before relaxing)
+ *fill*         0x0000000000011502        0x2 
+ .rodata.str1.4
+                0x0000000000011504      0x19f build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_channel.o
+ *fill*         0x00000000000116a3        0x1 
+ .rodata        0x00000000000116a4       0x50 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_common.o
+ .rodata.CfgCjsonToDataByMap.str1.4
+                0x00000000000116f4       0x4c build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_common.o
+ .rodata.CfgDataToCjsonByMap.str1.4
+                0x0000000000011740       0x13 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_common.o
+                                         0x15 (size before relaxing)
+ *fill*         0x0000000000011753        0x1 
+ .rodata.CfgGetDefByName.str1.4
+                0x0000000000011754       0x37 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_common.o
+ .rodata.CfgLoad.str1.4
+                0x000000000001178b       0x93 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_common.o
+ *fill*         0x000000000001178b        0x1 
+ .rodata.CfgLoadDefValueItem.str1.4
+                0x000000000001178c       0xe3 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_common.o
+ *fill*         0x000000000001186f        0x1 
+ .rodata.CfgPrintMap.str1.4
+                0x0000000000011870       0x71 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_common.o
+ *fill*         0x00000000000118e1        0x3 
+ .rodata.CfgReadFromFile.str1.4
+                0x00000000000118e4       0xa2 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_common.o
+ .rodata.CfgSave.str1.4
+                0x0000000000011986       0x3b build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_common.o
+ *fill*         0x0000000000011986        0x2 
+ .rodata.CfgWriteToFile.str1.4
+                0x0000000000011988       0xa1 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_common.o
+                                         0xb5 (size before relaxing)
+ *fill*         0x0000000000011a29        0x3 
+ .rodata.Cfg_Property_ByMap.str1.4
+                0x0000000000011a2c       0x38 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_common.o
+                                         0x58 (size before relaxing)
+ .rodata.timepoint_to_u64.str1.4
+                0x0000000000011a64        0x9 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_common.o
+ *fill*         0x0000000000011a6d        0x3 
+ .rodata.GB28181CfgCheckSave.str1.4
+                0x0000000000011a70       0x35 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_gb28181.o
+                                         0x3d (size before relaxing)
+ .rodata.GB28181CfgLoad.str1.4
+                0x0000000000011aa5       0x3b build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_gb28181.o
+ *fill*         0x0000000000011aa5        0x3 
+ .rodata.GB28181CfgPrint.str1.4
+                0x0000000000011aa8       0x3e build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_gb28181.o
+ *fill*         0x0000000000011ae6        0x2 
+ .rodata.GB28181CfgSave.str1.4
+                0x0000000000011ae8       0x2e build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_gb28181.o
+                                         0x6b (size before relaxing)
+ *fill*         0x0000000000011b16        0x2 
+ .rodata.gb28181_load_id.str1.4
+                0x0000000000011b18       0x72 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_gb28181.o
+ *fill*         0x0000000000011b8a        0x2 
+ .rodata.str1.4
+                0x0000000000011b8c       0x94 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_gb28181.o
+                                         0x98 (size before relaxing)
+ .rodata.ImageCfgGetJosnString.str1.4
+                0x0000000000011c20       0x41 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_image.o
+ .rodata.ImageCfgLoad.str1.4
+                0x0000000000011c61       0x3b build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_image.o
+ *fill*         0x0000000000011c61        0x3 
+ .rodata.ImageCfgPrint.str1.4
+                0x0000000000011c64       0x38 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_image.o
+ .rodata.ImageCfgSave.str1.4
+                0x0000000000011c9c       0x28 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_image.o
+                                         0x63 (size before relaxing)
+ .rodata.str1.4
+                0x0000000000011cc4      0x151 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_image.o
+                                        0x155 (size before relaxing)
+ .rodata.MdCfgLoad.str1.4
+                0x0000000000011e15       0x3b build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_md.o
+ *fill*         0x0000000000011e15        0x3 
+ .rodata.MdCfgPrint.str1.4
+                0x0000000000011e18       0x31 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_md.o
+ *fill*         0x0000000000011e49        0x3 
+ .rodata.MdCfgSave.str1.4
+                0x0000000000011e4c       0x1d build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_md.o
+                                         0x5b (size before relaxing)
+ *fill*         0x0000000000011e69        0x3 
+ .rodata.str1.4
+                0x0000000000011e6c     0x18d0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_md.o
+                                       0x18e8 (size before relaxing)
+ .rodata        0x000000000001373c       0x22 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_network.o
+ *fill*         0x000000000001375e        0x2 
+ .rodata.NetworkCfgGetJosnString.str1.4
+                0x0000000000013760       0x7b build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_network.o
+ *fill*         0x00000000000137db        0x1 
+ .rodata.NetworkCfgLoad.str1.4
+                0x00000000000137dc       0xf7 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_network.o
+                                        0x1b1 (size before relaxing)
+ *fill*         0x00000000000138d3        0x1 
+ .rodata.NetworkCfgPrint.str1.4
+                0x00000000000138d4       0x70 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_network.o
+ .rodata.NetworkCfgSave.str1.4
+                0x0000000000013944       0x4d build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_network.o
+                                         0x92 (size before relaxing)
+ *fill*         0x0000000000013991        0x3 
+ .rodata.random_produce_mac.constprop.0.str1.4
+                0x0000000000013994       0x66 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_network.o
+ *fill*         0x00000000000139fa        0x2 
+ .rodata.reset_net_default_dhcp.str1.4
+                0x00000000000139fc       0x21 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_network.o
+ *fill*         0x0000000000013a1d        0x3 
+ .rodata.str1.4
+                0x0000000000013a20      0x1ca build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_network.o
+                                        0x1da (size before relaxing)
+ *fill*         0x0000000000013bea        0x2 
+ .rodata.wifiLinkParse.str1.4
+                0x0000000000013bec       0x18 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_network.o
+ .rodata.P2PCfgLoad.str1.4
+                0x0000000000013c04       0x5b build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_p2p.o
+ *fill*         0x0000000000013c5f        0x1 
+ .rodata.P2PCfgSave.str1.4
+                0x0000000000013c60       0x43 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_p2p.o
+ *fill*         0x0000000000013ca3        0x1 
+ .rodata.PresetCruiseCfgLoad.str1.4
+                0x0000000000013ca4      0x126 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_ptz.o
+ *fill*         0x0000000000013dca        0x2 
+ .rodata.PresetCruiseCfgSave.str1.4
+                0x0000000000013dcc      0x1bf build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_ptz.o
+ .rodata.PtzCfgLoad.str1.4
+                0x0000000000013f8b       0x3b build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_ptz.o
+ *fill*         0x0000000000013f8b        0x1 
+ .rodata.PtzCfgPrint.str1.4
+                0x0000000000013f8c       0x36 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_ptz.o
+ *fill*         0x0000000000013fc2        0x2 
+ .rodata.PtzCfgSave.str1.4
+                0x0000000000013fc4       0x22 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_ptz.o
+                                         0x5f (size before relaxing)
+ *fill*         0x0000000000013fe6        0x2 
+ .rodata.__FUNCTION__.8998
+                0x0000000000013fe8       0x14 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_ptz.o
+ .rodata.str1.4
+                0x0000000000013ffc       0xb8 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_ptz.o
+                                         0xcc (size before relaxing)
+ .rodata.pwmCfgGetJosnString.str1.4
+                0x00000000000140b4       0x40 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_pwm.o
+ .rodata.pwmCfgLoad.str1.4
+                0x00000000000140f4       0x92 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_pwm.o
+                                        0x191 (size before relaxing)
+ *fill*         0x0000000000014186        0x2 
+ .rodata.pwmCfgPrint.str1.4
+                0x0000000000014188       0x89 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_pwm.o
+ *fill*         0x0000000000014211        0x3 
+ .rodata.pwmCfgSave.str1.4
+                0x0000000000014214       0x32 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_pwm.o
+                                         0x76 (size before relaxing)
+ *fill*         0x0000000000014246        0x2 
+ .rodata.str1.4
+                0x0000000000014248       0x31 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_pwm.o
+                                         0x39 (size before relaxing)
+ .rodata.RecordCfgLoad.str1.4
+                0x0000000000014279       0x3b build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_record.o
+ *fill*         0x0000000000014279        0x3 
+ .rodata.RecordCfgPrint.str1.4
+                0x000000000001427c       0x39 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_record.o
+ *fill*         0x00000000000142b5        0x3 
+ .rodata.RecordCfgSave.str1.4
+                0x00000000000142b8       0x29 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_record.o
+                                         0x67 (size before relaxing)
+ *fill*         0x00000000000142e1        0x3 
+ .rodata.str1.4
+                0x00000000000142e4       0xe7 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_record.o
+                                        0x103 (size before relaxing)
+ *fill*         0x00000000000143cb        0x1 
+ .rodata.cfg_sdk_load.str1.4
+                0x00000000000143cc      0x3e5 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_sdk.o
+                                        0x3f5 (size before relaxing)
+ *fill*         0x00000000000147b1        0x3 
+ .rodata.init_cfg_sdk.str1.4
+                0x00000000000147b4      0x189 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_sdk.o
+                                        0x1cd (size before relaxing)
+ .rodata.SnapCfgLoad.str1.4
+                0x000000000001493d       0xb9 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_snap.o
+ *fill*         0x000000000001493d        0x3 
+ .rodata.SnapCfgPrint.str1.4
+                0x0000000000014940       0x80 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_snap.o
+ .rodata.SnapCfgSave.str1.4
+                0x00000000000149c0       0x37 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_snap.o
+                                         0x7a (size before relaxing)
+ *fill*         0x00000000000149f7        0x1 
+ .rodata.str1.4
+                0x00000000000149f8       0x52 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_snap.o
+                                         0x75 (size before relaxing)
+ .rodata.StoreCfgLoad.str1.4
+                0x0000000000014a4a       0x3b build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_store.o
+ *fill*         0x0000000000014a4a        0x2 
+ .rodata.StoreCfgPrint.str1.4
+                0x0000000000014a4c       0x38 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_store.o
+ .rodata.StoreCfgSave.str1.4
+                0x0000000000014a84       0x24 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_store.o
+                                         0x5f (size before relaxing)
+ .rodata.str1.4
+                0x0000000000014aa8       0x1d build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_store.o
+                                         0x29 (size before relaxing)
+ *fill*         0x0000000000014ac5        0x3 
+ .rodata.LoadSystemInfo.str1.4
+                0x0000000000014ac8       0x29 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_system.o
+                                        0x104 (size before relaxing)
+ *fill*         0x0000000000014af1        0x3 
+ .rodata.SystemCfgLoad.str1.4
+                0x0000000000014af4       0x81 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_system.o
+                                         0xb1 (size before relaxing)
+ *fill*         0x0000000000014b75        0x3 
+ .rodata.SystemCfgPrint.str1.4
+                0x0000000000014b78       0x87 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_system.o
+ *fill*         0x0000000000014bff        0x1 
+ .rodata.SystemCfgSave.str1.4
+                0x0000000000014c00       0x44 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_system.o
+                                         0x86 (size before relaxing)
+ .rodata.loadSpecialInfo.str1.4
+                0x0000000000014c44       0x4e build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_system.o
+ *fill*         0x0000000000014c92        0x2 
+ .rodata.str1.4
+                0x0000000000014c94      0x210 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_system.o
+                                        0x234 (size before relaxing)
+ .rodata.ChannelCfgTest.str1.4
+                0x0000000000014ea4       0x11 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_test.o
+ *fill*         0x0000000000014eb5        0x3 
+ .rodata.NetworkCfgTest.str1.4
+                0x0000000000014eb8       0x20 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_test.o
+ .rodata.SystemCfgTest.str1.4
+                0x0000000000014ed8       0x26 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_test.o
+ *fill*         0x0000000000014efe        0x2 
+ .rodata.UserCfgTest.str1.4
+                0x0000000000014f00        0xe build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_test.o
+ *fill*         0x0000000000014f0e        0x2 
+ .rodata.makeArray.str1.4
+                0x0000000000014f10       0x29 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_test.o
+                                         0x2d (size before relaxing)
+ *fill*         0x0000000000014f39        0x3 
+ .rodata.parseArray.str1.4
+                0x0000000000014f3c       0x13 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_test.o
+ .rodata.UserCfgLoad.str1.4
+                0x0000000000014f4f       0xb9 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_user.o
+ *fill*         0x0000000000014f4f        0x1 
+ .rodata.UserCfgLoadJson.str1.4
+                0x0000000000014f50       0x3e build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_user.o
+                                         0x5e (size before relaxing)
+ *fill*         0x0000000000014f8e        0x2 
+ .rodata.UserCfgPrint.str1.4
+                0x0000000000014f90       0x7d build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_user.o
+ *fill*         0x000000000001500d        0x3 
+ .rodata.UserCfgSave.str1.4
+                0x0000000000015010       0x27 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_user.o
+                                         0x6a (size before relaxing)
+ *fill*         0x0000000000015037        0x1 
+ .rodata.str1.4
+                0x0000000000015038        0xa build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_user.o
+                                         0x12 (size before relaxing)
+ *fill*         0x0000000000015042        0x2 
+ .rodata.VideoCfgLoad.str1.4
+                0x0000000000015044       0x87 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_video.o
+                                        0x1b9 (size before relaxing)
+ *fill*         0x00000000000150cb        0x1 
+ .rodata.VideoCfgPrint.str1.4
+                0x00000000000150cc      0x187 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_video.o
+ *fill*         0x0000000000015253        0x1 
+ .rodata.VideoCfgSave.str1.4
+                0x0000000000015254       0x2f build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_video.o
+                                         0x72 (size before relaxing)
+ *fill*         0x0000000000015283        0x1 
+ .rodata.str1.4
+                0x0000000000015284       0xb6 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_video.o
+                                         0xea (size before relaxing)
+ *fill*         0x000000000001533a        0x2 
+ .rodata.videoCfgLoadStreamJson.str1.4
+                0x000000000001533c       0x10 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_video.o
+                                         0x13 (size before relaxing)
+
+.rodata1
+ *(.rodata1)
+
+.ARM.extab
+ *(.ARM.extab* .gnu.linkonce.armextab.*)
+                [!provide]                        PROVIDE (__exidx_start, .)
+
+.ARM.exidx
+ *(.ARM.exidx* .gnu.linkonce.armexidx.*)
+                [!provide]                        PROVIDE (__exidx_end, .)
+
+.eh_frame_hdr
+ *(.eh_frame_hdr)
+ *(.eh_frame_entry .eh_frame_entry.*)
+
+.eh_frame       0x000000000001534c        0x4
+ *(.eh_frame)
+ .eh_frame      0x000000000001534c        0x0 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../lib/gcc/arm-linux-uclibceabi/6.3.0/a7_softfp_neon-vfpv4/crtbeginS.o
+ .eh_frame      0x000000000001534c        0x4 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../lib/gcc/arm-linux-uclibceabi/6.3.0/a7_softfp_neon-vfpv4/crtendS.o
+ *(.eh_frame.*)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.gnu_extab
+ *(.gnu_extab*)
+
+.exception_ranges
+ *(.exception_ranges .exception_ranges*)
+                0x0000000000025f24                . = DATA_SEGMENT_ALIGN (CONSTANT (MAXPAGESIZE), CONSTANT (COMMONPAGESIZE))
+
+.eh_frame
+ *(.eh_frame)
+ *(.eh_frame.*)
+
+.gnu_extab
+ *(.gnu_extab)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.exception_ranges
+ *(.exception_ranges .exception_ranges*)
+
+.tdata
+ *(.tdata .tdata.* .gnu.linkonce.td.*)
+
+.tbss
+ *(.tbss .tbss.* .gnu.linkonce.tb.*)
+ *(.tcommon)
+
+.preinit_array
+ *(.preinit_array)
+
+.init_array     0x0000000000025f24        0x4
+ *(SORT(.init_array.*) SORT(.ctors.*))
+ *(.init_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .ctors)
+ .init_array    0x0000000000025f24        0x4 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../lib/gcc/arm-linux-uclibceabi/6.3.0/a7_softfp_neon-vfpv4/crtbeginS.o
+
+.fini_array     0x0000000000025f28        0x4
+ *(SORT(.fini_array.*) SORT(.dtors.*))
+ *(.fini_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .dtors)
+ .fini_array    0x0000000000025f28        0x4 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../lib/gcc/arm-linux-uclibceabi/6.3.0/a7_softfp_neon-vfpv4/crtbeginS.o
+
+.ctors
+ *crtbegin.o(.ctors)
+ *crtbegin?.o(.ctors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .ctors)
+ *(SORT(.ctors.*))
+ *(.ctors)
+
+.dtors
+ *crtbegin.o(.dtors)
+ *crtbegin?.o(.dtors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .dtors)
+ *(SORT(.dtors.*))
+ *(.dtors)
+
+.jcr            0x0000000000025f2c        0x4
+ *(.jcr)
+ .jcr           0x0000000000025f2c        0x0 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../lib/gcc/arm-linux-uclibceabi/6.3.0/a7_softfp_neon-vfpv4/crtbeginS.o
+ .jcr           0x0000000000025f2c        0x4 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../lib/gcc/arm-linux-uclibceabi/6.3.0/a7_softfp_neon-vfpv4/crtendS.o
+
+.data.rel.ro    0x0000000000025f30        0x0
+ *(.data.rel.ro.local* .gnu.linkonce.d.rel.ro.local.*)
+ *(.data.rel.ro .data.rel.ro.* .gnu.linkonce.d.rel.ro.*)
+ .data.rel.ro   0x0000000000025f30        0x0 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crti.o
+
+.dynamic        0x0000000000025f30       0xd0
+ *(.dynamic)
+ .dynamic       0x0000000000025f30       0xd0 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crti.o
+                0x0000000000025f30                _DYNAMIC
+                0x0000000000026000                . = DATA_SEGMENT_RELRO_END (., 0x0)
+
+.got            0x0000000000026000      0x3a0
+ *(.got.plt)
+ .got.plt       0x0000000000026000      0x284 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crti.o
+                0x0000000000026000                _GLOBAL_OFFSET_TABLE_
+ *(.igot.plt)
+ .igot.plt      0x0000000000026284        0x0 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crti.o
+ *(.got)
+ .got           0x0000000000026284      0x11c /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crti.o
+ *(.igot)
+
+.data           0x00000000000263a0     0x8b78
+                [!provide]                        PROVIDE (__data_start, .)
+ *(.data .data.* .gnu.linkonce.d.*)
+ .data          0x00000000000263a0        0x0 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crti.o
+ .data          0x00000000000263a0        0x0 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../lib/gcc/arm-linux-uclibceabi/6.3.0/a7_softfp_neon-vfpv4/crtbeginS.o
+ .data.rel.local
+                0x00000000000263a0        0x4 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../lib/gcc/arm-linux-uclibceabi/6.3.0/a7_softfp_neon-vfpv4/crtbeginS.o
+                0x00000000000263a0                __dso_handle
+ .data          0x00000000000263a4        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_alarm.o
+ *fill*         0x00000000000263a4        0x4 
+ .data.rel.alarmCfgMap
+                0x00000000000263a8      0x240 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_alarm.o
+                0x00000000000263a8                alarmCfgMap
+ .data.rel.alarmInMap
+                0x00000000000265e8      0x210 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_alarm.o
+                0x00000000000265e8                alarmInMap
+ .data.rel.alarmMojingMap
+                0x00000000000267f8      0x360 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_alarm.o
+                0x00000000000267f8                alarmMojingMap
+ .data.rel.alarmOutMap
+                0x0000000000026b58      0x180 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_alarm.o
+                0x0000000000026b58                alarmOutMap
+ .data          0x0000000000026cd8        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_all.o
+ .data          0x0000000000026cd8        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_audio.o
+ .data.rel.audioMap
+                0x0000000000026cd8      0x210 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_audio.o
+                0x0000000000026cd8                audioMap
+ .data          0x0000000000026ee8        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_channel.o
+ .data.rel.osdMap
+                0x0000000000026ee8      0xcc0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_channel.o
+                0x0000000000026ee8                osdMap
+ .data.rel.shelterRectMap
+                0x0000000000027ba8      0x540 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_channel.o
+                0x0000000000027ba8                shelterRectMap
+ .data          0x00000000000280e8        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_common.o
+ .data          0x00000000000280e8        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_gb28181.o
+ .data.rel.gb28181Map
+                0x00000000000280e8      0x270 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_gb28181.o
+                0x00000000000280e8                gb28181Map
+ .data          0x0000000000028358        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_image.o
+ .data.rel.imageMap
+                0x0000000000028358      0x510 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_image.o
+                0x0000000000028358                imageMap
+ .data          0x0000000000028868        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_md.o
+ .data.rel.mdMap
+                0x0000000000028868     0x2580 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_md.o
+                0x0000000000028868                mdMap
+ .data          0x000000000002ade8        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_network.o
+ .data.rel.emailMap
+                0x000000000002ade8      0x450 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_network.o
+                0x000000000002ade8                emailMap
+ .data.rel.ftpMap
+                0x000000000002b238      0x1b0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_network.o
+                0x000000000002b238                ftpMap
+ .data.rel.lanMap
+                0x000000000002b3e8      0x2d0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_network.o
+                0x000000000002b3e8                lanMap
+ .data.rel.portMap
+                0x000000000002b6b8       0x90 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_network.o
+                0x000000000002b6b8                portMap
+ .data.rel.wifiLinkMap
+                0x000000000002b748       0xc0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_network.o
+                0x000000000002b748                wifiLinkMap
+ .data.rel.wifiMap
+                0x000000000002b808      0x2a0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_network.o
+                0x000000000002b808                wifiMap
+ .data.rel.wirelessMap
+                0x000000000002baa8       0xf0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_network.o
+                0x000000000002baa8                wirelessMap
+ .data          0x000000000002bb98        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_p2p.o
+ .data.defP2PCfg
+                0x000000000002bb98      0x16c build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_p2p.o
+ .data          0x000000000002bd04        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_ptz.o
+ *fill*         0x000000000002bd04        0x4 
+ .data.rel.ptzMap
+                0x000000000002bd08      0x3c0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_ptz.o
+                0x000000000002bd08                ptzMap
+ .data          0x000000000002c0c8        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_pwm.o
+ .data.rel.pwmAlMap
+                0x000000000002c0c8      0x4b0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_pwm.o
+                0x000000000002c0c8                pwmAlMap
+ .data.rel.pwmMap
+                0x000000000002c578       0xf0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_pwm.o
+                0x000000000002c578                pwmMap
+ .data          0x000000000002c668        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_record.o
+ .data.rel.recordMap
+                0x000000000002c668      0x390 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_record.o
+                0x000000000002c668                recordMap
+ .data          0x000000000002c9f8        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_sdk.o
+ .data          0x000000000002c9f8        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_snap.o
+ .data.rel.snapEventMap
+                0x000000000002c9f8      0x1b0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_snap.o
+                0x000000000002c9f8                snapEventMap
+ .data.rel.snapTimerMap
+                0x000000000002cba8      0x1e0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_snap.o
+                0x000000000002cba8                snapTimerMap
+ .data          0x000000000002cd88        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_store.o
+ .data.rel.storeMap
+                0x000000000002cd88       0xc0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_store.o
+                0x000000000002cd88                storeMap
+ .data          0x000000000002ce48        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_system.o
+ .data.rel.deviceInfoMap
+                0x000000000002ce48      0x390 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_system.o
+                0x000000000002ce48                deviceInfoMap
+ .data.rel.maintainCfgMap
+                0x000000000002d1d8      0x150 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_system.o
+                0x000000000002d1d8                maintainCfgMap
+ .data.rel.netDstCfgCfgMap
+                0x000000000002d328       0xf0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_system.o
+                0x000000000002d328                netDstCfgCfgMap
+ .data.rel.ntpCfgMap
+                0x000000000002d418       0xf0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_system.o
+                0x000000000002d418                ntpCfgMap
+ .data.rel.systemInfoMap
+                0x000000000002d508      0x180 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_system.o
+                0x000000000002d508                systemInfoMap
+ .data.rel.timezoneCfgMap
+                0x000000000002d688       0x90 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_system.o
+                0x000000000002d688                timezoneCfgMap
+ .data          0x000000000002d718        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_test.o
+ .data          0x000000000002d718        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_user.o
+ .data.rel.adminMap
+                0x000000000002d718      0x120 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_user.o
+ .data          0x000000000002d838        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_video.o
+ .data.rel.viMap
+                0x000000000002d838      0x2a0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_video.o
+ .data.rel.videoMap
+                0x000000000002dad8     0x12c0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_video.o
+                0x000000000002dad8                videoMap
+ .data.rel.voutMap
+                0x000000000002ed98      0x180 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_video.o
+ .data          0x000000000002ef18        0x0 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../lib/gcc/arm-linux-uclibceabi/6.3.0/a7_softfp_neon-vfpv4/crtendS.o
+ .data          0x000000000002ef18        0x0 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crtn.o
+
+.tm_clone_table
+                0x000000000002ef18        0x0
+ .tm_clone_table
+                0x000000000002ef18        0x0 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../lib/gcc/arm-linux-uclibceabi/6.3.0/a7_softfp_neon-vfpv4/crtbeginS.o
+ .tm_clone_table
+                0x000000000002ef18        0x0 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../lib/gcc/arm-linux-uclibceabi/6.3.0/a7_softfp_neon-vfpv4/crtendS.o
+
+.data1
+ *(.data1)
+                [!provide]                        PROVIDE (_edata, .)
+                [!provide]                        PROVIDE (edata, .)
+                0x000000000002ef18                . = .
+                [!provide]                        PROVIDE (__bss_start, .)
+                [!provide]                        PROVIDE (__bss_start__, .)
+
+.bss            0x000000000002ef18     0x9e3c
+ *(.dynbss)
+ .dynbss        0x000000000002ef18        0x0 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crti.o
+ *(.bss .bss.* .gnu.linkonce.b.*)
+ .bss           0x000000000002ef18        0x0 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crti.o
+ .bss           0x000000000002ef18       0x1c /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../lib/gcc/arm-linux-uclibceabi/6.3.0/a7_softfp_neon-vfpv4/crtbeginS.o
+ .bss           0x000000000002ef34        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_alarm.o
+ .bss           0x000000000002ef34        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_all.o
+ .bss.cfg_list  0x000000000002ef34        0x4 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_all.o
+ .bss           0x000000000002ef38        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_audio.o
+ .bss           0x000000000002ef38        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_channel.o
+ .bss           0x000000000002ef38        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_common.o
+ .bss.g_cfg_write_mutex
+                0x000000000002ef38       0x18 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_common.o
+                0x000000000002ef38                g_cfg_write_mutex
+ .bss           0x000000000002ef50        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_gb28181.o
+ .bss           0x000000000002ef50        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_image.o
+ .bss           0x000000000002ef50        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_md.o
+ .bss           0x000000000002ef50        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_network.o
+ .bss           0x000000000002ef50        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_p2p.o
+ .bss           0x000000000002ef50        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_ptz.o
+ .bss           0x000000000002ef50        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_pwm.o
+ .bss           0x000000000002ef50        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_record.o
+ .bss           0x000000000002ef50        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_sdk.o
+ .bss           0x000000000002ef50        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_snap.o
+ .bss           0x000000000002ef50        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_store.o
+ .bss           0x000000000002ef50        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_system.o
+ .bss           0x000000000002ef50        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_test.o
+ .bss           0x000000000002ef50        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_user.o
+ .bss           0x000000000002ef50        0x0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_video.o
+ .bss           0x000000000002ef50        0x0 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../lib/gcc/arm-linux-uclibceabi/6.3.0/a7_softfp_neon-vfpv4/crtendS.o
+ .bss           0x000000000002ef50        0x0 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crtn.o
+ *(COMMON)
+ COMMON         0x000000000002ef50      0xc78 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_alarm.o
+                0x000000000002ef50                runAlarmCfg
+ COMMON         0x000000000002fbc8       0x18 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_all.o
+                0x000000000002fbc8                g_cfg_wr_mutex
+ COMMON         0x000000000002fbe0       0x24 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_audio.o
+                0x000000000002fbe0                runAudioCfg
+ COMMON         0x000000000002fc04      0x520 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_channel.o
+                0x000000000002fc04                runChannelCfg
+ COMMON         0x0000000000030124      0x148 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_gb28181.o
+                0x0000000000030124                runGB28181Cfg
+ COMMON         0x000000000003026c       0x2c build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_image.o
+                0x000000000003026c                runImageCfg
+ COMMON         0x0000000000030298     0x1874 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_md.o
+                0x0000000000030298                runMdCfg
+ COMMON         0x0000000000031b0c     0x113c build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_network.o
+                0x0000000000031b0c                runNetworkCfg
+ COMMON         0x0000000000032c48      0x16c build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_p2p.o
+                0x0000000000032c48                runP2PCfg
+ COMMON         0x0000000000032db4     0x46b4 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_ptz.o
+                0x0000000000032db4                runPtzCfg
+                0x0000000000032dd0                runPtzDecCfg
+                0x0000000000032e0c                runPresetCfg
+                0x00000000000371cc                runCruiseCfg
+ COMMON         0x0000000000037468       0x44 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_pwm.o
+                0x0000000000037468                runpwmCfg
+ COMMON         0x00000000000374ac      0x938 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_record.o
+                0x00000000000374ac                runRecordCfg
+ COMMON         0x0000000000037de4       0xe4 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_sdk.o
+                0x0000000000037de4                sdk_cfg
+ COMMON         0x0000000000037ec8      0x200 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_snap.o
+                0x0000000000037ec8                runSnapCfg
+ COMMON         0x00000000000380c8        0xc build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_store.o
+                0x00000000000380c8                runStoreCfg
+ COMMON         0x00000000000380d4      0x470 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_system.o
+                0x00000000000380d4                runSystemCfg
+                0x0000000000038464                g_systemInfo
+ COMMON         0x0000000000038544      0x460 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_user.o
+                0x0000000000038544                runUserCfg
+ COMMON         0x00000000000389a4      0x3b0 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_video.o
+                0x00000000000389a4                runVideoCfg
+                0x0000000000038d54                . = ALIGN ((. != 0x0)?0x4:0x1)
+                [!provide]                        PROVIDE (_bss_end__, .)
+                [!provide]                        PROVIDE (__bss_end__, .)
+                0x0000000000038d54                . = ALIGN (0x4)
+                0x0000000000038d54                . = SEGMENT_START ("ldata-segment", .)
+                0x0000000000038d54                . = ALIGN (0x4)
+                [!provide]                        PROVIDE (__end__, .)
+                [!provide]                        PROVIDE (_end, .)
+                [!provide]                        PROVIDE (end, .)
+                0x0000000000038d54                . = DATA_SEGMENT_END (.)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment        0x0000000000000000       0x3f
+ *(.comment)
+ .comment       0x0000000000000000       0x2e /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crti.o
+                                         0x2f (size before relaxing)
+ .comment       0x000000000000002e       0x11 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../lib/gcc/arm-linux-uclibceabi/6.3.0/a7_softfp_neon-vfpv4/crtbeginS.o
+                                         0x12 (size before relaxing)
+ .comment       0x000000000000003f       0x12 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_alarm.o
+ .comment       0x000000000000003f       0x12 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_all.o
+ .comment       0x000000000000003f       0x12 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_audio.o
+ .comment       0x000000000000003f       0x12 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_channel.o
+ .comment       0x000000000000003f       0x12 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_common.o
+ .comment       0x000000000000003f       0x12 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_gb28181.o
+ .comment       0x000000000000003f       0x12 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_image.o
+ .comment       0x000000000000003f       0x12 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_md.o
+ .comment       0x000000000000003f       0x12 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_network.o
+ .comment       0x000000000000003f       0x12 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_p2p.o
+ .comment       0x000000000000003f       0x12 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_ptz.o
+ .comment       0x000000000000003f       0x12 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_pwm.o
+ .comment       0x000000000000003f       0x12 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_record.o
+ .comment       0x000000000000003f       0x12 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_sdk.o
+ .comment       0x000000000000003f       0x12 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_snap.o
+ .comment       0x000000000000003f       0x12 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_store.o
+ .comment       0x000000000000003f       0x12 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_system.o
+ .comment       0x000000000000003f       0x12 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_test.o
+ .comment       0x000000000000003f       0x12 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_user.o
+ .comment       0x000000000000003f       0x12 build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_video.o
+ .comment       0x000000000000003f       0x12 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../lib/gcc/arm-linux-uclibceabi/6.3.0/a7_softfp_neon-vfpv4/crtendS.o
+ .comment       0x000000000000003f       0x2f /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crtn.o
+
+.ARM.attributes
+                0x0000000000000000       0x3b
+ .ARM.attributes
+                0x0000000000000000       0x2d /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crti.o
+ .ARM.attributes
+                0x000000000000002d       0x3f /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../lib/gcc/arm-linux-uclibceabi/6.3.0/a7_softfp_neon-vfpv4/crtbeginS.o
+ .ARM.attributes
+                0x000000000000006c       0x3f build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_alarm.o
+ .ARM.attributes
+                0x00000000000000ab       0x3f build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_all.o
+ .ARM.attributes
+                0x00000000000000ea       0x3f build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_audio.o
+ .ARM.attributes
+                0x0000000000000129       0x3f build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_channel.o
+ .ARM.attributes
+                0x0000000000000168       0x3f build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_common.o
+ .ARM.attributes
+                0x00000000000001a7       0x3f build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_gb28181.o
+ .ARM.attributes
+                0x00000000000001e6       0x3f build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_image.o
+ .ARM.attributes
+                0x0000000000000225       0x3f build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_md.o
+ .ARM.attributes
+                0x0000000000000264       0x3f build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_network.o
+ .ARM.attributes
+                0x00000000000002a3       0x3f build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_p2p.o
+ .ARM.attributes
+                0x00000000000002e2       0x3f build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_ptz.o
+ .ARM.attributes
+                0x0000000000000321       0x3f build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_pwm.o
+ .ARM.attributes
+                0x0000000000000360       0x3f build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_record.o
+ .ARM.attributes
+                0x000000000000039f       0x3f build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_sdk.o
+ .ARM.attributes
+                0x00000000000003de       0x3f build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_snap.o
+ .ARM.attributes
+                0x000000000000041d       0x3f build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_store.o
+ .ARM.attributes
+                0x000000000000045c       0x3f build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_system.o
+ .ARM.attributes
+                0x000000000000049b       0x3f build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_test.o
+ .ARM.attributes
+                0x00000000000004da       0x3f build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_user.o
+ .ARM.attributes
+                0x0000000000000519       0x3f build/armA7-gcc-uClibc-linux-gk7605v100/obj/./cfg_video.o
+ .ARM.attributes
+                0x0000000000000558       0x3f /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../lib/gcc/arm-linux-uclibceabi/6.3.0/a7_softfp_neon-vfpv4/crtendS.o
+ .ARM.attributes
+                0x0000000000000597       0x2d /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crtn.o
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x0000000000000000       0x50
+ *(.debug_aranges)
+ .debug_aranges
+                0x0000000000000000       0x28 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crti.o
+ .debug_aranges
+                0x0000000000000028       0x28 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crtn.o
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info     0x0000000000000000       0x44
+ *(.debug_info .gnu.linkonce.wi.*)
+ .debug_info    0x0000000000000000       0x22 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crti.o
+ .debug_info    0x0000000000000022       0x22 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crtn.o
+
+.debug_abbrev   0x0000000000000000       0x24
+ *(.debug_abbrev)
+ .debug_abbrev  0x0000000000000000       0x12 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crti.o
+ .debug_abbrev  0x0000000000000012       0x12 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crtn.o
+
+.debug_line     0x0000000000000000       0xbc
+ *(.debug_line .debug_line.* .debug_line_end)
+ .debug_line    0x0000000000000000       0x60 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crti.o
+ .debug_line    0x0000000000000060       0x5c /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crtn.o
+
+.debug_frame
+ *(.debug_frame)
+
+.debug_str      0x0000000000000000       0xca
+ *(.debug_str)
+ .debug_str     0x0000000000000000       0xac /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crti.o
+ .debug_str     0x00000000000000ac       0x1e /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crtn.o
+                                         0xac (size before relaxing)
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges   0x0000000000000000       0x40
+ *(.debug_ranges)
+ .debug_ranges  0x0000000000000000       0x20 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crti.o
+ .debug_ranges  0x0000000000000020       0x20 /home/wanghs/work/goke-sdk-master/GKIPCLinuxV100R001C00SPC030/tools/toolchains/arm-gcc6.3-linux-uclibceabi/host_bin/../target/usr/lib/a7_softfp_neon-vfpv4/crtn.o
+
+.debug_macro
+ *(.debug_macro)
+
+.debug_addr
+ *(.debug_addr)
+
+.gnu.attributes
+ *(.gnu.attributes)
+
+.note.gnu.arm.ident
+ *(.note.gnu.arm.ident)
+
+/DISCARD/
+ *(.note.GNU-stack)
+ *(.gnu_debuglink)
+ *(.gnu.lto_*)
+OUTPUT(build/armA7-gcc-uClibc-linux-gk7605v100/lib/libapp_cfg.so elf32-littlearm)

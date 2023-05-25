@@ -132,3 +132,4 @@ subsystem/zlib/build/arm11-gcc-uClibc-linux-gk7605v100/obj/
 app/netcam/build/arm11-gcc-uClibc-linux-gk7605v100/bin/netcam
 app/netcam/build/arm11-gcc-uClibc-linux-gk7605v100/lib/libmain.a
 app/netcam/src/http_client/lib/uClibc/libhttp_client.a
+app/netcam/src/gk_cms/build/

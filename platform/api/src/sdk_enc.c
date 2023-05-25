@@ -364,7 +364,7 @@ int sdk_enc_destroy()
 //*****************************************************************************
 //*****************************************************************************
 
-// ´´½¨Ò»Â·±àÂë£¬Ö»ÔÚ³õÊ¼»¯Ê±¶ÁÓÃÒ»´Î
+// ï¿½ï¿½ï¿½ï¿½Ò»Â·ï¿½ï¿½ï¿½ë£¬Ö»ï¿½Ú³ï¿½Ê¼ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½
 int sdk_enc_create_stream_h264(int vin, int stream, PS_GK_ENC_STREAM_H264_ATTR h264_attr, ST_VENC_H264QP_CONF *qp_attr)
 {
     goke_encode_stream_params* streamPar;
@@ -390,7 +390,7 @@ int sdk_enc_create_stream_h264(int vin, int stream, PS_GK_ENC_STREAM_H264_ATTR h
         LOG_ERR("gk_enc_create_stream_h264: stream(id=%d) has been set.", stream);
         return -1;
     }
-    //gadi_sys_memcpy(&streamPar->h264Attr, h264_attr, sizeof(ST_GK_ENC_STREAM_H264_ATTR));	xqq
+    memcpy(&streamPar->h264Attr, h264_attr, sizeof(ST_GK_ENC_STREAM_H264_ATTR));	
     /*set default value.*/
     streamPar->dptz = 0;
     streamPar->streamFormat.streamId = stream;
@@ -464,7 +464,7 @@ int sdk_enc_create_stream_h264(int vin, int stream, PS_GK_ENC_STREAM_H264_ATTR h
     streamPar->h264QpConf.qpMaxOnP = qp_attr->qpMaxOnP;
     streamPar->h264QpConf.qpIWeight = qp_attr->qpIWeight;
     streamPar->h264QpConf.qpPWeight = qp_attr->qpPWeight;
-    streamPar->h264QpConf.adaptQp = qp_attr->adaptQp;
+    streamPar->h264QpConf.adaptQp = qp_attr->adaptQp; 
 
     LOG_INFO("stream:%d, encodeType:%d, %dX%d\n", streamPar->streamFormat.streamId, streamPar->streamFormat.encodeType, 
     streamPar->streamFormat.width, streamPar->streamFormat.height);
@@ -472,7 +472,7 @@ int sdk_enc_create_stream_h264(int vin, int stream, PS_GK_ENC_STREAM_H264_ATTR h
     return 0;
 }
 
-// ¹Ø±ÕÒ»Â·±àÂë£¬Ö»ÔÚ³õÊ¼»¯Ê±¶ÁÓÃÒ»´Î
+// ï¿½Ø±ï¿½Ò»Â·ï¿½ï¿½ï¿½ë£¬Ö»ï¿½Ú³ï¿½Ê¼ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½
 int sdk_enc_release_stream_h264(int vin, int stream)
 {
     goke_encode_stream_params* streamPar;
@@ -504,7 +504,7 @@ int sdk_enc_release_stream_h264(int vin, int stream)
     return 0;
 
 }
-// Ê¹ÄÜÃ¿Â·±àÂë£¬Ö»ÔÚ³õÊ¼»¯Ê±¶ÁÓÃÒ»´Î
+// Ê¹ï¿½ï¿½Ã¿Â·ï¿½ï¿½ï¿½ë£¬Ö»ï¿½Ú³ï¿½Ê¼ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½
 int sdk_enc_enable_stream_h264(int vin, int stream, int flag)
 {
     static unsigned char setupCnt = 0;//workaround
@@ -520,7 +520,7 @@ int sdk_enc_enable_stream_h264(int vin, int stream, int flag)
     }
 
     streamsPar[stream].enFlag = flag;
-
+#if 0
     if(flag)
     {
         LOG_INFO("start stream[%d], stream num[%d]\n",stream, gk_get_max_stream_nums());
@@ -564,7 +564,7 @@ int sdk_enc_enable_stream_h264(int vin, int stream, int flag)
                     startStreamNum ++;
                 }
 
-                //Ò»Ö±¿ªÆômjegµÄÄÇÒ»Â·±àÂë£¬Í¬Ê±×¥ÅÄµÄÊ±ºò²»Í£±àÂë£¬·ÀÖ¹osd³ö´í
+                //Ò»Ö±ï¿½ï¿½ï¿½ï¿½mjegï¿½ï¿½ï¿½ï¿½Ò»Â·ï¿½ï¿½ï¿½ë£¬Í¬Ê±×¥ï¿½Äµï¿½Ê±ï¿½ï¿½Í£ï¿½ï¿½ï¿½ë£¬ï¿½ï¿½Ö¹osdï¿½ï¿½ï¿½ï¿½
                 #if 0
                 if((encodeType == 2) )
                 {
@@ -594,11 +594,11 @@ int sdk_enc_enable_stream_h264(int vin, int stream, int flag)
         }
 #endif		//xqq
     }
-
+#endif  //xqq
     return 0;
 }
 
-// ¶¯Ì¬ĞŞ¸ÄH264±àÂë²ÎÊı
+// ï¿½ï¿½Ì¬ï¿½Ş¸ï¿½H264ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 int sdk_enc_set_stream_h264(int vin, int stream, PS_GK_ENC_STREAM_H264_ATTR h264_attr)
 {
     goke_encode_stream_params* streamPar;
@@ -606,7 +606,7 @@ int sdk_enc_set_stream_h264(int vin, int stream, PS_GK_ENC_STREAM_H264_ATTR h264
     GADI_VENC_FrameRateT stFrameRate;
     int chage_fps = 0;
     int bpsLimit;
-    /*¸Ã±êÖ¾¾ö¶¨ÊÇ·ñĞèÒªÖØÆô±àÂëÆ÷£¬Ò»°ãÖ»ÔÚÉèÖÃ·Ö±æÂÊÊ±£¬ĞèÒªÖØÆô±àÂë£¬ÉèÖÃÂëÂÊ£¬fps¶¼²»ĞèÒªÖØÆô±àÂë*/
+    /*ï¿½Ã±ï¿½Ö¾ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ö»ï¿½ï¿½ï¿½ï¿½ï¿½Ã·Ö±ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê£ï¿½fpsï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
     //bool resetH264Flag = false;
 
     /*check input parameters.*/
@@ -683,10 +683,10 @@ int sdk_enc_set_stream_h264(int vin, int stream, PS_GK_ENC_STREAM_H264_ATTR h264
         streamPar->streamFormat.stAttrH264.vbrMaxbps = stBitRate.vbrMaxbps;
 
         #if 0
-        //Bruce ÁíÍâ¿ªÒ»¸öº¯Êı
-        /* ÉèÖÃ±ÈÌØÂÊÊµ¼ÊÊÇĞŞ¸ÄQPÖµµÃ×î´ó×îĞ¡Öµ
-                    ÕâÊ±ºòIÖ¡¿ÉÄÜÌØ±ğ´ó£¬ËùÎªÁËÆ½¾ùĞŞ¸ÄIÖ¡ºÍPÖ¡
-                    µÄÈ¨ÖØ*/
+        //Bruce ï¿½ï¿½ï¿½â¿ªÒ»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        /* ï¿½ï¿½ï¿½Ã±ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½Ş¸ï¿½QPÖµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğ¡Öµ
+                    ï¿½ï¿½Ê±ï¿½ï¿½IÖ¡ï¿½ï¿½ï¿½ï¿½ï¿½Ø±ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½Æ½ï¿½ï¿½ï¿½Ş¸ï¿½IÖ¡ï¿½ï¿½PÖ¡
+                    ï¿½ï¿½È¨ï¿½ï¿½*/
         GADI_VENC_H264QpConfigT qp_cfg = {0};
         qp_cfg.streamId = stream;
         if (gadi_venc_get_h264_qp_config(vencHandle, &qp_cfg) < 0)
@@ -796,7 +796,7 @@ int sdk_enc_set_stream_h264(int vin, int stream, PS_GK_ENC_STREAM_H264_ATTR h264
 }
 
 
-/*»ñÈ¡±àÂëÆ÷Ç¿ÖÆ²ÎÊı*/
+/*ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç¿ï¿½Æ²ï¿½ï¿½ï¿½*/
 int sdk_enc_get_stream_h264(int vin, int stream, PS_GK_ENC_STREAM_H264_ATTR h264_attr)
 {
     goke_encode_stream_params* streamPar;
@@ -817,14 +817,14 @@ int sdk_enc_get_stream_h264(int vin, int stream, PS_GK_ENC_STREAM_H264_ATTR h264
         LOG_ERR("gk_enc_get_stream_h264: stream(id=%d) has not been set.",
                  stream);
         return -1;
-    }
+    }   
 
-    //gadi_sys_memcpy(h264_attr, &streamPar->h264Attr, sizeof(ST_GK_ENC_STREAM_H264_ATTR));	xqq
+    memcpy(h264_attr, &streamPar->h264Attr, sizeof(ST_GK_ENC_STREAM_H264_ATTR));
 
     return 0;
 }
 
-/*ÈÃ±àÂëÆ÷Ç¿ÖÆ²úÉúÒ»¸öIÖ¡*/
+/*ï¿½Ã±ï¿½ï¿½ï¿½ï¿½ï¿½Ç¿ï¿½Æ²ï¿½ï¿½ï¿½Ò»ï¿½ï¿½IÖ¡*/
 int sdk_enc_request_stream_h264_keyframe(int vin, int stream)
 {
 	GADI_ERR  ret;
@@ -842,8 +842,8 @@ int sdk_enc_request_stream_h264_keyframe(int vin, int stream)
 
 }
 
-/*¿ªÊ¼ÒôÊÓÆµÁ÷µÄ¶ÁÈ¡Ïß³Ì*/
-/* ÒôÆµºÍÊÓÆµ·ÖÀë£¬ÒòÎªÏû»ØÒôËã·¨ÖĞÒôÆµ°üºÜÆµ·±£¬ËùÒÔ2¸öÏß³ÌÒª·Ö¿ª */
+/*ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½Æµï¿½ï¿½ï¿½Ä¶ï¿½È¡ï¿½ß³ï¿½*/
+/* ï¿½ï¿½Æµï¿½ï¿½ï¿½ï¿½Æµï¿½ï¿½ï¿½ë£¬ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ã·¨ï¿½ï¿½ï¿½ï¿½Æµï¿½ï¿½ï¿½ï¿½Æµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½2ï¿½ï¿½ï¿½ß³ï¿½Òªï¿½Ö¿ï¿½ */
 int sdk_video_enc_start(void)
 {
 	int ret = 0;
@@ -858,7 +858,7 @@ int sdk_video_enc_start(void)
 	return 0;
 }
 
-/*Í£Ö¹ÒôÊÓÆµÁ÷µÄ¶ÁÈ¡Ïß³Ì*/
+/*Í£Ö¹ï¿½ï¿½ï¿½ï¿½Æµï¿½ï¿½ï¿½Ä¶ï¿½È¡ï¿½ß³ï¿½*/
 int sdk_video_enc_stop(void)
 {
     streamReadVideoFlag = false;
@@ -890,7 +890,7 @@ int sdk_audio_enc_stop(void)
 
 
 
-/* ½ØÍ¼¹¦ÄÜ£¬¸ù¾İ´«ÈëµÄ¿í£¬¸ßÀ´¾ö¶¨´Ó×î½Ó½üµÄÍ¨µÀÉÏ»ñÈ¡Êı¾İ£¬Èô¿í£¬¸ß²»Óë±àÂë´óĞ¡Ò»ÖÂ£¬Ôò»á´Ó´óÓÚ¸Ã¸ß¿íµÄ±àÂëÍ¨µÀÉÏ½ØÈ¡²¿·ÖÍ¼Ïñ*/
+/* ï¿½ï¿½Í¼ï¿½ï¿½ï¿½Ü£ï¿½ï¿½ï¿½ï¿½İ´ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½ï¿½Ï»ï¿½È¡ï¿½ï¿½ï¿½İ£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğ¡Ò»ï¿½Â£ï¿½ï¿½ï¿½ï¿½Ó´ï¿½ï¿½Ú¸Ã¸ß¿ï¿½ï¿½Ä±ï¿½ï¿½ï¿½Í¨ï¿½ï¿½ï¿½Ï½ï¿½È¡ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½*/
 int sdk_enc_snapshot(int vin, EM_GK_ENC_SNAPSHOT_QUALITY quality,
                                     ssize_t width, ssize_t height,  GK_ENC_SNAPSHOT_CALLBACK cb)
 {
@@ -1600,7 +1600,7 @@ void print_channels_params(GADI_VPSS_ChannelsParamsT *chansParams)
 }
 
 #if 0
-/* ¸ù¾İ´«ÈëµÄÖ¡ÂÊÖØĞÂ¼ÆËã³öÓ²¼şÖ§³ÖµÄÖ¡ÂÊ*/
+/* ï¿½ï¿½ï¿½İ´ï¿½ï¿½ï¿½ï¿½Ö¡ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½Ó²ï¿½ï¿½Ö§ï¿½Öµï¿½Ö¡ï¿½ï¿½*/
 static int get_actual_framerate(int fps)
 {
     int actualFps;
@@ -1653,7 +1653,7 @@ static int get_actual_framerate(int fps)
 }
 #endif
 
-/*¸üĞÂËùÓĞµÄ±àÂë²ÎÊı*/
+/*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ĞµÄ±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
 static int setup_all_encode_streams(void)
 {
     int retVal;
@@ -1742,7 +1742,7 @@ static int setup_all_encode_streams(void)
     }
 
     
-    //Ä¬ÈÏ3¸öbuffer£¬ÉèÖÃÎª2¸ö
+    //Ä¬ï¿½ï¿½3ï¿½ï¿½bufferï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îª2ï¿½ï¿½
     #ifdef MODULE_SUPPORT_SUB_STREAM_2_BUF
     subBufNum.chanSuaBufNum = 2;
     subBufNum.chanSubBufNum = 2;
@@ -1842,7 +1842,7 @@ static int setup_all_encode_streams(void)
                 {
                     LOG_INFO("re_rec is opened\n");
                     #if 0
-                    //SDK2.0ĞÂÔö¶ş´Î±àÂë¹¦ÄÜ£¬ÏÈ»ñÈ¡ÔÙÉèÖÃ
+                    //SDK2.0ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î±ï¿½ï¿½ë¹¦ï¿½Ü£ï¿½ï¿½È»ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                     GADI_VENC_ReEncConfigT reencConfig;
                     reencConfig.streamId = cnt;
                     if(gadi_venc_get_h264_reenc(vencHandle,&reencConfig) < 0)
@@ -1861,8 +1861,8 @@ static int setup_all_encode_streams(void)
                         return -1;
                     }
 
-                    //bcr, I frame »áºÜ´ó
-                    //sdk2.0ĞÂÔö¹¦ÄÜ£¬IÖ¡´óĞ¡¿ØÖÆ
+                    //bcr, I frame ï¿½ï¿½Ü´ï¿½
+                    //sdk2.0ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü£ï¿½IÖ¡ï¿½ï¿½Ğ¡ï¿½ï¿½ï¿½ï¿½
                     GADI_VENC_IsizeCtlT isizeCtl;
                     isizeCtl.streamId = cnt;
                     if(gadi_venc_get_h264_iframe_size(vencHandle,&isizeCtl) < 0)
@@ -1879,7 +1879,7 @@ static int setup_all_encode_streams(void)
                         return -1;
                     }
 
-                    //sdk2.0ĞÂÔö¹¦ÄÜ£¬bias¿ØÖÆ
+                    //sdk2.0ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü£ï¿½biasï¿½ï¿½ï¿½ï¿½
                     GADI_VENC_BiasConfigT biasConfigPar;
                     biasConfigPar.streamId = cnt;
                     if(gadi_venc_get_h264_bias(vencHandle, &biasConfigPar) < 0)
@@ -1910,7 +1910,7 @@ static int setup_all_encode_streams(void)
     }
     
 
-    /*¿ªÊ¼viÊäÈë*/
+    /*ï¿½ï¿½Ê¼viï¿½ï¿½ï¿½ï¿½*/
 #if 0
     if(gadi_vi_enable(viHandle, 1) < 0)
     {
@@ -1956,7 +1956,7 @@ static int start_all_encode_streams(void)
         }
 
     }
-    // ±àÂë¿ª¹Øºó£¬ĞèÒªÖØÖÃ3A£¬·ñÔò3AÎŞ·¨Õı³£¹¤×÷
+    // ï¿½ï¿½ï¿½ë¿ªï¿½Øºï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½3Aï¿½ï¿½ï¿½ï¿½ï¿½ï¿½3Aï¿½Ş·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     //gadi_isp_reset_3a_static(ispHandle);	xqq
     return retVal;
 
@@ -2305,7 +2305,7 @@ static int read_video_stream(void)
             //printf(".............video encode is ok ..........\n");
         }
 
-	    #if 0 // ¼ì²é1ÃëÄÚÊÇ·ñÓĞ¶ªÖ¡
+	    #if 0 // ï¿½ï¿½ï¿½1ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½Ğ¶ï¿½Ö¡
         static int video_fps= 0, video_count = 0;
         static time_t t1, t2;
         if(0 == stream.stream_id)
@@ -2406,7 +2406,7 @@ static int read_audio_stream()
 		aac_encoding_process(ptrFrame.virAddr, ptrFrame.len);
 
     #if 1
-    /* ÒòÎª160×Ö½ÚÒ»¸öÒôÆµ£¬×öÒ»¸ö´¦Àí£¬ÈÃ2¸ö160×Ö½ÚµÄÒôÆµÖ¡×é³ÉÒ»¸öĞÂµÄ320×Ö½ÚµÄÒôÆµÖ¡ */
+    /* ï¿½ï¿½Îª160ï¿½Ö½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Æµï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½2ï¿½ï¿½160ï¿½Ö½Úµï¿½ï¿½ï¿½ÆµÖ¡ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Âµï¿½320ï¿½Ö½Úµï¿½ï¿½ï¿½ÆµÖ¡ */
     if (abuf == NULL) {
         abuf = malloc(ptrFrame.len * 2);
     }
@@ -2496,7 +2496,7 @@ static void* enc_audio_loop(void* arg)
 		}
     }
 
-    /* ÒòÎª160×Ö½ÚÒ»¸öÒôÆµ£¬×öÒ»¸ö´¦Àí£¬ÈÃ2¸ö160×Ö½ÚµÄÒôÆµÖ¡×é³ÉÒ»¸öĞÂµÄ320×Ö½ÚµÄÒôÆµÖ¡ */
+    /* ï¿½ï¿½Îª160ï¿½Ö½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Æµï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½2ï¿½ï¿½160ï¿½Ö½Úµï¿½ï¿½ï¿½ÆµÖ¡ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Âµï¿½320ï¿½Ö½Úµï¿½ï¿½ï¿½ÆµÖ¡ */
     if (abuf) {
         free(abuf);
         abuf = NULL;
@@ -2505,7 +2505,7 @@ static void* enc_audio_loop(void* arg)
     return NULL;
 }
 
-// type =1 ·µ»ØÏµÍ³ÔËĞĞÃë£¬type=2 ·µ»ØÏµÍ³ÔËĞĞms
+// type =1 ï¿½ï¿½ï¿½ï¿½ÏµÍ³ï¿½ï¿½ï¿½ï¿½ï¿½ë£¬type=2 ï¿½ï¿½ï¿½ï¿½ÏµÍ³ï¿½ï¿½ï¿½ï¿½ms
 static unsigned long get_sys_runtime(int type)
 {
     struct timespec times = {0, 0};

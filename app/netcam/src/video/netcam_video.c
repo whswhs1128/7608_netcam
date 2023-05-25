@@ -51,7 +51,7 @@ static void video_read_stream_callback(int stream, PS_GK_ENC_BUF_ATTR frameBuf)
     header.frame_size = frameBuf->data_sz;
     header.pts = frameBuf->time_us;
 
-    /* ¼ÓÉÏÊ±¼ä£¬CMSÐèÒªÊ±¼ä */
+    /* ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ä£¬CMSï¿½ï¿½ÒªÊ±ï¿½ï¿½ */
     struct timeval tv = {0};
     struct timezone tz = {0};
     gettimeofday(&tv, &tz);
@@ -231,7 +231,7 @@ void netcam_video_init(void)
     }
     #endif
     
-    /* ÉèÖÃ»Øµ÷º¯ÊýÓÃÓÚ»ñÈ¡ÊÓÆµÁ÷ */
+    /* ï¿½ï¿½ï¿½Ã»Øµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú»ï¿½È¡ï¿½ï¿½Æµï¿½ï¿½ */
     sdk_set_get_video_stream_cb(video_read_stream_callback);
 
 	//MEDIABUF_init();
@@ -321,16 +321,16 @@ void netcam_video_init(void)
 		sdk_enc_enable_stream_h264(i, ii, true);
     }
     //netcam_timer_add_task(video_set_pq_bin, NETCAM_TIMER_ONE_SEC, SDK_FALSE, SDK_TRUE);   xqq pq_bin
-    /* ¿ªÆôÏß³Ì£¬»ñÈ¡±àÂë³öÀ´µÄÊÓÆµÁ÷Êý¾Ý */
-	sdk_video_enc_start();
-    printf("sdk_video_enc_start finished.\n");
+    /* ï¿½ï¿½ï¿½ï¿½ï¿½ß³Ì£ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
+	//sdk_video_enc_start();  xqq
+    //printf("sdk_video_enc_start finished.\n");
 
     if (runVideoCfg.vencStream[0].h264Conf.width >= 1440)
     {
         LOG_INFO("enable h26x\n");
         //sdk_set_h26x_smart(1, 4);
     }
-
+#if 0
     if (runAudioCfg.mode > 0) // 0 disable; 1 input; 2- input&output
     {
         #if 0
@@ -339,9 +339,10 @@ void netcam_video_init(void)
         else
             sdk_enc_create_stream_audio(0,  0);
         #endif
-    	//¿ªÆôÒôÆµ»ñÈ¡Ïß³Ì
+    	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æµï¿½ï¿½È¡ï¿½ß³ï¿½
         sdk_audio_enc_start();
     }
+#endif  //xqq
 	netcam_video_web_stream_init(videoPro, vencStream_cnt);
 
 }
@@ -422,7 +423,7 @@ int netcam_video_set(int vin_id, int stream_id ,PS_GK_ENC_STREAM_H264_ATTR h264A
         goto out;
 	}
     #if 0 
-	/*gop×îÐ¡ÎªfpsµÄ2±¶£¬×î´óÎª50*/
+	/*gopï¿½ï¿½Ð¡Îªfpsï¿½ï¿½2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îª50*/
 	if(h264Attr->gop > 50 || h264Attr->gop < 5 || h264Attr->gop < 2*h264Attr->fps)
 		h264Attr->gop = 2*h264Attr->fps;
 	if(h264Attr->gop > 50)
@@ -439,31 +440,31 @@ int netcam_video_set(int vin_id, int stream_id ,PS_GK_ENC_STREAM_H264_ATTR h264A
         goto out;
     }
 
-    ret = sdk_enc_get_stream_h264(vin_id, stream_id, &curAttr);
-    if(ret != 0)
-    {
-        PRINT_ERR("fail to get H264 attr.\n");
-        goto out;
-    }
-    if(memcmp(&curAttr,h264Attr,sizeof(ST_GK_ENC_STREAM_H264_ATTR)) == 0)
-    {
-        video_leave_lock();
-        return 0;
-    }
-    ret = sdk_enc_set_stream_h264(vin_id,stream_id,h264Attr);
-    if(ret != 0)
-    {
-        PRINT_ERR("fail to set H264 attr.\n");
-        goto out;
-    }
+   // ret = sdk_enc_get_stream_h264(vin_id, stream_id, &curAttr);
+   // if(ret != 0)
+   // {
+   //     PRINT_ERR("fail to get H264 attr.\n");
+   //     goto out;
+   // }
+   // if(memcmp(&curAttr,h264Attr,sizeof(ST_GK_ENC_STREAM_H264_ATTR)) == 0)
+   // {
+   //     video_leave_lock();
+   //     return 0;
+   // }
+   // ret = sdk_enc_set_stream_h264(vin_id,stream_id,h264Attr);
+   // if(ret != 0)
+   // {
+   //     PRINT_ERR("fail to set H264 attr.\n");
+   //     goto out;
+   // }
 	
-    ret = video_syn_cfg(0, stream_id, NULL);
+    //ret = video_syn_cfg(0, stream_id, NULL);
+    ret = video_syn_cfg_x(stream_id, h264Attr);
     if(ret != 0)
 	{
 		PRINT_ERR("fail to syn video paramters.\n");
 		goto out;
 	}
-	
     //reload osd, the stream_width and stream_height maybe update.
     
 #ifdef MODULE_SUPPORT_MOJING_V4
@@ -567,16 +568,16 @@ int netcam_video_get_actual_fps(int stream_id)
     return ret;
 }
 
-//¼ä¸ôÒ»¶¨Ê±¼äºó£¬µ÷ÓÃ¸Ãº¯Êý¼ì²â±àÂëÊÇ·ñÕý³£¹¤×÷
+//ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ê±ï¿½ï¿½ó£¬µï¿½ï¿½Ã¸Ãºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 int netcam_video_check_alive()
 {
     static int last_frame_index = 0;
 
     if (last_frame_index == video_frame_index[0])
-        return -1;//Ö¡ÊýÎ´¸Ä±ä£¬±àÂëÒì³£
+        return -1;//Ö¡ï¿½ï¿½Î´ï¿½Ä±ä£¬ï¿½ï¿½ï¿½ï¿½ï¿½ì³£
 
     last_frame_index = video_frame_index[0];
-    return 0;//Ö¡Êý¸Ä±ä£¬±àÂëÕý³£
+    return 0;//Ö¡ï¿½ï¿½ï¿½Ä±ä£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 }
 
 int video_syn_cfg(int vin_id, int streamID, PS_GK_ENC_STREAM_H264_ATTR pstH264Atrr)
@@ -613,6 +614,24 @@ int video_syn_cfg(int vin_id, int streamID, PS_GK_ENC_STREAM_H264_ATTR pstH264At
 		memcpy(pstH264Atrr, &stH264Attr, sizeof(ST_GK_ENC_STREAM_H264_ATTR));
 
     return ret;
+}
+
+int video_syn_cfg_x(int streamID,  ST_GK_ENC_STREAM_H264_ATTR *h264Attr)
+{
+    int ret = 0;
+
+    runVideoCfg.vencStream[streamID].h264Conf.width   = h264Attr->width;
+    runVideoCfg.vencStream[streamID].h264Conf.height  = h264Attr->height;
+    runVideoCfg.vencStream[streamID].h264Conf.fps     = h264Attr->fps;
+    runVideoCfg.vencStream[streamID].h264Conf.bps     = h264Attr->bps;
+    runVideoCfg.vencStream[streamID].h264Conf.profile = h264Attr->profile;
+    runVideoCfg.vencStream[streamID].h264Conf.quality = h264Attr->quality;
+    runVideoCfg.vencStream[streamID].h264Conf.gop     = h264Attr->gop;
+    runVideoCfg.vencStream[streamID].h264Conf.rc_mode = h264Attr->rc_mode;
+    runVideoCfg.vencStream[streamID].enctype          = h264Attr->enctype;
+
+    return ret;
+
 }
 
 int netcam_video_set_stream_name(int streamID, char *name)

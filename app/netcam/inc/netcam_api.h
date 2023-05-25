@@ -168,7 +168,6 @@ int netcam_video_get_channel_number();
 int netcam_video_get_all_channel_par(GK_NET_VIDEO_CFG *pstConfigs);
 int netcam_video_snapshot(int width, int height, char *filePath, EM_GK_ENC_SNAPSHOT_QUALITY quality);
 int netcam_video_get_map(GK_CFG_MAP video2Array[][MAX_ITEM_NUM], int maxStreamSize, int maxItemSize);
-int netcam_video_get_max_streams_resolution(int stream_id, int *maxStreamWidth, int *maxItemHeight);
 int netcam_video_get(int vin_id, int stream_id, PS_GK_ENC_STREAM_H264_ATTR h264Attr);
 int netcam_video_set(int vin_id, int stream_id, PS_GK_ENC_STREAM_H264_ATTR h264Attr);
 void netcam_video_cfg_save(void);
@@ -199,7 +198,6 @@ int netcam_audio_out_mojing(void* arg);
 /* 播报传入的IP地址 */
 int netcam_audio_ip(const char* ipaddress);
 int netcam_audio_get_pcm_db(const unsigned char *pcmdata, int size); 
-
 int netcam_audio_get_db(void); 
 
 /* 在消回音过程中，不断从 audiobuf 读取数据，如果没有数据，则发空包。开始这个流程 */
@@ -210,6 +208,8 @@ int audio_send_stop();
 int audiobuf_write_frame(void *writerid, void *data, int size);
 /* 在消回音过程中，从 audiobuf 读出数据 */
 int audiobuf_read_frame(void *readerid, void **data, int *size);
+void netcam_audio_mute(int enable);
+
 
 
 int netcam_adjust_bps(int stream_id, int bps);
@@ -239,7 +239,6 @@ void netcam_sys_set_time_zone_by_utc_string(char *buf, int zone);
 void netcam_sys_set_time_zone_by_utc_second(int utcOffset, int zone);
 void netcam_sys_get_local_time_string(char *localTimeStr, int *timeZone);
 void netcam_sys_get_DevInfor(GK_NET_DEVICE_INFO *pstDevInfo);
-void netcam_sys_set_DevInfor(GK_NET_DEVICE_INFO *pstDevInfo);
 void netcam_sys_use_timer_init();
 void netcam_sys_save();
 void netcam_sys_operation(void *fps,void *operation);
@@ -268,7 +267,6 @@ void netcam_osd_set_id(int ch, char *id);
 //结束osd显示，释放资源
 int netcam_osd_deinit(void);
 int netcam_osd_update_id_rect(float x,float y, float w, float h,int enable, char *text);
-int netcam_osd_update_id_text(float x,float y, int font_size, int enable, char *text);
 
 // 获取channel 信息
 int  netcam_osd_get_info(int id,GK_NET_CHANNEL_INFO *channelInfo);
@@ -291,10 +289,6 @@ int netcam_osd_text_copy(char *dsttext, char *text, int dstlen);
 int netcam_net_init(void);
 int netcam_net_set(ST_SDK_NETWORK_ATTR *net_attr);
 int netcam_net_get(ST_SDK_NETWORK_ATTR *net_attr);
-#ifdef MODULE_SUPPORT_ZK_WAPI
-int netcam_net_set_wapi(ST_SDK_NETWORK_ATTR *net_attr);
-int netcam_net_get_wapi(ST_SDK_NETWORK_ATTR *net_attr);
-#endif
 int netcam_net_get_all_Infor(ST_SDK_NETWORK_ATTR *net_attr, int *count);
 void netcam_net_cfg_save(void);
 int netcam_net_autotracking(char *ip);
@@ -302,6 +296,8 @@ int netcam_net_exit(void);
 int netcam_net_get_detect(char *name);
 int netcam_net_reset_net_ip(char *name, ST_SDK_NETWORK_ATTR *newInfo);
 int netcam_p2pid_init();
+int netcam_net_wifi_init(void);
+
 
 
 //motion detect
@@ -334,10 +330,6 @@ typedef struct ptz_preset_info_s {
 int netcam_ptz_init(void);
 int netcam_ptz_exit(void);
 int netcam_ptz_start();
-int netcam_ptz_zoom_wide(int step, int speed);
-int netcam_ptz_zoom_tele(int step, int speed);
-int netcam_ptz_focus_far(int step, int speed);
-int netcam_ptz_focus_near(int step, int speed);
 int netcam_ptz_up(int step, int speed);
 int netcam_ptz_down(int step, int speed);
 int netcam_ptz_left(int step, int speed);
@@ -357,6 +349,18 @@ int netcam_ptz_stop(void);
 int netcam_ptz_ciruise_stop(void);
 int netcam_ptz_is_moving(void);
 void netcam_ptz_set_default(int step, int speed);
+
+uint32_t pelco_set_stop();
+uint32_t pelco_set_up(unsigned char speed);
+uint32_t pelco_set_down(unsigned char speed);
+uint32_t pelco_set_left(unsigned char speed);
+uint32_t pelco_set_right(unsigned char speed);
+uint32_t pelco_set_left_top(unsigned char pan_speed);
+uint32_t pelco_set_right_top(unsigned char pan_speed);
+uint32_t pelco_set_left_bottom(unsigned char pan_speed);
+uint32_t pelco_set_right_bottom(unsigned char pan_speed);
+uint32_t pelco_set_zoom_tele();
+uint32_t pelco_set_zoom_wide();
 
 #ifdef MODULE_SUPPORT_AF
 int netcam_ptz_zoom_stop(void);
@@ -394,6 +398,10 @@ extern "C"
 int netcam_update(char *binData, int length,cbFunc updateCb);
 void *netcam_update_malloc(int size);
 int netcam_update_feed_dog(void);
+int netcam_update_init(cbFunc updateCb);
+void netcam_update_is_save_md5(int isSet);
+
+
 
 #ifdef __cplusplus
 }
@@ -424,6 +432,9 @@ int maintain_handle(void* arg);
 
 //get dev name
 char *netcam_sys_get_name(void);
+//get shell cmd result
+int netcam_sys_shell_result(char *cmd, char *buf, int buflen);
+
 
 
 //ftp
@@ -450,6 +461,22 @@ int netcam_mail_setting_is_ok();
 
 //int netcam_mail_send(char *jpegfilename);
 int get_hw_array(unsigned char *hwaddr, unsigned char *addr);
+
+extern int delete_path(char * path);
+extern int copy_file(char *src_name, char *des_name);
+extern int delete_cjson_file_frome_dir(char * path);
+extern int gk_adjust_bps(int stream_id, int bps);
+extern int gk_adjust_fps(int stream_id, int fps);
+extern int gk_venc_set_h264_qp_config(ST_VENC_H264QP_CONF *pQpConfig);
+
+int netcam_video_set_stream_name(int streamID, char *name);
+int netcam_osd_set_info(int channel, GK_NET_CHANNEL_INFO *channelInfo);
+
+int netcam_video_force_i_frame(int stream_id);
+int netcam_net_setwifi(int wifiMode,WIFI_LINK_INFO_t linkInfo);
+PIC_SIZE_E netcam_video_get_pic_format(int width, int height);
+
+
 #ifdef __cplusplus
 };
 #endif

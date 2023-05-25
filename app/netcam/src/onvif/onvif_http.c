@@ -26,6 +26,10 @@ int onvif_proc(HTTP_OPS* ops, void* arg)
     pthread_mutex_unlock(&g_soapProcMutex);
     return HPE_RET_DISCONNECT;
 }
+
+#include "ttl.h"
+int uart;
+char rtsp_url[64];
 int netcam_http_onvif_init(void)
 {
 	if(pthread_mutex_init(&g_soapProcMutex, NULL) < 0)
@@ -36,6 +40,20 @@ int netcam_http_onvif_init(void)
 	
     http_mini_add_cgi_callback("onvif", onvif_proc, METHOD_GET|METHOD_POST, NULL);
     http_mini_add_cgi_callback("Subcription", onvif_proc, METHOD_GET|METHOD_POST, NULL);
+
+    sleep(3);
+
+  //  uart = init_uart(0);
+  //  pthread_t pid_485;
+  //  pthread_create(&pid_485, 0, begin_485, NULL);
+  // 
+  //  pthread_t rx_tty;
+  //  pthread_create(&rx_tty, 0, rx_receive, NULL);
+
+    sdk_af_lens_init(NULL);
+
+    sleep(1);
+    sprintf(rtsp_url, "rtsp://%s:554/stream0", g_GkIpc_OnvifInf.discov.hostip);
 
     return 0;
 }

@@ -71,10 +71,8 @@ var str_lim_allday="全天";
 var str_flip="上下翻转";
 var str_mirror="左右翻转";
 var str_rds='恢复默认设置';
-
-//音频
-var str_audio_in="麦克风音量";
-var str_audio_out='喇叭音量';
+var str_led1='指示灯1';
+var str_led2='指示灯2';
 
 //视频
 var str_stream="码流";
@@ -97,8 +95,6 @@ var str_bps_per_second="Kbps";
 var str_frame_rate="帧率";
 var str_frames_per_second="帧/秒";
 var str_saveset='保存设置';
-var str_frame_rate_max="最大";
-var str_video_set_fail = "编码参数设置失败";
 
 //隐私区域
 var str_enable="使能";
@@ -187,9 +183,7 @@ var str_DevHBOutTimes = "最大心跳次数:";
 
 //平台接入
 var str_versioninfo="版本信息";
-var str_onvif_enable="启用ONVIF";
-var str_onvif_fail="ONVIF设置失败";
-var str_onvif_success="ONVIF设置成功,重启后生效";
+
 var str_server_enable="请开启服务……" ;
 
 var str_p2p_yn="云霓";
@@ -339,9 +333,11 @@ var str_time_synchronous="时间同步";
 var str_synchronous='同步';
 var str_NTP_status="NTP状态";
 var str_NTP_service_provider="NTP服务商";
+var str_plat_ip="平台端IP";
+var str_plat_url="http://169.254.20.103:8080/reportAlarmData";
+var str_switch_485="485上报开关";
 var str_device_name="设备名";
 var str_device_type="设备型号";
-var str_device_mac="设备MAC";
 var str_hardware_version="硬件版本";
 var str_software_version="软件版本";
 var str_release_time="发布时间";
@@ -378,12 +374,7 @@ var str_ptz_leftdown='左下';
 var str_ptz_down='下';
 var str_ptz_rightdown='右下';
 var str_ptz_reset='巡航';
-var str_zoom_wide='拉远';
-var str_zoom_tele='拉近';
-var str_focus_far='聚焦-';
-var str_focus_near='聚焦+';
-var str_focus_lock='锁焦';
-var str_call_preset='调用';
+
 var str_hide='隐藏';
 var str_show='显示';
 

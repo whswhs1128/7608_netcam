@@ -112,6 +112,8 @@ typedef struct {
     SDK_S8    serverDomain[MAX_URL_STR_SIZE];
 	SDK_S32   sync_time;
 	SDK_S32   port;
+	SDK_S8      platurl[64];
+	SDK_S32	    enable485;
 } GK_NTP_CFG;
 
 typedef struct {

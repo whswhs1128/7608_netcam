@@ -27,10 +27,6 @@
 
 static int web_ptz_stop(int step, int speed);
 static int web_ptz_auto(int step, int speed);
-static int web_ptz_set_preset(int step, int speed);
-static int web_ptz_del_preset(int step, int speed);
-static int web_ptz_call_preset(int step, int speed);
-
 #define USER_CJSON_FILE "gk_user.cjson"
 
 typedef struct
@@ -43,28 +39,23 @@ static P2P_info run_p2p_id[5];
 typedef struct
 {
     char *action;
-    int (*callBk)(int step, int speed);
+    int (*callBk)(int speed);
 }PTZ_ActionT;
+
+#include "ttl.h"
 
 static PTZ_ActionT webPtzAction[]=
 {
     {"stop",    web_ptz_stop},
-    {"up",      netcam_ptz_up},
-    {"up_left", netcam_ptz_left_up},
-    {"up_right",netcam_ptz_right_up},
-    {"left",    netcam_ptz_left},
-    {"right",   netcam_ptz_right},
+    {"up",      pelco_set_up},
+    {"up_left", pelco_set_left_top},
+    {"up_right",pelco_set_right_top},
+    {"left",    pelco_set_left},
+    {"right",   pelco_set_right},
     {"auto",    web_ptz_auto},
-    {"down",    netcam_ptz_down},
-    {"down_left", netcam_ptz_left_down},
-    {"down_right",netcam_ptz_right_down},
-    {"zoom_wide",    netcam_ptz_zoom_wide},
-    {"zoom_tele",    netcam_ptz_zoom_tele},
-    {"focus_far", netcam_ptz_focus_far},
-    {"focus_near",netcam_ptz_focus_near},
-    {"set_preset", web_ptz_set_preset},
-    {"del_preset", web_ptz_del_preset},
-    {"call_preset", web_ptz_call_preset},
+    {"down",    pelco_set_down},
+    {"down_left", pelco_set_left_bottom},
+    {"down_right",pelco_set_right_bottom},
     {NULL,NULL},
 };
 
@@ -231,6 +222,7 @@ static void *update_recv_http_body(int sockfd,int bodyLen,int *recLen)
 }
 static int web_ptz_stop(int step, int speed)
 {
+    pelco_set_stop(); 
     return netcam_ptz_stop();
 }
 
@@ -239,30 +231,7 @@ static int web_ptz_auto(int step, int speed)
 	return netcam_ptz_hor_ver_cruise(speed);
 }
 
-static int web_ptz_set_preset(int step, int speed)
-{
-    int order = step/10;
-    return netcam_ptz_set_preset(order, NULL);
-}
-
-static int web_ptz_del_preset(int step, int speed)
-{
-    int order = step/10;
-	return netcam_ptz_clr_preset(order);
-}
-static int web_ptz_call_preset(int step, int speed)
-{
-	GK_NET_CRUISE_GROUP cruise_info;
-	int order = step/10;
-    cruise_info.byPointNum    = 1;
-    cruise_info.byCruiseIndex = 0;
-    cruise_info.struCruisePoint[0].byPointIndex = 0;
-    cruise_info.struCruisePoint[0].byPresetNo   = order;
-    cruise_info.struCruisePoint[0].byRemainTime = 0;
-    cruise_info.struCruisePoint[0].bySpeed      = -1;
-    return netcam_ptz_preset_cruise(&cruise_info);
-}
-
+#if 0
 static char * get_method_string(int method)
 {
     if(method == METHOD_GET)
@@ -282,6 +251,8 @@ static char * get_method_string(int method)
     }
 
 }
+#endif
+
 int netcam_http_service(HTTP_OPS* ops)
 {
 	int authorized = 0;
@@ -306,9 +277,6 @@ int netcam_http_service(HTTP_OPS* ops)
 			char *authPlaint = alloca(authBase64Len);
 			char *username = NULL, *password = NULL, *token = NULL;
 
-			printf("==========================================\n");
-                        printf("===========authBase64====================%s\n", authBase64);
-                        printf("==========================================\n");
 			memset(authPlaint, 0, authBase64Len); // very important
 			utility_base64_decode(authBase64, authPlaint, strlen(authBase64));
 
@@ -320,8 +288,6 @@ int netcam_http_service(HTTP_OPS* ops)
 			if(NULL == password){
 				password = "";
 			}
-			printf("================token===============%s\n", token);
-                        printf("==========================================\n");
 			// FIXME: freezing!!
 			//PRINT_INFO("Authorization:%s<>%s\n", username, password);
 			authorized = UserMatching_login( username,  password);
@@ -355,7 +321,6 @@ static int web_time(HTTP_OPS* ops, void* arg)
         //PRINT_INFO("web content:%s",buf);
         opt = cJSON_Parse(buf);
         timeString = cJosn_Read_String(opt,"UtcTime");
-
         ret = cJSON_GetObjectItem(opt,"timeZone");
         if(ret != NULL)
         {
@@ -366,10 +331,20 @@ static int web_time(HTTP_OPS* ops, void* arg)
 		 ret = cJSON_GetObjectItem(opt,"ntpCfg");
         if(ret != NULL)
         {
+		
 			runSystemCfg.ntpCfg.enable = cJSON_GetObjectItem(ret,"ntpCfg_enable")->valueint;
+			runSystemCfg.ntpCfg.enable485 = cJSON_GetObjectItem(ret,"switch_485")->valueint;
+			if(runSystemCfg.ntpCfg.enable485)
+			{
+			printf("============485 open ===========");
+			}
 			strncpy(runSystemCfg.ntpCfg.serverDomain, cJSON_GetObjectItem(ret,"ntpCfg_serverDomain")->valuestring, sizeof(runSystemCfg.ntpCfg.serverDomain)-1);
+	if(cJSON_GetObjectItem(ret,"plat_addr_val")->valuestring != NULL)
+	{
+	strncpy(runSystemCfg.ntpCfg.platurl, cJSON_GetObjectItem(ret,"plat_addr_val")->valuestring, sizeof(runSystemCfg.ntpCfg.platurl)-1);
+	printf("runSystemCfg.ntpCfg.platurl ================= %s\n", runSystemCfg.ntpCfg.platurl);
         }
-
+	}
         netcam_sys_set_time_zone_by_utc_string(timeString, zone);
         netcam_timer_add_task(netcam_sys_save, NETCAM_TIMER_TWO_SEC, SDK_FALSE, SDK_TRUE);
         cJSON_Delete(opt);
@@ -451,7 +426,7 @@ static int get_gb28181(HTTP_OPS* ops, void* arg)
     	Expire, DevHBCycle, DevHBOutTimes);
         sprintf(retData,"{\"statusCode\": \"%d\"}",1);
         ops->set_body_ex(ops,retData,strlen(retData));
-        GB28181Cfg_get(&gb28181Cfg);
+
         strcpy(gb28181Cfg.ServerIP, ServerIP);
         gb28181Cfg.ServerPort = ServerPort;
         strcpy(gb28181Cfg.ServerUID, ServerUID);
@@ -472,7 +447,7 @@ static int get_gb28181(HTTP_OPS* ops, void* arg)
         char *sendData;
 
         cJSON_SetItemValue(root, "ServerPwd", "*******");
-        //cJSON_SetItemValue(root, "ServerIP", "*******");
+        cJSON_SetItemValue(root, "ServerIP", "*******");
         sendData = cJSON_Print(root);
         ops->set_body_ex(ops,sendData,strlen(sendData));
         free(sendData);
@@ -485,11 +460,11 @@ static int get_gb28181(HTTP_OPS* ops, void* arg)
 
 static int get_gb28181_status(HTTP_OPS* ops, void* arg)
 {
-    const char *buf;
-    int bodyLen;
-    cJSON *opt;
+    //const char *buf;
+    //int bodyLen;
+    //cJSON *opt;
     char retData[256];
-    int method = ops->get_method(ops);
+    //int method = ops->get_method(ops);
 
     //PRINT_INFO("Method:%s\n",get_method_string(method));
 
@@ -518,6 +493,20 @@ static int web_image_basic(HTTP_OPS* ops, void* arg)
 		return HPE_RET_UNAUTHORIZED;
     if(method == METHOD_GET)
     {
+        int valu = 1;
+        if(sdk_cfg.gpio_red_led != -1 ) 
+        {
+            sdk_gpio_get_output_value(sdk_cfg.gpio_red_led, &valu);
+            runImageCfg.led1 = (valu == sdk_cfg.gpio_red_led_on_value) ? 1:0;
+        }
+
+        
+        if(sdk_cfg.gpio_color_led != -1 ) 
+        {
+            sdk_gpio_get_output_value(sdk_cfg.gpio_color_led, &valu);
+            runImageCfg.led2 = (valu == sdk_cfg.gpio_color_led_on_value) ? 1:0;
+        }
+
         buf = ImageCfgGetJosnString();
         if(buf != NULL)
         {
@@ -531,6 +520,7 @@ static int web_image_basic(HTTP_OPS* ops, void* arg)
     else
     {
         GK_NET_IMAGE_CFG    imagJsonAttr;
+        GK_NET_IMAGE_CFG    imagJsonAttrBak;
         cJSON *opt;
 
         int value;
@@ -550,6 +540,7 @@ static int web_image_basic(HTTP_OPS* ops, void* arg)
             return HPE_RET_FAIL;
         }
         netcam_image_get(&imagJsonAttr);
+        imagJsonAttrBak = imagJsonAttr;
         value = cJosn_Read_Int(opt,"sceneMode");
         if(value != -1)
             imagJsonAttr.sceneMode = value;
@@ -622,6 +613,27 @@ static int web_image_basic(HTTP_OPS* ops, void* arg)
         if(value != -1)
             imagJsonAttr.lowlightMode = value;
 
+        
+        value = cJosn_Read_Int(opt,"led1");
+        if(value != -1)
+        {
+            if(sdk_cfg.gpio_red_led != -1 && value != imagJsonAttr.led1) 
+            {
+                imagJsonAttr.led1 = value;
+                sdk_gpio_set_output_value(sdk_cfg.gpio_red_led, value);
+            }
+        }
+        
+        value = cJosn_Read_Int(opt,"led2");
+        if(value != -1)
+        {
+            if(sdk_cfg.gpio_color_led != -1 && value != imagJsonAttr.led2) 
+            {
+                imagJsonAttr.led2 = value;
+                sdk_gpio_set_output_value(sdk_cfg.gpio_color_led, value);
+            }
+        }
+
         value = cJosn_Read_Int(opt,"reset_default");
         if(value != -1)
         {
@@ -631,73 +643,8 @@ static int web_image_basic(HTTP_OPS* ops, void* arg)
         {
             netcam_image_set(imagJsonAttr);
         }
-        netcam_timer_add_task(netcam_image_cfg_save, NETCAM_TIMER_TWO_SEC, SDK_FALSE, SDK_TRUE);
-        ret = 0;
-        sprintf(retData,"{\"statusCode\": \"%d\"}",ret);
-        ops->set_body_ex(ops,retData,strlen(retData));
-        cJSON_Delete(opt);
-
-    }
-    return HPE_RET_SUCCESS;
-}
-
-static int web_auddio_set(HTTP_OPS* ops, void* arg)
-{
-    char *buf; //[] = "{\"contrast\": \"10\",\"brigtness\": \"20\",\"hue\": \"30\",\"saturation\": \"40\",\"sharpen\": \"50\",\"statusCode\": \"0\"}";
-    int method = ops->get_method(ops);
-    int ret = 1;
-    char str[256] = {0};
-    char retData[256];
-    int bodyLen;
-    //PRINT_INFO("Method:%s\n",get_method_string(method));
-
-	if(netcam_http_service(ops)==0)
-		return HPE_RET_UNAUTHORIZED;
-    if(method == METHOD_GET)
-    {
-        sprintf(str, "{\"audioIn\":%d,\"audioOut\":%d}", runAudioCfg.inputVolume, runAudioCfg.outputVolume);
-        ops->set_body_ex(ops,str,strlen(str));
-
-        return HPE_RET_SUCCESS;
-
-    }
-    else
-    {
-        cJSON *opt;
-        int tmpIn, tmpOut;
-        buf = (char *)ops->get_body(ops,&bodyLen);
-        if(buf != NULL)
-        {
-            buf[bodyLen]= '\0';
-            //printf("PUT :%s\n",buf);
-        }
-
-        //PRINT_INFO("receive json data:%s\n",buf);
-        opt = cJSON_Parse(buf);
-        if(opt == NULL)
-        {
-            PRINT_ERR("http body json error\n");
-            return HPE_RET_FAIL;
-        }
-        
-        tmpIn = cJosn_Read_Int(opt,"audioIn");
-        tmpOut = cJosn_Read_Int(opt,"audioOut");
-        if (tmpIn != -1 && tmpIn != runAudioCfg.inputVolume)
-        {
-            runAudioCfg.inputVolume = tmpIn;
-            //ret = gk_audio_ai_set_volume(tmpIn);	xqq
-            //if(ret != 0)
-                //PRINT_ERR("gk_audio_ai_set_volume failed\n");
-        }
-        if (tmpOut != -1 && tmpOut != runAudioCfg.outputVolume)
-        {
-            runAudioCfg.outputVolume = tmpOut;
-            ret = gk_audio_ao_set_volume(13*runAudioCfg.outputVolume/100);
-            if(ret != 0)
-                PRINT_ERR("gk_audio_ao_set_volume failed\n");
-        }
-        AudioCfgSave();
-
+        if (memcmp(&imagJsonAttrBak, &imagJsonAttr, sizeof(imagJsonAttrBak)) != 0)
+            netcam_timer_add_task(netcam_image_cfg_save, NETCAM_TIMER_TWO_SEC, SDK_FALSE, SDK_TRUE);
         ret = 0;
         sprintf(retData,"{\"statusCode\": \"%d\"}",ret);
         ops->set_body_ex(ops,retData,strlen(retData));
@@ -1150,6 +1097,8 @@ static int web_stream_control(HTTP_OPS* ops, void* arg)
         sscanf(resolution,"%dx%d",&h264Attr.width,&h264Attr.height);
 		runVideoCfg.vencStream[streamId].avStream = cJosn_Read_Int(opt,"avStream");
 
+	printf("===========resolution==========%s\n", resolution);
+	printf("==============h264Attr.width = %d======\n", h264Attr.width);
         h264Attr.profile = cJosn_Read_Int(opt,"profile");
         h264Attr.fps= cJosn_Read_Int(opt,"fps");
         h264Attr.rc_mode = cJosn_Read_Int(opt,"rc_mode");
@@ -1160,9 +1109,9 @@ static int web_stream_control(HTTP_OPS* ops, void* arg)
         //h264Attr.h264_brcMode = cJosn_Read_Int(opt,"h264_brcMode");
 		strncpy(runVideoCfg.vencStream[streamId].h264Conf.name, cJosn_Read_String(opt,"name"), sizeof(runVideoCfg.vencStream[streamId].h264Conf.name)-1);
 		//strcpy((char *) runChannelCfg.channelInfo[streamId].osdChannelName.text, (char*)runVideoCfg.vencStream[streamId].streamFormat.streamName );
+        netcam_osd_set_title(streamId, runVideoCfg.vencStream[streamId].h264Conf.name);
 
         cJSON_Delete(opt);
-        netcam_osd_set_title(streamId, runVideoCfg.vencStream[streamId].h264Conf.name);
 
         ret =netcam_video_set(0, streamId, &h264Attr);
 
@@ -1173,7 +1122,9 @@ static int web_stream_control(HTTP_OPS* ops, void* arg)
             netcam_timer_add_task(netcam_osd_pm_save, NETCAM_TIMER_ONE_SEC, SDK_FALSE, SDK_TRUE);
             netcam_timer_add_task(netcam_video_cfg_save, NETCAM_TIMER_ONE_SEC, SDK_FALSE, SDK_TRUE);
         }
-
+	sleep(3);
+	rtsp_reboot();
+	printf("==============web_rtsp_reboot=================\n");
         sprintf(retData,"{\"statusCode\": \"%d\"}",ret);
         ops->set_body_ex(ops,retData,strlen(retData));
     }
@@ -1406,7 +1357,7 @@ static int web_cover_control(HTTP_OPS* ops, void* arg)
 
 static int web_login(HTTP_OPS* ops, void* arg)
 {
-	int method = ops->get_method(ops);
+	//int method = ops->get_method(ops);
 	int bodyLen=0;
 	char retData[256];
 	//PRINT_INFO("Method:%s\n",get_method_string(method));
@@ -1418,7 +1369,7 @@ static int web_login(HTTP_OPS* ops, void* arg)
 
 static int web_check_login(HTTP_OPS* ops, void* arg)
 {
-	int method = ops->get_method(ops);
+	//int method = ops->get_method(ops);
 	//PRINT_INFO("Method:%s\n",get_method_string(method));
 	char retData[256];
 	/*cJSON *opt;
@@ -1604,7 +1555,7 @@ static int web_local_eth_control(HTTP_OPS* ops, void* arg)
 
         int bodyLen = 0;
 
-        int uPnpEnable ;
+        //int uPnpEnable ;
         ST_SDK_NETWORK_ATTR net_attr;
 
         buf = (char *)ops->get_body(ops,&bodyLen);
@@ -1651,7 +1602,7 @@ static int web_local_eth_control(HTTP_OPS* ops, void* arg)
 
         netcam_net_get(&net_attr);
         net_attr.dhcp = cJosn_Read_Int(opt, "dhcpEnable");
-        uPnpEnable = cJosn_Read_Int(opt, "upnpEnable");
+        //uPnpEnable = cJosn_Read_Int(opt, "upnpEnable");
         runNetworkCfg.lan.autotrack = cJosn_Read_Int(opt, "IPAutoTrack");
         //PRINT_INFO("uPnpEnable:%d\n", uPnpEnable);
 
@@ -1681,7 +1632,7 @@ static int web_local_eth_control(HTTP_OPS* ops, void* arg)
 static int web_reset_default(HTTP_OPS* ops, void* arg)
 {
     char retData[256];
-    int method = ops->get_method(ops);
+    //int method = ops->get_method(ops);
     //PRINT_INFO("Method:%s\n",get_method_string(method));
 	if(netcam_http_service(ops)==0)
 		return HPE_RET_UNAUTHORIZED;
@@ -1699,7 +1650,7 @@ static int web_reset_default(HTTP_OPS* ops, void* arg)
 static int web_sys_reboot(HTTP_OPS* ops, void* arg)
 {
     char retData[256];
-    int method = ops->get_method(ops);
+    //int method = ops->get_method(ops);
     //PRINT_INFO("Method:%s\n",get_method_string(method));
 	if(netcam_http_service(ops)==0)
 		return HPE_RET_UNAUTHORIZED;
@@ -1714,7 +1665,7 @@ static int web_sys_reboot(HTTP_OPS* ops, void* arg)
 
 static int web_sys_info(HTTP_OPS* ops, void* arg)
 {
-    int method = ops->get_method(ops);
+    //int method = ops->get_method(ops);
     //PRINT_INFO("Method:%s\n",get_method_string(method));
 
 	//if(netcam_http_service(ops)==0)
@@ -1736,51 +1687,14 @@ static int web_sys_info(HTTP_OPS* ops, void* arg)
 static int web_sys_onvif(HTTP_OPS* ops, void* arg)
 {
     char retData[256];
-    int method = ops->get_method(ops);
+    //int method = ops->get_method(ops);
     //PRINT_INFO("Method:%s\n",get_method_string(method));
 
 	if(netcam_http_service(ops)==0)
 		return HPE_RET_UNAUTHORIZED;
-    if(method == METHOD_GET)
-    {
-        char onvifVersion[32]="2.4.1";
-        int onvifEn = (access("/opt/custom/cfg/onvifDisable", F_OK) == 0)?0:1;
-        sprintf(retData,"{\"onvifVersion\": \"%s\", \"onvifEn\": %d}",onvifVersion, onvifEn);
-    }
-    else
-    {
-        cJSON *opt;
-        char *buf=NULL;
-        int bodyLen = 0;
-        int onvifEn;
+    char onvifVersion[32]="2.4.1";
 
-        buf = (char *)ops->get_body(ops,&bodyLen);
-        if(buf ==NULL)
-        {
-            PRINT_ERR("No http body\n");
-            return HPE_RET_FAIL;
-        }
-        //PRINT_INFO("receive json data:%s\n",buf);
-        opt = cJSON_Parse(buf);
-        if(opt == NULL)
-        {
-            PRINT_ERR("http body json error\n");
-            return HPE_RET_FAIL;
-        }
-        onvifEn = cJosn_Read_Int(opt, "onvifEn");
-        cJSON_Delete(opt);
-        if (access("/opt/custom/cfg/onvifDisable", F_OK) == 0 && onvifEn==1)
-        {
-            PRINT_INFO("open onvifEn\n ");            
-            new_system_call("rm -f /opt/custom/cfg/onvifDisable");
-        }
-        else if(onvifEn==0)
-        {
-            PRINT_INFO("close onvifEn\n");            
-            new_system_call("touch /opt/custom/cfg/onvifDisable");
-        }
-        sprintf(retData,"{\"statusCode\": \"%d\"}",0);
-    }
+    sprintf(retData,"{\"onvifVersion\": \"%s\"}",onvifVersion);
     ops->set_body_ex(ops,retData,strlen(retData));
 
     //PRINT_INFO("Onvif version\n");
@@ -1823,7 +1737,8 @@ static int web_ptz_control(HTTP_OPS* ops, void* arg)
                 if(webPtzAction[i].callBk)
                 {
                     // when ptz is ok, it can use this code
-                    webPtzAction[i].callBk(step,speed);
+                    //webPtzAction[i].callBk(step,speed);
+                    webPtzAction[i].callBk(0xFF);
                     break;
                 }
             }
@@ -1838,8 +1753,6 @@ static int web_upgrade_read_cb(HTTP_OPS* ops, void* arg)
 {
 	int data = 1;
 	char retData[12];
-
-    data = netcam_update_get_process();
 	sprintf(retData,"%d",data);
 
 	//PRINT_INFO();
@@ -1849,13 +1762,12 @@ static int web_upgrade_read_cb(HTTP_OPS* ops, void* arg)
 
 static int web_upgrade_read(HTTP_OPS* ops, void* arg)
 {
-	int method = ops->get_method(ops);
+	//int method = ops->get_method(ops);
 	char *data = NULL;
 	char *tag;
 	int bodyLen;
 	int fd;
 	int recvLen = 0;
-    char upgradingPath[128] = {0};
 
     if(netcam_get_update_status() < 0)
     {
@@ -1877,25 +1789,7 @@ static int web_upgrade_read(HTTP_OPS* ops, void* arg)
 	fd = ops->get_connection_fd(ops);
 	if(fd > 0  )
 	{
-        char *fileData = NULL;
-        sprintf(upgradingPath, "%s/upgrade.html", RESOURCE_WEB_DIR);
-        //printf("open file:%s\n", upgradingPath);
-        FILE *f = fopen(upgradingPath, "r");
-        int size;
-        if(f != NULL)
-        {
-            fseek(f, 0, SEEK_END);
-            size = ftell(f);
-            printf("file size:%d\n", size);
-            fileData = (char*)malloc(size);
-            if (fileData != NULL)
-            {
-                fseek(f, 0, SEEK_SET);
-                fread(fileData, 1, size, f);
-            }
-            fclose(f);
-        }
-        netcam_update_relase_system_resource();
+		netcam_update_relase_system_resource();
 
         //netcam_video_exit();
 
@@ -1905,16 +1799,6 @@ static int web_upgrade_read(HTTP_OPS* ops, void* arg)
 		{
 			if(netcam_update_mail_style(data,bodyLen,NULL) == 0)
 			{
-                if(fileData != NULL)
-                {
-                    //printf("filedata:\n%s\n", fileData);
-                    ops->set_body_ex(ops, (char*)fileData, size);
-                }
-                else
-                {   
-                    strcpy(upgradingPath, "Upload fireware Success£¬Uprading..Don't power off IPC until it reboots!");
-                    ops->set_body_ex(ops,(char*)upgradingPath,strlen(upgradingPath));
-                }
 				return HPE_RET_KEEP_ALIVE;
 			}
 			else
@@ -1925,8 +1809,6 @@ static int web_upgrade_read(HTTP_OPS* ops, void* arg)
 		else
 		{
 			PRINT_ERR(" recv date package error,recv:%d,all:%d\n",recvLen,bodyLen);
-            strcpy(upgradingPath, "Upload fireware Failed..IPC reboots!");
-            ops->set_body_ex(ops,(char*)upgradingPath,strlen(upgradingPath));
 		}
 
 
@@ -1954,7 +1836,7 @@ static int device_upgrade_cb(HTTP_OPS* ops, void* arg)
 
 static int device_upgrade(HTTP_OPS* ops, void* arg)
 {
-	int method = ops->get_method(ops);
+	//int method = ops->get_method(ops);
 	char *data;
 	char *tag;
 	int bodyLen;
@@ -2017,7 +1899,7 @@ static int device_upgrade_state(HTTP_OPS* ops, void* arg)
 	char retData[256];
 	int rate;
 	memset(retData, 0, 256);
-	int method = ops->get_method(ops);
+	//int method = ops->get_method(ops);
 	//PRINT_INFO("Method:%s\n",get_method_string(method));
 
 	rate = netcam_update_get_process();
@@ -2201,7 +2083,6 @@ static int web_ftp(HTTP_OPS* ops, void* arg)
 		}
 		//PRINT_INFO("strlen(ftpbuf):%d\n%s\n",strlen(ftpbuf),ftpbuf);
 		ops->set_body_ex(ops,ftpbuf,strlen(ftpbuf));
-        free(ftpbuf);
 	}
 	else
 	{
@@ -2354,7 +2235,6 @@ static int web_email(HTTP_OPS* ops, void* arg)
 		}
 		//PRINT_INFO("strlen(emailbuf):%d\n%s\n",strlen(emailbuf),emailbuf);
 		ops->set_body_ex(ops,emailbuf,strlen(emailbuf));
-        free(emailbuf);
 	}
 	else
 	{
@@ -2579,7 +2459,6 @@ static int web_alarm(HTTP_OPS* ops, void* arg)
 		}
 		//PRINT_INFO("strlen(alarmbuf):%d\n%s\n",strlen(alarmbuf),alarmbuf);
 		ops->set_body_ex(ops,alarmbuf,strlen(alarmbuf));
-        free(alarmbuf);
 	}
 	else
 	{
@@ -2712,97 +2591,22 @@ static int web_qrcode(HTTP_OPS* ops, void* arg)
 	obj=cJSON_CreateObject();
 	cJSON_AddItemToObject(obj,"qr",Item);
 	qrbuf = cJSON_Print(obj);
-    cJSON_Delete(obj);
 
 	//printf("qrbuf is %s",qrbuf);
 	if( qrbuf == NULL)
 	{
+		cJSON_Delete(obj);
 		return HPE_RET_FAIL;
 	}
 	ops->set_body_ex(ops,qrbuf,strlen(qrbuf));
-	free(qrbuf);
+	cJSON_Delete(obj);
 	return HPE_RET_SUCCESS;
 }
-
-#ifdef MODULE_SUPPORT_ZK_WAPI
-static int web_wapi(HTTP_OPS* ops, void* arg)
-{
-	cJSON *Item;
-	char *buf = NULL;
-    char name[100]={0}, location[100]={0};
-	int method = ops->get_method(ops);
-
-	PRINT_INFO("Method:%s\n",get_method_string(method));
-	if(netcam_http_service(ops)==0)
-		return HPE_RET_UNAUTHORIZED;
-
-	if(method == METHOD_GET)
-	{
-        GK_NET_DEVICE_INFO pstDevInfo;
-        netcam_sys_get_DevInfor(&pstDevInfo);
-        GK_NVT_DevMng_GetScopes_name_location(name, location);
-		Item = cJSON_CreateObject();
-		cJSON_AddItemToObject(Item, "name", cJSON_CreateString(name));
-		cJSON_AddItemToObject(Item, "location", cJSON_CreateString(location));
-		cJSON_AddItemToObject(Item, "manufacturer", cJSON_CreateString(pstDevInfo.manufacturer));
-		cJSON_AddItemToObject(Item, "mode", cJSON_CreateString(pstDevInfo.model));
-        cJSON_AddItemToObject(Item, "mac_address", cJSON_CreateString(" "));
-		buf = cJSON_Print(Item);
-		if( buf == NULL)
-		{
-			cJSON_Delete(Item);
-			return HPE_RET_FAIL;
-		}
-		PRINT_INFO("strlen(buf):%d\n%s\n",strlen(buf),buf);
-		ops->set_body_ex(ops,buf,strlen(buf));
-        free(buf);
-	}
-	else
-	{
-		int bodyLen = 0;
-		char retData[256]={0};        
-        GK_NET_DEVICE_INFO pstDevInfo;
-        netcam_sys_get_DevInfor(&pstDevInfo);
-
-		buf = (char *)ops->get_body(ops,&bodyLen);
-		if(buf ==NULL)
-		{
-			PRINT_ERR("No http body\n");
-			return HPE_RET_FAIL;
-		}
-		//get json data
-		buf[bodyLen] = 0;
-		PRINT_INFO("receive json data:%s\n",buf);
-
-		Item = cJSON_Parse(buf);
-		if(Item == NULL)
-		{
-			PRINT_ERR("http body json error\n");
-			return HPE_RET_FAIL;
-		}
-		strcpy(name, cJSON_GetObjectItem(Item,"name")->valuestring);
-		strcpy(location, cJSON_GetObjectItem(Item,"location")->valuestring);
-		strcpy(pstDevInfo.manufacturer, cJSON_GetObjectItem(Item,"manufacturer")->valuestring);
-		strcpy(pstDevInfo.model, cJSON_GetObjectItem(Item,"mode")->valuestring);        
-        
-        netcam_sys_set_DevInfor(&pstDevInfo);        
-        GK_NVT_DevMng_SetScopes_name_location(name, location);
-		CRTSCH_DEFAULT_WORK(EVENT_TIMER_WORK, COMPUTE_TIME(0,0,0,1,0), (WORK_CALLBACK)SystemCfgSave);
-		bodyLen = 1;
-		sprintf(retData,"{\"statusCode\": \"%d\"}",bodyLen);
-		ops->set_body_ex(ops,retData,strlen(retData));
-	}
-
-	cJSON_Delete(Item);
-	return HPE_RET_SUCCESS;
-}
-#endif
-
 void netcam_http_web_init()
 {
+
 	http_mini_add_cgi_callback("/cgi-bin/settime", web_time, METHOD_GET|METHOD_PUT, (void *)0);
 	http_mini_add_cgi_callback("/image", web_image_basic, METHOD_GET|METHOD_PUT, (void *)0);
-	http_mini_add_cgi_callback("/audio", web_auddio_set, METHOD_GET|METHOD_PUT, (void *)0);
 	//http_mini_add_cgi_callback("/image/slider", web_image_slider, METHOD_GET|METHOD_PUT, (void *)0);
 	http_mini_add_cgi_callback("/video", web_stream_control, METHOD_GET|METHOD_PUT, (void *)0);
 	http_mini_add_cgi_callback("/overlayer", web_overlayer_control, METHOD_GET|METHOD_PUT, (void *)0);
@@ -2812,7 +2616,7 @@ void netcam_http_web_init()
 	http_mini_add_cgi_callback("/cgi-bin/sys_info", web_sys_info, METHOD_GET, (void *)0);
 	http_mini_add_cgi_callback("/NetSetting", web_local_eth_control, METHOD_GET|METHOD_PUT, (void *)0);
 	http_mini_add_cgi_callback("/user", web_user_control, METHOD_GET|METHOD_PUT, (void *)0);
-	http_mini_add_cgi_callback("/cgi-bin/sys_onvif", web_sys_onvif, METHOD_GET|METHOD_PUT, (void *)0);
+	http_mini_add_cgi_callback("/cgi-bin/sys_onvif", web_sys_onvif, METHOD_GET, (void *)0);
 	http_mini_add_cgi_callback("/cgi-bin/ptz_control", web_ptz_control, METHOD_PUT, (void *)0);
 	http_mini_add_cgi_callback("/device_upgrade_state", device_upgrade_state, METHOD_GET, (void *)0);
 	http_mini_add_cgi_callback("/login", web_login, METHOD_PUT|METHOD_GET, (void *)0);
@@ -2823,8 +2627,7 @@ void netcam_http_web_init()
 	http_mini_add_cgi_callback("/language",web_language,METHOD_PUT|METHOD_GET,(void *)0);
 	//the format of http body is mail style updating package, it add mail information.
 	http_mini_add_cgi_callback("/sd", web_sdinfo_get,METHOD_GET|METHOD_PUT, (void *)0);
-	http_mini_add_cgi_callback("/web_upgrade", web_upgrade_read, METHOD_PUT|METHOD_POST, (void *)0);
-	http_mini_add_cgi_callback("/web_process", web_upgrade_read_cb, METHOD_GET|METHOD_POST, (void *)0);
+	http_mini_add_cgi_callback("/web_upgrade", web_upgrade_read_cb, METHOD_PUT|METHOD_POST, (void *)0);
 	http_mini_add_read_callback("/web_upgrade", web_upgrade_read);
 	http_mini_add_cgi_callback("/check_login",web_check_login,METHOD_GET|METHOD_PUT, (void *)0);
 	//the format of http body is updating package
@@ -2837,10 +2640,6 @@ void netcam_http_web_init()
 	http_mini_add_cgi_callback("/ap_wireless",web_ap_wireless,METHOD_GET|METHOD_PUT,(void *)0 );
 	http_mini_add_cgi_callback("/qrcode",web_qrcode,METHOD_GET,(void *)0 );
 	http_mini_add_cgi_callback("/autolight", web_autolight, METHOD_GET|METHOD_PUT, (void *)0);
-	#ifdef MODULE_SUPPORT_ZK_WAPI
-	http_mini_add_cgi_callback("/get_wapi", web_wapi, METHOD_GET, (void *)0);
-	http_mini_add_cgi_callback("/set_wapi", web_wapi, METHOD_PUT, (void *)0);
-	#endif
 
 #ifdef MODULE_SUPPORT_GB28181
 	http_mini_add_cgi_callback("/gb28181", get_gb28181, METHOD_GET|METHOD_PUT, (void *)0);

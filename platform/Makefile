@@ -16,7 +16,7 @@
 ################################################################################
 ################################################################################
 
-  TOPDIR = /home/wanghs/yianyun
+  TOPDIR = /home/xieqianqian/7608_netcam
   SUBDIR = platform/goke/platform
 
 include $(TOPDIR)/env/make/Makefile.config

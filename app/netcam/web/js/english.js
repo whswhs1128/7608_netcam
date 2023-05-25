@@ -76,10 +76,8 @@ var str_lim_allday="All Day";
 var str_flip="Flip";
 var str_mirror="Mirror";
 var str_rds='Restore Default Settings';
-
-//音频
-var str_audio_in="mic vol";
-var str_audio_out='speaker vol';
+var str_led1='led1';
+var str_led2='led2';
 
 //视频
 var str_stream="Stream";
@@ -101,8 +99,6 @@ var str_bps_per_second="Kbps/s";
 var str_frame_rate="Frame Rate";
 var str_frames_per_second="f/s";
 var str_saveset='Svae';
-var str_frame_rate_max="Max";
-var str_video_set_fail = "Encodeing set failed";
 
 //隐私区域
 var str_enable="Enable";
@@ -191,9 +187,7 @@ var str_DevHBOutTimes = "DevHBOutTimes:";
 
 //平台接入
 var str_versioninfo="Version";
-var str_onvif_enable="ONVIF Enable";
-var str_onvif_fail="ONVIF set failed";
-var str_onvif_success="ONVIF set success,take effect after reboot";
+
 var str_server_enable="Please open server……" ;
 
 var str_p2p_yn="YunNi";
@@ -348,7 +342,6 @@ var str_NTP_status="NTP Status";
 var str_NTP_service_provider="NTP Server Provider";
 var str_device_name="Device Name";
 var str_device_type="Device Type";
-var str_device_mac="Device MAC";
 var str_hardware_version="Hardware Version";
 var str_software_version="Software Version";
 var str_release_time="Release Time";
@@ -386,12 +379,7 @@ var str_ptz_leftdown='Left-Down';
 var str_ptz_down='Down';
 var str_ptz_rightdown='Right-Down';
 var str_ptz_reset='Cruise';
-var str_zoom_wide='zoom wide';
-var str_zoom_tele='zoom tele';
-var str_focus_far='focus far';
-var str_focus_near='focus near';
-var str_focus_lock='focus lock';
-var str_call_preset='ptz preset';
+
 var str_hide='hide';
 var str_show='show';
 

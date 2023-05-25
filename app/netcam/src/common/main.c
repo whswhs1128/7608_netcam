@@ -100,7 +100,15 @@
 #include "gkvision.h"
 #endif
 
+#ifdef MODULE_SUPPORT_GK_SEARCH
+#include "ipcsearch.h"
+#endif
 
+#ifdef MODULE_SUPPORT_NTP
+#include "ntp_client.h"
+#endif
+
+#include "eventalarm.h"
 
 
 static sem_t  main_run_sem;
@@ -126,9 +134,10 @@ static void *agingTestThread(void *args)
         sleep(5);
         sdk_isp_ircut_led_set(0);
         sleep(1);        
-        //netcam_audio_out(AUDIO_FILE_STARTING);    xqq
+        //netcam_audio_out(AUDIO_FILE_STARTING);
         sleep(30);
     }
+    return NULL;
 }
 
 static void agingTestCheck(void)
@@ -144,10 +153,7 @@ static void agingTestCheck(void)
     }
 }
 
-static void netcam_stop()
-{
-    sem_post(&main_run_sem);
-}
+
 
 static int http_start()
 {
@@ -167,7 +173,6 @@ static int http_start()
         #ifdef MODULE_SUPPORT_MOJING
             if (mojing_get_onvif_status() == 1)
         #endif
-            if(access("/opt/custom/cfg/onvifDisable", F_OK) != 0)
                 netcam_http_onvif_init();
     #endif
     http_mini_server_run();
@@ -178,8 +183,8 @@ static int netcam_audio_boot_finish(void* arg)
 {
 	if(sdk_ptz_get_startup_adjust_flag())
 		return -1;
-	
-	//netcam_audio_out(AUDIO_FILE_START_FINISH);	xqq
+
+	//netcam_audio_out(AUDIO_FILE_START_FINISH);
 
 	return 0;
 }
@@ -210,10 +215,6 @@ static void start_all_module()
 	}
 #endif
 
-#ifdef MODULE_SUPPORT_GB28181
-    printf("support gb28181 log\n");
-//    ite_eXosip_log_bplus_tree_init();	xqq
-#endif
 
 #ifdef MODULE_SUPPORT_MTWS_P2P
     printf("support mtws p2p\n");
@@ -222,8 +223,11 @@ static void start_all_module()
 #endif
 
 #ifdef MODULE_SUPPORT_QRCODE_LINK
+    //魔镜在有线没有插入时才启用
+    #ifndef MODULE_SUPPORT_MOJING
     printf("MODULE_SUPPORT_QRCODE_LINK\n");
     zbar_qrcode_link_init();
+    #endif
 #endif
 
 	netcam_net_monitor();
@@ -298,11 +302,10 @@ static void start_all_module()
     {
         printf("runAudioCfg.rebootMute = %d,enable audio play system finished\n",runAudioCfg.rebootMute);
 		
-		//if(!strstr(sdk_cfg.name, "CUS_TB_GC2053_V20"))
+//		if(!strstr(sdk_cfg.name, "CUS_TB_GC2053_V20"))
 //        	CRTSCH_DEFAULT_WORK1(EVENT_TIMER_WORK, COMPUTE_TIME(0,0,0,0,500000), netcam_audio_out, AUDIO_FILE_START_FINISH);
-//        	xqq
-		//else	xqq
-			CRTSCH_DEFAULT_WORK1(CONDITION_TIMER_WORK, COMPUTE_TIME(0,0,0,1,0), netcam_audio_boot_finish, NULL);
+//		else
+			CRTSCH_DEFAULT_WORK1(CONDITION_TIMER_WORK, COMPUTE_TIME(0,0,0,2,0), netcam_audio_boot_finish, NULL);
     }
     else
     {
@@ -362,7 +365,7 @@ static void start_all_module()
     visionParam.osdEnable   = 0;
     visionParam.imgUpload   = 0;
 
-    //gk_vision_init(&visionParam);
+    gk_vision_init(&visionParam);
 #endif
 
 #ifdef MODULE_SUPPORT_GB28181
@@ -391,7 +394,7 @@ static void start_all_module()
     if (mojing_get_onvif_status() == 1)
     #endif
     if(access("/opt/custom/cfg/onvifDisable", F_OK) != 0)
-        onvif_start(GK_TRUE, 80);
+       onvif_start(GK_TRUE, 80);
     
 #endif
 
@@ -416,6 +419,18 @@ static void start_all_module()
     goke_server_start();
 #endif
 
+#ifdef MODULE_SUPPORT_AGING
+    printf("support aging test\n");
+    aging_test_start();
+#endif
+
+
+#ifdef MODULE_SUPPORT_DOULIAN_SERVER
+    printf("support doulian server\n");
+    doulian_server_start();
+#endif
+
+
 #ifdef MODULE_SUPPORT_GUI
     printf("support lvgl ui\n");
     gapp_ui_init();
@@ -431,6 +446,10 @@ static void start_all_module()
 	goolink_start();
 #endif
 
+#ifdef MODULE_SUPPORT_YUNTUN
+    printf("support yuntun\n");
+    yuntunRtmpStart();
+#endif	
 
 }
 
@@ -557,9 +576,23 @@ static int netcam_start()
 	//netcam_p2pid_init();
     //优先启动升级程序
     netcam_update_init(NULL);
-    venc_audio_start();
 
 
+#ifdef MODULE_SUPPORT_GOKE_UPGRADE
+    if (access("/opt/resource/audio/zh/dev_starting.alaw", F_OK) != 0)
+    {
+        //音频文件访问失败，则表明资源分区失效，升级恢复
+        new_system_call("touch /tmp/feeddog");
+        netcam_net_init();
+        printf("support goke upgrade\n");
+        goke_upgrade_start();
+        while(1)
+        {
+            printf("wait for upgrade..\n");
+            sleep(1);
+        }
+    }
+#endif
 
     #ifdef MODULE_SUPPORT_WATCHDOG
     //初始化看门狗
@@ -581,36 +614,38 @@ static int netcam_start()
                                         runVideoCfg.vencStream[i].h264Conf.height);
     }
 	//sdk_sys_init(vencStream_cnt, enSize);
-	sdk_sys_init(vencStream_cnt);	//xqq
-	netcam_ptz_init();	//xqq failed
-	printf("=====================netcam_ptz_init=====================\n");
+	sdk_sys_init(vencStream_cnt);
+	netcam_ptz_init();
     netcam_sys_init();
-    printf("=============netcam_sys_init================\n");
     //初始化OSD更新任务
     netcam_timer_init();
-    printf("==================netcam_timer_init=================\n");
     //初始化定时器任务, 因为升级功能需要用到该任务。
     start_default_workqueue();
-    printf("============================start_default_workqueue=================\n");
-    netcam_net_init();	//xqq
-    printf("===================================netcam_net_init==========================\n");
+    netcam_net_init();
     
-    //netcam_audio_init();	xqq delete audio
-    //netcam_video_init();	xqq
-    printf("================netcam_video_init=============\n");
-	//netcam_md_init(1);	ci ma liu xqq
-	printf("====================netcam_md_init===============\n");
+    //netcam_audio_init();
+    netcam_video_init();
+    //venc_audio_start();
+	netcam_md_init(1);
+    
 	//netcam_ftp_start();
     #ifdef MODULE_SUPPORT_MAIL
 	netcam_mail_start();
 	#endif
+    #if 0
 	netcam_osd_init();
-//    netcam_pm_init();		xqq
+    #endif
+    //netcam_pm_init();
+    venc_audio_start();
     netcam_image_init();
-	//netcam_autolight_init();	xqq
+	//netcam_autolight_init();
     netcam_net_wifi_init();
 
-	//netcam_sys_use_timer_init();   xqq
+    printf("==================================netcam_start end==============\n");
+    printf("==================================netcam_start end==============\n");
+    printf("==================================netcam_start end==============\n");
+
+	//netcam_sys_use_timer_init();
     return 0;
 }
 
@@ -645,13 +680,19 @@ int main(int argc, char *argv[])
 
 
     netcam_start();
+//#ifdef MODULE_SUPPORT_WATCHDOG
+//    netcam_watchdog_feed();
+//#else
+//    netcam_update_feed_dog();
+//#endif
     start_all_module();
 
     //阻塞等待，不用循环
     while(1)
     {
-        // 如果video异常，那么不进行feed操作
 #if 0
+        // 如果video异常，那么不进行feed操作
+        #if 0
         if (netcam_video_check_alive() < 0)
         {
             LOG_WARNING("encode exception...");
@@ -660,7 +701,9 @@ int main(int argc, char *argv[])
 			if(netcam_get_update_status() == 0)
             	continue;
         }
-#endif		//xqq no video
+        #endif
+
+
         #ifdef MODULE_SUPPORT_WATCHDOG
         ts = time(NULL);
         ptm = localtime_r(&ts, &tt);
@@ -674,6 +717,7 @@ int main(int argc, char *argv[])
         printf("[%s]feed dog\n", str);
         netcam_watchdog_feed();
         #else
+        printf("feed dog netcam\n");
         netcam_update_feed_dog();
         #endif
 
@@ -686,6 +730,7 @@ int main(int argc, char *argv[])
         #else
         sleep(15);
         #endif
+#endif
     }
     stop_all_module();
     return 0;

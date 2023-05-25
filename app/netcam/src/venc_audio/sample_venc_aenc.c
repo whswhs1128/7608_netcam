@@ -8,7 +8,7 @@
 #include <unistd.h>
 #include <pthread.h>
 #include <signal.h>
-
+#include "ot_common_dis.h"
 #include <sys/ioctl.h>
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -45,6 +45,8 @@
 #include "ot_vqe_register.h"
 #endif
 
+#include "cfg_video.h"
+GK_NET_VIDEO_CFG runVideoCfg;
 static ot_payload_type g_payload_type = OT_PT_AAC;
 static td_bool g_aio_resample = TD_FALSE;
 static td_bool g_user_get_mode = TD_FALSE;
@@ -55,9 +57,8 @@ static ot_audio_sample_rate g_out_sample_rate = OT_AUDIO_SAMPLE_RATE_BUTT;
 static td_u32 g_ai_vqe_type = 1;
 static void change_state(int signo);
 
-#define BIG_STREAM_SIZE PIC_3840X2160
-#define SMALL_STREAM_SIZE PIC_1080P
-#define get_the_mode 1
+#define BIG_STREAM_SIZE PIC_1080P
+#define SMALL_STREAM_SIZE PIC_720P
 static int aenc_open = 0;
 
 typedef struct
@@ -67,8 +68,8 @@ typedef struct
     int channel_num;
 } rtsp_handle_struct;
 
-static pthread_t VencPid1;
-static pthread_t VencPid2;
+static pthread_t venc_audio_pthread[4];
+
 static int EXIT_MODE_X = 1;
 static int End_Rtsp = 1;
 rtsp_handle_struct rtsp_handle[2];
@@ -129,7 +130,6 @@ td_void *SAMPLE_COMM_AUDIO_AencProc_new(td_void *p)
     static int s_maxAFd = 0;
     // rtsp_handle_struct rtsp_p = *(rtsp_handle_struct *)p;
     fd_set read_fds;
-
     ot_audio_stream stAStream;
 
     s_aencFd = ss_mpi_aenc_get_fd(0);
@@ -144,49 +144,38 @@ td_void *SAMPLE_COMM_AUDIO_AencProc_new(td_void *p)
     TimeoutVal.tv_usec = 0;
     while (End_Rtsp)
     {
-        // ret = select(s_maxAFd, &read_fds, NULL, NULL, &TimeoutVal);
-        // if (ret <= 0)
-        // {
-        //     printf("%s select failed!\n", __FUNCTION__);
-        //     // usleep(500000);
-            // sleep(1);
-        //     continue;
-        //     // return -1;
-        //     // break;
-        // }
-        // // Live stream
-        // if (FD_ISSET(s_aencFd, &read_fds))
-        // {
-            ret = ss_mpi_aenc_get_stream(0, &stAStream, TD_TRUE);
-            if (TD_SUCCESS != ret)
-            {
-                printf("ss_mpi_aenc_get_stream .. failed with %#x!\n", ret);
-                continue;
-                // return -1;
-            }
 
-            for (i = 0; i < CHN_NUM_MAX; i++)
+        ret = ss_mpi_aenc_get_stream(0, &stAStream, TD_TRUE);
+        if (TD_SUCCESS != ret)
+        {
+            // printf("ss_mpi_aenc_get_stream .. failed with %#x!\n", ret);
+            continue;
+            // return -1;
+        }
+
+        for (i = 0; i < CHN_NUM_MAX; i++)
+        {
+            if (runVideoCfg.vencStream[i].avStream == 0)
             {
-            if (rtsp_handle[i].g_rtsplive)
-            {
-                rtsp_tx_audio(rtsp_handle[i].session, (unsigned char *)stAStream.stream,
-                              stAStream.len, stAStream.time_stamp);
+                if (rtsp_handle[i].g_rtsplive)
+                {
+                    rtsp_tx_audio(rtsp_handle[i].session, (unsigned char *)stAStream.stream,
+                                  stAStream.len, stAStream.time_stamp);
+                }
             }
-            }
-            ret = ss_mpi_aenc_release_stream(0, &stAStream);
-            
+        }
+        ret = ss_mpi_aenc_release_stream(0, &stAStream);
+
         if (TD_SUCCESS != ret)
         {
             sample_print("ss_mpi_aenc_release_stream chn[%d] .. failed with %#x!\n", 0, ret);
             // continue;
             return -1;
         }
-        // }
-        
     }
+    printf("==========audio end==========\n");
     return NULL;
 }
-
 
 #if 1
 static td_s32 sample_audio_ai_aenc(td_void)
@@ -235,20 +224,18 @@ static td_s32 sample_audio_ai_aenc(td_void)
         goto ai_aenc_err4;
     }
 
-    static pthread_t AencPid1 = 5;
-    // pthread_create(&AencPid1, 0, SAMPLE_COMM_AUDIO_AencProc_new, (void *)&rtsp_handle[0]);
-    pthread_create(&AencPid1, 0, SAMPLE_COMM_AUDIO_AencProc_new, NULL);
-    // sample_audio_ai_aenc_inner(send_adec, &aio_attr, ao_dev);
 
+    pthread_create(&venc_audio_pthread[2], 0, SAMPLE_COMM_AUDIO_AencProc_new, NULL);
+    pthread_detach(venc_audio_pthread[2]);
     while (EXIT_MODE_X)
     {
         signal(SIGINT, change_state);
     }
 
-    printf("end rtsp\n");
-    // End_Rtsp = 0;
+    printf("==============end audio=============\n");
+   
 
-    // sample_audio_aenc_unbind_ai(ai_dev, aenc_chn_cnt);
+    sample_audio_aenc_unbind_ai(ai_dev, aenc_chn_cnt);
 
 ai_aenc_err4:
     ret = sample_comm_audio_stop_aenc(aenc_chn_cnt);
@@ -283,10 +270,6 @@ static td_void sample_venc_handle_sig(td_s32 signo)
         g_sample_venc_exit = TD_TRUE;
     }
 
-    if (session)
-        rtsp_del_session(session);
-    if (g_rtsplive)
-        rtsp_del_demo(g_rtsplive);
 }
 
 static td_s32 sample_venc_getchar()
@@ -503,43 +486,19 @@ static td_s32 sample_venc_vpss_init(ot_vpss_grp vpss_grp, sample_venc_vpss_chn_a
     {
         if (vpss_chan_cfg->enable[vpss_chn] == 1)
         {
-            chn_attr[vpss_chn].width = vpss_chan_cfg->output_size[vpss_chn].width;
-            chn_attr[vpss_chn].height = vpss_chan_cfg->output_size[vpss_chn].height;
-            // printf("vpss width = %d\n", vpss_chan_cfg->output_size[vpss_chn].width);
-            // printf("vpss height = %d\n", vpss_chan_cfg->output_size[vpss_chn].height);
-            // chn_attr[vpss_chn].width = 1920;
-            // chn_attr[vpss_chn].height = 1080;
-
+            // chn_attr[vpss_chn].width = vpss_chan_cfg->output_size[vpss_chn].width;
+            // chn_attr[vpss_chn].height = vpss_chan_cfg->output_size[vpss_chn].height;
+            chn_attr[0].width = 1920;
+            chn_attr[0].height = 1080;
+            chn_attr[1].width = 1280;
+            chn_attr[1].height = 720;
             chn_attr[vpss_chn].chn_mode = OT_VPSS_CHN_MODE_USER;
-            chn_attr[vpss_chn].compress_mode = vpss_chan_cfg->compress_mode[vpss_chn];
+            // chn_attr[vpss_chn].compress_mode = vpss_chan_cfg->compress_mode[vpss_chn];
+            chn_attr[vpss_chn].compress_mode = OT_COMPRESS_MODE_NONE;
             chn_attr[vpss_chn].pixel_format = vpss_chan_cfg->pixel_format;
-            chn_attr[vpss_chn].frame_rate.src_frame_rate = -1;
-            chn_attr[vpss_chn].frame_rate.dst_frame_rate = -1;
+            chn_attr[vpss_chn].frame_rate.src_frame_rate = runVideoCfg.vencStream[vpss_chn].h264Conf.fps;
+            chn_attr[vpss_chn].frame_rate.dst_frame_rate = runVideoCfg.vencStream[vpss_chn].h264Conf.fps;
             chn_attr[vpss_chn].depth = 0;
-            // 	    FILE *pFile = fopen("/mnt/mirror", "r");
-            // 	    int size,tempLen;
-            //     if (pFile == NULL) {
-            //         printf("fopen error.\n");
-            //     }
-            //     int mirror = 1;
-            //     fseek(pFile, 0, SEEK_END);
-            //     size = ftell(pFile);
-            //     fseek(pFile, 0, SEEK_SET);
-
-            //     char *pDataBuffer = (char *)malloc(size);
-            //     if (pDataBuffer == NULL) {
-            //         printf("malloc erro\n");
-            //     }
-            //   tempLen = fread(pDataBuffer, sizeof(unsigned char), size, pFile);
-            //     if (tempLen <= 0) {
-            //         printf("read erro\n");
-            //     }
-            //     printf("=============pDataBuffer = %s\n",pDataBuffer);
-            //     mirror = *(pDataBuffer) - '0';
-            //     printf("=============mirror = %d\n",mirror);
-            //             chn_attr[vpss_chn].mirror_en = mirror;
-            //             chn_attr[vpss_chn].flip_en = 0;
-            //             chn_attr[vpss_chn].aspect_ratio.mode = OT_ASPECT_RATIO_NONE;
         }
     }
 
@@ -597,46 +556,88 @@ static td_void sample_venc_set_video_param(sample_comm_venc_chn_param *chn_param
     td_bool share_buf_en = TD_TRUE;
     ot_pic_size pic_size[CHN_NUM_MAX] = {BIG_STREAM_SIZE, SMALL_STREAM_SIZE};
     ot_payload_type payload[CHN_NUM_MAX] = {OT_PT_H265, OT_PT_H264};
-    sample_rc rc_mode = 0;
-
-    if (get_rc_mode(payload[0], &rc_mode) != TD_SUCCESS)
+    sample_rc rc_mode[CHN_NUM_MAX];
+    int i,j;
+    // if (get_rc_mode(payload[0], &rc_mode) != TD_SUCCESS)
+    // {
+    //     return;
+    // }
+    for (i = 0; i < CHN_NUM_MAX; i++)
     {
-        return;
+        if (runVideoCfg.vencStream[i].h264Conf.rc_mode == 0)
+            rc_mode[i] = SAMPLE_RC_CBR;
+        else
+            rc_mode[i] = SAMPLE_RC_VBR;
     }
 
-    // int x = 0;
-    // x = get_the_mode;
-    // if(x == 0)
-    // {
+        for (i = 0; i < CHN_NUM_MAX; i++)
+    {
+        if (runVideoCfg.vencStream[i].enctype == 1)
+            payload[i] = OT_PT_H264;
+        else
+            payload[i] = OT_PT_H265;
+    }
+
+    if (runVideoCfg.vencStream[0].h264Conf.bps < 1000 || runVideoCfg.vencStream[0].h264Conf.bps > 8000)
+    {
+        printf("bps setting error!\nuse default value\n");
+        chn_param[0].bitrate_x = 4096;
+    }
+    else
+        chn_param[0].bitrate_x = runVideoCfg.vencStream[0].h264Conf.bps;
+
+    if (runVideoCfg.vencStream[0].h264Conf.bps < 300 || runVideoCfg.vencStream[0].h264Conf.bps > 3072)
+    {
+        printf("bps setting error!\nuse default value\n");
+        chn_param[1].bitrate_x = 3072;
+    }
+    else
+        chn_param[1].bitrate_x = runVideoCfg.vencStream[0].h264Conf.bps;
+
+    if (runVideoCfg.vencStream[0].h264Conf.width == 1920)
+    {
+        pic_size[0] = PIC_1080P;
+    }
+    else if (runVideoCfg.vencStream[0].h264Conf.width == 1280 && runVideoCfg.vencStream[0].h264Conf.height == 1024)
+    {
+        pic_size[0] = PIC_1280X1024;
+    }
+    else if (runVideoCfg.vencStream[0].h264Conf.width == 1280 && runVideoCfg.vencStream[0].h264Conf.height == 720)
+    {
+        pic_size[0] = PIC_720P;
+    }
+
+
+
+    if (runVideoCfg.vencStream[1].h264Conf.width == 1280)
+    {
+        pic_size[1] = PIC_720P;
+    }
+    else if (runVideoCfg.vencStream[1].h264Conf.width == 720)
+    {
+        pic_size[1] = PIC_576P;
+    }
+    else if (runVideoCfg.vencStream[1].h264Conf.width == 640)
+    {
+        pic_size[1] = PIC_360P;
+    }
+
     /* encode h.265 */
     chn_param[0].gop_attr = gop_attr;
     chn_param[0].type = payload[0];
-    chn_param[0].size = PIC_1080P;
-    chn_param[0].rc_mode = rc_mode;
+    chn_param[0].size = pic_size[0];
+    chn_param[0].rc_mode = rc_mode[0];
     chn_param[0].profile = profile[0];
     chn_param[0].is_rcn_ref_share_buf = share_buf_en;
-    //     }
-    //     else if(x == 1)
-    // {
+    chn_param[0].frame_rate = runVideoCfg.vencStream[0].h264Conf.fps;
     /* encode h.264 */
-    // chn_param[1].gop_attr = gop_attr;
-    // chn_param[1].type = payload[1];
-    // chn_param[1].size = pic_size[1];
-    // chn_param[1].rc_mode = rc_mode;
-    // chn_param[1].profile = profile[1];
-    // chn_param[1].is_rcn_ref_share_buf = share_buf_en;
     chn_param[1].gop_attr = gop_attr;
-    chn_param[1].type = OT_PT_H264;
-    // chn_param[0].size = pic_size[0];
-    chn_param[1].size = PIC_720P;
-    // printf("venc chn size width = %d\n", chn_param[0].size);
-
-    printf("venc chn size height = %d\n", chn_param[0].size);
-
-    chn_param[1].rc_mode = rc_mode;
+    chn_param[1].type = payload[1];
+    chn_param[1].size = pic_size[1];
+    chn_param[1].rc_mode = rc_mode[1];
     chn_param[1].profile = profile[1];
     chn_param[1].is_rcn_ref_share_buf = share_buf_en;
-    // }
+    chn_param[1].frame_rate = runVideoCfg.vencStream[1].h264Conf.fps;
 }
 
 static td_void sample_set_venc_vpss_chn(sample_venc_vpss_chn *venc_vpss_chn)
@@ -703,7 +704,6 @@ static int get_stream_from_one_channl(int s_LivevencChn, rtsp_demo_handle g_rtsp
     s_maxFd = s_maxFd > s_LivevencFd ? s_maxFd : s_LivevencFd;
     s_maxFd = s_maxFd + 1;
 
-    pthread_detach(pthread_self());
 
     // printf("=======================channel = %d==============", s_LivevencChn);
 
@@ -749,15 +749,6 @@ static int get_stream_from_one_channl(int s_LivevencChn, rtsp_demo_handle g_rtsp
                 rtsp_sever_tx_video(g_rtsplive, session, pStremData, nSize, stVStream.pack[i].pts);
             }
         }
-        // if (aenc_open)
-        // {
-        //     printf("anec_open\n");
-        //     if (g_rtsplive)
-        //     {
-        //         rtsp_tx_audio(session, (unsigned char *)stAStream.stream,
-        //                       stAStream.len, stAStream.time_stamp);
-        //     }
-        // }
         ret = ss_mpi_venc_release_stream(s_LivevencChn, &stVStream);
         if (TD_SUCCESS != ret)
         {
@@ -791,62 +782,19 @@ td_void *VENC_GetVencStreamProc(td_void *p)
     TimeoutVal.tv_sec = 2;
     TimeoutVal.tv_usec = 0;
     ot_audio_stream stAStream;
-
     while (End_Rtsp)
     {
-        // if (aenc_open)
-    // {
-    //     static int s_aencFd = 0;
-    //     static int s_maxAFd = 0;
-    //     fd_set aenc_fds;
-    //     // fd_set read_fds;
-
-    //     s_aencFd = ss_mpi_aenc_get_fd(0);
-    //     s_maxAFd = s_maxAFd > s_aencFd ? s_maxAFd : s_aencFd;
-    //     s_maxAFd = s_maxAFd + 1;
-
-    //     // struct timeval TimeoutVal;
-    //     FD_ZERO(&aenc_fds);
-    //     FD_SET(s_aencFd, &aenc_fds);
-    //     ret = select(s_maxAFd, &aenc_fds, NULL, NULL, &TimeoutVal);
-    //     if (ret <= 0)
-    //     {
-    //         printf("%s select failed!\n", __FUNCTION__);
-    //         sleep(1);
-    //         // continue;
-    //         return -1;
-    //     }
-    //     // Live stream
-    //     if (FD_ISSET(s_aencFd, &aenc_fds))
-    //     {
-    //         ret = ss_mpi_aenc_get_stream(0, &stAStream, TD_TRUE);
-    //         if (TD_SUCCESS != ret)
-    //         {
-    //             printf("ss_mpi_aenc_get_stream .. failed with %#x!\n", ret);
-    //             // continue;
-    //             return -1;
-    //         }
-    //     }
-    // }
-    for (i = 0; i < CHN_NUM_MAX; i++)
-    // for (i = 0; i < 1; i++)
-    {
-        ret = get_stream_from_one_channl(rtsp_handle[i].channel_num, rtsp_handle[i].g_rtsplive,
-                                         rtsp_handle[i].session);
-        if (ret < 0)
-            End_Rtsp = 0;
+        
+        for (i = 0; i < CHN_NUM_MAX; i++)
+        // for (i = 0; i < 1; i++)
+        {
+            ret = get_stream_from_one_channl(rtsp_handle[i].channel_num, rtsp_handle[i].g_rtsplive,
+                                             rtsp_handle[i].session);
+            if (ret < 0)
+                End_Rtsp = 0;
+        }
     }
-    // ret = ss_mpi_aenc_release_stream(0, &stAStream);
-    // if (TD_SUCCESS != ret)
-    // {
-    //     sample_print("ss_mpi_aenc_release_stream chn[%d] .. failed with %#x!\n", 0, ret);
-    //     // continue;
-    //     return -1;
-    // }
-}
-// if (pstPack)
-//     free(pstPack);
-return NULL;
+    return NULL;
 }
 
 static td_s32 sample_venc_normal_start_encode(ot_vpss_grp vpss_grp, sample_venc_vpss_chn *venc_vpss_chn)
@@ -857,6 +805,7 @@ static td_s32 sample_venc_normal_start_encode(ot_vpss_grp vpss_grp, sample_venc_
     sample_comm_venc_chn_param chn_param[CHN_NUM_MAX] = {0};
     sample_comm_venc_chn_param *h265_chn_param = TD_NULL;
     sample_comm_venc_chn_param *h264_chn_param = TD_NULL;
+    int i;
 
     if (get_gop_mode(&gop_mode) != TD_SUCCESS)
     {
@@ -870,8 +819,7 @@ static td_s32 sample_venc_normal_start_encode(ot_vpss_grp vpss_grp, sample_venc_
 
     sample_venc_set_video_param(chn_param, gop_attr, CHN_NUM_MAX, TD_FALSE);
 
-    // if(get_the_mode == 0)
-    //  {   /* encode h.265 */
+      /* encode h.265 */
 
     h265_chn_param = &(chn_param[0]);
     if ((ret = sample_comm_venc_start(venc_vpss_chn->venc_chn[0], h265_chn_param)) != TD_SUCCESS)
@@ -886,9 +834,7 @@ static td_s32 sample_venc_normal_start_encode(ot_vpss_grp vpss_grp, sample_venc_
         sample_print("sample_comm_vpss_bind_venc failed for %#x!\n", ret);
         goto EXIT_VENC_H265_STOP;
     }
-    //  }
-    // else if(get_the_mode == 1)
-    // {    /* encode h.264 */
+      /* encode h.264 */
 
     h264_chn_param = &(chn_param[1]);
     if ((ret = sample_comm_venc_start(venc_vpss_chn->venc_chn[1], h264_chn_param)) != TD_SUCCESS)
@@ -905,16 +851,24 @@ static td_s32 sample_venc_normal_start_encode(ot_vpss_grp vpss_grp, sample_venc_
     }
     // }
     rtsp_handle[0].g_rtsplive = create_rtsp_demo(554);
-    rtsp_handle[0].session = create_rtsp_session(rtsp_handle[0].g_rtsplive, "/live.265");
+
     rtsp_handle[0].channel_num = venc_vpss_chn->venc_chn[0];
     rtsp_handle[1].g_rtsplive = create_rtsp_demo(8554);
-    rtsp_handle[1].session = create_rtsp_session(rtsp_handle[1].g_rtsplive, "/live.264");
     rtsp_handle[1].channel_num = venc_vpss_chn->venc_chn[1];
-    // pthread_create(&VencPid1, 0, VENC_GetVencStreamProc, (void *)&rtsp_handle);
+    char rtsp_name[20];
+    for (i = 0; i < CHN_NUM_MAX; i++)
+    {
+	sprintf(rtsp_name, "%s%d","/stream",i);
+	printf("========rtsp_name=============%s\n",rtsp_name);
+        if (chn_param[i].type == OT_PT_H265)
+            rtsp_handle[i].session = create_rtsp_session(rtsp_handle[i].g_rtsplive, rtsp_name, 1);
+        else
+            rtsp_handle[i].session = create_rtsp_session(rtsp_handle[i].g_rtsplive, rtsp_name, 0);
+    }
 
-    pthread_create(&VencPid1, 0, VENC_GetVencStreamProc, NULL);
-    // sleep(5);
-    // pthread_create(&VencPid2, 0, VENC_GetVencStreamProc, (void *)&rtsp_handle[1]);
+    pthread_create(&venc_audio_pthread[3], 0, VENC_GetVencStreamProc, NULL);
+    pthread_detach(venc_audio_pthread[3]);
+
 
 #if 0
         printf("press s to save video\n");
@@ -935,17 +889,17 @@ static td_s32 sample_venc_normal_start_encode(ot_vpss_grp vpss_grp, sample_venc_
         signal(SIGINT, change_state);
     }
 
-    printf("end rtsp\n");
-    End_Rtsp = 0;
+     printf("============end rtsp==============\n");
+    // End_Rtsp = 0;
 
-    return TD_SUCCESS;
+    //return TD_SUCCESS;
 
 EXIT_VENC_H264_UnBind:
-    // sample_comm_vpss_un_bind_venc(vpss_grp, venc_vpss_chn->vpss_chn[1], venc_vpss_chn->venc_chn[1]);
-    sample_comm_vpss_un_bind_venc(vpss_grp, venc_vpss_chn->vpss_chn[0], venc_vpss_chn->venc_chn[0]);
+    sample_comm_vpss_un_bind_venc(vpss_grp, venc_vpss_chn->vpss_chn[1], venc_vpss_chn->venc_chn[1]);
+    // sample_comm_vpss_un_bind_venc(vpss_grp, venc_vpss_chn->vpss_chn[0], venc_vpss_chn->venc_chn[0]);
 EXIT_VENC_H264_STOP:
-    // sample_comm_venc_stop(venc_vpss_chn->venc_chn[1]);
-    sample_comm_venc_stop(venc_vpss_chn->venc_chn[0]);
+    sample_comm_venc_stop(venc_vpss_chn->venc_chn[1]);
+    //sample_comm_venc_stop(venc_vpss_chn->venc_chn[0]);
 EXIT_VENC_H265_UnBind:
     sample_comm_vpss_un_bind_venc(vpss_grp, venc_vpss_chn->vpss_chn[0], venc_vpss_chn->venc_chn[0]);
 EXIT_VENC_H265_STOP:
@@ -957,14 +911,16 @@ EXIT_VENC_H265_STOP:
 
 static td_void sample_venc_exit_process()
 {
-    printf("please press twice ENTER to exit this sample\n");
-    (td_void) getchar();
+   // printf("please press twice ENTER to exit this sample\n");
+   // (td_void) getchar();
 
-    if (g_sample_venc_exit != TD_TRUE)
-    {
-        (td_void) getchar();
-    }
-    sample_comm_venc_stop_get_stream(CHN_NUM_MAX);
+   // if (g_sample_venc_exit != TD_TRUE)
+   // {
+   //     (td_void) getchar();
+   // }
+    //sample_comm_venc_stop_get_stream(CHN_NUM_MAX);
+    int chn_id[2] = {3, 4};
+    sample_comm_venc_stop_get_stream_x(chn_id,CHN_NUM_MAX);
 }
 
 /*
@@ -1187,6 +1143,19 @@ static td_s32 sample_venc_normal(td_void)
    ss_mpi_isp_get_wb_attr(vi_pipe, &wb_attr);
    printf("=============type = %d\n", wb_attr.op_type);
 #endif
+    ot_dis_cfg dis_cfg;
+    ss_mpi_vi_get_chn_dis_cfg(vi_pipe, vi_chn, &dis_cfg);
+    dis_cfg.motion_level = 1;
+    dis_cfg.mode = 1;
+
+    ss_mpi_vi_set_chn_dis_cfg(vi_pipe, vi_chn, &dis_cfg);
+    ot_dis_attr dis_attr;
+    ss_mpi_vi_get_chn_dis_attr(vi_pipe, vi_chn, &dis_attr);
+    dis_attr.enable = TD_TRUE;
+    dis_attr.gdc_bypass = TD_FALSE;
+    ss_mpi_vi_set_chn_dis_attr(vi_pipe, vi_chn, &dis_attr);
+    printf("======enable =======%d\n", dis_attr.enable);
+
     if ((ret = sample_venc_normal_start_encode(vpss_grp, &venc_vpss_chn)) != TD_SUCCESS)
     {
         goto EXIT_VI_VPSS_UNBIND;
@@ -1212,6 +1181,37 @@ EXIT_SYS_STOP:
     return ret;
 }
 
+void rtsp_reboot()
+{
+    int i;
+    int retval;
+    printf("=================rtsp reboot===================\n");
+    printf("=================rtsp reboot===================\n");
+    printf("l=================rtsp reboot===================\n");
+    End_Rtsp = 0;
+    EXIT_MODE_X = 0;
+    new_system_call("pkill udhcpc");
+    printf("===========pkill udhcpc==============\n");
+    for(i = 0; i<2;i++)
+    {
+    rtsp_del_session(rtsp_handle[i].session);
+    rtsp_del_demo(rtsp_handle[i].g_rtsplive);
+    }
+   // for(i = 3; i > 0; i--)
+   //   {
+   //       pthread_join(venc_audio_pthread[i], &retval);
+   //       printf("recv retval = %d\n", (int)retval);
+   //   }
+    ss_mpi_aenc_aac_deinit();
+    // sample_comm_sys_exit();
+    printf("===========runVideoCfg.vencStream[1].h264Conf.width = %d===========\n" ,runVideoCfg.vencStream[1].h264Conf.width);
+    sleep(3);
+    End_Rtsp = 1;
+    EXIT_MODE_X = 1;
+
+    venc_audio_start();
+}
+
 /******************************************************************************
  * function    : main()
  * description : video venc sample
@@ -1224,13 +1224,10 @@ td_s32 venc_audio_start()
 #endif
 {
     td_s32 ret;
-
 #ifndef __LITEOS__
     sample_sys_signal(sample_venc_handle_sig);
 #endif
-    static pthread_t venc_thread = 0;
-    static pthread_t aenc_thread = 1;
-    // ot_vb_cfg vb_conf;
+
 #if defined(OT_VQE_USE_STATIC_MODULE_REGISTER)
     ret = sample_audio_register_vqe_module();
     if (ret != TD_SUCCESS)
@@ -1239,42 +1236,23 @@ td_s32 venc_audio_start()
     }
 #endif
 
-    // ss_mpi_aenc_aac_init();
-    // pthread_create(&aenc_thread, 0, sample_audio_ai_aenc, NULL);
-    // sleep(5);
-    pthread_create(&venc_thread, 0, sample_venc_normal, NULL);
-    // // sample_venc_normal();
+    printf("====================start rtsp=================\n");
+    printf("====================start rtsp=================\n");
+    printf("====================start rtsp=================\n");
+
+    pthread_create(&venc_audio_pthread[0], 0, sample_venc_normal, NULL);
+    pthread_detach(venc_audio_pthread[0]);
     sleep(1);
     ss_mpi_aenc_aac_init();
-    // pthread_create(&aenc_thread, 0, sample_audio_ai_aenc, NULL);
-
-    // ret = memset_s(&vb_conf, sizeof(ot_vb_cfg), 0, sizeof(ot_vb_cfg));
-    // if (ret != EOK) {
-    //     printf("%s: vb_config init failed with %d!\n", __FUNCTION__, ret);
-    //     return TD_FAILURE;
-    // }
-
-    // ret = sample_comm_sys_init(&vb_conf);
-    // if (ret != TD_SUCCESS) {
-    //     printf("%s: system init failed with %d!\n", __FUNCTION__, ret);
-    //     return TD_FAILURE;
-    // }
-    
-    pthread_create(&aenc_thread, 0, sample_audio_ai_aenc, NULL);
-    // ss_mpi_adec_aac_init();
-    // sample_audio_ai_aenc();
-    while (EXIT_MODE_X)
+    if (runVideoCfg.vencStream[0].avStream == 0 && runVideoCfg.vencStream[1].avStream == 0)
     {
-        signal(SIGINT, change_state);
+        pthread_create(&venc_audio_pthread[1], 0, sample_audio_ai_aenc, NULL);
+	pthread_detach(venc_audio_pthread[1]);
     }
-    // printf("end rtsp\n");
-    ss_mpi_aenc_aac_deinit();
-    // ss_mpi_adec_aac_deinit();
-    sample_comm_sys_exit();
-#ifdef __LITEOS__
-    return TD_SUCCESS;
-#else
-    exit(TD_SUCCESS);
-#endif
+// #ifdef __LITEOS__
+//     return TD_SUCCESS;
+// #else
+//     exit(TD_SUCCESS);
+// #endif
 }
 #endif

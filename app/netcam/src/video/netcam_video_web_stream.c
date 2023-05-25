@@ -139,7 +139,7 @@ static int tcp_create_server(int *fd)
     //server_addr.sin_addr.s_addr = inet_addr("192.168.10.5");//htonl(INADDR_ANY);
     server_addr.sin_addr.s_addr = htonl(INADDR_ANY);
     server_addr.sin_port = htons(TCP_SERVER_PORT);
-    //ÉèÖÃIPÖØÓÃ£¬±ÜÃâbindÊ±³öÏÖAddress already in use
+    //ï¿½ï¿½ï¿½ï¿½IPï¿½ï¿½ï¿½Ã£ï¿½ï¿½ï¿½ï¿½ï¿½bindÊ±ï¿½ï¿½ï¿½ï¿½Address already in use
     opt = 1;
     setsockopt(sockfd, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt));
 
@@ -879,14 +879,14 @@ int netcam_video_web_stream_init(NETCAM_VIDEO_STREAM_Porpety *streamPro, int str
         PRINT_INFO("bufId:%d,stream id:%d,Max stream num:%d\n",streamPro[i].bufId,streamPro[i].streamId,streamPro[i].maxStreamNum);
     }
 
-    pthread_create(&videoServerPid, NULL, tcp_video_server_proc, NULL);
-    if(videoServerPid != 0)
-    {
-        PRINT_INFO("Create web stream server success\n");
-    }
-    else
-    {
-        PRINT_INFO("Create web stream server failed\n");
-    }
+    // pthread_create(&videoServerPid, NULL, tcp_video_server_proc, NULL);
+    // if(videoServerPid != 0)
+    // {
+    //     PRINT_INFO("Create web stream server success\n");
+    // }
+    // else
+    // {
+    //     PRINT_INFO("Create web stream server failed\n");
+    // }        xqq
     return 0;
 }

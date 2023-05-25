@@ -597,6 +597,7 @@ typedef struct {
     ot_venc_gop_attr gop_attr;
     ot_payload_type type;
     sample_rc rc_mode;
+    td_u32 bitrate_x;
 } sample_comm_venc_chn_param;
 
 typedef struct {

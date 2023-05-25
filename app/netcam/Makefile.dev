@@ -45,6 +45,7 @@ endif
 
 ifeq ($(SUPPORT_CMS_CONFIG),y)
 LIBRARIES += app_gkcms
+CCFLAGS_USER += -I src/gk_cms/gk_cms_net
 endif
 
 ifeq ($(SUPPORT_LOCAL_REC),y)

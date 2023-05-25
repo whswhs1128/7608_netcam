@@ -3,6 +3,8 @@
 #include "media_fifo.h"
 #include "common.h"
 #include "sdk_isp.h"
+#include "ot_common_isp.h"
+#include "ss_mpi_isp.h"
 
 
 pthread_rwlock_t image_lock;
@@ -30,6 +32,18 @@ static void image_set_all(void)
     sdk_isp_set_sharpen(runImageCfg.sharpness, 1);
     sdk_isp_set_hue(runImageCfg.hue);
 
+    ot_isp_csc_attr csc_attr;
+    ot_isp_sharpen_attr shp_attr;
+    ss_mpi_isp_get_csc_attr(0, &csc_attr);
+    ss_mpi_isp_get_sharpen_attr(0, &shp_attr);
+    csc_attr.contr = runImageCfg.contrast;
+    csc_attr.luma = runImageCfg.brightness;
+    csc_attr.satu = runImageCfg.saturation;
+    csc_attr.hue = runImageCfg.hue;
+    shp_attr.op_type = OT_OP_MODE_MANUAL;
+        shp_attr.manual_attr.detail_ctrl = runImageCfg.sharpness;
+        ss_mpi_isp_set_sharpen_attr(0, &shp_attr);
+        ss_mpi_isp_set_csc_attr(0, &csc_attr);
     #if 0
     if(runImageCfg.enabledWDR== 1)
     {
@@ -115,21 +129,49 @@ int netcam_image_set(GK_NET_IMAGE_CFG imagAttr)
 {
     image_enter_lock();
     sdk_isp_changed();
-    if(imagAttr.contrast != runImageCfg.contrast)
-       sdk_isp_set_contrast(imagAttr.contrast);
+    ot_isp_csc_attr csc_attr;
+    ot_isp_sharpen_attr shp_attr;
+    ss_mpi_isp_get_csc_attr(0, &csc_attr);
+    ss_mpi_isp_get_sharpen_attr(0, &shp_attr);
 
+    if(imagAttr.contrast != runImageCfg.contrast)
+    {
+       csc_attr.contr = imagAttr.contrast;
+       ss_mpi_isp_set_csc_attr(0, &csc_attr);
+
+       sdk_isp_set_contrast(imagAttr.contrast);
+    }
     if(imagAttr.brightness != runImageCfg.brightness)
-       sdk_isp_set_brightness(imagAttr.brightness);
+    {
+        sdk_isp_set_brightness(imagAttr.brightness);
+        csc_attr.luma = imagAttr.brightness;
+    }
+       
 
     if(imagAttr.saturation != runImageCfg.saturation)
+    {
         sdk_isp_set_saturation(imagAttr.saturation);
+        csc_attr.satu = imagAttr.saturation;
+        ss_mpi_isp_set_csc_attr(0, &csc_attr);
+    }
+        
 
     if(imagAttr.sharpness != runImageCfg.sharpness)
+    {
+        shp_attr.op_type = OT_OP_MODE_MANUAL;
+        shp_attr.manual_attr.detail_ctrl = imagAttr.sharpness;
+        ss_mpi_isp_set_sharpen_attr(0, &shp_attr);
         sdk_isp_set_sharpen(imagAttr.sharpness, 1);
+    }
+        
 
 
     if(imagAttr.hue != runImageCfg.hue)
+    {
         sdk_isp_set_hue(imagAttr.hue);
+        csc_attr.hue = imagAttr.hue;
+    }
+        
 
     if(imagAttr.wbMode != runImageCfg.wbMode)
         sdk_isp_set_wb_mode(imagAttr.wbMode);
@@ -201,8 +243,10 @@ int netcam_image_set(GK_NET_IMAGE_CFG imagAttr)
     if(imagAttr.flipEnabled != runImageCfg.flipEnabled || imagAttr.mirrorEnabled != runImageCfg.mirrorEnabled)
     {
         //sdk_isp_set_mirro_flip(imagAttr.mirrorEnabled, imagAttr.flipEnabled);		xqq
+	sample_comm_isp_mirror_flip_set(0,imagAttr.mirrorEnabled, imagAttr.flipEnabled);
     }
-    
+    // csc_attr.en = 1;
+    ss_mpi_isp_set_csc_attr(0, &csc_attr);
     memcpy(&runImageCfg,&imagAttr,sizeof(imagAttr));
     image_leave_lock();
     return 0;

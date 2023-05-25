@@ -1088,6 +1088,42 @@ static td_void sample_comm_venc_h265_vbr_param_init(ot_venc_chn_attr *venc_chn_a
     venc_chn_attr->rc_attr.h265_vbr = h265_vbr;
 }
 
+
+static td_void sample_comm_venc_h264_vbr_param_init_x(ot_venc_chn_attr *venc_chn_attr, td_u32 gop, td_u32 stats_time,
+    td_u32 frame_rate, sample_comm_venc_chn_param *chn_param)
+{
+    ot_venc_h264_vbr h264_vbr;
+
+    venc_chn_attr->rc_attr.rc_mode = OT_VENC_RC_MODE_H264_VBR;
+    h264_vbr.gop = gop;
+    h264_vbr.stats_time = stats_time;
+    h264_vbr.src_frame_rate = frame_rate;
+    h264_vbr.dst_frame_rate = frame_rate;
+
+    h264_vbr.max_bit_rate = chn_param->bitrate_x;
+
+    venc_chn_attr->rc_attr.h264_vbr = h264_vbr;
+}
+
+static td_void sample_comm_venc_h265_vbr_param_init_x(ot_venc_chn_attr *venc_chn_attr, td_u32 gop, td_u32 stats_time,
+    td_u32 frame_rate, sample_comm_venc_chn_param *chn_param)
+{
+    ot_venc_h265_vbr h265_vbr;
+
+    venc_chn_attr->rc_attr.rc_mode = OT_VENC_RC_MODE_H265_VBR;
+    h265_vbr.gop = gop;
+    h265_vbr.stats_time = stats_time;
+    h265_vbr.src_frame_rate = frame_rate;
+    h265_vbr.dst_frame_rate = frame_rate;
+
+    h265_vbr.max_bit_rate = chn_param->bitrate_x;
+    
+    venc_chn_attr->rc_attr.h265_vbr = h265_vbr;
+}
+
+
+
+
 static td_void sample_comm_venc_mjpeg_fixqp_param_init(ot_venc_chn_attr *venc_chn_attr, td_u32 frame_rate)
 {
     ot_venc_mjpeg_fixqp mjpege_fixqp;
@@ -1276,6 +1312,40 @@ static td_void sample_comm_venc_h265_cbr_param_init(ot_venc_chn_attr *venc_chn_a
     venc_chn_attr->rc_attr.h265_cbr = h265_cbr;
 }
 
+
+static td_void sample_comm_venc_h264_cbr_param_init_x(ot_venc_chn_attr *venc_chn_attr, td_u32 gop, td_u32 stats_time,
+    td_u32 frame_rate, sample_comm_venc_chn_param *chn_param)
+{
+    ot_venc_h264_cbr h264_cbr;
+
+    venc_chn_attr->rc_attr.rc_mode = OT_VENC_RC_MODE_H264_CBR;
+    h264_cbr.gop = gop;
+    h264_cbr.stats_time = stats_time; /* stream rate statics time(s) */
+    h264_cbr.src_frame_rate = frame_rate; /* input (vi) frame rate */
+    h264_cbr.dst_frame_rate = frame_rate; /* target frame rate */
+
+    h264_cbr.bit_rate = chn_param->bitrate_x;
+
+    venc_chn_attr->rc_attr.h264_cbr = h264_cbr;
+}
+
+static td_void sample_comm_venc_h265_cbr_param_init_x(ot_venc_chn_attr *venc_chn_attr, td_u32 gop, td_u32 stats_time,
+    td_u32 frame_rate, sample_comm_venc_chn_param *chn_param)
+{
+    ot_venc_h265_cbr h265_cbr;
+
+    venc_chn_attr->rc_attr.rc_mode = OT_VENC_RC_MODE_H265_CBR;
+    h265_cbr.gop = gop;
+    h265_cbr.stats_time = stats_time;     /* stream rate statics time(s) */
+    h265_cbr.src_frame_rate = frame_rate; /* input (vi) frame rate */
+    h265_cbr.dst_frame_rate = frame_rate; /* target frame rate */
+
+    h265_cbr.bit_rate = chn_param->bitrate_x;
+
+    venc_chn_attr->rc_attr.h265_cbr = h265_cbr;
+}
+
+
 static td_s32 sample_comm_venc_jpeg_param_init(ot_venc_chn_attr *venc_chn_attr)
 {
     ot_venc_jpeg_attr jpeg_attr;
@@ -1345,6 +1415,29 @@ static td_s32 sample_comm_venc_h264_param_init(ot_venc_chn_attr *chn_attr, sampl
     return TD_SUCCESS;
 }
 
+static td_s32 sample_comm_venc_h264_param_init_x(ot_venc_chn_attr *chn_attr, sample_comm_venc_chn_param *chn_param)
+{
+    sample_rc rc_mode = chn_param->rc_mode;
+    td_u32 gop = chn_param->gop;
+    td_u32 stats_time = chn_param->stats_time;
+    td_u32 frame_rate = chn_param->frame_rate;
+    ot_pic_size size = chn_param->size;
+
+    chn_attr->venc_attr.h264_attr.frame_buf_ratio = SAMPLE_FRAME_BUF_RATIO_MIN;
+    if (rc_mode == SAMPLE_RC_CBR) {
+        sample_comm_venc_h264_cbr_param_init_x(chn_attr, gop, stats_time, frame_rate, chn_param);
+    }else if (rc_mode == SAMPLE_RC_VBR) {
+        sample_comm_venc_h264_vbr_param_init_x(chn_attr, gop, stats_time, frame_rate, chn_param);
+    }
+    else {
+        sample_print("%s,%d,rc_mode(%d) not support\n", __FUNCTION__, __LINE__, rc_mode);
+        return TD_FAILURE;
+    }
+    chn_attr->venc_attr.h264_attr.rcn_ref_share_buf_en = chn_param->is_rcn_ref_share_buf;
+
+    return TD_SUCCESS;
+}
+
 static td_s32 sample_comm_venc_h265_param_init(ot_venc_chn_attr *chn_attr,
     sample_comm_venc_chn_param *chn_param)
 {
@@ -1370,6 +1463,29 @@ static td_s32 sample_comm_venc_h265_param_init(ot_venc_chn_attr *chn_attr,
     } else if (rc_mode == SAMPLE_RC_QPMAP) {
         sample_comm_venc_h265_qpmap_param_init(chn_attr, gop, frame_rate, stats_time);
     } else {
+        sample_print("%s,%d,rc_mode(%d) not support\n", __FUNCTION__, __LINE__, rc_mode);
+        return TD_FAILURE;
+    }
+    chn_attr->venc_attr.h265_attr.rcn_ref_share_buf_en = chn_param->is_rcn_ref_share_buf;
+
+    return TD_SUCCESS;
+}
+
+static td_s32 sample_comm_venc_h265_param_init_x(ot_venc_chn_attr *chn_attr,
+    sample_comm_venc_chn_param *chn_param)
+{
+    sample_rc rc_mode = chn_param->rc_mode;
+    td_u32 gop = chn_param->gop;
+    td_u32 stats_time = chn_param->stats_time;
+    td_u32 frame_rate = chn_param->frame_rate;
+    ot_pic_size size = chn_param->size;
+
+    chn_attr->venc_attr.h265_attr.frame_buf_ratio = SAMPLE_FRAME_BUF_RATIO_MIN;
+    if (rc_mode == SAMPLE_RC_CBR) {
+        sample_comm_venc_h265_cbr_param_init_x(chn_attr, gop, stats_time, frame_rate,chn_param);
+    } else if (rc_mode == SAMPLE_RC_VBR) {
+        sample_comm_venc_h265_vbr_param_init_x(chn_attr, gop, stats_time, frame_rate, chn_param);
+    }else {
         sample_print("%s,%d,rc_mode(%d) not support\n", __FUNCTION__, __LINE__, rc_mode);
         return TD_FAILURE;
     }
@@ -1453,6 +1569,56 @@ static td_s32 sample_comm_venc_channel_param_init(sample_comm_venc_chn_param *ch
     return ret;
 }
 
+static td_s32 sample_comm_venc_channel_param_init_x(sample_comm_venc_chn_param *chn_param, ot_venc_chn_attr *chn_attr)
+{
+    td_s32 ret;
+    ot_venc_gop_attr *gop_attr = &chn_param->gop_attr;
+    td_u32 profile = chn_param->profile;
+    ot_payload_type type = chn_param->type;
+    ot_size venc_size = chn_param->venc_size;
+
+    chn_attr->venc_attr.type = type;
+    chn_attr->venc_attr.max_pic_width = venc_size.width;
+    chn_attr->venc_attr.max_pic_height = venc_size.height;
+    chn_attr->venc_attr.pic_width = venc_size.width;   /* the picture width */
+    chn_attr->venc_attr.pic_height = venc_size.height; /* the picture height */
+
+    if (type == OT_PT_MJPEG || type == OT_PT_JPEG) {
+        chn_attr->venc_attr.buf_size =
+            OT_ALIGN_UP(venc_size.width, 16) * OT_ALIGN_UP(venc_size.height, 16) * 4; /* 16 4 is a number */
+    } else {
+        chn_attr->venc_attr.buf_size =
+            OT_ALIGN_UP(venc_size.width * venc_size.height * 3 / 4, 64); /*  3  4 64 is a number */
+    }
+    chn_attr->venc_attr.profile = profile;
+    chn_attr->venc_attr.is_by_frame = TD_TRUE; /* get stream mode is slice mode or frame mode? */
+
+    if (gop_attr->gop_mode == OT_VENC_GOP_MODE_SMART_P) {
+        chn_param->stats_time = gop_attr->smart_p.bg_interval / chn_param->gop;
+    } else {
+        chn_param->stats_time = 1;
+    }
+
+    switch (type) {
+        case OT_PT_H265:
+            ret = sample_comm_venc_h265_param_init_x(chn_attr, chn_param);
+            break;
+
+        case OT_PT_H264:
+            ret = sample_comm_venc_h264_param_init_x(chn_attr, chn_param);
+            break;
+
+        default:
+            sample_print("can't support this type (%d) in this version!\n", type);
+            return OT_ERR_VENC_NOT_SUPPORT;
+    }
+
+    sample_comm_venc_set_gop_attr(type, chn_attr, gop_attr);
+
+    return ret;
+}
+
+
 td_s32 sample_comm_venc_create(ot_venc_chn venc_chn, sample_comm_venc_chn_param *chn_param)
 {
     td_s32 ret;
@@ -1469,6 +1635,43 @@ td_s32 sample_comm_venc_create(ot_venc_chn venc_chn, sample_comm_venc_chn_param 
 
     /* step 1:  create venc channel */
     if ((ret = sample_comm_venc_channel_param_init(chn_param, &venc_chn_attr)) != TD_SUCCESS) {
+        sample_print("venc_channel_param_init failed!\n");
+        return ret;
+    }
+
+    if ((ret = ss_mpi_venc_create_chn(venc_chn, &venc_chn_attr)) != TD_SUCCESS) {
+        sample_print("ss_mpi_venc_create_chn [%d] failed with %#x! ===\n", venc_chn, ret);
+        return ret;
+    }
+
+    if (chn_param->type == OT_PT_JPEG) {
+        return TD_SUCCESS;
+    }
+
+    if ((ret = sample_comm_venc_close_reencode(venc_chn)) != TD_SUCCESS) {
+        ss_mpi_venc_destroy_chn(venc_chn);
+        return ret;
+    }
+
+    return TD_SUCCESS;
+}
+
+td_s32 sample_comm_venc_create_x(ot_venc_chn venc_chn, sample_comm_venc_chn_param *chn_param)
+{
+    td_s32 ret;
+    ot_venc_chn_attr venc_chn_attr;
+    ot_pic_size size = chn_param->size;
+
+    //chn_param->frame_rate = 30; /* 30 is a number */
+    chn_param->gop = 30; /* 30 is a number */
+
+    if (sample_comm_sys_get_pic_size(size, &chn_param->venc_size) != TD_SUCCESS) {
+        sample_print("get picture size failed!\n");
+        return TD_FAILURE;
+    }
+
+    /* step 1:  create venc channel */
+    if ((ret = sample_comm_venc_channel_param_init_x(chn_param, &venc_chn_attr)) != TD_SUCCESS) {
         sample_print("venc_channel_param_init failed!\n");
         return ret;
     }
@@ -2992,6 +3195,23 @@ td_s32 sample_comm_venc_stop_get_stream(td_s32 chn_num)
     td_s32 i;
     for (i = 0; i < chn_num; i++) {
         if (ss_mpi_venc_stop_chn(i) != TD_SUCCESS) {
+            sample_print("chn %d ss_mpi_venc_stop_recv_pic failed!\n", i);
+            return TD_FAILURE;
+        }
+    }
+
+    if (g_para.thread_start == TD_TRUE) {
+        g_para.thread_start = TD_FALSE;
+        pthread_join(g_venc_pid, 0);
+    }
+    return TD_SUCCESS;
+}
+
+td_s32 sample_comm_venc_stop_get_stream_x(td_s32 chn_id[], td_s32 chn_num)
+{
+    td_s32 i;
+    for (i = 0; i < chn_num; i++) {
+        if (ss_mpi_venc_stop_chn(chn_id[i]) != TD_SUCCESS) {
             sample_print("chn %d ss_mpi_venc_stop_recv_pic failed!\n", i);
             return TD_FAILURE;
         }

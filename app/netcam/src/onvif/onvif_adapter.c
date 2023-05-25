@@ -37,7 +37,7 @@
 #define PTZ_XML_DEF_PATH                    "ptz.xml"
 #define PTZ_PRESET_CFG_DEF_PATH             "ptz_preset.cfg"
 
-#if defined (MODULE_SUPPORT_AF) || defined (MODULE_SUPPORT_AF_LENS)
+#ifdef MODULE_SUPPORT_AF
 #define PTZ_ZOOM_CONTROL
 #endif
 
@@ -70,9 +70,6 @@ static int Device_Network_SetDHCP(char *netCardName, int isDHCP);
 static int Device_Network_GetIsRunning(char *netCardName);
 static int Device_Network_GetWifiNICName(char *netCardName, int nameLen);
 static int Device_Network_GetInfor(char *netCardName, ONVIF_DeviceNet_S *pstNicInfor);
-#ifdef MODULE_SUPPORT_ZK_WAPI
-static int Device_Network_GetInfor_loca(char *netCardName, ONVIF_DeviceNet_S *pstNicInfor);
-#endif
 static int Device_Network_SetInfor(char *netCardName, ONVIF_DeviceNet_S stNicInfor);
 static int Device_System_SetFactoryDefault(ONVIF_DeviceFactory_E enFactory);
 static int Device_System_GetDeviceInformation(char *netCardName, GONVIF_DEVMNG_GetDeviceInformation_Res_S *pstADP_GetDeviceInformationRes);
@@ -252,9 +249,6 @@ ONVIF_ADAPTER_PTZ_S g_stPTZAdapter =
 ONVIF_ADAPTER_Device_S g_stDeviceAdapter =
 {
 	//network
-	#ifdef MODULE_SUPPORT_ZK_WAPI
-	.GetNetworkInfor_loca    = Device_Network_GetInfor_loca,
-	#endif
     .GetNetworkInfor         = Device_Network_GetInfor,
     .SetNetworkInfor	     = Device_Network_SetInfor,
     .GetNetworkMac           = Device_Network_GetMac,
@@ -292,42 +286,6 @@ ONVIF_XML_FILE XmlFileHandle =
     .OnvifGetFile            = Device_System_GetFile,
 };
 
-#ifdef MODULE_SUPPORT_ZK_WAPI
-static int Device_Network_GetInfor_loca(char *netCardName, ONVIF_DeviceNet_S *pstNicInfor)
-{
-    if (netCardName == NULL || pstNicInfor == NULL)
-    {
-        ONVIF_ERR("Invalid parameters.");
-        return -1;
-    }
-    int ret = 0;
-    ST_SDK_NETWORK_ATTR netAttr;
-    memset(&netAttr, 0, sizeof(ST_SDK_NETWORK_ATTR));
-    strncpy(netAttr.name, netCardName, SDK_ETHERSTR_LEN-1);
-    ret = netcam_net_get(&netAttr);
-    if (ret != 0)
-    {
-        ONVIF_ERR("Faile to get network info.");
-        return -1;
-    }
-
-    pstNicInfor->isDHCP = netAttr.dhcp;
-    ret = mac_to_array(netAttr.mac, pstNicInfor->macAddr);
-    if (ret != 0)
-    {
-        ONVIF_ERR("faile to set mac to array.");
-        return -1;
-    }
-    strncpy(pstNicInfor->ipAddr, netAttr.ip, MAX_16_LENGTH-1);
-    strncpy(pstNicInfor->maskAddr, netAttr.mask, MAX_16_LENGTH-1);
-    strncpy(pstNicInfor->gwAddr, netAttr.gateway, MAX_16_LENGTH-1);
-    strncpy(pstNicInfor->dnsAddr1, netAttr.dns1, MAX_16_LENGTH-1);
-    strncpy(pstNicInfor->dnsAddr2, netAttr.dns2, MAX_16_LENGTH-1);
-    pstNicInfor->mtu = 1500;
-
-    return 0;
-}
-#endif
 
 static int Device_Network_GetInfor(char *netCardName, ONVIF_DeviceNet_S *pstNicInfor)
 {
@@ -340,11 +298,7 @@ static int Device_Network_GetInfor(char *netCardName, ONVIF_DeviceNet_S *pstNicI
     ST_SDK_NETWORK_ATTR netAttr;
     memset(&netAttr, 0, sizeof(ST_SDK_NETWORK_ATTR));
     strncpy(netAttr.name, netCardName, SDK_ETHERSTR_LEN-1);
-	#ifdef MODULE_SUPPORT_ZK_WAPI
-    ret = netcam_net_get_wapi(&netAttr);
-	#else
     ret = netcam_net_get(&netAttr);
-	#endif
     if (ret != 0)
     {
         ONVIF_ERR("Faile to get network info.");
@@ -378,7 +332,6 @@ static int Device_Network_SetInfor(char *netCardName, ONVIF_DeviceNet_S stNicInf
 	int ret = 0;
 	ST_SDK_NETWORK_ATTR netAttr;
 	memset(&netAttr, 0, sizeof(ST_SDK_NETWORK_ATTR));
-    #ifndef MODULE_SUPPORT_ZK_WAPI
 	strncpy(netAttr.name, netCardName, SDK_ETHERSTR_LEN-1);
 
 	ret = netcam_net_get(&netAttr);
@@ -387,7 +340,6 @@ static int Device_Network_SetInfor(char *netCardName, ONVIF_DeviceNet_S stNicInf
 		ONVIF_ERR("Faile to get network info.");
 		return -1;
 	}
-    #endif
 
 	netAttr.dhcp = stNicInfor.isDHCP;
 	strncpy(netAttr.ip, stNicInfor.ipAddr, SDK_IPSTR_LEN-1);
@@ -395,14 +347,6 @@ static int Device_Network_SetInfor(char *netCardName, ONVIF_DeviceNet_S stNicInf
 	strncpy(netAttr.gateway, stNicInfor.gwAddr, SDK_GATEWAYSTR_LEN-1);
 	strncpy(netAttr.dns1, stNicInfor.dnsAddr1, SDK_DNSSTR_LEN-1);
 	strncpy(netAttr.dns2, stNicInfor.dnsAddr2, SDK_DNSSTR_LEN-1);
-	#ifdef MODULE_SUPPORT_ZK_WAPI
-    ret = netcam_net_set_wapi(&netAttr);
-    if (ret != 0)
-    {
-        ONVIF_ERR("Fail to set Network Info");
-        return -1;
-    }
-	#endif
 
 	return 0;
 }
@@ -419,11 +363,7 @@ static int Device_Network_GetMac(char *netCardName, char *macStr)
     memset(&netAttr, 0, sizeof(ST_SDK_NETWORK_ATTR));
     strncpy(netAttr.name, netCardName, SDK_ETHERSTR_LEN-1);
 
-	#ifdef MODULE_SUPPORT_ZK_WAPI
-	ret = netcam_net_get_wapi(&netAttr);
-	#else
 	ret = netcam_net_get(&netAttr);
-	#endif
     if (ret != 0)
     {
         ONVIF_ERR("Faile to get network info.");
@@ -451,11 +391,7 @@ static int Device_Network_GetIP(char *netCardName, struct sockaddr *addr)
     ST_SDK_NETWORK_ATTR netAttr;
     memset(&netAttr, 0, sizeof(ST_SDK_NETWORK_ATTR));
     strncpy(netAttr.name, netCardName, SDK_ETHERSTR_LEN-1);
-	#ifdef MODULE_SUPPORT_ZK_WAPI
-    ret = netcam_net_get_wapi(&netAttr);
-	#else
     ret = netcam_net_get(&netAttr);
-	#endif
     if (ret != 0)
     {
         ONVIF_ERR("Faile to get network info.");
@@ -481,11 +417,7 @@ static int Device_Network_SetIP(char *netCardName, char *ipStr)
     ST_SDK_NETWORK_ATTR netAttr;
     memset(&netAttr, 0, sizeof(ST_SDK_NETWORK_ATTR));
     strncpy(netAttr.name, netCardName, SDK_ETHERSTR_LEN-1);
-	#ifdef MODULE_SUPPORT_ZK_WAPI
-    ret = netcam_net_get_wapi(&netAttr);
-	#else
     ret = netcam_net_get(&netAttr);
-	#endif
     if (ret != 0)
     {
         ONVIF_ERR("Faile to get network info.");
@@ -493,19 +425,13 @@ static int Device_Network_SetIP(char *netCardName, char *ipStr)
     }
     strncpy(netAttr.ip, ipStr, SDK_IPSTR_LEN-1);
 
-	#ifdef MODULE_SUPPORT_ZK_WAPI
-    ret = netcam_net_set_wapi(&netAttr);
-	#else
     ret = netcam_net_set(&netAttr);
-	#endif
     if (ret != 0)
     {
         ONVIF_ERR("Fail to set IP");
         return -1;
     }
-	#ifndef MODULE_SUPPORT_ZK_WAPI
     netcam_net_cfg_save();
-	#endif
     return 0;
 }
 
@@ -520,11 +446,7 @@ static int Device_Network_SetMask(char *netCardName, char *maskStr)
     ST_SDK_NETWORK_ATTR netAttr;
     memset(&netAttr, 0, sizeof(ST_SDK_NETWORK_ATTR));
     strncpy(netAttr.name, netCardName, SDK_ETHERSTR_LEN-1);
-	#ifdef MODULE_SUPPORT_ZK_WAPI
-    ret = netcam_net_get_wapi(&netAttr);
-	#else
     ret = netcam_net_get(&netAttr);
-	#endif
     if (ret != 0)
     {
         ONVIF_ERR("Faile to Get net Attr.");
@@ -538,9 +460,9 @@ static int Device_Network_SetMask(char *netCardName, char *maskStr)
         ONVIF_ERR("Fail to set Mask");
         return -1;
     }
-	#ifndef MODULE_SUPPORT_ZK_WAPI
+
     netcam_net_cfg_save();
-	#endif
+
     return 0;
 }
 
@@ -555,11 +477,7 @@ static int Device_Network_SetDNS(char *netCardName, ONVIF_DeviceNet_S netInfor)
     ST_SDK_NETWORK_ATTR netAttr;
     memset(&netAttr, 0, sizeof(ST_SDK_NETWORK_ATTR));
     strncpy(netAttr.name, netCardName, SDK_ETHERSTR_LEN-1);
-	#ifdef MODULE_SUPPORT_ZK_WAPI
-    ret = netcam_net_get_wapi(&netAttr);
-	#else
     ret = netcam_net_get(&netAttr);
-	#endif
     if (ret != 0)
     {
         ONVIF_ERR("Faile to Get net Attr.");
@@ -570,19 +488,14 @@ static int Device_Network_SetDNS(char *netCardName, ONVIF_DeviceNet_S netInfor)
     if (netInfor.dnsAddr2[0] != 0)
     	strncpy(netAttr.dns2, netInfor.dnsAddr2, SDK_DNSSTR_LEN-1);
 
-	#ifdef MODULE_SUPPORT_ZK_WAPI
-    ret = netcam_net_set_wapi(&netAttr);
-	#else
     ret = netcam_net_set(&netAttr);
-	#endif
     if (ret != 0)
     {
         ONVIF_ERR("Fail to set dns");
         return -1;
     }
-	#ifndef MODULE_SUPPORT_ZK_WAPI
+
     netcam_net_cfg_save();
-	#endif
     return 0;
 }
 
@@ -636,11 +549,7 @@ static int Device_Network_SetGateway(char *netCardName, char *gwStr)
 	ST_SDK_NETWORK_ATTR netAttr;
 	memset(&netAttr, 0, sizeof(ST_SDK_NETWORK_ATTR));
 	strncpy(netAttr.name, netCardName, SDK_ETHERSTR_LEN-1);
-	#ifdef MODULE_SUPPORT_ZK_WAPI
-	ret = netcam_net_get_wapi(&netAttr);
-	#else
 	ret = netcam_net_get(&netAttr);
-	#endif
 	if (ret != 0)
 	{
 		ONVIF_ERR("Faile to Get net Attr.");
@@ -649,19 +558,14 @@ static int Device_Network_SetGateway(char *netCardName, char *gwStr)
 	strncpy(netAttr.gateway, gwStr, SDK_GATEWAYSTR_LEN-1);
 
 	ONVIF_DBG("Device_Network_SetGateway:gw:%s, dhcp: %d\n", netAttr.gateway, netAttr.dhcp);
-	#ifdef MODULE_SUPPORT_ZK_WAPI
-	ret = netcam_net_set_wapi(&netAttr);
-	#else
 	ret = netcam_net_set(&netAttr);
-	#endif
 	if (ret != 0)
 	{
 		ONVIF_ERR("Fail to set Mask");
 		return -1;
 	}
-	#ifndef MODULE_SUPPORT_ZK_WAPI
+
 	netcam_net_cfg_save();
-	#endif
 	return 0;
 }
 
@@ -688,9 +592,7 @@ static int Device_Network_SetMTU(char *netCardName, int mtu)
     }
     (void)(netCardName);
     (void)(mtu);
-	#ifndef MODULE_SUPPORT_ZK_WAPI
 	netcam_net_cfg_save();
-	#endif
     return 0;
 }
 
@@ -721,22 +623,14 @@ static int Device_System_GetDeviceInformation(char *netCardName, GONVIF_DEVMNG_G
     netcam_sys_get_DevInfor(&stDevInfo);
 
     strncpy(pstADP_GetDeviceInformationRes->aszManufacturer, stDevInfo.manufacturer, MAX_MANUFACTURER_LENGTH-1);
-	#ifdef MODULE_SUPPORT_ZK_WAPI
-    strncpy(pstADP_GetDeviceInformationRes->aszModel, stDevInfo.model, MAX_MODEL_LENGTH-1);
-	#else
     strncpy(pstADP_GetDeviceInformationRes->aszModel, stDevInfo.deviceName, MAX_MODEL_LENGTH-1);
-	#endif
     strncpy(pstADP_GetDeviceInformationRes->aszFirmwareVersion, stDevInfo.firmwareVersion, MAX_FIRMWARE_VERSION_LENGTH-1);
     strncpy(pstADP_GetDeviceInformationRes->aszHardwareId, stDevInfo.hardwareVersion, MAX_HARDWARE_ID_LENGTH-1);
 #if 1	//private CMS
     ST_SDK_NETWORK_ATTR netAttr;
     memset(&netAttr, 0, sizeof(ST_SDK_NETWORK_ATTR));
     strncpy(netAttr.name, netCardName, SDK_ETHERSTR_LEN-1);
-	#ifdef MODULE_SUPPORT_ZK_WAPI
-    ret = netcam_net_get_wapi(&netAttr);
-	#else
     ret = netcam_net_get(&netAttr);
-	#endif
     if (ret != 0)
     {
         ONVIF_ERR("Faile to get network info.");
@@ -889,30 +783,20 @@ static int Device_Network_SetDHCP(char *netCardName, int isDHCP)
     ST_SDK_NETWORK_ATTR netAttr;
     memset(&netAttr, 0, sizeof(ST_SDK_NETWORK_ATTR));
     strncpy(netAttr.name, netCardName, SDK_ETHERSTR_LEN-1);
-	#ifdef MODULE_SUPPORT_ZK_WAPI
-    ret = netcam_net_get_wapi(&netAttr);
-	#else
     ret = netcam_net_get(&netAttr);
-	#endif
     if (ret != 0)
     {
         ONVIF_ERR("Faile to Get net Attr.");
         return -1;
     }
     netAttr.dhcp = isDHCP;
-	#ifdef MODULE_SUPPORT_ZK_WAPI
-    ret = netcam_net_set_wapi(&netAttr);
-	#else
     ret = netcam_net_set(&netAttr);
-	#endif
     if (ret != 0)
     {
         ONVIF_ERR("Fail to set HDCP");
         return -1;
     }
-	#ifndef MODULE_SUPPORT_ZK_WAPI
     netcam_net_cfg_save();
-	#endif
     return 0;
 }
 
@@ -1765,13 +1649,16 @@ static int PTZ_ContinuousMove(ONVIF_PTZContinuousMove_S stContinuousMove)
 {
     int ret = 0;
 	int step = -1;
-	printf("continuous ===============\n");
+
+	printf("xspeed is %d, yspeed is %d,zspped is %d\n",stContinuousMove.panSpeed, stContinuousMove.tileSpeed, stContinuousMove.zoomSpeed);	
 	if (stContinuousMove.panSpeed != 0 && stContinuousMove.tileSpeed == 0)
 	{
 		if (stContinuousMove.panSpeed > 0)
-        	ret = netcam_ptz_right(step, stContinuousMove.panSpeed);
+        	ret = pelco_set_right(0xFF);
     	else
-        	ret = netcam_ptz_left(step, stContinuousMove.panSpeed);
+    	{
+        	ret = pelco_set_left(0xFF);
+    	}
 		if (ret != 0)
 		{
 			ONVIF_ERR("Continuous pan moving error");
@@ -1781,9 +1668,11 @@ static int PTZ_ContinuousMove(ONVIF_PTZContinuousMove_S stContinuousMove)
 	else if (stContinuousMove.tileSpeed != 0 && stContinuousMove.panSpeed == 0)
 	{
 		if (stContinuousMove.tileSpeed > 0)
-        	ret = netcam_ptz_up(step, stContinuousMove.tileSpeed);
+        	ret = pelco_set_up(0xFF);
     	else
-        	ret = netcam_ptz_down(step, stContinuousMove.tileSpeed);
+    	{
+        	ret = pelco_set_down(0xFF);
+    	}
 		if (ret != 0)
 		{
 			ONVIF_ERR("Continuous tile moving error");
@@ -1796,23 +1685,25 @@ static int PTZ_ContinuousMove(ONVIF_PTZContinuousMove_S stContinuousMove)
 		if (abs(stContinuousMove.panSpeed) >= abs(stContinuousMove.tileSpeed))
 			speed = abs(stContinuousMove.tileSpeed);
 		else
+		{
 			speed = abs(stContinuousMove.panSpeed);
+		}
 
 		if (stContinuousMove.panSpeed > 0 && stContinuousMove.tileSpeed > 0)
 		{
-			ret = netcam_ptz_right_up(step, speed);
+			ret = pelco_set_right_top(0xFF);
 		}
 		else if (stContinuousMove.panSpeed > 0 && stContinuousMove.tileSpeed < 0)
 		{
-			ret = netcam_ptz_right_down(step, speed);
+			ret = pelco_set_right_bottom(0xFF);
 		}
 		else if (stContinuousMove.panSpeed < 0 && stContinuousMove.tileSpeed > 0)
 		{
-			ret = netcam_ptz_left_up(step, speed);
+			ret = pelco_set_left_top(0xFF);
 		}
 		else if (stContinuousMove.panSpeed < 0 && stContinuousMove.tileSpeed < 0)
 		{
-			ret = netcam_ptz_left_down(step, speed);
+			ret = pelco_set_left_bottom(0xFF);
 		}
 		if (ret != 0)
 		{
@@ -1820,37 +1711,26 @@ static int PTZ_ContinuousMove(ONVIF_PTZContinuousMove_S stContinuousMove)
 			return -1;
 		}
 	}
+// #ifdef PTZ_ZOOM_CONTROL
 	else if (stContinuousMove.zoomSpeed != 0)
 	{
-        step = abs(stContinuousMove.zoomSpeed);
-        if (stContinuousMove.zoomSpeed > 0)
-        {      
-            //zoom control
-            #ifdef MODULE_SUPPORT_AF
-            netcam_ptz_zoom_add();
-            #endif
-            //#ifdef MODULE_SUPPORT_AF_LENS
-            //#elif defined (MODULE_SUPPORT_AF_LENS)
-            netcam_ptz_zoom_tele(step, 0);
-            //#endif
-        }
-        else
-        {   
-            //zoom control
-            #ifdef MODULE_SUPPORT_AF
-            netcam_ptz_zoom_sub();
-            #endif
-            //#ifdef MODULE_SUPPORT_AF_LENS
-            //#elif defined (MODULE_SUPPORT_AF_LENS)
-            netcam_ptz_zoom_wide(step, 0);
-            //#endif
-        }
-        if (ret != 0)
-        {
-            ONVIF_ERR("Continuous zoom moving error");
-            return -1;
-        }
+		if (stContinuousMove.zoomSpeed > 0)
+			//zoom control
+			// #ifdef MODULE_SUPPORT_AF
+			pelco_set_zoom_tele();
+            // #endif
+    	else
+			//zoom control
+			pelco_set_zoom_wide();
+			// #ifdef MODULE_SUPPORT_AF
+            // #endif
+		if (ret != 0)
+		{
+			ONVIF_ERR("Continuous zoom moving error");
+			return -1;
+		}
 	}
+// #endif
 	else
 	{
 		//TODO: auto moving
@@ -1858,9 +1738,18 @@ static int PTZ_ContinuousMove(ONVIF_PTZContinuousMove_S stContinuousMove)
     return 0;
 }
 
-static int PTZ_AbsoluteMove(ONVIF_PTZAbsoluteMove_S stRelativeMove)
+#include "ttl.h"
+#include "sdk_af.h"
+extern int uart;
+static int PTZ_AbsoluteMove(ONVIF_PTZAbsoluteMove_S stAbsoluteMove)
 {
-	printf("PTZ_AbsoluteMove\n");
+	printf("whs:absolutemove...\n");
+     	printf("pos_x is %f\n",stAbsoluteMove.panPosition);
+	printf("pos_y is %f\n",stAbsoluteMove.tiltPosition);
+	printf("pos_z is %f\n",stAbsoluteMove.zoomPosition);
+
+    	send_absolutemove_value(uart, stAbsoluteMove.panPosition, stAbsoluteMove.tiltPosition, stAbsoluteMove.zoomPosition);
+
 	return 0;
 }
 
@@ -1871,8 +1760,8 @@ static int PTZ_RelativeMove(ONVIF_PTZRelativeMove_S stRelativeMove)
     int panTempSpeed  = (int)((stRelativeMove.panSpeed) * 5);
     int tiltTempTrans = (int)((stRelativeMove.tiltTranslation + 1.0) * 100);
     int tiltTempSpeed = (int)((stRelativeMove.tiltSpeed) * 5);
-    int zoomTempTrans = (int)((stRelativeMove.zoomTranslation + 1.0) * 100);
-    int zoomTempSpeed = (int)((stRelativeMove.zoomSpeed) * 5);
+    //int zoomTempTrans = (int)((stRelativeMove.zoomTranslation + 1.0) * 100);
+    //int zoomTempSpeed = (int)((stRelativeMove.zoomSpeed) * 5);
     ONVIF_DBG("%d-%d, %d-%d, %d-%d\n", panTempTrans, panTempSpeed, tiltTempTrans, tiltTempSpeed, zoomTempTrans, zoomTempSpeed);
 
     if (panTempTrans > 100 && panTempTrans <= 200)
@@ -1896,29 +1785,15 @@ static int PTZ_RelativeMove(ONVIF_PTZRelativeMove_S stRelativeMove)
     }
 #ifdef PTZ_ZOOM_CONTROL
     if (zoomTempTrans > 100 && zoomTempTrans <= 200)
-    {
         //ret = netcam_ptz_forward();
         #ifdef MODULE_SUPPORT_AF
         ret = netcam_ptz_zoom_add();
         #endif
-        
-        //#ifdef MODULE_SUPPORT_AF_LENS
-        //#elif defined (MODULE_SUPPORT_AF_LENS)
-        netcam_ptz_zoom_tele(zoomTempSpeed, 0);
-        //#endif
-    }
     else
-    {
         //ret = netcam_ptz_backward();
         #ifdef MODULE_SUPPORT_AF
         ret = netcam_ptz_zoom_sub();
         #endif
-        
-        //#ifdef MODULE_SUPPORT_AF_LENS
-        //#elif defined (MODULE_SUPPORT_AF_LENS)
-        netcam_ptz_zoom_wide(zoomTempSpeed, 0);
-        //#endif
-    }
     if (ret != 0)
     {
         ONVIF_ERR("zoom moving failed.");
@@ -1934,19 +1809,20 @@ static int PTZ_Stop(ONVIF_PTZStop_S stStop)
     int ret = 0;
     if (stStop.stopPanTilt == GK_TRUE)
     {
-        ret = netcam_ptz_stop();
+        // ret = netcam_ptz_stop();
+        ret = pelco_set_stop();
         if(ret != 0)
             goto out;
     }
-	#ifdef PTZ_ZOOM_CONTROL
+//	#ifdef PTZ_ZOOM_CONTROL
     if (stStop.stopZoom == GK_TRUE)
     {
 		//stop zoom control
-		#ifdef MODULE_SUPPORT_AF
-		netcam_ptz_zoom_stop();
-        #endif
+	//	#ifdef MODULE_SUPPORT_AF
+        	ret = pelco_set_stop();
+        //#endif
     }
-    #endif
+    //#endif
 
     return 0;
 out:
@@ -1985,6 +1861,7 @@ static int PTZ_GetPresets(ONVIF_PTZ_GetPresets_S *pstAllPresets)
 static int PTZ_SetPreset(ONVIF_PTZ_Preset_S stPreset)
 {
 	int ret = 0;
+	pelco_set_preset(stPreset.presetNum);
 	ret = netcam_ptz_set_preset(stPreset.presetNum, stPreset.presetName);
 	if (ret != 0)
 	{
@@ -2006,6 +1883,7 @@ static int PTZ_GotoPreset(int presetNum)
 	cruiseArr.struCruisePoint[0].byPresetNo	  = presetNum;
 	cruiseArr.struCruisePoint[0].byRemainTime = 0;
 	cruiseArr.struCruisePoint[0].bySpeed	  = -1;
+	pelco_call_preset(presetNum);	
 	ret = netcam_ptz_preset_cruise(&cruiseArr);
 	if (ret != 0)
 	{

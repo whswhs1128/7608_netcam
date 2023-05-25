@@ -497,11 +497,33 @@ td_s32 sample_comm_isp_sensor_founction_cfg(ot_vi_pipe vi_pipe, sample_sns_type 
         case SONY_IMX485_MIPI_8M_30FPS_12BIT:
             g_sns_imx485_obj.pfn_set_blc_clamp(vi_pipe, sns_blc_clamp);
             break;
+	case SC850SL_8M30:
+	    g_sns_sc850sl_obj.pfn_mirror_flip(vi_pipe, 0);
+	    break;
         default:
             break;
     }
 
     return TD_SUCCESS;
+}
+
+td_s32 sample_comm_isp_mirror_flip_set(ot_vi_pipe vi_pipe,int mirror, int flip)
+{
+	if(mirror == 1 && flip == 0)
+	{
+		g_sns_sc850sl_obj.pfn_mirror_flip(vi_pipe, 1);
+	}
+	else if (mirror == 0 && flip ==1)
+	{
+		g_sns_sc850sl_obj.pfn_mirror_flip(vi_pipe, 2);
+	}
+	else if (mirror == 1 && flip == 1)
+	{
+		g_sns_sc850sl_obj.pfn_mirror_flip(vi_pipe, 3);
+	}
+	else
+		g_sns_sc850sl_obj.pfn_mirror_flip(vi_pipe, 0);
+	return TD_SUCCESS;
 }
 
 td_s32 sample_comm_isp_run(ot_isp_dev isp_dev)

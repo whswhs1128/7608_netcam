@@ -34,6 +34,8 @@ var _cbrbpsMax=0;
 var _cbrbpsMin=0;
 var _format_fpsMax=0;
 var _format_fpsMin=0;
+var swfu;
+
 
 //初始化二维数组
 var wifi_info=new Array();
@@ -299,7 +301,6 @@ $(document).ready(function()
 					}
 					ocx_check();
 					view_load_basic_data();
-					audio_view_load_basic_data();
 					for(var i=0;i<7;i++){
 						var test=control[i];
 						document.getElementById(test).style.display="none";
@@ -308,7 +309,21 @@ $(document).ready(function()
 					sync_pc_time();
 					pzt_control_init();
 					setInterval("func_update_one_second_timer()",1000);
-					swfupload_init();
+					// swfupload_init();
+					var settings = {
+						upload_url:dvr_url+"/web_upgrade",
+						button_width: "80",
+						button_height: "25",
+						button_cursor : SWFUpload.CURSOR.HAND,
+						button_placeholder_id: "swfupload",
+						button_image_url:"image/upload.png",
+						file_dialog_complete_handler:fileDialogComplete,
+						upload_error_handler : uploadError,
+						//上传过程事件——获取上传进度和升级进度
+						upload_progress_handler : uploadProgress,
+						upload_success_handler : uploadSuccess,
+					};
+					swfu = new SWFUpload(settings);
 
 					try{
 						var _voice=_obj.AudioSwitch(onOroff);
@@ -683,7 +698,6 @@ function menucontrol(id)
 					show_main_preview();
 			}
 			view_load_basic_data();
-			audio_view_load_basic_data();
 			break;
 		case "Setting":
 			document.getElementById("Setting").style.display="";
@@ -707,7 +721,6 @@ function menucontrol(id)
 					show_view_image_basic();
 			}
 			image_data_load_basic();
-			audio_data_load_basic();
 			autolight_data_load_basic();
             check_gb28181_status();
 			break;
@@ -743,7 +756,6 @@ function Div_ShoworHidden(id)
 			if(_ocx_check&&!image_basic_oxc_isshow)
 				show_view_image_basic();
 			image_data_load_basic();
-			audio_data_load_basic();
 			autolight_data_load_basic();
 			break;
 		case "Set_Video":
@@ -854,6 +866,18 @@ function image_data_load_basic(id)
 			else{
 				$('#Mirror').prop('checked',false);
 			}
+            if(data.led1 == 1){
+				$('#led1').prop('checked',true);
+			}
+			else{
+				$('#led1').prop('checked',false);
+			}
+            if(data.led2 == 1){
+				$('#led2').prop('checked',true);
+			}
+			else{
+				$('#led2').prop('checked',false);
+			}
 		},
 		error:function(a,b,c)
 		{
@@ -862,50 +886,6 @@ function image_data_load_basic(id)
 		}
 	});
 }
-
-function audio_view_load_basic_data()
-{
-	var auth = "Basic " + base64.encode(g_usr+':'+g_pwd);
-	$.ajax({
-		type:"GET",
-		url:dvr_url + '/audio',
-		dataType:"json",
-		beforeSend : function(req){
-			req .setRequestHeader('Authorization', auth);
-		},
-		success:function(data){
-			$("#slider_ai_view").slider("value",data.audioIn);
-			$("#slider_ao_view").slider("value",data.audioOut);
-		},
-		error:function(){}
-	});
-}
-
-function audio_data_load_basic(id)
-{
-	var auth = "Basic " + base64.encode(g_usr+':'+g_pwd);
-	$.ajax({
-		type:"GET",
-		url:dvr_url + '/audio',
-		dataType:"json",
-		beforeSend : function(req){
-			req .setRequestHeader('Authorization', auth);
-		},
-		success:function(data){
-			$("#slider_ai").slider("value",data.audioIn);
-            $("#sliderValue_ai").val(data.audioIn);
-
-			$("#slider_ao").slider("value",data.audioOut);
-            $("#sliderValue_ao").val(data.audioOut);
-		},
-		error:function(a,b,c)
-		{
-			if(a.status == 401){}
-			else{}
-		}
-	});
-}
-
 function autolight_data_load_basic(id)
 {
 	var auth = "Basic " + base64.encode(g_usr+':'+g_pwd);
@@ -1154,6 +1134,14 @@ function image_content_change(id)
 			var mirror = $('#Mirror').prop('checked') ? 1:0;
 			data = '{ "mirrorEnabled": '+mirror+' }';
 		}
+		else if(id == 'led1'){
+			var led1 = $('#led1').prop('checked') ?1:0;
+			data = '{ "led1": '+led1+' }';
+		}
+		else if(id == 'led2'){
+			var led2 = $('#led2').prop('checked') ? 1:0;
+			data = '{ "led2": '+led2+' }';
+		}
 		else if(id == 'btn_reset_default'||id=='view_ctr_reset'){
 			data = '{"reset_default": 1}';
 			resetAll = 1;
@@ -1187,61 +1175,6 @@ function image_content_change(id)
 		});
 	}
 }
-
-function audio_content_change(id)
-{
-	if(id == 'sl12slider' || id == slider_motion){}
-	else{
-		tipInfoShow(updateParmeter);
-		var data;
-		var resetAll = 0;
-		if(id=='slider_ai_view'){
-			var ai = $("#slider_ai_view")[0].value;
-			data = '{ "audioIn": '+ai+' }';
-		}
-		else if(id=='slider_ao_view'){
-			var ao = $("#slider_ao_view")[0].value;
-			data = '{ "audioOut": '+ao+' }';
-		}
-		else if(id=='slider_ai'){
-			var ai = $("#sliderValue_ai")[0].value;
-			data = '{ "audioIn": '+ai+' }';
-		}
-		else if(id=='slider_ao'){
-			var ao = $("#sliderValue_ao")[0].value;
-			data = '{ "audioOut": '+ao+' }';
-		}
-        
-		var url = dvr_url + '/audio';
-		var auth = "Basic " + base64.encode(g_usr+':'+g_pwd);
-		$.ajax({
-			type:'PUT',
-			url:url,
-			dataType:'json',
-			data:data,
-			async:false,
-			beforeSend : function(req ){
-				req .setRequestHeader('Authorization', auth);
-			},
-			success:function(data){
-				if(data.statusCode == 0){
-					tipInfoShow(updateSuccess);
-					setTimeout("tipInfoHide()",hide_delay_ms);
-					if(resetAll == 1){
-						audio_data_load_basic();
-						audio_view_load_basic_data();
-					}
-				}
-			},
-			error:function(a,b,c){
-				if(a.status == 401){}
-				else{}
-				setTimeout("tipInfoHide()",500);
-			}
-		});
-	}
-}
-
 function image_data_save_basic(id)
 {
 	tipInfoShow(saveParmeter);
@@ -1274,37 +1207,6 @@ function image_data_save_basic(id)
 		}
 	})
 }
-
-function audio_data_save_basic(id)
-{
-	tipInfoShow(saveParmeter);
-	var auth = "Basic " + base64.encode(g_usr+':'+g_pwd);
-	var ai = $('#sliderValue_ai')[0].value,
-	ao = $('#sliderValue_ao')[0].value;
-	var upData = '{ "audioIn": '+ai+', "audioOut": '+ao + '}';
-	$.ajax({
-		type:'PUT',
-		url:dvr_url + '/audio',
-		dataType:'json',
-		data:upData,
-		async:false,
-		beforeSend : function(req ){
-			req .setRequestHeader('Authorization', auth);
-		},
-		success:function(data){
-			if(data.statusCode == 0){
-				tipInfoShow(saveSuccess);
-				setTimeout("tipInfoHide()",hide_delay_ms);
-			}
-		},
-		error:function(a,b,c){
-			if(a.status == 401){}
-			else{}
-			setTimeout("tipInfoHide()",500);
-		}
-	})
-}
-
 function image_data_adv_to_ui(data)
 {
 	slider_denosis3dStrength.f_setValue(data.denosis3dStrength,0);
@@ -1445,26 +1347,6 @@ function slider_singleStep_add(id)
 			break;
 		case "denosis3dStrength_add":
 			break;
-		case "ai_add":
-			var temp=$("#sliderValue_ai").val();
-			if(temp<100)
-				temp++;
-			else
-				temp=100;
-			$("#slider_ai").slider("value",temp);
-			$("#sliderValue_ai").val(temp);
-			audio_content_change('slider_ai');
-			break;
-		case "ao_add":
-			var temp=$("#sliderValue_ao").val();
-			if(temp<100)
-				temp++;
-			else
-				temp=100;
-			$("#slider_ao").slider("value",temp);
-			$("#sliderValue_ao").val(temp);
-			audio_content_change('slider_ao');
-			break;
 		default:
 			break;
 	}
@@ -1536,26 +1418,6 @@ function slider_singleStep_minus(id)
 		case "wide_dynamic_range_minus":
 			break;
 		case "denosis3dStrength_minus":
-			break;
-		case "ai_minus":
-			var temp=$("#sliderValue_ai").val();
-			if(temp>0)
-				temp=temp-1;
-			else
-				temp=0;
-			$("#slider_ai").slider("value",temp);
-			$("#sliderValue_ai").val(temp);
-			audio_content_change('slider_ai');
-			break;
-		case "ao_minus":
-			var temp=$("#sliderValue_ao").val();
-			if(temp>0)
-				temp=temp-1;
-			else
-				temp=0;
-			$("#slider_ao").slider("value",temp);
-			$("#sliderValue_ao").val(temp);
-			audio_content_change('slider_ao');
 			break;
 		default:
 			break;
@@ -1739,11 +1601,6 @@ function video_stream_set()
 			success:function(data){
 				if(data.statusCode == 0){
 					tipInfoShow(saveSuccess);
-					setTimeout("tipInfoHide()",hide_delay_ms);
-				}
-				else{
-					var stream_info_data = ''+str_video_set_fail+','+resolution+''+str_frame_rate+''+str_frame_rate_max+''+data.statusCode+'';
-					tipInfoShow(stream_info_data);
 					setTimeout("tipInfoHide()",hide_delay_ms);
 				}
 			},
@@ -2952,35 +2809,6 @@ function net_wifi_set(enable)
 		})
 	}
 }
-function net_enten_onvif_set()
-{
-	var _onvif_enable	=	$('input#onvif_enable:checked').val() == 'on' ? 1:0;
-	var auth = "Basic " + base64.encode(g_usr+':'+g_pwd);
-	var onvif_str='{"onvifEn":'+_onvif_enable+'}';
-	$.ajax({
-		type:"PUT",
-		dataType:"json",
-		url:dvr_url+"/cgi-bin/sys_onvif",
-		data:onvif_str,
-		beforeSend:function(req){
-			req .setRequestHeader('Authorization', auth);
-		},
-		error:function(){
-			tipInfoShow(str_onvif_fail);
-			setTimeout("tipInfoHide()",hide_delay_ms);
-		},
-		success:function(data){
-			if(data.statusCode==0){
-				tipInfoShow(str_onvif_success);
-				setTimeout("tipInfoHide()",hide_delay_ms);
-			}
-			else{
-				tipInfoShow(str_onvif_fail);
-				setTimeout("tipInfoHide()",hide_delay_ms);
-			}
-		}
-	})
-}
 //
 function net_enten_onvif_get()
 {
@@ -3001,10 +2829,6 @@ function net_enten_onvif_get()
 		error:function(XMLHttpRequest, textStatus, errorThrown){},
 		success:function(data){
 			$('#textOnvifVersion').val(data.onvifVersion);
-			if(data.onvifEn==1)
-				$("#onvif_enable")[0].checked=true;
-			else
-				$("#onvif_enable")[0].checked=false;
 		}
 	});
 	$.ajax({
@@ -3345,15 +3169,25 @@ function sys_sync_time_zone_save()
 		var timeZone = $('#select_time_zone :selected').val();
 		var ntpCfg_serverDomain = $('#NTP_Server').val();
 		var chkObjs = document.getElementsByName("RG_NTPControl");
+		var chkSwitch = document.getElementsByName("RG_switch");
+		var plat_addr_val = $('#str_plat_ip').val();
 		var ntpCfg_enable;
+		var switch_485;
+
 		for(var i=0;i<2;i++){
         if(chkObjs[i].checked){
  				ntpCfg_enable = chkObjs[i].value;
  				break;
  			}
  		}
+		for(var i=0;i<2;i++){
+			if(chkSwitch[i].checked){
+				switch_485 = chkSwitch[i].value;
+					 break;
+			}
+		}
 		var op =  (new Date()).toFormatString();
-		var sendData = '{ "UtcTime":"' + op +'", "timeZone": '+timeZone+' ,"ntpCfg":{"ntpCfg_enable":'+ntpCfg_enable+' ,"ntpCfg_serverDomain":"'+ntpCfg_serverDomain+'"}}';
+		var sendData = '{ "UtcTime":"' + op +'", "timeZone": '+timeZone+' ,"ntpCfg":{"ntpCfg_enable":'+ntpCfg_enable+',"switch_485":'+switch_485+' ,"ntpCfg_serverDomain":"' + ntpCfg_serverDomain + '" ,"plat_addr_val":"' + plat_addr_val+'"}}';
 		$.ajax({
 			type:"PUT",
 			url:dvr_url + '/cgi-bin/settime',
@@ -3423,6 +3257,8 @@ function NTPControl_change(id)
 function sys_manage_time(id)
 {
 	var auth = "Basic " + base64.encode(g_usr+':'+g_pwd);
+	//$('#str_plat_ip').val(str_plat_url);
+	//$('#RG_switch_0').attr("checked", "checked");
 	$.ajax({
 			type:"GET",
 			url:dvr_url + '/cgi-bin/settime',
@@ -3433,6 +3269,7 @@ function sys_manage_time(id)
 			error:function(XMLHttpRequest, textStatus, errorThrown){
 				tipInfoShow("e="+textStatus);
 				setTimeout("tipInfoHide()",hide_delay_ms);
+				$('#str_plat_ip').val(str_plat_url);
 			},
 			success:function(data){
 				$('#device_local_time').val(data.localTime);
@@ -3442,6 +3279,17 @@ function sys_manage_time(id)
 				else
 					$('#RG_NTPControl_1').attr("checked","true");
 				$('#NTP_Server').val(data.ntpCfg_serverDomain);
+				if(data.plat_addr_val && typeof data.plat_addr_val != "undefined"){
+					$('#str_plat_ip').val(data.plat_addr_val);
+				}else{
+					$('#str_plat_ip').val(str_plat_url);
+				}
+
+				if(data.switch_485=='0')
+					$('#RG_switch_0').attr("checked","true");
+				else
+					$('#RG_switch_1').attr("checked","true");
+				// $('#str_plat_ip').val(data.plat_addr_val);
 			}
 		});
 }
@@ -3565,7 +3413,6 @@ function sys_manage_version_info()
 			success:function(data){
 				$('#textDeviceName').val(data.deviceName);
 				$('#textDeviceType').val(data.deviceType);
-				$('#textDeviceMAC').val(data.deviceMAC);
 				$('#textHardwareVersion').val(data.hardwareVersion);
 				$('#textSoftwareVersion').val(data.softwareVersion);
 				$('#textReleasetime').val(data.softwareBuildDate);
@@ -3616,6 +3463,9 @@ function swfupload_init()
 	}
 	this.customSettings.queue.push(file.id);
 }*/
+function uploadError(file, errorCode, message) {
+	console.log(errorCode);
+}
 //文件上传事件——选择结束后上传
 function fileDialogComplete(numSelected,numQueued,numTotalInQueued)
 {
@@ -3754,7 +3604,6 @@ function spry_widget_tablePanels_change(tab)
 			if(_ocx_check&&!image_basic_oxc_isshow)
 				show_view_image_basic();
 			image_data_load_basic();
-			audio_data_load_basic();
 			autolight_data_load_basic();
 			break;
 		case 1:
@@ -4073,64 +3922,6 @@ function pzt_control_init()
 			ptz_step 	=	$("#select_step").val();
 			ptz_common(ptz_step,ptz_act,ptz_speed);
 			});
-	$('#zoom_wide').mousedown(function(){
-			var ptz_act =	'zoom_wide';
-			ptz_step 	=	$("#select_step").val();
-			ptz_common(ptz_step,ptz_act,ptz_speed);
-	}).mouseup(function(){
-			var ptz_act =	'stop';
-			ptz_step 	=	$("#select_step").val();
-			ptz_common(ptz_step,ptz_act,ptz_speed);
-			});
-	$('#zoom_tele').mousedown(function(){
-			var ptz_act =	'zoom_tele';
-			ptz_step 	=	$("#select_step").val();
-			ptz_common(ptz_step,ptz_act,ptz_speed);
-	}).mouseup(function(){
-			var ptz_act =	'stop';
-			ptz_step 	=	$("#select_step").val();
-			ptz_common(ptz_step,ptz_act,ptz_speed);
-			});
-	$('#focus_far').mousedown(function(){
-			var ptz_act	=	'focus_far';
-			ptz_step	=	$("#select_step").val();
-			ptz_common(ptz_step,ptz_act,ptz_speed);
-	}).mouseup(function(){
-			var ptz_act =	'stop';
-			ptz_step 	=	$("#select_step").val();
-			ptz_common(ptz_step,ptz_act,ptz_speed);
-			});
-	$('#focus_near').mousedown(function(){
-			var ptz_act =	'focus_near';
-			ptz_step 	=	$("#select_step").val();
-			ptz_common(ptz_step,ptz_act,ptz_speed);
-	}).mouseup(function(){
-			var ptz_act =	'stop';
-			ptz_step 	=	$("#select_step").val();
-			ptz_common(ptz_step,ptz_act,ptz_speed);
-			});
-	$('#set_preset').mousedown(function(){
-			var ptz_act =	'set_preset';
-			preset = $('#text_preset').val();
-			ptz_common(preset,ptz_act,ptz_speed);
-	});
-	$('#del_preset').mousedown(function(){
-			var ptz_act =	'del_preset';
-			preset = $('#text_preset').val();
-			ptz_common(preset,ptz_act,ptz_speed);
-	});
-	$('#call_preset').mousedown(function(){
-			var ptz_act =	'call_preset';
-			preset = $('#text_preset').val();
-			ptz_common(preset,ptz_act,ptz_speed);
-	});
-	$('#focus_lock').mousedown(function(){
-			var ptz_act =	'call_preset';
-			preset = 111;
-			ptz_common(preset,ptz_act,ptz_speed);
-			preset = 222;
-			ptz_common(preset,ptz_act,ptz_speed);
-	});
 }
 //
 function ptz_onclick_control(id)

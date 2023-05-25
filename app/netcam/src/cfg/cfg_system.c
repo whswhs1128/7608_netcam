@@ -68,6 +68,8 @@ GK_CFG_MAP ntpCfgMap[] = {
     {"ntpCfg_serverDomain",  &(runSystemCfg.ntpCfg.serverDomain),  GK_CFG_DATA_TYPE_STRING,  "time-a.nist.gov", 1, 1, MAX_URL_STR_SIZE, NULL},
     {"ntpCfg_synctime",      &(runSystemCfg.ntpCfg.sync_time),     GK_CFG_DATA_TYPE_S32,     "43200",           1, 0, 100000,  NULL},
     {"ntpCfg_port",          &(runSystemCfg.ntpCfg.port),          GK_CFG_DATA_TYPE_S32,     "123",             1, 0, 65535,  NULL},
+    {"plat_addr_val",       &(runSystemCfg.ntpCfg.platurl),       GK_CFG_DATA_TYPE_STRING,   "http://192.168.20.109:8080/reportAlarmData",1,1,64,NULL},
+    {"switch_485",	    &(runSystemCfg.ntpCfg.enable485),	GK_CFG_DATA_TYPE_S32,     "1",               1, 0, 1,  NULL},
     {NULL,},
 };
 
@@ -150,6 +152,8 @@ GK_CFG_MAP ntpCfgMap[] = {
     {"ntpCfg_serverDomain",  &(runSystemCfg.ntpCfg.serverDomain),  },
     {"ntpCfg_synctime",      &(runSystemCfg.ntpCfg.sync_time),     },
     {"ntpCfg_port",          &(runSystemCfg.ntpCfg.port),          },
+    {"plat_addr_val",       &(runSystemCfg.ntpCfg.platurl),       },
+    {"switch_485",          &(runSystemCfg.ntpCfg.enable485),	},
     {NULL,},
 };
 

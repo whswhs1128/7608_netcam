@@ -927,7 +927,7 @@ static int _net_sync_attr2dev(ST_SDK_NETWORK_ATTR *attr)
     if(sdk_net_set_ip(attr->name, attr->ip) < 0)
     { LOG_ERR("set :%s, ip:%s error",attr->name,attr->ip);}
     //if(sdk_net_set_hwaddr(attr->name, (char *)attr->mac) < 0)
-        //LOG_ERR("set :%s, hwaddr:%s error",attr->name,attr->mac);	xqq set hwaddr failed
+      //  LOG_ERR("set :%s, hwaddr:%s error",attr->name,attr->mac);//	xqq set hwaddr failed
 	printf("after sdk_net_set_ip\n");
     if(sdk_net_set_netmask(attr->name, attr->mask) < 0)
     {        LOG_ERR("set :%s, mask:%s error",attr->name,attr->mask);}
@@ -939,9 +939,9 @@ static int _net_sync_attr2dev(ST_SDK_NETWORK_ATTR *attr)
     {        LOG_ERR("set :%s, dns1:%s, dns2:%s error",attr->name,attr->dns1,attr->dns2);}
 	printf("after sdk_net_set_dns\n");
 	// and udhcpc should be killed, or it will get dynamic IP when IPC connects to router.
-//	if(sdk_net_set_dhcp(attr->name,attr->dhcp, netcam_sys_get_name()) < 0)
-//	{        LOG_ERR("set:%s, dhcp:%d\n", attr->name, attr->dhcp);}
-//	printf("after sdk_net_set_dhcp\n");
+	if(sdk_net_set_dhcp(attr->name,attr->dhcp, netcam_sys_get_name()) < 0)
+	{        LOG_ERR("set:%s, dhcp:%d\n", attr->name, attr->dhcp);}
+	printf("after sdk_net_set_dhcp\n");
 
     return 0;
 

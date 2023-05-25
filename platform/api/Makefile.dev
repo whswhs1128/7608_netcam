@@ -39,16 +39,16 @@ SOURCES  += src/sdk_vision.c
 
 CCFLAGS_USER += -O2
 CCFLAGS_USER += -I inc
-CCFLAGS_USER += -I /home/wanghs/yianyun/platform/sdk/adi/include    #add
-CCFLAGS_USER += -I /home/wanghs/yianyun/platform/sdk/image/image_lib/include   #add	
-CCFLAGS_USER += -I /home/wanghs/yianyun/platform/sdk/subsystem/vision/include
-CCFLAGS_USER += -I /home/wanghs/yianyun/platform/sdk/subsystem/acodec/aac/libaac/include
-CCFLAGS_USER += -I /home/wanghs/yianyun/platform/sdk/subsystem/acodec/amr/libamr/include
-CCFLAGS_USER += -I /home/wanghs/yianyun/platform/sdk/subsystem/eXosip2/include
-CCFLAGS_USER += -I /home/wanghs/yianyun/platform/sdk/subsystem/minirtsp/inc
-CCFLAGS_USER += -I /home/wanghs/yianyun/platform/sdk/subsystem/osd/include
-CCFLAGS_USER += -I /home/wanghs/yianyun/platform/sdk/subsystem/osip2/include
-CCFLAGS_USER += -I /home/wanghs/yianyun/platform/sdk/subsystem/osipparser2/include
+CCFLAGS_USER += -I /home/xieqianqian/7608_netcam/platform/sdk/adi/include    #add
+CCFLAGS_USER += -I /home/xieqianqian/7608_netcam/platform/sdk/image/image_lib/include   #add	
+CCFLAGS_USER += -I /home/xieqianqian/7608_netcam/platform/sdk/subsystem/vision/include
+CCFLAGS_USER += -I /home/xieqianqian/7608_netcam/platform/sdk/subsystem/acodec/aac/libaac/include
+CCFLAGS_USER += -I /home/xieqianqian/7608_netcam/platform/sdk/subsystem/acodec/amr/libamr/include
+CCFLAGS_USER += -I /home/xieqianqian/7608_netcam/platform/sdk/subsystem/eXosip2/include
+CCFLAGS_USER += -I /home/xieqianqian/7608_netcam/platform/sdk/subsystem/minirtsp/inc
+CCFLAGS_USER += -I /home/xieqianqian/7608_netcam/platform/sdk/subsystem/osd/include
+CCFLAGS_USER += -I /home/xieqianqian/7608_netcam/platform/sdk/subsystem/osip2/include
+CCFLAGS_USER += -I /home/xieqianqian/7608_netcam/platform/sdk/subsystem/osipparser2/include
 
 CCFLAGS_USER += -I $(INSTALL_HEADER_DIR)/adi
 CCFLAGS_USER += -I $(INSTALL_HEADER_DIR)/image

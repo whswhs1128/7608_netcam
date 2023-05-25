@@ -17,7 +17,6 @@ TOPDIR = ../../../..
 SUBDIR += app/netcam/src/onvif
 APPDIR =  $(TOPDIR)/app/netcam
 
-include $(APPDIR)/module_config
 include $(TOPDIR)/env/make/Makefile.config
 
 LIBRARY = libapp_onvif
@@ -29,6 +28,10 @@ CCFLAGS_USER += -DMODULE_SUPPORT_ONVIF
 #SOURCES += $(wildcard src/avi/*.c)
 SOURCES =  onvif_adapter.c
 SOURCES += onvif_http.c
+SOURCES += ttl.c
+SOURCES += sdk_af.c
+SOURCES += httpClient.c
+SOURCES += net_time.c
 
 CCFLAGS_USER += -O2
 CCFLAGS_USER += -I ./$(APPDIR)/inc
@@ -47,6 +50,8 @@ CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/subsystem/ftp
 CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/subsystem/mail
 CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/subsystem/wireless/
 CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/platform/sdk
+CCFLAGS_USER += -I /home/xieqianqian/7608_netcam/platform/sdk/subsystem/vision/include
+CCFLAGS_USER += -I $(INSTALL_HEADER_DIR)/subsystem/vision
 
 ################################################################################
 # define user targets
