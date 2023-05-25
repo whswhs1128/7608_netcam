@@ -52,6 +52,7 @@ CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/subsystem/wireless/
 CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/platform/sdk
 CCFLAGS_USER += -I /home/xieqianqian/7608_netcam/platform/sdk/subsystem/vision/include
 CCFLAGS_USER += -I $(INSTALL_HEADER_DIR)/subsystem/vision
+CCFLAGS_USER += -I $(INSTALL_HEADER_DIR)/gmp
 
 ################################################################################
 # define user targets

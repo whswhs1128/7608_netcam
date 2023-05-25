@@ -7,14 +7,13 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <errno.h>
-#include "af_comm.h" 
-#include "gk_api_isp.h"
 #include "sdk_debug.h"
 #include "sdk_vision.h"
-#include "comm_vpss.h"
 #include "sdk_af.h"
 #include "ttl.h"
-
+#include "ot_common_isp.h"
+#include "ss_mpi_isp.h"
+#include "type.h"
 #define BLEND_SHIFT 6
 #define ALPHA 64 // 1
 #define BELTA 54 // 0.85
@@ -51,12 +50,17 @@ static void *af_calc(void *arg)
     GK_U32 u32Fv1_n, u32Fv2_n, u32Fv1, u32Fv2;    
     GK_U32 u32H1, u32H2, u32V1, u32V2;    
     GK_U8 u8WdrChn;
-    VI_PIPE ViPipe = 0;
-    ISP_EXPOSURE_ATTR_S pstExpAttr;
-    ISP_EXP_INFO_S stIspExpInfo;
-    ISP_AF_STATISTICS_S stIspStatics;
-    ISP_STATISTICS_CFG_S stIspStaticsCfg;
-    ISP_FOCUS_ZONE_S stZoneMetrics[WDR_CHN_MAX][AF_ZONE_ROW][AF_ZONE_COLUMN] = {0};
+    ot_vi_pipe ViPipe = 0;
+    ot_isp_exposure_attr pstExpAttr;
+    ot_isp_exp_info stIspExpInfo;
+    ot_isp_af_stats stIspStatics;
+    ot_isp_stats_cfg stIspStaticsCfg;
+    ot_isp_focus_zone stZoneMetrics[OT_ISP_WDR_MAX_FRAME_NUM][OT_ISP_AF_ZONE_ROW][OT_ISP_AF_ZONE_COLUMN] = {0};
+   // ISP_EXPOSURE_ATTR_S pstExpAttr;
+   // ISP_EXP_INFO_S stIspExpInfo;
+   // ISP_AF_STATISTICS_S stIspStatics;
+   // ISP_STATISTICS_CFG_S stIspStaticsCfg;
+   // ISP_FOCUS_ZONE_S stZoneMetrics[WDR_CHN_MAX][AF_ZONE_ROW][AF_ZONE_COLUMN] = {0};
 //    ISP_FOCUS_STATISTICS_CFG_S stFocusCfg = 
 //    {
 //        {1, 17, 15, 4096, 2160, 1, 0, {0, 0, 0, 4096, 2160}, 2, {0x2, 0x1, 0}, {1, 0x9bff}, 0xf0},
@@ -67,7 +71,7 @@ static void *af_calc(void *arg)
 //        {4, {0, 0}, {0, 0}, 0}
 //    };
 
-    ISP_FOCUS_STATISTICS_CFG_S stFocusCfg = 
+    ot_isp_focus_stats_cfg  stFocusCfg = 
     {
         {1, 17, 15, 1920, 1080, 1, 0, {0, 0, 0, 1920, 1080}, 2, {0x2, 0x1, 0}, {1, 0x9bff}, 0xf0},
         {1, {1, 1, 1}, 15,{188, 414, -330, 486, -461, 400, -328}, {7, 0, 3, 1}, {1, 0, 255, 0, 220, 8, 14}, {127, 12, 2047} },
@@ -79,35 +83,35 @@ static void *af_calc(void *arg)
 
     sdk_sys_thread_set_name("af_calc");
     pthread_detach(pthread_self());
-    //s32Ret = GK_API_ISP_GetStatisticsConfig(ViPipe, &stIspStaticsCfg);
+    s32Ret = ss_mpi_isp_get_stats_cfg(ViPipe, &stIspStaticsCfg);
     if (GK_SUCCESS != s32Ret)
     {
-        LOG_ERR("GK_API_ISP_GetStatisticsConfig error!(s32Ret = 0x%x)\n", s32Ret);
+        LOG_ERR("ss_mpi_isp_get_stats_cfg error!(s32Ret = 0x%x)\n", s32Ret);
         return GK_FAILURE;
     }
-    stIspStaticsCfg.unKey.bit1BEAfStat = 1;
-    memcpy(&stIspStaticsCfg.stFocusCfg, &stFocusCfg, sizeof(ISP_FOCUS_STATISTICS_CFG_S));
-    //s32Ret = GK_API_ISP_SetStatisticsConfig(ViPipe, &stIspStaticsCfg);
+    stIspStaticsCfg.key.bit1_be_af_stat = 1;
+    memcpy(&stIspStaticsCfg.focus_cfg, &stFocusCfg, sizeof(ot_isp_focus_stats_cfg));
+    s32Ret = ss_mpi_isp_set_stats_cfg(ViPipe, &stIspStaticsCfg);
     if (GK_SUCCESS != s32Ret)
     {
-        LOG_ERR("GK_API_ISP_SetStatisticsConfig error!(s32Ret = 0x%x)\n", s32Ret);
+        LOG_ERR("ss_mpi_isp_get_stats_cfg error!(s32Ret = 0x%x)\n", s32Ret);
         return GK_FAILURE;
     }
 
     send_absolutemove_value(uart, 0, 0, 0);
     while (g_afStopSignal)
     {
-       // s32Ret = GK_API_ISP_GetVDTimeOut(ViPipe, ISP_VD_FE_START, 5000);
-       // s32Ret |= GK_API_ISP_GetFocusStatistics(ViPipe, &stIspStatics);
+        s32Ret = ss_mpi_isp_get_vd_time_out(ViPipe, OT_ISP_VD_FE_START   , 5000);
+        s32Ret |= ss_mpi_isp_get_focus_stats(ViPipe, &stIspStatics);
         if (GK_SUCCESS != s32Ret)
         {
-            LOG_ERR("GK_API_ISP_GetFocusStatistics error!(s32Ret = 0x%x)\n", s32Ret);
+            LOG_ERR("ss_mpi_isp_get_focus_stats error!(s32Ret = 0x%x)\n", s32Ret);
             return GK_FAILURE;
         }
 #ifdef FEINFO
-        memcpy(stZoneMetrics, &stIspStatics.stFEAFStat, sizeof(ISP_FOCUS_ZONE_S) * WDR_CHN_MAX * AF_ZONE_ROW * AF_ZONE_COLUMN);
+        memcpy(stZoneMetrics, &stIspStatics.fe_af_stat, sizeof(ot_isp_focus_zone) * OT_ISP_WDR_MAX_FRAME_NUM * OT_ISP_AF_ZONE_ROW * OT_ISP_AF_ZONE_COLUMN);
 #else
-        memcpy(stZoneMetrics[0], &stIspStatics.stBEAFStat, sizeof(ISP_FOCUS_ZONE_S) * AF_ZONE_ROW * AF_ZONE_COLUMN);
+        memcpy(stZoneMetrics[0], &stIspStatics.be_af_stat, sizeof(ot_isp_focus_zone) * OT_ISP_AF_ZONE_ROW * OT_ISP_AF_ZONE_COLUMN);
 #endif
         u32SumFv1 = 0;
         u32SumFv2 = 0;
@@ -116,20 +120,20 @@ static void *af_calc(void *arg)
         u8WdrChn = 1; 
         for(k = 0; k < u8WdrChn; k++) 
         { 
-            for ( i = 0 ; i < stFocusCfg.stConfig.u16Vwnd; i++ ) 
+            for ( i = 0 ; i < stFocusCfg.config.zone_row; i++ ) 
             { 
-                for ( j = 0 ; j < stFocusCfg.stConfig.u16Hwnd; j++ ) 
+                for ( j = 0 ; j < stFocusCfg.config.zone_col; j++ ) 
                 { 
-                    u32H1 = stZoneMetrics[k][i][j].u16h1;
-                    u32H2 = stZoneMetrics[k][i][j].u16h2;
-                    u32V1 = stZoneMetrics[k][i][j].u16v1;
-                    u32V2 = stZoneMetrics[k][i][j].u16v2;
+                    u32H1 = stZoneMetrics[k][i][j].h1;
+                    u32H2 = stZoneMetrics[k][i][j].h2;
+                    u32V1 = stZoneMetrics[k][i][j].v1;
+                    u32V2 = stZoneMetrics[k][i][j].v2;
                     u32Fv2_n = (u32H2 * BELTA + u32V2 * ((1<<BLEND_SHIFT) - BELTA)) >> BLEND_SHIFT;
                     #ifndef GAST
                     u32Fv1_n = (u32H1 * ALPHA + u32V1 * ((1<<BLEND_SHIFT) - ALPHA)) >> BLEND_SHIFT;
                     u32SumFv1 += AFWeight[i][j] * u32Fv1_n;
                     #else
-                    if(i>4 && i<(stFocusCfg.stConfig.u16Vwnd-5) && j>4 && j<(stFocusCfg.stConfig.u16Hwnd-5))
+                    if(i>4 && i<(stFocusCfg.config.zone_row-5) && j>4 && j<(stFocusCfg.config.zone_col-5))
                     {
                         u32SumFv1 += AFWeight[i][j] * u32Fv2_n;
                         u32WgtSum1 += AFWeight[i][j];
@@ -149,10 +153,9 @@ static void *af_calc(void *arg)
         #endif
        // s32Ret = GK_API_ISP_QueryExposureInfo(ViPipe, &stIspExpInfo);
        // s32Ret = GK_API_ISP_GetExposureAttr(ViPipe, &pstExpAttr);
-        GK_U8 agc = 255*(stIspExpInfo.u32AGain-pstExpAttr.stAuto.stAGainRange.u32Min)/(pstExpAttr.stAuto.stAGainRange.u32Max - pstExpAttr.stAuto.stAGainRange.u32Min);
+        GK_U8 agc = 255*(stIspExpInfo.a_gain-pstExpAttr.auto_attr.a_gain_range.min)/(pstExpAttr.auto_attr.a_gain_range.max - pstExpAttr.auto_attr.a_gain_range.min);
 	send_af_value(uart, u32Fv1, u32Fv2, agc);
 	usleep(50 * 1000);
-	//        pelco_set_agc_and_focus_value(agc, (short)u32Fv1, (short)u32Fv2);
     } 
     return NULL; 
 }
