@@ -150,7 +150,10 @@ int sdk_net_set_dhcp(const char *adapter_name, int enable, char *host_name)
         }
         else
         {
-            snprintf(buf,128,"udhcpc -i %s -b -x hostname:%s",adapter_name, hostName);
+            //snprintf(buf,128,"udhcpc -i %s -b -x hostname:%s",adapter_name, hostName);
+	    new_system_call("killall -9 udhcpc");
+            sprintf(buf,"%s","udhcpc &");
+	    printf("=========udhcpc enable===========0\n");
 	    printf("=============network_buf = %s=================\n",buf);
 
             new_system_call(buf) ;
