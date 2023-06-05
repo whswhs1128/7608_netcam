@@ -946,7 +946,8 @@ void *sample_comm_audio_adec_proc(void *parg)
                 printf("%s: ss_mpi_adec_send_end_of_stream failed!\n", __FUNCTION__);
             }
             (td_void)fseek(fd, 0, SEEK_SET); /* read file again */
-            continue;
+            // continue;
+            break;
         }
 
         /* here only demo adec streaming sending mode, but pack sending mode is commended */
@@ -957,7 +958,7 @@ void *sample_comm_audio_adec_proc(void *parg)
             break;
         }
     }
-
+    printf("===========================play audio end=============\n");
     free(audio_stream_tmp);
     audio_stream_tmp = NULL;
 

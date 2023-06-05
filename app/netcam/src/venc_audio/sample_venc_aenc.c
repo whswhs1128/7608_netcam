@@ -178,6 +178,7 @@ td_void *SAMPLE_COMM_AUDIO_AencProc_new(td_void *p)
 }
 
 #if 1
+ot_aio_attr aio_attr = {0};
 static td_s32 sample_audio_ai_aenc(td_void)
 {
     td_s32 ret;
@@ -186,7 +187,7 @@ static td_s32 sample_audio_ai_aenc(td_void)
     td_u32 ai_chn_cnt;
     td_u32 aenc_chn_cnt;
     td_bool send_adec = TD_TRUE;
-    ot_aio_attr aio_attr = {0};
+    //ot_aio_attr aio_attr = {0};
     sample_comm_ai_vqe_param ai_vqe_param = {0};
 
     sample_audio_ai_aenc_init_param(&aio_attr, &ai_dev, &ao_dev);
@@ -229,8 +230,9 @@ static td_s32 sample_audio_ai_aenc(td_void)
     pthread_detach(venc_audio_pthread[2]);
     while (EXIT_MODE_X)
     {
-        signal(SIGINT, change_state);
+	    usleep(500*1000);
     }
+
 
     printf("==============end audio=============\n");
    
@@ -886,7 +888,7 @@ static td_s32 sample_venc_normal_start_encode(ot_vpss_grp vpss_grp, sample_venc_
 #endif
     while (EXIT_MODE_X)
     {
-        signal(SIGINT, change_state);
+	    usleep(500*1000);
     }
 
      printf("============end rtsp==============\n");
