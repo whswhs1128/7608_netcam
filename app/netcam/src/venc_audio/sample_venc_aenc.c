@@ -1112,39 +1112,14 @@ static td_s32 sample_venc_normal(td_void)
         sample_print("Init VPSS err for %#x!\n", ret);
         goto EXIT_VI_STOP;
     }
-#if 0
-    printf("==================test=============\n");
-     ot_rotation_attr rotation;
-     rotation.enable = 1;
-     rotation.rotation_type = 0;
-     rotation.rotation_fixed =2;
-    ss_mpi_vpss_set_chn_rotation(vpss_grp, 0, &rotation);
-#endif
+
     if ((ret = sample_comm_vi_bind_vpss(vi_pipe, vi_chn, vpss_grp, 0)) != TD_SUCCESS)
     {
         sample_print("VI Bind VPSS err for %#x!\n", ret);
         goto EXIT_VPSS_STOP;
     }
-    // ss_mpi_vpss_get_chn_rotation(vpss_grp, 0, &rotation);
 
-    // printf("====================rotation = %d\n=====================",rotation.rotation_fixed);
-#if 0
-   ot_isp_csc_attr csc_attr;
-   ss_mpi_isp_get_csc_attr(vi_pipe, &csc_attr);
-   printf("=============en = %d\n", csc_attr.en);
-   printf("=============hue = %d\n", csc_attr.hue);
-   csc_attr.luma = 100;
-   ss_mpi_isp_set_csc_attr(vi_pipe, &csc_attr);
-   ot_isp_sharpen_attr shp_attr;
-   ss_mpi_isp_get_sharpen_attr(vi_pipe, &shp_attr);
-   printf("==================detail_ctrl = %d\n", shp_attr.manual_attr.detail_ctrl);
-   shp_attr.op_type = OT_OP_MODE_MANUAL;
-   shp_attr.manual_attr.detail_ctrl = 0;
-   ss_mpi_isp_set_sharpen_attr(vi_pipe, &shp_attr);
-   ot_isp_wb_attr wb_attr;
-   ss_mpi_isp_get_wb_attr(vi_pipe, &wb_attr);
-   printf("=============type = %d\n", wb_attr.op_type);
-#endif
+
     ot_dis_cfg dis_cfg;
     ss_mpi_vi_get_chn_dis_cfg(vi_pipe, vi_chn, &dis_cfg);
     dis_cfg.motion_level = 1;
@@ -1156,14 +1131,12 @@ static td_s32 sample_venc_normal(td_void)
     dis_attr.enable = TD_TRUE;
     dis_attr.gdc_bypass = TD_FALSE;
     ss_mpi_vi_set_chn_dis_attr(vi_pipe, vi_chn, &dis_attr);
-    printf("======enable =======%d\n", dis_attr.enable);
 
     if ((ret = sample_venc_normal_start_encode(vpss_grp, &venc_vpss_chn)) != TD_SUCCESS)
     {
         goto EXIT_VI_VPSS_UNBIND;
     }
 
-    // sample_snap_start_snap();
 
     /******************************************
      exit process
@@ -1187,26 +1160,20 @@ void rtsp_reboot()
 {
     int i;
     int retval;
-    printf("=================rtsp reboot===================\n");
-    printf("=================rtsp reboot===================\n");
-    printf("l=================rtsp reboot===================\n");
+    // printf("=================rtsp reboot===================\n");
+    // printf("=================rtsp reboot===================\n");
+    // printf("l=================rtsp reboot===================\n");
     End_Rtsp = 0;
     EXIT_MODE_X = 0;
     new_system_call("pkill udhcpc");
-    printf("===========pkill udhcpc==============\n");
+    // printf("===========pkill udhcpc==============\n");
     for(i = 0; i<2;i++)
     {
     rtsp_del_session(rtsp_handle[i].session);
     rtsp_del_demo(rtsp_handle[i].g_rtsplive);
     }
-   // for(i = 3; i > 0; i--)
-   //   {
-   //       pthread_join(venc_audio_pthread[i], &retval);
-   //       printf("recv retval = %d\n", (int)retval);
-   //   }
     ss_mpi_aenc_aac_deinit();
     // sample_comm_sys_exit();
-    printf("===========runVideoCfg.vencStream[1].h264Conf.width = %d===========\n" ,runVideoCfg.vencStream[1].h264Conf.width);
     sleep(3);
     End_Rtsp = 1;
     EXIT_MODE_X = 1;
@@ -1246,15 +1213,11 @@ td_s32 venc_audio_start()
     pthread_detach(venc_audio_pthread[0]);
     sleep(1);
     ss_mpi_aenc_aac_init();
-    if (runVideoCfg.vencStream[0].avStream == 0 && runVideoCfg.vencStream[1].avStream == 0)
+    if (runVideoCfg.vencStream[0].avStream == 0 || runVideoCfg.vencStream[1].avStream == 0)
     {
         pthread_create(&venc_audio_pthread[1], 0, sample_audio_ai_aenc, NULL);
-	pthread_detach(venc_audio_pthread[1]);
+	    pthread_detach(venc_audio_pthread[1]);
     }
-// #ifdef __LITEOS__
-//     return TD_SUCCESS;
-// #else
-//     exit(TD_SUCCESS);
-// #endif
+
 }
 #endif

@@ -70,6 +70,9 @@ GK_CFG_MAP ntpCfgMap[] = {
     {"ntpCfg_port",          &(runSystemCfg.ntpCfg.port),          GK_CFG_DATA_TYPE_S32,     "123",             1, 0, 65535,  NULL},
     {"plat_addr_val",       &(runSystemCfg.ntpCfg.platurl),       GK_CFG_DATA_TYPE_STRING,   "http://192.168.20.109:8080/reportAlarmData",1,1,64,NULL},
     {"switch_485",	    &(runSystemCfg.ntpCfg.enable485),	GK_CFG_DATA_TYPE_S32,     "1",               1, 0, 1,  NULL},
+    {"AI_enable",	    &(runSystemCfg.ntpCfg.enableAI),    GK_CFG_DATA_TYPE_S32,     "1",               1, 0, 1,  NULL},
+    {"AI_ModelNum",         &(runSystemCfg.ntpCfg.modelNum),    GK_CFG_DATA_TYPE_S32,     "1",               1, 0, 1,  NULL},
+    {"AI_PlatUrl",          &(runSystemCfg.ntpCfg.AI_url),      GK_CFG_DATA_TYPE_STRING,   "http://192.168.20.109:8080/reportAlarmData",1,1,64,NULL},
     {NULL,},
 };
 
@@ -154,6 +157,9 @@ GK_CFG_MAP ntpCfgMap[] = {
     {"ntpCfg_port",          &(runSystemCfg.ntpCfg.port),          },
     {"plat_addr_val",       &(runSystemCfg.ntpCfg.platurl),       },
     {"switch_485",          &(runSystemCfg.ntpCfg.enable485),	},
+    {"AI_enable",           &(runSystemCfg.ntpCfg.enableAI),    },
+    {"AI_ModelNum",         &(runSystemCfg.ntpCfg.modelNum),    },
+    {"AI_platUrl",          &(runSystemCfg.ntpCfg.AI_url),      },
     {NULL,},
 };
 
