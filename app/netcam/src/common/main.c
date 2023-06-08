@@ -9,7 +9,7 @@
 #include "sdk_cfg.h"
 #include "utility_api.h"
 #include <time.h>
-#include "ot_common_aio.h"
+
 #ifdef MODULE_SUPPORT_RTSP
 #include "gk_rtsp.h"
 #endif
@@ -112,7 +112,7 @@
 
 
 static sem_t  main_run_sem;
-extern ot_aio_attr aio_attr;
+
 static void http_stop()
 {
 }
@@ -686,7 +686,6 @@ int main(int argc, char *argv[])
 //    netcam_update_feed_dog();
 //#endif
     start_all_module();
-    sample_audio_adec_ao(1, aio_attr);
 
     //阻塞等待，不用循环
     while(1)
