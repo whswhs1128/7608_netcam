@@ -334,6 +334,9 @@ static int web_time(HTTP_OPS* ops, void* arg)
 		
 			runSystemCfg.ntpCfg.enable = cJSON_GetObjectItem(ret,"ntpCfg_enable")->valueint;
 			runSystemCfg.ntpCfg.enable485 = cJSON_GetObjectItem(ret,"switch_485")->valueint;
+			runSystemCfg.ntpCfg.enableAI = cJSON_GetObjectItem(ret,"AI_enable")->valueint;
+			runSystemCfg.ntpCfg.modelNum = cJSON_GetObjectItem(ret,"AI_ModelNum")->valueint;
+
 			if(runSystemCfg.ntpCfg.enable485)
 			{
 			printf("============485 open ===========");
@@ -344,6 +347,11 @@ static int web_time(HTTP_OPS* ops, void* arg)
 	strncpy(runSystemCfg.ntpCfg.platurl, cJSON_GetObjectItem(ret,"plat_addr_val")->valuestring, sizeof(runSystemCfg.ntpCfg.platurl)-1);
 	printf("runSystemCfg.ntpCfg.platurl ================= %s\n", runSystemCfg.ntpCfg.platurl);
         }
+	if(cJSON_GetObjectItem(ret,"AI_PlatUrl")->valuestring != NULL)
+	{
+	strncpy(runSystemCfg.ntpCfg.AIplat, cJSON_GetObjectItem(ret,"AI_PlatUrl")->valuestring, sizeof(runSystemCfg.ntpCfg.AIplat)-1);
+	printf("runSystemCfg.ntpCfg.AIplat ================= %s\n", runSystemCfg.ntpCfg.AIplat);
+	}
 	}
         netcam_sys_set_time_zone_by_utc_string(timeString, zone);
         netcam_timer_add_task(netcam_sys_save, NETCAM_TIMER_TWO_SEC, SDK_FALSE, SDK_TRUE);
