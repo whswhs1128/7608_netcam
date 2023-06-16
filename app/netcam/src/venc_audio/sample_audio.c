@@ -689,6 +689,8 @@ void sample_stop_adec(int ad_chn)
     if (ret != TD_SUCCESS) {
         sample_dbg(ret);
     }
+=======
+>>>>>>> parent of 0afb5b4... add start audio & modify sdk_af & MAC setting is ok
 }
 
 /* function : file -> adec -> ao */
@@ -702,73 +704,39 @@ td_s32 sample_audio_adec_ao(td_void)
     const ot_ao_chn ao_chn = 0;
     const ot_adec_chn ad_chn = 0;
 
-<<<<<<< HEAD
     sample_adec_aac_init();
     //sample_audio_adec_ao_init_param(&aio_attr, &ao_dev);
     //需要保持aio_attr的一致性，不然会显示参数无效。
     ao_dev = SAMPLE_AUDIO_EXTERN_AO_DEV;
-=======
     sample_audio_adec_ao_init_param(&aio_attr, &ao_dev);
->>>>>>> parent of 0afb5b4... add start audio & modify sdk_af & MAC setting is ok
-
-    adec_chn_cnt = aio_attr.chn_cnt >> ((td_u32)aio_attr.snd_mode);
     ret = sample_comm_audio_start_adec(adec_chn_cnt, g_payload_type);
     if (ret != TD_SUCCESS) {
         sample_dbg(ret);
-<<<<<<< HEAD
         sample_adec_aac_deinit();
         return ret;
-=======
-        goto adec_ao_err3;
->>>>>>> parent of 0afb5b4... add start audio & modify sdk_af & MAC setting is ok
     }
 
     ao_chn_cnt = aio_attr.chn_cnt;
     ret = sample_comm_audio_start_ao(ao_dev, ao_chn_cnt, &aio_attr, g_in_sample_rate, g_aio_resample);
     if (ret != TD_SUCCESS) {
         sample_dbg(ret);
-<<<<<<< HEAD
         sample_stop_adec(ad_chn);
         sample_adec_aac_deinit();
         return ret;
-=======
-        goto adec_ao_err2;
->>>>>>> parent of 0afb5b4... add start audio & modify sdk_af & MAC setting is ok
     }
 
     ret = sample_comm_audio_cfg_acodec(&aio_attr);
     if (ret != TD_SUCCESS) {
         sample_dbg(ret);
-<<<<<<< HEAD
         sample_stop_ao(ao_dev, ao_chn_cnt, g_aio_resample);
         sample_stop_adec(ad_chn);
         sample_adec_aac_deinit();
         return ret;
     }
 
-    sample_audio_adec_ao_inner(ao_dev, ao_chn, ad_chn, type);
+//    sample_audio_adec_ao_inner(ao_dev, ao_chn, ad_chn, type);
     
-=======
-        goto adec_ao_err1;
-    }
 
-    sample_audio_adec_ao_inner(ao_dev, ao_chn, ad_chn);
-
-adec_ao_err1:
-    ret = sample_comm_audio_stop_ao(ao_dev, ao_chn_cnt, g_aio_resample);
-    if (ret != TD_SUCCESS) {
-        sample_dbg(ret);
-    }
-
-adec_ao_err2:
-    ret = sample_comm_audio_stop_adec(ad_chn);
-    if (ret != TD_SUCCESS) {
-        sample_dbg(ret);
-    }
-
-adec_ao_err3:
-    return ret;
->>>>>>> parent of 0afb5b4... add start audio & modify sdk_af & MAC setting is ok
 }
 
  td_void sample_audio_ai_aenc_init_param(ot_aio_attr *aio_attr, ot_audio_dev *ai_dev, ot_audio_dev *ao_dev)
