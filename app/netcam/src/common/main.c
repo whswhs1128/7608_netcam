@@ -191,7 +191,7 @@ static int netcam_audio_boot_finish(void* arg)
 
 static void start_all_module()
 {
-    agingTestCheck();
+    //agingTestCheck();
 
 #ifdef MODULE_SUPPORT_ENCRYPT_AUTHOR
 	if(encrypt_authentication() != 0)
@@ -636,7 +636,8 @@ static int netcam_start()
 	netcam_osd_init();
     #endif
     //netcam_pm_init();
-    venc_audio_start();
+    //venc_audio_start();
+    svp_main();
     netcam_image_init();
 	//netcam_autolight_init();
     netcam_net_wifi_init();
