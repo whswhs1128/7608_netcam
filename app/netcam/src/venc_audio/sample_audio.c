@@ -689,8 +689,6 @@ void sample_stop_adec(int ad_chn)
     if (ret != TD_SUCCESS) {
         sample_dbg(ret);
     }
-=======
->>>>>>> parent of 0afb5b4... add start audio & modify sdk_af & MAC setting is ok
 }
 
 /* function : file -> adec -> ao */
