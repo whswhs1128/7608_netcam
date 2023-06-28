@@ -9,7 +9,7 @@
 #include "sdk_cfg.h"
 #include "utility_api.h"
 #include <time.h>
-
+#include "ot_common_aio.h"
 #ifdef MODULE_SUPPORT_RTSP
 #include "gk_rtsp.h"
 #endif
@@ -112,7 +112,7 @@
 
 
 static sem_t  main_run_sem;
-
+extern ot_aio_attr aio_attr;
 static void http_stop()
 {
 }
@@ -191,7 +191,7 @@ static int netcam_audio_boot_finish(void* arg)
 
 static void start_all_module()
 {
-    agingTestCheck();
+    //agingTestCheck();
 
 #ifdef MODULE_SUPPORT_ENCRYPT_AUTHOR
 	if(encrypt_authentication() != 0)
@@ -383,7 +383,7 @@ static void start_all_module()
 #ifdef MODULE_SUPPORT_MOJING
     if (mojing_get_onvif_status() == 1)
 #endif
-    rtsp_start();
+    //rtsp_start();
 #endif
 
 
@@ -637,6 +637,7 @@ static int netcam_start()
     #endif
     //netcam_pm_init();
     venc_audio_start();
+    //svp_main();
     netcam_image_init();
 	//netcam_autolight_init();
     netcam_net_wifi_init();
@@ -686,6 +687,7 @@ int main(int argc, char *argv[])
 //    netcam_update_feed_dog();
 //#endif
     start_all_module();
+    sample_audio_adec_ao(1, aio_attr);
 
     //阻塞等待，不用循环
     while(1)

@@ -44,7 +44,12 @@
 #if defined(OT_VQE_USE_STATIC_MODULE_REGISTER)
 #include "ot_vqe_register.h"
 #endif
-
+#include "SDL.h"
+#include "SDL_ttf.h"
+#define FONT_PATH "./hisi_osd.ttf"
+#define OVERLAYEX_MIN_HANDLE 20
+ot_bmp stBitmap;
+int bmp_w, bmp_h;
 #include "cfg_video.h"
 GK_NET_VIDEO_CFG runVideoCfg;
 static ot_payload_type g_payload_type = OT_PT_AAC;
@@ -113,11 +118,7 @@ typedef struct
     td_u32 supplement_config;
 } sample_venc_vb_attr;
 
-typedef struct
-{
-    ot_vpss_chn vpss_chn[CHN_NUM_MAX];
-    ot_venc_chn venc_chn[CHN_NUM_MAX];
-} sample_venc_vpss_chn;
+
 
 static td_bool g_sample_venc_exit = TD_FALSE;
 
@@ -178,6 +179,7 @@ td_void *SAMPLE_COMM_AUDIO_AencProc_new(td_void *p)
 }
 
 #if 1
+ot_aio_attr aio_attr = {0};
 static td_s32 sample_audio_ai_aenc(td_void)
 {
     td_s32 ret;
@@ -186,7 +188,7 @@ static td_s32 sample_audio_ai_aenc(td_void)
     td_u32 ai_chn_cnt;
     td_u32 aenc_chn_cnt;
     td_bool send_adec = TD_TRUE;
-    ot_aio_attr aio_attr = {0};
+    //ot_aio_attr aio_attr = {0};
     sample_comm_ai_vqe_param ai_vqe_param = {0};
 
     sample_audio_ai_aenc_init_param(&aio_attr, &ai_dev, &ao_dev);
@@ -229,8 +231,9 @@ static td_s32 sample_audio_ai_aenc(td_void)
     pthread_detach(venc_audio_pthread[2]);
     while (EXIT_MODE_X)
     {
-        signal(SIGINT, change_state);
+	    usleep(500*1000);
     }
+
 
     printf("==============end audio=============\n");
    
@@ -255,6 +258,315 @@ ai_aenc_err6:
     return ret;
 }
 #endif
+
+int string_to_bmp(char *pu8Str)
+{
+    SDL_PixelFormat *fmt;
+    TTF_Font *font;
+    SDL_Surface *text, *temp;
+    if (TTF_Init() < 0)
+    {
+        fprintf(stderr, "Couldn't initialize TTF: %s\n", SDL_GetError());
+        SDL_Quit();
+    }
+
+    font = TTF_OpenFont(FONT_PATH, 40); // change size
+    if (font == NULL)
+    {
+        fprintf(stderr, "Couldn't load %d pt font from %s: %s\n", 18, "ptsize", SDL_GetError());
+    }
+
+    SDL_Color forecol = {0xff, 0xff, 0xff, 0xff};
+    text = TTF_RenderUTF8_Solid(font, pu8Str, forecol);
+
+    fmt = (SDL_PixelFormat *)malloc(sizeof(SDL_PixelFormat));
+    memset(fmt, 0, sizeof(SDL_PixelFormat));
+    fmt->BitsPerPixel = 16;
+    fmt->BytesPerPixel = 2;
+    //    fmt->colorkey = 0xffffffff;
+    //    fmt->alpha = 0xff;
+
+    temp = SDL_ConvertSurface(text, fmt, 0);
+    // stBitmap.data = malloc(2 * (temp->w) * (temp->h));
+    // if (stBitmap.data == NULL)
+    // {
+    //     printf("stBitmap.data faided\r\n");
+    // }
+    // 奇数会导致内容变成斜体
+    if(temp->w%2 != 0)
+	    bmp_w = temp->w + 1;
+    else
+	    bmp_w = temp->w;
+    if(temp->h % 2 != 0)
+	    bmp_h = temp->h+1;
+    else
+	    bmp_h = temp->h;
+   // bmp_w = temp->w;
+   // bmp_h = temp->h;
+   // memset(stBitmap.data, 0, (2 * (temp->w) * (temp->h)));
+   // memcpy(stBitmap.data, temp->pixels, (2 * (temp->w) * (temp->h)));
+
+   // stBitmap.width = temp->w;
+   // stBitmap.height = temp->h;
+      memset(stBitmap.data, 0, (2 * bmp_w * bmp_h));
+      memcpy(stBitmap.data, temp->pixels, (2 * temp->w * temp->h));
+      stBitmap.width = bmp_w;
+      stBitmap.height = bmp_h;
+
+    //char savename[20] = {0};
+
+    //snprintf(savename, 20, "./osd/now_time.bmp");
+    // printf("savename = %s\n",savename);
+    //SDL_SaveBMP(temp, savename);
+    free(fmt);
+    SDL_FreeSurface(text);
+    SDL_FreeSurface(temp);
+    TTF_CloseFont(font);
+    TTF_Quit();
+
+    return 0;
+}
+
+/* 
+ *描述  ：用于osd 字体bmp图像生成
+ *参数  ：NULL
+ *返回值：无
+ *注意  ：需要加载字体ttf才能使用，否则会报段错误
+ */
+void *bitmap_update(void )
+{
+    ot_rgn_handle OverlayHandle = 0;
+    td_s32 s32Ret;
+    int z = 0;
+    // time_t now;
+    // struct tm *ptm;
+    // char timestr[OSD_LENGTH] = {0};
+    while(1)
+    {
+        sleep(1);
+
+//        if(p->labelN[0]==0 )
+//	{
+//		z++;
+//		if(z == 10)
+//		{
+//			z = 0;
+//			memset(stBitmap.data, 0, (2 * 3840 * 48));
+//			ss_mpi_rgn_update_canvas(OVERLAYEX_MIN_HANDLE);
+//			s32Ret = ss_mpi_rgn_set_bmp(OVERLAYEX_MIN_HANDLE,&stBitmap);
+//		}
+//		continue;
+//	}
+
+	ss_mpi_rgn_update_canvas(OVERLAYEX_MIN_HANDLE);
+	s32Ret = ss_mpi_rgn_set_bmp(OVERLAYEX_MIN_HANDLE,&stBitmap);//s32Ret 为RGN_HANDLE OverlayHandle
+	if(s32Ret != TD_SUCCESS)
+	{
+		printf("HI_MPI_RGN_SetBitMap update failed with %#x!\n", s32Ret);
+		// return -1;
+		continue;
+	}
+
+	//memset(stBitmap.data, 0, (2 * (bmp_w) * (bmp_h)));
+	memset(stBitmap.data, 0, (2 * 3840 * 48));
+	z = 0;
+       
+       
+    }
+    return 0;
+}
+
+
+void *osd_ttf_task(void)
+{
+    ot_rgn_handle OverlayHandle = 0;
+    int s32Ret;
+    time_t now;
+    struct tm *ptm;
+    char timestr[128] = {0};
+    int i,j;
+    char b[3];
+    stBitmap.data = malloc(2 * 3840 * 48);
+    if (stBitmap.data == NULL)
+    {
+        printf("stBitmap.data faided\r\n");
+    }
+    while (1)
+    {
+        usleep(1000 * 1000);
+        time(&now);
+        ptm = localtime(&now);
+        snprintf(timestr, 100, "时间:%d-%02d-%02d %02d:%02d:%02d", ptm->tm_year + 1900, ptm->tm_mon + 1, ptm->tm_mday, ptm->tm_hour, ptm->tm_min, ptm->tm_sec);
+       
+#if 0
+        if(p->labelN[0]==0)
+        {
+	        continue;
+            timestr[0] = ' ';
+            // printf("=====no license=======\n");
+        }
+        else
+        {
+            for(i = 0;i < p->labelN[0];i++)
+            {
+                for(j=1;j<=15;j++)
+                {
+                    if(p->labelN[(i*15)+j] < 154 && p->labelN[(i*15)+j] != 0)
+                    {
+                        b[0] = platename[p->labelN[(i*15)+j]];
+                        b[1] = platename[p->labelN[(i*15)+j]+1];
+                        b[2] = platename[p->labelN[(i*15)+j]+2];
+                    }
+                    else if(p->labelN[(i*15)+j] != 0)
+                    {
+                        b[0] = platename[p->labelN[(i*15)+j]];
+                    }
+                    strcat(timestr,b);
+                    memset(b,0,3);
+                }    
+	
+    
+    	strcat(timestr,"  ");
+#endif
+        //    printf("===========timestr================%s\n",timestr);
+//        strcat(timestr," ");
+        string_to_bmp(timestr);
+        memset(timestr, 0, 128);
+    }
+    return 0;
+}
+
+/*
+ *描述  ：用于将视频文件添加时间水印
+ *参数  ：无
+ *返回值：OverlayHandle
+ *注意  ：参数在HI_MPI_RGN_Create并不做检查，只有在HI_MPI_RGN_AttachToChn的时候才会报出相应的错
+ */
+td_s32 RGN_AddOsdToVenc(void)
+{
+    td_s32 s32Ret;
+    ot_rgn_attr stRgnAttr;
+    ot_rgn_chn_attr stChnAttr;
+    ot_mpp_chn stChn;
+    ot_rgn_handle OverlayHandle;
+    int handle_num = 1;
+    int i = 0;
+    int ret;
+    // RGN_CANVAS_INFO_S stCanvasInfo;
+    OverlayHandle = 0;
+    stChn.mod_id = OT_ID_VPSS; /**模块号**/ // HI_ID_VPSS  HI_ID_VENC
+    stChn.dev_id = 0;                       /**设备号**/
+    stChn.chn_id = 0;                       /**通道号**/
+    /**创建区域**/
+    sleep(2); // 等待位图生成
+    stRgnAttr.attr.overlay.canvas_num = 2;
+    stRgnAttr.type = OT_RGN_OVERLAYEX;                                                /**区域类型:叠加**/
+    stRgnAttr.attr.overlay.pixel_format = OT_PIXEL_FORMAT_ARGB_1555; /**像素格式**/ // PIXEL_FORMAT_BGR_565 PIXEL_FORMAT_ARGB_1555
+    if (stBitmap.width % 2 != 0)
+    {
+        stBitmap.width += 1;
+    }
+
+    if (stBitmap.height % 2 != 0)
+    {
+        stBitmap.height += 1;
+    }
+    printf("stBitmap.width is %d ,stBitmap.height is %d\n", stBitmap.width, stBitmap.height);
+    if(stBitmap.width == 0 || stBitmap.height == 0)
+    {
+        stBitmap.height = 4;
+        stBitmap.width = 4;
+    }
+    stRgnAttr.attr.overlay.size.width = 560;   // 240;        /**区域宽**/
+    stRgnAttr.attr.overlay.size.height = 48; // 192;        /**区域高**/
+    stRgnAttr.attr.overlay.bg_color = 0x0000;         // 0x00007c00; /**区域背景颜色**/
+
+    for (i = OVERLAYEX_MIN_HANDLE; i < OVERLAYEX_MIN_HANDLE + handle_num; i++) {
+        ret = ss_mpi_rgn_create(i, &stRgnAttr);
+        if (ret != TD_SUCCESS) {
+            sample_print("ss_mpi_rgn_create failed with %#x!\n", ret);
+            return TD_FAILURE;
+        }
+    }
+    
+
+    // s32Ret = ss_mpi_rgn_create(OverlayHandle, &stRgnAttr);
+    // if (s32Ret != TD_SUCCESS)
+    // {
+    //     printf("RGN create failed: %#x\n", s32Ret);
+	// return -1;
+    // }
+    /**将区域叠加到通道**/
+    /**设置叠加区域的通道显示属性**/
+    stChnAttr.is_show = TD_TRUE;
+    stChnAttr.type = OT_RGN_OVERLAYEX;
+    // stChnAttr.attr.overlay_chn.point.x = 640; // 240;
+    // stChnAttr.attr.overlay_chn.point.y = 320; // 192;
+    stChnAttr.attr.overlay_chn.point.x = 0; // 240;
+    stChnAttr.attr.overlay_chn.point.y = 0; // 192;
+    stChnAttr.attr.overlay_chn.bg_alpha = 128;
+    stChnAttr.attr.overlay_chn.fg_alpha = 128;
+    stChnAttr.attr.overlay_chn.layer = OverlayHandle;
+
+    /**设置QP属性**/
+    stChnAttr.attr.overlay_chn.qp_info.is_abs_qp = TD_TRUE;
+    stChnAttr.attr.overlay_chn.qp_info.qp_val = 0;
+    stChnAttr.attr.overlay_chn.qp_info.enable = TD_TRUE;
+
+    /**定义 OSD 反色相关属性**/
+    /**单元反色区域，反色处理的基本单元,[16, 64]，需 16 对齐**/
+#if 0
+        stChnAttr.attr.overlay_chn.stInvertColor.stInvColArea.height = 16;
+        stChnAttr.attr.overlay_chn.stInvertColor.stInvColArea.width  = 16;
+
+        /**亮度阈值,取值范围：[0, 255]**/
+        stChnAttr.attr.overlay_chn.stInvertColor.u32LumThresh = 128;//128
+
+        /**OSD 反色触发模式**/
+        stChnAttr.attr.overlay_chn.stInvertColor.enChgMod     = LESSTHAN_LUM_THRESH;
+
+        /**OSD 反色开关。overlay不支持反色**/
+        stChnAttr.attr.overlay_chn.stInvertColor.bInvColEn    = TD_FALSE;
+#endif
+    stChnAttr.attr.overlay_chn.dst = OT_RGN_ATTACH_JPEG_MAIN;
+    // OverlayHandle = 0;
+    for (i = OVERLAYEX_MIN_HANDLE; i < OVERLAYEX_MIN_HANDLE + handle_num; i++) {
+        // sample_region_get_overlayex_chn_attr(i, &chn_attr->attr.overlayex_chn);
+        ret = sample_region_attach_to_chn(i, &stChn, &stChnAttr);
+        if (ret != TD_SUCCESS) {
+            sample_print("sample_region_attach_to_chn failed!\n");
+            sample_comm_region_detach_frm_chn(i - OVERLAYEX_MIN_HANDLE + 1, OT_RGN_OVERLAYEX, &stChn);
+            return ret;
+        }
+    }
+
+    stBitmap.pixel_format = OT_PIXEL_FORMAT_ARGB_1555;
+
+
+for (i = OVERLAYEX_MIN_HANDLE; i < OVERLAYEX_MIN_HANDLE + handle_num; i++) {
+    s32Ret = ss_mpi_rgn_set_bmp(i, &stBitmap);
+}
+    if (s32Ret != TD_SUCCESS)
+    {
+        printf("HI_MPI_RGN_SetBitMap failed with %#x!\n", s32Ret);
+	return -1;
+    }
+
+stChn.chn_id = 1; /**通道号**/
+    for (i = OVERLAYEX_MIN_HANDLE; i < OVERLAYEX_MIN_HANDLE + handle_num; i++)
+    {
+        ret = sample_region_attach_to_chn(i, &stChn, &stChnAttr);
+        if (ret != TD_SUCCESS)
+        {
+            sample_print("sample_region_attach_to_chn failed!\n");
+            sample_comm_region_detach_frm_chn(i - OVERLAYEX_MIN_HANDLE + 1, OT_RGN_OVERLAYEX, &stChn);
+            return ret;
+        }
+    }
+    return 0;
+}
+
+
 /******************************************************************************
  * function : to process abnormal case
  ******************************************************************************/
@@ -659,7 +971,7 @@ static td_void sample_venc_unbind_vpss_stop(ot_vpss_grp vpss_grp, const sample_v
 {
     td_s32 i;
 
-    for (i = 0; i < CHN_NUM_MAX; i++)
+    for (i = 1; i < CHN_NUM_MAX; i++)
     {
         sample_comm_vpss_un_bind_venc(vpss_grp, venc_vpss_chn->vpss_chn[i], venc_vpss_chn->venc_chn[i]);
         sample_comm_venc_stop(venc_vpss_chn->venc_chn[i]);
@@ -683,34 +995,25 @@ static void change_state(int signo)
     return EXIT_MODE_X = 0;
 }
 
-static int get_stream_from_one_channl(int s_LivevencChn, rtsp_demo_handle g_rtsplive,
+static int get_stream_from_one_channl(int s_LivevencChn, int s_LivevencFd, fd_set read_fds,rtsp_demo_handle g_rtsplive,
                                       rtsp_session_handle session)
 {
-    static int s_LivevencFd = 0;
-    static int s_maxFd = 0;
+    
+    // static int s_maxFd = 0;
     td_s32 ret = 0;
-    fd_set read_fds;
-
     int nSize;
     int i;
     ot_venc_stream stVStream;
 
     ot_venc_chn_status stStat;
     struct timeval TimeoutVal;
-    TimeoutVal.tv_sec = 2;
-    TimeoutVal.tv_usec = 0;
+    TimeoutVal.tv_sec = 0;
+    TimeoutVal.tv_usec = 500 * 1000;
 
-    s_LivevencFd = ss_mpi_venc_get_fd(s_LivevencChn);
-    s_maxFd = s_maxFd > s_LivevencFd ? s_maxFd : s_LivevencFd;
-    s_maxFd = s_maxFd + 1;
+    // s_maxFd = s_maxFd > s_LivevencFd ? s_maxFd : s_LivevencFd;
+    // s_maxFd = s_maxFd + 1;
 
-
-    // printf("=======================channel = %d==============", s_LivevencChn);
-
-    FD_ZERO(&read_fds);
-    FD_SET(s_LivevencFd, &read_fds);
-
-    ret = select(s_maxFd, &read_fds, NULL, NULL, &TimeoutVal);
+    ret = select(s_LivevencFd+1, &read_fds, NULL, NULL, &TimeoutVal);
     if (ret <= 0)
     {
         printf("%s select failed!\n", __FUNCTION__);
@@ -762,6 +1065,7 @@ static int get_stream_from_one_channl(int s_LivevencChn, rtsp_demo_handle g_rtsp
         free(stVStream.pack);
         stVStream.pack = NULL;
     }
+    return 1;
 }
 
 /******************************************************************************
@@ -771,27 +1075,29 @@ td_void *VENC_GetVencStreamProc(td_void *p)
 {
     td_s32 ret = 0;
     int i;
-    // static ot_venc_chn s_LivevencChn = 0;
-    // rtsp_handle_struct rtsp_p[2];
-    // rtsp_handle_struct rtsp_p[0] = *(rtsp_handle_struct *)p[0];
-    // rtsp_handle_struct rtsp_p[1] = *(rtsp_handle_struct *)p[1];
+    static int s_LivevencFd[2] = {0};
+    fd_set read_fds;
+    FD_ZERO(&read_fds);
+
+    for(i = 0; i < CHN_NUM_MAX; i++)
+    {
+        s_LivevencFd[i] = ss_mpi_venc_get_fd(rtsp_handle[i].channel_num);
+        FD_SET(s_LivevencFd[i], &read_fds);
+    }
     printf("=========chn = %d\n", rtsp_handle[0].channel_num);
     printf("=========chn = %d\n", rtsp_handle[1].channel_num);
-    // s_LivevencChn = rtsp_p.channel_num;
-    struct timeval TimeoutVal;
-    TimeoutVal.tv_sec = 2;
-    TimeoutVal.tv_usec = 0;
-    ot_audio_stream stAStream;
+
     while (End_Rtsp)
     {
         
-        for (i = 0; i < CHN_NUM_MAX; i++)
+        // for (i = 0; i < CHN_NUM_MAX; i++)
         // for (i = 0; i < 1; i++)
+        for(i = 1; i >= 0; i--)
         {
-            ret = get_stream_from_one_channl(rtsp_handle[i].channel_num, rtsp_handle[i].g_rtsplive,
+            ret = get_stream_from_one_channl(rtsp_handle[i].channel_num, s_LivevencFd[i], read_fds,rtsp_handle[i].g_rtsplive,
                                              rtsp_handle[i].session);
-            if (ret < 0)
-                End_Rtsp = 0;
+           // if (ret < 0)
+           //     continue;
         }
     }
     return NULL;
@@ -828,12 +1134,12 @@ static td_s32 sample_venc_normal_start_encode(ot_vpss_grp vpss_grp, sample_venc_
         return ret;
     }
 
-    ret = sample_comm_vpss_bind_venc(vpss_grp, venc_vpss_chn->vpss_chn[0], venc_vpss_chn->venc_chn[0]);
-    if (ret != TD_SUCCESS)
-    {
-        sample_print("sample_comm_vpss_bind_venc failed for %#x!\n", ret);
-        goto EXIT_VENC_H265_STOP;
-    }
+   ret = sample_comm_vpss_bind_venc(vpss_grp, venc_vpss_chn->vpss_chn[0], venc_vpss_chn->venc_chn[0]);
+   if (ret != TD_SUCCESS)
+   {
+       sample_print("sample_comm_vpss_bind_venc failed for %#x!\n", ret);
+       goto EXIT_VENC_H265_STOP;
+   }
       /* encode h.264 */
 
     h264_chn_param = &(chn_param[1]);
@@ -849,7 +1155,7 @@ static td_s32 sample_venc_normal_start_encode(ot_vpss_grp vpss_grp, sample_venc_
         sample_print("sample_comm_vpss_bind_venc failed for %#x!\n", ret);
         goto EXIT_VENC_H264_STOP;
     }
-    // }
+
     rtsp_handle[0].g_rtsplive = create_rtsp_demo(554);
 
     rtsp_handle[0].channel_num = venc_vpss_chn->venc_chn[0];
@@ -886,7 +1192,7 @@ static td_s32 sample_venc_normal_start_encode(ot_vpss_grp vpss_grp, sample_venc_
 #endif
     while (EXIT_MODE_X)
     {
-        signal(SIGINT, change_state);
+	    usleep(500*1000);
     }
 
      printf("============end rtsp==============\n");
@@ -900,14 +1206,102 @@ EXIT_VENC_H264_UnBind:
 EXIT_VENC_H264_STOP:
     sample_comm_venc_stop(venc_vpss_chn->venc_chn[1]);
     //sample_comm_venc_stop(venc_vpss_chn->venc_chn[0]);
-EXIT_VENC_H265_UnBind:
-    sample_comm_vpss_un_bind_venc(vpss_grp, venc_vpss_chn->vpss_chn[0], venc_vpss_chn->venc_chn[0]);
+// EXIT_VENC_H265_UnBind:
+//     sample_comm_vpss_un_bind_venc(vpss_grp, venc_vpss_chn->vpss_chn[0], venc_vpss_chn->venc_chn[0]);
 EXIT_VENC_H265_STOP:
     sample_comm_venc_stop(venc_vpss_chn->venc_chn[0]);
 
     return ret;
     // return NULL;
 }
+
+td_s32 sample_venc_start_svp_x(ot_vpss_grp vpss_grp, sample_venc_vpss_chn *venc_vpss_chn)
+{
+    td_s32 ret;
+    ot_venc_gop_mode gop_mode;
+    ot_venc_gop_attr gop_attr;
+    sample_comm_venc_chn_param chn_param[CHN_NUM_MAX] = {0};
+    sample_comm_venc_chn_param *h265_chn_param = TD_NULL;
+    sample_comm_venc_chn_param *h264_chn_param = TD_NULL;
+    int i;
+
+    if (get_gop_mode(&gop_mode) != TD_SUCCESS)
+    {
+        return TD_FAILURE;
+    }
+    if ((ret = sample_comm_venc_get_gop_attr(gop_mode, &gop_attr)) != TD_SUCCESS)
+    {
+        sample_print("Venc Get GopAttr for %#x!\n", ret);
+        return ret;
+    }
+
+    sample_venc_set_video_param(chn_param, gop_attr, CHN_NUM_MAX, TD_FALSE);
+
+      /* encode h.265 */
+
+    h265_chn_param = &(chn_param[0]);
+    if ((ret = sample_comm_venc_start(venc_vpss_chn->venc_chn[0], h265_chn_param)) != TD_SUCCESS)
+    {
+        sample_print("Venc Start failed for %#x!\n", ret);
+        return ret;
+    }
+
+    // ret = sample_comm_vpss_bind_venc(vpss_grp, venc_vpss_chn->vpss_chn[0], venc_vpss_chn->venc_chn[0]);
+    // if (ret != TD_SUCCESS)
+    // {
+    //     sample_print("sample_comm_vpss_bind_venc failed for %#x!\n", ret);
+    //     goto EXIT_VENC_H265_STOP;
+    // }
+      /* encode h.264 */
+
+    h264_chn_param = &(chn_param[1]);
+    if ((ret = sample_comm_venc_start(venc_vpss_chn->venc_chn[1], h264_chn_param)) != TD_SUCCESS)
+    {
+        sample_print("Venc Start failed for %#x!\n", ret);
+        goto EXIT_VENC_H264_UnBind;
+    }
+
+    ret = sample_comm_vpss_bind_venc(vpss_grp, venc_vpss_chn->vpss_chn[1], venc_vpss_chn->venc_chn[1]);
+    if (ret != TD_SUCCESS)
+    {
+        sample_print("sample_comm_vpss_bind_venc failed for %#x!\n", ret);
+        goto EXIT_VENC_H264_STOP;
+    }
+    // }
+    rtsp_handle[0].g_rtsplive = create_rtsp_demo(554);
+
+    rtsp_handle[0].channel_num = venc_vpss_chn->venc_chn[0];
+    rtsp_handle[1].g_rtsplive = create_rtsp_demo(8554);
+    rtsp_handle[1].channel_num = venc_vpss_chn->venc_chn[1];
+    char rtsp_name[20];
+    for (i = 0; i < CHN_NUM_MAX; i++)
+    {
+	sprintf(rtsp_name, "%s%d","/stream",i);
+	printf("========rtsp_name=============%s\n",rtsp_name);
+        if (chn_param[i].type == OT_PT_H265)
+            rtsp_handle[i].session = create_rtsp_session(rtsp_handle[i].g_rtsplive, rtsp_name, 1);
+        else
+            rtsp_handle[i].session = create_rtsp_session(rtsp_handle[i].g_rtsplive, rtsp_name, 0);
+    }
+
+    pthread_create(&venc_audio_pthread[3], 0, VENC_GetVencStreamProc, NULL);
+    pthread_detach(venc_audio_pthread[3]);
+    return TD_SUCCESS;
+EXIT_VENC_H264_UnBind:
+    sample_comm_vpss_un_bind_venc(vpss_grp, venc_vpss_chn->vpss_chn[1], venc_vpss_chn->venc_chn[1]);
+    // sample_comm_vpss_un_bind_venc(vpss_grp, venc_vpss_chn->vpss_chn[0], venc_vpss_chn->venc_chn[0]);
+EXIT_VENC_H264_STOP:
+    sample_comm_venc_stop(venc_vpss_chn->venc_chn[1]);
+    //sample_comm_venc_stop(venc_vpss_chn->venc_chn[0]);
+// EXIT_VENC_H265_UnBind:
+//     sample_comm_vpss_un_bind_venc(vpss_grp, venc_vpss_chn->vpss_chn[0], venc_vpss_chn->venc_chn[0]);
+EXIT_VENC_H265_STOP:
+    sample_comm_venc_stop(venc_vpss_chn->venc_chn[0]);
+
+    return ret;
+    // return NULL;
+}
+
 
 static td_void sample_venc_exit_process()
 {
@@ -1130,15 +1524,20 @@ static td_s32 sample_venc_normal(td_void)
     dis_attr.gdc_bypass = TD_FALSE;
     ss_mpi_vi_set_chn_dis_attr(vi_pipe, vi_chn, &dis_attr);
 
-    if ((ret = sample_venc_normal_start_encode(vpss_grp, &venc_vpss_chn)) != TD_SUCCESS)
-    {
-        goto EXIT_VI_VPSS_UNBIND;
-    }
+    pthread_t osd_task ;
+    pthread_create(&osd_task, NULL, osd_ttf_task, NULL);
+    pthread_detach(osd_task);
 
+    RGN_AddOsdToVenc();
+    pthread_t bitmap_update_t ;
+    pthread_create(&bitmap_update_t, NULL, bitmap_update, NULL);
+    pthread_detach(bitmap_update_t);  
+    sample_venc_normal_start_encode(vpss_grp, &venc_vpss_chn);
+    // if ((ret = sample_venc_normal_start_encode(vpss_grp, &venc_vpss_chn)) != TD_SUCCESS)
+    // {
+    //     goto EXIT_VI_VPSS_UNBIND;
+    // }
 
-    /******************************************
-     exit process
-    ******************************************/
     sample_venc_exit_process();
     sample_venc_unbind_vpss_stop(vpss_grp, &venc_vpss_chn);
 
@@ -1158,13 +1557,13 @@ void rtsp_reboot()
 {
     int i;
     int retval;
-    // printf("=================rtsp reboot===================\n");
-    // printf("=================rtsp reboot===================\n");
-    // printf("l=================rtsp reboot===================\n");
+    printf("=================rtsp reboot===================\n");
+    printf("=================rtsp reboot===================\n");
+    printf("l=================rtsp reboot===================\n");
     End_Rtsp = 0;
     EXIT_MODE_X = 0;
     new_system_call("pkill udhcpc");
-    // printf("===========pkill udhcpc==============\n");
+    printf("===========pkill udhcpc==============\n");
     for(i = 0; i<2;i++)
     {
     rtsp_del_session(rtsp_handle[i].session);
@@ -1172,11 +1571,13 @@ void rtsp_reboot()
     }
     ss_mpi_aenc_aac_deinit();
     // sample_comm_sys_exit();
+    printf("===========runVideoCfg.vencStream[1].h264Conf.width = %d===========\n" ,runVideoCfg.vencStream[1].h264Conf.width);
     sleep(3);
     End_Rtsp = 1;
     EXIT_MODE_X = 1;
 
     venc_audio_start();
+    //RGN_AddOsdToVenc();
 }
 
 /******************************************************************************
@@ -1211,11 +1612,15 @@ td_s32 venc_audio_start()
     pthread_detach(venc_audio_pthread[0]);
     sleep(1);
     ss_mpi_aenc_aac_init();
-    if (runVideoCfg.vencStream[0].avStream == 0 || runVideoCfg.vencStream[1].avStream == 0)
+    if (runVideoCfg.vencStream[0].avStream == 0 && runVideoCfg.vencStream[1].avStream == 0)
     {
         pthread_create(&venc_audio_pthread[1], 0, sample_audio_ai_aenc, NULL);
 	    pthread_detach(venc_audio_pthread[1]);
     }
-
+// #ifdef __LITEOS__
+//     return TD_SUCCESS;
+// #else
+//     exit(TD_SUCCESS);
+// #endif
 }
 #endif

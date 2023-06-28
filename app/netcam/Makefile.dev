@@ -408,9 +408,15 @@ SOURCES += src/yudp/yudp_host.c
 endif
 
 CCFLAGS_USER += -I src/common_venc
+CCFLAGS_USER += -I src/svp_rtsp/common
+CCFLAGS_USER += -I src/svp_rtsp/ive/sample
+CCFLAGS_USER += -fstack-protector-strong
 CCFLAGS_USER += -I src/venc_audio/adp
 CCFLAGS_USER += -I src/venc_audio
 CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/gmp
+CCFLAGS_USER += -I src/svp_rtsp/SDL2-2.26.1/install/include/SDL2
+CCFLAGS_USER += -I src/svp_rtsp/SDL2_ttf-2.0.18/install/include/SDL2/
+LDFLAGS_USER += -L src/svp_rtsp/SDL2-2.26.1/install/lib -L src/svp_rtsp/SDL2_ttf-2.0.18/install/lib -lSDL2 -lSDL2_ttf -Wl,--rpath-link=src/svp_rtsp/freetype-2.9/install/lib
 LIBRARIES += rtsp
 LIBRARIES += ss_snap
 LIBRARIES += ss_extend_stats
@@ -440,8 +446,13 @@ LIBRARIES += ss_cipher
 LIBRARIES += ss_crb
 LIBRARIES += ss_dnvqe
 LIBRARIES += ss_dpu_match
-LIBRARIES += ss_dpu_rect
 LIBRARIES += ss_drc
+LIBRARIES += ss_ive
+LIBRARIES += ss_md
+LIBRARIES += ss_mau
+LIBRARIES += ss_dpu_rect
+LIBRARIES += svp_acl
+LDFLAGS_USER += -lprotobuf-c
 
 
 #SOURCES += src/common_venc/*.c
@@ -460,6 +471,10 @@ SOURCES += src/venc_audio/sample_audio.c
 SOURCES += src/venc_audio/sample_venc_aenc.c
 SOURCES += src/venc_audio/adp/audio_aac_adp.c
 SOURCES += src/venc_audio/adp/audio_dl_adp.c
+SOURCES += src/svp_rtsp/ive/sample_ive_main.c
+SOURCES += src/svp_rtsp/ive/sample/sample_ive_md.c
+SOURCES += src/svp_rtsp/common/sample_common_ive.c
+SOURCES += src/svp_rtsp/common/sample_common_svp.c
 
 
 #QRCODE link wifi 
@@ -615,7 +630,6 @@ LIBRARIES += vqe_record
 LIBRARIES += vqe_res
 LIBRARIES += vqe_wnr
 LIBRARIES += ss_isp
-LIBRARIES += ss_ive
 LIBRARIES += vqe_talkv2
 LIBRARIES += ss_ldci
 LIBRARIES += ss_dehaze
@@ -638,7 +652,6 @@ LIBRARIES += aac_dec
 #LIBRARIES += gk_md
 #LIBRARIES += gk_ivp
 #LIBRARIES += gk_ive	xqq
-LIBRARIES += ss_md
 
 LIBRARIES += bin
 endif

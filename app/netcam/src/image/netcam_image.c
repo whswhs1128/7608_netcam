@@ -67,7 +67,8 @@ static void image_set_all(void)
     }
     #endif
     sdk_isp_set_lowlight_mode(runImageCfg.lowlightMode);
-    sample_comm_isp_mirror_flip_set(0,runImageCfg.mirrorEnabled, runImageCfg.flipEnabled);
+
+    //sdk_isp_set_mirro_flip(runImageCfg.mirrorEnabled, runImageCfg.flipEnabled);	xqq
 
 	//sdk_isp_set_ircut_control_mode(runImageCfg.irCutControlMode);	xqq
 //	sdk_isp_set_ircut_mode(runImageCfg.irCutMode);	xqq

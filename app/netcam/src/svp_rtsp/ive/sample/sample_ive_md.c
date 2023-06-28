@@ -28,7 +28,7 @@
 #include "sample_comm.h"
 #include <stdatomic.h>
 #include "ot_common_dis.h"
-
+#include "sample_audio.h"
 #define FONT_PATH "./hisi_osd.ttf"
 
 #define OT_SAMPLE_IVE_MD_IMAGE_NUM 2
@@ -188,114 +188,6 @@ static td_s32 sample_ivs_md_dma_data(td_u32 cur_idx, ot_video_frame_info *frm,
     return TD_SUCCESS;
 }
 
-int yuv2rgb_nv12(unsigned char *pYuvBuf, unsigned char *pRgbBuf, int height, int width)
-{
-    if (width < 1 || height < 1 || pYuvBuf == NULL || pRgbBuf == NULL)
-    {
-        return 0;
-    }
-
-    const long len = height * width;
-
-    // Y与UV数据地址
-    unsigned char *yData = pYuvBuf;
-    unsigned char *uvData = yData + len;
-
-    // 	R、G、B数据地址
-    unsigned char *rData = pRgbBuf;
-    unsigned char *gData = rData + len;
-    unsigned char *bData = gData + len;
-
-    int R[4], G[4], B[4];
-    int Y[4], U, V;
-    int y0_Idx, y1_Idx, uIdx, vIdx;
-
-    for (int i = 0; i < height; i = i + 2)
-    {
-        for (int j = 0; j < width; j = j + 2)
-        {
-            y0_Idx = i * width + j;
-            y1_Idx = (i + 1) * width + j;
-
-            // Y[0]、Y[1]、Y[2]、Y[3]分别代表 Y00、Y01、Y10、Y11
-            Y[0] = yData[y0_Idx];
-            Y[1] = yData[y0_Idx + 1];
-            Y[2] = yData[y1_Idx];
-            Y[3] = yData[y1_Idx + 1];
-
-            uIdx = (i / 2) * width + j;
-            vIdx = uIdx + 1;
-
-            U = uvData[uIdx];
-            V = uvData[vIdx];
-
-            R[0] = Y[0] + 1.402 * (V - 128);
-            G[0] = Y[0] - 0.34414 * (U - 128) + 0.71414 * (V - 128);
-            B[0] = Y[0] + 1.772 * (U - 128);
-
-            R[1] = Y[1] + 1.402 * (V - 128);
-            G[1] = Y[1] - 0.34414 * (U - 128) + 0.71414 * (V - 128);
-            B[1] = Y[1] + 1.772 * (U - 128);
-
-            R[2] = Y[2] + 1.402 * (V - 128);
-            G[2] = Y[2] - 0.34414 * (U - 128) + 0.71414 * (V - 128);
-            B[2] = Y[2] + 1.772 * (U - 128);
-
-            R[3] = Y[3] + 1.402 * (V - 128);
-            G[3] = Y[3] - 0.34414 * (U - 128) + 0.71414 * (V - 128);
-            B[3] = Y[3] + 1.772 * (U - 128);
-
-            // 像素值限定在 0-255
-            for (int k = 0; k < 4; ++k)
-            {
-                if (R[k] >= 0 && R[k] <= 255)
-                {
-                    R[k] = R[k];
-                }
-                else
-                {
-                    R[k] = (R[k] < 0) ? 0 : 255;
-                }
-
-                if (G[k] >= 0 && G[k] <= 255)
-                {
-                    G[k] = G[k];
-                }
-                else
-                {
-                    G[k] = (G[k] < 0) ? 0 : 255;
-                }
-
-                if (B[k] >= 0 && B[k] <= 255)
-                {
-                    B[k] = B[k];
-                }
-                else
-                {
-                    B[k] = (B[k] < 0) ? 0 : 255;
-                }
-            }
-
-            *(rData + y0_Idx) = R[0];
-            *(gData + y0_Idx) = G[0];
-            *(bData + y0_Idx) = B[0];
-
-            *(rData + y0_Idx + 1) = R[1];
-            *(gData + y0_Idx + 1) = G[1];
-            *(bData + y0_Idx + 1) = B[1];
-
-            *(rData + y1_Idx) = R[2];
-            *(gData + y1_Idx) = G[2];
-            *(bData + y1_Idx) = B[2];
-
-            *(rData + y1_Idx + 1) = R[3];
-            *(gData + y1_Idx + 1) = G[3];
-            *(bData + y1_Idx + 1) = B[3];
-        }
-    }
-    return 1;
-}
-
 int shmid_tx;
 void *ptr_tx;
 // int shmid_rx;
@@ -303,15 +195,13 @@ void *ptr_tx;
 unsigned int size;
 Total_result *p;
 
-// p=malloc(sizeof(Total_result));
-// memset(p, 0, sizeof(Total_result));
 ot_bmp stBitmap;
-// stBitmap.data = malloc(2 * 3840 * 60);
+
 ot_sample_svp_rect_info region_tmp;
 ot_sample_svp_rect_info region_tmp_old;
 int bmp_w, bmp_h;
 
-
+#if 0
 static int get_stream_from_one_channl(int s_LivevencChn, rtsp_demo_handle g_rtsplive,
                                       rtsp_session_handle session)
 {
@@ -404,11 +294,7 @@ td_void *VENC_GetVencStreamProc(td_void *p)
     int i;
 
     printf("=========chn = %d\n", rtsp_handle[0].channel_num);
-    // printf("=========chn = %d\n", rtsp_handle[1].channel_num);
-    // s_LivevencChn = rtsp_p.channel_num;
-    struct timeval TimeoutVal;
-    TimeoutVal.tv_sec = 2;
-    TimeoutVal.tv_usec = 0;
+
     while (End_Rtsp)
     {
         // for (i = 0; i < CHN_NUM_MAX; i++)
@@ -424,310 +310,14 @@ td_void *VENC_GetVencStreamProc(td_void *p)
             // if (ret < 0)
             //     End_Rtsp = 0;
         }
-        random_int = 1;
+
     }
     free(p);
   
     return NULL;
 }
 
-
-int string_to_bmp(char *pu8Str)
-{
-    SDL_PixelFormat *fmt;
-    TTF_Font *font;
-    SDL_Surface *text, *temp;
-    if (TTF_Init() < 0)
-    {
-        fprintf(stderr, "Couldn't initialize TTF: %s\n", SDL_GetError());
-        SDL_Quit();
-    }
-
-    font = TTF_OpenFont(FONT_PATH, 40); // change size
-    if (font == NULL)
-    {
-        fprintf(stderr, "Couldn't load %d pt font from %s: %s\n", 18, "ptsize", SDL_GetError());
-    }
-
-    SDL_Color forecol = {0xff, 0x00, 0x00, 0xff};
-    text = TTF_RenderUTF8_Solid(font, pu8Str, forecol);
-
-    fmt = (SDL_PixelFormat *)malloc(sizeof(SDL_PixelFormat));
-    memset(fmt, 0, sizeof(SDL_PixelFormat));
-    fmt->BitsPerPixel = 16;
-    fmt->BytesPerPixel = 2;
-    //    fmt->colorkey = 0xffffffff;
-    //    fmt->alpha = 0xff;
-
-    temp = SDL_ConvertSurface(text, fmt, 0);
-    // stBitmap.data = malloc(2 * (temp->w) * (temp->h));
-    // if (stBitmap.data == NULL)
-    // {
-    //     printf("stBitmap.data faided\r\n");
-    // }
-    bmp_w = temp->w;
-    bmp_h = temp->h;
-    memset(stBitmap.data, 0, (2 * (temp->w) * (temp->h)));
-    memcpy(stBitmap.data, temp->pixels, (2 * (temp->w) * (temp->h)));
-
-    stBitmap.width = temp->w;
-    stBitmap.height = temp->h;
-
-    //char savename[20] = {0};
-
-    //snprintf(savename, 20, "./osd/now_time.bmp");
-    // printf("savename = %s\n",savename);
-    //SDL_SaveBMP(temp, savename);
-    free(fmt);
-    SDL_FreeSurface(text);
-    SDL_FreeSurface(temp);
-    TTF_CloseFont(font);
-    TTF_Quit();
-
-    return 0;
-}
-
-/* 
- *描述  ：用于osd 字体bmp图像生成
- *参数  ：NULL
- *返回值：无
- *注意  ：需要加载字体ttf才能使用，否则会报段错误
- */
-void *bitmap_update(void )
-{
-    ot_rgn_handle OverlayHandle = 0;
-    td_s32 s32Ret;
-    int z = 0;
-    // time_t now;
-    // struct tm *ptm;
-    // char timestr[OSD_LENGTH] = {0};
-    while(1)
-    {
-        sleep(1);
-        z++;
-        if(z == 10)
-        {
-            z = 0;
-            
-        ss_mpi_rgn_update_canvas(OVERLAYEX_MIN_HANDLE);
-        s32Ret = ss_mpi_rgn_set_bmp(OVERLAYEX_MIN_HANDLE,&stBitmap);//s32Ret 为RGN_HANDLE OverlayHandle
-        // memset(stBitmap.data, 0, (2 * (bmp_w) * (bmp_h)));
-        }
-
-        if(p->labelN[0]==0 )
-        {
-            continue;
-        }
-            
-        ss_mpi_rgn_update_canvas(OVERLAYEX_MIN_HANDLE);
-        s32Ret = ss_mpi_rgn_set_bmp(OVERLAYEX_MIN_HANDLE,&stBitmap);//s32Ret 为RGN_HANDLE OverlayHandle
-        if(s32Ret != TD_SUCCESS)
-        {
-            printf("HI_MPI_RGN_SetBitMap update failed with %#x!\n", s32Ret);
-            return -1;
-        }
-       
-       memset(stBitmap.data, 0, (2 * (bmp_w) * (bmp_h)));
-       
-       
-    }
-    return 0;
-}
-
-
-void *osd_ttf_task(void)
-{
-    ot_rgn_handle OverlayHandle = 0;
-    int s32Ret;
-    time_t now;
-    struct tm *ptm;
-    char timestr[720] = {0};
-    int i,j;
-    char b[3];
-    stBitmap.data = malloc(2 * 3840 * 44);
-    if (stBitmap.data == NULL)
-    {
-        printf("stBitmap.data faided\r\n");
-    }
-    while (1)
-    {
-        // usleep(1000000);
-        // time(&now);
-        // ptm = localtime(&now);
-        // snprintf(timestr, 100, "时间:%d-%02d-%02d %02d:%02d:%02d", ptm->tm_year + 1900, ptm->tm_mon + 1, ptm->tm_mday, ptm->tm_hour, ptm->tm_min, ptm->tm_sec);
-        // printf("timstr = %s\n", timestr);
-        // if(p->labelN[0]==0)
-        // {
-        //     ;
-        // }
-        if(p->labelN[0]==0)
-        {
-            timestr[0] = ' ';
-            // printf("=====no license=======\n");
-        }
-        else
-        {
-            for(i = 0;i < p->labelN[0];i++)
-            {
-                for(j=1;j<=15;j++)
-                {
-                    if(p->labelN[(i*15)+j] < 154 && p->labelN[(i*15)+j] != 0)
-                    {
-                        b[0] = platename[p->labelN[(i*15)+j]];
-                        b[1] = platename[p->labelN[(i*15)+j]+1];
-                        b[2] = platename[p->labelN[(i*15)+j]+2];
-                    }
-                    else
-                    {
-                        b[0] = platename[p->labelN[(i*15)+j]];
-                    }
-                    strcat(timestr,b);
-                    memset(b,0,3);
-                }    
-		strcat(timestr,"       ");
-            }
-            // printf("===========timestr================%s\n",timestr);
-        }
-//        strcat(timestr," ");
-        string_to_bmp(timestr);
-        memset(timestr, 0, 720);
-    }
-    return 0;
-}
-
-/*
- *描述  ：用于将视频文件添加时间水印
- *参数  ：无
- *返回值：OverlayHandle
- *注意  ：参数在HI_MPI_RGN_Create并不做检查，只有在HI_MPI_RGN_AttachToChn的时候才会报出相应的错
- */
-td_s32 RGN_AddOsdToVenc(void)
-{
-    td_s32 s32Ret;
-    ot_rgn_attr stRgnAttr;
-    ot_rgn_chn_attr stChnAttr;
-    ot_mpp_chn stChn;
-    ot_rgn_handle OverlayHandle;
-    int handle_num = 1;
-    int i = 0;
-    int ret;
-    // RGN_CANVAS_INFO_S stCanvasInfo;
-    OverlayHandle = 0;
-    stChn.mod_id = OT_ID_VPSS; /**模块号**/ // HI_ID_VPSS  HI_ID_VENC
-    stChn.dev_id = 0;                       /**设备号**/
-    stChn.chn_id = 0;                       /**通道号**/
-    /**创建区域**/
-    sleep(2); // 等待位图生成
-    stRgnAttr.attr.overlay.canvas_num = 2;
-    stRgnAttr.type = OT_RGN_OVERLAYEX;                                                /**区域类型:叠加**/
-    stRgnAttr.attr.overlay.pixel_format = OT_PIXEL_FORMAT_ARGB_1555; /**像素格式**/ // PIXEL_FORMAT_BGR_565 PIXEL_FORMAT_ARGB_1555
-    if (stBitmap.width % 2 != 0)
-    {
-        stBitmap.width += 1;
-    }
-
-    if (stBitmap.height % 2 != 0)
-    {
-        stBitmap.height += 1;
-    }
-    printf("stBitmap.width is %d ,stBitmap.height is %d\n", stBitmap.width, stBitmap.height);
-    stRgnAttr.attr.overlay.size.width = 1920;   // 240;        /**区域宽**/
-    stRgnAttr.attr.overlay.size.height = 48; // 192;        /**区域高**/
-    stRgnAttr.attr.overlay.bg_color = 0xffff;         // 0x00007c00; /**区域背景颜色**/
-
-    for (i = OVERLAYEX_MIN_HANDLE; i < OVERLAYEX_MIN_HANDLE + handle_num; i++) {
-        ret = ss_mpi_rgn_create(i, &stRgnAttr);
-        if (ret != TD_SUCCESS) {
-            sample_print("ss_mpi_rgn_create failed with %#x!\n", ret);
-            return TD_FAILURE;
-        }
-    }
-    
-
-    // s32Ret = ss_mpi_rgn_create(OverlayHandle, &stRgnAttr);
-    // if (s32Ret != TD_SUCCESS)
-    // {
-    //     printf("RGN create failed: %#x\n", s32Ret);
-	// return -1;
-    // }
-    /**将区域叠加到通道**/
-    /**设置叠加区域的通道显示属性**/
-    stChnAttr.is_show = TD_TRUE;
-    stChnAttr.type = OT_RGN_OVERLAYEX;
-    // stChnAttr.attr.overlay_chn.point.x = 640; // 240;
-    // stChnAttr.attr.overlay_chn.point.y = 320; // 192;
-    stChnAttr.attr.overlay_chn.point.x = 0; // 240;
-    stChnAttr.attr.overlay_chn.point.y = 60; // 192;
-    stChnAttr.attr.overlay_chn.bg_alpha = 0;
-    stChnAttr.attr.overlay_chn.fg_alpha = 128;
-    stChnAttr.attr.overlay_chn.layer = OverlayHandle;
-
-    /**设置QP属性**/
-    stChnAttr.attr.overlay_chn.qp_info.is_abs_qp = TD_TRUE;
-    stChnAttr.attr.overlay_chn.qp_info.qp_val = 0;
-    stChnAttr.attr.overlay_chn.qp_info.enable = TD_TRUE;
-
-    /**定义 OSD 反色相关属性**/
-    /**单元反色区域，反色处理的基本单元,[16, 64]，需 16 对齐**/
-#if 0
-        stChnAttr.attr.overlay_chn.stInvertColor.stInvColArea.height = 16;
-        stChnAttr.attr.overlay_chn.stInvertColor.stInvColArea.width  = 16;
-
-        /**亮度阈值,取值范围：[0, 255]**/
-        stChnAttr.attr.overlay_chn.stInvertColor.u32LumThresh = 128;//128
-
-        /**OSD 反色触发模式**/
-        stChnAttr.attr.overlay_chn.stInvertColor.enChgMod     = LESSTHAN_LUM_THRESH;
-
-        /**OSD 反色开关。overlay不支持反色**/
-        stChnAttr.attr.overlay_chn.stInvertColor.bInvColEn    = TD_FALSE;
 #endif
-    stChnAttr.attr.overlay_chn.dst = OT_RGN_ATTACH_JPEG_MAIN;
-    // OverlayHandle = 0;
-    for (i = OVERLAYEX_MIN_HANDLE; i < OVERLAYEX_MIN_HANDLE + handle_num; i++) {
-        // sample_region_get_overlayex_chn_attr(i, &chn_attr->attr.overlayex_chn);
-        ret = sample_region_attach_to_chn(i, &stChn, &stChnAttr);
-        if (ret != TD_SUCCESS) {
-            sample_print("sample_region_attach_to_chn failed!\n");
-            sample_comm_region_detach_frm_chn(i - OVERLAYEX_MIN_HANDLE + 1, OT_RGN_OVERLAYEX, &stChn);
-            return ret;
-        }
-    }
-
-    // s32Ret = ss_mpi_rgn_attach_to_chn(OverlayHandle, &stChn, &stChnAttr);
-    // if (s32Ret != TD_SUCCESS)
-    // {
-    //     printf("HI_MPI_RGN_AttachToChn: %#x\n", s32Ret);
-	// return -1;
-    // }
-    stBitmap.pixel_format = OT_PIXEL_FORMAT_ARGB_1555;
-    // stBitmap.height = OVERLAY_H;
-    // stBitmap.width = OVERLAY_W;
-
-for (i = OVERLAYEX_MIN_HANDLE; i < OVERLAYEX_MIN_HANDLE + handle_num; i++) {
-    s32Ret = ss_mpi_rgn_set_bmp(i, &stBitmap);
-}
-    if (s32Ret != TD_SUCCESS)
-    {
-        printf("HI_MPI_RGN_SetBitMap failed with %#x!\n", s32Ret);
-	return -1;
-    }
-    // memset(stBitmap.data, 0, (2 * (622) * (56)));
-    // s32Ret = HI_MPI_RGN_GetCanvasInfo(OverlayHandle,&stCanvasInfo);
-
-    // s32Ret = sample_region_detach_from_chn(OverlayHandle, &stChn);//最后用户可以将该区域从通道中撤出（非必须操作），再销毁区域。
-    // if(s32Ret != TD_SUCCESS)
-    // {
-    //      printf("sample_region_detach_from_chn: %#x\n", s32Ret);
-    // }
-    // s32Ret = ss_mpi_rgn_destroy(OverlayHandle);
-    // if(s32Ret != TD_SUCCESS)
-    // {
-    //     printf("RGN destroy failed: %#x\n", s32Ret);
-    // }
-    return 0;
-}
-
 
 unsigned char *user_addr;
 
@@ -818,7 +408,8 @@ static td_void *sample_ivs_md_proc(td_void *args)
     ot_sample_ivs_md_info *md_ptr = (ot_sample_ivs_md_info *)(args);
     ot_video_frame_info frm[OT_SAMPLE_IVE_MD_VPSS_CHN]; /* 0:base_frm, 1:ext_frm */
     ot_sample_md_vo_vpss_hld hld = {0};
-    td_s32 vpss_chn[] = {OT_VPSS_CHN0, OT_VPSS_CHN1};
+    //td_s32 vpss_chn[] = {OT_VPSS_CHN0, OT_VPSS_CHN1};
+    td_s32 vpss_chn[] = {OT_VPSS_CHN0, 2};
     td_s32 cur_idx = 0;
     td_bool is_first_frm = TD_TRUE;
     atomic_init(&random_int, 1);
@@ -833,16 +424,7 @@ static td_void *sample_ivs_md_proc(td_void *args)
 
     start_udp_server();
 
-    // udpserver end
-    //
-    //
-    pthread_t osd_task ;
-    pthread_create(&osd_task, NULL, osd_ttf_task, NULL);
-    pthread_detach(osd_task);
-    RGN_AddOsdToVenc();
-    pthread_t bitmap_update_t ;
-    pthread_create(&bitmap_update_t, NULL, bitmap_update, NULL);
-    pthread_detach(bitmap_update_t);    
+  
     int count;
     size = 12441600;
     ptr_tx = malloc(size);
@@ -857,9 +439,6 @@ static td_void *sample_ivs_md_proc(td_void *args)
     struct timezone tz;
     struct tm *t;
 
-    gettimeofday(&tv, &tz);
-    t = localtime(&tv.tv_sec);
-    printf("%d-%d-%d %d:%d:%d.%ld\n", 1900+t->tm_year, 1+t->tm_mon, t->tm_mday, t->tm_hour, t->tm_min, t->tm_sec, tv.tv_usec);
     while (g_stop_signal == TD_FALSE)
     {
         ret = ss_mpi_vpss_get_chn_frame(hld.vpss_grp, vpss_chn[1], &frm[1], OT_SAMPLE_IVE_MD_MILLIC_SEC);
@@ -933,16 +512,11 @@ static td_void *sample_ivs_md_proc(td_void *args)
         ret = sample_common_svp_vgs_fill_rect_changecolor(&frm[0], &region_tmp, boxcolor);
         //sample_svp_check_failed_err_level_goto(ret, base_free, "sample_svp_vgs_fill_rect fail,Err(%#x)\n", ret); 
         }
-        ret = ss_mpi_venc_send_frame(hld.vo_chn, &frm[0], OT_SAMPLE_IVE_MD_MILLIC_SEC);
-//	printf("=================send frame\n");
-//	gettimeofday(&tv, &tz);
-//    t = localtime(&tv.tv_sec);
-//    printf("%d-%d-%d %d:%d:%d.%ld\n", 1900+t->tm_year, 1+t->tm_mon, t->tm_mday, t->tm_hour, t->tm_min, t->tm_sec, tv.tv_usec);
+        ret = ss_mpi_venc_send_frame(3, &frm[0], OT_SAMPLE_IVE_MD_MILLIC_SEC);
+        if(ret != TD_SUCCESS)
+            goto base_free;
+        // sample_svp_check_failed_err_level_goto(ret, base_free, "ss_mpi_venc_send_frame fail,Error(%#x)\n", ret);
 
-        sample_svp_check_failed_err_level_goto(ret, base_free, "ss_mpi_venc_send_frame fail,Error(%#x)\n", ret);
-        //random_int = 0;
-        // }
-        // usleep(500);
         // free(stBitmap.data);
     change_idx:
         /* Change reference and current frame index */
@@ -1022,52 +596,55 @@ td_void sample_ive_md(td_void)
     dis_attr.enable = TD_TRUE;
     dis_attr.gdc_bypass = TD_FALSE;
     ss_mpi_vi_set_chn_dis_attr(0, 0, &dis_attr);
-    sample_svp_check_exps_goto(ret != TD_SUCCESS, end_md_0, SAMPLE_SVP_ERR_LEVEL_ERROR,
-                               "Error(%#x),sample_common_svp_start_vi_vpss_venc_vo failed!\n", ret);
+    // sample_svp_check_exps_goto(ret != TD_SUCCESS, end_md_0, SAMPLE_SVP_ERR_LEVEL_ERROR,
+                            //    "Error(%#x),sample_common_svp_start_vi_vpss_venc_vo failed!\n", ret);
 
     pic_type = PIC_1080P;
     ret = sample_comm_sys_get_pic_size(pic_type, &pic_size);
-    sample_svp_check_exps_goto(ret != TD_SUCCESS, end_md_0, SAMPLE_SVP_ERR_LEVEL_ERROR,
-                               "Error(%#x),sample_comm_sys_get_pic_size failed!\n", ret);
+    // sample_svp_check_exps_goto(ret != TD_SUCCESS, end_md_0, SAMPLE_SVP_ERR_LEVEL_ERROR,
+                            //    "Error(%#x),sample_comm_sys_get_pic_size failed!\n", ret);
     /*
      * step 2: Init Md
      */
     ret = sample_ivs_md_init(&g_md_info, pic_size.width, pic_size.height);
-    sample_svp_check_exps_goto(ret != TD_SUCCESS, end_md_0, SAMPLE_SVP_ERR_LEVEL_ERROR,
-                               " Error(%#x),sample_ivs_md_init failed!\n", ret);
+    // sample_svp_check_exps_goto(ret != TD_SUCCESS, end_md_0, SAMPLE_SVP_ERR_LEVEL_ERROR,
+                            //    " Error(%#x),sample_ivs_md_init failed!\n", ret);
     g_stop_signal = TD_FALSE;
     /*
      * step 3: Create work thread
      */
+
+    
+
     ret = prctl(PR_SET_NAME, "ive_md_proc", 0, 0, 0);
-    sample_svp_check_exps_goto(ret != TD_SUCCESS, end_md_0, SAMPLE_SVP_ERR_LEVEL_ERROR, "set thread name failed!\n");
+    // sample_svp_check_exps_goto(ret != TD_SUCCESS, end_md_0, SAMPLE_SVP_ERR_LEVEL_ERROR, "set thread name failed!\n");
     ret = pthread_create(&g_md_thread, 0, sample_ivs_md_proc, (td_void *)&g_md_info);
-    sample_svp_check_exps_goto(ret != TD_SUCCESS, end_md_0, SAMPLE_SVP_ERR_LEVEL_ERROR, "pthread_create failed!\n");
+
+
+
+    // sample_svp_check_exps_goto(ret != TD_SUCCESS, end_md_0, SAMPLE_SVP_ERR_LEVEL_ERROR, "pthread_create failed!\n");
     // system("cd /root/YOLOV3_rtsp_opencv_ffmpeg/out && ./main");
 
     //    ret = sample_ive_md_pause();
-    rtsp_handle[0].g_rtsplive = create_rtsp_demo(554);
-    rtsp_handle[0].session = create_rtsp_session(rtsp_handle[0].g_rtsplive, "/live.264", 0);
-    rtsp_handle[0].channel_num = 0;
-    // usleep(333 *1000);
-    pthread_create(&VencPid1, 0, VENC_GetVencStreamProc, NULL);
-    while (1)
-    {
-    	usleep(500 *1000);
-    }
-    sample_svp_check_exps_return_void(ret == TD_TRUE, SAMPLE_SVP_ERR_LEVEL_ERROR, "md exist!\n");
-    g_stop_signal = TD_TRUE;
-    pthread_join(g_md_thread, TD_NULL);
-    g_md_thread = 0;
 
-    sample_ivs_md_uninit(&(g_md_info));
-    (td_void) memset_s(&g_md_info, sizeof(g_md_info), 0, sizeof(g_md_info));
 
-end_md_0:
-    g_md_thread = 0;
-    g_stop_signal = TD_TRUE;
-    sample_common_svp_stop_vi_vpss_venc_vo(&g_vi_config, &g_md_switch);
-    return;
+//     while (1)
+//     {
+//     	usleep(500 *1000);
+//     }
+//     sample_svp_check_exps_return_void(ret == TD_TRUE, SAMPLE_SVP_ERR_LEVEL_ERROR, "md exist!\n");
+//     g_stop_signal = TD_TRUE;
+//     pthread_join(g_md_thread, TD_NULL);
+//     g_md_thread = 0;
+
+//     sample_ivs_md_uninit(&(g_md_info));
+//     (td_void) memset_s(&g_md_info, sizeof(g_md_info), 0, sizeof(g_md_info));
+
+// end_md_0:
+//     g_md_thread = 0;
+//     g_stop_signal = TD_TRUE;
+//     sample_common_svp_stop_vi_vpss_venc_vo(&g_vi_config, &g_md_switch);
+//     return;
 }
 
 /*

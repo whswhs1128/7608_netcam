@@ -32,13 +32,14 @@
 #define AUDIO_ADPCM_TYPE OT_ADPCM_TYPE_DVI4 /* ADPCM_TYPE_IMA, ADPCM_TYPE_DVI4 */
 #define G726_BPS OT_MEDIA_G726_40K          /* MEDIA_G726_16K, MEDIA_G726_24K ... */
 
-#define AUDIO_MICIN_GAIN_OPEN 0             /* should be 1 when micin */
+#define AUDIO_MICIN_GAIN_OPEN 0 /* should be 1 when micin */
 
 static ot_aac_type g_aac_type = OT_AAC_TYPE_AACLC;
 static ot_aac_bps g_aac_bps = OT_AAC_BPS_96K;
 static ot_aac_transport_type g_aac_transport_type = OT_AAC_TRANSPORT_TYPE_ADTS;
 
-typedef struct {
+typedef struct
+{
     td_bool start;
     pthread_t aenc_pid;
     td_s32 ae_chn;
@@ -47,7 +48,8 @@ typedef struct {
     td_bool send_ad_chn;
 } sample_aenc;
 
-typedef struct {
+typedef struct
+{
     td_bool start;
     td_s32 ai_dev;
     td_s32 ai_chn;
@@ -59,14 +61,16 @@ typedef struct {
     pthread_t ai_pid;
 } sample_ai;
 
-typedef struct {
+typedef struct
+{
     td_bool start;
     td_s32 ad_chn;
     FILE *fd;
     pthread_t ad_pid;
 } sample_adec;
 
-typedef struct {
+typedef struct
+{
     ot_audio_dev ao_dev;
     td_bool start;
     pthread_t ao_pid;
@@ -80,41 +84,42 @@ static sample_ao g_sample_ao[OT_AO_DEV_MAX_NUM];
 #ifdef OT_ACODEC_TYPE_ES8388
 td_s32 sample_es8388_get_clk_ratio(ot_audio_sample_rate sample_rate, td_u32 *fsclk_ratio, td_u32 *bclk_ratio)
 {
-    switch (sample_rate) {
-        case OT_AUDIO_SAMPLE_RATE_8000:
-            *fsclk_ratio = ES8388_FSCLK_DIV_1024;
-            *bclk_ratio = ES8388_BCLK_DIV_4;
-            break;
+    switch (sample_rate)
+    {
+    case OT_AUDIO_SAMPLE_RATE_8000:
+        *fsclk_ratio = ES8388_FSCLK_DIV_1024;
+        *bclk_ratio = ES8388_BCLK_DIV_4;
+        break;
 
-        case OT_AUDIO_SAMPLE_RATE_12000:
-            *fsclk_ratio = ES8388_FSCLK_DIV_1024;
-            *bclk_ratio = ES8388_BCLK_DIV_4;
-            break;
+    case OT_AUDIO_SAMPLE_RATE_12000:
+        *fsclk_ratio = ES8388_FSCLK_DIV_1024;
+        *bclk_ratio = ES8388_BCLK_DIV_4;
+        break;
 
-        case OT_AUDIO_SAMPLE_RATE_16000:
-            *fsclk_ratio = ES8388_FSCLK_DIV_512;
-            *bclk_ratio = ES8388_BCLK_DIV_4;
-            break;
+    case OT_AUDIO_SAMPLE_RATE_16000:
+        *fsclk_ratio = ES8388_FSCLK_DIV_512;
+        *bclk_ratio = ES8388_BCLK_DIV_4;
+        break;
 
-        case OT_AUDIO_SAMPLE_RATE_24000:
-            *fsclk_ratio = ES8388_FSCLK_DIV_512;
-            *bclk_ratio = ES8388_BCLK_DIV_4;
-            break;
+    case OT_AUDIO_SAMPLE_RATE_24000:
+        *fsclk_ratio = ES8388_FSCLK_DIV_512;
+        *bclk_ratio = ES8388_BCLK_DIV_4;
+        break;
 
-        case OT_AUDIO_SAMPLE_RATE_32000:
-            *fsclk_ratio = ES8388_FSCLK_DIV_256;
-            *bclk_ratio = ES8388_BCLK_DIV_4;
-            break;
+    case OT_AUDIO_SAMPLE_RATE_32000:
+        *fsclk_ratio = ES8388_FSCLK_DIV_256;
+        *bclk_ratio = ES8388_BCLK_DIV_4;
+        break;
 
-        case OT_AUDIO_SAMPLE_RATE_48000:
-            *fsclk_ratio = ES8388_FSCLK_DIV_256;
-            *bclk_ratio = ES8388_BCLK_DIV_4;
-            break;
+    case OT_AUDIO_SAMPLE_RATE_48000:
+        *fsclk_ratio = ES8388_FSCLK_DIV_256;
+        *bclk_ratio = ES8388_BCLK_DIV_4;
+        break;
 
-        default:
-            printf("[Func]:%s [Line]:%d [Info]:not support sample_rate:%d.\n",
-                __FUNCTION__, __LINE__, sample_rate);
-            return TD_FAILURE;
+    default:
+        printf("[Func]:%s [Line]:%d [Info]:not support sample_rate:%d.\n",
+               __FUNCTION__, __LINE__, sample_rate);
+        return TD_FAILURE;
     }
 
     return TD_SUCCESS;
@@ -127,7 +132,8 @@ td_s32 sample_es8388_soft_reset(int codec_fd)
     audio_ctrl.chip_num = ES8388_CHIP_ID;
 
     ret = ioctl(codec_fd, OT_ES8388_SOFT_RESET, &audio_ctrl);
-    if (ret != TD_SUCCESS) {
+    if (ret != TD_SUCCESS)
+    {
         printf("[Func]:%s [Line]:%d [Info]:%s\n", __FUNCTION__, __LINE__, "es8388 reset failed");
         return ret;
     }
@@ -144,13 +150,15 @@ td_s32 sample_es8388_set_input_ctrl(int codec_fd)
     /* set input select */
     audio_ctrl.audio_in_select = ES8388_INPUT2; /* refer to hardware */
     ret = ioctl(codec_fd, OT_ES8388_SET_LEFT_INPUT_SELECT, &audio_ctrl);
-    if (ret != TD_SUCCESS) {
+    if (ret != TD_SUCCESS)
+    {
         printf("[Func]:%s [Line]:%d [Info]:%s\n", __FUNCTION__, __LINE__, "es83888 set left input fail.");
         return ret;
     }
     audio_ctrl.audio_in_select = ES8388_INPUT2; /* refer to hardware */
     ret = ioctl(codec_fd, OT_ES8388_SET_RIGHT_INPUT_SELECT, &audio_ctrl);
-    if (ret != TD_SUCCESS) {
+    if (ret != TD_SUCCESS)
+    {
         printf("[Func]:%s [Line]:%d [Info]:%s\n", __FUNCTION__, __LINE__, "es83888 set right input fail.");
         return ret;
     }
@@ -158,12 +166,14 @@ td_s32 sample_es8388_set_input_ctrl(int codec_fd)
     /* power on input */
     audio_ctrl.if_powerup = ES8388_POWER_UP;
     ret = ioctl(codec_fd, OT_ES8388_SET_LFET_INPUT_POWER, &audio_ctrl);
-    if (ret != TD_SUCCESS) {
+    if (ret != TD_SUCCESS)
+    {
         printf("[Func]:%s [Line]:%d [Info]:%s\n", __FUNCTION__, __LINE__, "es83888 set left in power fail.");
         return ret;
     }
     ret = ioctl(codec_fd, OT_ES8388_SET_RIGHT_INPUT_POWER, &audio_ctrl);
-    if (ret != TD_SUCCESS) {
+    if (ret != TD_SUCCESS)
+    {
         printf("[Func]:%s [Line]:%d [Info]:%s\n", __FUNCTION__, __LINE__, "es83888 set right in power fail.");
         return ret;
     }
@@ -171,12 +181,14 @@ td_s32 sample_es8388_set_input_ctrl(int codec_fd)
     /* power on ADC */
     audio_ctrl.if_powerup = ES8388_POWER_UP;
     ret = ioctl(codec_fd, OT_ES8388_SET_LFET_ADC_POWER, &audio_ctrl);
-    if (ret != TD_SUCCESS) {
+    if (ret != TD_SUCCESS)
+    {
         printf("[Func]:%s [Line]:%d [Info]:%s\n", __FUNCTION__, __LINE__, "es83888 set left ADC power fail.");
         return ret;
     }
     ret = ioctl(codec_fd, OT_ES8388_SET_RIGHT_ADC_POWER, &audio_ctrl);
-    if (ret != TD_SUCCESS) {
+    if (ret != TD_SUCCESS)
+    {
         printf("[Func]:%s [Line]:%d [Info]:%s\n", __FUNCTION__, __LINE__, "es83888 set right ADC power fail.");
         return ret;
     }
@@ -193,32 +205,37 @@ td_s32 sample_es8388_set_clk_mode(int codec_fd, ot_aio_mode work_mode, ot_audio_
 
     /* set master clk */
     if (work_mode == OT_AIO_MODE_I2S_SLAVE || work_mode == OT_AIO_MODE_PCM_SLAVE_STD ||
-        work_mode == OT_AIO_MODE_PCM_SLAVE_NON_STD) {
+        work_mode == OT_AIO_MODE_PCM_SLAVE_NON_STD)
+    {
         td_u32 fsclk_ratio, bclk_ratio;
         master_ctrl = ES8388_MASTER_MODE;
 
         ret = sample_es8388_get_clk_ratio(sample_rate, &fsclk_ratio, &bclk_ratio);
-        if (ret != TD_SUCCESS) {
+        if (ret != TD_SUCCESS)
+        {
             return ret;
         }
 
         audio_ctrl.clk_div = bclk_ratio;
         ret = ioctl(codec_fd, OT_ES8388_SET_MCLK_BCLK_RATIO, &audio_ctrl);
-        if (ret != TD_SUCCESS) {
+        if (ret != TD_SUCCESS)
+        {
             printf("[Func]:%s [Line]:%d [Info]:%s\n", __FUNCTION__, __LINE__, "es83888 set ADC LRCLK ratio fail.");
             return ret;
         }
 
         audio_ctrl.clk_div = fsclk_ratio;
         ret = ioctl(codec_fd, OT_ES8388_SET_ADC_MCLK_LRCLK_RATIO, &audio_ctrl);
-        if (ret != TD_SUCCESS) {
+        if (ret != TD_SUCCESS)
+        {
             printf("[Func]:%s [Line]:%d [Info]:%s\n", __FUNCTION__, __LINE__, "es83888 set ADC LRCLK ratio fail.");
             return ret;
         }
 
         audio_ctrl.clk_div = fsclk_ratio;
         ret = ioctl(codec_fd, OT_ES8388_SET_DAC_MCLK_LRCLK_RATIO, &audio_ctrl);
-        if (ret != TD_SUCCESS) {
+        if (ret != TD_SUCCESS)
+        {
             printf("[Func]:%s [Line]:%d [Info]:%s\n", __FUNCTION__, __LINE__, "es83888 set DAC LRCLK ratio fail.");
             return ret;
         }
@@ -227,7 +244,8 @@ td_s32 sample_es8388_set_clk_mode(int codec_fd, ot_aio_mode work_mode, ot_audio_
     /* set master/slave */
     audio_ctrl.ctrl_mode = master_ctrl;
     ret = ioctl(codec_fd, OT_ES8388_SET_MASTER_MODE, &audio_ctrl);
-    if (ret != TD_SUCCESS) {
+    if (ret != TD_SUCCESS)
+    {
         printf("[Func]:%s [Line]:%d [Info]:%s\n", __FUNCTION__, __LINE__, "es83888 set master/slave fail.");
         return ret;
     }
@@ -243,15 +261,20 @@ td_s32 sample_es8388_set_clk_polarity(int codec_fd, ot_aio_mode work_mode)
     ot_es8388_audio_ctrl audio_ctrl;
     audio_ctrl.chip_num = ES8388_CHIP_ID;
 
-    if (work_mode == OT_AIO_MODE_PCM_MASTER_STD || work_mode == OT_AIO_MODE_PCM_SLAVE_STD) {
+    if (work_mode == OT_AIO_MODE_PCM_MASTER_STD || work_mode == OT_AIO_MODE_PCM_SLAVE_STD)
+    {
         /* PCM offset is 1 */
         pcm_offset = ES8388_PCM_OFFSET_2ND;
         clk_dir = ES8388_BCLK_DIR_INVERT;
-    } else if (work_mode == OT_AIO_MODE_PCM_MASTER_NON_STD || work_mode == OT_AIO_MODE_PCM_SLAVE_NON_STD) {
+    }
+    else if (work_mode == OT_AIO_MODE_PCM_MASTER_NON_STD || work_mode == OT_AIO_MODE_PCM_SLAVE_NON_STD)
+    {
         /* PCM offset is 0 */
         pcm_offset = ES8388_PCM_OFFSET_1ST;
         clk_dir = ES8388_BCLK_DIR_INVERT;
-    } else {
+    }
+    else
+    {
         /* I2S use normal polarity */
         pcm_offset = ES8388_I2S_POLARITY_NORMAL;
         clk_dir = ES8388_BCLK_DIR_NORMAL;
@@ -260,12 +283,14 @@ td_s32 sample_es8388_set_clk_polarity(int codec_fd, ot_aio_mode work_mode)
     /* set PCM offset or I2S polarity */
     audio_ctrl.clk_polarity = pcm_offset;
     ret = ioctl(codec_fd, OT_ES8388_SET_ADC_POLARITY_AND_OFFSET, &audio_ctrl);
-    if (ret != TD_SUCCESS) {
+    if (ret != TD_SUCCESS)
+    {
         printf("[Func]:%s [Line]:%d [Info]:%s\n", __FUNCTION__, __LINE__, "es83888 set ADC polarity or offset fail.");
         return ret;
     }
     ret = ioctl(codec_fd, OT_ES8388_SET_DAC_POLARITY_AND_OFFSET, &audio_ctrl);
-    if (ret != TD_SUCCESS) {
+    if (ret != TD_SUCCESS)
+    {
         printf("[Func]:%s [Line]:%d [Info]:%s\n", __FUNCTION__, __LINE__, "es83888 set DAC polarity or offset fail.");
         return ret;
     }
@@ -273,7 +298,8 @@ td_s32 sample_es8388_set_clk_polarity(int codec_fd, ot_aio_mode work_mode)
     /* set bclk dir */
     audio_ctrl.clk_polarity = clk_dir;
     ret = ioctl(codec_fd, OT_ES8388_SET_BCLK_DIR, &audio_ctrl);
-    if (ret != TD_SUCCESS) {
+    if (ret != TD_SUCCESS)
+    {
         printf("[Func]:%s [Line]:%d [Info]:%s\n", __FUNCTION__, __LINE__, "es83888 set bclk dir fail.");
         return ret;
     }
@@ -286,12 +312,14 @@ td_s32 sample_es8388_set_clk_ctrl(int codec_fd, ot_aio_mode work_mode, ot_audio_
     td_s32 ret;
 
     ret = sample_es8388_set_clk_mode(codec_fd, work_mode, sample_rate);
-    if (ret != TD_SUCCESS) {
+    if (ret != TD_SUCCESS)
+    {
         return ret;
     }
 
     ret = sample_es8388_set_clk_polarity(codec_fd, work_mode);
-    if (ret != TD_SUCCESS) {
+    if (ret != TD_SUCCESS)
+    {
         return ret;
     }
 
@@ -307,47 +335,61 @@ td_s32 sample_es8388_set_data_ctrl(int codec_fd, ot_aio_mode work_mode, ot_audio
     audio_ctrl.chip_num = ES8388_CHIP_ID;
 
     /* set data format */
-    if (work_mode == OT_AIO_MODE_I2S_MASTER || work_mode == OT_AIO_MODE_I2S_SLAVE) {
+    if (work_mode == OT_AIO_MODE_I2S_MASTER || work_mode == OT_AIO_MODE_I2S_SLAVE)
+    {
         /* i2s */
         format_ctrl = ES8388_DATA_FORMAT_I2S;
-    } else if (work_mode == OT_AIO_MODE_PCM_MASTER_STD || work_mode == OT_AIO_MODE_PCM_SLAVE_STD ||
-               work_mode == OT_AIO_MODE_PCM_MASTER_NON_STD || work_mode == OT_AIO_MODE_PCM_SLAVE_NON_STD) {
+    }
+    else if (work_mode == OT_AIO_MODE_PCM_MASTER_STD || work_mode == OT_AIO_MODE_PCM_SLAVE_STD ||
+             work_mode == OT_AIO_MODE_PCM_MASTER_NON_STD || work_mode == OT_AIO_MODE_PCM_SLAVE_NON_STD)
+    {
         /* pcm */
         format_ctrl = ES8388_DATA_FORMAT_PCM;
-    } else {
+    }
+    else
+    {
         printf("[Func]:%s [Line]:%d [Info]:not support work_mode:%d.\n",
-            __FUNCTION__, __LINE__, work_mode);
+               __FUNCTION__, __LINE__, work_mode);
         return TD_FAILURE;
     }
     audio_ctrl.data_format = format_ctrl;
     ret = ioctl(codec_fd, OT_ES8388_SET_ADC_DATA_FORMAT, &audio_ctrl);
-    if (ret != TD_SUCCESS) {
+    if (ret != TD_SUCCESS)
+    {
         printf("[Func]:%s [Line]:%d [Info]:%s\n", __FUNCTION__, __LINE__, "es83888 set ADC format fail.");
         return ret;
     }
     ret = ioctl(codec_fd, OT_ES8388_SET_DAC_DATA_FORMAT, &audio_ctrl);
-    if (ret != TD_SUCCESS) {
+    if (ret != TD_SUCCESS)
+    {
         printf("[Func]:%s [Line]:%d [Info]:%s\n", __FUNCTION__, __LINE__, "es83888 set DAC format fail.");
         return ret;
     }
 
     /* set data width */
-    if (bit_width == OT_AUDIO_BIT_WIDTH_16) {
+    if (bit_width == OT_AUDIO_BIT_WIDTH_16)
+    {
         width_ctrl = ES8388_DATA_LENGTH_16BIT;
-    } else if (bit_width == OT_AUDIO_BIT_WIDTH_24) {
+    }
+    else if (bit_width == OT_AUDIO_BIT_WIDTH_24)
+    {
         width_ctrl = ES8388_DATA_LENGTH_24BIT;
-    } else {
+    }
+    else
+    {
         printf("[Func]:%s [Line]:%d [Info]:not support bit_width:%d.\n", __FUNCTION__, __LINE__, bit_width);
         return TD_FAILURE;
     }
     audio_ctrl.data_length = width_ctrl;
     ret = ioctl(codec_fd, OT_ES8388_SET_ADC_DATA_WIDTH, &audio_ctrl);
-    if (ret != TD_SUCCESS) {
+    if (ret != TD_SUCCESS)
+    {
         printf("[Func]:%s [Line]:%d [Info]:%s\n", __FUNCTION__, __LINE__, "es83888 set ADC width fail.");
         return ret;
     }
     ret = ioctl(codec_fd, OT_ES8388_SET_DAC_DATA_WIDTH, &audio_ctrl);
-    if (ret != TD_SUCCESS) {
+    if (ret != TD_SUCCESS)
+    {
         printf("[Func]:%s [Line]:%d [Info]:%s\n", __FUNCTION__, __LINE__, "es83888 set DAC width fail.");
         return ret;
     }
@@ -364,12 +406,14 @@ td_s32 sample_es8388_set_output_ctrl(int codec_fd)
     /* power on DAC */
     audio_ctrl.if_powerup = ES8388_POWER_UP;
     ret = ioctl(codec_fd, OT_ES8388_SET_LFET_DAC_POWER, &audio_ctrl);
-    if (ret != TD_SUCCESS) {
+    if (ret != TD_SUCCESS)
+    {
         printf("[Func]:%s [Line]:%d [Info]:%s\n", __FUNCTION__, __LINE__, "es83888 set left DAC power fail.");
         return ret;
     }
     ret = ioctl(codec_fd, OT_ES8388_SET_RIGHT_DAC_POWER, &audio_ctrl);
-    if (ret != TD_SUCCESS) {
+    if (ret != TD_SUCCESS)
+    {
         printf("[Func]:%s [Line]:%d [Info]:%s\n", __FUNCTION__, __LINE__, "es83888 set right DAC power fail.");
         return ret;
     }
@@ -377,22 +421,26 @@ td_s32 sample_es8388_set_output_ctrl(int codec_fd)
     /* enable output */
     audio_ctrl.if_powerup = ES8388_OUT_ENABLE;
     ret = ioctl(codec_fd, OT_ES8388_SET_LFET_OUTPUT1_ENABLE, &audio_ctrl);
-    if (ret != TD_SUCCESS) {
+    if (ret != TD_SUCCESS)
+    {
         printf("[Func]:%s [Line]:%d [Info]:%s\n", __FUNCTION__, __LINE__, "es83888 set left out1 enable fail.");
         return ret;
     }
     ret = ioctl(codec_fd, OT_ES8388_SET_RIGHT_OUTPUT1_ENABLE, &audio_ctrl);
-    if (ret != TD_SUCCESS) {
+    if (ret != TD_SUCCESS)
+    {
         printf("[Func]:%s [Line]:%d [Info]:%s\n", __FUNCTION__, __LINE__, "es83888 set right out1 enable fail.");
         return ret;
     }
     ret = ioctl(codec_fd, OT_ES8388_SET_LFET_OUTPUT2_ENABLE, &audio_ctrl);
-    if (ret != TD_SUCCESS) {
+    if (ret != TD_SUCCESS)
+    {
         printf("[Func]:%s [Line]:%d [Info]:%s\n", __FUNCTION__, __LINE__, "es83888 set left out2 enable fail.");
         return ret;
     }
     ret = ioctl(codec_fd, OT_ES8388_SET_RIGHT_OUTPUT2_ENABLE, &audio_ctrl);
-    if (ret != TD_SUCCESS) {
+    if (ret != TD_SUCCESS)
+    {
         printf("[Func]:%s [Line]:%d [Info]:%s\n", __FUNCTION__, __LINE__, "es83888 set right out2 enable fail.");
         return ret;
     }
@@ -409,12 +457,14 @@ td_s32 sample_es8388_set_input_volume(int codec_fd)
     /* set PGA gain */
     audio_ctrl.volume = ES8388_PGA_GAIN_0DB;
     ret = ioctl(codec_fd, OT_ES8388_SET_LFET_INPUT_GAIN, &audio_ctrl);
-    if (ret != TD_SUCCESS) {
+    if (ret != TD_SUCCESS)
+    {
         printf("[Func]:%s [Line]:%d [Info]:%s\n", __FUNCTION__, __LINE__, "es83888 set left gain fail.");
         return ret;
     }
     ret = ioctl(codec_fd, OT_ES8388_SET_RIGHT_INPUT_GAIN, &audio_ctrl);
-    if (ret != TD_SUCCESS) {
+    if (ret != TD_SUCCESS)
+    {
         printf("[Func]:%s [Line]:%d [Info]:%s\n", __FUNCTION__, __LINE__, "es83888 set right gain fail.");
         return ret;
     }
@@ -422,12 +472,14 @@ td_s32 sample_es8388_set_input_volume(int codec_fd)
     /* set ADC volume : 0dB */
     audio_ctrl.volume = ES8388_ADC_VOLUME_0DB;
     ret = ioctl(codec_fd, OT_ES8388_SET_LFET_ADC_VOLUME, &audio_ctrl);
-    if (ret != TD_SUCCESS) {
+    if (ret != TD_SUCCESS)
+    {
         printf("[Func]:%s [Line]:%d [Info]:%s\n", __FUNCTION__, __LINE__, "es83888 set left ADC vol fail.");
         return ret;
     }
     ret = ioctl(codec_fd, OT_ES8388_SET_RIGHT_ADC_VOLUME, &audio_ctrl);
-    if (ret != TD_SUCCESS) {
+    if (ret != TD_SUCCESS)
+    {
         printf("[Func]:%s [Line]:%d [Info]:%s\n", __FUNCTION__, __LINE__, "es83888 set right ADC vol fail.");
         return ret;
     }
@@ -435,7 +487,8 @@ td_s32 sample_es8388_set_input_volume(int codec_fd)
     /* set ADC unmute */
     audio_ctrl.if_mute = ES8388_MUTE_DISABLE;
     ret = ioctl(codec_fd, OT_ES8388_SET_ADC_MUTE, &audio_ctrl);
-    if (ret != TD_SUCCESS) {
+    if (ret != TD_SUCCESS)
+    {
         printf("[Func]:%s [Line]:%d [Info]:%s\n", __FUNCTION__, __LINE__, "es83888 set ADC unmute fail.");
         return ret;
     }
@@ -452,22 +505,26 @@ td_s32 sample_es8388_set_output_volume(int codec_fd)
     /* set output volume : 0dB */
     audio_ctrl.volume = ES8388_OUTPUT_VOLUME_0DB;
     ret = ioctl(codec_fd, OT_ES8388_SET_LFET_OUTPUT1_VOLUME, &audio_ctrl);
-    if (ret != TD_SUCCESS) {
+    if (ret != TD_SUCCESS)
+    {
         printf("[Func]:%s [Line]:%d [Info]:%s\n", __FUNCTION__, __LINE__, "es83888 set left out1 vol fail.");
         return ret;
     }
     ret = ioctl(codec_fd, OT_ES8388_SET_RIGHT_OUTPUT1_VOLUME, &audio_ctrl);
-    if (ret != TD_SUCCESS) {
+    if (ret != TD_SUCCESS)
+    {
         printf("[Func]:%s [Line]:%d [Info]:%s\n", __FUNCTION__, __LINE__, "es83888 set right out1 vol fail.");
         return ret;
     }
     ret = ioctl(codec_fd, OT_ES8388_SET_LFET_OUTPUT2_VOLUME, &audio_ctrl);
-    if (ret != TD_SUCCESS) {
+    if (ret != TD_SUCCESS)
+    {
         printf("[Func]:%s [Line]:%d [Info]:%s\n", __FUNCTION__, __LINE__, "es83888 set left out2 vol fail.");
         return ret;
     }
     ret = ioctl(codec_fd, OT_ES8388_SET_RIGHT_OUTPUT2_VOLUME, &audio_ctrl);
-    if (ret != TD_SUCCESS) {
+    if (ret != TD_SUCCESS)
+    {
         printf("[Func]:%s [Line]:%d [Info]:%s\n", __FUNCTION__, __LINE__, "es83888 set right out2 vol fail.");
         return ret;
     }
@@ -475,12 +532,14 @@ td_s32 sample_es8388_set_output_volume(int codec_fd)
     /* set DAC volume : 0dB */
     audio_ctrl.volume = ES8388_DAC_VOLUME_0DB;
     ret = ioctl(codec_fd, OT_ES8388_SET_LFET_DAC_VOLUME, &audio_ctrl);
-    if (ret != TD_SUCCESS) {
+    if (ret != TD_SUCCESS)
+    {
         printf("[Func]:%s [Line]:%d [Info]:%s\n", __FUNCTION__, __LINE__, "es83888 set left DAC vol fail.");
         return ret;
     }
     ret = ioctl(codec_fd, OT_ES8388_SET_RIGHT_DAC_VOLUME, &audio_ctrl);
-    if (ret != TD_SUCCESS) {
+    if (ret != TD_SUCCESS)
+    {
         printf("[Func]:%s [Line]:%d [Info]:%s\n", __FUNCTION__, __LINE__, "es83888 set right DAC vol fail.");
         return ret;
     }
@@ -488,7 +547,8 @@ td_s32 sample_es8388_set_output_volume(int codec_fd)
     /* set DAC unmute */
     audio_ctrl.if_mute = ES8388_MUTE_DISABLE;
     ret = ioctl(codec_fd, OT_ES8388_SET_DAC_MUTE, &audio_ctrl);
-    if (ret != TD_SUCCESS) {
+    if (ret != TD_SUCCESS)
+    {
         printf("[Func]:%s [Line]:%d [Info]:%s\n", __FUNCTION__, __LINE__, "es83888 set DAC unmute fail.");
         return ret;
     }
@@ -502,50 +562,58 @@ td_s32 sample_es8388_cfg_audio(ot_aio_mode work_mode, ot_audio_sample_rate sampl
     int es8388_fd = -1;
 
     es8388_fd = open(ES8388_FILE, O_RDWR);
-    if (es8388_fd < 0) {
+    if (es8388_fd < 0)
+    {
         printf("can't open es8388(%s).\n", ES8388_FILE);
         return TD_FAILURE;
     }
 
     /* soft reset */
     ret = sample_es8388_soft_reset(es8388_fd);
-    if (ret != TD_SUCCESS) {
+    if (ret != TD_SUCCESS)
+    {
         goto es8388_err;
     }
 
     /* set input ctrl */
     ret = sample_es8388_set_input_ctrl(es8388_fd);
-    if (ret != TD_SUCCESS) {
+    if (ret != TD_SUCCESS)
+    {
         goto es8388_err;
     }
 
     /* set clk */
     ret = sample_es8388_set_clk_ctrl(es8388_fd, work_mode, sample_rate);
-    if (ret != TD_SUCCESS) {
+    if (ret != TD_SUCCESS)
+    {
         goto es8388_err;
     }
 
     /* set data */
     ret = sample_es8388_set_data_ctrl(es8388_fd, work_mode, bit_width);
-    if (ret != TD_SUCCESS) {
+    if (ret != TD_SUCCESS)
+    {
         goto es8388_err;
     }
 
     /* set output ctrl */
     ret = sample_es8388_set_output_ctrl(es8388_fd);
-    if (ret != TD_SUCCESS) {
+    if (ret != TD_SUCCESS)
+    {
         goto es8388_err;
     }
 
     /* set input volume */
     ret = sample_es8388_set_input_volume(es8388_fd);
-    if (ret != TD_SUCCESS) {
+    if (ret != TD_SUCCESS)
+    {
         goto es8388_err;
     }
 
     /* set output volume */
     ret = sample_es8388_set_output_volume(es8388_fd);
-    if (ret != TD_SUCCESS) {
+    if (ret != TD_SUCCESS)
+    {
         goto es8388_err;
     }
 
@@ -564,7 +632,8 @@ td_s32 sample_es8388_disable(td_void)
     int es8388_fd = -1;
 
     es8388_fd = open(ES8388_FILE, O_RDWR);
-    if (es8388_fd < 0) {
+    if (es8388_fd < 0)
+    {
         printf("can't open es8388(%s).\n", ES8388_FILE);
         return TD_FAILURE;
     }
@@ -583,54 +652,55 @@ static td_s32 inner_codec_get_i2s_fs(ot_audio_sample_rate sample_rate, ot_acodec
 {
     ot_acodec_fs i2s_fs_sel;
 
-    switch (sample_rate) {
-        case OT_AUDIO_SAMPLE_RATE_8000:
-            i2s_fs_sel = OT_ACODEC_FS_8000;
-            break;
+    switch (sample_rate)
+    {
+    case OT_AUDIO_SAMPLE_RATE_8000:
+        i2s_fs_sel = OT_ACODEC_FS_8000;
+        break;
 
-        case OT_AUDIO_SAMPLE_RATE_16000:
-            i2s_fs_sel = OT_ACODEC_FS_16000;
-            break;
+    case OT_AUDIO_SAMPLE_RATE_16000:
+        i2s_fs_sel = OT_ACODEC_FS_16000;
+        break;
 
-        case OT_AUDIO_SAMPLE_RATE_32000:
-            i2s_fs_sel = OT_ACODEC_FS_32000;
-            break;
+    case OT_AUDIO_SAMPLE_RATE_32000:
+        i2s_fs_sel = OT_ACODEC_FS_32000;
+        break;
 
-        case OT_AUDIO_SAMPLE_RATE_11025:
-            i2s_fs_sel = OT_ACODEC_FS_11025;
-            break;
+    case OT_AUDIO_SAMPLE_RATE_11025:
+        i2s_fs_sel = OT_ACODEC_FS_11025;
+        break;
 
-        case OT_AUDIO_SAMPLE_RATE_22050:
-            i2s_fs_sel = OT_ACODEC_FS_22050;
-            break;
+    case OT_AUDIO_SAMPLE_RATE_22050:
+        i2s_fs_sel = OT_ACODEC_FS_22050;
+        break;
 
-        case OT_AUDIO_SAMPLE_RATE_44100:
-            i2s_fs_sel = OT_ACODEC_FS_44100;
-            break;
+    case OT_AUDIO_SAMPLE_RATE_44100:
+        i2s_fs_sel = OT_ACODEC_FS_44100;
+        break;
 
-        case OT_AUDIO_SAMPLE_RATE_12000:
-            i2s_fs_sel = OT_ACODEC_FS_12000;
-            break;
+    case OT_AUDIO_SAMPLE_RATE_12000:
+        i2s_fs_sel = OT_ACODEC_FS_12000;
+        break;
 
-        case OT_AUDIO_SAMPLE_RATE_24000:
-            i2s_fs_sel = OT_ACODEC_FS_24000;
-            break;
+    case OT_AUDIO_SAMPLE_RATE_24000:
+        i2s_fs_sel = OT_ACODEC_FS_24000;
+        break;
 
-        case OT_AUDIO_SAMPLE_RATE_48000:
-            i2s_fs_sel = OT_ACODEC_FS_48000;
-            break;
+    case OT_AUDIO_SAMPLE_RATE_48000:
+        i2s_fs_sel = OT_ACODEC_FS_48000;
+        break;
 
-        case OT_AUDIO_SAMPLE_RATE_64000:
-            i2s_fs_sel = OT_ACODEC_FS_64000;
-            break;
+    case OT_AUDIO_SAMPLE_RATE_64000:
+        i2s_fs_sel = OT_ACODEC_FS_64000;
+        break;
 
-        case OT_AUDIO_SAMPLE_RATE_96000:
-            i2s_fs_sel = OT_ACODEC_FS_96000;
-            break;
+    case OT_AUDIO_SAMPLE_RATE_96000:
+        i2s_fs_sel = OT_ACODEC_FS_96000;
+        break;
 
-        default:
-            printf("%s: not support sample_rate:%d\n", __FUNCTION__, sample_rate);
-            return TD_FAILURE;
+    default:
+        printf("%s: not support sample_rate:%d\n", __FUNCTION__, sample_rate);
+        return TD_FAILURE;
     }
 
     *i2s_fs = i2s_fs_sel;
@@ -644,26 +714,31 @@ td_s32 sample_inner_codec_cfg_audio(ot_audio_sample_rate sample_rate)
     ot_acodec_mixer input_mode;
 
     fd_acodec = open(ACODEC_FILE, O_RDWR);
-    if (fd_acodec < 0) {
+    if (fd_acodec < 0)
+    {
         printf("%s: can't open audio codec,%s\n", __FUNCTION__, ACODEC_FILE);
         return TD_FAILURE;
     }
-    if (ioctl(fd_acodec, OT_ACODEC_SOFT_RESET_CTRL)) {
+    if (ioctl(fd_acodec, OT_ACODEC_SOFT_RESET_CTRL))
+    {
         printf("reset audio codec error\n");
     }
 
-    if (inner_codec_get_i2s_fs(sample_rate, &i2s_fs_sel) != TD_SUCCESS) {
+    if (inner_codec_get_i2s_fs(sample_rate, &i2s_fs_sel) != TD_SUCCESS)
+    {
         return TD_FAILURE;
     }
 
-    if (ioctl(fd_acodec, OT_ACODEC_SET_I2S1_FS, &i2s_fs_sel)) {
+    if (ioctl(fd_acodec, OT_ACODEC_SET_I2S1_FS, &i2s_fs_sel))
+    {
         printf("%s: set acodec sample rate failed\n", __FUNCTION__);
         return TD_FAILURE;
     }
 
     /* refer to hardware, demo board is pseudo-differential (IN_D), socket board is single-ended (IN1) */
     input_mode = OT_ACODEC_MIXER_IN_D;
-    if (ioctl(fd_acodec, OT_ACODEC_SET_MIXER_MIC, &input_mode)) {
+    if (ioctl(fd_acodec, OT_ACODEC_SET_MIXER_MIC, &input_mode))
+    {
         printf("%s: select acodec input_mode failed\n", __FUNCTION__);
         return TD_FAILURE;
     }
@@ -682,7 +757,8 @@ td_s32 sample_inner_codec_cfg_audio(ot_audio_sample_rate sample_rate)
     int acodec_input_vol;
 
     acodec_input_vol = 30; /* 30dB */
-    if (ioctl(fd_acodec,  OT_ACODEC_SET_INPUT_VOLUME, &acodec_input_vol)) {
+    if (ioctl(fd_acodec, OT_ACODEC_SET_INPUT_VOLUME, &acodec_input_vol))
+    {
         printf("%s: set acodec micin volume failed\n", __FUNCTION__);
         return TD_FAILURE;
     }
@@ -702,7 +778,8 @@ td_s32 sample_comm_audio_cfg_acodec(const ot_aio_attr *aio_attr)
 
 #ifdef OT_ACODEC_TYPE_ES8388
     td_s32 ret = sample_es8388_cfg_audio(aio_attr->work_mode, aio_attr->sample_rate, aio_attr->bit_width);
-    if (ret != TD_SUCCESS) {
+    if (ret != TD_SUCCESS)
+    {
         printf("%s: sample_es8388_cfg_audio failed\n", __FUNCTION__);
         return ret;
     }
@@ -713,14 +790,16 @@ td_s32 sample_comm_audio_cfg_acodec(const ot_aio_attr *aio_attr)
 #ifdef OT_ACODEC_TYPE_INNER
     /* INNER AUDIO CODEC */
     td_s32 ret = sample_inner_codec_cfg_audio(aio_attr->sample_rate);
-    if (ret != TD_SUCCESS) {
+    if (ret != TD_SUCCESS)
+    {
         printf("%s:sample_inner_codec_cfg_audio failed\n", __FUNCTION__);
         return ret;
     }
     codec_cfg = TD_TRUE;
 #endif
 
-    if (codec_cfg == TD_FALSE) {
+    if (codec_cfg == TD_FALSE)
+    {
         printf("can not find the right codec.\n");
         return TD_FAILURE;
     }
@@ -736,15 +815,18 @@ static td_s32 audio_ai_get_frame_and_send(sample_ai *ai_ctl)
 
     /* get frame from ai chn */
     ret = ss_mpi_ai_get_frame(ai_ctl->ai_dev, ai_ctl->ai_chn, &frame, &aec_frm, TD_FALSE);
-    if (ret != TD_SUCCESS) {
+    if (ret != TD_SUCCESS)
+    {
         /* continue */
         return TD_SUCCESS;
     }
 
     /* send frame to encoder */
-    if (ai_ctl->send_aenc == TD_TRUE) {
+    if (ai_ctl->send_aenc == TD_TRUE)
+    {
         ret = ss_mpi_aenc_send_frame(ai_ctl->aenc_chn, &frame, &aec_frm);
-        if (ret != TD_SUCCESS) {
+        if (ret != TD_SUCCESS)
+        {
             printf("%s: ss_mpi_aenc_send_frame(%d), failed with %#x!\n", __FUNCTION__, ai_ctl->aenc_chn, ret);
             ss_mpi_ai_release_frame(ai_ctl->ai_dev, ai_ctl->ai_chn, &frame, &aec_frm);
             return TD_FAILURE;
@@ -752,11 +834,13 @@ static td_s32 audio_ai_get_frame_and_send(sample_ai *ai_ctl)
     }
 
     /* send frame to ao */
-    if (ai_ctl->send_ao == TD_TRUE) {
+    if (ai_ctl->send_ao == TD_TRUE)
+    {
         ret = ss_mpi_ao_send_frame(ai_ctl->ao_dev, ai_ctl->ao_chn, &frame, 1000); /* 1000:1000ms */
-        if (ret != TD_SUCCESS) {
+        if (ret != TD_SUCCESS)
+        {
             printf("%s: ss_mpi_ao_send_frame(%d, %d), failed with %#x!\n", __FUNCTION__, ai_ctl->ao_dev, ai_ctl->ao_chn,
-                ret);
+                   ret);
             ss_mpi_ai_release_frame(ai_ctl->ai_dev, ai_ctl->ai_chn, &frame, &aec_frm);
             return TD_FAILURE;
         }
@@ -764,9 +848,10 @@ static td_s32 audio_ai_get_frame_and_send(sample_ai *ai_ctl)
 
     /* finally you must release the stream */
     ret = ss_mpi_ai_release_frame(ai_ctl->ai_dev, ai_ctl->ai_chn, &frame, &aec_frm);
-    if (ret != TD_SUCCESS) {
+    if (ret != TD_SUCCESS)
+    {
         printf("%s: ss_mpi_ai_release_frame(%d, %d), failed with %#x!\n", __FUNCTION__, ai_ctl->ai_dev, ai_ctl->ai_chn,
-            ret);
+               ret);
         return TD_FAILURE;
     }
 
@@ -784,7 +869,8 @@ void *sample_comm_audio_ai_proc(void *parg)
     ot_ai_chn_param ai_chn_para;
 
     ret = ss_mpi_ai_get_chn_param(ai_ctl->ai_dev, ai_ctl->ai_chn, &ai_chn_para);
-    if (ret != TD_SUCCESS) {
+    if (ret != TD_SUCCESS)
+    {
         printf("%s: get ai chn param failed\n", __FUNCTION__);
         return NULL;
     }
@@ -792,20 +878,23 @@ void *sample_comm_audio_ai_proc(void *parg)
     ai_chn_para.usr_frame_depth = 30; /* 30:usr frame depth */
 
     ret = ss_mpi_ai_set_chn_param(ai_ctl->ai_dev, ai_ctl->ai_chn, &ai_chn_para);
-    if (ret != TD_SUCCESS) {
+    if (ret != TD_SUCCESS)
+    {
         printf("%s: set ai chn param failed\n", __FUNCTION__);
         return NULL;
     }
 
     FD_ZERO(&read_fds);
     ai_fd = ss_mpi_ai_get_fd(ai_ctl->ai_dev, ai_ctl->ai_chn);
-    if (ai_fd < 0) {
+    if (ai_fd < 0)
+    {
         printf("%s: get ai fd failed\n", __FUNCTION__);
         return NULL;
     }
     FD_SET(ai_fd, &read_fds);
 
-    while (ai_ctl->start) {
+    while (ai_ctl->start)
+    {
         timeout_val.tv_sec = 1;
         timeout_val.tv_usec = 0;
 
@@ -813,17 +902,22 @@ void *sample_comm_audio_ai_proc(void *parg)
         FD_SET(ai_fd, &read_fds);
 
         ret = select(ai_fd + 1, &read_fds, NULL, NULL, &timeout_val);
-        if (ret < 0) {
+        if (ret < 0)
+        {
             break;
-        } else if (ret == 0) {
+        }
+        else if (ret == 0)
+        {
             printf("%s: get ai frame select time out\n", __FUNCTION__);
             break;
         }
 
-        if (FD_ISSET(ai_fd, &read_fds)) {
+        if (FD_ISSET(ai_fd, &read_fds))
+        {
             /* get ai frame, send and release */
             ret = audio_ai_get_frame_and_send(ai_ctl);
-            if (ret != TD_SUCCESS) {
+            if (ret != TD_SUCCESS)
+            {
                 break;
             }
         }
@@ -836,19 +930,22 @@ void *sample_comm_audio_ai_proc(void *parg)
 static td_s32 audio_aenc_get_stream_and_send(sample_aenc *aenc_ctl)
 {
     td_s32 ret;
-    ot_audio_stream stream = { 0 };
+    ot_audio_stream stream = {0};
 
     /* get stream from aenc chn */
     ret = ss_mpi_aenc_get_stream(aenc_ctl->ae_chn, &stream, TD_FALSE);
-    if (ret != TD_SUCCESS) {
+    if (ret != TD_SUCCESS)
+    {
         printf("%s: ss_mpi_aenc_get_stream(%d), failed with %#x!\n", __FUNCTION__, aenc_ctl->ae_chn, ret);
         return TD_FAILURE;
     }
 
     /* send stream to decoder and play for testing */
-    if (aenc_ctl->send_ad_chn == TD_TRUE) {
+    if (aenc_ctl->send_ad_chn == TD_TRUE)
+    {
         ret = ss_mpi_adec_send_stream(aenc_ctl->ad_chn, &stream, TD_TRUE);
-        if (ret != TD_SUCCESS) {
+        if (ret != TD_SUCCESS)
+        {
             printf("%s: ss_mpi_adec_send_stream(%d), failed with %#x!\n", __FUNCTION__, aenc_ctl->ad_chn, ret);
             ss_mpi_aenc_release_stream(aenc_ctl->ae_chn, &stream);
             return TD_FAILURE;
@@ -856,12 +953,13 @@ static td_s32 audio_aenc_get_stream_and_send(sample_aenc *aenc_ctl)
     }
 
     /* save audio stream to file */
-    (td_void)fwrite(stream.stream, 1, stream.len, aenc_ctl->fd);
+    (td_void) fwrite(stream.stream, 1, stream.len, aenc_ctl->fd);
     fflush(aenc_ctl->fd);
 
     /* finally you must release the stream */
     ret = ss_mpi_aenc_release_stream(aenc_ctl->ae_chn, &stream);
-    if (ret != TD_SUCCESS) {
+    if (ret != TD_SUCCESS)
+    {
         printf("%s: ss_mpi_aenc_release_stream(%d), failed with %#x!\n", __FUNCTION__, aenc_ctl->ae_chn, ret);
         return TD_FAILURE;
     }
@@ -880,13 +978,15 @@ void *sample_comm_audio_aenc_proc(void *parg)
 
     FD_ZERO(&read_fds);
     aenc_fd = ss_mpi_aenc_get_fd(aenc_ctl->ae_chn);
-    if (aenc_fd < 0) {
+    if (aenc_fd < 0)
+    {
         printf("%s: get aenc fd failed\n", __FUNCTION__);
         goto get_fd_fail;
     }
     FD_SET(aenc_fd, &read_fds);
 
-    while (aenc_ctl->start) {
+    while (aenc_ctl->start)
+    {
         timeout_val.tv_sec = 1;
         timeout_val.tv_usec = 0;
 
@@ -894,17 +994,22 @@ void *sample_comm_audio_aenc_proc(void *parg)
         FD_SET(aenc_fd, &read_fds);
 
         ret = select(aenc_fd + 1, &read_fds, NULL, NULL, &timeout_val);
-        if (ret < 0) {
+        if (ret < 0)
+        {
             break;
-        } else if (ret == 0) {
+        }
+        else if (ret == 0)
+        {
             printf("%s: get aenc stream select time out\n", __FUNCTION__);
             break;
         }
 
-        if (FD_ISSET(aenc_fd, &read_fds)) {
+        if (FD_ISSET(aenc_fd, &read_fds))
+        {
             /* get stream from aenc chn, send and release */
             ret = audio_aenc_get_stream_and_send(aenc_ctl);
-            if (ret != TD_SUCCESS) {
+            if (ret != TD_SUCCESS)
+            {
                 break;
             }
         }
@@ -931,33 +1036,39 @@ void *sample_comm_audio_adec_proc(void *parg)
     adec_chn = adec_ctl->ad_chn;
 
     audio_stream_tmp = (td_u8 *)malloc(sizeof(td_u8) * OT_MAX_AUDIO_STREAM_LEN);
-    if (audio_stream_tmp == NULL) {
+    if (audio_stream_tmp == NULL)
+    {
         printf("%s: malloc failed!\n", __FUNCTION__);
         goto stream_malloc_fail;
     }
 
-    while (adec_ctl->start == TD_TRUE) {
+    while (adec_ctl->start == TD_TRUE)
+    {
         /* read from file */
         audio_stream.stream = audio_stream_tmp;
         read_len = fread(audio_stream.stream, 1, len, fd);
-        if (read_len <= 0) {
+        if (read_len <= 0)
+        {
             ret = ss_mpi_adec_send_end_of_stream(adec_chn, TD_FALSE);
-            if (ret != TD_SUCCESS) {
+            if (ret != TD_SUCCESS)
+            {
                 printf("%s: ss_mpi_adec_send_end_of_stream failed!\n", __FUNCTION__);
             }
-            (td_void)fseek(fd, 0, SEEK_SET); /* read file again */
-            continue;
+            (td_void) fseek(fd, 0, SEEK_SET); /* read file again */
+           // continue;
+	   break;
         }
 
         /* here only demo adec streaming sending mode, but pack sending mode is commended */
         audio_stream.len = read_len;
         ret = ss_mpi_adec_send_stream(adec_chn, &audio_stream, TD_TRUE);
-        if (ret != TD_SUCCESS) {
+        if (ret != TD_SUCCESS)
+        {
             printf("%s: ss_mpi_adec_send_stream(%d) failed with %#x!\n", __FUNCTION__, adec_chn, ret);
             break;
         }
     }
-
+printf("audio end ==============\n");	
     free(audio_stream_tmp);
     audio_stream_tmp = NULL;
 
@@ -977,28 +1088,35 @@ void *sample_comm_audio_ao_vol_proc(void *parg)
     sample_ao *ao_ctl = (sample_ao *)parg;
     ot_audio_dev ao_dev = ao_ctl->ao_dev;
 
-    while (ao_ctl->start) {
-        for (volume = 0; volume <= 6; volume++) { /* 0,6:test range */
+    while (ao_ctl->start)
+    {
+        for (volume = 0; volume <= 6; volume++)
+        { /* 0,6:test range */
             ret = ss_mpi_ao_set_volume(ao_dev, volume);
-            if (ret != TD_SUCCESS) {
+            if (ret != TD_SUCCESS)
+            {
                 printf("%s: ss_mpi_ao_set_volume(%d), failed with %#x!\n", __FUNCTION__, ao_dev, ret);
             }
             printf("\rset volume %d          ", volume);
             sleep(2); /* 2:2s */
         }
 
-        for (volume = 5; volume >= -15; volume--) { /* -15,5:test range */
+        for (volume = 5; volume >= -15; volume--)
+        { /* -15,5:test range */
             ret = ss_mpi_ao_set_volume(ao_dev, volume);
-            if (ret != TD_SUCCESS) {
+            if (ret != TD_SUCCESS)
+            {
                 printf("%s: ss_mpi_ao_set_volume(%d), failed with %#x!\n", __FUNCTION__, ao_dev, ret);
             }
             printf("\rset volume %d          ", volume);
             sleep(2); /* 2:2s */
         }
 
-        for (volume = -14; volume <= 0; volume++) { /* -14,0:test range */
+        for (volume = -14; volume <= 0; volume++)
+        { /* -14,0:test range */
             ret = ss_mpi_ao_set_volume(ao_dev, volume);
-            if (ret != TD_SUCCESS) {
+            if (ret != TD_SUCCESS)
+            {
                 printf("%s: ss_mpi_ao_set_volume(%d), failed with %#x!\n", __FUNCTION__, ao_dev, ret);
             }
             printf("\rset volume %d          ", volume);
@@ -1010,14 +1128,16 @@ void *sample_comm_audio_ao_vol_proc(void *parg)
         fade.fade_out_rate = OT_AUDIO_FADE_RATE_128;
 
         ret = ss_mpi_ao_set_mute(ao_dev, TD_TRUE, &fade);
-        if (ret != TD_SUCCESS) {
+        if (ret != TD_SUCCESS)
+        {
             printf("%s: ss_mpi_ao_set_volume(%d), failed with %#x!\n", __FUNCTION__, ao_dev, ret);
         }
         printf("\rset ao mute            ");
         sleep(2); /* 2:2s */
 
         ret = ss_mpi_ao_set_mute(ao_dev, TD_FALSE, NULL);
-        if (ret != TD_SUCCESS) {
+        if (ret != TD_SUCCESS)
+        {
             printf("%s: ss_mpi_ao_set_volume(%d), failed with %#x!\n", __FUNCTION__, ao_dev, ret);
         }
         printf("\rset ao unmute          ");
@@ -1033,7 +1153,8 @@ td_s32 sample_comm_audio_creat_trd_ai_ao(ot_audio_dev ai_dev, ot_ai_chn ai_chn, 
     sample_ai *ai = NULL;
 
     if ((ai_dev >= OT_AI_DEV_MAX_NUM) || (ai_dev < 0) ||
-        (ai_chn >= OT_AI_MAX_CHN_NUM) || (ai_chn < 0)) {
+        (ai_chn >= OT_AI_MAX_CHN_NUM) || (ai_chn < 0))
+    {
         printf("%s: ai_dev = %d, ai_chn = %d error.\n", __FUNCTION__, ai_dev, ai_chn);
         return TD_FAILURE;
     }
@@ -1058,7 +1179,8 @@ td_s32 sample_comm_audio_creat_trd_ai_aenc(ot_audio_dev ai_dev, ot_ai_chn ai_chn
     sample_ai *ai = NULL;
 
     if ((ai_dev >= OT_AI_DEV_MAX_NUM) || (ai_dev < 0) ||
-        (ai_chn >= OT_AI_MAX_CHN_NUM) || (ai_chn < 0)) {
+        (ai_chn >= OT_AI_MAX_CHN_NUM) || (ai_chn < 0))
+    {
         printf("%s: ai_dev = %d, ai_chn = %d error.\n", __FUNCTION__, ai_dev, ai_chn);
         return TD_FAILURE;
     }
@@ -1080,11 +1202,13 @@ td_s32 sample_comm_audio_creat_trd_aenc_adec(ot_aenc_chn ae_chn, ot_adec_chn ad_
 {
     sample_aenc *aenc = NULL;
 
-    if (aenc_fd == NULL) {
+    if (aenc_fd == NULL)
+    {
         return TD_FAILURE;
     }
 
-    if ((ae_chn >= OT_AENC_MAX_CHN_NUM) || (ae_chn < 0)) {
+    if ((ae_chn >= OT_AENC_MAX_CHN_NUM) || (ae_chn < 0))
+    {
         printf("%s: ae_chn = %d error.\n", __FUNCTION__, ae_chn);
         return TD_FAILURE;
     }
@@ -1105,11 +1229,13 @@ td_s32 sample_comm_audio_creat_trd_file_adec(ot_adec_chn ad_chn, FILE *adec_fd)
 {
     sample_adec *adec = NULL;
 
-    if (adec_fd == NULL) {
+    if (adec_fd == NULL)
+    {
         return TD_FAILURE;
     }
 
-    if ((ad_chn >= OT_ADEC_MAX_CHN_NUM) || (ad_chn < 0)) {
+    if ((ad_chn >= OT_ADEC_MAX_CHN_NUM) || (ad_chn < 0))
+    {
         printf("%s: ad_chn = %d error.\n", __FUNCTION__, ad_chn);
         return TD_FAILURE;
     }
@@ -1118,8 +1244,8 @@ td_s32 sample_comm_audio_creat_trd_file_adec(ot_adec_chn ad_chn, FILE *adec_fd)
     adec->ad_chn = ad_chn;
     adec->fd = adec_fd;
     adec->start = TD_TRUE;
-    pthread_create(&adec->ad_pid, 0, sample_comm_audio_adec_proc, adec);
-
+    //pthread_create(&adec->ad_pid, 0, sample_comm_audio_adec_proc, adec);
+    sample_comm_audio_adec_proc(adec);
     return TD_SUCCESS;
 }
 
@@ -1128,7 +1254,8 @@ td_s32 sample_comm_audio_creat_trd_ao_vol_ctrl(ot_audio_dev ao_dev)
 {
     sample_ao *ao_ctl = NULL;
 
-    if ((ao_dev >= OT_AO_DEV_MAX_NUM) || (ao_dev < 0)) {
+    if ((ao_dev >= OT_AO_DEV_MAX_NUM) || (ao_dev < 0))
+    {
         printf("%s: ao_dev = %d error.\n", __FUNCTION__, ao_dev);
         return TD_FAILURE;
     }
@@ -1147,13 +1274,15 @@ td_s32 sample_comm_audio_destory_trd_ai(ot_audio_dev ai_dev, ot_ai_chn ai_chn)
     sample_ai *ai = NULL;
 
     if ((ai_dev >= OT_AI_DEV_MAX_NUM) || (ai_dev < 0) ||
-        (ai_chn >= OT_AI_MAX_CHN_NUM) || (ai_chn < 0)) {
+        (ai_chn >= OT_AI_MAX_CHN_NUM) || (ai_chn < 0))
+    {
         printf("%s: ai_dev = %d, ai_chn = %d error.\n", __FUNCTION__, ai_dev, ai_chn);
         return TD_FAILURE;
     }
 
     ai = &g_sample_ai[ai_dev * OT_AI_MAX_CHN_NUM + ai_chn];
-    if (ai->start) {
+    if (ai->start)
+    {
         ai->start = TD_FALSE;
         pthread_join(ai->ai_pid, 0);
     }
@@ -1166,18 +1295,21 @@ td_s32 sample_comm_audio_destory_trd_aenc_adec(ot_aenc_chn ae_chn)
 {
     sample_aenc *aenc = NULL;
 
-    if ((ae_chn >= OT_AENC_MAX_CHN_NUM) || (ae_chn < 0)) {
+    if ((ae_chn >= OT_AENC_MAX_CHN_NUM) || (ae_chn < 0))
+    {
         printf("%s: ae_chn = %d error.\n", __FUNCTION__, ae_chn);
         return TD_FAILURE;
     }
 
     aenc = &g_sample_aenc[ae_chn];
-    if (aenc->start) {
+    if (aenc->start)
+    {
         aenc->start = TD_FALSE;
         pthread_join(aenc->aenc_pid, 0);
     }
 
-    if (aenc->fd != TD_NULL) {
+    if (aenc->fd != TD_NULL)
+    {
         fclose(aenc->fd);
         aenc->fd = TD_NULL;
     }
@@ -1190,18 +1322,21 @@ td_s32 sample_comm_audio_destory_trd_file_adec(ot_adec_chn ad_chn)
 {
     sample_adec *adec = NULL;
 
-    if ((ad_chn >= OT_ADEC_MAX_CHN_NUM) || (ad_chn < 0)) {
+    if ((ad_chn >= OT_ADEC_MAX_CHN_NUM) || (ad_chn < 0))
+    {
         printf("%s: ad_chn = %d error.\n", __FUNCTION__, ad_chn);
         return TD_FAILURE;
     }
 
     adec = &g_sample_adec[ad_chn];
-    if (adec->start) {
+    if (adec->start)
+    {
         adec->start = TD_FALSE;
         pthread_join(adec->ad_pid, 0);
     }
 
-    if (adec->fd != TD_NULL) {
+    if (adec->fd != TD_NULL)
+    {
         fclose(adec->fd);
         adec->fd = TD_NULL;
     }
@@ -1214,13 +1349,15 @@ td_s32 sample_comm_audio_destory_trd_ao_vol_ctrl(ot_audio_dev ao_dev)
 {
     sample_ao *ao_ctl = NULL;
 
-    if ((ao_dev >= OT_AO_DEV_MAX_NUM) || (ao_dev < 0)) {
+    if ((ao_dev >= OT_AO_DEV_MAX_NUM) || (ao_dev < 0))
+    {
         printf("%s: ao_dev = %d error.\n", __FUNCTION__, ao_dev);
         return TD_FAILURE;
     }
 
     ao_ctl = &g_sample_ao[ao_dev];
-    if (ao_ctl->start) {
+    if (ao_ctl->start)
+    {
         ao_ctl->start = TD_FALSE;
         pthread_cancel(ao_ctl->ao_pid);
         pthread_join(ao_ctl->ao_pid, 0);
@@ -1320,42 +1457,47 @@ td_s32 sample_comm_audio_aenc_unbind_ai(ot_audio_dev ai_dev, ot_ai_chn ai_chn, o
 }
 
 static td_s32 sample_comm_audio_start_ai_vqe(ot_audio_dev ai_dev_id, ot_ai_chn ai_chn,
-    const sample_comm_ai_vqe_param *ai_vqe_param, ot_audio_dev ao_dev_id)
+                                             const sample_comm_ai_vqe_param *ai_vqe_param, ot_audio_dev ao_dev_id)
 {
     td_s32 ret;
 
-    if (ai_vqe_param->ai_vqe_attr != NULL) {
+    if (ai_vqe_param->ai_vqe_attr != NULL)
+    {
         td_bool ai_vqe = TD_TRUE;
-        switch (ai_vqe_param->ai_vqe_type) {
-            case 0: /* 0:no vqe */
-                ret = TD_SUCCESS;
-                ai_vqe = TD_FALSE;
-                break;
-            case 1: /* 1:record vqe */
-                ret = ss_mpi_ai_set_record_vqe_attr(ai_dev_id, ai_chn,
-                    (ot_ai_record_vqe_cfg *)ai_vqe_param->ai_vqe_attr);
-                break;
-            case 2: /* 2:talk vqe */
-                ret = ss_mpi_ai_set_talk_vqe_attr(ai_dev_id, ai_chn, ao_dev_id, ai_chn,
-                    (ot_ai_talk_vqe_cfg *)ai_vqe_param->ai_vqe_attr);
-                break;
-            case 3: /* 3:talkv2 vqe */
-                ret = ss_mpi_ai_set_talk_vqe_v2_attr(ai_dev_id, ai_chn, ao_dev_id, ai_chn,
-                    (ot_ai_talk_vqe_v2_cfg *)ai_vqe_param->ai_vqe_attr);
-                break;
-            default:
-                ret = TD_FAILURE;
-                break;
+        switch (ai_vqe_param->ai_vqe_type)
+        {
+        case 0: /* 0:no vqe */
+            ret = TD_SUCCESS;
+            ai_vqe = TD_FALSE;
+            break;
+        case 1: /* 1:record vqe */
+            ret = ss_mpi_ai_set_record_vqe_attr(ai_dev_id, ai_chn,
+                                                (ot_ai_record_vqe_cfg *)ai_vqe_param->ai_vqe_attr);
+            break;
+        case 2: /* 2:talk vqe */
+            ret = ss_mpi_ai_set_talk_vqe_attr(ai_dev_id, ai_chn, ao_dev_id, ai_chn,
+                                              (ot_ai_talk_vqe_cfg *)ai_vqe_param->ai_vqe_attr);
+            break;
+        case 3: /* 3:talkv2 vqe */
+            ret = ss_mpi_ai_set_talk_vqe_v2_attr(ai_dev_id, ai_chn, ao_dev_id, ai_chn,
+                                                 (ot_ai_talk_vqe_v2_cfg *)ai_vqe_param->ai_vqe_attr);
+            break;
+        default:
+            ret = TD_FAILURE;
+            break;
         }
-        if (ret != TD_SUCCESS) {
+        if (ret != TD_SUCCESS)
+        {
             printf("%s: set_ai_vqe%d(%d,%d) failed with %#x\n", __FUNCTION__, ai_vqe_param->ai_vqe_type,
-                ai_dev_id, ai_chn, ret);
+                   ai_dev_id, ai_chn, ret);
             return ret;
         }
 
-        if (ai_vqe == TD_TRUE) {
+        if (ai_vqe == TD_TRUE)
+        {
             ret = ss_mpi_ai_enable_vqe(ai_dev_id, ai_chn);
-            if (ret) {
+            if (ret)
+            {
                 printf("%s: ss_mpi_ai_enable_vqe(%d,%d) failed with %#x\n", __FUNCTION__, ai_dev_id, ai_chn, ret);
                 return ret;
             }
@@ -1367,43 +1509,50 @@ static td_s32 sample_comm_audio_start_ai_vqe(ot_audio_dev ai_dev_id, ot_ai_chn a
 
 /* start ai */
 td_s32 sample_comm_audio_start_ai(ot_audio_dev ai_dev_id, td_u32 ai_chn_cnt, ot_aio_attr *aio_attr,
-    const sample_comm_ai_vqe_param *ai_vqe_param, ot_audio_dev ao_dev_id)
+                                  const sample_comm_ai_vqe_param *ai_vqe_param, ot_audio_dev ao_dev_id)
 {
     td_s32 i;
     td_s32 ret;
     td_u32 chn_cnt;
 
     ret = ss_mpi_ai_set_pub_attr(ai_dev_id, aio_attr);
-    if (ret) {
+    if (ret)
+    {
         printf("%s: ss_mpi_ai_set_pub_attr(%d) failed with %#x\n", __FUNCTION__, ai_dev_id, ret);
         return ret;
     }
 
     ret = ss_mpi_ai_enable(ai_dev_id);
-    if (ret) {
+    if (ret)
+    {
         printf("%s: ss_mpi_ai_enable(%d) failed with %#x\n", __FUNCTION__, ai_dev_id, ret);
         return ret;
     }
 
     chn_cnt = ai_chn_cnt >> ((td_u32)aio_attr->snd_mode);
-    //chn_cnt = ai_chn_cnt;
-    for (i = 0; i < (td_s32)chn_cnt; i++) {
+    // chn_cnt = ai_chn_cnt;
+    for (i = 0; i < (td_s32)chn_cnt; i++)
+    {
         ret = ss_mpi_ai_enable_chn(ai_dev_id, i);
-        if (ret) {
+        if (ret)
+        {
             printf("%s: ss_mpi_ai_enable_chn(%d,%d) failed with %#x\n", __FUNCTION__, ai_dev_id, i, ret);
             return ret;
         }
 
-        if (ai_vqe_param->resample_en == TD_TRUE) {
+        if (ai_vqe_param->resample_en == TD_TRUE)
+        {
             ret = ss_mpi_ai_enable_resample(ai_dev_id, i, ai_vqe_param->out_sample_rate);
-            if (ret) {
+            if (ret)
+            {
                 printf("%s: ss_mpi_ai_enable_re_smp(%d,%d) failed with %#x\n", __FUNCTION__, ai_dev_id, i, ret);
                 return ret;
             }
         }
 
         ret = sample_comm_audio_start_ai_vqe(ai_dev_id, i, ai_vqe_param, ao_dev_id);
-        if (ret != TD_SUCCESS) {
+        if (ret != TD_SUCCESS)
+        {
             return ret;
         }
     }
@@ -1417,32 +1566,39 @@ td_s32 sample_comm_audio_stop_ai(ot_audio_dev ai_dev_id, td_u32 ai_chn_cnt, td_b
     td_s32 i;
     td_s32 ret;
 
-    for (i = 0; i < (td_s32)ai_chn_cnt; i++) {
-        if (resample_en == TD_TRUE) {
+    for (i = 0; i < (td_s32)ai_chn_cnt; i++)
+    {
+        if (resample_en == TD_TRUE)
+        {
             ret = ss_mpi_ai_disable_resample(ai_dev_id, i);
-            if (ret != TD_SUCCESS) {
+            if (ret != TD_SUCCESS)
+            {
                 printf("[func]:%s [line]:%d [info]:%s\n", __FUNCTION__, __LINE__, "failed");
                 return ret;
             }
         }
 
-        if (vqe_en == TD_TRUE) {
+        if (vqe_en == TD_TRUE)
+        {
             ret = ss_mpi_ai_disable_vqe(ai_dev_id, i);
-            if (ret != TD_SUCCESS) {
+            if (ret != TD_SUCCESS)
+            {
                 printf("[func]:%s [line]:%d [info]:%s\n", __FUNCTION__, __LINE__, "failed");
                 return ret;
             }
         }
 
         ret = ss_mpi_ai_disable_chn(ai_dev_id, i);
-        if (ret != TD_SUCCESS) {
+        if (ret != TD_SUCCESS)
+        {
             printf("[func]:%s [line]:%d [info]:%s\n", __FUNCTION__, __LINE__, "failed");
             return ret;
         }
     }
 
     ret = ss_mpi_ai_disable(ai_dev_id);
-    if (ret != TD_SUCCESS) {
+    if (ret != TD_SUCCESS)
+    {
         printf("[func]:%s [line]:%d [info]:%s\n", __FUNCTION__, __LINE__, "failed");
         return ret;
     }
@@ -1453,47 +1609,49 @@ td_s32 sample_comm_audio_stop_ai(ot_audio_dev ai_dev_id, td_u32 ai_chn_cnt, td_b
 #ifdef OT_ACODEC_TYPE_HDMI
 static td_s32 hdmi_set_audio_param(const ot_aio_attr *aio_attr, ot_hdmi_attr *hdmi_attr)
 {
-   /* if enable audio */
+    /* if enable audio */
     hdmi_attr->audio_en = TD_TRUE;
 
     /* sampling rate of PCM audio, the parameter must be consistent with the input of AO */
-    switch (aio_attr->sample_rate) {
-        case OT_AUDIO_SAMPLE_RATE_32000:
-            hdmi_attr->sample_rate = OT_HDMI_SAMPLE_RATE_32K;
-            break;
+    switch (aio_attr->sample_rate)
+    {
+    case OT_AUDIO_SAMPLE_RATE_32000:
+        hdmi_attr->sample_rate = OT_HDMI_SAMPLE_RATE_32K;
+        break;
 
-        case OT_AUDIO_SAMPLE_RATE_44100:
-            hdmi_attr->sample_rate = OT_HDMI_SAMPLE_RATE_44K;
-            break;
+    case OT_AUDIO_SAMPLE_RATE_44100:
+        hdmi_attr->sample_rate = OT_HDMI_SAMPLE_RATE_44K;
+        break;
 
-        case OT_AUDIO_SAMPLE_RATE_48000:
-            hdmi_attr->sample_rate = OT_HDMI_SAMPLE_RATE_48K;
-            break;
+    case OT_AUDIO_SAMPLE_RATE_48000:
+        hdmi_attr->sample_rate = OT_HDMI_SAMPLE_RATE_48K;
+        break;
 
-        default:
-            printf("[func]:%s [line]:%d [info]:%s %d\n", __FUNCTION__, __LINE__,
-                "invalid sample rate = ", aio_attr->sample_rate);
-            return TD_FAILURE;
+    default:
+        printf("[func]:%s [line]:%d [info]:%s %d\n", __FUNCTION__, __LINE__,
+               "invalid sample rate = ", aio_attr->sample_rate);
+        return TD_FAILURE;
     }
 
     /* bitwidth of audio, default :16, the parameter must be consistent with the config of AO */
-    switch (aio_attr->bit_width) {
-        case OT_AUDIO_BIT_WIDTH_8:
-            hdmi_attr->bit_depth = OT_HDMI_BIT_DEPTH_8;
-            break;
+    switch (aio_attr->bit_width)
+    {
+    case OT_AUDIO_BIT_WIDTH_8:
+        hdmi_attr->bit_depth = OT_HDMI_BIT_DEPTH_8;
+        break;
 
-        case OT_AUDIO_BIT_WIDTH_16:
-            hdmi_attr->bit_depth = OT_HDMI_BIT_DEPTH_16;
-            break;
+    case OT_AUDIO_BIT_WIDTH_16:
+        hdmi_attr->bit_depth = OT_HDMI_BIT_DEPTH_16;
+        break;
 
-        case OT_AUDIO_BIT_WIDTH_24:
-            hdmi_attr->bit_depth = OT_HDMI_BIT_DEPTH_24;
-            break;
+    case OT_AUDIO_BIT_WIDTH_24:
+        hdmi_attr->bit_depth = OT_HDMI_BIT_DEPTH_24;
+        break;
 
-        default:
-            printf("[func]:%s [line]:%d [info]:%s %d\n", __FUNCTION__, __LINE__,
-                "invalid bit width = ", aio_attr->bit_width);
-            return TD_FAILURE;
+    default:
+        printf("[func]:%s [line]:%d [info]:%s %d\n", __FUNCTION__, __LINE__,
+               "invalid bit width = ", aio_attr->bit_width);
+        return TD_FAILURE;
     }
 
     return TD_SUCCESS;
@@ -1511,42 +1669,49 @@ td_s32 sample_comm_audio_start_hdmi(const ot_aio_attr *aio_attr)
     pub_attr.intf_type = OT_VO_INTF_HDMI;
     pub_attr.intf_sync = OT_VO_OUT_1080P60;
 
-    if (sample_comm_vo_start_dev(vo_dev, &pub_attr, TD_NULL, 0) != TD_SUCCESS) {
+    if (sample_comm_vo_start_dev(vo_dev, &pub_attr, TD_NULL, 0) != TD_SUCCESS)
+    {
         printf("[func]:%s [line]:%d [info]:%s\n", __FUNCTION__, __LINE__, "sample_comm_vo_start_dev failed");
         return TD_FAILURE;
     }
 
     ret = sample_comm_vo_hdmi_start(pub_attr.intf_sync);
-    if (ret != TD_SUCCESS) {
+    if (ret != TD_SUCCESS)
+    {
         printf("[func]:%s [line]:%d [info]:%s\n", __FUNCTION__, __LINE__, "sample_comm_vo_hdmi_start failed");
         return TD_FAILURE;
     }
 
     ret = ss_mpi_hdmi_stop(hdmi);
-    if (ret != TD_SUCCESS) {
+    if (ret != TD_SUCCESS)
+    {
         printf("[func]:%s [line]:%d [info]:%s\n", __FUNCTION__, __LINE__, "ss_mpi_hdmi_stop failed");
         return TD_FAILURE;
     }
 
     ret = ss_mpi_hdmi_get_attr(hdmi, &hdmi_attr);
-    if (ret != TD_SUCCESS) {
+    if (ret != TD_SUCCESS)
+    {
         printf("[func]:%s [line]:%d [info]:%s\n", __FUNCTION__, __LINE__, "ss_mpi_hdmi_get_attr failed");
         return TD_FAILURE;
     }
 
     ret = hdmi_set_audio_param(aio_attr, &hdmi_attr);
-    if (ret != TD_SUCCESS) {
+    if (ret != TD_SUCCESS)
+    {
         return TD_FAILURE;
     }
 
     ret = ss_mpi_hdmi_set_attr(hdmi, &hdmi_attr);
-    if (ret != TD_SUCCESS) {
+    if (ret != TD_SUCCESS)
+    {
         printf("[func]:%s [line]:%d [info]:%s\n", __FUNCTION__, __LINE__, "ss_mpi_hdmi_set_attr failed");
         return TD_FAILURE;
     }
 
     ret = ss_mpi_hdmi_start(hdmi);
-    if (ret != TD_SUCCESS) {
+    if (ret != TD_SUCCESS)
+    {
         printf("[func]:%s [line]:%d [info]:%s\n", __FUNCTION__, __LINE__, "ss_mpi_hdmi_start failed");
         return TD_FAILURE;
     }
@@ -1560,13 +1725,15 @@ td_s32 sample_comm_audio_stop_hdmi(td_void)
     const ot_vo_dev vo_dev = 0;
 
     ret = sample_comm_vo_hdmi_stop();
-    if (ret != TD_SUCCESS) {
+    if (ret != TD_SUCCESS)
+    {
         printf("%s: sample_comm_vo_hdmi_stop failed with %#x!\n", __FUNCTION__, ret);
         return TD_FAILURE;
     }
 
     ret = ss_mpi_vo_disable(vo_dev);
-    if (ret != TD_SUCCESS) {
+    if (ret != TD_SUCCESS)
+    {
         printf("%s: ss_mpi_vo_disable failed with %#x!\n", __FUNCTION__, ret);
         return TD_FAILURE;
     }
@@ -1577,13 +1744,14 @@ td_s32 sample_comm_audio_stop_hdmi(td_void)
 
 /* start ao */
 td_s32 sample_comm_audio_start_ao(ot_audio_dev ao_dev_id, td_u32 ao_chn_cnt, ot_aio_attr *aio_attr,
-    ot_audio_sample_rate in_sample_rate, td_bool resample_en)
+                                  ot_audio_sample_rate in_sample_rate, td_bool resample_en)
 {
     td_s32 i;
     td_s32 ret;
     td_u32 chn_cnt;
 
-    if (ao_dev_id == SAMPLE_AUDIO_INNER_HDMI_AO_DEV) {
+    if (ao_dev_id == SAMPLE_AUDIO_INNER_HDMI_AO_DEV)
+    {
 #ifdef OT_ACODEC_TYPE_HDMI
         aio_attr->clk_share = 0;
 
@@ -1592,34 +1760,41 @@ td_s32 sample_comm_audio_start_ao(ot_audio_dev ao_dev_id, td_u32 ao_chn_cnt, ot_
     }
 
     ret = ss_mpi_ao_set_pub_attr(ao_dev_id, aio_attr);
-    if (ret != TD_SUCCESS) {
+    if (ret != TD_SUCCESS)
+    {
         printf("%s: ss_mpi_ao_set_pub_attr(%d) failed with %#x!\n", __FUNCTION__, ao_dev_id, ret);
         return TD_FAILURE;
     }
 
     ret = ss_mpi_ao_enable(ao_dev_id);
-    if (ret != TD_SUCCESS) {
+    if (ret != TD_SUCCESS)
+    {
         printf("%s: ss_mpi_ao_enable(%d) failed with %#x!\n", __FUNCTION__, ao_dev_id, ret);
         return TD_FAILURE;
     }
 
     chn_cnt = ao_chn_cnt >> ((td_u32)aio_attr->snd_mode);
-    for (i = 0; i < (td_s32)chn_cnt; i++) {
+    for (i = 0; i < (td_s32)chn_cnt; i++)
+    {
         ret = ss_mpi_ao_enable_chn(ao_dev_id, i);
-        if (ret != TD_SUCCESS) {
+        if (ret != TD_SUCCESS)
+        {
             printf("%s: ss_mpi_ao_enable_chn(%d) failed with %#x!\n", __FUNCTION__, i, ret);
             return TD_FAILURE;
         }
 
-        if (resample_en == TD_TRUE) {
+        if (resample_en == TD_TRUE)
+        {
             ret = ss_mpi_ao_disable_resample(ao_dev_id, i);
-            if (ret != TD_SUCCESS) {
+            if (ret != TD_SUCCESS)
+            {
                 printf("%s: ss_mpi_ao_disable_resample (%d,%d) failed with %#x!\n", __FUNCTION__, ao_dev_id, i, ret);
                 return TD_FAILURE;
             }
 
             ret = ss_mpi_ao_enable_resample(ao_dev_id, i, in_sample_rate);
-            if (ret != TD_SUCCESS) {
+            if (ret != TD_SUCCESS)
+            {
                 printf("%s: ss_mpi_ao_enable_resample(%d,%d) failed with %#x!\n", __FUNCTION__, ao_dev_id, i, ret);
                 return TD_FAILURE;
             }
@@ -1627,7 +1802,8 @@ td_s32 sample_comm_audio_start_ao(ot_audio_dev ao_dev_id, td_u32 ao_chn_cnt, ot_
     }
 
     ret = ss_mpi_ao_enable_chn(ao_dev_id, OT_AO_SYS_CHN_ID);
-    if (ret != TD_SUCCESS) {
+    if (ret != TD_SUCCESS)
+    {
         printf("%s: ss_mpi_ao_enable_chn(%d) failed with %#x!\n", __FUNCTION__, i, ret);
         return TD_FAILURE;
     }
@@ -1635,44 +1811,118 @@ td_s32 sample_comm_audio_start_ao(ot_audio_dev ao_dev_id, td_u32 ao_chn_cnt, ot_
     return TD_SUCCESS;
 }
 
+td_s32 sample_comm_audio_start_ao_x(ot_audio_dev ao_dev_id, td_u32 ao_chn, ot_aio_attr *aio_attr,
+                                  ot_audio_sample_rate in_sample_rate, td_bool resample_en)
+{
+    td_s32 i;
+    td_s32 ret;
+    td_u32 chn_cnt;
+
+    if (ao_dev_id == SAMPLE_AUDIO_INNER_HDMI_AO_DEV)
+    {
+#ifdef OT_ACODEC_TYPE_HDMI
+        aio_attr->clk_share = 0;
+
+        sample_comm_audio_start_hdmi(aio_attr);
+#endif
+    }
+
+    ret = ss_mpi_ao_set_pub_attr(ao_dev_id, aio_attr);
+    if (ret != TD_SUCCESS)
+    {
+        printf("%s: ss_mpi_ao_set_pub_attr(%d) failed with %#x!\n", __FUNCTION__, ao_dev_id, ret);
+        return TD_FAILURE;
+    }
+
+    ret = ss_mpi_ao_enable(ao_dev_id);
+    if (ret != TD_SUCCESS)
+    {
+        printf("%s: ss_mpi_ao_enable(%d) failed with %#x!\n", __FUNCTION__, ao_dev_id, ret);
+        return TD_FAILURE;
+    }
+
+    
+        ret = ss_mpi_ao_enable_chn(ao_dev_id, ao_chn);
+        if (ret != TD_SUCCESS)
+        {
+            printf("%s: ss_mpi_ao_enable_chn(%d) failed with %#x!\n", __FUNCTION__, ao_chn, ret);
+            return TD_FAILURE;
+        }
+
+        if (resample_en == TD_TRUE)
+        {
+            ret = ss_mpi_ao_disable_resample(ao_dev_id, ao_chn);
+            if (ret != TD_SUCCESS)
+            {
+                printf("%s: ss_mpi_ao_disable_resample (%d,%d) failed with %#x!\n", __FUNCTION__, ao_dev_id, ao_chn, ret);
+                return TD_FAILURE;
+            }
+
+            ret = ss_mpi_ao_enable_resample(ao_dev_id, ao_chn, in_sample_rate);
+            if (ret != TD_SUCCESS)
+            {
+                printf("%s: ss_mpi_ao_enable_resample(%d,%d) failed with %#x!\n", __FUNCTION__, ao_dev_id, ao_chn, ret);
+                return TD_FAILURE;
+            }
+        }
+
+    // ret = ss_mpi_ao_enable_chn(ao_dev_id, OT_AO_SYS_CHN_ID);
+    // if (ret != TD_SUCCESS)
+    // {
+    //     printf("%s: ss_mpi_ao_enable_chn(%d) failed with %#x!\n", __FUNCTION__, ao_chn, ret);
+    //     return TD_FAILURE;
+    // }
+
+    return TD_SUCCESS;
+}
+
+
 /* stop ao */
 td_s32 sample_comm_audio_stop_ao(ot_audio_dev ao_dev_id, td_u32 ao_chn_cnt, td_bool resample_en)
 {
     td_s32 i;
     td_s32 ret;
 
-    for (i = 0; i < (td_s32)ao_chn_cnt; i++) {
-        if (resample_en == TD_TRUE) {
+    for (i = 0; i < (td_s32)ao_chn_cnt; i++)
+    {
+        if (resample_en == TD_TRUE)
+        {
             ret = ss_mpi_ao_disable_resample(ao_dev_id, i);
-            if (ret != TD_SUCCESS) {
+            if (ret != TD_SUCCESS)
+            {
                 printf("%s: ss_mpi_ao_disable_re_smp failed with %#x!\n", __FUNCTION__, ret);
                 return ret;
             }
         }
 
         ret = ss_mpi_ao_disable_chn(ao_dev_id, i);
-        if (ret != TD_SUCCESS) {
+        if (ret != TD_SUCCESS)
+        {
             printf("%s: ss_mpi_ao_disable_chn failed with %#x!\n", __FUNCTION__, ret);
             return ret;
         }
     }
 
     ret = ss_mpi_ao_disable_chn(ao_dev_id, OT_AO_SYS_CHN_ID);
-    if (ret != TD_SUCCESS) {
+    if (ret != TD_SUCCESS)
+    {
         printf("%s: ss_mpi_ao_disable_chn(%d) failed with %#x!\n", __FUNCTION__, i, ret);
         return TD_FAILURE;
     }
 
     ret = ss_mpi_ao_disable(ao_dev_id);
-    if (ret != TD_SUCCESS) {
+    if (ret != TD_SUCCESS)
+    {
         printf("%s: ss_mpi_ao_disable failed with %#x!\n", __FUNCTION__, ret);
         return ret;
     }
 
-    if (ao_dev_id == SAMPLE_AUDIO_INNER_HDMI_AO_DEV) {
+    if (ao_dev_id == SAMPLE_AUDIO_INNER_HDMI_AO_DEV)
+    {
 #ifdef OT_ACODEC_TYPE_HDMI
         ret = sample_comm_audio_stop_hdmi();
-        if (ret != TD_SUCCESS) {
+        if (ret != TD_SUCCESS)
+        {
             printf("%s: sample_comm_audio_stop_hdmi failed with %#x!\n", __FUNCTION__, ret);
             return ret;
         }
@@ -1681,6 +1931,60 @@ td_s32 sample_comm_audio_stop_ao(ot_audio_dev ao_dev_id, td_u32 ao_chn_cnt, td_b
 
     return TD_SUCCESS;
 }
+
+td_s32 sample_comm_audio_stop_ao_x(ot_audio_dev ao_dev_id, td_u32 ao_chn, td_bool resample_en)
+{
+    td_s32 i;
+    td_s32 ret;
+
+    i = ao_chn;
+        if (resample_en == TD_TRUE)
+        {
+            ret = ss_mpi_ao_disable_resample(ao_dev_id, i);
+            if (ret != TD_SUCCESS)
+            {
+                printf("%s: ss_mpi_ao_disable_re_smp failed with %#x!\n", __FUNCTION__, ret);
+                return ret;
+            }
+        }
+
+        ret = ss_mpi_ao_disable_chn(ao_dev_id, i);
+        if (ret != TD_SUCCESS)
+        {
+            printf("%s: ss_mpi_ao_disable_chn failed with %#x!\n", __FUNCTION__, ret);
+            return ret;
+        }
+    
+
+    // ret = ss_mpi_ao_disable_chn(ao_dev_id, OT_AO_SYS_CHN_ID);
+    // if (ret != TD_SUCCESS)
+    // {
+    //     printf("%s: ss_mpi_ao_disable_chn(%d) failed with %#x!\n", __FUNCTION__, i, ret);
+    //     return TD_FAILURE;
+    // }
+
+    ret = ss_mpi_ao_disable(ao_dev_id);
+    if (ret != TD_SUCCESS)
+    {
+        printf("%s: ss_mpi_ao_disable failed with %#x!\n", __FUNCTION__, ret);
+        return ret;
+    }
+
+    if (ao_dev_id == SAMPLE_AUDIO_INNER_HDMI_AO_DEV)
+    {
+#ifdef OT_ACODEC_TYPE_HDMI
+        ret = sample_comm_audio_stop_hdmi();
+        if (ret != TD_SUCCESS)
+        {
+            printf("%s: sample_comm_audio_stop_hdmi failed with %#x!\n", __FUNCTION__, ret);
+            return ret;
+        }
+#endif
+    }
+
+    return TD_SUCCESS;
+}
+
 
 /* start aenc */
 td_s32 sample_comm_audio_start_aenc(td_u32 aenc_chn_cnt, const ot_aio_attr *aio_attr, ot_payload_type type)
@@ -1699,17 +2003,26 @@ td_s32 sample_comm_audio_start_aenc(td_u32 aenc_chn_cnt, const ot_aio_attr *aio_
     aenc_attr.buf_size = 30; /* 30:size */
     aenc_attr.point_num_per_frame = aio_attr->point_num_per_frame;
 
-    if (aenc_attr.type == OT_PT_ADPCMA) {
+    if (aenc_attr.type == OT_PT_ADPCMA)
+    {
         aenc_attr.value = &adpcm_aenc;
         adpcm_aenc.adpcm_type = AUDIO_ADPCM_TYPE;
-    } else if ((aenc_attr.type == OT_PT_G711A) || (aenc_attr.type == OT_PT_G711U)) {
+    }
+    else if ((aenc_attr.type == OT_PT_G711A) || (aenc_attr.type == OT_PT_G711U))
+    {
         aenc_attr.value = &aenc_g711;
-    } else if (aenc_attr.type == OT_PT_G726) {
+    }
+    else if (aenc_attr.type == OT_PT_G726)
+    {
         aenc_attr.value = &aenc_g726;
         aenc_g726.g726bps = G726_BPS;
-    } else if (aenc_attr.type == OT_PT_LPCM) {
+    }
+    else if (aenc_attr.type == OT_PT_LPCM)
+    {
         aenc_attr.value = &aenc_lpcm;
-    } else if (aenc_attr.type == OT_PT_AAC) {
+    }
+    else if (aenc_attr.type == OT_PT_AAC)
+    {
         aenc_attr.value = &aenc_aac;
         aenc_aac.aac_type = g_aac_type;
         aenc_aac.bit_rate = g_aac_bps;
@@ -1718,16 +2031,20 @@ td_s32 sample_comm_audio_start_aenc(td_u32 aenc_chn_cnt, const ot_aio_attr *aio_
         aenc_aac.snd_mode = aio_attr->snd_mode;
         aenc_aac.transport_type = g_aac_transport_type;
         aenc_aac.band_width = 0;
-    } else {
+    }
+    else
+    {
         printf("%s: invalid aenc payload type:%d\n", __FUNCTION__, aenc_attr.type);
         return TD_FAILURE;
     }
 
-    for (i = 0; i < (td_s32)aenc_chn_cnt; i++) {
+    for (i = 0; i < (td_s32)aenc_chn_cnt; i++)
+    {
         ae_chn = i;
         /* create aenc chn */
         ret = ss_mpi_aenc_create_chn(ae_chn, &aenc_attr);
-        if (ret != TD_SUCCESS) {
+        if (ret != TD_SUCCESS)
+        {
             printf("%s: ss_mpi_aenc_create_chn(%d) failed with %#x!\n", __FUNCTION__, ae_chn, ret);
             return ret;
         }
@@ -1742,9 +2059,11 @@ td_s32 sample_comm_audio_stop_aenc(td_u32 aenc_chn_cnt)
     td_s32 i;
     td_s32 ret;
 
-    for (i = 0; i < (td_s32)aenc_chn_cnt; i++) {
+    for (i = 0; i < (td_s32)aenc_chn_cnt; i++)
+    {
         ret = ss_mpi_aenc_destroy_chn(i);
-        if (ret != TD_SUCCESS) {
+        if (ret != TD_SUCCESS)
+        {
             printf("%s: ss_mpi_aenc_destroy_chn(%d) failed with %#x!\n", __FUNCTION__, i, ret);
             return ret;
         }
@@ -1758,31 +2077,40 @@ td_s32 sample_comm_audio_destory_all_trd(void)
 {
     td_u32 dev_id, chn_id;
 
-    for (dev_id = 0; dev_id < OT_AI_DEV_MAX_NUM; dev_id++) {
-        for (chn_id = 0; chn_id < OT_AI_MAX_CHN_NUM; chn_id++) {
-            if (sample_comm_audio_destory_trd_ai(dev_id, chn_id) != TD_SUCCESS) {
+    for (dev_id = 0; dev_id < OT_AI_DEV_MAX_NUM; dev_id++)
+    {
+        for (chn_id = 0; chn_id < OT_AI_MAX_CHN_NUM; chn_id++)
+        {
+            if (sample_comm_audio_destory_trd_ai(dev_id, chn_id) != TD_SUCCESS)
+            {
                 printf("%s: sample_comm_audio_destory_trd_ai(%d,%d) failed!\n", __FUNCTION__, dev_id, chn_id);
                 return TD_FAILURE;
             }
         }
     }
 
-    for (chn_id = 0; chn_id < OT_AENC_MAX_CHN_NUM; chn_id++) {
-        if (sample_comm_audio_destory_trd_aenc_adec(chn_id) != TD_SUCCESS) {
+    for (chn_id = 0; chn_id < OT_AENC_MAX_CHN_NUM; chn_id++)
+    {
+        if (sample_comm_audio_destory_trd_aenc_adec(chn_id) != TD_SUCCESS)
+        {
             printf("%s: sample_comm_audio_destory_trd_aenc_adec(%d) failed!\n", __FUNCTION__, chn_id);
             return TD_FAILURE;
         }
     }
 
-    for (chn_id = 0; chn_id < OT_ADEC_MAX_CHN_NUM; chn_id++) {
-        if (sample_comm_audio_destory_trd_file_adec(chn_id) != TD_SUCCESS) {
+    for (chn_id = 0; chn_id < OT_ADEC_MAX_CHN_NUM; chn_id++)
+    {
+        if (sample_comm_audio_destory_trd_file_adec(chn_id) != TD_SUCCESS)
+        {
             printf("%s: sample_comm_audio_destory_trd_file_adec(%d) failed!\n", __FUNCTION__, chn_id);
             return TD_FAILURE;
         }
     }
 
-    for (chn_id = 0; chn_id < OT_AO_DEV_MAX_NUM; chn_id++) {
-        if (sample_comm_audio_destory_trd_ao_vol_ctrl(chn_id) != TD_SUCCESS) {
+    for (chn_id = 0; chn_id < OT_AO_DEV_MAX_NUM; chn_id++)
+    {
+        if (sample_comm_audio_destory_trd_ao_vol_ctrl(chn_id) != TD_SUCCESS)
+        {
             printf("%s: sample_comm_audio_destory_trd_ao_vol_ctrl(%d) failed!\n", __FUNCTION__, chn_id);
             return TD_FAILURE;
         }
@@ -1805,38 +2133,107 @@ td_s32 sample_comm_audio_start_adec(td_u32 adec_chn_cnt, ot_payload_type type)
     ot_adec_attr_aac adec_aac;
 
     adec_attr.type = type;
-    adec_attr.buf_size = 20; /* 20: adec buf size */
+    adec_attr.buf_size = 20;              /* 20: adec buf size */
     adec_attr.mode = OT_ADEC_MODE_STREAM; /* propose use pack mode in your app */
 
-    if (adec_attr.type == OT_PT_ADPCMA) {
+    if (adec_attr.type == OT_PT_ADPCMA)
+    {
         adec_attr.value = &adpcm;
         adpcm.adpcm_type = AUDIO_ADPCM_TYPE;
-    } else if ((adec_attr.type == OT_PT_G711A) || (adec_attr.type == OT_PT_G711U)) {
+    }
+    else if ((adec_attr.type == OT_PT_G711A) || (adec_attr.type == OT_PT_G711U))
+    {
         adec_attr.value = &adec_g711;
-    } else if (adec_attr.type == OT_PT_G726) {
+    }
+    else if (adec_attr.type == OT_PT_G726)
+    {
         adec_attr.value = &adec_g726;
         adec_g726.g726bps = G726_BPS;
-    } else if (adec_attr.type == OT_PT_LPCM) {
+    }
+    else if (adec_attr.type == OT_PT_LPCM)
+    {
         adec_attr.value = &adec_lpcm;
         adec_attr.mode = OT_ADEC_MODE_PACK; /* lpcm must use pack mode */
-    } else if (adec_attr.type == OT_PT_AAC) {
+    }
+    else if (adec_attr.type == OT_PT_AAC)
+    {
         adec_attr.value = &adec_aac;
         adec_attr.mode = OT_ADEC_MODE_STREAM; /* aac should be stream mode */
         adec_aac.transport_type = g_aac_transport_type;
-    } else {
+    }
+    else
+    {
         printf("%s: invalid aenc payload type:%d\n", __FUNCTION__, adec_attr.type);
         return TD_FAILURE;
     }
 
     /* create adec chn */
-    for (i = 0; i < (td_s32)adec_chn_cnt; i++) {
+    for (i = 0; i < (td_s32)adec_chn_cnt; i++)
+    {
         ad_chn = i;
         ret = ss_mpi_adec_create_chn(ad_chn, &adec_attr);
-        if (ret != TD_SUCCESS) {
+        if (ret != TD_SUCCESS)
+        {
             printf("%s: ss_mpi_adec_create_chn(%d) failed with %#x!\n", __FUNCTION__, ad_chn, ret);
             return ret;
         }
     }
+    return TD_SUCCESS;
+}
+
+td_s32 sample_comm_audio_start_adec_x(td_u32 adec_chn, ot_payload_type type)
+{
+    td_s32 ret;
+    ot_adec_chn_attr adec_attr;
+    ot_adec_attr_adpcm adpcm;
+    ot_adec_attr_g711 adec_g711;
+    ot_adec_attr_g726 adec_g726;
+    ot_adec_attr_lpcm adec_lpcm;
+    ot_adec_attr_aac adec_aac;
+
+    adec_attr.type = type;
+    adec_attr.buf_size = 20;              /* 20: adec buf size */
+    adec_attr.mode = OT_ADEC_MODE_STREAM; /* propose use pack mode in your app */
+
+    if (adec_attr.type == OT_PT_ADPCMA)
+    {
+        adec_attr.value = &adpcm;
+        adpcm.adpcm_type = AUDIO_ADPCM_TYPE;
+    }
+    else if ((adec_attr.type == OT_PT_G711A) || (adec_attr.type == OT_PT_G711U))
+    {
+        adec_attr.value = &adec_g711;
+    }
+    else if (adec_attr.type == OT_PT_G726)
+    {
+        adec_attr.value = &adec_g726;
+        adec_g726.g726bps = G726_BPS;
+    }
+    else if (adec_attr.type == OT_PT_LPCM)
+    {
+        adec_attr.value = &adec_lpcm;
+        adec_attr.mode = OT_ADEC_MODE_PACK; /* lpcm must use pack mode */
+    }
+    else if (adec_attr.type == OT_PT_AAC)
+    {
+        adec_attr.value = &adec_aac;
+        adec_attr.mode = OT_ADEC_MODE_STREAM; /* aac should be stream mode */
+        adec_aac.transport_type = g_aac_transport_type;
+    }
+    else
+    {
+        printf("%s: invalid aenc payload type:%d\n", __FUNCTION__, adec_attr.type);
+        return TD_FAILURE;
+    }
+
+    /* create adec chn */
+    ret = ss_mpi_adec_create_chn(adec_chn, &adec_attr);
+    if (ret != TD_SUCCESS)
+    {
+        printf("%s: ss_mpi_adec_create_chn(%d) failed with %#x!\n", __FUNCTION__, adec_chn, ret);
+        return ret;
+    }
+
     return TD_SUCCESS;
 }
 
@@ -1846,7 +2243,8 @@ td_s32 sample_comm_audio_stop_adec(ot_adec_chn ad_chn)
     td_s32 ret;
 
     ret = ss_mpi_adec_destroy_chn(ad_chn);
-    if (ret != TD_SUCCESS) {
+    if (ret != TD_SUCCESS)
+    {
         printf("%s: ss_mpi_adec_destroy_chn(%d) failed with %#x!\n", __FUNCTION__, ad_chn, ret);
         return ret;
     }

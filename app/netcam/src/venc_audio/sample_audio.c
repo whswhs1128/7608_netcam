@@ -22,7 +22,7 @@
 #if defined(OT_VQE_USE_STATIC_MODULE_REGISTER)
 #include "ot_vqe_register.h"
 #endif
-
+#include "sample_audio.h"
 
 static ot_payload_type g_payload_type = OT_PT_AAC;
 static td_bool g_aio_resample  = TD_FALSE;
@@ -534,21 +534,35 @@ static FILE *sample_audio_open_res_file(ot_ai_chn ai_chn)
 }
 
 /* function : open adec file */
-static FILE *sample_audio_open_adec_file(ot_adec_chn ad_chn, ot_payload_type type)
+static FILE *sample_audio_open_adec_file(int type)
 {
     FILE *fd = TD_NULL;
     td_char asz_file_name[FILE_NAME_LEN] = {0};
     td_s32 ret;
     td_char path[PATH_MAX] = {0};
-
+    
     /* create file for save stream */
 #ifdef __LITEOS__
     ret = snprintf_s(asz_file_name, FILE_NAME_LEN, FILE_NAME_LEN - 1,
         "/sharefs/audio_chn%d.%s", ad_chn, sample_audio_pt2_str(type));
 #else
-   
-    ret = snprintf_s(asz_file_name, FILE_NAME_LEN, FILE_NAME_LEN - 1,
-        "audio_chn%d.%s", ad_chn, sample_audio_pt2_str(type));
+
+    switch(type)
+    {
+	    case 0:
+		    ret = snprintf_s(asz_file_name, FILE_NAME_LEN, FILE_NAME_LEN - 1,
+				    "%s/zh/%s", AUDIO_FILE_PATH_PRE, AUDIO_START);
+		    break;
+	    case 1:
+		    ret = snprintf_s(asz_file_name, FILE_NAME_LEN, FILE_NAME_LEN - 1,
+				    "%s/zh/%s", AUDIO_FILE_PATH_PRE, AUDIO_ALARM);
+		    break;
+	    default:
+		    ret = snprintf_s(asz_file_name, FILE_NAME_LEN, FILE_NAME_LEN - 1,
+				    "%s/zh/%s", AUDIO_FILE_PATH_PRE, AUDIO_DEFAULT);
+		    break;
+    }
+    
     printf("%s\n",asz_file_name);
 #endif
     if (ret < 0) {
@@ -617,7 +631,7 @@ static td_void sample_audio_adec_ao_init_param(ot_aio_attr *aio_attr, ot_audio_d
     g_out_sample_rate = OT_AUDIO_SAMPLE_RATE_BUTT;
 }
 
-td_void sample_audio_adec_ao_inner(ot_audio_dev ao_dev, ot_ao_chn ao_chn, ot_adec_chn ad_chn)
+td_void sample_audio_adec_ao_inner(ot_audio_dev ao_dev, ot_ao_chn ao_chn, ot_adec_chn ad_chn, int type)
 {
     td_s32 ret;
     FILE *fd = NULL;
@@ -628,10 +642,10 @@ td_void sample_audio_adec_ao_inner(ot_audio_dev ao_dev, ot_ao_chn ao_chn, ot_ade
         return;
     }
 
-    fd = sample_audio_open_adec_file(ad_chn, g_payload_type);
+    fd = sample_audio_open_adec_file(type);
     if (fd == TD_NULL) {
         sample_dbg(TD_FAILURE);
-        goto adec_ao_err0;
+        //goto adec_ao_err0;
     }
 
     ret = sample_comm_audio_creat_trd_file_adec(ad_chn, fd);
@@ -639,12 +653,13 @@ td_void sample_audio_adec_ao_inner(ot_audio_dev ao_dev, ot_ao_chn ao_chn, ot_ade
         sample_dbg(ret);
         fclose(fd);
         fd = TD_NULL;
-        goto adec_ao_err0;
+        //goto adec_ao_err0;
     }
 
     printf("bind adec:%d to ao(%d,%d) ok \n", ad_chn, ao_dev, ao_chn);
 
     printf("\nplease press twice ENTER to exit this sample\n");
+#if 0
     smaple_audio_getchar();
     smaple_audio_getchar();
 
@@ -660,81 +675,64 @@ adec_ao_err0:
     }
 
     return;
-}
-
-void sample_adec_aac_init(void)
-{
-    ss_mpi_adec_aac_init();
-}
-
-void sample_adec_aac_deinit(void)
-{
-    ss_mpi_aenc_aac_deinit();
-}
-
-void sample_stop_ao(ot_audio_dev ao_dev, int ao_chn_cnt, td_bool g_aio_resample)
-{
-    int ret;
-    sample_comm_audio_stop_ao(ao_dev, ao_chn_cnt, g_aio_resample);
-    if (ret != TD_SUCCESS) {
-        sample_dbg(ret);
-    }
-
-}
-
-void sample_stop_adec(int ad_chn)
-{
-    int ret;
-    ret = sample_comm_audio_stop_adec(ad_chn);
-    if (ret != TD_SUCCESS) {
-        sample_dbg(ret);
-    }
+#endif
 }
 
 /* function : file -> adec -> ao */
-td_s32 sample_audio_adec_ao(td_void)
+td_s32 sample_audio_adec_ao(int type, ot_aio_attr aio_attr)
 {
     td_s32 ret;
     td_u32 ao_chn_cnt;
     td_u32 adec_chn_cnt;
     ot_audio_dev ao_dev;
-    ot_aio_attr aio_attr;
+    //ot_aio_attr aio_attr;
     const ot_ao_chn ao_chn = 0;
     const ot_adec_chn ad_chn = 0;
 
-    sample_adec_aac_init();
+    ss_mpi_adec_aac_init();
     //sample_audio_adec_ao_init_param(&aio_attr, &ao_dev);
-    //需要保持aio_attr的一致性，不然会显示参数无效。
     ao_dev = SAMPLE_AUDIO_EXTERN_AO_DEV;
-    sample_audio_adec_ao_init_param(&aio_attr, &ao_dev);
+
+    adec_chn_cnt = aio_attr.chn_cnt >> ((td_u32)aio_attr.snd_mode);
     ret = sample_comm_audio_start_adec(adec_chn_cnt, g_payload_type);
     if (ret != TD_SUCCESS) {
         sample_dbg(ret);
-        sample_adec_aac_deinit();
-        return ret;
+        //goto adec_ao_err3;
     }
 
     ao_chn_cnt = aio_attr.chn_cnt;
     ret = sample_comm_audio_start_ao(ao_dev, ao_chn_cnt, &aio_attr, g_in_sample_rate, g_aio_resample);
     if (ret != TD_SUCCESS) {
         sample_dbg(ret);
-        sample_stop_adec(ad_chn);
-        sample_adec_aac_deinit();
-        return ret;
+        //goto adec_ao_err2;
     }
 
-    ret = sample_comm_audio_cfg_acodec(&aio_attr);
+    //ret = sample_comm_audio_cfg_acodec(&aio_attr);
     if (ret != TD_SUCCESS) {
         sample_dbg(ret);
-        sample_stop_ao(ao_dev, ao_chn_cnt, g_aio_resample);
-        sample_stop_adec(ad_chn);
-        sample_adec_aac_deinit();
-        return ret;
+        //goto adec_ao_err1;
     }
 
-//    sample_audio_adec_ao_inner(ao_dev, ao_chn, ad_chn, type);
-    
+    sample_audio_adec_ao_inner(ao_dev, ao_chn, ad_chn, type);
+#if 0
+    ss_mpi_aenc_aac_deinit();
 
+adec_ao_err1:
+    ret = sample_comm_audio_stop_ao(ao_dev, ao_chn_cnt, g_aio_resample);
+    if (ret != TD_SUCCESS) {
+        sample_dbg(ret);
+    }
+
+adec_ao_err2:
+    ret = sample_comm_audio_stop_adec(ad_chn);
+    if (ret != TD_SUCCESS) {
+        sample_dbg(ret);
+    }
+
+adec_ao_err3:
+    ss_mpi_adec_aac_deinit();
+    return ret;
+#endif
 }
 
  td_void sample_audio_ai_aenc_init_param(ot_aio_attr *aio_attr, ot_audio_dev *ai_dev, ot_audio_dev *ao_dev)
@@ -1852,7 +1850,7 @@ static td_void main_inner(td_u32 index)
             break;
         }
         case 2: { /* 2:file->adec->ao */
-            sample_audio_adec_ao();
+            //sample_audio_adec_ao(1);
             break;
         }
         case 3: { /* 3:ai->ao vqe */

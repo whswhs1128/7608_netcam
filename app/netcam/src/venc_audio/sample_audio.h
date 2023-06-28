@@ -1,5 +1,18 @@
 #ifndef _SAMPLE_AUDIO_H_
 #define _SAMPLE_AUDIO_H_
+#define AUDIO_FILE_PATH_PRE "/opt/resource/audio"
+#define AUDIO_START "audio_start.aac"
+#define AUDIO_ALARM "audio_alarm.aac"
+#define AUDIO_DEFAULT "audio_default.aac"
+
+#define VENC_CHN_X 2
+
+typedef struct
+{
+    ot_vpss_chn vpss_chn[VENC_CHN_X];
+    ot_venc_chn venc_chn[VENC_CHN_X];
+} sample_venc_vpss_chn;
+
 td_void sample_audio_ai_aenc_init_param(ot_aio_attr *aio_attr, ot_audio_dev *ai_dev, ot_audio_dev *ao_dev);
 
 td_void sample_audio_set_ai_vqe_param(sample_comm_ai_vqe_param *ai_vqe_param,

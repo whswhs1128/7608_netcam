@@ -29,8 +29,8 @@
 #define OT_IVE_CHAR_CALH                        8
 #define OT_IVE_CHAR_NUM                         (OT_IVE_CHAR_CALW * OT_IVE_CHAR_CALH)
 #define OT_IVE_FILE_NAME_LEN                    256
-#define OT_VPSS_CHN_NUM                         2
-
+// #define OT_VPSS_CHN_NUM                         2
+#define OT_VPSS_CHN_NUM                         3
 #define OT_MAX_LOOP_IMG_H                       3
 
 #define OT_SAMPLE_IVE_IMAGE_CHN_ONE             1

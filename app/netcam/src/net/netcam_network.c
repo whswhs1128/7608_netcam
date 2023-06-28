@@ -919,29 +919,35 @@ static int _net_sync_attr2dev(ST_SDK_NETWORK_ATTR *attr)
         sdk_net_up_down_network(attr->name, attr->enable);
         return 0;
     }
-    sdk_net_up_down_network(attr->name, attr->enable);
+    if(attr->enable == 1)
+    sdk_net_up_down_network(attr->name, 0);
+//	 sdk_net_up_down_network(attr->name, attr->enable);
 
     #endif
 
     printf("begin set\n");
     if(sdk_net_set_ip(attr->name, attr->ip) < 0)
     { LOG_ERR("set :%s, ip:%s error",attr->name,attr->ip);}
-    //if(sdk_net_set_hwaddr(attr->name, (char *)attr->mac) < 0)
-      //  LOG_ERR("set :%s, hwaddr:%s error",attr->name,attr->mac);//	xqq set hwaddr failed
-	printf("after sdk_net_set_ip\n");
+    if(sdk_net_set_hwaddr(attr->name, (char *)attr->mac) < 0)
+        LOG_ERR("set :%s, hwaddr:%s error",attr->name,attr->mac);//	xqq set hwaddr failed
+//	printf("after sdk_net_set_ip\n");
     if(sdk_net_set_netmask(attr->name, attr->mask) < 0)
     {        LOG_ERR("set :%s, mask:%s error",attr->name,attr->mask);}
-    printf("sdk_net_set_netmask\n");
+  //  printf("sdk_net_set_netmask\n");
     if(sdk_net_set_gateway(attr->name, attr->gateway) < 0)
     {        LOG_ERR("set :%s, gateway:%s error",attr->name,attr->gateway);}
-     printf("after sdk_net_set_gateway\n");
+    // printf("after sdk_net_set_gateway\n");
     if(sdk_net_set_dns(attr->dns1, attr->dns2) < 0)
     {        LOG_ERR("set :%s, dns1:%s, dns2:%s error",attr->name,attr->dns1,attr->dns2);}
-	printf("after sdk_net_set_dns\n");
+//	printf("after sdk_net_set_dns\n");
+	sdk_net_up_down_network(attr->name, attr->enable);
+	sleep(1);
 	// and udhcpc should be killed, or it will get dynamic IP when IPC connects to router.
+	
 	if(sdk_net_set_dhcp(attr->name,attr->dhcp, netcam_sys_get_name()) < 0)
 	{        LOG_ERR("set:%s, dhcp:%d\n", attr->name, attr->dhcp);}
-	printf("after sdk_net_set_dhcp\n");
+
+
 
     return 0;
 
@@ -979,9 +985,7 @@ static int _net_set_attr2dev(ST_SDK_NETWORK_ATTR *attr, GK_NET_ETH *cfg_attr)
         return 0;
     }
     #endif
-    printf("into _net_set_attr2dev\n");
    _net_sync_attr2dev(attr);		
-   printf("out _net_set_attr2dev\n");
     return 0;
 }
 static int _net_sync_dev2attr(ST_SDK_NETWORK_ATTR *attr, char *ethName)
