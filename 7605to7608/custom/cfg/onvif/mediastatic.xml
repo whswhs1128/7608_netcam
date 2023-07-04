@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Media>
+	<VideoSourceOption Num="1">
+		<Configuration0> <!-- Video Source Option Configuration-->
+			<BoundsRange>
+				<XRange Min="0" Max="2048"></XRange>
+				<YRange Min="0" Max="1536"></YRange>
+				<WidthRange Min="0" Max="2048"></WidthRange>
+				<HeightRange Min="0" Max="1536"></HeightRange>
+			</BoundsRange>
+			<sizeVideoSourceTokensAvailable>1</sizeVideoSourceTokensAvailable>
+			<VideoSourceTokensAvailable>VideoIPCameraSourceToken</VideoSourceTokensAvailable>
+		</Configuration0>
+	</VideoSourceOption>
+
+	<AudioSourceOption Num="1">
+		<Configuration0> <!-- Audio Source Option Configuration-->
+			<sizeInputTokensAvailable>1</sizeInputTokensAvailable>
+			<InputTokensAvailable>AudioIPCameraSourceToken</InputTokensAvailable>
+		</Configuration0>
+	</AudioSourceOption>
+
+	<VideoEncoderOption Num="4">
+		<Configuration0> <!-- Video Encoder Option Configuration-->
+			<QualityRange Min="0" Max="3"></QualityRange>
+			<H264>
+				<sizeResolutionsAvailable>9</sizeResolutionsAvailable>
+				<ResolutionsAvailable0 Width="2560" Height="1440"></ResolutionsAvailable0>
+				<ResolutionsAvailable1 Width="2048" Height="1520"></ResolutionsAvailable1>
+				<ResolutionsAvailable2 Width="1280" Height="720"></ResolutionsAvailable2>
+				<ResolutionsAvailable3 Width="1024" Height="768"></ResolutionsAvailable3>
+				<ResolutionsAvailable4 Width="1024" Height="576"></ResolutionsAvailable4>
+				<ResolutionsAvailable5 Width="960"  Height="576"></ResolutionsAvailable5>
+				<ResolutionsAvailable6 Width="960"  Height="480"></ResolutionsAvailable6>
+				<ResolutionsAvailable7 Width="720"  Height="576"></ResolutionsAvailable7>
+				<ResolutionsAvailable8 Width="720"  Height="480"></ResolutionsAvailable8>
+				<GovLengthRange Min="1" Max="50"></GovLengthRange>
+				<FrameRateRange Min="1" Max="25"></FrameRateRange>
+				<EncodingIntervalRange Min="1" Max="30"></EncodingIntervalRange>
+				<sizeH264ProfilesSupported>1</sizeH264ProfilesSupported>
+				<H264ProfilesSupported>0</H264ProfilesSupported>
+				<BitrateRange Min="100" Max="8196"></BitrateRange>
+			</H264>
+		</Configuration0>
+		<Configuration1> <!-- Video Encoder Option Configuration-->
+                        <QualityRange Min="0" Max="3"></QualityRange>
+                        <H264>
+                                <sizeResolutionsAvailable>4</sizeResolutionsAvailable>
+                                <ResolutionsAvailable0 Width="640" Height="480"></ResolutionsAvailable0>
+                                <ResolutionsAvailable1 Width="640" Height="360"></ResolutionsAvailable1>
+                                <ResolutionsAvailable2 Width="352" Height="288"></ResolutionsAvailable2>
+                                <ResolutionsAvailable3 Width="352" Height="240"></ResolutionsAvailable3>
+                                <GovLengthRange Min="1" Max="50"></GovLengthRange>
+                                <FrameRateRange Min="1" Max="25"></FrameRateRange>
+                                <EncodingIntervalRange Min="1" Max="20"></EncodingIntervalRange>
+                                <sizeH264ProfilesSupported>1</sizeH264ProfilesSupported>
+                                <H264ProfilesSupported>0</H264ProfilesSupported>
+				<BitrateRange Min="50" Max="4096"></BitrateRange>
+                        </H264>
+                </Configuration1>
+		<Configuration2> <!-- Video Encoder Option Configuration-->
+                        <QualityRange Min="0" Max="3"></QualityRange>
+                        <H264>
+                                <sizeResolutionsAvailable>2</sizeResolutionsAvailable>
+                                <ResolutionsAvailable0 Width="320" Height="240"></ResolutionsAvailable0>
+                                <ResolutionsAvailable1 Width="320" Height="180"></ResolutionsAvailable1>
+                                <GovLengthRange Min="1" Max="50"></GovLengthRange>
+                                <FrameRateRange Min="1" Max="25"></FrameRateRange>
+                                <EncodingIntervalRange Min="1" Max="20"></EncodingIntervalRange>
+                                <sizeH264ProfilesSupported>1</sizeH264ProfilesSupported>
+                                <H264ProfilesSupported>0</H264ProfilesSupported>
+				<BitrateRange Min="0" Max="400"></BitrateRange>
+                        </H264>
+                </Configuration2>
+		<Configuration3> <!-- Video Encoder Option Configuration-->
+                        <QualityRange Min="0" Max="3"></QualityRange>
+                        <H264>
+                                <sizeResolutionsAvailable>2</sizeResolutionsAvailable>
+                                <ResolutionsAvailable0 Width="160" Height="120"></ResolutionsAvailable0>
+                                <ResolutionsAvailable1 Width="160" Height="90"></ResolutionsAvailable1>
+                                <GovLengthRange Min="1" Max="50"></GovLengthRange>
+                                <FrameRateRange Min="1" Max="25"></FrameRateRange>
+                                <EncodingIntervalRange Min="1" Max="20"></EncodingIntervalRange>
+                                <sizeH264ProfilesSupported>1</sizeH264ProfilesSupported>
+                                <H264ProfilesSupported>0</H264ProfilesSupported>
+				<BitrateRange Min="0" Max="100"></BitrateRange>
+                        </H264>
+                </Configuration3>
+	</VideoEncoderOption>
+
+	<AudioEncoderOption Num="1">
+		<Configuration0> <!-- Audio Encoder Option Configuration-->
+			<sizeOptions>2</sizeOptions>
+			<Option0>
+				<Encoding>0</Encoding> <!--0 G711, 1 G726, 2 AAC-->
+				<BitrateList sizeItems="2">
+					<BLItems0>16</BLItems0>
+					<BLItems1>32</BLItems1>
+
+				</BitrateList>
+				<SampleRateList sizeItems="2">
+					<SRItems0>8</SRItems0>
+					<SRItems1>16</SRItems1>
+				</SampleRateList>
+			</Option0>
+			<Option1>
+                                <Encoding>1</Encoding> <!--0 G711, 1 G726, 2 AAC-->
+                                <BitrateList sizeItems="2">
+                                        <BLItems0>16</BLItems0>
+                                        <BLItems1>32</BLItems1>
+                                </BitrateList>
+                                <SampleRateList sizeItems="2">
+                                        <SRItems0>8</SRItems0>
+                                        <SRItems1>16</SRItems1>
+                                </SampleRateList>
+                        </Option1>
+		</Configuration0>
+	</AudioEncoderOption>
+	
+	<VideoAnalytics Num="1">
+		<Configuration0>
+                        <Name>VideoAnalytics0</Name>
+                        <UseCount>2</UseCount>
+                        <Token>VideoAnalytics0Token</Token>
+			<AnalyticsModule Num="1">
+				<Module0>
+					<Name>MyCellMotion</Name>
+					<Type>CellMotionEngine</Type>
+					<ItemList>
+						<SimpItem Num="1">
+							<Item0>
+								<Name>Sensitivity</Name>
+								<Value>50</Value>
+							</Item0>
+						</SimpItem>
+						<ElementItem Num="1">
+							<Item0>
+								<Name>Layout</Name>
+							</Item0>						
+						</ElementItem>
+					</ItemList>
+				</Module0>
+			</AnalyticsModule>
+			<AnalyticsRule Num="1">
+				<Rule0>
+					<Name>MyMotionDetectorRule</Name>
+                                        <Type>CellMotionDetector</Type>
+                                        <ItemList>
+                                                <SimpItem Num="4">
+                                                        <Item0>
+                                                                <Name>MinCount</Name>
+                                                                <Value>5</Value>
+                                                        </Item0>
+                                                        <Item1>
+                                                                <Name>AlarmOnDelay</Name>
+                                                                <Value>1000</Value>
+                                                        </Item1>
+                                                        <Item2>
+                                                                <Name>AlarmoffDelay</Name>
+                                                                <Value>1000</Value>
+                                                        </Item2>
+                                                        <Item3>
+                                                                <Name>ActiveCells</Name>
+                                                                <Value>0P8A8A==</Value>
+                                                        </Item3>
+                                                </SimpItem>
+                                                <ElementItem Num="0">
+                                                </ElementItem>
+                                        </ItemList>
+				</Rule0>
+			</AnalyticsRule>
+                </Configuration0>
+	</VideoAnalytics>	
+
+</Media>		
