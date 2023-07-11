@@ -8,7 +8,7 @@ runPtzCfg           0x1c              build/arm11-gcc-uClibc-linux-gk7605v100/ob
 runpwmCfg           0x44              build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_pwm.o
 runStoreCfg         0xc               build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_store.o
 runSnapCfg          0x200             build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_snap.o
-runSystemCfg        0x41c             build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_system.o
+runSystemCfg        0x47c             build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_system.o
 runMdCfg            0x1874            build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_md.o
 runChannelCfg       0x520             build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_channel.o
 runVideoCfg         0x3b0             build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_video.o
@@ -695,7 +695,7 @@ LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
                 [!provide]                        PROVIDE (__bss_start = .)
                 [!provide]                        PROVIDE (__bss_start__ = .)
 
-.bss            0x000000000003bfa0     0x9f18
+.bss            0x000000000003bfa0     0x9f78
  *(.dynbss)
  .dynbss        0x000000000003bfa0        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
  *(.bss .bss.* .gnu.linkonce.b.*)
@@ -768,23 +768,23 @@ LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
  COMMON         0x0000000000045198        0xc build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_store.o
                 0x0000000000045198                runStoreCfg
  *fill*         0x00000000000451a4        0x4 
- COMMON         0x00000000000451a8      0x500 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_system.o
+ COMMON         0x00000000000451a8      0x560 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_system.o
                 0x00000000000451a8                runSystemCfg
-                0x00000000000455c8                g_systemInfo
- COMMON         0x00000000000456a8      0x460 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_user.o
-                0x00000000000456a8                runUserCfg
- COMMON         0x0000000000045b08      0x3b0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_video.o
-                0x0000000000045b08                runVideoCfg
-                0x0000000000045eb8                . = ALIGN ((. != 0x0)?0x8:0x1)
+                0x0000000000045628                g_systemInfo
+ COMMON         0x0000000000045708      0x460 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_user.o
+                0x0000000000045708                runUserCfg
+ COMMON         0x0000000000045b68      0x3b0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./cfg_video.o
+                0x0000000000045b68                runVideoCfg
+                0x0000000000045f18                . = ALIGN ((. != 0x0)?0x8:0x1)
                 [!provide]                        PROVIDE (_bss_end__ = .)
                 [!provide]                        PROVIDE (__bss_end__ = .)
-                0x0000000000045eb8                . = ALIGN (0x8)
-                0x0000000000045eb8                . = SEGMENT_START ("ldata-segment", .)
-                0x0000000000045eb8                . = ALIGN (0x8)
+                0x0000000000045f18                . = ALIGN (0x8)
+                0x0000000000045f18                . = SEGMENT_START ("ldata-segment", .)
+                0x0000000000045f18                . = ALIGN (0x8)
                 [!provide]                        PROVIDE (__end__ = .)
                 [!provide]                        PROVIDE (_end = .)
                 [!provide]                        PROVIDE (end = .)
-                0x0000000000045eb8                . = DATA_SEGMENT_END (.)
+                0x0000000000045f18                . = DATA_SEGMENT_END (.)
 
 .stab
  *(.stab)

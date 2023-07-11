@@ -16,6 +16,8 @@
 #include "avi_utility.h"
 #include "mmc_api.h"
 #include "cfg_all.h"
+#include "sdk_sys.h"
+#include "avi_rec.h"
 
 #define CAL_TIME_REC 0
 
@@ -340,6 +342,7 @@ static int update_avi_header(AviFile *avi_file)
     return 0;
 }
 
+#if 0
 static int record_start_check_file(char *filename)
 {
 	pthread_t pthid = 0;
@@ -354,6 +357,7 @@ static int record_start_check_file(char *filename)
 	}
 	return 0;
 }
+#endif
 
 
 /**********************************************************************
@@ -442,7 +446,7 @@ int avi_record_open(AviFile *avi_file, AviInitParam *param)
     avi_file->video_count = 0;
     avi_file->audio_bytes = 0;
     avi_file->index_count = 0;
-    avi_file->idx_array_count = 0;
+    //avi_file->idx_array_count = 0;
 	
 	avi_file->video_fps = param->fps;
 	
@@ -452,7 +456,15 @@ int avi_record_open(AviFile *avi_file, AviInitParam *param)
         all_size = param->size_m * 1024 * 1024; // M to Byte
 
         //估算多少帧数据
-        avi_file->idx_array_count = all_size  * (param->fps) / (param->bps / 8) * 4;
+        if (avi_file->idx_array_count != all_size  * (param->fps) / (param->bps / 8) * 4)
+        {
+            avi_file->idx_array_count = all_size  * (param->fps) / (param->bps / 8) * 4;
+            if (avi_file->idx_array != NULL)
+            {
+                free(avi_file->idx_array);
+                avi_file->idx_array = NULL;
+            }
+        }
         PRINT_INFO("fps = %d, rec size = %d Mb, idx_array_count = %d\n",
                param->fps, param->size_m, avi_file->idx_array_count);
     }
@@ -493,10 +505,19 @@ int avi_record_open(AviFile *avi_file, AviInitParam *param)
 
         //估算多少帧数据
         //int tmp = param->a_rate * (param->a_bits / 8) / 2048 + 1 + param->fps;
-        int tmp = 9 + 25;
-        avi_file->idx_array_count = (param->duration) * 70 * (tmp);
-        PRINT_INFO("bps = %d, fps = %d, rec duration = %d minutes(%d MB), idx_array_count = %d\n",
-                    param->bps, param->fps, param->duration, param->size_m, avi_file->idx_array_count);
+        int tmp = (10 + 25) * (param->duration) * 70;
+        if (tmp != avi_file->idx_array_count)
+        {
+            PRINT_INFO("idx_array_count change from %d to %d\n", avi_file->idx_array_count, tmp);
+            avi_file->idx_array_count = tmp;
+            if (avi_file->idx_array != NULL)
+            {
+                free(avi_file->idx_array);
+                avi_file->idx_array = NULL;
+            }
+        }
+        PRINT_INFO("bps = %d, fps = %d, rec duration = %d minutes, idx_array_count = %d\n",
+                    param->bps, param->fps, param->duration, avi_file->idx_array_count);
     }
     else
     {
@@ -516,7 +537,7 @@ int avi_record_open(AviFile *avi_file, AviInitParam *param)
 	
     //预留文件的大小后，剩余空间如果小于10M
     t1 = avi_get_sys_runtime(1);
-    while(grd_sd_get_free_size() < (param->size_m + 300))
+    while(grd_sd_get_free_size() < (param->size_m + 300) && mmc_get_sdcard_stauts() != 5)//SD_STATUS_FORMATING
     {
         #if 0 // sd卡大小真正等于0时，将无法录像
         if(grd_sd_get_free_size() == 0)
@@ -543,6 +564,7 @@ int avi_record_open(AviFile *avi_file, AviInitParam *param)
 				{
               	  	PRINT_ERR_MSG("no dir to del, counter=10 sd_format\n");
 					grd_sd_format(); //多次删除文件或文件夹失败，则格式化SD卡
+					sleep(1);
 				}
 				if(runRecordCfg.sdCardFormatFlag == 0)  //默认不自动格式化,OSD显示
 				{
@@ -559,6 +581,7 @@ int avi_record_open(AviFile *avi_file, AviInitParam *param)
 			
             PRINT_ERR_MSG("delete file time exceed 20 seconds, may sd exception,format it\n");
 			grd_sd_format();
+            sleep(1);
 			//return -1;
 		}
     }
@@ -567,17 +590,47 @@ int avi_record_open(AviFile *avi_file, AviInitParam *param)
     avi_file->audio_enable = param->audio_enable;
     avi_file->audio_type = param->a_enc_type;
 
+    //日期目录不存在，则创建
+    memset(time_start, 0, sizeof(time_start));
+    get_nowtime_str(time_start);
+    memset(date, 0, sizeof(date));
+    avi_substring(date, time_start, 0, 0+8);
+    memset(date_path, 0, sizeof(date_path));
+    sprintf(date_path, "%s/%s", GRD_SD_MOUNT_POINT, date); // str = /mnt/sd_card/20120914
+    if(access(date_path, F_OK) != 0 ) //日期目录不存在，则创建
+    {
+        ret = mkdir(date_path, 0777);
+        if(ret < 0)
+        {
+            PRINT_ERR_MSG("mkdir %s failed\n", date_path);
+			mmc_sdcard_status_check();
+            return -1;
+        }
+    }
+
+    //create avi file
+    memset(avi_file->filename, 0, sizeof(avi_file->filename));
+    sprintf(avi_file->filename, "%s/ch%d", date_path, param->ch_num);  // filename: ch0
+    PRINT_INFO("1.Rec filename = %s \n", avi_file->filename);
+
+    //不释放，避免频繁分配内存, idx_array_count变化时才释放
+    #if 0
     //释放上一个文件结构申请的资源
     if(avi_file->idx_array)
     {
         free(avi_file->idx_array);
         avi_file->idx_array = NULL;
     }
-    avi_file->idx_array = (int *)malloc(avi_file->idx_array_count * 16);
-    if(NULL == avi_file->idx_array)
+    #endif
+    if (avi_file->idx_array == NULL)
     {
-        PRINT_ERR_MSG("malloc idx_array failed.\n");
-        return -1;
+        PRINT_INFO("record malloc idx_array:%d\n", avi_file->idx_array_count * 16);
+        avi_file->idx_array = (int *)malloc(avi_file->idx_array_count * 16);
+        if(NULL == avi_file->idx_array)
+        {
+            PRINT_ERR_MSG("malloc idx_array failed.\n");
+            return -1;
+        }
     }
 
 	memset(avi_file->idx_array,0,avi_file->idx_array_count * 16);
@@ -585,6 +638,48 @@ int avi_record_open(AviFile *avi_file, AviInitParam *param)
     //释放上一个文件结构申请的资源
     if(avi_file->file)
     {
+        fclose(avi_file->file);
+        avi_file->file = NULL;
+    }
+    avi_file->file = fopen(avi_file->filename, "wb+");
+    if(NULL == avi_file->file)
+    {
+        PRINT_ERR_MSG("fopen %s failed.\n", avi_file->filename);
+		if( avi_file->idx_array)
+		{
+			free(avi_file->idx_array);
+			avi_file->idx_array = NULL;
+		}
+		
+		mmc_sdcard_status_check();
+        return -1;
+    }
+
+    //write avi header
+    ret = avi_write_header(avi_file, param);
+    if(ret < 0)
+    {
+        //PRINT_ERR_MSG("call avi_write_header failed.\n");
+		if( avi_file->idx_array)
+		{
+			free(avi_file->idx_array);
+			avi_file->idx_array = NULL;
+		}
+		if(avi_file->file)
+		{
+			fclose(avi_file->file);
+			avi_file->file = NULL;
+		}
+
+		mmc_sdcard_status_check();
+        return  -1;
+    }
+
+    //关闭 FILE 指针
+    if(avi_file->file)
+    {
+        fflush(avi_file->file);
+        fsync(fileno(avi_file->file));
         fclose(avi_file->file);
         avi_file->file = NULL;
     }
@@ -644,48 +739,27 @@ static int avi_write_frame_data(AviFile *avi_file,
             }
 
             char time_start[30];
-            char date[10];
-            char date_path[128];
+            char oldname[128];
 
+            memset(oldname, 0, sizeof(oldname));
             memset(time_start, 0, sizeof(time_start));
-            time_to_str(avi_file->time_s, time_start); // get_nowtime_str(time_start);
-            
-            //日期目录不存在，则创建
-            memset(date, 0, sizeof(date));            
-            memset(date_path, 0, sizeof(date_path));
-            avi_substring(date, time_start, 0, 0+8);
-            sprintf(date_path, "%s/%s", GRD_SD_MOUNT_POINT, date); // str = /mnt/sd_card/20120914
-            if(access(date_path, F_OK) != 0 ) //日期目录不存在，则创建
+            get_nowtime_str(time_start);
+            strcpy(oldname, avi_file->filename);   //ch0
+            sprintf(avi_file->filename, "%s_%s", oldname, time_start); //ch0_20120101010101
+            ret = rename(oldname, avi_file->filename);
+            if(ret)
             {
-                ret = mkdir(date_path, 0777);
-                if(ret < 0)
-                {
-                    PRINT_ERR_MSG("mkdir %s failed\n", date_path);
-        			goto sd_error;
-                }
+                PRINT_ERR_MSG("rename %s to %s failed.\n", oldname, avi_file->filename);
+				goto sd_error;;// 文件操作出错，需要检查SD卡状态
             }
+            PRINT_INFO("2.Record file is %s\n", avi_file->filename);
 
-            //create avi file
-            memset(avi_file->filename, 0, sizeof(avi_file->filename));
-            sprintf(avi_file->filename, "%s/ch%d_%s", date_path, param->ch_num, time_start);  // filename: ch0_20120101010101
-            PRINT_INFO("1.Rec filename = %s \n", avi_file->filename);
-
-            //释放上一个文件结构申请的资源
-            avi_file->file = fopen(avi_file->filename, "wb+");
+            avi_file->file = fopen(avi_file->filename, "rb+");
             if(NULL == avi_file->file)
             {
                 PRINT_ERR_MSG("fopen %s failed.\n", avi_file->filename);
 				goto sd_error;// 文件操作出错，需要检查SD卡状态
             }
-
-            //write avi header
-            ret = avi_write_header(avi_file, param);
-            if(ret < 0)
-            {
-                PRINT_ERR_MSG("avi_write_header failed.\n");
-        		goto sd_error;
-            }
-            
             avi_file->data_offset = sizeof(AviHeader);
             fseek(avi_file->file, avi_file->data_offset, SEEK_SET);
             avi_flag_new = 0;
@@ -700,7 +774,7 @@ static int avi_write_frame_data(AviFile *avi_file,
 
     /* write data, 判断buf是否足够存储 */
 	int write_data = data_array_pos + 8 + length + is_align + 12;
-    if(write_data > rec_buf_size)
+    if((data_array_pos + 8 + length + is_align + 12) > rec_buf_size)
     {
         PRINT_ERR_MSG("REC_BUF_SIZE is too small. data_array_pos = %d %d\n", data_array_pos,write_data);
         return -1;
@@ -754,6 +828,7 @@ static int avi_write_frame_data(AviFile *avi_file,
 			clearerr(avi_file->file);
 			goto sd_error;// 文件操作出错，需要检查SD卡状态
 		}
+		
 
 #if CAL_TIME_REC
         gettimeofday(&t_rec2, NULL);
@@ -911,7 +986,7 @@ int avi_record_close(AviFile *avi_file)
     {
         //get stop time to rename file name.
         memset(time_stop, 0, sizeof(time_stop));
-        time_to_str(avi_file->time_e, time_stop); // get_nowtime_str(time_stop);
+        get_nowtime_str(time_stop);
 
         //将buff里面最后的数据写入AVI文件中
         if(data_array_pos != 0)
@@ -953,11 +1028,13 @@ int avi_record_close(AviFile *avi_file)
             avi_file->file = NULL;
         }
 
+        #if 0
         if(avi_file->idx_array)
         {
             free(avi_file->idx_array);
             avi_file->idx_array = NULL;
         }
+        #endif
 
         memset(oldname, 0, sizeof(oldname));
         strcpy(oldname, avi_file->filename);   //ch0_20120101010101
@@ -971,9 +1048,9 @@ int avi_record_close(AviFile *avi_file)
             goto close_end;
         }
         PRINT_INFO("3. Record file is %s\n", avi_file->filename);
-        sync();
+        //sync();
 
-		record_start_check_file(avi_file->filename);
+		//record_start_check_file(avi_file->filename);
     }
 close_end:
 	data_array_index = 0;
@@ -991,11 +1068,13 @@ close_end:
         avi_file->file = NULL;
     }
 
+    #if 0
     if(avi_file->idx_array)
     {
         free(avi_file->idx_array);
         avi_file->idx_array = NULL;
     }
+    #endif
 
     return ret;
 }

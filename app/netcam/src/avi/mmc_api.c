@@ -5,14 +5,14 @@
 #include "utility_api.h"
 #include "sdk_sys.h"
 #include "avi_rec.h"
+#include "netcam_api.h"
 
 #include "cfg_record.h"
+#include "utility_api.h"
 
-#define STAT_FTYPE_FAT  (0x00004d44)
-#define STAT_FTYPE_EXFAT  (0x2011bab0)
-#define STAT_FTYPE__EXT4 (0xEF53)
-#define SD_FTYPE_USE_FAT	(1)
 
+#define STAT_FTYPE_FAT  0x00004d44
+#define STAT_FTYPE_EXFAT  0x2011bab0
 
 static char glb_sd_status_cheack_run = 0;
 static int glb_sd_status = SD_STATUS_NOTINIT;//sd card  状态
@@ -54,24 +54,14 @@ int grd_sd_get_free_size(void)
     if (statfs(GRD_SD_MOUNT_POINT, &statFS) == -1) {              //获取分区的状态
         //PRINT_INFO("statfs failed, path -> [%s]\n", GRD_SD_MOUNT_POINT);
         return 0;
-    }    
-    freeBytes = (u64t)statFS.f_bfree * (u64t)statFS.f_frsize;       //详细的剩余空间容量，以字节为单位    
-    lastFreeSize = (int)(freeBytes >> 20);
-#if SD_FTYPE_USE_FAT
+    }
+
     if ((statFS.f_type == STAT_FTYPE_FAT || statFS.f_type == STAT_FTYPE_EXFAT) == 0)
         return 0;
 
-#else
-    if (statFS.f_type != STAT_FTYPE__EXT4)
-        return 0;
-    
-	if(lastFreeSize <= 0 || statFS.f_ffree <= 10)//return RECORD_RESERVER_SIZE - 100 then inode deplete
-	{
-		PRINT_ERR("freeMB:%d, free_inodes:%d\n", lastFreeSize, statFS.f_ffree);
-		lastFreeSize = 200;
-	}
-#endif
+    freeBytes = (u64t)statFS.f_bfree * (u64t)statFS.f_frsize;       //详细的剩余空间容量，以字节为单位
 
+    lastFreeSize = (int)(freeBytes >> 20);
     return lastFreeSize;  //返回剩余空间容量，以MB为单位
 }
 
@@ -131,14 +121,9 @@ int grd_sd_get_all_size(void)
         //PRINT_INFO("statfs failed, path -> [%s]\n", GRD_SD_MOUNT_POINT);
         return 0;
     }
-    
-#if SD_FTYPE_USE_FAT
-        if ((statFS.f_type == STAT_FTYPE_FAT || statFS.f_type == STAT_FTYPE_EXFAT) == 0)
-            return 0;
-#else
-        if (statFS.f_type != STAT_FTYPE__EXT4)
-            return 0;
-#endif
+
+    if ((statFS.f_type == STAT_FTYPE_FAT || statFS.f_type == STAT_FTYPE_EXFAT) == 0)
+        return 0;
 
     unsigned long long blocksize = statFS.f_bsize;    //每个block里包含的字节数
     unsigned long long totalsize = blocksize * statFS.f_blocks;   //总的字节数，f_blocks为block的数目
@@ -192,6 +177,23 @@ int grd_sd_get_all_size_last(void)
     return lastAllSize;
 }
 
+int grd_sd_get_fdisk_type(void)
+{
+    int ret = 1;
+    char cmd[64] = {0};
+    char result[32] = {0};
+
+    // strcpy(cmd, "fdisk -l | grep mmcblk0p1 | awk '{print $8}'");
+    strcpy(cmd, "fdisk -l | grep mmcblk1p1 | awk '{print $8}'");
+    netcam_sys_shell_result(cmd, result, 32);
+    PRINT_INFO("grd_sd_get_fdisk_type type:%s!\n", result);
+    if (result[0] == '7')
+    {
+        ret = 0;
+    }
+    return ret;
+}
+
 /**********************************************************************
 函数描述：通过文件系统类型判断sd卡是否被mount上
 入口参数：无
@@ -201,25 +203,41 @@ int grd_sd_get_all_size_last(void)
 int grd_sd_is_mount(void)
 {
     struct statfs statFS; //系统stat的结构体
+    static int ismount = 0;
 
     if (statfs(GRD_SD_MOUNT_POINT, &statFS) == -1) {           //获取分区的状态
-        //PRINT_INFO("statfs failed, path -> [%s]\n", GRD_SD_MOUNT_POINT);
+        PRINT_INFO("statfs failed, path -> [%s]\n", GRD_SD_MOUNT_POINT);
         return 0;
     }
 	//PRINT_INFO("statFS.f_type %x is mounted\n", statFS.f_type);
 
     //防止出现SD已经拔出，/dev/mmcblk0不存在，而没有自动卸载的情况
-    #if SD_FTYPE_USE_FAT
-    if ((statFS.f_type == STAT_FTYPE_FAT || statFS.f_type == STAT_FTYPE_EXFAT)&& (grd_sd_is_partition_exist() == 1)) {
+    //grd_sd_get_fdisk_type 防止拔出后，没有卸载，重新插上后面的卡不走重新挂载流程
+    if ((statFS.f_type == STAT_FTYPE_FAT || statFS.f_type == STAT_FTYPE_EXFAT)
+    && (grd_sd_is_partition_exist() == 1)) 
+    {
         //PRINT_INFO("%s is mounted\n", GRD_SD_MOUNT_POINT);
-        return 1;
-	#else
-    if ((statFS.f_type == STAT_FTYPE__EXT4) && (grd_sd_is_partition_exist() == 1)) {
-        //PRINT_INFO("%s is mounted\n", GRD_SD_MOUNT_POINT);
-        return 1;
-	#endif
-    } else {
-        //PRINT_INFO("%s is not mounted\n", GRD_SD_MOUNT_POINT);
+        if (ismount == 1)
+        {
+            return 1;
+        }
+        else
+        {
+            if (grd_sd_get_fdisk_type())
+            {
+                ismount = 1;
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+    } 
+    else 
+    {
+        PRINT_INFO("%s is not mounted\n", GRD_SD_MOUNT_POINT);
+        ismount = 0;
         return 0;
     }
 
@@ -264,7 +282,7 @@ int grd_sd_is_mount(void)
     #endif
 }
 
-/**********************************************************************
+/**********************************************grd_sd_is_mount************************
 函数描述：get the filesystem type of partion
 入口参数：devPath, dev path
 出口参数：fsType, filesystem type. eg. vfat, exfat
@@ -274,9 +292,8 @@ int grd_sd_is_mount(void)
 static int sd_getFSType(char *devPath, char *fsType)
 {
 	int fd = 0, ret;
-    char data[256] = {0};
+    char data[256] = {0};    
 
-    #if SD_FTYPE_USE_FAT
 	if(!devPath)
     {
         PRINT_ERR("device is NULL!\n");
@@ -318,10 +335,6 @@ static int sd_getFSType(char *devPath, char *fsType)
         PRINT_ERR("dev:%s, Unknown filesystem type!\n", devPath);
         ret = -1;
     }
-	#else
-		strcpy(fsType, "ext4");
-	return 0;
-	#endif
 
     return ret;
 }
@@ -501,11 +514,7 @@ static int grd_sd_fdisk_and_mkdosfs(void)
 
 	/*changed fs ID for FAT32*/
 	fprintf(fp, "t\n");
-	#if SD_FTYPE_USE_FAT
 	fprintf(fp, "c\n");
-	#else
-    fprintf(fp, "83\n");//fat32 b;linux 83
-    #endif
 
 	/*save*/
 	fprintf(fp, "w\n");
@@ -883,6 +892,7 @@ int grd_sd_del_oldest_avi_file(void)
 返回值：-1：失败
 		 0：成功
 **********************************************************************/
+#if 0
 static int grd_sd_fileopt_getline(char *hLine, char **hStr)
 {
 	assert(hLine != NULL);
@@ -910,7 +920,7 @@ static int grd_sd_fileopt_getline(char *hLine, char **hStr)
 
 	return 0;
 }
-
+#endif
 
 
 /**********************************************************************
@@ -920,6 +930,7 @@ static int grd_sd_fileopt_getline(char *hLine, char **hStr)
 返回值：-1：失败
 		>0：分区的格式化类型
 **********************************************************************/
+#if 0
 static int grd_sd_disk_get_partition_format_type(char *hPartitionPathName, int diskType)
 {
     struct statfs statFS; //系统stat的结构体
@@ -1052,6 +1063,7 @@ static int grd_sd_disk_get_partition_format_type(char *hPartitionPathName, int d
 	#endif
 	return GRD_SD_FSTYPE_UNKNOWN;
 }
+#endif
 
 /**********************************************************************
 函数描述：判断文件是否存在
@@ -1067,7 +1079,8 @@ static int grd_sd_is_file_exist_ext(char *file_path_name)
     char cmd[256];
 	memset(cmd, 0, sizeof(cmd));
 
-    for(i = 0; i < 10;i++)
+    //for(i = 0; i < 10;i++)
+    for(i = 1; i < 10;i++)
     {
         sprintf(cmd,"%s%d",file_path_name,i);
         if ( access(cmd,F_OK) == 0)
@@ -1089,6 +1102,7 @@ static int grd_sd_is_file_exist_ext(char *file_path_name)
 		 0：不存在
 		 1：存在
 **********************************************************************/
+/*
 static int grd_sd_is_file_exist(char *file_path_name)
 {
     // 刷新设备文件系统
@@ -1139,6 +1153,7 @@ static int grd_sd_is_file_exist(char *file_path_name)
         return -1;
     }
 }
+*/
 
 /**********************************************************************
 函数描述：判断sd卡设备是否存在
@@ -1168,6 +1183,7 @@ int grd_sd_is_device_exist(void)
 static int grd_sd_is_partition_exist(void)
 {
     int ret = 0;
+    printf("grd_sd_partition_pathname = %s\n",grd_sd_partition_pathname);
     if(access(grd_sd_partition_pathname,F_OK) == 0)
     {
         ret = 1;
@@ -1211,7 +1227,8 @@ int grd_sd_check_device_node(void)
 
     snprintf(grd_sd_pathname,sizeof(grd_sd_pathname),"%s%d",GRD_SD_PATHNAME_HEADER,blki);
     snprintf(grd_sd_partition_pathname,sizeof(grd_sd_partition_pathname),"%s%dp%d",GRD_SD_PATHNAME_HEADER,blki,blkp);
-
+    printf("grd_sd_pathname ================ %s\n",grd_sd_pathname);
+    printf("grd_sd_partition_pathname ================ %s\n",grd_sd_partition_pathname);
 
     return ret;
 }
@@ -1295,7 +1312,7 @@ int grd_sd_init(void)
 	return 0;
 }
 
-static void GkSdFormatThread(void)
+static void *GkSdFormatThread(void *para)
 {
 	int ret;
 	int umount_count = 0;
@@ -1314,7 +1331,7 @@ static void GkSdFormatThread(void)
         format_process = 0;
 		set_is_format = 0;
 		PRINT_ERR("grd_sd_check_device_node fail, exit format\n");
-        return;
+        return NULL;
     }
     
     new_system_call("echo  > /proc/sys/kernel/hotplug");
@@ -1333,7 +1350,7 @@ static void GkSdFormatThread(void)
 		PRINT_ERR("umount fail, exit format\n");
 		set_is_format = 0;
     	mmc_set_sdcard_status(SD_STATUS_OK);
-		return;
+        return NULL;
 	}
     /*分区*/
     grd_sd_fdisk_and_mkdosfs();
@@ -1360,11 +1377,7 @@ static void GkSdFormatThread(void)
     char cmd[64];
     memset(cmd, 0, sizeof(cmd));
     //mkdosfs -v -F32 -s32 /dev/mmcblk0p1
-    #if SD_FTYPE_USE_FAT
     snprintf(cmd, sizeof(cmd), "/sbin/mkfs.fat -F 32 -s 128 %s", grd_sd_partition_pathname);
-	#else
-    snprintf(cmd, sizeof(cmd), "/usr/sbin/mkfs.ext4 %s", grd_sd_partition_pathname);//mkfs.ext4 -i 8388608 /dev/mmcblk0p1 
-	#endif
     new_system_call(cmd);
     format_process = 85;
 
@@ -1382,7 +1395,7 @@ static void GkSdFormatThread(void)
     mmc_set_sdcard_status(SD_STATUS_NOTINIT);
     format_process = 0;
 	set_is_format = 0;
-    return;
+    return NULL;
 }
 
 
@@ -1394,7 +1407,6 @@ static void GkSdFormatThread(void)
 **********************************************************************/
 int grd_sd_format(void)
 {
-	int ret;
 	if(!set_is_format && mmc_get_sdcard_stauts() != SD_STATUS_FORMATING)
     {
 #ifdef MODULE_SUPPORT_GOKE_UPGRADE
@@ -1438,7 +1450,7 @@ int mmc_sdcard_write_detect()
 {
 
 	int ret = -2;
-	#if 0
+	#if 1
     char detect_file[128];
 	memset(detect_file,0,sizeof(detect_file));
 
@@ -1546,7 +1558,7 @@ void mmc_sdcard_status_check(void)
         return;
     }
 
-    //PRINT_ERR("SD_STATUS:%d\n", sd_status);
+    PRINT_ERR("SD_STATUS:%d\n", sd_status);
 	switch(sd_status)
 	{
 	    case SD_STATUS_OK:         //sd 状态正常,重新初始化更新状态
@@ -1701,6 +1713,7 @@ static void *mmc_sdcard_status_check_loop(void *arg)
 		mmc_sdcard_status_check();
 		sleep(2);
 	}
+    return NULL;
 }
 
 int mmc_sdcard_status_check_init(void)

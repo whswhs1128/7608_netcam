@@ -1,4 +1,8 @@
 app/netcam/build/arm11-gcc-uClibc-linux-gk7605v100/obj/
+app/netcam/src/avi/build/armA7-gcc-uClibc-linux-gk7205v200/
+app/netcam/src/avi_ori/
+data_sz
+no
 app/netcam/src/avi/build/arm11-gcc-uClibc-linux-gk7605v100/info/
 app/netcam/src/avi/build/arm11-gcc-uClibc-linux-gk7605v100/lib/libapp_avi.a
 app/netcam/src/avi/build/arm11-gcc-uClibc-linux-gk7605v100/lib/libapp_avi.so

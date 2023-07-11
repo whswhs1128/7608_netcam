@@ -490,11 +490,27 @@ int mediabuf_write_frame(MEDIABUF_HANDLE writerid, void *data, int size, GK_NET_
 {
 	if(mediabuf_diable)
 		return -1;
-    if (header == NULL || data == NULL || writerid == NULL) {
-        PRINT_ERR("param error.head:%p,data:%p,writeid:%p",header,data,writerid);
-		
+//    if (header == NULL || data == NULL || writerid == NULL) {
+//        PRINT_ERR("param error.head:%p,data:%p,writeid:%p",header,data,writerid);
+//		
+//        return -1;
+//    }
+    if (header == NULL )
+    {
+    	PRINT_ERR("param error.head:%p\n", header);
+	return -1;
+    }
+    if (data == NULL )
+    {
+        PRINT_ERR("param error.data:%p\n", data);
         return -1;
     }
+if (writerid == NULL )
+    {
+        PRINT_ERR("param error.writerid:%p\n", writerid);
+        return -1;
+    }
+
     ZFIFO_NODE node[2];
     node[0].base = header;
     node[0].len = sizeof(GK_NET_FRAME_HEADER);

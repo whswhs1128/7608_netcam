@@ -198,12 +198,13 @@ void netcam_sys_use_timer_init()
 	if(strstr(sdk_cfg.name, "CUS_HC_GK7202_GC2053_V10") == NULL)
     	netcam_timer_add_task(netcam_iamge_ircut_auto_check, 1*NETCAM_TIMER_ONE_SEC, SDK_FALSE, SDK_FALSE);
     // gpio ¸´Î»¼ì²é
-    netcam_timer_add_task(gk_gpio_reset, NETCAM_TIMER_ONE_SEC, SDK_TRUE, SDK_FALSE);
-    netcam_timer_add_task(ircut_read_status, 5*NETCAM_TIMER_ONE_SEC, SDK_FALSE, SDK_FALSE);
+//    netcam_timer_add_task(gk_gpio_reset, NETCAM_TIMER_ONE_SEC, SDK_TRUE, SDK_FALSE);
+//    netcam_timer_add_task(ircut_read_status, 5*NETCAM_TIMER_ONE_SEC, SDK_FALSE, SDK_FALSE);
     //tf¿¨×´Ì¬¼ì²é
     #if 0
     netcam_timer_add_task(mmc_sdcard_status_check,  4*NETCAM_TIMER_ONE_SEC, SDK_TRUE, SDK_FALSE);
 	#else
+    printf("===================mmc_sdcard_status_check_init======\n");
 	mmc_sdcard_status_check_init();
 	#endif
 }

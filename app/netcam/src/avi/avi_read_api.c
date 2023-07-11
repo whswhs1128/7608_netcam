@@ -536,8 +536,6 @@ static int fix_single_avi_file(char *file_path)
 **********************************************************************/
 static int fix_single_over_avi_file(char *file_path)
 {
-    char name_tmp[128] = {0};
-    char time_stop[30] = {0};
     int ret            = 0;
 
 	if (NULL == file_path)
@@ -719,7 +717,7 @@ static void fix_avi_file_in_dir(char *dir_path)
     if(!pDir)
     {
 		PRINT_ERR("opendir fail:%s\n", dir_path);
-		return 0;
+		return;
 	}
     while((ent = readdir(pDir)) != NULL)
     {
@@ -754,7 +752,7 @@ void fix_all_avi_file(void)
     if(!pDir)
     {
 		PRINT_ERR("opendir fail:%s\n", GRD_SD_MOUNT_POINT);
-		return 0;
+		return;
 	}
     while((ent = readdir(pDir)) != NULL)
     {
@@ -772,46 +770,6 @@ void fix_all_avi_file(void)
         }
     }
 	closedir(pDir);
-}
-
-static int cal_pb_gop(AviPBHandle *pPBHandle)
-{
-    int gop = 0;
-    int no = 0;
-
-    while (1)
-    {
-        if(no >= pPBHandle->idx_array_count)
-            break;
-        if ((pPBHandle->idx_array[4*no] == MAKE_FOURCC('0','0','d','c'))
-            && (pPBHandle->idx_array[4*no+1] == 0x11))
-        {
-            gop = 0;
-            break;
-        }
-        no ++;
-    }
-    //printf("first I :%d\n", no);
-
-    no ++;
-    while (1)
-    {
-        if(no >= pPBHandle->idx_array_count)
-            break;
-        if (pPBHandle->idx_array[4*no] == MAKE_FOURCC('0','0','d','c'))
-        {
-            gop ++;
-            if (pPBHandle->idx_array[4*no+1] == 0x11)
-            {
-                break;
-            }
-        }
-        no ++;
-    }
-    //printf("gop :%d, no: %d\n", gop, no);  
-    pPBHandle->gop = gop;
-
-    return 0;
 }
 
 /**********************************************************************
@@ -911,7 +869,6 @@ int avi_pb_open(char *file_path, AviPBHandle *pPBHandle)
     pPBHandle->pb_buf_pos = 0;
     pPBHandle->no = 0;
 	pPBHandle->pb_buf_num = 0;
-    cal_pb_gop(pPBHandle);
 
     PRINT_INFO("avi_pb_open ok.\n");
     return 0;
@@ -1822,8 +1779,7 @@ int cal_pb_seek_time(AviPBHandle *pPBHandle,AVI_DMS_TIME *ptime)
         else
         {
             //读下一个文件
-            FILE_NODE node;
-			memset(&node,0,sizeof(FILE_NODE));
+            FILE_NODE node = {0};
             ret = get_file_node(pPBHandle->list, &node);
             if (ret != DMS_NET_FILE_SUCCESS) {
                 PRINT_ERR("get_file_node failed, ret = %d\n", ret);
@@ -2049,8 +2005,7 @@ int avi_pb_slide_to_next_file(AviPBHandle *pPBHandle)
     else //多文件
     {
         int ret = 0;
-        FILE_NODE node;
-		memset(&node,0,sizeof(FILE_NODE));
+        FILE_NODE node = {0};
         ret = get_file_node(pPBHandle->list, &node);
         if (ret != DMS_NET_FILE_SUCCESS) {
             PRINT_ERR("get_file_node failed, ret = %d\n", ret);

@@ -115,7 +115,7 @@ typedef struct {
     SDK_S8      platurl[64];
     SDK_S32	    enable485;
     SDK_S32         enableAI;
-    SDK_S32         modelNum;
+    SDK_S8         modelNum[100];
     SDK_S8          AIplat[64];
 } GK_NTP_CFG;
 

@@ -123,7 +123,7 @@ unsigned long avi_get_ch_num(char *file_name)
 **********************************************************************/
 unsigned long long avi_get_start_time(char *file_name)
 {
-    char tmp_str[20] = {0};
+    char tmp_str[20];
     unsigned long long tmp64;
     avi_substring(tmp_str, file_name, 4, 4+14);
     tmp64 = (unsigned long long)atoll(tmp_str);
@@ -137,7 +137,7 @@ unsigned long long avi_get_start_time(char *file_name)
 **********************************************************************/
 unsigned long long avi_get_stop_time(char *file_name)
 {
-    char tmp_str[20] = {0};
+    char tmp_str[20];
     unsigned long long tmp64;
     avi_substring(tmp_str, file_name, 19, 19+14);
     tmp64 = (unsigned long long)atoll(tmp_str);
@@ -485,28 +485,6 @@ u64t get_u64t_now_time(void)
     char time_now[30];
     memset(time_now, 0, sizeof(time_now));
     get_nowtime_str(time_now);
-    u64t time_64 = atoll(time_now);
-    return time_64;
-}
-
-void time_to_str(long ts, char *str)
-{
-	struct tm *ptm = gmtime(&ts);
-    if(ptm && str)
-        sprintf(str, "%04d%02d%02d%02d%02d%02d", ptm->tm_year+1900,
-    											 ptm->tm_mon+1,
-    											 ptm->tm_mday,
-    											 ptm->tm_hour,
-    											 ptm->tm_min,
-    											 ptm->tm_sec);
-	return;
-}
-
-u64t get_time_to_u64t(long ts)
-{
-    char time_now[30];
-    memset(time_now, 0, sizeof(time_now));
-    time_to_str(ts, time_now);
     u64t time_64 = atoll(time_now);
     return time_64;
 }

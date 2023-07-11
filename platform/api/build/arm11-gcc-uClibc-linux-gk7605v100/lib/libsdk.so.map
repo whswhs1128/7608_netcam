@@ -90,444 +90,446 @@ LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
 .note.gnu.build-id
  *(.note.gnu.build-id)
 
-.hash           0x0000000000000190      0x8ec
+.hash           0x0000000000000190      0x8f4
  *(.hash)
- .hash          0x0000000000000190      0x8ec /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .hash          0x0000000000000190      0x8f4 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
 
-.gnu.hash       0x0000000000000a80      0x7a0
+.gnu.hash       0x0000000000000a88      0x7a8
  *(.gnu.hash)
- .gnu.hash      0x0000000000000a80      0x7a0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .gnu.hash      0x0000000000000a88      0x7a8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
 
-.dynsym         0x0000000000001220     0x1cb0
+.dynsym         0x0000000000001230     0x1ce0
  *(.dynsym)
- .dynsym        0x0000000000001220     0x1cb0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .dynsym        0x0000000000001230     0x1ce0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
 
-.dynstr         0x0000000000002ed0     0x1462
+.dynstr         0x0000000000002f10     0x147e
  *(.dynstr)
- .dynstr        0x0000000000002ed0     0x1462 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .dynstr        0x0000000000002f10     0x147e /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
 
-.gnu.version    0x0000000000004332      0x264
+.gnu.version    0x000000000000438e      0x268
  *(.gnu.version)
- .gnu.version   0x0000000000004332      0x264 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .gnu.version   0x000000000000438e      0x268 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
 
-.gnu.version_d  0x0000000000004598        0x0
+.gnu.version_d  0x00000000000045f8        0x0
  *(.gnu.version_d)
  .gnu.version_d
-                0x0000000000004598        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+                0x00000000000045f8        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
 
-.gnu.version_r  0x0000000000004598       0x20
+.gnu.version_r  0x00000000000045f8       0x20
  *(.gnu.version_r)
  .gnu.version_r
-                0x0000000000004598       0x20 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+                0x00000000000045f8       0x20 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
 
-.rela.dyn       0x00000000000045b8      0x180
+.rela.dyn       0x0000000000004618      0x180
  *(.rela.init)
  *(.rela.text .rela.text.* .rela.gnu.linkonce.t.*)
  *(.rela.fini)
  *(.rela.rodata .rela.rodata.* .rela.gnu.linkonce.r.*)
  *(.rela.data .rela.data.* .rela.gnu.linkonce.d.*)
  .rela.data.rel.local
-                0x00000000000045b8       0x18 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+                0x0000000000004618       0x18 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
  *(.rela.tdata .rela.tdata.* .rela.gnu.linkonce.td.*)
  *(.rela.tbss .rela.tbss.* .rela.gnu.linkonce.tb.*)
  *(.rela.ctors)
  *(.rela.dtors)
  *(.rela.got)
- .rela.got      0x00000000000045d0      0x138 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .rela.got      0x0000000000004630      0x138 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
  *(.rela.bss .rela.bss.* .rela.gnu.linkonce.b.*)
  *(.rela.ifunc)
- .rela.ifunc    0x0000000000004708        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .rela.ifunc    0x0000000000004768        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
  .rela.init_array
-                0x0000000000004708       0x18 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+                0x0000000000004768       0x18 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
  .rela.fini_array
-                0x0000000000004720       0x18 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+                0x0000000000004780       0x18 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
 
-.rela.plt       0x0000000000004738      0xdc8
+.rela.plt       0x0000000000004798      0xde0
  *(.rela.plt)
- .rela.plt      0x0000000000004738      0xdc8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .rela.plt      0x0000000000004798      0xde0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
  *(.rela.iplt)
 
-.init           0x0000000000005500       0x14
+.init           0x0000000000005578       0x14
  *(SORT_NONE(.init))
- .init          0x0000000000005500        0xc /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
-                0x0000000000005500                _init
- .init          0x000000000000550c        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+ .init          0x0000000000005578        0xc /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+                0x0000000000005578                _init
+ .init          0x0000000000005584        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
 
-.plt            0x0000000000005520      0x950
+.plt            0x0000000000005590      0x960
  *(.plt)
- .plt           0x0000000000005520      0x950 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .plt           0x0000000000005590      0x960 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
  *(.iplt)
 
-.text           0x0000000000005e70     0xccc0
+.text           0x0000000000005ef0     0xcdc8
  *(.text.unlikely .text.*_unlikely .text.unlikely.*)
  *(.text.exit .text.exit.*)
  *(.text.startup .text.startup.*)
  *(.text.hot .text.hot.*)
  *(SORT_BY_NAME(.text.sorted.*))
  *(.text .stub .text.* .gnu.linkonce.t.*)
- .text          0x0000000000005e70       0x14 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
- *fill*         0x0000000000005e84        0x4 1f2003d5
- .text          0x0000000000005e88       0xbc /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
- *fill*         0x0000000000005f44        0x4 1f2003d5
- .text          0x0000000000005f48      0xb9c build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_common.o
-                0x0000000000005fe8                sdk_venc_bps_limit
-                0x00000000000060d0                sdk_yuv420sem_to_bitmap888
-                0x0000000000006208                copy_file
-                0x0000000000006380                delete_path
-                0x00000000000067b0                is_cjson_file
-                0x0000000000006840                delete_cjson_file_frome_dir
- *fill*         0x0000000000006ae4        0x4 1f2003d5
- .text          0x0000000000006ae8     0x24ec build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_network.o
-                0x0000000000006ae8                sdk_net_is_ipaddr
-                0x0000000000006c30                sdk_net_get_ntp
-                0x0000000000006e78                sdk_net_set_ntp
-                0x0000000000007010                sdk_net_set_dns
-                0x0000000000007130                sdk_net_get_dns
-                0x0000000000007288                sdk_net_set_mtu
-                0x0000000000007410                sdk_net_set_hwaddr
-                0x0000000000007798                sdk_net_set_netmask
-                0x00000000000079c0                sdk_net_set_ip
-                0x0000000000007b98                sdk_net_get_gateway
-                0x0000000000007d38                sdk_net_get_broadaddr
-                0x0000000000007ea8                sdk_net_set_broadaddr
-                0x0000000000007fe8                sdk_net_get_netmask
-                0x0000000000008140                sdk_net_get_ip
-                0x0000000000008290                sdk_net_get_hwaddr
-                0x0000000000008438                sdk_net_get_mtu
-                0x0000000000008568                sdk_net_get_name
-                0x00000000000086b8                new_system_call
-                0x00000000000087b8                sdk_net_set_dhcp
-                0x0000000000008be0                sdk_net_set_gateway
-                0x0000000000008d30                sdk_net_up_down_network
-                0x0000000000008da0                sdk_net_get_detect
-                0x0000000000008e38                sdk_network_tools_ctrl
-                0x0000000000008f00                sdk_net_resolve_host
- *fill*         0x0000000000008fd4        0x4 1f2003d5
- .text          0x0000000000008fd8       0x78 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk.o
-                0x0000000000008fd8                gk_get_max_stream_nums
-                0x0000000000008fe8                gk_set_max_stream_nums
- .text          0x0000000000009050      0x1ac build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_sys.o
-                0x0000000000009050                sdk_sys_init
-                0x0000000000009148                sdk_sys_destroy
-                0x0000000000009150                sdk_sys_thread_set_name
- *fill*         0x00000000000091fc        0x4 1f2003d5
- .text          0x0000000000009200      0x4ec build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_vin.o
-                0x0000000000009200                sdk_vin_set_cover
-                0x00000000000093c0                sdk_vin_get_cover
-                0x0000000000009470                gk_vin_reset_cover
-                0x00000000000094d8                sdk_vin_init
-                0x0000000000009578                sdk_vin_destroy
-                0x00000000000095a0                sdk_vin_yuv420sem_to_bitmap888
-                0x00000000000096c0                sdk_vin_capture_data
- *fill*         0x00000000000096ec        0x4 1f2003d5
- .text          0x00000000000096f0     0x2584 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_enc.o
-                0x0000000000009bd8                sdk_vi_set_params
-                0x0000000000009ce0                sdk_vi_get_params
-                0x0000000000009d08                sdk_vout_set_params
-                0x0000000000009d80                sdk_enc_init
-                0x0000000000009e08                sdk_set_get_video_stream_cb
-                0x0000000000009e20                sdk_set_get_auido_stream_cb
-                0x0000000000009e28                sdk_enc_create_stream_h264
-                0x000000000000a1e8                sdk_enc_release_stream_h264
-                0x000000000000a2b8                sdk_enc_enable_stream_h264
-                0x000000000000a340                sdk_enc_set_stream_h264
-                0x000000000000b1c0                sdk_enc_get_stream_h264
-                0x000000000000b308                sdk_enc_request_stream_h264_keyframe
-                0x000000000000b368                sdk_video_enc_start
-                0x000000000000b3f0                sdk_video_enc_stop
-                0x000000000000b420                sdk_audio_enc_start
-                0x000000000000b4a8                sdk_audio_enc_stop
-                0x000000000000b4d8                sdk_enc_destroy
-                0x000000000000b690                sdk_enc_snapshot
-                0x000000000000b738                sdk_enc_max_resolution_mode
-                0x000000000000b740                sdk_enc_get_stream_fps
-                0x000000000000b888                gk_enc_set_mirror
-                0x000000000000b930                gk_enc_set_flip
-                0x000000000000b9d8                print_channels_params
-                0x000000000000bb50                gk_get_enc_stream_par
-                0x000000000000bbc8                gk_adjust_bps
-                0x000000000000bbd0                gk_adjust_fps
-                0x000000000000bbd8                gk_venc_set_h264_qp_config
-                0x000000000000bbf0                sdk_venc_get_stream_resolution
-                0x000000000000bc00                sdk_set_h26x_smart
-                0x000000000000bc70                sdk_set_audio_proc_callback
- *fill*         0x000000000000bc74        0x4 1f2003d5
- .text          0x000000000000bc78     0x1aec build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_isp.o
-                0x000000000000bc88                sdk_isp_set_md_light_mode
-                0x000000000000bc98                isp_register_auto_slowshutter
-                0x000000000000bd00                sdk_isp_get_iso
-                0x000000000000bd08                sdk_isp_set_flip
-                0x000000000000bd58                sdk_isp_set_mirror
-                0x000000000000bda8                sdk_isp_set_ImageDefParam
-                0x000000000000be08                sdk_isp_set_hue
-                0x000000000000be98                sdk_isp_set_saturation
-                0x000000000000bf28                sdk_isp_set_brightness
-                0x000000000000bfb8                sdk_isp_set_contrast
-                0x000000000000c0c8                sdk_isp_set_color_mode
-                0x000000000000c170                sdk_isp_set_vi_flicker
-                0x000000000000c178                sdk_isp_set_sharpen
-                0x000000000000c208                sdk_isp_set_warp
-                0x000000000000c280                sdk_isp_set_fps
-                0x000000000000c2e0                sdk_isp_set_scene_mode
-                0x000000000000c338                sdk_isp_set_wb_mode
-                0x000000000000c390                sdk_isp_set_ircut_control_mode
-                0x000000000000c3f0                sdk_isp_set_lowlight_mode
-                0x000000000000c658                sdk_isp_init
-                0x000000000000c778                sdk_isp_destroy
-                0x000000000000c7b0                gk_isp_init_start
-                0x000000000000c870                gk_isp_get_led_state
-                0x000000000000c8e8                sdk_isp_changed
-                0x000000000000ca00                sdk_isp_change_timeout
-                0x000000000000ca40                sdk_ircu_detect
-                0x000000000000ca48                sdk_isp_get_bulb_mode
-                0x000000000000ca58                sdk_isp_set_bulb_level
-                0x000000000000ca98                sdk_isp_get_bulb_level
-                0x000000000000caa8                sdk_isp_ircut_led_set
-                0x000000000000cad8                sdk_isp_ircut_led_get_status
-                0x000000000000cb20                sdk_isp_light_led_set
-                0x000000000000cb50                gk_isp_led_on
-                0x000000000000cbc8                gk_isp_led_off
-                0x000000000000cc40                sdk_isp_ircut_auto_switch
-                0x000000000000d470                sdk_isp_light_led_get_status
-                0x000000000000d4b8                sdk_isp_set_bulb_mode
-                0x000000000000d660                sdk_isp_set_ircut_mode
-                0x000000000000d738                sdk_isp_led_test_start
-                0x000000000000d750                sdk_isp_pwm_set_on_value
-                0x000000000000d758                sdk_isp_get_cur_mode
- *fill*         0x000000000000d764        0x4 1f2003d5
- .text          0x000000000000d768      0x474 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_audio.o
-                0x000000000000d768                gk_audio_init
-                0x000000000000d800                gk_audio_exit
-                0x000000000000d898                gk_audio_ai_init
-                0x000000000000d8e8                gk_audio_ai_exit
-                0x000000000000d8f0                gk_audio_ao_init
-                0x000000000000d940                gk_audio_ao_exit
-                0x000000000000d948                get_volume_level
-                0x000000000000da28                get_gain_level
-                0x000000000000daf8                gk_audio_ao_set_volume
-                0x000000000000db58                gk_audio_ao_get_volume
-                0x000000000000dba8                gk_audio_aout_play
-                0x000000000000dbb0                gk_audio_input_enable
-                0x000000000000dbc8                gk_audio_output_enable
- *fill*         0x000000000000dbdc        0x4 1f2003d5
- .text          0x000000000000dbe0      0x448 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_watchdog.o
-                0x000000000000dbe0                sdk_watchdog_feed
-                0x000000000000dc68                sdk_watchdog_set_timeout
-                0x000000000000dd38                sdk_watchdog_get_timeout
-                0x000000000000ddb8                sdk_watchdog_control
-                0x000000000000dea0                sdk_watchdog_init
-                0x000000000000dfb0                sdk_watchdog_exit
- .text          0x000000000000e028     0x1238 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_gpio.o
-                0x000000000000e228                sdk_gpio_open
-                0x000000000000e3f0                sdk_gpio_close
-                0x000000000000e410                sdk_gpio_set_direction
-                0x000000000000e568                sdk_gpio_set_value
-                0x000000000000e680                sdk_gpio_get_value
-                0x000000000000e7c0                sdk_gpio_set_pull_up_down
-                0x000000000000e8f8                sdk_gpio_set_output_value
-                0x000000000000eb90                sdk_gpio_get_intput_value
-                0x000000000000ee28                sdk_gpio_get_output_value
-                0x000000000000f038                sdk_gpio_set_intput_default_value
- .text          0x000000000000f260      0x5a4 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_osd.o
-                0x000000000000f260                _get_local_area_params
-                0x000000000000f2c0                _set_local_area_params
-                0x000000000000f2f8                sdk_osd_init
-                0x000000000000f320                sdk_osd_deinit
-                0x000000000000f348                sdk_osd_set_reload_callback
-                0x000000000000f358                sdk_osd_enable
-                0x000000000000f3f0                sdk_osd_set_area_params
-                0x000000000000f498                sdk_osd_set_channel_attr
-                0x000000000000f4d0                sdk_osd_set_data
-                0x000000000000f778                gk_osd_set_mirror
-                0x000000000000f7b0                sdk_osd_get_mirror
-                0x000000000000f7c0                gk_osd_set_flip
-                0x000000000000f7f8                sdk_osd_get_flip
- *fill*         0x000000000000f804        0x4 1f2003d5
- .text          0x000000000000f808     0x19b0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_ptz.o
-                0x00000000000101f8                sdk_ptz_init
-                0x0000000000010340                sdk_ptz_deinit
-                0x00000000000103b8                sdk_ptz_up
-                0x00000000000104e8                sdk_ptz_down
-                0x0000000000010618                sdk_ptz_left
-                0x0000000000010748                sdk_ptz_right
-                0x0000000000010878                sdk_ptz_left_up
-                0x0000000000010a40                sdk_ptz_left_down
-                0x0000000000010c00                sdk_ptz_right_up
-                0x0000000000010dc8                sdk_ptz_right_down
-                0x0000000000010f90                sdk_ptz_get_current_step
-                0x0000000000011010                sdk_ptz_stop_loop
-                0x0000000000011028                sdk_ptz_start_and_goto_center
-                0x0000000000011180                sdk_ptz_get_startup_adjust_flag
- .text          0x00000000000111b8      0xb58 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_pwm.o
-                0x00000000000112d8                gadi_pwm_init
-                0x0000000000011360                gadi_pwm_exit
-                0x00000000000113b0                gadi_pwm_open
-                0x0000000000011488                gadi_pwm_close
-                0x00000000000114f0                gadi_pwm_get_speed
-                0x0000000000011570                gadi_pwm_set_speed
-                0x0000000000011670                gadi_pwm_get_mode
-                0x00000000000116e0                gadi_pwm_set_mode
-                0x00000000000117f8                gadi_pwm_start
-                0x0000000000011808                gadi_pwm_stop
-                0x00000000000118b8                gadi_pwm_get_duty
-                0x0000000000011940                gadi_pwm_set_duty
-                0x00000000000119f8                sdk_set_pwm_speed
-                0x0000000000011a48                sdk_get_pwm_speed
-                0x0000000000011aa8                sdk_set_pwm_duty
-                0x0000000000011af8                sdk_get_pwm_duty
-                0x0000000000011b58                sdk_pwm_init
-                0x0000000000011b90                sdk_pwm_exit
-                0x0000000000011be0                sdk_pwm_start
-                0x0000000000011ce0                sdk_pwm_stop
-                0x0000000000011cf8                sdk_pwm_get_channel_status
- .text          0x0000000000011d10      0x574 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_pda.o
-                0x0000000000011d10                sdk_pda_create
-                0x0000000000011e50                sdk_pda_init
-                0x0000000000011f38                sdk_pda_destroy
-                0x0000000000011f90                sdk_pda_exit
-                0x0000000000011ff0                sdk_pda_set_attr
-                0x0000000000011ff8                sdk_pda_get_attr
-                0x0000000000012058                sdk_pda_enable
-                0x0000000000012060                sdk_pda_get_data
-                0x00000000000121f0                sdk_pda_get_yuv
-                0x0000000000012248                sdk_pda_get_pda_p
-                0x0000000000012258                sdk_pda_get_yuv_last
- *fill*         0x0000000000012284        0x4 1f2003d5
- .text          0x0000000000012288      0x8a8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_vision.o
-                0x00000000000127d8                sdk_vision_init
-                0x0000000000012940                sdk_vision_open
-                0x00000000000129d0                sdk_vision_exit
-                0x0000000000012a20                sdk_vision_set_vision_sensitivity
-                0x0000000000012a40                sdk_vision_set_transboundary_detection
-                0x0000000000012a70                sdk_vision_set_region_intrusion
-                0x0000000000012aa0                sdk_vision_set_pause_state
-                0x0000000000012ab0                sdk_vision_set_human_detection
-                0x0000000000012b10                sdk_vision_get_pause_state
-                0x0000000000012b20                sdk_vision_set_sensitive
-                0x0000000000012b28                sdk_vision_set_roi
- .text          0x0000000000012b30        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
- .text          0x0000000000012b30        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+ .text          0x0000000000005ef0       0x14 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ *fill*         0x0000000000005f04        0x4 1f2003d5
+ .text          0x0000000000005f08       0xbc /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ *fill*         0x0000000000005fc4        0x4 1f2003d5
+ .text          0x0000000000005fc8      0xb9c build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_common.o
+                0x0000000000006068                sdk_venc_bps_limit
+                0x0000000000006150                sdk_yuv420sem_to_bitmap888
+                0x0000000000006288                copy_file
+                0x0000000000006400                delete_path
+                0x0000000000006830                is_cjson_file
+                0x00000000000068c0                delete_cjson_file_frome_dir
+ *fill*         0x0000000000006b64        0x4 1f2003d5
+ .text          0x0000000000006b68     0x24ec build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_network.o
+                0x0000000000006b68                sdk_net_is_ipaddr
+                0x0000000000006cb0                sdk_net_get_ntp
+                0x0000000000006ef8                sdk_net_set_ntp
+                0x0000000000007090                sdk_net_set_dns
+                0x00000000000071b0                sdk_net_get_dns
+                0x0000000000007308                sdk_net_set_mtu
+                0x0000000000007490                sdk_net_set_hwaddr
+                0x0000000000007818                sdk_net_set_netmask
+                0x0000000000007a40                sdk_net_set_ip
+                0x0000000000007c18                sdk_net_get_gateway
+                0x0000000000007db8                sdk_net_get_broadaddr
+                0x0000000000007f28                sdk_net_set_broadaddr
+                0x0000000000008068                sdk_net_get_netmask
+                0x00000000000081c0                sdk_net_get_ip
+                0x0000000000008310                sdk_net_get_hwaddr
+                0x00000000000084b8                sdk_net_get_mtu
+                0x00000000000085e8                sdk_net_get_name
+                0x0000000000008738                new_system_call
+                0x0000000000008838                sdk_net_set_dhcp
+                0x0000000000008c60                sdk_net_set_gateway
+                0x0000000000008db0                sdk_net_up_down_network
+                0x0000000000008e20                sdk_net_get_detect
+                0x0000000000008eb8                sdk_network_tools_ctrl
+                0x0000000000008f80                sdk_net_resolve_host
+ *fill*         0x0000000000009054        0x4 1f2003d5
+ .text          0x0000000000009058       0x78 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk.o
+                0x0000000000009058                gk_get_max_stream_nums
+                0x0000000000009068                gk_set_max_stream_nums
+ .text          0x00000000000090d0      0x1ac build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_sys.o
+                0x00000000000090d0                sdk_sys_init
+                0x00000000000091c8                sdk_sys_destroy
+                0x00000000000091d0                sdk_sys_thread_set_name
+ *fill*         0x000000000000927c        0x4 1f2003d5
+ .text          0x0000000000009280      0x4ec build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_vin.o
+                0x0000000000009280                sdk_vin_set_cover
+                0x0000000000009440                sdk_vin_get_cover
+                0x00000000000094f0                gk_vin_reset_cover
+                0x0000000000009558                sdk_vin_init
+                0x00000000000095f8                sdk_vin_destroy
+                0x0000000000009620                sdk_vin_yuv420sem_to_bitmap888
+                0x0000000000009740                sdk_vin_capture_data
+ *fill*         0x000000000000976c        0x4 1f2003d5
+ .text          0x0000000000009770     0x268c build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_enc.o
+                0x00000000000099f0                sdk_vi_set_params
+                0x0000000000009af8                sdk_vi_get_params
+                0x0000000000009b20                sdk_vout_set_params
+                0x0000000000009b98                sdk_enc_init
+                0x0000000000009c20                sdk_set_get_video_stream_cb
+                0x0000000000009c38                sdk_set_get_auido_stream_cb
+                0x0000000000009c40                sdk_enc_create_stream_h264
+                0x000000000000a000                sdk_enc_release_stream_h264
+                0x000000000000a0d0                sdk_enc_enable_stream_h264
+                0x000000000000a158                sdk_enc_set_stream_h264
+                0x000000000000afd8                sdk_enc_get_stream_h264
+                0x000000000000b120                sdk_enc_request_stream_h264_keyframe
+                0x000000000000b180                sdk_video_enc_start
+                0x000000000000b208                sdk_video_enc_stop
+                0x000000000000b238                sdk_audio_enc_start
+                0x000000000000b2c0                sdk_audio_enc_stop
+                0x000000000000b2f0                sdk_enc_destroy
+                0x000000000000b4a8                sdk_enc_snapshot
+                0x000000000000b558                sdk_enc_max_resolution_mode
+                0x000000000000b560                sdk_enc_get_stream_fps
+                0x000000000000b6a8                gk_enc_set_mirror
+                0x000000000000b750                gk_enc_set_flip
+                0x000000000000b7f8                print_channels_params
+                0x000000000000b970                cal_video_pts
+                0x000000000000bc00                cal_audio_pts
+                0x000000000000bcd8                gk_get_enc_stream_par
+                0x000000000000bd50                gk_adjust_bps
+                0x000000000000bd58                gk_adjust_fps
+                0x000000000000bd60                gk_venc_set_h264_qp_config
+                0x000000000000bd78                sdk_venc_get_stream_resolution
+                0x000000000000bd88                sdk_set_h26x_smart
+                0x000000000000bdf8                sdk_set_audio_proc_callback
+ *fill*         0x000000000000bdfc        0x4 1f2003d5
+ .text          0x000000000000be00     0x1aec build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_isp.o
+                0x000000000000be10                sdk_isp_set_md_light_mode
+                0x000000000000be20                isp_register_auto_slowshutter
+                0x000000000000be88                sdk_isp_get_iso
+                0x000000000000be90                sdk_isp_set_flip
+                0x000000000000bee0                sdk_isp_set_mirror
+                0x000000000000bf30                sdk_isp_set_ImageDefParam
+                0x000000000000bf90                sdk_isp_set_hue
+                0x000000000000c020                sdk_isp_set_saturation
+                0x000000000000c0b0                sdk_isp_set_brightness
+                0x000000000000c140                sdk_isp_set_contrast
+                0x000000000000c250                sdk_isp_set_color_mode
+                0x000000000000c2f8                sdk_isp_set_vi_flicker
+                0x000000000000c300                sdk_isp_set_sharpen
+                0x000000000000c390                sdk_isp_set_warp
+                0x000000000000c408                sdk_isp_set_fps
+                0x000000000000c468                sdk_isp_set_scene_mode
+                0x000000000000c4c0                sdk_isp_set_wb_mode
+                0x000000000000c518                sdk_isp_set_ircut_control_mode
+                0x000000000000c578                sdk_isp_set_lowlight_mode
+                0x000000000000c7e0                sdk_isp_init
+                0x000000000000c900                sdk_isp_destroy
+                0x000000000000c938                gk_isp_init_start
+                0x000000000000c9f8                gk_isp_get_led_state
+                0x000000000000ca70                sdk_isp_changed
+                0x000000000000cb88                sdk_isp_change_timeout
+                0x000000000000cbc8                sdk_ircu_detect
+                0x000000000000cbd0                sdk_isp_get_bulb_mode
+                0x000000000000cbe0                sdk_isp_set_bulb_level
+                0x000000000000cc20                sdk_isp_get_bulb_level
+                0x000000000000cc30                sdk_isp_ircut_led_set
+                0x000000000000cc60                sdk_isp_ircut_led_get_status
+                0x000000000000cca8                sdk_isp_light_led_set
+                0x000000000000ccd8                gk_isp_led_on
+                0x000000000000cd50                gk_isp_led_off
+                0x000000000000cdc8                sdk_isp_ircut_auto_switch
+                0x000000000000d5f8                sdk_isp_light_led_get_status
+                0x000000000000d640                sdk_isp_set_bulb_mode
+                0x000000000000d7e8                sdk_isp_set_ircut_mode
+                0x000000000000d8c0                sdk_isp_led_test_start
+                0x000000000000d8d8                sdk_isp_pwm_set_on_value
+                0x000000000000d8e0                sdk_isp_get_cur_mode
+ *fill*         0x000000000000d8ec        0x4 1f2003d5
+ .text          0x000000000000d8f0      0x474 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_audio.o
+                0x000000000000d8f0                gk_audio_init
+                0x000000000000d988                gk_audio_exit
+                0x000000000000da20                gk_audio_ai_init
+                0x000000000000da70                gk_audio_ai_exit
+                0x000000000000da78                gk_audio_ao_init
+                0x000000000000dac8                gk_audio_ao_exit
+                0x000000000000dad0                get_volume_level
+                0x000000000000dbb0                get_gain_level
+                0x000000000000dc80                gk_audio_ao_set_volume
+                0x000000000000dce0                gk_audio_ao_get_volume
+                0x000000000000dd30                gk_audio_aout_play
+                0x000000000000dd38                gk_audio_input_enable
+                0x000000000000dd50                gk_audio_output_enable
+ *fill*         0x000000000000dd64        0x4 1f2003d5
+ .text          0x000000000000dd68      0x448 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_watchdog.o
+                0x000000000000dd68                sdk_watchdog_feed
+                0x000000000000ddf0                sdk_watchdog_set_timeout
+                0x000000000000dec0                sdk_watchdog_get_timeout
+                0x000000000000df40                sdk_watchdog_control
+                0x000000000000e028                sdk_watchdog_init
+                0x000000000000e138                sdk_watchdog_exit
+ .text          0x000000000000e1b0     0x1238 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_gpio.o
+                0x000000000000e3b0                sdk_gpio_open
+                0x000000000000e578                sdk_gpio_close
+                0x000000000000e598                sdk_gpio_set_direction
+                0x000000000000e6f0                sdk_gpio_set_value
+                0x000000000000e808                sdk_gpio_get_value
+                0x000000000000e948                sdk_gpio_set_pull_up_down
+                0x000000000000ea80                sdk_gpio_set_output_value
+                0x000000000000ed18                sdk_gpio_get_intput_value
+                0x000000000000efb0                sdk_gpio_get_output_value
+                0x000000000000f1c0                sdk_gpio_set_intput_default_value
+ .text          0x000000000000f3e8      0x5a4 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_osd.o
+                0x000000000000f3e8                _get_local_area_params
+                0x000000000000f448                _set_local_area_params
+                0x000000000000f480                sdk_osd_init
+                0x000000000000f4a8                sdk_osd_deinit
+                0x000000000000f4d0                sdk_osd_set_reload_callback
+                0x000000000000f4e0                sdk_osd_enable
+                0x000000000000f578                sdk_osd_set_area_params
+                0x000000000000f620                sdk_osd_set_channel_attr
+                0x000000000000f658                sdk_osd_set_data
+                0x000000000000f900                gk_osd_set_mirror
+                0x000000000000f938                sdk_osd_get_mirror
+                0x000000000000f948                gk_osd_set_flip
+                0x000000000000f980                sdk_osd_get_flip
+ *fill*         0x000000000000f98c        0x4 1f2003d5
+ .text          0x000000000000f990     0x19b0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_ptz.o
+                0x0000000000010380                sdk_ptz_init
+                0x00000000000104c8                sdk_ptz_deinit
+                0x0000000000010540                sdk_ptz_up
+                0x0000000000010670                sdk_ptz_down
+                0x00000000000107a0                sdk_ptz_left
+                0x00000000000108d0                sdk_ptz_right
+                0x0000000000010a00                sdk_ptz_left_up
+                0x0000000000010bc8                sdk_ptz_left_down
+                0x0000000000010d88                sdk_ptz_right_up
+                0x0000000000010f50                sdk_ptz_right_down
+                0x0000000000011118                sdk_ptz_get_current_step
+                0x0000000000011198                sdk_ptz_stop_loop
+                0x00000000000111b0                sdk_ptz_start_and_goto_center
+                0x0000000000011308                sdk_ptz_get_startup_adjust_flag
+ .text          0x0000000000011340      0xb58 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_pwm.o
+                0x0000000000011460                gadi_pwm_init
+                0x00000000000114e8                gadi_pwm_exit
+                0x0000000000011538                gadi_pwm_open
+                0x0000000000011610                gadi_pwm_close
+                0x0000000000011678                gadi_pwm_get_speed
+                0x00000000000116f8                gadi_pwm_set_speed
+                0x00000000000117f8                gadi_pwm_get_mode
+                0x0000000000011868                gadi_pwm_set_mode
+                0x0000000000011980                gadi_pwm_start
+                0x0000000000011990                gadi_pwm_stop
+                0x0000000000011a40                gadi_pwm_get_duty
+                0x0000000000011ac8                gadi_pwm_set_duty
+                0x0000000000011b80                sdk_set_pwm_speed
+                0x0000000000011bd0                sdk_get_pwm_speed
+                0x0000000000011c30                sdk_set_pwm_duty
+                0x0000000000011c80                sdk_get_pwm_duty
+                0x0000000000011ce0                sdk_pwm_init
+                0x0000000000011d18                sdk_pwm_exit
+                0x0000000000011d68                sdk_pwm_start
+                0x0000000000011e68                sdk_pwm_stop
+                0x0000000000011e80                sdk_pwm_get_channel_status
+ .text          0x0000000000011e98      0x574 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_pda.o
+                0x0000000000011e98                sdk_pda_create
+                0x0000000000011fd8                sdk_pda_init
+                0x00000000000120c0                sdk_pda_destroy
+                0x0000000000012118                sdk_pda_exit
+                0x0000000000012178                sdk_pda_set_attr
+                0x0000000000012180                sdk_pda_get_attr
+                0x00000000000121e0                sdk_pda_enable
+                0x00000000000121e8                sdk_pda_get_data
+                0x0000000000012378                sdk_pda_get_yuv
+                0x00000000000123d0                sdk_pda_get_pda_p
+                0x00000000000123e0                sdk_pda_get_yuv_last
+ *fill*         0x000000000001240c        0x4 1f2003d5
+ .text          0x0000000000012410      0x8a8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_vision.o
+                0x0000000000012960                sdk_vision_init
+                0x0000000000012ac8                sdk_vision_open
+                0x0000000000012b58                sdk_vision_exit
+                0x0000000000012ba8                sdk_vision_set_vision_sensitivity
+                0x0000000000012bc8                sdk_vision_set_transboundary_detection
+                0x0000000000012bf8                sdk_vision_set_region_intrusion
+                0x0000000000012c28                sdk_vision_set_pause_state
+                0x0000000000012c38                sdk_vision_set_human_detection
+                0x0000000000012c98                sdk_vision_get_pause_state
+                0x0000000000012ca8                sdk_vision_set_sensitive
+                0x0000000000012cb0                sdk_vision_set_roi
+ .text          0x0000000000012cb8        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+ .text          0x0000000000012cb8        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
  *(.gnu.warning)
 
-.fini           0x0000000000012b30       0x10
+.fini           0x0000000000012cb8       0x10
  *(SORT_NONE(.fini))
- .fini          0x0000000000012b30        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
-                0x0000000000012b30                _fini
- .fini          0x0000000000012b38        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+ .fini          0x0000000000012cb8        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+                0x0000000000012cb8                _fini
+ .fini          0x0000000000012cc0        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
                 [!provide]                        PROVIDE (__etext = .)
                 [!provide]                        PROVIDE (_etext = .)
                 [!provide]                        PROVIDE (etext = .)
 
-.rodata         0x0000000000012b40     0x3ced
+.rodata         0x0000000000012cc8     0x3ced
  *(.rodata .rodata.* .gnu.linkonce.r.*)
  .rodata.str1.8
-                0x0000000000012b40      0x172 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_common.o
+                0x0000000000012cc8      0x172 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_common.o
                                         0x182 (size before relaxing)
- *fill*         0x0000000000012cb2        0x6 
- .rodata        0x0000000000012cb8       0xb4 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_network.o
- *fill*         0x0000000000012d6c        0x4 
+ *fill*         0x0000000000012e3a        0x6 
+ .rodata        0x0000000000012e40       0xb4 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_network.o
+ *fill*         0x0000000000012ef4        0x4 
  .rodata.str1.8
-                0x0000000000012d70      0x75e build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_network.o
+                0x0000000000012ef8      0x75e build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_network.o
                                         0x76e (size before relaxing)
- *fill*         0x00000000000134ce        0x2 
+ *fill*         0x0000000000013656        0x2 
  .rodata.str1.8
-                0x00000000000134d0       0x5a build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk.o
+                0x0000000000013658       0x5a build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk.o
                                          0x62 (size before relaxing)
- *fill*         0x000000000001352a        0x6 
- .rodata        0x0000000000013530       0x18 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_sys.o
+ *fill*         0x00000000000136b2        0x6 
+ .rodata        0x00000000000136b8       0x18 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_sys.o
  .rodata.str1.8
-                0x0000000000013548      0x109 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_sys.o
+                0x00000000000136d0      0x109 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_sys.o
                                         0x119 (size before relaxing)
- *fill*         0x0000000000013651        0x7 
- .rodata        0x0000000000013658       0x15 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_vin.o
- *fill*         0x000000000001366d        0x3 
+ *fill*         0x00000000000137d9        0x7 
+ .rodata        0x00000000000137e0       0x15 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_vin.o
+ *fill*         0x00000000000137f5        0x3 
  .rodata.str1.8
-                0x0000000000013670      0x1bd build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_vin.o
+                0x00000000000137f8      0x1bd build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_vin.o
                                         0x1cd (size before relaxing)
- *fill*         0x000000000001382d        0x3 
+ *fill*         0x00000000000139b5        0x3 
  .rodata.str1.8
-                0x0000000000013830      0xf5c build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_enc.o
+                0x00000000000139b8      0xf5c build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_enc.o
                                         0xf6c (size before relaxing)
- *fill*         0x000000000001478c        0x4 
- .rodata        0x0000000000014790       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_isp.o
- *fill*         0x00000000000147a7        0x1 
+ *fill*         0x0000000000014914        0x4 
+ .rodata        0x0000000000014918       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_isp.o
+ *fill*         0x000000000001492f        0x1 
  .rodata.str1.8
-                0x00000000000147a8      0xc43 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_isp.o
+                0x0000000000014930      0xc43 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_isp.o
                                         0xc53 (size before relaxing)
- *fill*         0x00000000000153eb        0x5 
+ *fill*         0x0000000000015573        0x5 
  .rodata.str1.8
-                0x00000000000153f0      0x30a build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_audio.o
+                0x0000000000015578      0x30a build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_audio.o
                                         0x31a (size before relaxing)
- *fill*         0x00000000000156fa        0x6 
+ *fill*         0x0000000000015882        0x6 
  .rodata.str1.8
-                0x0000000000015700      0x1da build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_watchdog.o
+                0x0000000000015888      0x1da build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_watchdog.o
                                         0x1ea (size before relaxing)
- *fill*         0x00000000000158da        0x6 
+ *fill*         0x0000000000015a62        0x6 
  .rodata.str1.8
-                0x00000000000158e0      0x32b build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_gpio.o
+                0x0000000000015a68      0x32b build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_gpio.o
                                         0x343 (size before relaxing)
- *fill*         0x0000000000015c0b        0x5 
+ *fill*         0x0000000000015d93        0x5 
  .rodata.str1.8
-                0x0000000000015c10       0x53 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_osd.o
+                0x0000000000015d98       0x53 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_osd.o
                                          0x5b (size before relaxing)
- *fill*         0x0000000000015c63        0x5 
+ *fill*         0x0000000000015deb        0x5 
  .rodata.str1.8
-                0x0000000000015c68      0x1ca build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_ptz.o
+                0x0000000000015df0      0x1ca build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_ptz.o
                                         0x1da (size before relaxing)
- *fill*         0x0000000000015e32        0x6 
+ *fill*         0x0000000000015fba        0x6 
  .rodata.str1.8
-                0x0000000000015e38      0x3f8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_pwm.o
+                0x0000000000015fc0      0x3f8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_pwm.o
  .rodata.str1.8
-                0x0000000000016230      0x24a build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_pda.o
+                0x00000000000163b8      0x24a build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_pda.o
                                         0x252 (size before relaxing)
- *fill*         0x000000000001647a        0x6 
- .rodata        0x0000000000016480       0x20 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_vision.o
+ *fill*         0x0000000000016602        0x6 
+ .rodata        0x0000000000016608       0x20 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_vision.o
  .rodata.str1.8
-                0x00000000000164a0      0x38d build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_vision.o
+                0x0000000000016628      0x38d build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_vision.o
 
 .rodata1
  *(.rodata1)
 
-.eh_frame_hdr   0x0000000000016830      0x774
+.eh_frame_hdr   0x00000000000169b8      0x784
  *(.eh_frame_hdr)
- .eh_frame_hdr  0x0000000000016830      0x774 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
-                0x0000000000016830                __GNU_EH_FRAME_HDR
+ .eh_frame_hdr  0x00000000000169b8      0x784 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+                0x00000000000169b8                __GNU_EH_FRAME_HDR
  *(.eh_frame_entry .eh_frame_entry.*)
 
-.eh_frame       0x0000000000016fa8     0x31e4
+.eh_frame       0x0000000000017140     0x3244
  *(.eh_frame)
- .eh_frame      0x0000000000016fa8       0x78 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
- .eh_frame      0x0000000000017020      0x270 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_common.o
+ .eh_frame      0x0000000000017140       0x78 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ .eh_frame      0x00000000000171b8      0x270 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_common.o
                                         0x280 (size before relaxing)
- .eh_frame      0x0000000000017290      0x760 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_network.o
+ .eh_frame      0x0000000000017428      0x760 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_network.o
                                         0x770 (size before relaxing)
- .eh_frame      0x00000000000179f0       0x38 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk.o
+ .eh_frame      0x0000000000017b88       0x38 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk.o
                                          0x50 (size before relaxing)
- .eh_frame      0x0000000000017a28       0x78 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_sys.o
+ .eh_frame      0x0000000000017bc0       0x78 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_sys.o
                                          0x88 (size before relaxing)
- .eh_frame      0x0000000000017aa0      0x158 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_vin.o
+ .eh_frame      0x0000000000017c38      0x158 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_vin.o
                                         0x170 (size before relaxing)
- .eh_frame      0x0000000000017bf8      0x6e0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_enc.o
-                                        0x6f8 (size before relaxing)
- .eh_frame      0x00000000000182d8      0x780 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_isp.o
+ .eh_frame      0x0000000000017d90      0x740 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_enc.o
+                                        0x750 (size before relaxing)
+ .eh_frame      0x00000000000184d0      0x780 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_isp.o
                                         0x798 (size before relaxing)
- .eh_frame      0x0000000000018a58      0x1a0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_audio.o
+ .eh_frame      0x0000000000018c50      0x1a0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_audio.o
                                         0x1b8 (size before relaxing)
- .eh_frame      0x0000000000018bf8      0x108 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_watchdog.o
+ .eh_frame      0x0000000000018df0      0x108 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_watchdog.o
                                         0x118 (size before relaxing)
- .eh_frame      0x0000000000018d00      0x378 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_gpio.o
+ .eh_frame      0x0000000000018ef8      0x378 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_gpio.o
                                         0x390 (size before relaxing)
- .eh_frame      0x0000000000019078      0x220 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_osd.o
+ .eh_frame      0x0000000000019270      0x220 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_osd.o
                                         0x230 (size before relaxing)
- .eh_frame      0x0000000000019298      0x5d0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_ptz.o
+ .eh_frame      0x0000000000019490      0x5d0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_ptz.o
                                         0x5e8 (size before relaxing)
- .eh_frame      0x0000000000019868      0x508 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_pwm.o
+ .eh_frame      0x0000000000019a60      0x508 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_pwm.o
                                         0x518 (size before relaxing)
- .eh_frame      0x0000000000019d70      0x1e8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_pda.o
+ .eh_frame      0x0000000000019f68      0x1e8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_pda.o
                                         0x1f8 (size before relaxing)
- .eh_frame      0x0000000000019f58      0x230 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_vision.o
+ .eh_frame      0x000000000001a150      0x230 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_vision.o
                                         0x248 (size before relaxing)
- .eh_frame      0x000000000001a188        0x4 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+ .eh_frame      0x000000000001a380        0x4 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
  *(.eh_frame.*)
 
 .gcc_except_table
@@ -607,105 +609,105 @@ LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
  *(.igot)
                 0x000000000002afe8                . = DATA_SEGMENT_RELRO_END (., 0x18)
 
-.got.plt        0x000000000002afe8      0x4b0
+.got.plt        0x000000000002afe8      0x4b8
  *(.got.plt)
- .got.plt       0x000000000002afe8      0x4b0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .got.plt       0x000000000002afe8      0x4b8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
  *(.igot.plt)
 
-.data           0x000000000002b498       0x48
+.data           0x000000000002b4a0       0x48
                 [!provide]                        PROVIDE (__data_start = .)
  *(.data .data.* .gnu.linkonce.d.*)
- .data          0x000000000002b498        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
- .data          0x000000000002b498        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ .data          0x000000000002b4a0        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .data          0x000000000002b4a0        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
  .data.rel.local
-                0x000000000002b498        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
-                0x000000000002b498                __dso_handle
- .data          0x000000000002b4a0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_common.o
- .data          0x000000000002b4a0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_network.o
- .data          0x000000000002b4a0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk.o
- .data          0x000000000002b4a0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_sys.o
- .data          0x000000000002b4a0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_vin.o
- .data          0x000000000002b4a0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_enc.o
- .data          0x000000000002b4a0       0x2a build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_isp.o
-                0x000000000002b4c8                slowLight
- .data          0x000000000002b4ca        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_audio.o
- .data          0x000000000002b4ca        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_watchdog.o
- .data          0x000000000002b4ca        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_gpio.o
- .data          0x000000000002b4ca        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_osd.o
- *fill*         0x000000000002b4ca        0x6 
- .data          0x000000000002b4d0        0xc build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_ptz.o
- .data          0x000000000002b4dc        0x4 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_pwm.o
- .data          0x000000000002b4e0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_pda.o
- .data          0x000000000002b4e0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_vision.o
- .data          0x000000000002b4e0        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
- .data          0x000000000002b4e0        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+                0x000000000002b4a0        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+                0x000000000002b4a0                __dso_handle
+ .data          0x000000000002b4a8        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_common.o
+ .data          0x000000000002b4a8        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_network.o
+ .data          0x000000000002b4a8        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk.o
+ .data          0x000000000002b4a8        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_sys.o
+ .data          0x000000000002b4a8        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_vin.o
+ .data          0x000000000002b4a8        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_enc.o
+ .data          0x000000000002b4a8       0x2a build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_isp.o
+                0x000000000002b4d0                slowLight
+ .data          0x000000000002b4d2        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_audio.o
+ .data          0x000000000002b4d2        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_watchdog.o
+ .data          0x000000000002b4d2        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_gpio.o
+ .data          0x000000000002b4d2        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_osd.o
+ *fill*         0x000000000002b4d2        0x6 
+ .data          0x000000000002b4d8        0xc build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_ptz.o
+ .data          0x000000000002b4e4        0x4 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_pwm.o
+ .data          0x000000000002b4e8        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_pda.o
+ .data          0x000000000002b4e8        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_vision.o
+ .data          0x000000000002b4e8        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+ .data          0x000000000002b4e8        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
 
 .tm_clone_table
-                0x000000000002b4e0        0x0
+                0x000000000002b4e8        0x0
  .tm_clone_table
-                0x000000000002b4e0        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+                0x000000000002b4e8        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
  .tm_clone_table
-                0x000000000002b4e0        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+                0x000000000002b4e8        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
 
 .data1
  *(.data1)
                 [!provide]                        PROVIDE (_edata = .)
                 [!provide]                        PROVIDE (edata = .)
-                0x000000000002b4e0                . = .
+                0x000000000002b4e8                . = .
                 [!provide]                        PROVIDE (__bss_start = .)
                 [!provide]                        PROVIDE (__bss_start__ = .)
 
-.bss            0x000000000002b4e0      0xe08
+.bss            0x000000000002b4e8      0xe20
  *(.dynbss)
- .dynbss        0x000000000002b4e0        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .dynbss        0x000000000002b4e8        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
  *(.bss .bss.* .gnu.linkonce.b.*)
- .bss           0x000000000002b4e0        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
- .bss           0x000000000002b4e0        0x1 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
- .bss           0x000000000002b4e1        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_common.o
- .bss           0x000000000002b4e1        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_network.o
- .bss           0x000000000002b4e1        0x1 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk.o
- .bss           0x000000000002b4e2        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_sys.o
- *fill*         0x000000000002b4e2        0x6 
- .bss           0x000000000002b4e8       0xc5 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_vin.o
- *fill*         0x000000000002b5ad        0x3 
- .bss           0x000000000002b5b0      0x480 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_enc.o
-                0x000000000002ba10                vpssHandle
-                0x000000000002ba18                vencHandle
-                0x000000000002ba20                voutHandle
-                0x000000000002ba28                viHandle
- .bss           0x000000000002ba30       0xa0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_isp.o
-                0x000000000002bac0                imageSytle
-                0x000000000002bac8                ispHandle
- .bss           0x000000000002bad0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_audio.o
- .bss           0x000000000002bad0        0x4 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_watchdog.o
- .bss           0x000000000002bad4        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_gpio.o
- *fill*         0x000000000002bad4        0x4 
- .bss           0x000000000002bad8      0x118 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_osd.o
- .bss           0x000000000002bbf0      0x600 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_ptz.o
- .bss           0x000000000002c1f0       0x28 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_pwm.o
- .bss           0x000000000002c218       0x60 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_pda.o
- .bss           0x000000000002c278       0x40 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_vision.o
- .bss           0x000000000002c2b8        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
- .bss           0x000000000002c2b8        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+ .bss           0x000000000002b4e8        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .bss           0x000000000002b4e8        0x1 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ .bss           0x000000000002b4e9        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_common.o
+ .bss           0x000000000002b4e9        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_network.o
+ .bss           0x000000000002b4e9        0x1 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk.o
+ .bss           0x000000000002b4ea        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_sys.o
+ *fill*         0x000000000002b4ea        0x6 
+ .bss           0x000000000002b4f0       0xc5 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_vin.o
+ *fill*         0x000000000002b5b5        0x3 
+ .bss           0x000000000002b5b8      0x498 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_enc.o
+                0x000000000002ba30                vpssHandle
+                0x000000000002ba38                vencHandle
+                0x000000000002ba40                voutHandle
+                0x000000000002ba48                viHandle
+ .bss           0x000000000002ba50       0xa0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_isp.o
+                0x000000000002bae0                imageSytle
+                0x000000000002bae8                ispHandle
+ .bss           0x000000000002baf0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_audio.o
+ .bss           0x000000000002baf0        0x4 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_watchdog.o
+ .bss           0x000000000002baf4        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_gpio.o
+ *fill*         0x000000000002baf4        0x4 
+ .bss           0x000000000002baf8      0x118 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_osd.o
+ .bss           0x000000000002bc10      0x600 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_ptz.o
+ .bss           0x000000000002c210       0x28 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_pwm.o
+ .bss           0x000000000002c238       0x60 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_pda.o
+ .bss           0x000000000002c298       0x40 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_vision.o
+ .bss           0x000000000002c2d8        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+ .bss           0x000000000002c2d8        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
  *(COMMON)
- COMMON         0x000000000002c2b8        0x4 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_isp.o
-                0x000000000002c2b8                ispAutoSlowShutterThread
- *fill*         0x000000000002c2bc        0x4 
- COMMON         0x000000000002c2c0       0x20 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_pda.o
-                0x000000000002c2c0                pdaMdCb
-                0x000000000002c2c8                gkPdaData
- COMMON         0x000000000002c2e0        0x8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_vision.o
-                0x000000000002c2e0                videoThreadId
-                0x000000000002c2e8                . = ALIGN ((. != 0x0)?0x8:0x1)
+ COMMON         0x000000000002c2d8        0x4 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_isp.o
+                0x000000000002c2d8                ispAutoSlowShutterThread
+ *fill*         0x000000000002c2dc        0x4 
+ COMMON         0x000000000002c2e0       0x20 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_pda.o
+                0x000000000002c2e0                pdaMdCb
+                0x000000000002c2e8                gkPdaData
+ COMMON         0x000000000002c300        0x8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sdk_vision.o
+                0x000000000002c300                videoThreadId
+                0x000000000002c308                . = ALIGN ((. != 0x0)?0x8:0x1)
                 [!provide]                        PROVIDE (_bss_end__ = .)
                 [!provide]                        PROVIDE (__bss_end__ = .)
-                0x000000000002c2e8                . = ALIGN (0x8)
-                0x000000000002c2e8                . = SEGMENT_START ("ldata-segment", .)
-                0x000000000002c2e8                . = ALIGN (0x8)
+                0x000000000002c308                . = ALIGN (0x8)
+                0x000000000002c308                . = SEGMENT_START ("ldata-segment", .)
+                0x000000000002c308                . = ALIGN (0x8)
                 [!provide]                        PROVIDE (__end__ = .)
                 [!provide]                        PROVIDE (_end = .)
                 [!provide]                        PROVIDE (end = .)
-                0x000000000002c2e8                . = DATA_SEGMENT_END (.)
+                0x000000000002c308                . = DATA_SEGMENT_END (.)
 
 .stab
  *(.stab)

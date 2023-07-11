@@ -20,11 +20,11 @@
 #include "sample_comm.h"
 #include "securec.h"
 #include "ss_mpi_snap.h"
-
+#include "adi_audio.h"
 #include "sample_comm.h"
 #include "rtsp_demo.h"
 #include "comm.h"
-
+#include "cfg_audio.h"
 #include "ss_mpi_region.h"
 // #include "pq_bin.h"
 #include "ss_mpi_isp.h"
@@ -51,8 +51,10 @@
 ot_bmp stBitmap;
 int bmp_w, bmp_h;
 #include "cfg_video.h"
+#include "sdk_enc.h"
+#include "media_fifo.h"
 GK_NET_VIDEO_CFG runVideoCfg;
-static ot_payload_type g_payload_type = OT_PT_AAC;
+static ot_payload_type g_payload_type = OT_PT_G711A;
 static td_bool g_aio_resample = TD_FALSE;
 static td_bool g_user_get_mode = TD_FALSE;
 static td_bool g_ao_volume_ctrl = TD_FALSE;
@@ -61,6 +63,8 @@ static ot_audio_sample_rate g_out_sample_rate = OT_AUDIO_SAMPLE_RATE_BUTT;
 /* 0: close, 1: record, 2: talk, 3: talkv2 */
 static td_u32 g_ai_vqe_type = 1;
 static void change_state(int signo);
+static void video_read_stream_callback(int stream, PS_GK_ENC_BUF_ATTR frameBuf);
+static void audio_read_stream_callback(int stream, PS_GK_ENC_BUF_ATTR frameBuf);
 
 #define BIG_STREAM_SIZE PIC_1080P
 #define SMALL_STREAM_SIZE PIC_720P
@@ -118,9 +122,122 @@ typedef struct
     td_u32 supplement_config;
 } sample_venc_vb_attr;
 
-
+static int video_frame_index[4] = {0, 0, 0, 0};
+extern MEDIABUF_HANDLE writerid[4];
+static MEDIABUF_HANDLE audio_writer[4] = {0, 0, 0, 0};
+static GK_ENC_BUG_CALLBACK encStreamCb = NULL;
 
 static td_bool g_sample_venc_exit = TD_FALSE;
+
+static void *abuf = NULL;
+static int audio_frame_index = 0;
+static int a_num = 0;
+static int read_audio_stream(GADI_AUDIO_AioFrameT ptrFrame)
+{
+    int ret;
+    int i;
+
+    ST_GK_ENC_BUF_ATTR header = {0};
+
+#ifdef AUDIO_ECHO_CANCELLATION_SUPPORT
+    GADI_AEC_AioFrameT aecFrame = {0};
+    // ret = gadi_audio_ai_get_frame_aec(&ptrFrame, &aecFrame, GADI_TRUE);	xqq
+    // LOG_INFO("a frame len:%d, aecframe len:%d \n", ptrFrame.len, aecFrame.len);
+// #else		xqq
+// ret = gadi_audio_ai_get_frame(&ptrFrame, GADI_TRUE);	xqq
+// LOG_INFO("a frame len:%d\n", ptrFrame.len);
+#endif
+    if ((ptrFrame.len == 0))
+    {
+        printf("ret: %d ptrFrame.len: %d\n", ret, ptrFrame.len);
+        return -1;
+    }
+
+    /* ��Ϊ160�ֽ�һ����Ƶ����һ����������2��160�ֽڵ���Ƶ֡���һ���µ�320�ֽڵ���Ƶ֡ */
+    if (abuf == NULL)
+    {
+        abuf = malloc(ptrFrame.len * 2);
+    }
+    if (a_num == 0)
+    {
+        memcpy(abuf, ptrFrame.virAddr, ptrFrame.len);
+        a_num++;
+        return 0;
+    }
+    if (a_num == 1)
+    {
+        memcpy(abuf + ptrFrame.len, ptrFrame.virAddr, ptrFrame.len);
+        a_num = 0;
+    }
+    header.data = abuf;
+    header.data_sz = ptrFrame.len * 2;
+
+    cal_audio_pts(&(header.time_us), header.data_sz);
+
+    header.no = (++audio_frame_index);
+
+    audio_read_stream_callback(0, &header);
+    return 0;
+}
+
+static void audio_read_stream_callback(int stream, PS_GK_ENC_BUF_ATTR frameBuf)
+{
+    GK_NET_FRAME_HEADER header = {0};
+    short *prawData = NULL;
+    int outLen = 0;
+
+    // ��Ƶ����٣�����Ƶ���ݶ���
+    if ((runVideoCfg.vencStream[stream].avStream != 0) || (audio_writer[stream] == NULL))
+    {
+        // PRINT_ERR("no audio.\n");
+        usleep(10000);
+        return;
+    }
+    header.magic = MAGIC_TEST;
+    header.device_type = 0;
+    header.frame_size = frameBuf->data_sz;
+    header.pts = frameBuf->time_us * (runAudioCfg.sampleRate / 8000);
+
+    header.media_codec_type = MEDIA_CODEC_ID_PCM_ALAW;
+    header.frame_type = GK_NET_FRAME_TYPE_A;
+    header.frame_no = frameBuf->no;
+
+    /* ����ʱ�䣬CMS��Ҫʱ�� */
+    struct timeval tv = {0};
+    struct timezone tz = {0};
+    gettimeofday(&tv, &tz);
+    header.sec = tv.tv_sec - tz.tz_minuteswest * 60;
+    header.usec = tv.tv_usec;
+
+    /* Remove G711A Encoder Header */
+    if ((g_payload_type == OT_PT_G711A) ||
+        (g_payload_type = OT_PT_G711U))
+    {
+        prawData = (short *)malloc(frameBuf->data_sz);
+        if (NULL != prawData)
+        {
+
+           // outLen = gk_audio_get_rawstream((short *)frameBuf->data, prawData, (frameBuf->data_sz / sizeof(short)));
+           // header.frame_size = outLen * sizeof(short);
+	    header.frame_size = frameBuf->data_sz;
+            if (g_payload_type == OT_PT_G711A)
+            {
+                header.media_codec_type = MEDIA_CODEC_ID_PCM_ALAW;
+            }
+            if (g_payload_type == OT_PT_G711U)
+            {
+                header.media_codec_type = MEDIA_CODEC_ID_PCM_MULAW;
+            }
+            mediabuf_write_frame(audio_writer[stream], prawData, outLen * sizeof(short), &header);
+            free(prawData);
+            prawData = NULL;
+        }
+    }
+    else
+    {
+        mediabuf_write_frame(audio_writer[stream], frameBuf->data, frameBuf->data_sz, &header);
+    }
+}
 
 td_void *SAMPLE_COMM_AUDIO_AencProc_new(td_void *p)
 {
@@ -129,6 +246,7 @@ td_void *SAMPLE_COMM_AUDIO_AencProc_new(td_void *p)
     int i = 0;
     static int s_aencFd = 0;
     static int s_maxAFd = 0;
+    GADI_AUDIO_AioFrameT ptrFrame = {0};
     // rtsp_handle_struct rtsp_p = *(rtsp_handle_struct *)p;
     fd_set read_fds;
     ot_audio_stream stAStream;
@@ -163,6 +281,12 @@ td_void *SAMPLE_COMM_AUDIO_AencProc_new(td_void *p)
                     rtsp_tx_audio(rtsp_handle[i].session, (unsigned char *)stAStream.stream,
                                   stAStream.len, stAStream.time_stamp);
                 }
+                if (i == 1)
+                {
+                    ptrFrame.virAddr = (unsigned char *)stAStream.stream;
+                    ptrFrame.len = stAStream.len;
+                    read_audio_stream(ptrFrame);
+                }
             }
         }
         ret = ss_mpi_aenc_release_stream(0, &stAStream);
@@ -179,6 +303,7 @@ td_void *SAMPLE_COMM_AUDIO_AencProc_new(td_void *p)
 }
 
 #if 1
+
 ot_aio_attr aio_attr = {0};
 static td_s32 sample_audio_ai_aenc(td_void)
 {
@@ -188,7 +313,18 @@ static td_s32 sample_audio_ai_aenc(td_void)
     td_u32 ai_chn_cnt;
     td_u32 aenc_chn_cnt;
     td_bool send_adec = TD_TRUE;
-    //ot_aio_attr aio_attr = {0};
+
+    int i = 0;
+    for (i = 0; i < 2; i++)
+    {
+        audio_writer[i] = mediabuf_add_writer(i);
+        if (audio_writer[i] == NULL)
+        {
+            PRINT_ERR("Create audio writer error\n");
+        }
+    }
+
+    // ot_aio_attr aio_attr = {0};
     sample_comm_ai_vqe_param ai_vqe_param = {0};
 
     sample_audio_ai_aenc_init_param(&aio_attr, &ai_dev, &ao_dev);
@@ -226,17 +362,14 @@ static td_s32 sample_audio_ai_aenc(td_void)
         goto ai_aenc_err4;
     }
 
-
     pthread_create(&venc_audio_pthread[2], 0, SAMPLE_COMM_AUDIO_AencProc_new, NULL);
     pthread_detach(venc_audio_pthread[2]);
     while (EXIT_MODE_X)
     {
-	    usleep(500*1000);
+        usleep(500 * 1000);
     }
 
-
     printf("==============end audio=============\n");
-   
 
     sample_audio_aenc_unbind_ai(ai_dev, aenc_chn_cnt);
 
@@ -292,32 +425,32 @@ int string_to_bmp(char *pu8Str)
     // {
     //     printf("stBitmap.data faided\r\n");
     // }
-    // 奇数会导致内容变成斜体
-    if(temp->w%2 != 0)
-	    bmp_w = temp->w + 1;
+    // 奇数会�?�致内�?�变成斜�?
+    if (temp->w % 2 != 0)
+        bmp_w = temp->w + 1;
     else
-	    bmp_w = temp->w;
-    if(temp->h % 2 != 0)
-	    bmp_h = temp->h+1;
+        bmp_w = temp->w;
+    if (temp->h % 2 != 0)
+        bmp_h = temp->h + 1;
     else
-	    bmp_h = temp->h;
-   // bmp_w = temp->w;
-   // bmp_h = temp->h;
-   // memset(stBitmap.data, 0, (2 * (temp->w) * (temp->h)));
-   // memcpy(stBitmap.data, temp->pixels, (2 * (temp->w) * (temp->h)));
+        bmp_h = temp->h;
+    // bmp_w = temp->w;
+    // bmp_h = temp->h;
+    // memset(stBitmap.data, 0, (2 * (temp->w) * (temp->h)));
+    // memcpy(stBitmap.data, temp->pixels, (2 * (temp->w) * (temp->h)));
 
-   // stBitmap.width = temp->w;
-   // stBitmap.height = temp->h;
-      memset(stBitmap.data, 0, (2 * bmp_w * bmp_h));
-      memcpy(stBitmap.data, temp->pixels, (2 * temp->w * temp->h));
-      stBitmap.width = bmp_w;
-      stBitmap.height = bmp_h;
+    // stBitmap.width = temp->w;
+    // stBitmap.height = temp->h;
+    memset(stBitmap.data, 0, (2 * bmp_w * bmp_h));
+    memcpy(stBitmap.data, temp->pixels, (2 * temp->w * temp->h));
+    stBitmap.width = bmp_w;
+    stBitmap.height = bmp_h;
 
-    //char savename[20] = {0};
+    // char savename[20] = {0};
 
-    //snprintf(savename, 20, "./osd/now_time.bmp");
-    // printf("savename = %s\n",savename);
-    //SDL_SaveBMP(temp, savename);
+    // snprintf(savename, 20, "./osd/now_time.bmp");
+    //  printf("savename = %s\n",savename);
+    // SDL_SaveBMP(temp, savename);
     free(fmt);
     SDL_FreeSurface(text);
     SDL_FreeSurface(temp);
@@ -327,13 +460,13 @@ int string_to_bmp(char *pu8Str)
     return 0;
 }
 
-/* 
+/*
  *描述  ：用于osd 字体bmp图像生成
  *参数  ：NULL
- *返回值：无
- *注意  ：需要加载字体ttf才能使用，否则会报段错误
+ *返回值：�?
+ *注意  ：需要加载字体ttf才能使用，否则会报�?�错�?
  */
-void *bitmap_update(void )
+void *bitmap_update(void)
 {
     ot_rgn_handle OverlayHandle = 0;
     td_s32 s32Ret;
@@ -341,41 +474,38 @@ void *bitmap_update(void )
     // time_t now;
     // struct tm *ptm;
     // char timestr[OSD_LENGTH] = {0};
-    while(1)
+    while (1)
     {
         sleep(1);
 
-//        if(p->labelN[0]==0 )
-//	{
-//		z++;
-//		if(z == 10)
-//		{
-//			z = 0;
-//			memset(stBitmap.data, 0, (2 * 3840 * 48));
-//			ss_mpi_rgn_update_canvas(OVERLAYEX_MIN_HANDLE);
-//			s32Ret = ss_mpi_rgn_set_bmp(OVERLAYEX_MIN_HANDLE,&stBitmap);
-//		}
-//		continue;
-//	}
+        //        if(p->labelN[0]==0 )
+        //	{
+        //		z++;
+        //		if(z == 10)
+        //		{
+        //			z = 0;
+        //			memset(stBitmap.data, 0, (2 * 3840 * 48));
+        //			ss_mpi_rgn_update_canvas(OVERLAYEX_MIN_HANDLE);
+        //			s32Ret = ss_mpi_rgn_set_bmp(OVERLAYEX_MIN_HANDLE,&stBitmap);
+        //		}
+        //		continue;
+        //	}
 
-	ss_mpi_rgn_update_canvas(OVERLAYEX_MIN_HANDLE);
-	s32Ret = ss_mpi_rgn_set_bmp(OVERLAYEX_MIN_HANDLE,&stBitmap);//s32Ret 为RGN_HANDLE OverlayHandle
-	if(s32Ret != TD_SUCCESS)
-	{
-		printf("HI_MPI_RGN_SetBitMap update failed with %#x!\n", s32Ret);
-		// return -1;
-		continue;
-	}
+        ss_mpi_rgn_update_canvas(OVERLAYEX_MIN_HANDLE);
+        s32Ret = ss_mpi_rgn_set_bmp(OVERLAYEX_MIN_HANDLE, &stBitmap); // s32Ret 为RGN_HANDLE OverlayHandle
+        if (s32Ret != TD_SUCCESS)
+        {
+            printf("HI_MPI_RGN_SetBitMap update failed with %#x!\n", s32Ret);
+            // return -1;
+            continue;
+        }
 
-	//memset(stBitmap.data, 0, (2 * (bmp_w) * (bmp_h)));
-	memset(stBitmap.data, 0, (2 * 3840 * 48));
-	z = 0;
-       
-       
+        // memset(stBitmap.data, 0, (2 * (bmp_w) * (bmp_h)));
+        memset(stBitmap.data, 0, (2 * 3840 * 48));
+        z = 0;
     }
     return 0;
 }
-
 
 void *osd_ttf_task(void)
 {
@@ -384,7 +514,7 @@ void *osd_ttf_task(void)
     time_t now;
     struct tm *ptm;
     char timestr[128] = {0};
-    int i,j;
+    int i, j;
     char b[3];
     stBitmap.data = malloc(2 * 3840 * 48);
     if (stBitmap.data == NULL)
@@ -397,7 +527,7 @@ void *osd_ttf_task(void)
         time(&now);
         ptm = localtime(&now);
         snprintf(timestr, 100, "时间:%d-%02d-%02d %02d:%02d:%02d", ptm->tm_year + 1900, ptm->tm_mon + 1, ptm->tm_mday, ptm->tm_hour, ptm->tm_min, ptm->tm_sec);
-       
+
 #if 0
         if(p->labelN[0]==0)
         {
@@ -429,7 +559,7 @@ void *osd_ttf_task(void)
     	strcat(timestr,"  ");
 #endif
         //    printf("===========timestr================%s\n",timestr);
-//        strcat(timestr," ");
+        //        strcat(timestr," ");
         string_to_bmp(timestr);
         memset(timestr, 0, 128);
     }
@@ -437,10 +567,10 @@ void *osd_ttf_task(void)
 }
 
 /*
- *描述  ：用于将视频文件添加时间水印
+ *描述  ：用于将视�?�文件添加时间水�?
  *参数  ：无
  *返回值：OverlayHandle
- *注意  ：参数在HI_MPI_RGN_Create并不做检查，只有在HI_MPI_RGN_AttachToChn的时候才会报出相应的错
+ *注意  ：参数在HI_MPI_RGN_Create并不做�?�查，�?有在HI_MPI_RGN_AttachToChn的时候才会报出相应的�?
  */
 td_s32 RGN_AddOsdToVenc(void)
 {
@@ -454,13 +584,13 @@ td_s32 RGN_AddOsdToVenc(void)
     int ret;
     // RGN_CANVAS_INFO_S stCanvasInfo;
     OverlayHandle = 0;
-    stChn.mod_id = OT_ID_VPSS; /**模块号**/ // HI_ID_VPSS  HI_ID_VENC
-    stChn.dev_id = 0;                       /**设备号**/
-    stChn.chn_id = 0;                       /**通道号**/
+    stChn.mod_id = OT_ID_VPSS; /**模块�?**/ // HI_ID_VPSS  HI_ID_VENC
+    stChn.dev_id = 0;                       /**设�?�号**/
+    stChn.chn_id = 0;                       /**通道�?**/
     /**创建区域**/
     sleep(2); // 等待位图生成
     stRgnAttr.attr.overlay.canvas_num = 2;
-    stRgnAttr.type = OT_RGN_OVERLAYEX;                                                /**区域类型:叠加**/
+    stRgnAttr.type = OT_RGN_OVERLAYEX;                                              /**区域类型:叠加**/
     stRgnAttr.attr.overlay.pixel_format = OT_PIXEL_FORMAT_ARGB_1555; /**像素格式**/ // PIXEL_FORMAT_BGR_565 PIXEL_FORMAT_ARGB_1555
     if (stBitmap.width % 2 != 0)
     {
@@ -472,32 +602,33 @@ td_s32 RGN_AddOsdToVenc(void)
         stBitmap.height += 1;
     }
     printf("stBitmap.width is %d ,stBitmap.height is %d\n", stBitmap.width, stBitmap.height);
-    if(stBitmap.width == 0 || stBitmap.height == 0)
+    if (stBitmap.width == 0 || stBitmap.height == 0)
     {
         stBitmap.height = 4;
         stBitmap.width = 4;
     }
-    stRgnAttr.attr.overlay.size.width = 560;   // 240;        /**区域宽**/
-    stRgnAttr.attr.overlay.size.height = 48; // 192;        /**区域高**/
-    stRgnAttr.attr.overlay.bg_color = 0x0000;         // 0x00007c00; /**区域背景颜色**/
+    stRgnAttr.attr.overlay.size.width = 560;  // 240;        /**区域�?**/
+    stRgnAttr.attr.overlay.size.height = 48;  // 192;        /**区域�?**/
+    stRgnAttr.attr.overlay.bg_color = 0x0000; // 0x00007c00; /**区域背景颜色**/
 
-    for (i = OVERLAYEX_MIN_HANDLE; i < OVERLAYEX_MIN_HANDLE + handle_num; i++) {
+    for (i = OVERLAYEX_MIN_HANDLE; i < OVERLAYEX_MIN_HANDLE + handle_num; i++)
+    {
         ret = ss_mpi_rgn_create(i, &stRgnAttr);
-        if (ret != TD_SUCCESS) {
+        if (ret != TD_SUCCESS)
+        {
             sample_print("ss_mpi_rgn_create failed with %#x!\n", ret);
             return TD_FAILURE;
         }
     }
-    
 
     // s32Ret = ss_mpi_rgn_create(OverlayHandle, &stRgnAttr);
     // if (s32Ret != TD_SUCCESS)
     // {
     //     printf("RGN create failed: %#x\n", s32Ret);
-	// return -1;
+    // return -1;
     // }
     /**将区域叠加到通道**/
-    /**设置叠加区域的通道显示属性**/
+    /**设置叠加区域的通道显示属�?**/
     stChnAttr.is_show = TD_TRUE;
     stChnAttr.type = OT_RGN_OVERLAYEX;
     // stChnAttr.attr.overlay_chn.point.x = 640; // 240;
@@ -508,32 +639,34 @@ td_s32 RGN_AddOsdToVenc(void)
     stChnAttr.attr.overlay_chn.fg_alpha = 128;
     stChnAttr.attr.overlay_chn.layer = OverlayHandle;
 
-    /**设置QP属性**/
+    /**设置QP属�?**/
     stChnAttr.attr.overlay_chn.qp_info.is_abs_qp = TD_TRUE;
     stChnAttr.attr.overlay_chn.qp_info.qp_val = 0;
     stChnAttr.attr.overlay_chn.qp_info.enable = TD_TRUE;
 
-    /**定义 OSD 反色相关属性**/
-    /**单元反色区域，反色处理的基本单元,[16, 64]，需 16 对齐**/
+    /**定义 OSD 反色相关属�?**/
+    /**单元反色区域，反色�?�理的基�?单元,[16, 64]，需 16 对齐**/
 #if 0
         stChnAttr.attr.overlay_chn.stInvertColor.stInvColArea.height = 16;
         stChnAttr.attr.overlay_chn.stInvertColor.stInvColArea.width  = 16;
 
-        /**亮度阈值,取值范围：[0, 255]**/
+        /**�?度阈�?,取值范围：[0, 255]**/
         stChnAttr.attr.overlay_chn.stInvertColor.u32LumThresh = 128;//128
 
         /**OSD 反色触发模式**/
         stChnAttr.attr.overlay_chn.stInvertColor.enChgMod     = LESSTHAN_LUM_THRESH;
 
-        /**OSD 反色开关。overlay不支持反色**/
+        /**OSD 反色开关。overlay不支持反�?**/
         stChnAttr.attr.overlay_chn.stInvertColor.bInvColEn    = TD_FALSE;
 #endif
     stChnAttr.attr.overlay_chn.dst = OT_RGN_ATTACH_JPEG_MAIN;
     // OverlayHandle = 0;
-    for (i = OVERLAYEX_MIN_HANDLE; i < OVERLAYEX_MIN_HANDLE + handle_num; i++) {
+    for (i = OVERLAYEX_MIN_HANDLE; i < OVERLAYEX_MIN_HANDLE + handle_num; i++)
+    {
         // sample_region_get_overlayex_chn_attr(i, &chn_attr->attr.overlayex_chn);
         ret = sample_region_attach_to_chn(i, &stChn, &stChnAttr);
-        if (ret != TD_SUCCESS) {
+        if (ret != TD_SUCCESS)
+        {
             sample_print("sample_region_attach_to_chn failed!\n");
             sample_comm_region_detach_frm_chn(i - OVERLAYEX_MIN_HANDLE + 1, OT_RGN_OVERLAYEX, &stChn);
             return ret;
@@ -542,17 +675,17 @@ td_s32 RGN_AddOsdToVenc(void)
 
     stBitmap.pixel_format = OT_PIXEL_FORMAT_ARGB_1555;
 
-
-for (i = OVERLAYEX_MIN_HANDLE; i < OVERLAYEX_MIN_HANDLE + handle_num; i++) {
-    s32Ret = ss_mpi_rgn_set_bmp(i, &stBitmap);
-}
+    for (i = OVERLAYEX_MIN_HANDLE; i < OVERLAYEX_MIN_HANDLE + handle_num; i++)
+    {
+        s32Ret = ss_mpi_rgn_set_bmp(i, &stBitmap);
+    }
     if (s32Ret != TD_SUCCESS)
     {
         printf("HI_MPI_RGN_SetBitMap failed with %#x!\n", s32Ret);
-	return -1;
+        return -1;
     }
 
-stChn.chn_id = 1; /**通道号**/
+    stChn.chn_id = 1; /**通道�?**/
     for (i = OVERLAYEX_MIN_HANDLE; i < OVERLAYEX_MIN_HANDLE + handle_num; i++)
     {
         ret = sample_region_attach_to_chn(i, &stChn, &stChnAttr);
@@ -565,7 +698,6 @@ stChn.chn_id = 1; /**通道号**/
     }
     return 0;
 }
-
 
 /******************************************************************************
  * function : to process abnormal case
@@ -581,7 +713,6 @@ static td_void sample_venc_handle_sig(td_s32 signo)
     {
         g_sample_venc_exit = TD_TRUE;
     }
-
 }
 
 static td_s32 sample_venc_getchar()
@@ -869,7 +1000,7 @@ static td_void sample_venc_set_video_param(sample_comm_venc_chn_param *chn_param
     ot_pic_size pic_size[CHN_NUM_MAX] = {BIG_STREAM_SIZE, SMALL_STREAM_SIZE};
     ot_payload_type payload[CHN_NUM_MAX] = {OT_PT_H265, OT_PT_H264};
     sample_rc rc_mode[CHN_NUM_MAX];
-    int i,j;
+    int i, j;
     // if (get_rc_mode(payload[0], &rc_mode) != TD_SUCCESS)
     // {
     //     return;
@@ -882,7 +1013,7 @@ static td_void sample_venc_set_video_param(sample_comm_venc_chn_param *chn_param
             rc_mode[i] = SAMPLE_RC_VBR;
     }
 
-        for (i = 0; i < CHN_NUM_MAX; i++)
+    for (i = 0; i < CHN_NUM_MAX; i++)
     {
         if (runVideoCfg.vencStream[i].enctype == 1)
             payload[i] = OT_PT_H264;
@@ -918,8 +1049,6 @@ static td_void sample_venc_set_video_param(sample_comm_venc_chn_param *chn_param
     {
         pic_size[0] = PIC_720P;
     }
-
-
 
     if (runVideoCfg.vencStream[1].h264Conf.width == 1280)
     {
@@ -995,10 +1124,10 @@ static void change_state(int signo)
     return EXIT_MODE_X = 0;
 }
 
-static int get_stream_from_one_channl(int s_LivevencChn, int s_LivevencFd, fd_set read_fds,rtsp_demo_handle g_rtsplive,
-                                      rtsp_session_handle session)
+static int get_stream_from_one_channl(int s_LivevencChn, int s_LivevencFd, fd_set read_fds, rtsp_demo_handle g_rtsplive,
+                                      rtsp_session_handle session, ST_GK_ENC_BUF_ATTR header)
 {
-    
+
     // static int s_maxFd = 0;
     td_s32 ret = 0;
     int nSize;
@@ -1009,11 +1138,11 @@ static int get_stream_from_one_channl(int s_LivevencChn, int s_LivevencFd, fd_se
     struct timeval TimeoutVal;
     TimeoutVal.tv_sec = 0;
     TimeoutVal.tv_usec = 500 * 1000;
-
+    int keyframe = 0;
     // s_maxFd = s_maxFd > s_LivevencFd ? s_maxFd : s_LivevencFd;
     // s_maxFd = s_maxFd + 1;
 
-    ret = select(s_LivevencFd+1, &read_fds, NULL, NULL, &TimeoutVal);
+    ret = select(s_LivevencFd + 1, &read_fds, NULL, NULL, &TimeoutVal);
     if (ret <= 0)
     {
         printf("%s select failed!\n", __FUNCTION__);
@@ -1046,10 +1175,28 @@ static int get_stream_from_one_channl(int s_LivevencChn, int s_LivevencFd, fd_se
         {
             pStremData = (unsigned char *)stVStream.pack[i].addr + stVStream.pack[i].offset;
             nSize = stVStream.pack[i].len - stVStream.pack[i].offset;
-
             if (g_rtsplive)
             {
                 rtsp_sever_tx_video(g_rtsplive, session, pStremData, nSize, stVStream.pack[i].pts);
+            }
+            if (s_LivevencChn == 4)
+            {
+                header.data_sz = nSize;
+                header.data = pStremData;
+
+                if (stVStream.pack[i].data_type.h264_type == OT_VENC_H264_NALU_IDR_SLICE || stVStream.pack[i].data_type.h265_type == OT_VENC_H265_NALU_IDR_SLICE)
+                {
+                    // printf("=================keyframe = 1=============\n");
+                    keyframe = 1; // 是I�?
+                }
+                if (nSize > 500 * 1024)
+                {
+                    printf("video_frame index:stream_id:%d size:%d, larger than 500KB\n", 4, nSize);
+                }
+                header.video.keyframe = keyframe;
+
+                // encStreamCb(0, &header);    //0ֻ�Ƕ�Ӧ��buffer��ţ�����Ӧ�ҵı���ͨ�� 0->4
+                video_read_stream_callback(0, &header);
             }
         }
         ret = ss_mpi_venc_release_stream(s_LivevencChn, &stVStream);
@@ -1078,8 +1225,22 @@ td_void *VENC_GetVencStreamProc(td_void *p)
     static int s_LivevencFd[2] = {0};
     fd_set read_fds;
     FD_ZERO(&read_fds);
-
-    for(i = 0; i < CHN_NUM_MAX; i++)
+    ST_GK_ENC_BUF_ATTR header = {0};
+    // if (runVideoCfg.vencStream[1].enctype == 1)
+    // {
+    //     header.type = GK_ENC_DATA_H264;
+    // }
+    // else if (3 == runVideoCfg.vencStream[1].enctype)
+    // {
+    //     header.type = GK_ENC_DATA_H265;
+    // }
+    header.type = GK_ENC_DATA_H264;
+    cal_video_pts(&header.time_us, 0);
+    header.video.fps = 30;
+    header.video.width = runVideoCfg.vencStream[1].h264Conf.width;
+    header.video.height = runVideoCfg.vencStream[1].h264Conf.height;
+    // printf("===============================header.video.width = %d\n",header.video.width);
+    for (i = 0; i < CHN_NUM_MAX; i++)
     {
         s_LivevencFd[i] = ss_mpi_venc_get_fd(rtsp_handle[i].channel_num);
         FD_SET(s_LivevencFd[i], &read_fds);
@@ -1089,15 +1250,15 @@ td_void *VENC_GetVencStreamProc(td_void *p)
 
     while (End_Rtsp)
     {
-        
-        // for (i = 0; i < CHN_NUM_MAX; i++)
+
+        for (i = 0; i < CHN_NUM_MAX; i++)
         // for (i = 0; i < 1; i++)
-        for(i = 1; i >= 0; i--)
+        // for (i = 1; i >= 0; i--)
         {
-            ret = get_stream_from_one_channl(rtsp_handle[i].channel_num, s_LivevencFd[i], read_fds,rtsp_handle[i].g_rtsplive,
-                                             rtsp_handle[i].session);
-           // if (ret < 0)
-           //     continue;
+            ret = get_stream_from_one_channl(rtsp_handle[i].channel_num, s_LivevencFd[i], read_fds, rtsp_handle[i].g_rtsplive,
+                                             rtsp_handle[i].session, header);
+            // if (ret < 0)
+            //     continue;
         }
     }
     return NULL;
@@ -1125,7 +1286,7 @@ static td_s32 sample_venc_normal_start_encode(ot_vpss_grp vpss_grp, sample_venc_
 
     sample_venc_set_video_param(chn_param, gop_attr, CHN_NUM_MAX, TD_FALSE);
 
-      /* encode h.265 */
+    /* encode h.265 */
 
     h265_chn_param = &(chn_param[0]);
     if ((ret = sample_comm_venc_start(venc_vpss_chn->venc_chn[0], h265_chn_param)) != TD_SUCCESS)
@@ -1134,13 +1295,13 @@ static td_s32 sample_venc_normal_start_encode(ot_vpss_grp vpss_grp, sample_venc_
         return ret;
     }
 
-   ret = sample_comm_vpss_bind_venc(vpss_grp, venc_vpss_chn->vpss_chn[0], venc_vpss_chn->venc_chn[0]);
-   if (ret != TD_SUCCESS)
-   {
-       sample_print("sample_comm_vpss_bind_venc failed for %#x!\n", ret);
-       goto EXIT_VENC_H265_STOP;
-   }
-      /* encode h.264 */
+    ret = sample_comm_vpss_bind_venc(vpss_grp, venc_vpss_chn->vpss_chn[0], venc_vpss_chn->venc_chn[0]);
+    if (ret != TD_SUCCESS)
+    {
+        sample_print("sample_comm_vpss_bind_venc failed for %#x!\n", ret);
+        goto EXIT_VENC_H265_STOP;
+    }
+    /* encode h.264 */
 
     h264_chn_param = &(chn_param[1]);
     if ((ret = sample_comm_venc_start(venc_vpss_chn->venc_chn[1], h264_chn_param)) != TD_SUCCESS)
@@ -1164,8 +1325,8 @@ static td_s32 sample_venc_normal_start_encode(ot_vpss_grp vpss_grp, sample_venc_
     char rtsp_name[20];
     for (i = 0; i < CHN_NUM_MAX; i++)
     {
-	sprintf(rtsp_name, "%s%d","/stream",i);
-	printf("========rtsp_name=============%s\n",rtsp_name);
+        sprintf(rtsp_name, "%s%d", "/stream", i);
+        printf("========rtsp_name=============%s\n", rtsp_name);
         if (chn_param[i].type == OT_PT_H265)
             rtsp_handle[i].session = create_rtsp_session(rtsp_handle[i].g_rtsplive, rtsp_name, 1);
         else
@@ -1175,37 +1336,22 @@ static td_s32 sample_venc_normal_start_encode(ot_vpss_grp vpss_grp, sample_venc_
     pthread_create(&venc_audio_pthread[3], 0, VENC_GetVencStreamProc, NULL);
     pthread_detach(venc_audio_pthread[3]);
 
-
-#if 0
-        printf("press s to save video\n");
-    char save = getchar();
-    if (save == 's'){
-
-    /******************************************
-     stream save process
-    ******************************************/
-    if ((ret = sample_comm_venc_start_get_stream(venc_vpss_chn->venc_chn, CHN_NUM_MAX)) != TD_SUCCESS) {
-        sample_print("Start Venc failed!\n");
-        goto EXIT_VENC_H264_UnBind;
-    }
-    }
-#endif
     while (EXIT_MODE_X)
     {
-	    usleep(500*1000);
+        usleep(500 * 1000);
     }
 
-     printf("============end rtsp==============\n");
+    printf("============end rtsp==============\n");
     // End_Rtsp = 0;
 
-    //return TD_SUCCESS;
+    // return TD_SUCCESS;
 
 EXIT_VENC_H264_UnBind:
     sample_comm_vpss_un_bind_venc(vpss_grp, venc_vpss_chn->vpss_chn[1], venc_vpss_chn->venc_chn[1]);
     // sample_comm_vpss_un_bind_venc(vpss_grp, venc_vpss_chn->vpss_chn[0], venc_vpss_chn->venc_chn[0]);
 EXIT_VENC_H264_STOP:
     sample_comm_venc_stop(venc_vpss_chn->venc_chn[1]);
-    //sample_comm_venc_stop(venc_vpss_chn->venc_chn[0]);
+    // sample_comm_venc_stop(venc_vpss_chn->venc_chn[0]);
 // EXIT_VENC_H265_UnBind:
 //     sample_comm_vpss_un_bind_venc(vpss_grp, venc_vpss_chn->vpss_chn[0], venc_vpss_chn->venc_chn[0]);
 EXIT_VENC_H265_STOP:
@@ -1237,7 +1383,7 @@ td_s32 sample_venc_start_svp_x(ot_vpss_grp vpss_grp, sample_venc_vpss_chn *venc_
 
     sample_venc_set_video_param(chn_param, gop_attr, CHN_NUM_MAX, TD_FALSE);
 
-      /* encode h.265 */
+    /* encode h.265 */
 
     h265_chn_param = &(chn_param[0]);
     if ((ret = sample_comm_venc_start(venc_vpss_chn->venc_chn[0], h265_chn_param)) != TD_SUCCESS)
@@ -1252,7 +1398,7 @@ td_s32 sample_venc_start_svp_x(ot_vpss_grp vpss_grp, sample_venc_vpss_chn *venc_
     //     sample_print("sample_comm_vpss_bind_venc failed for %#x!\n", ret);
     //     goto EXIT_VENC_H265_STOP;
     // }
-      /* encode h.264 */
+    /* encode h.264 */
 
     h264_chn_param = &(chn_param[1]);
     if ((ret = sample_comm_venc_start(venc_vpss_chn->venc_chn[1], h264_chn_param)) != TD_SUCCESS)
@@ -1276,8 +1422,8 @@ td_s32 sample_venc_start_svp_x(ot_vpss_grp vpss_grp, sample_venc_vpss_chn *venc_
     char rtsp_name[20];
     for (i = 0; i < CHN_NUM_MAX; i++)
     {
-	sprintf(rtsp_name, "%s%d","/stream",i);
-	printf("========rtsp_name=============%s\n",rtsp_name);
+        sprintf(rtsp_name, "%s%d", "/stream", i);
+        printf("========rtsp_name=============%s\n", rtsp_name);
         if (chn_param[i].type == OT_PT_H265)
             rtsp_handle[i].session = create_rtsp_session(rtsp_handle[i].g_rtsplive, rtsp_name, 1);
         else
@@ -1292,7 +1438,7 @@ EXIT_VENC_H264_UnBind:
     // sample_comm_vpss_un_bind_venc(vpss_grp, venc_vpss_chn->vpss_chn[0], venc_vpss_chn->venc_chn[0]);
 EXIT_VENC_H264_STOP:
     sample_comm_venc_stop(venc_vpss_chn->venc_chn[1]);
-    //sample_comm_venc_stop(venc_vpss_chn->venc_chn[0]);
+    // sample_comm_venc_stop(venc_vpss_chn->venc_chn[0]);
 // EXIT_VENC_H265_UnBind:
 //     sample_comm_vpss_un_bind_venc(vpss_grp, venc_vpss_chn->vpss_chn[0], venc_vpss_chn->venc_chn[0]);
 EXIT_VENC_H265_STOP:
@@ -1302,19 +1448,18 @@ EXIT_VENC_H265_STOP:
     // return NULL;
 }
 
-
 static td_void sample_venc_exit_process()
 {
-   // printf("please press twice ENTER to exit this sample\n");
-   // (td_void) getchar();
+    // printf("please press twice ENTER to exit this sample\n");
+    // (td_void) getchar();
 
-   // if (g_sample_venc_exit != TD_TRUE)
-   // {
-   //     (td_void) getchar();
-   // }
-    //sample_comm_venc_stop_get_stream(CHN_NUM_MAX);
+    // if (g_sample_venc_exit != TD_TRUE)
+    // {
+    //     (td_void) getchar();
+    // }
+    // sample_comm_venc_stop_get_stream(CHN_NUM_MAX);
     int chn_id[2] = {3, 4};
-    sample_comm_venc_stop_get_stream_x(chn_id,CHN_NUM_MAX);
+    sample_comm_venc_stop_get_stream_x(chn_id, CHN_NUM_MAX);
 }
 
 /*
@@ -1454,6 +1599,43 @@ exit:
     return ret;
 }
 
+static void video_read_stream_callback(int stream, PS_GK_ENC_BUF_ATTR frameBuf)
+{
+    GK_NET_FRAME_HEADER header = {0};
+    int ret;
+    header.magic = MAGIC_TEST;
+    header.device_type = 0;
+    header.frame_size = frameBuf->data_sz;
+    header.pts = frameBuf->time_us;
+
+    /* ����ʱ�䣬CMS��Ҫʱ�� */
+    struct timeval tv = {0};
+    struct timezone tz = {0};
+    gettimeofday(&tv, &tz);
+    header.sec = tv.tv_sec - tz.tz_minuteswest * 60;
+    header.usec = tv.tv_usec;
+
+    if (frameBuf->video.keyframe)
+        header.frame_type = GK_NET_FRAME_TYPE_I;
+    else
+        header.frame_type = GK_NET_FRAME_TYPE_P;
+
+    if (frameBuf->type == GK_ENC_DATA_H264) // h264
+    {
+        header.media_codec_type = 0; // CODEC_ID_H264;
+    }
+    else if (frameBuf->type == GK_ENC_DATA_H265) // h265
+    {
+        header.media_codec_type = 6; // CODEC_ID_H265;
+    }
+
+    header.frame_rate = frameBuf->video.fps;
+    header.video_reso = ((frameBuf->video.width << 16) + frameBuf->video.height);
+    header.frame_no = (++video_frame_index[stream]);
+    ret = mediabuf_write_frame(writerid[stream], frameBuf->data, frameBuf->data_sz, &header);
+    // printf("mediabuf_write_frame ret = %d\n",mediabuf_write_frame);
+}
+
 /******************************************************************************
  * function :  H.265e@1080P@30fps + h264e@D1@30fps
  ******************************************************************************/
@@ -1511,7 +1693,6 @@ static td_s32 sample_venc_normal(td_void)
         goto EXIT_VPSS_STOP;
     }
 
-
     ot_dis_cfg dis_cfg;
     ss_mpi_vi_get_chn_dis_cfg(vi_pipe, vi_chn, &dis_cfg);
     dis_cfg.motion_level = 1;
@@ -1524,14 +1705,17 @@ static td_s32 sample_venc_normal(td_void)
     dis_attr.gdc_bypass = TD_FALSE;
     ss_mpi_vi_set_chn_dis_attr(vi_pipe, vi_chn, &dis_attr);
 
-    pthread_t osd_task ;
+    pthread_t osd_task;
     pthread_create(&osd_task, NULL, osd_ttf_task, NULL);
     pthread_detach(osd_task);
 
     RGN_AddOsdToVenc();
-    pthread_t bitmap_update_t ;
+    pthread_t bitmap_update_t;
     pthread_create(&bitmap_update_t, NULL, bitmap_update, NULL);
-    pthread_detach(bitmap_update_t);  
+    pthread_detach(bitmap_update_t);
+
+    // sdk_set_get_video_stream_cb(video_read_stream_callback);
+
     sample_venc_normal_start_encode(vpss_grp, &venc_vpss_chn);
     // if ((ret = sample_venc_normal_start_encode(vpss_grp, &venc_vpss_chn)) != TD_SUCCESS)
     // {
@@ -1564,20 +1748,20 @@ void rtsp_reboot()
     EXIT_MODE_X = 0;
     new_system_call("pkill udhcpc");
     printf("===========pkill udhcpc==============\n");
-    for(i = 0; i<2;i++)
+    for (i = 0; i < 2; i++)
     {
-    rtsp_del_session(rtsp_handle[i].session);
-    rtsp_del_demo(rtsp_handle[i].g_rtsplive);
+        rtsp_del_session(rtsp_handle[i].session);
+        rtsp_del_demo(rtsp_handle[i].g_rtsplive);
     }
     ss_mpi_aenc_aac_deinit();
     // sample_comm_sys_exit();
-    printf("===========runVideoCfg.vencStream[1].h264Conf.width = %d===========\n" ,runVideoCfg.vencStream[1].h264Conf.width);
+    printf("===========runVideoCfg.vencStream[1].h264Conf.width = %d===========\n", runVideoCfg.vencStream[1].h264Conf.width);
     sleep(3);
     End_Rtsp = 1;
     EXIT_MODE_X = 1;
 
     venc_audio_start();
-    //RGN_AddOsdToVenc();
+    // RGN_AddOsdToVenc();
 }
 
 /******************************************************************************
@@ -1615,12 +1799,12 @@ td_s32 venc_audio_start()
     if (runVideoCfg.vencStream[0].avStream == 0 && runVideoCfg.vencStream[1].avStream == 0)
     {
         pthread_create(&venc_audio_pthread[1], 0, sample_audio_ai_aenc, NULL);
-	    pthread_detach(venc_audio_pthread[1]);
+        pthread_detach(venc_audio_pthread[1]);
     }
-// #ifdef __LITEOS__
-//     return TD_SUCCESS;
-// #else
-//     exit(TD_SUCCESS);
-// #endif
+    // #ifdef __LITEOS__
+    //     return TD_SUCCESS;
+    // #else
+    //     exit(TD_SUCCESS);
+    // #endif
 }
 #endif

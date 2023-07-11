@@ -646,7 +646,7 @@ static int netcam_start()
     printf("==================================netcam_start end==============\n");
     printf("==================================netcam_start end==============\n");
 
-	//netcam_sys_use_timer_init();
+	netcam_sys_use_timer_init();
     return 0;
 }
 

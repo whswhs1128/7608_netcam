@@ -107,8 +107,11 @@ static void* enc_audio_loop(void* arg);
 static int read_video_stream(void);
 static int read_audio_stream();
 
-static void cal_video_pts(unsigned int*pts, unsigned int ch);
-static void cal_audio_pts(unsigned int*pts, unsigned int pkg_len);
+// static void cal_video_pts(unsigned int*pts, unsigned int ch);
+// static void cal_audio_pts(unsigned int*pts, unsigned int pkg_len);
+
+ void cal_video_pts(unsigned int*pts, unsigned int ch);
+ void cal_audio_pts(unsigned int*pts, unsigned int pkg_len);
 
 //*****************************************************************************
 //*****************************************************************************
@@ -2527,7 +2530,8 @@ static unsigned long get_sys_runtime(int type)
     return time;
 }
 
-static void cal_video_pts(unsigned int*pts, unsigned int ch)
+// static void cal_video_pts(unsigned int*pts, unsigned int ch)
+void cal_video_pts(unsigned int*pts, unsigned int ch)
 {
     #if 1
     static unsigned long tv1[GADI_VENC_STREAM_NUM] = {0, 0}, tv2[GADI_VENC_STREAM_NUM] = {0,0};
@@ -2557,7 +2561,8 @@ static void cal_video_pts(unsigned int*pts, unsigned int ch)
     return;
 }
 
-static void cal_audio_pts(unsigned int*pts, unsigned int pkg_len)
+//static void cal_audio_pts(unsigned int*pts, unsigned int pkg_len)
+void cal_audio_pts(unsigned int*pts, unsigned int pkg_len)
 {
     #if 1
     static unsigned long tv1 = 0, tv2 = 0;

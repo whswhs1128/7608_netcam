@@ -51,6 +51,7 @@ pthread_t rec_func_pid = 0;
 
 
 static u64t rec_time_stop = 0;
+static u64t motion_rec_time_start = 0;
 static u64t motion_rec_time_stop = 0;
 static u64t alarm_rec_time_stop = 0;
 static int sche_rec_flag = 0;
@@ -207,6 +208,21 @@ static int sd_rec_stop(void)
     return ret;
 }
 
+static void motion_rec_time_check(u64t cur_time)
+{
+    //mojing4.0 不保存
+    #ifndef MODULE_SUPPORT_MOJING_V4
+	pthread_mutex_lock(&rec_time_mutex_t);
+
+	if(cur_time >= rec_time_stop && rec_time_stop >= motion_rec_time_stop && rec_time_stop != 0 && motion_rec_time_start != 0)
+	{
+		write_manage_info(DMS_NET_RECORD_TYPE_MOTION, runMdCfg.handle.recStreamNo, motion_rec_time_start, rec_time_stop);
+		motion_rec_time_start = 0;
+	}
+
+	pthread_mutex_unlock(&rec_time_mutex_t);
+    #endif
+}
 
 static int rec_func_loop(void)
 {
@@ -215,12 +231,13 @@ static int rec_func_loop(void)
     int tmp32_video_index = 0;
     int tmp32_audio_index = 0;
     //u32t tmp32_timetick = 0;
-    struct timeval ts, te;
-    struct timezone tz;
+    struct timeval tt, t1, t2;
     GK_NET_FRAME_HEADER header = {0};
     int have_audio = 1;
     int readIframe = 1;
-    int skip = 1, preRecOffset = 0;
+    int diffTime = 0;
+    int gopInterval = 2;
+    ST_GK_ENC_STREAM_H264_ATTR stH264Config;
 
     ret = mmc_get_sdcard_stauts();
     if(SD_STATUS_OK != ret){
@@ -235,28 +252,7 @@ static int rec_func_loop(void)
         mmc_sdcard_status_check();
         return -2;//stop rec
     }
-    
-    gettimeofday(&ts, &tz);
-    ts.tv_sec -= tz.tz_minuteswest*60;
-    /* 使用预录功能 */
-    if (runRecordCfg.preRecordTime > 0) {
-        preRecOffset = runRecordCfg.preRecordTime+1;
-        if(ts.tv_sec >= rec_avi_file.time_e)
-        {
-            ts.tv_sec = rec_avi_file.time_e;
-            if(rec_avi_file.time_b)
-            {
-                ts.tv_sec = rec_avi_file.time_b;
-                preRecOffset = 0;
-            }
-            mediabuf_set_oldest_frame(readerId);            
-            skip = 0;            
-            PRINT_INFO("use pre record %d(%d)s.\n", runRecordCfg.preRecordTime, preRecOffset);
-        }
-        else
-            mediabuf_set_newest_frame(readerId);
-        rec_avi_file.time_b = 0;
-    }
+
 
 	ret = sd_rec_start();
     if (ret < 0) {
@@ -266,6 +262,27 @@ static int rec_func_loop(void)
 
     PRINT_INFO("1, write avi header ok.");
     netcam_osd_update_id();
+
+    if (runRecordCfg.preRecordTime > 0)
+    {        
+        memset(&stH264Config, 0, sizeof(ST_GK_ENC_STREAM_H264_ATTR));
+        ret = netcam_video_get(0, runRecordCfg.stream_no, &stH264Config);
+        if (ret != 0)
+        {
+            PRINT_ERR("mojing_cloud_storage_send_over_tcp: get video parameters failed.\n");
+        }
+        else
+        {
+            if(stH264Config.fps)
+            {
+                gopInterval = stH264Config.gop / stH264Config.fps;
+                PRINT_INFO("gopInterval = %d.\n",gopInterval);
+            }
+        }
+    }
+    
+    gettimeofday(&t1, NULL);
+
     PRINT_INFO("before while, ch_num = %d.\n", rec_avi_init_param.ch_num);
 
 #if CAL_TIME
@@ -281,7 +298,8 @@ static int rec_func_loop(void)
     int encodetype = -1; // H.264:CODEC_ID_H264 0;H.265:CODEC_ID_H265 6
     int fps = 0;
     int res = 0;
-
+    u64t cur_time = 0;
+    printf("rec_func_loop rec_module_init = %d\n",rec_module_init);
 	while (rec_module_init) {
 
         int frameType;
@@ -301,47 +319,33 @@ static int rec_func_loop(void)
         int data_length = 0;
         if(readIframe == 1)
         {
-            if(skip)
-                ret = mediabuf_read_I_frame(readerId, (void **)&recv_buf, &data_length, &header);
-            else
+            ret = mediabuf_read_frame(readerId, (void **)&recv_buf, &data_length, &header);
+			if(ret == 0)
+			{
+	            PRINT_INFO("read no data.\n");
+				usleep(30000);
+				continue;
+        	}
+            // printf("after mediabuf_read_frame\n");
+            if(readIframe > 0 && header.frame_type == GK_NET_FRAME_TYPE_I)
             {
-                ret = mediabuf_read_next_I_frame(readerId, (void **)&recv_buf, &data_length, &header);
-                if(ts.tv_sec > (header.sec+preRecOffset))
-                    continue;
+                if (runRecordCfg.preRecordTime > 0)
+                {
+                    diffTime = t1.tv_sec - header.sec;
+                    PRINT_INFO("header:%d,rec start:%d,diff:%d\n", header.sec, (int)t1.tv_sec, diffTime);
+                    if((diffTime - runRecordCfg.preRecordTime) > (gopInterval - 1))
+                    {
+                        continue;
+                    }
+                }
+                readIframe = 0;
+				PRINT_INFO("File header,read I frame data..%d\n",header.frame_rate);
             }
-            preRecOffset = ts.tv_sec-header.sec;
-            PRINT_INFO("preRecordTime:%d(%d)s, rec_stime:%d(%d)s, fps:%d\n", runRecordCfg.preRecordTime, preRecOffset, ts.tv_sec, header.sec, header.frame_rate);
-            readIframe = 0;
-            encodetype = header.media_codec_type;
-            fps = header.frame_rate;
-            res = header.video_reso;
-            rec_avi_file.time_s = header.sec;
-            ts.tv_sec = header.sec;
-            if(preRecOffset < 0)
-                preRecOffset = 0;
-            
-            if((header.media_codec_type == 0 && rec_avi_init_param.codec_type != ENC_TYPE_H264) ||
-                (header.media_codec_type == 6 && rec_avi_init_param.codec_type != ENC_TYPE_H265))
-            {
-                PRINT_INFO("Use header I frame para codec_type:%d->%d\n", rec_avi_init_param.codec_type, header.media_codec_type);
-                rec_avi_init_param.codec_type = header.media_codec_type;
-            }
-            if(rec_avi_init_param.fps != header.frame_rate)
-            {
-                PRINT_INFO("Use header I frame para fps:%d->%d\n", rec_avi_init_param.fps, header.frame_rate);
-                rec_avi_init_param.fps = header.frame_rate;
-                rec_avi_file.video_fps = rec_avi_init_param.fps;
-            }
-            int width  = (header.video_reso>>16)&0xFFFF;
-            int height = header.video_reso&0xFFFF;
-            if((rec_avi_init_param.width != width) ||
-               (rec_avi_init_param.height != height))
-            {
-                PRINT_INFO("Use header I frame para video_reso:%dx%d->%dx%d\n", 
-                    rec_avi_init_param.width, rec_avi_init_param.height, width, height);
-                rec_avi_init_param.width  = width;
-                rec_avi_init_param.height = height;
-            }
+			else
+			{
+                printf("continue!!!!!!!!!!!!!!\n");
+				continue;
+			}
         }
         else
         {
@@ -358,76 +362,48 @@ static int rec_func_loop(void)
 
         /* 当编码类型、fps 和 分辨率改变，停止录像  */
         if ((header.frame_type == GK_NET_FRAME_TYPE_I) || (header.frame_type == GK_NET_FRAME_TYPE_P)) {
-            if (encodetype != header.media_codec_type) {
-                rec_avi_file.time_b = header.sec;
-                PRINT_INFO("stream%d, code type is changed:%d->%d, to stop from rec loop.\n", rec_avi_init_param.ch_num, encodetype, header.media_codec_type);
-                break;
+            /* encodetype不为-1且fps 和 res 不为0 */
+            if (fps && res && (encodetype != -1)) {
+                /* 当编码类型改变，跳出录像循环，停止录像  */
+                if (encodetype != header.media_codec_type) {
+                    PRINT_INFO("stream%d : code type is changed, to stop from rec loop.%d:%d\n", rec_avi_init_param.ch_num, (int)header.media_codec_type, encodetype);
+                    netcam_video_force_i_frame(rec_avi_init_param.ch_num);
+                    break;
+                }
+
+                /* 当fps改变，跳出录像循环，停止录像  */
+                if (fps != header.frame_rate) {
+                    PRINT_INFO("stream%d : fps is changed, to stop from rec loop.%d:%d:%d\n", rec_avi_init_param.ch_num,header.frame_rate,fps,header.frame_type);
+                    netcam_video_force_i_frame(rec_avi_init_param.ch_num);
+                    break;
+                }
+
+                /* 当分辨率改变，跳出录像循环，停止录像  */
+                if (res != header.video_reso) {
+                    PRINT_INFO("stram%d : resolution is changed, to stop from rec loop.\n", rec_avi_init_param.ch_num);
+                    netcam_video_force_i_frame(rec_avi_init_param.ch_num);
+                    break;
+                }
             }
 
-            /* 当fps改变，跳出录像循环，停止录像  */
-            if (fps != header.frame_rate) {
-                rec_avi_file.time_b = header.sec;
-                PRINT_INFO("stream%d, fps is changed:%d->%d, to stop from rec loop.\n", rec_avi_init_param.ch_num, fps, header.frame_rate);
-                break;
-            }
-
-            /* 当分辨率改变，跳出录像循环，停止录像  */
-            if (res != header.video_reso) {
-                rec_avi_file.time_b = header.sec;
-                PRINT_INFO("stram%d, resolution is changed:%d->%d, to stop from rec loop.\n", rec_avi_init_param.ch_num, res, header.video_reso);
-                break;
-            }
+            encodetype = header.media_codec_type;
+            fps = header.frame_rate;
+            res = header.video_reso;
         }
 
-        if (RECORD_IS_FIXED_SIZE(rec_avi_init_param.mode)) {
-            //PRINT_INFO("fix size \n");
-            avi_size = rec_avi_file.data_offset + 8 + rec_avi_file.index_count*16 + 100; //leave 100 BYTE space
-            if(avi_size > rec_avi_init_param.size_m * 1024 * 1024) {
-                PRINT_INFO("rec size of one file is %d MB, time to stop.\n", rec_avi_init_param.size_m);
-                break;
-            }
-        } else if(RECORD_IS_FIXED_DURATION(rec_avi_init_param.mode)) {
-            //PRINT_INFO("fix duration \n");
-            te.tv_sec = header.sec; // gettimeofday(&t2, NULL);
-            // 防止当时间有更新，T2<T1时会导致录像文件超大
-            if(te.tv_sec < ts.tv_sec)
-            {
-                PRINT_INFO("rec time of one file is %d(%d, %d) minutes, time to chage.\n", rec_avi_init_param.duration, te.tv_sec, ts.tv_sec);
-                break;
-            }
-            if ((te.tv_sec - ts.tv_sec - preRecOffset) >= (rec_avi_init_param.duration * 60)) {
-                if((header.sec - rec_avi_file.time_e) >= (rec_avi_init_param.duration * 60))
-                    rec_avi_file.time_b = header.sec;
-                PRINT_INFO("rec time of one file is %d(%d, %d) minutes, time to stop.\n", rec_avi_init_param.duration, te.tv_sec, ts.tv_sec);
-                break;
-            }
-        } else {
-            PRINT_ERR_MSG("rec mode error.");
-            break;
-        }
-
-        if (rec_pthread_running == 0) {
-            PRINT_INFO("rec_func_loop, stop record thread.\n");
-            break;
-        }
-
-        u64t tmp64 = get_time_to_u64t(header.sec);// get_u64t_now_time();
-        if ((tmp64 >= rec_time_stop) && (tmp64 >= manu_rec_fixtime_stop) && (sche_rec_flag == 0) && (manu_rec_flag == 0) && (sche2_rec_flag == 0)) {
-            PRINT_INFO("rec_func_loop, stop record.\n");
-            break;
-        }
 
 		pthread_mutex_lock(&rec_time_mutex_t);
 		int write_data_buf = data_array_pos + 8 + data_length+20;
 		// 如果新数据帧比原有buffer大，则先将旧数据刷入SD卡中
 		//将最大帧大小做为新的录像buffer。
-		if (write_data_buf >= rec_buf_size) 
+		if (write_data_buf >= rec_buf_size)
 	    {
 
 			ret = avi_record_write_cache(&rec_avi_file);
 			if (ret < 0)
 			{
 				rec_pthread_running = 0;
+                printf("avi_record_write_cache error\n");
 				pthread_mutex_unlock(&rec_time_mutex_t);
 				break;
 			}
@@ -436,10 +412,10 @@ static int rec_func_loop(void)
 				free(data_array);
 				data_array = NULL;
 			}
-			
+
 			PRINT_ERR("Rec buf size too small,Need to malloc again.new %d KB : old %d KB\n", write_data_buf/1024,rec_buf_size/1024);
 			rec_buf_size = write_data_buf+512;
-			
+
 			data_array = malloc(rec_buf_size);
 	        if (data_array == NULL){
 	            PRINT_ERR("Malloc record buffer:%dKB failed\n",rec_buf_size/1024);
@@ -449,32 +425,31 @@ static int rec_func_loop(void)
 	        }
 
 			//memset(data_array,0,rec_buf_size);
-			
+
 	    }
 		pthread_mutex_unlock(&rec_time_mutex_t);
 
-        if ((header.frame_type == GK_NET_FRAME_TYPE_A) && flag_audio_enable)
-        {
-            if (rec_avi_init_param.a_enc_type == 2) { //pcm
+
+        if ((header.frame_type == GK_NET_FRAME_TYPE_A) && flag_audio_enable) {
+            // if (rec_avi_init_param.a_enc_type == 2) { //pcm
+             if (rec_avi_init_param.a_enc_type == 0) { //G711 alaw
+                printf("======alaw===========\n");
                 memcpy(data_array + data_array_pos + 8, recv_buf, data_length);
             } else {
                 PRINT_ERR("get audio type error:%d.\n", rec_avi_init_param.a_enc_type);
             }
-        }
-        else if((header.frame_type == GK_NET_FRAME_TYPE_I) || (header.frame_type == GK_NET_FRAME_TYPE_P)) 
-        {
+
+        } else {
             memcpy(data_array + data_array_pos + 8, recv_buf, data_length);
         }
-        else
-        {
-            PRINT_ERR("header.frame_type type error:%d.\n", header.frame_type);
-            continue;
-        }
+
+
 
 #if CAL_TIME
         gettimeofday(&tt2, NULL);
         printf("get buf time: %d us \n", (tt2.tv_sec-tt1.tv_sec)*1000000+(tt2.tv_usec-tt1.tv_usec));
 #endif
+
 
         #if 1
         /* 打印是否丢帧，并设置 frameType */
@@ -524,15 +499,22 @@ static int rec_func_loop(void)
         }
         #endif
 
+
         /* 自生成时间戳，放在AVI的隐藏tunk中 */
-        u32t time32 = header.sec;        
-        rec_avi_file.time_e = header.sec;
+        u32t time32;
+        #if 1
+        gettimeofday(&tt, NULL);
+        //time32 = tt.tv_sec * 1000 + (tt.tv_usec / 1000);
+        time32 = (tt.tv_sec % 4294000000) * 1000 + (tt.tv_usec / 1000);
+        #else
+        time32 = get_nowtime_uint();
+        #endif
 
 #if CAL_TIME
         gettimeofday(&tt3, NULL);
 #endif
         /* 向AVI文件写入帧数据 */
-        ret = avi_record_write(&rec_avi_file, &rec_avi_init_param, data_array + data_array_pos + 8, data_length, frameType, time32);
+        ret = avi_record_write(&rec_avi_file, &rec_avi_init_param, data_array + data_array_pos + 8, data_length,  frameType, time32);
 		if (ret < 0)
 		{
 			rec_pthread_running = 0;
@@ -543,18 +525,94 @@ static int rec_func_loop(void)
         printf("write buf time: %d us , datalen=%d, frametype=%d\n",
                     (tt4.tv_sec-tt3.tv_sec)*1000000+(tt4.tv_usec-tt3.tv_usec), data_length,  frameType);
 #endif
+
+        if (RECORD_IS_FIXED_SIZE(rec_avi_init_param.mode)) {
+            //PRINT_INFO("fix size \n");
+            avi_size = rec_avi_file.data_offset + 8 + rec_avi_file.index_count*16 + 100; //leave 100 BYTE space
+            if(avi_size > rec_avi_init_param.size_m * 1024 * 1024) {
+                PRINT_INFO("rec size of one file is %d MB, time to stop.\n", rec_avi_init_param.size_m);
+                netcam_video_force_i_frame(rec_avi_init_param.ch_num);
+                break;
+            }
+        } else if(RECORD_IS_FIXED_DURATION(rec_avi_init_param.mode)) {
+            //PRINT_INFO("fix duration \n");
+            gettimeofday(&t2, NULL);
+            // 防止当时间有更新，T2<T1时会导致录像文件超大
+            if(t2.tv_sec < t1.tv_sec)
+            {
+                t1.tv_sec = t2.tv_sec ;
+            }
+            if ((t2.tv_sec - t1.tv_sec) >= (rec_avi_init_param.duration * 60))
+			{
+                PRINT_INFO("rec time of one file is %d minutes, time to stop.\n", rec_avi_init_param.duration);
+                netcam_video_force_i_frame(rec_avi_init_param.ch_num);
+
+				cur_time = get_u64t_now_time();
+				int diff_time = 0;
+
+				pthread_mutex_lock(&rec_time_mutex_t);
+
+				if(cur_time < rec_time_stop)//确保下次录制文件不小于1分钟
+				{
+					diff_time = cal_time_sub(rec_time_stop,cur_time);
+
+					PRINT_INFO("\ncur_time:%llu,rec_time_stop:%llu,diff:%d!\n",cur_time,rec_time_stop,diff_time);
+
+					if(diff_time > 0 && diff_time < 60)
+					{
+						rec_time_stop = u64t_add_seconds(rec_time_stop, (60 - diff_time));
+						PRINT_INFO("\n new rec_time_stop:%llu!\n",rec_time_stop);
+					}
+				}
+
+				pthread_mutex_unlock(&rec_time_mutex_t);
+
+				motion_rec_time_check(cur_time);
+
+                break;
+            }
+        } else {
+            PRINT_ERR_MSG("rec mode error.");
+            break;
+        }
+
+        if (rec_pthread_running == 0) {
+            PRINT_INFO("rec_func_loop, stop record thread.\n");
+            break;
+        }
+
+        cur_time = get_u64t_now_time();
+
+		motion_rec_time_check(cur_time);
+
+        if ((cur_time >= rec_time_stop) && (cur_time >= manu_rec_fixtime_stop) && (sche_rec_flag == 0) && (manu_rec_flag == 0) && (sche2_rec_flag == 0)) {
+            PRINT_INFO("rec_func_loop, stop record.\n");
+            break;
+        }
 	}
     //rec_pthread_running = 0;
 
     PRINT_INFO("2, write stream data ok.");
     //PRINT_INFO("1, rec_pthread_running = %d.\n", rec_pthread_running);
     ret = sd_rec_stop();
+    if (motion_rec_time_start != 0)
+    {
+        if (cur_time == 0)
+        {
+            cur_time = get_u64t_now_time();
+        }
+        rec_time_stop = cur_time;
+        motion_rec_time_stop = cur_time;
+        motion_rec_time_check(cur_time);
+    }
     if(ret < 0)
         return ret;
     //PRINT_INFO("2, rec_pthread_running = %d.\n", rec_pthread_running);
     PRINT_INFO("3, end avi file ok.");
     return 0;
 }
+
+
 
 static void rec_pthread_func(void *args)
 {
@@ -579,6 +637,12 @@ static void rec_pthread_func(void *args)
         }
     }
     //memset(data_array, 0, rec_buf_size);
+
+    /* 使用预录功能 */
+    if (runRecordCfg.preRecordTime > 0) {
+        PRINT_INFO("use pre record.\n");
+        mediabuf_set_oldest_frame(readerId);
+    }
 
     u64t tmp64 = 0;
     int ret;
@@ -640,6 +704,13 @@ error_rec:
         data_array = NULL;
     }
 
+    if (rec_avi_file.idx_array != NULL)
+    {
+        PRINT_INFO("record release rec_avi_file.idx_array\n");
+        free(rec_avi_file.idx_array);
+        rec_avi_file.idx_array = NULL;
+    }
+
     rec_func_pid = 0;
     rec_pthread_running = 0;
 
@@ -662,6 +733,20 @@ void thread_record_create(void)
         return ;
     }
 
+    if (access("/mnt/sd_card/notrecord", F_OK) == 0)
+    {
+        PRINT_ERR("sd have notrecord, so retrun.\n");
+        return;
+    }
+
+    #if defined(MODULE_SUPPORT_MOJING_V5) && defined(MODULE_SUPPORT_MOJING_V5_PRIVACY)
+    if (mojing_qiuji_is_privacy())
+    {
+        PRINT_INFO("rec privacy..return\n");
+        return;
+    }
+    #endif 
+
     if (rec_func_pid == 0) {
 		netcam_osd_update_id();
         rec_pthread_running = 1;
@@ -683,6 +768,8 @@ void thread_record_create(void)
 
 void thread_record_close(void)
 {
+    int closeTimeMax = 60000; //60s
+    int closeNow = 0;
     if (rec_func_pid != 0) { //如果开了record子线程，则等待回收子线程
 		rec_pthread_running = 0;
         PRINT_ERR("to close record pthread\n");
@@ -690,8 +777,13 @@ void thread_record_close(void)
         while(rec_func_pid != 0 || avi_reocrd_check_file_stoped())
         {
             usleep(100*1000);
+            closeNow += 100;
+            if (closeNow > closeTimeMax)
+            {
+                break;
+            }
         }
-		
+
         PRINT_ERR("record pthread is closed.");
     } else {
         LOG_INFO("thread_record is closed, needn't be close.");
@@ -716,36 +808,28 @@ void motion_rec_start(int num, int rec_time, int rec_time_once)
     {
         return;
     }
-    u64t start_64 = get_u64t_now_time();
 
     //PRINT_INFO("jump into motion_rec_start.\n");
-    //避免时间内重复响应
-    if (start_64 < motion_rec_time_stop) {
-        if(is_thread_record_running())
-            return;
-    }
+    u64t start_64 = get_u64t_now_time();
+
     pthread_mutex_lock(&rec_time_mutex_t);
+
+	if(!motion_rec_time_start)
+		motion_rec_time_start = start_64;
+
     //写管理文件
     motion_rec_time_stop = u64t_add_seconds(start_64, rec_time*60);
     if(motion_rec_time_stop > rec_time_stop)
         rec_time_stop = motion_rec_time_stop;
-    if(write_manage_info(DMS_NET_RECORD_TYPE_MOTION, num, start_64, motion_rec_time_stop) < 0)
-    {
-        pthread_mutex_unlock(&rec_time_mutex_t);
-        return;
-    }
-    
-    //如果当前没有录像则开始录像
-    if (is_thread_record_running()) {
-        PRINT_INFO("to create record thread failed, because record thread is running, \n");
+
+    if(is_thread_record_running())
+	{
+        //PRINT_INFO("to create record thread failed, because record thread is running, \n");
         pthread_mutex_unlock(&rec_time_mutex_t);
         return;
     }
 
-    if(rec_time < rec_time_once)
-        rec_duration = rec_time;
-    else
-        rec_duration = rec_time_once;
+    rec_duration = rec_time_once;
 
 	PRINT_INFO("motion_rec_start rec_time:%d, rec_time_once:%d, rec_duration:%d\n",rec_time, rec_time_once, rec_duration);
 	thread_record_create();
@@ -790,7 +874,10 @@ void alarm_rec_start(int num, int rec_time, int rec_time_once)
     if(rec_time < rec_time_once)
         rec_duration = rec_time;
     else
+    {
         rec_duration = rec_time_once;
+    }
+    
 	thread_record_create();
     pthread_mutex_unlock(&rec_time_mutex_t);
     
@@ -987,7 +1074,7 @@ void manu_rec_stop(int num)
 
 void do_schedule_recode_by_slice(void)
 {
-    //PRINT_INFO("rec enable:%d recmode:%d \n", runRecordCfg.enable, runRecordCfg.recordMode);
+    PRINT_INFO("rec enable:%d recmode:%d \n", runRecordCfg.enable, runRecordCfg.recordMode);
 	//判断是否录像
 
 	int shce_rec_flag = 0;
@@ -1006,7 +1093,7 @@ void do_schedule_recode_by_slice(void)
         shce_rec_flag = 0;
     } else if(runRecordCfg.enable) { //本地录像打开，支持本地录像
 		if(runRecordCfg.recordMode == 1) {
-            //PRINT_INFO("slice: all day record.\n");
+            PRINT_INFO("slice: all day record.\n");
 			shce_rec_flag = 1;
 		} else if(runRecordCfg.recordMode == 0) { // 按预设时间录像
 		    //PRINT_INFO("slice: check slice.\n");
@@ -1040,12 +1127,12 @@ void do_schedule_recode_by_slice(void)
 
 	//通过flag，进行录像或停止录像
 	if (shce_rec_flag == 1) {
-        //PRINT_INFO("schedule record or all day record enable.\n");
+        PRINT_INFO("schedule record or all day record enable.\n");
 	    int rec_time_once = runRecordCfg.recordLen;
 		int ch = runRecordCfg.stream_no;
 		sche_rec_start(ch, rec_time_once);
 	} else {
-	    //PRINT_INFO("schedule record or all day record disable.\n");
+	    PRINT_INFO("schedule record or all day record disable.\n");
 		sche_rec_stop();
 	}
 

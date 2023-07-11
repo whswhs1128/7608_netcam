@@ -20,7 +20,8 @@ typedef enum {
 
 static pthread_rwlock_t video_lock;
 static NETCAM_VIDEO_STREAM_Porpety videoPro[4] = {0,0,0,0};
-static MEDIABUF_HANDLE writerid[4] = {0,0,0,0};
+//static MEDIABUF_HANDLE writerid[4] = {0,0,0,0};
+MEDIABUF_HANDLE writerid[4] = {0,0,0,0};
 
 static int video_frame_index[4] = {0,0,0,0};
 

@@ -23,6 +23,7 @@
 #define _DEBUG_MSG_ON_ 0
 
 
+
 /**********************************************************************
 函数描述：得到文件的大小
 入口参数：FILE_NODE *node: 单个文件的信息节点
@@ -489,7 +490,7 @@ FILE_LIST *search_file_by_time(u32t type, u32t ch_num, u64t start, u64t stop)
     char index_file[128];
     int count, i, ret;
     INDEX_NODE node;
-    u64t begin, end;
+    u64t begin = 0, end = 0;
 #if _DEBUG_MSG_ON_
     PRINT_INFO("\n\n in get_list_by_time: \n");  
 #endif 
@@ -997,4 +998,6 @@ int main(int argc, char *argv[])
 }
 
 #endif
+
+
 

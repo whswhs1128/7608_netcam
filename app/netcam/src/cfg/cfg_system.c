@@ -71,7 +71,7 @@ GK_CFG_MAP ntpCfgMap[] = {
     {"plat_addr_val",       &(runSystemCfg.ntpCfg.platurl),       GK_CFG_DATA_TYPE_STRING,   "http://192.168.20.109:8080/reportAlarmData",1,1,64,NULL},
     {"switch_485",	    &(runSystemCfg.ntpCfg.enable485),	GK_CFG_DATA_TYPE_S32,     "1",               1, 0, 1,  NULL},
     {"AI_enable",          &(runSystemCfg.ntpCfg.enableAI),   GK_CFG_DATA_TYPE_S32,     "1",               1, 0, 1,  NULL},
-    {"AI_ModelNum",          &(runSystemCfg.ntpCfg.modelNum),   GK_CFG_DATA_TYPE_S32,     "1",               1, 0, 1,  NULL},
+    {"AI_ModelNum",          &(runSystemCfg.ntpCfg.modelNum),   GK_CFG_DATA_TYPE_STRING,     "1",               1, 0, 1,  NULL},
     {"AI_PlatUrl",       &(runSystemCfg.ntpCfg.AIplat),       GK_CFG_DATA_TYPE_STRING,   "http://192.168.20.109:8080/reportAlarmData",1,1,64,NULL},
     {NULL,},
 };
