@@ -411,6 +411,14 @@ CCFLAGS_USER += -I src/common_venc
 CCFLAGS_USER += -I src/venc_audio/adp
 CCFLAGS_USER += -I src/venc_audio
 CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/gmp
+CCFLAGS_USER += -I src/svp_rtsp/ive/sample
+CCFLAGS_USER += -I src/svp_rtsp/SDL2-2.26.1/install/include/SDL2
+CCFLAGS_USER += -I src/svp_rtsp/SDL2_ttf-2.0.18/install/include/SDL2/
+CCFLAGS_USER += -I src/svp_rtsp/common
+LDFLAGS_USER += -L src/svp_rtsp/SDL2-2.26.1/install/lib
+LDFLAGS_USER += -L src/svp_rtsp/SDL2_ttf-2.0.18/install/lib
+LDFLAGS_USER += -lSDL2 -lSDL2_ttf  -Wl,--rpath-link=src/svp_rtsp/freetype-2.9/install/lib
+
 LIBRARIES += rtsp
 LIBRARIES += ss_snap
 LIBRARIES += ss_extend_stats
@@ -460,6 +468,13 @@ SOURCES += src/venc_audio/sample_audio.c
 SOURCES += src/venc_audio/sample_venc_aenc.c
 SOURCES += src/venc_audio/adp/audio_aac_adp.c
 SOURCES += src/venc_audio/adp/audio_dl_adp.c
+SOURCES += src/svp_rtsp/common/sample_common_ive.c
+SOURCES += src/svp_rtsp/common/sample_common_svp.c
+SOURCES += src/svp_rtsp/ive/sample_ive_main.c
+SOURCES += src/svp_rtsp/ive/sample/sample_ive_md.c
+
+
+
 
 
 #QRCODE link wifi 
@@ -559,45 +574,6 @@ LIBRARIES += image
 #else ifeq ($(DECODER), gk7605v100)
 else ifneq ($(findstring $(DECODER), gk7205v200 gk7605v100 gk7205v300),)
 LDFLAGS_USER  += -ldl -lstdc++ -lm
-#LIBRARIES += ae
-#LIBRARIES += isp
-#LIBRARIES += dehaze
-#LIBRARIES += drc
-#LIBRARIES += ldci
-#LIBRARIES += awb
-#LIBRARIES += ir_auto
-#LIBRARIES += sns_imx327
-#LIBRARIES += sns_imx307
-#LIBRARIES += sns_imx307_2l
-#LIBRARIES += sns_imx327_2l
-#LIBRARIES += sns_imx335
-#LIBRARIES += sns_sc4236
-#LIBRARIES += sns_sc2235
-#LIBRARIES += sns_sc2231
-#LIBRARIES += sns_sc3235
-#LIBRARIES += sns_gc2053
-#LIBRARIES += sns_gc2053_forcar
-#LIBRARIES += sns_os05a
-#LIBRARIES += sns_f37
-#LIBRARIES += sns_gc4653_2l
-#LIBRARIES += sns_sc500ai
-#LIBRARIES += sns_sc3335
-#LIBRARIES += gk_api
-#LIBRARIES += gk_isp
-#LIBRARIES += gk_awb
-#LIBRARIES += gk_ae
-#LIBRARIES += securec
-#LIBRARIES += upvqe
-#LIBRARIES += dnvqe
-#LIBRARIES += voice_engine
-#LIBRARIES += vqe_res
-#LIBRARIES += vqe_record
-#LIBRARIES += vqe_hpf
-#LIBRARIES += vqe_anr
-#LIBRARIES += vqe_aec
-#LIBRARIES += vqe_agc
-#LIBRARIES += vqe_eq
-#LIBRARIES += aac_dec	xqq
 LIBRARIES += sns_imx485
 LIBRARIES += sns_os04a10
 LIBRARIES += sns_os05a10_2l_slave
@@ -639,6 +615,11 @@ LIBRARIES += aac_dec
 #LIBRARIES += gk_ivp
 #LIBRARIES += gk_ive	xqq
 LIBRARIES += ss_md
+LIBRARIES += svp_acl
+
+LDFLAGS_USER += -lprotobuf-c
+LDFLAGS_USER += -fstack-protector-strong
+
 
 LIBRARIES += bin
 endif

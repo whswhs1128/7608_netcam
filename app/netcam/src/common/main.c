@@ -637,7 +637,7 @@ static int netcam_start()
     #endif
     //netcam_pm_init();
     //venc_audio_start();
-    //svp_main();
+    svp_main();
     netcam_image_init();
 	//netcam_autolight_init();
     netcam_net_wifi_init();

@@ -335,7 +335,7 @@ static int web_time(HTTP_OPS* ops, void* arg)
 			runSystemCfg.ntpCfg.enable = cJSON_GetObjectItem(ret,"ntpCfg_enable")->valueint;
 			runSystemCfg.ntpCfg.enable485 = cJSON_GetObjectItem(ret,"switch_485")->valueint;
 			runSystemCfg.ntpCfg.enableAI = cJSON_GetObjectItem(ret,"AI_enable")->valueint;
-			runSystemCfg.ntpCfg.modelNum = cJSON_GetObjectItem(ret,"AI_ModelNum")->valueint;
+			//runSystemCfg.ntpCfg.modelNum = cJSON_GetObjectItem(ret,"AI_ModelNum")->valueint;
 
 			if(runSystemCfg.ntpCfg.enable485)
 			{

@@ -50,9 +50,15 @@ typedef struct
     ot_sample_svp_rect_info region;
 } ot_sample_ivs_md_info;
 
+// typedef struct
+// {
+//     int arr[121];
+//     int labelN[301];
+// } Total_result;
+
 typedef struct
 {
-    int arr[121];
+    int arr[241];
     int labelN[301];
 } Total_result;
 
@@ -86,6 +92,7 @@ static int End_Rtsp = 1;
 rtsp_handle_struct rtsp_handle[2];
 atomic_uint random_int;
 // char  platename[]=" 京沪津渝冀晋蒙辽吉黑苏浙皖闽赣鲁豫鄂湘粤桂琼川贵云藏陕甘青宁新学警港澳挂使领民航危险品黄白黑绿未单双0123456789ABCDEFGHJKLMNPQRSTUVWXYZ";
+// char  platename[]=" 京沪津渝冀晋蒙辽吉黑苏浙皖闽赣鲁豫鄂湘粤桂琼川贵云藏陕甘青宁新学警港澳挂使领民航危险品黑蓝未绿白黄单双0123456789ABCDEFGHJKLMNPQRSTUVWXYZ";
 char  platename[]=" 京沪津渝冀晋蒙辽吉黑苏浙皖闽赣鲁豫鄂湘粤桂琼川贵云藏陕甘青宁新学警港澳挂使领民航危险品黑蓝未绿白黄单双0123456789ABCDEFGHJKLMNPQRSTUVWXYZ";
 static td_void sample_ivs_md_uninit(ot_sample_ivs_md_info *md_info_ptr)
 {
@@ -403,23 +410,48 @@ void *bitmap_update(void )
     while(1)
     {
         sleep(1);
-        z++;
-        if(z == 10)
+    //     z++;
+    //     if(z == 10)
+    //     {
+    //         z = 0;
+            
+    //     ss_mpi_rgn_update_canvas(OVERLAYEX_MIN_HANDLE);
+    //     s32Ret = ss_mpi_rgn_set_bmp(OVERLAYEX_MIN_HANDLE,&stBitmap);//s32Ret 为RGN_HANDLE OverlayHandle
+    //     if(s32Ret != TD_SUCCESS)
+    //     {
+    //         printf("HI_MPI_RGN_SetBitMap update failed with %#x!\n", s32Ret);
+    //         // return -1;
+    //         continue;
+    //     }
+    //     }
+
+    //     if(p->labelN[0]==0 )
+    //     {
+    //         continue;
+    //     }
+            
+    //     ss_mpi_rgn_update_canvas(OVERLAYEX_MIN_HANDLE);
+    //     s32Ret = ss_mpi_rgn_set_bmp(OVERLAYEX_MIN_HANDLE,&stBitmap);//s32Ret 为RGN_HANDLE OverlayHandle
+    //     if(s32Ret != TD_SUCCESS)
+    //     {
+    //         printf("HI_MPI_RGN_SetBitMap update failed with %#x!\n", s32Ret);
+    //         // return -1;
+    //         continue;
+    //     }
+       
+    //    //memset(stBitmap.data, 0, (2 * (bmp_w) * (bmp_h)));
+    //    memset(stBitmap.data, 0, (2 * 3840 * 48));
+       if(p->labelN[0]==0 )
+        {
+	    z++;
+	    if(z == 10)
         {
             z = 0;
-            
+        //printf("clear bitmap\n");
+	memset(stBitmap.data, 0, (2 * (bmp_w) * (bmp_h)));
         ss_mpi_rgn_update_canvas(OVERLAYEX_MIN_HANDLE);
-        s32Ret = ss_mpi_rgn_set_bmp(OVERLAYEX_MIN_HANDLE,&stBitmap);//s32Ret 为RGN_HANDLE OverlayHandle
-        if(s32Ret != TD_SUCCESS)
-        {
-            printf("HI_MPI_RGN_SetBitMap update failed with %#x!\n", s32Ret);
-            // return -1;
-            continue;
-        }
-        }
-
-        if(p->labelN[0]==0 )
-        {
+        s32Ret = ss_mpi_rgn_set_bmp(OVERLAYEX_MIN_HANDLE,&stBitmap);
+	}
             continue;
         }
             
@@ -428,16 +460,17 @@ void *bitmap_update(void )
         if(s32Ret != TD_SUCCESS)
         {
             printf("HI_MPI_RGN_SetBitMap update failed with %#x!\n", s32Ret);
-            // return -1;
-            continue;
+            return -1;
         }
        
        //memset(stBitmap.data, 0, (2 * (bmp_w) * (bmp_h)));
-       memset(stBitmap.data, 0, (2 * 3840 * 48));
+       memset(stBitmap.data, 0, (2 * 3840 * 56));
+       z=0;
        
        
     }
     return 0;
+  
 }
 
 
@@ -475,24 +508,44 @@ void *osd_ttf_task(void)
         {
             for(i = 0;i < p->labelN[0];i++)
             {
-                for(j=1;j<=15;j++)
+        //         for(j=1;j<=15;j++)
+        //         {
+        //             if(p->labelN[(i*15)+j] < 154 && p->labelN[(i*15)+j] != 0)
+        //             {
+        //                 b[0] = platename[p->labelN[(i*15)+j]];
+        //                 b[1] = platename[p->labelN[(i*15)+j]+1];
+        //                 b[2] = platename[p->labelN[(i*15)+j]+2];
+        //             }
+        //             else if(p->labelN[(i*15)+j] != 0)
+        //             {
+        //                 b[0] = platename[p->labelN[(i*15)+j]];
+        //             }
+        //             strcat(timestr,b);
+        //             memset(b,0,3);
+        //         }    
+		// strcat(timestr,"  ");
+        for(j=1;j<=15;j++)
                 {
                     if(p->labelN[(i*15)+j] < 154 && p->labelN[(i*15)+j] != 0)
                     {
                         b[0] = platename[p->labelN[(i*15)+j]];
                         b[1] = platename[p->labelN[(i*15)+j]+1];
                         b[2] = platename[p->labelN[(i*15)+j]+2];
+			strcat(timestr,b);
                     }
-                    else if(p->labelN[(i*15)+j] != 0)
+                    else if(p->labelN[(i*15)+j] > 153)
                     {
+
                         b[0] = platename[p->labelN[(i*15)+j]];
+
+			strcat(timestr,b);
+		     
                     }
-                    strcat(timestr,b);
+                    
                     memset(b,0,3);
                 }    
-		strcat(timestr,"  ");
+		strcat(timestr,"   ");
             }
-            // printf("===========timestr================%s\n",timestr);
         }
 //        strcat(timestr," ");
         string_to_bmp(timestr);
@@ -543,8 +596,8 @@ td_s32 RGN_AddOsdToVenc(void)
         stBitmap.width = 4;
     }
     stRgnAttr.attr.overlay.size.width = 1920;   // 240;        /**区域宽**/
-    stRgnAttr.attr.overlay.size.height = 48; // 192;        /**区域高**/
-    stRgnAttr.attr.overlay.bg_color = 0xffff;         // 0x00007c00; /**区域背景颜色**/
+    stRgnAttr.attr.overlay.size.height = 56; // 192; 48       /**区域高**/
+    stRgnAttr.attr.overlay.bg_color = 0x0000;         // 0x00007c00; /**区域背景颜色**/
 
     for (i = OVERLAYEX_MIN_HANDLE; i < OVERLAYEX_MIN_HANDLE + handle_num; i++) {
         ret = ss_mpi_rgn_create(i, &stRgnAttr);
@@ -568,8 +621,8 @@ td_s32 RGN_AddOsdToVenc(void)
     // stChnAttr.attr.overlay_chn.point.x = 640; // 240;
     // stChnAttr.attr.overlay_chn.point.y = 320; // 192;
     stChnAttr.attr.overlay_chn.point.x = 0; // 240;
-    stChnAttr.attr.overlay_chn.point.y = 60; // 192;
-    stChnAttr.attr.overlay_chn.bg_alpha = 0;
+    stChnAttr.attr.overlay_chn.point.y = 0; // 192;
+    stChnAttr.attr.overlay_chn.bg_alpha = 128;
     stChnAttr.attr.overlay_chn.fg_alpha = 128;
     stChnAttr.attr.overlay_chn.layer = OverlayHandle;
 
@@ -638,10 +691,10 @@ void *udp_recv_thread()
     //	printf("ptr size if %d\n",sizeof(ptr_recv));
     struct sockaddr_in caddr;
     socklen_t clen = sizeof(caddr);
-    char ptr_recv[2048] = {0};
+    char ptr_recv[2480] = {0};
     int recv_num = 0;
     int i, j;
-    
+    printf("===========total result ========================== %d\n", sizeof(Total_result));
     while (1)
     {
         //  socklen_t len = sizeof(serverAddr);
@@ -664,10 +717,8 @@ void *udp_recv_thread()
         
         if (region_tmp_old.num != 0)
         {
-            //	printf("test num is %d\n",region_tmp.num);
             for (i = 0; i < region_tmp_old.num; i++)
             {
-                //	printf("p[6*i+6] = %d\n",p[6*i+6]);
                 boxcolor[i] = (td_s32)p->arr[6 * i + 1];
                 region_tmp_old.rect[i].point[OT_SAMPLE_POINT_IDX_ZERO].x = (td_s32)p->arr[6 * i + 3] / 2 * 2;
                 region_tmp_old.rect[i].point[OT_SAMPLE_POINT_IDX_ZERO].y = (td_s32)p->arr[6 * i + 4] / 2 * 2;
