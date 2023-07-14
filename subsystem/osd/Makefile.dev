@@ -33,7 +33,7 @@ SOURCES  += src/osd.c
 
 CCFLAGS_USER += -O2
 CCFLAGS_USER += -I src -I inc
-CCFLAGS_USER += -I /home/xieqianqian/yianyun/platform/api/inc	#add
+CCFLAGS_USER += -I ../../platform/api/inc	#add
 CCFLAGS_USER += -I$(INSTALL_HEADER_DIR)/platform/sdk
 ifeq ($(SUPPORT_VECTOR_FONT),y)
 CCFLAGS_USER += -I $(FREETYPE_DIR)/include/freetype2
