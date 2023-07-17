@@ -185,13 +185,13 @@ LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-g
 LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/../../../../aarch64-linux-gnu/lib/../lib64/libstdc++.so
 LOAD src/svp_rtsp/SDL2-2.26.1/install/lib/libSDL2.so
 LOAD src/svp_rtsp/SDL2_ttf-2.0.18/install/lib/libSDL2_ttf.so
-LOAD /home/xieqianqian/7608_netcam/install/arm11-gcc-uClibc-linux-gk7605v100/lib/libprotobuf-c.a
+LOAD /home/wanghs/work/7608_netcam/install/arm11-gcc-uClibc-linux-gk7605v100/lib/libprotobuf-c.a
 LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/libpthread.so
 LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/librt.so
 LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/libresolv.so
 LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/libdl.so
 LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/libm.so
-LOAD /home/xieqianqian/7608_netcam/install/arm11-gcc-uClibc-linux-gk7605v100/lib/librtsp.a
+LOAD /home/wanghs/work/7608_netcam/install/arm11-gcc-uClibc-linux-gk7605v100/lib/librtsp.a
 LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/libdl.so
 LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/../../../../aarch64-linux-gnu/lib/../lib64/libstdc++.so
 LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/libm.so

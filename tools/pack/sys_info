@@ -5,8 +5,8 @@
         "chip_type":    "gk7605v100",
         "sensor_type":  "gc4653",
         "svn_version":  "123",
-        "make_date":    "2023-06-30 17:06:31",
-        "upgrade_version":    "v1.0.123.20230630170631",
+        "make_date":    "2023-07-14 11:15:07",
+        "upgrade_version":    "v1.0.123.20230714111507",
         "author":       "root" 
     }
 }

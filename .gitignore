@@ -137,3 +137,16 @@ app/netcam/build/arm11-gcc-uClibc-linux-gk7605v100/bin/netcam
 app/netcam/build/arm11-gcc-uClibc-linux-gk7605v100/lib/libmain.a
 app/netcam/src/http_client/lib/uClibc/libhttp_client.a
 app/netcam/src/gk_cms/build/
+app/netcam/build/arm11-gcc-uClibc-linux-gk7605v100/bin/netcam
+app/netcam/build/arm11-gcc-uClibc-linux-gk7605v100/bin/netcam.map
+app/netcam/build/arm11-gcc-uClibc-linux-gk7605v100/info/build-info.txt
+app/netcam/build/arm11-gcc-uClibc-linux-gk7605v100/lib/libmain.a
+app/netcam/build/arm11-gcc-uClibc-linux-gk7605v100/lib/libmain.so.map
+app/netcam/src/http_client/lib/uClibc/libhttp_client.a
+app/netcam/src/http_client/lib/uClibc/libhttp_client.so
+app/netcam/src/update/build/arm11-gcc-uClibc-linux-gk7605v100/lib/libapp_update.so.map
+platform/sdk/Config.mak.root
+platform/sdk/Config.mak.wanghs
+subsystem/mediabuffer/build/arm11-gcc-uClibc-linux-gk7605v100/lib/libmediaFifo.so.map
+subsystem/minirtsp/build/arm11-gcc-uClibc-linux-gk7605v100/lib/librtspLib.so.map
+tools/pack/sys_info
