@@ -351,8 +351,15 @@ static int web_time(HTTP_OPS* ops, void* arg)
 	{
 	strncpy(runSystemCfg.ntpCfg.AIplat, cJSON_GetObjectItem(ret,"AI_PlatUrl")->valuestring, sizeof(runSystemCfg.ntpCfg.AIplat)-1);
 	printf("runSystemCfg.ntpCfg.AIplat ================= %s\n", runSystemCfg.ntpCfg.AIplat);
+	strncpy(runSystemCfg.ntpCfg.modelNum, cJSON_GetObjectItem(ret,"AI_ModelNum")->valuestring, sizeof(runSystemCfg.ntpCfg.modelNum)-1);
+	printf("runSystemCfg.ntpCfg.AIplat ================= %s\n", runSystemCfg.ntpCfg.modelNum);
 	}
 	}
+	new_system_call("pkill main");
+	new_system_call("cd /sharefs/bmp_region/Total-sock-to_1/out");
+	char line[256];
+	sprintf(line,"./main %s %s > /dev/null &",runSystemCfg.ntpCfg.modelNum, runSystemCfg.ntpCfg.AIplat);
+	new_system_call(line);
         netcam_sys_set_time_zone_by_utc_string(timeString, zone);
         netcam_timer_add_task(netcam_sys_save, NETCAM_TIMER_TWO_SEC, SDK_FALSE, SDK_TRUE);
         cJSON_Delete(opt);
