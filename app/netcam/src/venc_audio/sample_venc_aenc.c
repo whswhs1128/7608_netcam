@@ -758,6 +758,7 @@ static int get_stream_from_one_channl(int s_LivevencChn, rtsp_demo_handle g_rtsp
         }
 
         free(stVStream.pack);
+	usleep(20 * 1000);
         stVStream.pack = NULL;
     }
     return 1;
