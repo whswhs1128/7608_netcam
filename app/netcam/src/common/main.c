@@ -615,7 +615,7 @@ static int netcam_start()
     }
 	//sdk_sys_init(vencStream_cnt, enSize);
 	sdk_sys_init(vencStream_cnt);
-	netcam_ptz_init();
+//	netcam_ptz_init();
     netcam_sys_init();
     //初始化OSD更新任务
     netcam_timer_init();
@@ -692,6 +692,7 @@ int main(int argc, char *argv[])
     //阻塞等待，不用循环
     while(1)
     {
+	    sleep(15);
 #if 0
         // 如果video异常，那么不进行feed操作
         #if 0
