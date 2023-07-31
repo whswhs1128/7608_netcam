@@ -380,6 +380,8 @@ const char* file_suffix[] =
 	".xap",
 	".rar",
 	".cab",
+	".nmf",
+	".pexe",
 
 	0
 };
@@ -718,6 +720,8 @@ const char* content_type[] = {
 /*    .xap     */    "application/x-silverlight-app",
 /*    .rar      */    "application/x-rar-compressed",
 /*    .cab     */    "application/vnd.ms-cab-compressed"
+/*    .nmf     */    "nmf file"
+/*    .pexe     */    "pexe file"
 };
 
 
