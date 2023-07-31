@@ -168,6 +168,7 @@ td_void *SAMPLE_COMM_AUDIO_AencProc_new(td_void *p)
             // continue;
             return -1;
         }
+	usleep(10 * 1000);
     }
     printf("==========audio end==========\n");
     return NULL;
@@ -186,6 +187,7 @@ static td_s32 sample_audio_ai_aenc(td_void)
     //ot_aio_attr aio_attr = {0};
     sample_comm_ai_vqe_param ai_vqe_param = {0};
 
+    sdk_sys_thread_set_name("sample_audio_ai_aenc");
     sample_audio_ai_aenc_init_param(&aio_attr, &ai_dev, &ao_dev);
 
     /* step 1: start ai */
@@ -774,6 +776,7 @@ td_void *VENC_GetVencStreamProc(td_void *p)
     printf("=========chn = %d\n", rtsp_handle[0].channel_num);
     printf("=========chn = %d\n", rtsp_handle[1].channel_num);
 
+    sdk_sys_thread_set_name("VENC_GetVencStreamProc");
     while (End_Rtsp)
     {
         
@@ -1156,6 +1159,7 @@ static td_s32 sample_venc_normal(td_void)
     // sample_venc_vb_attr vb_attr = {0};
     sample_venc_vpss_chn venc_vpss_chn = {0};
 
+    sdk_sys_thread_set_name("sample_venc_normal");
     sample_set_venc_vpss_chn(&venc_vpss_chn);
     // sample_comm_vi_get_default_vi_cfg(sns_type, &vi_cfg);
 

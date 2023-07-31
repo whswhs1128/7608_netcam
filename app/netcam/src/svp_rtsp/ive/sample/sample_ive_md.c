@@ -407,6 +407,7 @@ void *bitmap_update(void )
     // time_t now;
     // struct tm *ptm;
     // char timestr[OSD_LENGTH] = {0};
+    sdk_sys_thread_set_name("bitmap_update");
     while(1)
     {
         sleep(1);
@@ -484,13 +485,14 @@ void *osd_ttf_task(void)
     int i,j;
     char b[3];
     stBitmap.data = malloc(2 * 3840 * 48);
+    sdk_sys_thread_set_name("osd_ttf_task");
     if (stBitmap.data == NULL)
     {
         printf("stBitmap.data faided\r\n");
     }
     while (1)
     {
-        // usleep(1000000);
+         usleep(1000000);
         // time(&now);
         // ptm = localtime(&now);
         // snprintf(timestr, 100, "时间:%d-%02d-%02d %02d:%02d:%02d", ptm->tm_year + 1900, ptm->tm_mon + 1, ptm->tm_mday, ptm->tm_hour, ptm->tm_min, ptm->tm_sec);
@@ -694,13 +696,13 @@ void *udp_recv_thread()
     char ptr_recv[2480] = {0};
     int recv_num = 0;
     int i, j;
+    sdk_sys_thread_set_name("udp_recv_thread");
     printf("===========total result ========================== %d\n", sizeof(Total_result));
     while (1)
     {
         //  socklen_t len = sizeof(serverAddr);
         // memset(ptr_recv,0,256);
         //		printf("recv begin\n");
-	usleep(50 * 1000);
         recv_num = recvfrom(sockfd, ptr_recv, sizeof(ptr_recv), 0, (struct sockaddr *)&caddr, &clen);
         //	recv(sockfd,ptr_recv,256,0);
         	
@@ -766,7 +768,7 @@ static td_void *sample_ivs_md_proc(td_void *args)
     td_bool is_first_frm = TD_TRUE;
     atomic_init(&random_int, 1);
     
-
+    sdk_sys_thread_set_name("sample_ivs_md_proc");
     sample_svp_check_exps_return(md_ptr == TD_NULL, TD_NULL, SAMPLE_SVP_ERR_LEVEL_ERROR, "md_inf_ptr can't be null\n");
 
     /* Create chn */
@@ -867,6 +869,8 @@ static td_void *sample_ivs_md_proc(td_void *args)
         ret = ss_mpi_venc_send_frame(3, &frm[0], OT_SAMPLE_IVE_MD_MILLIC_SEC);
         if(ret != TD_SUCCESS)
             goto base_free;
+
+	usleep(22 * 1000);
         // sample_svp_check_failed_err_level_goto(ret, base_free, "ss_mpi_venc_send_frame fail,Error(%#x)\n", ret);
 
         // free(stBitmap.data);
@@ -978,7 +982,6 @@ td_void sample_ive_md(td_void)
     pthread_create(&bitmap_update_t, NULL, bitmap_update, NULL);
     pthread_detach(bitmap_update_t);  
 
-    ret = prctl(PR_SET_NAME, "ive_md_proc", 0, 0, 0);
     // sample_svp_check_exps_goto(ret != TD_SUCCESS, end_md_0, SAMPLE_SVP_ERR_LEVEL_ERROR, "set thread name failed!\n");
     ret = pthread_create(&g_md_thread, 0, sample_ivs_md_proc, (td_void *)&g_md_info);
 

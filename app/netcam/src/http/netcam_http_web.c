@@ -335,35 +335,34 @@ static int web_time(HTTP_OPS* ops, void* arg)
 			runSystemCfg.ntpCfg.enable = cJSON_GetObjectItem(ret,"ntpCfg_enable")->valueint;
 			runSystemCfg.ntpCfg.enable485 = cJSON_GetObjectItem(ret,"switch_485")->valueint;
 			runSystemCfg.ntpCfg.enableAI = cJSON_GetObjectItem(ret,"AI_enable")->valueint;
-			//runSystemCfg.ntpCfg.modelNum = cJSON_GetObjectItem(ret,"AI_ModelNum")->valueint;
+	//		runSystemCfg.ntpCfg.modelNum = cJSON_GetObjectItem(ret,"AI_ModelNum")->valuestring;
 
 			if(runSystemCfg.ntpCfg.enable485)
 			{
-			printf("============485 open ===========");
+				printf("============485 open ===========");
 			}
 			strncpy(runSystemCfg.ntpCfg.serverDomain, cJSON_GetObjectItem(ret,"ntpCfg_serverDomain")->valuestring, sizeof(runSystemCfg.ntpCfg.serverDomain)-1);
-	if(cJSON_GetObjectItem(ret,"plat_addr_val")->valuestring != NULL)
-	{
-	strncpy(runSystemCfg.ntpCfg.platurl, cJSON_GetObjectItem(ret,"plat_addr_val")->valuestring, sizeof(runSystemCfg.ntpCfg.platurl)-1);
-	printf("runSystemCfg.ntpCfg.platurl ================= %s\n", runSystemCfg.ntpCfg.platurl);
-        }
-	if(cJSON_GetObjectItem(ret,"AI_PlatUrl")->valuestring != NULL)
-	{
-	strncpy(runSystemCfg.ntpCfg.AIplat, cJSON_GetObjectItem(ret,"AI_PlatUrl")->valuestring, sizeof(runSystemCfg.ntpCfg.AIplat)-1);
-	printf("runSystemCfg.ntpCfg.AIplat ================= %s\n", runSystemCfg.ntpCfg.AIplat);
-	strncpy(runSystemCfg.ntpCfg.modelNum, cJSON_GetObjectItem(ret,"AI_ModelNum")->valuestring, sizeof(runSystemCfg.ntpCfg.modelNum)-1);
-	printf("runSystemCfg.ntpCfg.AIplat ================= %s\n", runSystemCfg.ntpCfg.modelNum);
+			if(cJSON_GetObjectItem(ret,"plat_addr_val")->valuestring != NULL)
+			{
+				strncpy(runSystemCfg.ntpCfg.platurl, cJSON_GetObjectItem(ret,"plat_addr_val")->valuestring, sizeof(runSystemCfg.ntpCfg.platurl)-1);
+				printf("runSystemCfg.ntpCfg.platurl ================= %s\n", runSystemCfg.ntpCfg.platurl);
+			}
+			if(cJSON_GetObjectItem(ret,"AI_PlatUrl")->valuestring != NULL)
+			{
+				strncpy(runSystemCfg.ntpCfg.AIplat, cJSON_GetObjectItem(ret,"AI_PlatUrl")->valuestring, sizeof(runSystemCfg.ntpCfg.AIplat)-1);
+				printf("runSystemCfg.ntpCfg.AIplat ================= %s\n", runSystemCfg.ntpCfg.AIplat);
+				strncpy(runSystemCfg.ntpCfg.modelNum, cJSON_GetObjectItem(ret,"AI_ModelNum")->valuestring, sizeof(runSystemCfg.ntpCfg.modelNum)-1);
+				printf("runSystemCfg.ntpCfg.AI_ModelNum ================= %s\n", runSystemCfg.ntpCfg.modelNum);
+			}
+			system("pkill main");
+			//new_system_call("cd /sharefs/bmp_region/Total-sock-to_1/out");
+			char line[256];
+			sprintf(line,"sh /sharefs/main_reboot.sh %s %s",runSystemCfg.ntpCfg.modelNum, runSystemCfg.ntpCfg.AIplat);
+			system(line);
 	}
-	system("pkill main");
-	//new_system_call("cd /sharefs/bmp_region/Total-sock-to_1/out");
-	char line[256];
-	sprintf(line,"sh /sharefs/main_reboot.sh %s %s",runSystemCfg.ntpCfg.modelNum, runSystemCfg.ntpCfg.AIplat);
-	printf("wwwwhs=====>\n");
-	system(line);
-	}
-        netcam_sys_set_time_zone_by_utc_string(timeString, zone);
-        netcam_timer_add_task(netcam_sys_save, NETCAM_TIMER_TWO_SEC, SDK_FALSE, SDK_TRUE);
-        cJSON_Delete(opt);
+	netcam_sys_set_time_zone_by_utc_string(timeString, zone);
+	netcam_timer_add_task(netcam_sys_save, NETCAM_TIMER_TWO_SEC, SDK_FALSE, SDK_TRUE);
+	cJSON_Delete(opt);
     }
     else
     {
