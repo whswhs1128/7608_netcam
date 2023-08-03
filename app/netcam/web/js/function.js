@@ -286,6 +286,7 @@ $(document).ready(function()
 					$("#tr_schedule_enable").hide();
 					$("#tr_select_all").hide();
 					$("#tr_schedule").hide();
+          var ais = $("#aiModel_select").select2();
 					if(document.getElementById("wireless_control").checked){
 						document.getElementById("wireless_networktype").style.display="";
 						document.getElementById("wireless_authtype").style.display="";
@@ -3165,44 +3166,68 @@ function sys_user_modify()
 //系统时间同步
 function sys_sync_time_zone_save()
 {
-		var auth = "Basic " + base64.encode(g_usr+':'+g_pwd);
-		var timeZone = $('#select_time_zone :selected').val();
-		var ntpCfg_serverDomain = $('#NTP_Server').val();
-		var chkObjs = document.getElementsByName("RG_NTPControl");
-		var chkSwitch = document.getElementsByName("RG_switch");
-		var plat_addr_val = $('#str_plat_ip').val();
-		var ntpCfg_enable;
-		var switch_485;
-
-		for(var i=0;i<2;i++){
+	var auth = "Basic " + base64.encode(g_usr+':'+g_pwd);
+	var timeZone = $('#select_time_zone :selected').val();
+	var ntpCfg_serverDomain = $('#NTP_Server').val();
+	var chkObjs = document.getElementsByName("RG_NTPControl");
+	var chkSwitch = document.getElementsByName("RG_switch");
+	var aichkObjs = document.getElementsByName("AI_switch");
+	var plat_addr_val = $('#str_plat_ip').val();
+	var ntpCfg_enable;
+	var switch_485;
+  	// AI开关：AI_enable，AI模型：AI_ModelNum, AI数据上报网址：AI_PlatUrl
+  	var AI_PlatUrl = $('#AI_PlatUrl').val();
+  	var AI_enable = null;
+  	var ai_mid_num = $('#aiModel_select').select2("val").join(' ');
+  	var AI_ModelNum = '';
+  	if (ai_mid_num != null) {
+  		AI_ModelNum = ai_mid_num;
+  	}
+	for(var i=0;i<2;i++){
         if(chkObjs[i].checked){
  				ntpCfg_enable = chkObjs[i].value;
  				break;
  			}
  		}
+    for (var i = 0; i < 2; i++) {
+		if (aichkObjs[i].checked) {
+			AI_enable = aichkObjs[i].value;
+			break;
+		}
+	}
 		for(var i=0;i<2;i++){
 			if(chkSwitch[i].checked){
 				switch_485 = chkSwitch[i].value;
 					 break;
 			}
 		}
-		var op =  (new Date()).toFormatString();
-		var sendData = '{ "UtcTime":"' + op +'", "timeZone": '+timeZone+' ,"ntpCfg":{"ntpCfg_enable":'+ntpCfg_enable+',"switch_485":'+switch_485+' ,"ntpCfg_serverDomain":"' + ntpCfg_serverDomain + '" ,"plat_addr_val":"' + plat_addr_val+'"}}';
-		$.ajax({
-			type:"PUT",
-			url:dvr_url + '/cgi-bin/settime',
-			data:sendData,
-			dataType:"json",
-			beforeSend : function(req){
-				req .setRequestHeader('Authorization', auth);
-    		},
-			error:function(XMLHttpRequest, textStatus, errorThrown){},
-			success:function(data){
-				sys_sync_pc_time();
-				tipInfoShow(saveSuccess);
-				setTimeout("tipInfoHide()",hide_delay_ms);
-			}
-		});
+	var op =  (new Date()).toFormatString();
+  	var sendData =
+  		'{ "UtcTime":"' + op +
+  		'", "timeZone": ' + timeZone +
+  		' ,"ntpCfg":{"ntpCfg_enable":' + ntpCfg_enable +
+  		',"switch_485":' + switch_485 +
+  		' ,"ntpCfg_serverDomain":"' + ntpCfg_serverDomain +
+  		'" ,"plat_addr_val":"' + plat_addr_val +
+  		'","AI_enable":' + AI_enable +
+  		',"AI_PlatUrl":"' + AI_PlatUrl +
+  		'","AI_ModelNum":"' + AI_ModelNum +
+  	'"}}';
+	$.ajax({
+		type:"PUT",
+		url:dvr_url + '/cgi-bin/settime',
+		data:sendData,
+		dataType:"json",
+		beforeSend : function(req){
+			req .setRequestHeader('Authorization', auth);
+		},
+		error:function(XMLHttpRequest, textStatus, errorThrown){},
+		success:function(data){
+			sys_sync_pc_time();
+			tipInfoShow(saveSuccess);
+			setTimeout("tipInfoHide()",hide_delay_ms);
+		}
+	});
 }
 //
 function sys_sync_time_zone()
@@ -3290,12 +3315,38 @@ function sys_manage_time(id)
 				else
 					$('#RG_switch_1').attr("checked","true");
 				// $('#str_plat_ip').val(data.plat_addr_val);
+				if (data.AI_enable == '0') {
+					$('#AI_switch_0').attr("checked", "true");
+					$("#AI_PlatUrl").attr("disabled", "disabled");
+					$("#aiModel_select").attr("disabled", "disabled");
+				} else {
+					$('#AI_switch_1').attr("checked", "true");
+				}
+				$('#AI_PlatUrl').val(data.AI_PlatUrl);
+				var ais = $("#aiModel_select").select2();
+
+				if (data.AI_ModelNum.length) {
+					var mid_am = data.AI_ModelNum;
+					var listValues = mid_am.split(' ');
+					ais.val(listValues).trigger('change');
+				}
+				
 			}
 		});
 }
 
 
 
+//AI上报控制
+function AIControl_change(id) {
+	if (id == 'AI_switch_0') {
+		$("#AI_PlatUrl").attr("disabled", "disabled");
+		$("#aiModel_select").attr("disabled", "disabled");
+	} else {
+		$("#AI_PlatUrl").removeAttr("disabled");
+		$("#aiModel_select").removeAttr("disabled");
+	}
+}
 //获取gb28181配置
 function sys_gb28181_info()
 {

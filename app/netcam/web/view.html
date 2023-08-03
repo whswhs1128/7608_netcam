@@ -8,6 +8,8 @@
 <link href="SpryAssets/SpryMenuBarHorizontal.css" rel="stylesheet" type="text/css" />
 <link href="SpryAssets/SpryTabbedPanels.css" rel="stylesheet" type="text/css" />
 <link href="CSS/style.css" rel="stylesheet" type="text/css" />
+<link href="CSS/select2.min.css" rel="stylesheet" type="text/css"/>
+
 <!--<link href="CSS/jquery-ui.css" />-->
 <link href="CSS/jquery-ui.min.css" rel="stylesheet" />
 <style type="text/css">
@@ -28,6 +30,7 @@
 <script src="js/function.js?123=12" type="text/javascript"></script>
 <script src="js/swfupload.js" type="text/javascript"></script>
 <script src="js/jquery.qrcode.min.js" type="text/javascript"></script>
+<script src="js/select2.min.js" type="text/javascript"></script>
 <!--<script src="js/string.js" type="text/javascript"></script>-->
 <!--<script src="js/handler.js" type="text/javascript"></script>-->
 <title>IPCAM</title>
@@ -2709,6 +2712,45 @@
                             </form>
                         </td>
                     </tr>
+	<tr>
+                        <td align="right"><script>document.write(str_switch_ai);</script><!--AI开关--></td>
+                        <td>
+							<!-- <form id="form8" name="form8" method="post" action=""> -->
+                            <table width="200">
+                                <tr>
+                                    <td>
+                                        <input type="radio" name="AI_switch" value="0" onchange="AIControl_change(this.id)" id="AI_switch_0"  />
+                                        <script>document.write(str_rb_close);</script><!--关闭-->
+                                    </td>
+                                    <td>
+                                        <input type="radio" name="AI_switch" value="1" id="AI_switch_1" onchange="AIControl_change(this.id)" />
+                                        <script>document.write(str_rb_open);</script><!--开启-->
+                                    </td>
+                                </tr>
+                            </table>
+                            <!-- </form> -->
+                        </td>
+                    </tr>
+					<tr>
+                        <td><script>document.write(str_ai_report_ip);</script><!--AI数据上报网址--></td>
+                        <td><input type="text" id="AI_PlatUrl" width="150px" height="25px"/></td>
+                    </tr>
+
+					<tr>
+					    <td><script>document.write(str_ai_model);</script><!--AI模型下发--></td>
+						  <td>
+    						<select id="aiModel_select" name="" style="width:280px; height:220px;" multiple="multiple" >
+      							<option value="0">车牌识别</option>
+      							<option value="1">人脸识别</option>
+      							<option value="2">车牌检测</option>
+      							<option value="3">车辆、人形检测</option>
+      							<option value="4">人脸检测</option>
+      							<option value="5">烟火检测</option>
+      							<option value="6">安全帽检测</option>
+      							<option value="7">反光衣检测</option>
+    						  </select>
+						    </td>
+					</tr>
                     <tr>
                         <td colspan="2" align="center">
                             <button id="userinfo_add" onclick="sys_sync_time_zone_save()">
