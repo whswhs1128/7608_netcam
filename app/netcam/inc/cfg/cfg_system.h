@@ -117,6 +117,7 @@ typedef struct {
     SDK_S32         enableAI;
     SDK_S8         modelNum[100];
     SDK_S8          AIplat[64];
+    SDK_S8          AI_str[64];
 } GK_NTP_CFG;
 
 typedef struct {

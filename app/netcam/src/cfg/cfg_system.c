@@ -73,6 +73,7 @@ GK_CFG_MAP ntpCfgMap[] = {
     {"AI_enable",          &(runSystemCfg.ntpCfg.enableAI),   GK_CFG_DATA_TYPE_S32,     "1",               1, 0, 1,  NULL},
     {"AI_ModelNum",          &(runSystemCfg.ntpCfg.modelNum),   GK_CFG_DATA_TYPE_STRING,     "1",               1, 1, 100,  NULL},
     {"AI_PlatUrl",       &(runSystemCfg.ntpCfg.AIplat),       GK_CFG_DATA_TYPE_STRING,   "http://192.168.20.109:8080/reportAlarmData",1,1,64,NULL},
+    {"ntpCfg_AI_str",       &(runSystemCfg.ntpCfg.AI_str),       GK_CFG_DATA_TYPE_STRING,   "test",1,1,64,NULL},
     {NULL,},
 };
 
@@ -160,6 +161,7 @@ GK_CFG_MAP ntpCfgMap[] = {
     {"AI_enable",	    &(runSystemCfg.ntpCfg.enableAI),   },
     {"AI_ModelNum",         &(runSystemCfg.ntpCfg.modelNum),   },
     {"AI_PlatUrl",          &(runSystemCfg.ntpCfg.AIplat),     },
+    {"ntpCfg_AI_str",          &(runSystemCfg.ntpCfg.AI_str),     },
     {NULL,},
 };
 
@@ -373,6 +375,8 @@ start_load:
     CfgParseCjson(json, "netDST", netDstCfgCfgMap);
     CfgParseCjson(json, "NTP", ntpCfgMap);
 	CfgParseCjson(json, "Maintain", maintainCfgMap);
+    CfgPrintMap(ntpCfgMap);
+    printf("wwwwhs print is %s\n", runSystemCfg.ntpCfg.AI_str);
 
     loadSpecialInfo();
 

@@ -3330,6 +3330,8 @@ function sys_manage_time(id)
 					var listValues = mid_am.split(' ');
 					ais.val(listValues).trigger('change');
 				}
+
+				$('#AI_result').val(data.AI_str);
 				
 			}
 		});

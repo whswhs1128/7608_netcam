@@ -474,6 +474,8 @@ void *bitmap_update(void )
   
 }
 
+#include "cfg_system.h"
+#include "sdk_sys.h"
 
 void *osd_ttf_task(void)
 {
@@ -550,7 +552,10 @@ void *osd_ttf_task(void)
             }
         }
 //        strcat(timestr," ");
-        string_to_bmp(timestr);
+//        string_to_bmp(timestr);
+//	printf("str is %s\n", timestr);
+//	printf("str AI is %s\n", runSystemCfg.ntpCfg.AI_str);
+//	strcpy(runSystemCfg.ntpCfg.AI_str, timestr);
         memset(timestr, 0, 720);
     }
     return 0;
@@ -970,17 +975,17 @@ td_void sample_ive_md(td_void)
      * step 3: Create work thread
      */
 
-    pthread_t osd_task ;
-    pthread_create(&osd_task, NULL, osd_ttf_task, NULL);
-    pthread_detach(osd_task);
+//    pthread_t osd_task ;
+//    pthread_create(&osd_task, NULL, osd_ttf_task, NULL);
+//    pthread_detach(osd_task);
 
     
     venc_audio_start();
 
-    RGN_AddOsdToVenc();
-    pthread_t bitmap_update_t ;
-    pthread_create(&bitmap_update_t, NULL, bitmap_update, NULL);
-    pthread_detach(bitmap_update_t);  
+//    RGN_AddOsdToVenc();
+//    pthread_t bitmap_update_t ;
+//    pthread_create(&bitmap_update_t, NULL, bitmap_update, NULL);
+//    pthread_detach(bitmap_update_t);  
 
     // sample_svp_check_exps_goto(ret != TD_SUCCESS, end_md_0, SAMPLE_SVP_ERR_LEVEL_ERROR, "set thread name failed!\n");
     ret = pthread_create(&g_md_thread, 0, sample_ivs_md_proc, (td_void *)&g_md_info);
