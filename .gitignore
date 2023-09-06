@@ -27,7 +27,6 @@ app/netcam/src/update/build/arm11-gcc-uClibc-linux-gk7605v100/info/
 app/netcam/src/update/build/arm11-gcc-uClibc-linux-gk7605v100/lib/libapp_update.a
 app/netcam/src/update/build/arm11-gcc-uClibc-linux-gk7605v100/lib/libapp_update.so
 app/netcam/src/update/build/arm11-gcc-uClibc-linux-gk7605v100/obj/
-install/
 platform/api/build/arm11-gcc-uClibc-linux-gk7605v100/info/
 platform/api/build/arm11-gcc-uClibc-linux-gk7605v100/lib/libsdk.a
 platform/api/build/arm11-gcc-uClibc-linux-gk7605v100/lib/libsdk.so
