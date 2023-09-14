@@ -147,3 +147,4 @@ platform/api/build/arm11-gcc-uClibc-linux-gk7605v100/lib/libsdk.so.map
 platform/sdk/Config.mak.root
 subsystem/minirtsp/build/arm11-gcc-uClibc-linux-gk7605v100/lib/librtspLib.so.map
 tools/pack/sys_info
+*,map
