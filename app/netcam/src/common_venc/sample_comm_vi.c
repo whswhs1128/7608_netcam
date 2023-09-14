@@ -51,6 +51,13 @@ typedef struct {
 static hi_bool g_send_pipe_pthread = HI_FALSE;
 static hi_bool g_start_isp[HI_VI_MAX_PIPE_NUM] = {HI_FALSE};
 
+static ext_data_type_t  g_mipi_ext_data_sc850sl={
+    .devno = 0,
+    .num = MIPI_NUM,
+    .ext_data_bit_width = {12, 12, 12},
+    .ext_data_type = {0x37, 0x2c, 0x2c}
+};
+
 static ext_data_type_t g_mipi_ext_data_type_os08a20_12bit_8m_nowdr_attr = {
     .devno = 0,
     .num = MIPI_NUM,
@@ -77,6 +84,18 @@ static ext_data_type_t g_mipi_ext_data_type_default_dev2_attr = {
     .num = MIPI_NUM,
     .ext_data_bit_width = {12, 12, 12},
     .ext_data_type = {0x2c, 0x2c, 0x2c}
+};
+
+static combo_dev_attr_t g_mipi_sc850sl = {
+    .devno = 0,
+    .input_mode = INPUT_MODE_MIPI,
+    .data_rate  = MIPI_DATA_RATE_X1,
+    .img_rect   = {0, 0, WIDTH_3840, HEIGHT_2160},
+    .mipi_attr = {
+        DATA_TYPE_RAW_12BIT,
+        HI_MIPI_WDR_MODE_NONE,
+        {0, 1, 2, 3, -1, -1, -1, -1}
+    }
 };
 
 static combo_dev_attr_t g_mipi_4lane_chn0_sensor_os08a20_12bit_8m_nowdr_attr = {
@@ -323,6 +342,12 @@ static hi_void sample_comm_vi_get_mipi_attr(sample_sns_type sns_type, combo_dev_
 {
     hi_u32 ob_height = OB_HEIGHT_START;
     switch (sns_type) {
+	    //add sensor
+	case SC850SL_8M30:
+	    (hi_void)memcpy_s(combo_attr, sizeof(combo_dev_attr_t),
+                &g_mipi_sc850sl, sizeof(combo_dev_attr_t));
+            break;
+
         case OV_OS08A20_MIPI_8M_30FPS_12BIT:
             ob_height = OB_HEIGHT_END;
             (hi_void)memcpy_s(combo_attr, sizeof(combo_dev_attr_t),
@@ -382,6 +407,10 @@ static hi_void sample_comm_vi_get_mipi_attr(sample_sns_type sns_type, combo_dev_
 static hi_void sample_comm_vi_get_mipi_ext_data_attr(sample_sns_type sns_type, ext_data_type_t *ext_data_attr)
 {
     switch (sns_type) {
+	      case SC850SL_8M30:
+		        (hi_void)memcpy_s(ext_data_attr, sizeof(ext_data_type_t),
+                &g_mipi_ext_data_sc850sl, sizeof(ext_data_type_t));
+            break;
         case OV_OS08A20_MIPI_8M_30FPS_12BIT:
         case OV_OS04A10_MIPI_4M_30FPS_12BIT:
         case SONY_IMX485_MIPI_8M_30FPS_12BIT:
@@ -427,6 +456,12 @@ static hi_void sample_comm_vi_get_mipi_attr_by_dev_id(sample_sns_type sns_type, 
 {
     hi_u32 ob_height = OB_HEIGHT_START;
     switch (sns_type) {
+	      case SC850SL_8M30:
+	          if (vi_dev == 0) {
+                (hi_void)memcpy_s(combo_attr, sizeof(combo_dev_attr_t),
+                    &g_mipi_sc850sl, sizeof(combo_dev_attr_t));
+             }
+	    break;
         case OV_OS08A20_MIPI_8M_30FPS_12BIT:
             ob_height = OB_HEIGHT_END;
             if (vi_dev == 0) {
@@ -609,6 +644,7 @@ static hi_void sample_comm_vi_get_dev_attr_by_intf_mode(hi_vi_intf_mode intf_mod
 hi_void sample_comm_vi_get_size_by_sns_type(sample_sns_type sns_type, hi_size *size)
 {
     switch (sns_type) {
+	      case SC850SL_8M30:
         case OV_OS08A20_MIPI_8M_30FPS_12BIT:
         case OV_OS08A20_MIPI_8M_30FPS_12BIT_WDR2TO1:
         case OV_OS08B10_MIPI_8M_30FPS_12BIT:
@@ -647,6 +683,9 @@ hi_u32 sample_comm_vi_get_obheight_by_sns_type(sample_sns_type sns_type)
 {
     hi_u32 ob_height = OB_HEIGHT_START;
     switch (sns_type) {
+	      case SC850SL_8M30:
+	          ob_height = OB_HEIGHT_START;
+            break;
         case OV_OS08A20_MIPI_8M_30FPS_12BIT:
             ob_height = OB_HEIGHT_END;
             break;
@@ -677,6 +716,7 @@ hi_u32 sample_comm_vi_get_obheight_by_sns_type(sample_sns_type sns_type)
 static hi_u32 sample_comm_vi_get_pipe_num_by_sns_type(sample_sns_type sns_type)
 {
     switch (sns_type) {
+	      case SC850SL_8M30:
         case OV_OS08A20_MIPI_8M_30FPS_12BIT:
         case OV_OS04A10_MIPI_4M_30FPS_12BIT:
         case OV_OS08B10_MIPI_8M_30FPS_12BIT:
@@ -701,6 +741,7 @@ static hi_u32 sample_comm_vi_get_pipe_num_by_sns_type(sample_sns_type sns_type)
 static hi_wdr_mode sample_comm_vi_get_wdr_mode_by_sns_type(sample_sns_type sns_type)
 {
     switch (sns_type) {
+	      case SC850SL_8M30:
         case OV_OS08A20_MIPI_8M_30FPS_12BIT:
         case OV_OS04A10_MIPI_4M_30FPS_12BIT:
         case OV_OS08B10_MIPI_8M_30FPS_12BIT:
@@ -869,7 +910,7 @@ hi_void sample_comm_vi_get_default_pipe_info(sample_sns_type sns_type, hi_vi_bin
         pipe_info[i].chn_info[0].chn_attr.compress_mode                  = HI_COMPRESS_MODE_NONE;
         pipe_info[i].chn_info[0].chn_attr.mirror_en                      = HI_FALSE;
         pipe_info[i].chn_info[0].chn_attr.flip_en                        = HI_FALSE;
-        pipe_info[i].chn_info[0].chn_attr.depth                          = 0;
+        pipe_info[i].chn_info[0].chn_attr.depth                          = 2;
         pipe_info[i].chn_info[0].chn_attr.frame_rate_ctrl.src_frame_rate = -1;
         pipe_info[i].chn_info[0].chn_attr.frame_rate_ctrl.dst_frame_rate = -1;
     }

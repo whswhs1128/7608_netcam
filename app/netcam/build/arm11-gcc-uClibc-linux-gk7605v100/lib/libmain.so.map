@@ -326,7 +326,7 @@ LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
  .plt           0x000000000001e050     0x4680 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
  *(.iplt)
 
-.text           0x00000000000226d0    0x6dc78
+.text           0x00000000000226d0    0x6ed78
  *(.text.unlikely .text.*_unlikely .text.unlikely.*)
  *(.text.exit .text.exit.*)
  *(.text.startup .text.startup.*)
@@ -719,540 +719,542 @@ LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
                 0x0000000000059d8c                sample_comm_audio_destory_all_trd
                 0x0000000000059f08                sample_comm_audio_start_adec
                 0x000000000005a078                sample_comm_audio_stop_adec
- .text          0x000000000005a0cc      0xaa8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_isp.o
+ .text          0x000000000005a0cc      0xaf4 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_isp.o
                 0x000000000005a0cc                sample_comm_isp_get_pub_attr_by_sns
-                0x000000000005a2b8                sample_comm_isp_get_sns_obj
-                0x000000000005a350                sample_comm_get_sns_bus_type
-                0x000000000005a364                sample_comm_isp_sensor_regiter_callback
-                0x000000000005a478                sample_comm_isp_sensor_unregiter_callback
-                0x000000000005a5a0                sample_comm_isp_bind_sns
-                0x000000000005a6a0                sample_comm_isp_ae_lib_callback
-                0x000000000005a718                sample_comm_isp_ae_lib_uncallback
-                0x000000000005a790                sample_comm_isp_awb_lib_callback
-                0x000000000005a808                sample_comm_isp_awb_lib_uncallback
-                0x000000000005a934                sample_comm_isp_sensor_founction_cfg
-                0x000000000005a980                sample_comm_isp_mirror_flip_set
-                0x000000000005aa54                sample_comm_isp_run
-                0x000000000005aadc                sample_comm_isp_stop
-                0x000000000005ab38                sample_comm_all_isp_stop
- .text          0x000000000005ab74      0x674 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_mipi_tx.o
-                0x000000000005aeac                sample_comm_start_mipi_tx
-                0x000000000005b0e8                sample_comm_stop_mipi_tx
- .text          0x000000000005b1e8     0x3050 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_region.o
-                0x000000000005b5f0                fil_bmp
-                0x000000000005b6bc                region_mst_load_bmp
-                0x000000000005b8ac                region_mst_update_canvas
-                0x000000000005bac8                sample_comm_region_get_min_handle
-                0x000000000005bb90                sample_region_create_overlay
-                0x000000000005be00                sample_region_create_overlayex
-                0x000000000005bec0                sample_region_create_cover
-                0x000000000005bf58                sample_region_create_coverex
-                0x000000000005bff0                sample_region_create_line
-                0x000000000005c088                sample_region_create_mosaic
-                0x000000000005c120                sample_region_create_mosaicex
-                0x000000000005c1b8                sample_region_create_corner_rectex
-                0x000000000005c250                sample_region_destroy
-                0x000000000005c2b0                sample_region_attach_to_chn
-                0x000000000005c320                sample_region_detach_from_chn
-                0x000000000005c388                sample_region_set_bit_map
-                0x000000000005c3f0                sample_region_get_up_canvas_info
-                0x000000000005c4a0                sample_comm_region_create
-                0x000000000005c650                sample_comm_region_destroy
-                0x000000000005c768                sample_comm_region_attach_check
-                0x000000000005c90c                sample_region_set_overlay_chn_attr
-                0x000000000005cac8                sample_region_set_overlayex_chn_attr
-                0x000000000005ce20                sample_region_set_cover_chn_attr
-                0x000000000005d1a0                sample_region_set_coverex_chn_attr
-                0x000000000005d3d0                sample_region_set_corner_rectex_chn_attr
-                0x000000000005d9dc                sample_region_set_mosaicex_chn_attr
-                0x000000000005daf8                sample_region_set_chn_attr
-                0x000000000005dc2c                sample_comm_region_attach_to_chn
-                0x000000000005dcd8                sample_comm_check_min
-                0x000000000005dd0c                sample_comm_region_detach_frm_chn
-                0x000000000005deac                sample_comm_region_set_bit_map
-                0x000000000005e0f8                sample_comm_region_get_up_canvas
- .text          0x000000000005e238     0x113c build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_sys.o
-                0x000000000005e238                sample_sys_signal
-                0x000000000005e2ac                sample_comm_sys_get_pic_size
-                0x000000000005e378                sample_comm_sys_get_pic_enum
-                0x000000000005e530                sample_comm_sys_mem_config
-                0x000000000005e57c                sample_comm_sys_init
-                0x000000000005e69c                sample_comm_sys_init_with_vb_supplement
-                0x000000000005e80c                sample_comm_sys_exit
-                0x000000000005e830                sample_comm_vi_bind_vo
-                0x000000000005e8cc                sample_comm_vi_un_bind_vo
-                0x000000000005e968                sample_comm_vi_bind_vpss
-                0x000000000005ea04                sample_comm_vi_un_bind_vpss
-                0x000000000005eaa0                sample_comm_vi_bind_venc
-                0x000000000005eb34                sample_comm_vi_un_bind_venc
-                0x000000000005ebc8                sample_comm_avs_bind_venc
-                0x000000000005ec5c                sample_comm_avs_un_bind_venc
-                0x000000000005ecf0                sample_comm_avs_bind_vo
-                0x000000000005ed8c                sample_comm_avs_un_bind_vo
-                0x000000000005ee28                sample_comm_vpss_bind_vo
-                0x000000000005eec4                sample_comm_vpss_un_bind_vo
-                0x000000000005ef60                sample_comm_vpss_bind_avs
-                0x000000000005effc                sample_comm_vpss_un_bind_avs
-                0x000000000005f098                sample_comm_vpss_bind_venc
-                0x000000000005f12c                sample_comm_vpss_un_bind_venc
-                0x000000000005f1c0                sample_comm_vdec_bind_vpss
-                0x000000000005f24c                sample_comm_vdec_un_bind_vpss
-                0x000000000005f2d8                sample_comm_vo_bind_vo
-                0x000000000005f334                sample_comm_vo_un_bind_vo
- .text          0x000000000005f374     0x37d4 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_vdec.o
-                0x000000000005f858                sample_comm_vdec_print_chn_status
-                0x000000000005f8f8                sample_comm_vdec_get_lowdelay_en
-                0x000000000005f908                sample_comm_vdec_set_lowdelay_en
-                0x000000000005f92c                sample_comm_vdec_init_user_vb_pool
-                0x000000000005fb28                sample_comm_handle_init_vb_fail
-                0x000000000005fc4c                sample_comm_vdec_cal_vb_size
-                0x0000000000060014                sample_comm_vdec_config_vb_pool
-                0x00000000000604b4                sample_comm_vdec_init_vb_pool
-                0x0000000000060674                sample_comm_vdec_exit_user_vb_pool
-                0x0000000000060784                sample_comm_vdec_exit_vb_pool
-                0x00000000000607d4                sample_comm_vdec_send_h264_frame_process
-                0x0000000000060b54                sample_comm_vdec_send_mpeg4_frame_process
-                0x0000000000060da4                sample_comm_vdec_send_h265_frame_process
-                0x00000000000610c8                sample_comm_vdec_send_jpeg_frame_process
-                0x0000000000061330                sample_comm_vdec_cut_frame
-                0x00000000000614c4                sample_comm_vdec_send_stream_proc
-                0x0000000000061650                sample_comm_vdec_handle_send_stream
-                0x00000000000617d4                sample_comm_vdec_send_stream_process
-                0x00000000000619cc                sample_comm_vdec_check_send_stream_param
-                0x0000000000061b90                sample_comm_vdec_send_stream
-                0x0000000000061dd0                sample_comm_vdec_cmd_not_circle_send
-                0x0000000000061fb0                sample_comm_vdec_start_send_stream
-                0x00000000000620a8                sample_comm_vdec_stop_send_stream
-                0x00000000000621bc                sample_comm_vdec_config_attr
-                0x000000000006235c                sample_comm_config_ldy_attr
-                0x00000000000624c4                sample_comm_vdec_start
-                0x0000000000062a54                sample_comm_vdec_stop
- .text          0x0000000000062b48     0xa54c build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_venc.o
-                0x0000000000063390                sample_comm_venc_mem_config
-                0x0000000000063428                sample_comm_venc_get_file_postfix
-                0x0000000000063544                sample_comm_venc_get_gop_attr
-                0x0000000000063668                sample_comm_venc_get_dcf_info
-                0x00000000000638a8                sample_comm_venc_save_stream
-                0x0000000000063d34                sample_comm_venc_save_stream_phys_addr
-                0x0000000000063fdc                sample_comm_venc_close_reencode
-                0x0000000000067194                sample_comm_venc_create
-                0x00000000000672fc                sample_comm_venc_create_x
-                0x0000000000067458                sample_comm_venc_start
-                0x0000000000067518                sample_comm_venc_stop
-                0x00000000000675c0                sample_comm_venc_snap_start
-                0x0000000000067748                sample_comm_venc_photo_start
-                0x0000000000067884                sample_comm_venc_snap_stop
-                0x0000000000067e04                sample_comm_venc_snap_process
-                0x0000000000068058                sample_comm_venc_save_jpeg
-                0x0000000000068d48                sample_comm_qpmap_send_frame_proc
-                0x0000000000069050                sample_comm_venc_qpmap_send_frame
-                0x00000000000693a0                sample_venc_process_jpeg_roi
-                0x00000000000699e8                sample_comm_send_roimap_frame_proc
-                0x0000000000069dc0                sample_comm_venc_send_roimap_frame
-                0x000000000006aed4                sample_comm_venc_get_venc_stream_proc
-                0x000000000006b2a4                sample_comm_venc_set_region
-                0x000000000006b4c8                sample_comm_venc_set_svc_param
-                0x000000000006b6a4                sample_comm_venc_rateauto_stream_proc
-                0x000000000006c364                sample_comm_venc_get_venc_stream_proc_svc_t
-                0x000000000006c724                sample_comm_venc_set_save_heif
-                0x000000000006c774                sample_comm_venc_start_get_stream
-                0x000000000006c830                sample_comm_venc_rateauto_start
-                0x000000000006c934                sample_comm_venc_start_get_stream_svc_t
-                0x000000000006c990                sample_comm_venc_stop_get_stream
-                0x000000000006ca40                sample_comm_venc_stop_get_stream_x
-                0x000000000006cb04                sample_comm_venc_stop_send_qpmap_frame
-                0x000000000006cb4c                sample_comm_venc_stop_send_roimap_frame
-                0x000000000006cb94                sample_comm_venc_stop_rateauto
-                0x000000000006ce30                sample_comm_venc_plan_to_semi
- .text          0x000000000006d094     0x7e54 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_vi.o
-                0x000000000006e948                sample_comm_vi_get_size_by_sns_type
-                0x000000000006ea24                sample_comm_vi_get_obheight_by_sns_type
-                0x000000000006ebc0                sample_comm_vi_get_default_sns_info
-                0x000000000006ec00                sample_comm_vi_get_os04a10_sns_info
-                0x000000000006ec48                sample_comm_vi_get_default_mipi_info
-                0x000000000006ec9c                sample_comm_vi_get_os04a10_mipi_info
-                0x000000000006ed00                sample_comm_vi_get_mipi_info_by_dev_id
-                0x000000000006ed70                sample_comm_vi_get_default_dev_info
-                0x000000000006ee04                sample_comm_vi_get_os04a10_dev_info
-                0x000000000006efb8                sample_comm_vi_get_default_pipe_info
-                0x000000000006f534                sample_comm_vi_init_pipe_info
-                0x000000000006fab4                sample_comm_vi_get_default_vi_cfg
-                0x000000000006fba8                sample_comm_vi_init_vi_cfg
-                0x000000000006fc60                sample_comm_vi_set_vi_vpss_mode
-                0x0000000000071500                sample_comm_vi_start_vi
-                0x0000000000071748                sample_comm_vi_stop_vi
-                0x00000000000717c4                sample_comm_vi_mode_switch_stop_vi
-                0x0000000000071a34                sample_comm_vi_mode_switch_start_vi
-                0x0000000000071fdc                sample_comm_vi_switch_isp_mode
-                0x0000000000072278                sample_comm_vi_switch_isp_resolution
-                0x0000000000072530                sample_comm_vi_stop_four_vi
-                0x000000000007298c                sample_comm_vi_free_frame_blk
-                0x0000000000072a54                sample_comm_vi_get_frame_blk
-                0x0000000000072bd4                sample_comm_vi_release_frame_blk
-                0x0000000000072f48                sample_comm_vi_save_fpn_file
-                0x00000000000734d4                sample_comm_vi_fpn_calibrate
-                0x00000000000737c0                sample_comm_vi_enable_fpn_correction
-                0x00000000000739b4                sample_comm_vi_enable_fpn_correction_for_scene
-                0x0000000000073c58                sample_comm_vi_disable_fpn_correction
-                0x0000000000073d20                sample_comm_vi_start_virt_pipe
-                0x0000000000073df4                sample_comm_vi_stop_virt_pipe
-                0x0000000000074720                sample_common_vi_load_user_pic
-                0x0000000000074804                sample_common_vi_unload_user_pic
-                0x0000000000074e48                sample_comm_vi_send_wdr_frame
- .text          0x0000000000074ee8     0x2258 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_vo.o
-                0x0000000000074ee8                sample_comm_vo_get_width_height
-                0x000000000007502c                sample_comm_vo_start_dev
-                0x00000000000751f4                sample_comm_vo_stop_dev
-                0x0000000000075254                sample_comm_vo_start_layer
-                0x0000000000075330                sample_comm_vo_stop_layer
-                0x0000000000075390                sample_comm_vo_get_wnd_info
-                0x00000000000754d0                sample_comm_vo_get_chn_attr
-                0x00000000000756f4                sample_comm_vo_start_chn
-                0x00000000000758d8                sample_comm_vo_stop_chn
-                0x0000000000075b88                sample_comm_vo_start_wbc
-                0x0000000000075ca4                sample_comm_vo_stop_wbc
-                0x0000000000075cf0                sample_comm_vo_get_def_wbc_config
-                0x0000000000075d94                sample_comm_vo_bt1120_start
-                0x0000000000075df0                sample_comm_vo_hdmi_start
-                0x0000000000075f84                sample_comm_vo_hdmi_stop
-                0x0000000000076064                vo_get_dev_timing
-                0x00000000000760b4                vo_get_dev_user_sync_info
-                0x00000000000761a4                sample_comm_vo_get_def_config
-                0x0000000000076548                sample_comm_vo_set_hdmi_rgb_mode
-                0x000000000007657c                sample_comm_vo_start_vo
-                0x0000000000076800                sample_comm_vo_start_pip
-                0x0000000000076a18                sample_comm_vo_stop_vo
-                0x0000000000076b68                sample_comm_vo_stop_pip
-                0x0000000000076c48                sample_comm_vo_get_def_layer_config
-                0x0000000000076f0c                sample_comm_vo_start_layer_chn
-                0x000000000007705c                sample_comm_vo_stop_layer_chn
- .text          0x0000000000077140      0x634 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_vpss.o
-                0x0000000000077140                sample_comm_vpss_get_default_grp_attr
-                0x0000000000077200                sample_comm_vpss_get_default_chn_attr
-                0x0000000000077458                sample_common_vpss_start
-                0x000000000007760c                sample_common_vpss_stop
- .text          0x0000000000077774     0x3f34 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/venc_audio/sample_audio.o
-                0x0000000000077ffc                sample_comm_audio_ai_ext_res_proc
-                0x000000000007828c                sample_comm_audio_creat_trd_ai_ext_res
-                0x00000000000783c0                sample_comm_audio_destroy_trd_ai_ext_res
-                0x0000000000078d8c                sample_audio_set_ai_vqe_param
-                0x0000000000078ec4                sample_audio_adec_ao_inner
-                0x0000000000078fd0                sample_audio_adec_ao
-                0x0000000000079104                sample_audio_ai_aenc_init_param
-                0x00000000000791f4                sample_audio_aenc_bind_ai
-                0x000000000007933c                sample_audio_aenc_unbind_ai
-                0x0000000000079764                sample_audio_ai_aenc_inner
-                0x0000000000079e50                sample_audio_ai_to_ext_resample
-                0x000000000007a41c                sample_audio_ai_ao
-                0x000000000007a854                sample_audio_ai_to_ao_sys_chn
-                0x000000000007af30                sample_audio_ai_vqe_process_ao
-                0x000000000007b2f4                sample_audio_ai_hdmi_ao
-                0x000000000007b544                sample_audio_usage
- .text          0x000000000007b6a8     0x3950 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/venc_audio/sample_venc_aenc.o
-                0x000000000007c818                SAMPLE_COMM_AUDIO_AencProc_new
-                0x000000000007e10c                VENC_GetVencStreamProc
-                0x000000000007e5fc                sample_venc_start_svp_x
-                0x000000000007eb38                load_pq_bin
-                0x000000000007ee00                rtsp_reboot
-                0x000000000007ef20                venc_audio_start
- .text          0x000000000007eff8     0x32ac build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/venc_audio/adp/audio_aac_adp.o
-                0x000000000007f190                aac_deinit_enc_lib
-                0x000000000007f238                aacenc_get_version_adp
-                0x000000000007f2a4                aac_init_default_config_adp
-                0x000000000007f310                aac_encoder_open_adp
-                0x000000000007f384                aac_encoder_frame_adp
-                0x000000000007f408                aac_encoder_close_adp
-                0x000000000007f534                aac_deinit_dec_lib
-                0x000000000007f5dc                aacdec_get_version_adp
-                0x000000000007f648                aac_init_decoder_adp
-                0x000000000007f6b0                aac_free_decoder_adp
-                0x000000000007f714                aac_set_raw_mode_adp
-                0x000000000007f790                aac_decode_find_sync_header_adp
-                0x000000000007f80c                aac_decode_frame_adp
-                0x000000000007f890                aac_get_last_frame_info_adp
-                0x000000000007f904                aac_decoder_set_eos_flag_adp
-                0x000000000007f978                aac_flush_codec_adp
-                0x0000000000081014                aenc_aac_check_config
-                0x0000000000081428                open_aac_encoder
-                0x000000000008190c                encode_aac_frm
-                0x0000000000081a18                close_aac_encoder
-                0x0000000000081a64                open_aac_decoder
-                0x0000000000081c34                decode_aac_frm
-                0x0000000000081e58                get_aac_frm_info
-                0x0000000000081f44                close_aac_decoder
-                0x0000000000081f90                reset_aac_decoder
-                0x000000000008202c                hi_mpi_aenc_aac_init
-                0x0000000000082120                hi_mpi_aenc_aac_deinit
-                0x0000000000082160                hi_mpi_adec_aac_init
-                0x0000000000082264                hi_mpi_adec_aac_deinit
- .text          0x00000000000822a4      0x16c build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/venc_audio/adp/audio_dl_adp.o
-                0x00000000000822a4                audio_dlpath
-                0x00000000000822b8                audio_dlopen
-                0x000000000008233c                audio_dlsym
-                0x00000000000823d0                audio_dlclose
- .text          0x0000000000082410     0x1ce0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/svp_rtsp/common/sample_common_ive.o
-                0x0000000000082410                sample_common_ive_check_mpi_init
-                0x0000000000082498                sample_common_ive_mpi_init
-                0x000000000008250c                sample_common_ive_mpi_exit
-                0x0000000000082734                sample_common_ive_read_file
-                0x0000000000082b10                sample_common_ive_write_file
-                0x0000000000082e24                sample_common_ive_calc_stride
-                0x00000000000830f0                sample_common_ive_blob_to_rect
-                0x0000000000083ba4                sample_common_ive_create_image
-                0x0000000000083bdc                sample_common_ive_create_mem_info
-                0x0000000000083ce4                sample_common_ive_create_image_by_cached
-                0x0000000000083d1c                sample_common_ive_dma_image
- .text          0x00000000000840f0     0x38dc build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/svp_rtsp/common/sample_common_svp.o
-                0x00000000000853f0                sample_common_svp_check_sys_init
-                0x00000000000854b4                sample_common_svp_check_sys_exit
-                0x0000000000085574                sample_common_svp_align
-                0x000000000008567c                sample_common_svp_create_mem_info
-                0x00000000000857bc                sample_common_svp_destroy_mem_info
-                0x0000000000085880                sample_common_svp_malloc_mem
-                0x000000000008596c                sample_common_svp_malloc_cached
-                0x0000000000085a58                sample_common_svp_flush_cache
-                0x0000000000085df4                sample_common_svp_vgs_fill_rect_changecolor
-                0x0000000000086258                sample_common_svp_vgs_fill_rect
-                0x0000000000086938                sample_common_svp_start_vo
-                0x00000000000869a4                sample_common_svp_stop_vo
-                0x0000000000087020                sample_common_svp_start_vi_vpss_venc_vo
-                0x0000000000087458                sample_common_svp_stop_vi_vpss_venc_vo
-                0x0000000000087600                sample_comm_svp_load_core_binary
-                0x0000000000087900                sample_comm_svp_unload_core_binary
- .text          0x00000000000879cc       0xa0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/svp_rtsp/ive/sample_ive_main.o
-                0x0000000000087a00                svp_main
- .text          0x0000000000087a6c     0x1f54 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/svp_rtsp/ive/sample/sample_ive_md.o
-                0x00000000000880c4                string_to_bmp
-                0x000000000008835c                bitmap_update
-                0x0000000000088490                osd_ttf_task
-                0x00000000000887dc                RGN_AddOsdToVenc
-                0x0000000000088aec                udp_recv_thread
-                0x0000000000088ec4                start_udp_server
-                0x0000000000089868                sample_ive_md
-                0x00000000000899a8                sample_ive_md_handle_sig
- .text          0x00000000000899c0     0x1934 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/ntpclient/ntp_client.o
-                0x000000000008b07c                start_ntp_client
-                0x000000000008b18c                ntpc_enable
-                0x000000000008b1c4                ntpc_disable
-                0x000000000008b1f4                ntpc_set_addr
-                0x000000000008b2b8                ntpc_set_synctime
- .text          0x000000000008b2f4     0x5040 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/bplustree/bplustree.o
-                0x000000000008b468                _get_block_size
-                0x000000000008f230                bplus_tree_get
-                0x000000000008f254                bplus_tree_put
-                0x000000000008f2bc                bplus_tree_get_range
-                0x000000000008f500                bplus_open
-                0x000000000008f524                bplus_close
-                0x000000000008f770                bplus_refresh_boot
-                0x000000000008f8b4                bplus_tree_init
-                0x000000000008fd50                bplus_tree_deinit
-                0x000000000009015c                bplus_tree_dump
- *fill*         0x0000000000090334        0x4 1f2003d5
- .text          0x0000000000090338       0x10 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/libc_nonshared.a(fstat.oS)
-                0x0000000000090338                __fstat
-                0x0000000000090338                fstat
- .text          0x0000000000090348        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
- .text          0x0000000000090348        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+                0x000000000005a2e8                sample_comm_isp_get_sns_obj
+                0x000000000005a39c                sample_comm_get_sns_bus_type
+                0x000000000005a3b0                sample_comm_isp_sensor_regiter_callback
+                0x000000000005a4c4                sample_comm_isp_sensor_unregiter_callback
+                0x000000000005a5ec                sample_comm_isp_bind_sns
+                0x000000000005a6ec                sample_comm_isp_ae_lib_callback
+                0x000000000005a764                sample_comm_isp_ae_lib_uncallback
+                0x000000000005a7dc                sample_comm_isp_awb_lib_callback
+                0x000000000005a854                sample_comm_isp_awb_lib_uncallback
+                0x000000000005a980                sample_comm_isp_sensor_founction_cfg
+                0x000000000005a9cc                sample_comm_isp_mirror_flip_set
+                0x000000000005aaa0                sample_comm_isp_run
+                0x000000000005ab28                sample_comm_isp_stop
+                0x000000000005ab84                sample_comm_all_isp_stop
+ .text          0x000000000005abc0      0x674 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_mipi_tx.o
+                0x000000000005aef8                sample_comm_start_mipi_tx
+                0x000000000005b134                sample_comm_stop_mipi_tx
+ .text          0x000000000005b234     0x3050 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_region.o
+                0x000000000005b63c                fil_bmp
+                0x000000000005b708                region_mst_load_bmp
+                0x000000000005b8f8                region_mst_update_canvas
+                0x000000000005bb14                sample_comm_region_get_min_handle
+                0x000000000005bbdc                sample_region_create_overlay
+                0x000000000005be4c                sample_region_create_overlayex
+                0x000000000005bf0c                sample_region_create_cover
+                0x000000000005bfa4                sample_region_create_coverex
+                0x000000000005c03c                sample_region_create_line
+                0x000000000005c0d4                sample_region_create_mosaic
+                0x000000000005c16c                sample_region_create_mosaicex
+                0x000000000005c204                sample_region_create_corner_rectex
+                0x000000000005c29c                sample_region_destroy
+                0x000000000005c2fc                sample_region_attach_to_chn
+                0x000000000005c36c                sample_region_detach_from_chn
+                0x000000000005c3d4                sample_region_set_bit_map
+                0x000000000005c43c                sample_region_get_up_canvas_info
+                0x000000000005c4ec                sample_comm_region_create
+                0x000000000005c69c                sample_comm_region_destroy
+                0x000000000005c7b4                sample_comm_region_attach_check
+                0x000000000005c958                sample_region_set_overlay_chn_attr
+                0x000000000005cb14                sample_region_set_overlayex_chn_attr
+                0x000000000005ce6c                sample_region_set_cover_chn_attr
+                0x000000000005d1ec                sample_region_set_coverex_chn_attr
+                0x000000000005d41c                sample_region_set_corner_rectex_chn_attr
+                0x000000000005da28                sample_region_set_mosaicex_chn_attr
+                0x000000000005db44                sample_region_set_chn_attr
+                0x000000000005dc78                sample_comm_region_attach_to_chn
+                0x000000000005dd24                sample_comm_check_min
+                0x000000000005dd58                sample_comm_region_detach_frm_chn
+                0x000000000005def8                sample_comm_region_set_bit_map
+                0x000000000005e144                sample_comm_region_get_up_canvas
+ .text          0x000000000005e284     0x113c build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_sys.o
+                0x000000000005e284                sample_sys_signal
+                0x000000000005e2f8                sample_comm_sys_get_pic_size
+                0x000000000005e3c4                sample_comm_sys_get_pic_enum
+                0x000000000005e57c                sample_comm_sys_mem_config
+                0x000000000005e5c8                sample_comm_sys_init
+                0x000000000005e6e8                sample_comm_sys_init_with_vb_supplement
+                0x000000000005e858                sample_comm_sys_exit
+                0x000000000005e87c                sample_comm_vi_bind_vo
+                0x000000000005e918                sample_comm_vi_un_bind_vo
+                0x000000000005e9b4                sample_comm_vi_bind_vpss
+                0x000000000005ea50                sample_comm_vi_un_bind_vpss
+                0x000000000005eaec                sample_comm_vi_bind_venc
+                0x000000000005eb80                sample_comm_vi_un_bind_venc
+                0x000000000005ec14                sample_comm_avs_bind_venc
+                0x000000000005eca8                sample_comm_avs_un_bind_venc
+                0x000000000005ed3c                sample_comm_avs_bind_vo
+                0x000000000005edd8                sample_comm_avs_un_bind_vo
+                0x000000000005ee74                sample_comm_vpss_bind_vo
+                0x000000000005ef10                sample_comm_vpss_un_bind_vo
+                0x000000000005efac                sample_comm_vpss_bind_avs
+                0x000000000005f048                sample_comm_vpss_un_bind_avs
+                0x000000000005f0e4                sample_comm_vpss_bind_venc
+                0x000000000005f178                sample_comm_vpss_un_bind_venc
+                0x000000000005f20c                sample_comm_vdec_bind_vpss
+                0x000000000005f298                sample_comm_vdec_un_bind_vpss
+                0x000000000005f324                sample_comm_vo_bind_vo
+                0x000000000005f380                sample_comm_vo_un_bind_vo
+ .text          0x000000000005f3c0     0x37d4 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_vdec.o
+                0x000000000005f8a4                sample_comm_vdec_print_chn_status
+                0x000000000005f944                sample_comm_vdec_get_lowdelay_en
+                0x000000000005f954                sample_comm_vdec_set_lowdelay_en
+                0x000000000005f978                sample_comm_vdec_init_user_vb_pool
+                0x000000000005fb74                sample_comm_handle_init_vb_fail
+                0x000000000005fc98                sample_comm_vdec_cal_vb_size
+                0x0000000000060060                sample_comm_vdec_config_vb_pool
+                0x0000000000060500                sample_comm_vdec_init_vb_pool
+                0x00000000000606c0                sample_comm_vdec_exit_user_vb_pool
+                0x00000000000607d0                sample_comm_vdec_exit_vb_pool
+                0x0000000000060820                sample_comm_vdec_send_h264_frame_process
+                0x0000000000060ba0                sample_comm_vdec_send_mpeg4_frame_process
+                0x0000000000060df0                sample_comm_vdec_send_h265_frame_process
+                0x0000000000061114                sample_comm_vdec_send_jpeg_frame_process
+                0x000000000006137c                sample_comm_vdec_cut_frame
+                0x0000000000061510                sample_comm_vdec_send_stream_proc
+                0x000000000006169c                sample_comm_vdec_handle_send_stream
+                0x0000000000061820                sample_comm_vdec_send_stream_process
+                0x0000000000061a18                sample_comm_vdec_check_send_stream_param
+                0x0000000000061bdc                sample_comm_vdec_send_stream
+                0x0000000000061e1c                sample_comm_vdec_cmd_not_circle_send
+                0x0000000000061ffc                sample_comm_vdec_start_send_stream
+                0x00000000000620f4                sample_comm_vdec_stop_send_stream
+                0x0000000000062208                sample_comm_vdec_config_attr
+                0x00000000000623a8                sample_comm_config_ldy_attr
+                0x0000000000062510                sample_comm_vdec_start
+                0x0000000000062aa0                sample_comm_vdec_stop
+ .text          0x0000000000062b94     0xa54c build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_venc.o
+                0x00000000000633dc                sample_comm_venc_mem_config
+                0x0000000000063474                sample_comm_venc_get_file_postfix
+                0x0000000000063590                sample_comm_venc_get_gop_attr
+                0x00000000000636b4                sample_comm_venc_get_dcf_info
+                0x00000000000638f4                sample_comm_venc_save_stream
+                0x0000000000063d80                sample_comm_venc_save_stream_phys_addr
+                0x0000000000064028                sample_comm_venc_close_reencode
+                0x00000000000671e0                sample_comm_venc_create
+                0x0000000000067348                sample_comm_venc_create_x
+                0x00000000000674a4                sample_comm_venc_start
+                0x0000000000067564                sample_comm_venc_stop
+                0x000000000006760c                sample_comm_venc_snap_start
+                0x0000000000067794                sample_comm_venc_photo_start
+                0x00000000000678d0                sample_comm_venc_snap_stop
+                0x0000000000067e50                sample_comm_venc_snap_process
+                0x00000000000680a4                sample_comm_venc_save_jpeg
+                0x0000000000068d94                sample_comm_qpmap_send_frame_proc
+                0x000000000006909c                sample_comm_venc_qpmap_send_frame
+                0x00000000000693ec                sample_venc_process_jpeg_roi
+                0x0000000000069a34                sample_comm_send_roimap_frame_proc
+                0x0000000000069e0c                sample_comm_venc_send_roimap_frame
+                0x000000000006af20                sample_comm_venc_get_venc_stream_proc
+                0x000000000006b2f0                sample_comm_venc_set_region
+                0x000000000006b514                sample_comm_venc_set_svc_param
+                0x000000000006b6f0                sample_comm_venc_rateauto_stream_proc
+                0x000000000006c3b0                sample_comm_venc_get_venc_stream_proc_svc_t
+                0x000000000006c770                sample_comm_venc_set_save_heif
+                0x000000000006c7c0                sample_comm_venc_start_get_stream
+                0x000000000006c87c                sample_comm_venc_rateauto_start
+                0x000000000006c980                sample_comm_venc_start_get_stream_svc_t
+                0x000000000006c9dc                sample_comm_venc_stop_get_stream
+                0x000000000006ca8c                sample_comm_venc_stop_get_stream_x
+                0x000000000006cb50                sample_comm_venc_stop_send_qpmap_frame
+                0x000000000006cb98                sample_comm_venc_stop_send_roimap_frame
+                0x000000000006cbe0                sample_comm_venc_stop_rateauto
+                0x000000000006ce7c                sample_comm_venc_plan_to_semi
+ .text          0x000000000006d0e0     0x7f08 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_vi.o
+                0x000000000006ea2c                sample_comm_vi_get_size_by_sns_type
+                0x000000000006eb08                sample_comm_vi_get_obheight_by_sns_type
+                0x000000000006ecbc                sample_comm_vi_get_default_sns_info
+                0x000000000006ecfc                sample_comm_vi_get_os04a10_sns_info
+                0x000000000006ed44                sample_comm_vi_get_default_mipi_info
+                0x000000000006ed98                sample_comm_vi_get_os04a10_mipi_info
+                0x000000000006edfc                sample_comm_vi_get_mipi_info_by_dev_id
+                0x000000000006ee6c                sample_comm_vi_get_default_dev_info
+                0x000000000006ef00                sample_comm_vi_get_os04a10_dev_info
+                0x000000000006f0b4                sample_comm_vi_get_default_pipe_info
+                0x000000000006f634                sample_comm_vi_init_pipe_info
+                0x000000000006fbb4                sample_comm_vi_get_default_vi_cfg
+                0x000000000006fca8                sample_comm_vi_init_vi_cfg
+                0x000000000006fd60                sample_comm_vi_set_vi_vpss_mode
+                0x0000000000071600                sample_comm_vi_start_vi
+                0x0000000000071848                sample_comm_vi_stop_vi
+                0x00000000000718c4                sample_comm_vi_mode_switch_stop_vi
+                0x0000000000071b34                sample_comm_vi_mode_switch_start_vi
+                0x00000000000720dc                sample_comm_vi_switch_isp_mode
+                0x0000000000072378                sample_comm_vi_switch_isp_resolution
+                0x0000000000072630                sample_comm_vi_stop_four_vi
+                0x0000000000072a8c                sample_comm_vi_free_frame_blk
+                0x0000000000072b54                sample_comm_vi_get_frame_blk
+                0x0000000000072cd4                sample_comm_vi_release_frame_blk
+                0x0000000000073048                sample_comm_vi_save_fpn_file
+                0x00000000000735d4                sample_comm_vi_fpn_calibrate
+                0x00000000000738c0                sample_comm_vi_enable_fpn_correction
+                0x0000000000073ab4                sample_comm_vi_enable_fpn_correction_for_scene
+                0x0000000000073d58                sample_comm_vi_disable_fpn_correction
+                0x0000000000073e20                sample_comm_vi_start_virt_pipe
+                0x0000000000073ef4                sample_comm_vi_stop_virt_pipe
+                0x0000000000074820                sample_common_vi_load_user_pic
+                0x0000000000074904                sample_common_vi_unload_user_pic
+                0x0000000000074f48                sample_comm_vi_send_wdr_frame
+ .text          0x0000000000074fe8     0x2258 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_vo.o
+                0x0000000000074fe8                sample_comm_vo_get_width_height
+                0x000000000007512c                sample_comm_vo_start_dev
+                0x00000000000752f4                sample_comm_vo_stop_dev
+                0x0000000000075354                sample_comm_vo_start_layer
+                0x0000000000075430                sample_comm_vo_stop_layer
+                0x0000000000075490                sample_comm_vo_get_wnd_info
+                0x00000000000755d0                sample_comm_vo_get_chn_attr
+                0x00000000000757f4                sample_comm_vo_start_chn
+                0x00000000000759d8                sample_comm_vo_stop_chn
+                0x0000000000075c88                sample_comm_vo_start_wbc
+                0x0000000000075da4                sample_comm_vo_stop_wbc
+                0x0000000000075df0                sample_comm_vo_get_def_wbc_config
+                0x0000000000075e94                sample_comm_vo_bt1120_start
+                0x0000000000075ef0                sample_comm_vo_hdmi_start
+                0x0000000000076084                sample_comm_vo_hdmi_stop
+                0x0000000000076164                vo_get_dev_timing
+                0x00000000000761b4                vo_get_dev_user_sync_info
+                0x00000000000762a4                sample_comm_vo_get_def_config
+                0x0000000000076648                sample_comm_vo_set_hdmi_rgb_mode
+                0x000000000007667c                sample_comm_vo_start_vo
+                0x0000000000076900                sample_comm_vo_start_pip
+                0x0000000000076b18                sample_comm_vo_stop_vo
+                0x0000000000076c68                sample_comm_vo_stop_pip
+                0x0000000000076d48                sample_comm_vo_get_def_layer_config
+                0x000000000007700c                sample_comm_vo_start_layer_chn
+                0x000000000007715c                sample_comm_vo_stop_layer_chn
+ .text          0x0000000000077240      0x634 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_vpss.o
+                0x0000000000077240                sample_comm_vpss_get_default_grp_attr
+                0x0000000000077300                sample_comm_vpss_get_default_chn_attr
+                0x0000000000077558                sample_common_vpss_start
+                0x000000000007770c                sample_common_vpss_stop
+ .text          0x0000000000077874     0x3f34 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/venc_audio/sample_audio.o
+                0x00000000000780fc                sample_comm_audio_ai_ext_res_proc
+                0x000000000007838c                sample_comm_audio_creat_trd_ai_ext_res
+                0x00000000000784c0                sample_comm_audio_destroy_trd_ai_ext_res
+                0x0000000000078e8c                sample_audio_set_ai_vqe_param
+                0x0000000000078fc4                sample_audio_adec_ao_inner
+                0x00000000000790d0                sample_audio_adec_ao
+                0x0000000000079204                sample_audio_ai_aenc_init_param
+                0x00000000000792f4                sample_audio_aenc_bind_ai
+                0x000000000007943c                sample_audio_aenc_unbind_ai
+                0x0000000000079864                sample_audio_ai_aenc_inner
+                0x0000000000079f50                sample_audio_ai_to_ext_resample
+                0x000000000007a51c                sample_audio_ai_ao
+                0x000000000007a954                sample_audio_ai_to_ao_sys_chn
+                0x000000000007b030                sample_audio_ai_vqe_process_ao
+                0x000000000007b3f4                sample_audio_ai_hdmi_ao
+                0x000000000007b644                sample_audio_usage
+ .text          0x000000000007b7a8     0x3950 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/venc_audio/sample_venc_aenc.o
+                0x000000000007c918                SAMPLE_COMM_AUDIO_AencProc_new
+                0x000000000007e20c                VENC_GetVencStreamProc
+                0x000000000007e6fc                sample_venc_start_svp_x
+                0x000000000007ec38                load_pq_bin
+                0x000000000007ef00                rtsp_reboot
+                0x000000000007f020                venc_audio_start
+ .text          0x000000000007f0f8     0x32ac build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/venc_audio/adp/audio_aac_adp.o
+                0x000000000007f290                aac_deinit_enc_lib
+                0x000000000007f338                aacenc_get_version_adp
+                0x000000000007f3a4                aac_init_default_config_adp
+                0x000000000007f410                aac_encoder_open_adp
+                0x000000000007f484                aac_encoder_frame_adp
+                0x000000000007f508                aac_encoder_close_adp
+                0x000000000007f634                aac_deinit_dec_lib
+                0x000000000007f6dc                aacdec_get_version_adp
+                0x000000000007f748                aac_init_decoder_adp
+                0x000000000007f7b0                aac_free_decoder_adp
+                0x000000000007f814                aac_set_raw_mode_adp
+                0x000000000007f890                aac_decode_find_sync_header_adp
+                0x000000000007f90c                aac_decode_frame_adp
+                0x000000000007f990                aac_get_last_frame_info_adp
+                0x000000000007fa04                aac_decoder_set_eos_flag_adp
+                0x000000000007fa78                aac_flush_codec_adp
+                0x0000000000081114                aenc_aac_check_config
+                0x0000000000081528                open_aac_encoder
+                0x0000000000081a0c                encode_aac_frm
+                0x0000000000081b18                close_aac_encoder
+                0x0000000000081b64                open_aac_decoder
+                0x0000000000081d34                decode_aac_frm
+                0x0000000000081f58                get_aac_frm_info
+                0x0000000000082044                close_aac_decoder
+                0x0000000000082090                reset_aac_decoder
+                0x000000000008212c                hi_mpi_aenc_aac_init
+                0x0000000000082220                hi_mpi_aenc_aac_deinit
+                0x0000000000082260                hi_mpi_adec_aac_init
+                0x0000000000082364                hi_mpi_adec_aac_deinit
+ .text          0x00000000000823a4      0x16c build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/venc_audio/adp/audio_dl_adp.o
+                0x00000000000823a4                audio_dlpath
+                0x00000000000823b8                audio_dlopen
+                0x000000000008243c                audio_dlsym
+                0x00000000000824d0                audio_dlclose
+ .text          0x0000000000082510     0x1ce0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/svp_rtsp/common/sample_common_ive.o
+                0x0000000000082510                sample_common_ive_check_mpi_init
+                0x0000000000082598                sample_common_ive_mpi_init
+                0x000000000008260c                sample_common_ive_mpi_exit
+                0x0000000000082834                sample_common_ive_read_file
+                0x0000000000082c10                sample_common_ive_write_file
+                0x0000000000082f24                sample_common_ive_calc_stride
+                0x00000000000831f0                sample_common_ive_blob_to_rect
+                0x0000000000083ca4                sample_common_ive_create_image
+                0x0000000000083cdc                sample_common_ive_create_mem_info
+                0x0000000000083de4                sample_common_ive_create_image_by_cached
+                0x0000000000083e1c                sample_common_ive_dma_image
+ .text          0x00000000000841f0     0x38dc build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/svp_rtsp/common/sample_common_svp.o
+                0x00000000000854f0                sample_common_svp_check_sys_init
+                0x00000000000855b4                sample_common_svp_check_sys_exit
+                0x0000000000085674                sample_common_svp_align
+                0x000000000008577c                sample_common_svp_create_mem_info
+                0x00000000000858bc                sample_common_svp_destroy_mem_info
+                0x0000000000085980                sample_common_svp_malloc_mem
+                0x0000000000085a6c                sample_common_svp_malloc_cached
+                0x0000000000085b58                sample_common_svp_flush_cache
+                0x0000000000085ef4                sample_common_svp_vgs_fill_rect_changecolor
+                0x0000000000086358                sample_common_svp_vgs_fill_rect
+                0x0000000000086a38                sample_common_svp_start_vo
+                0x0000000000086aa4                sample_common_svp_stop_vo
+                0x0000000000087120                sample_common_svp_start_vi_vpss_venc_vo
+                0x0000000000087558                sample_common_svp_stop_vi_vpss_venc_vo
+                0x0000000000087700                sample_comm_svp_load_core_binary
+                0x0000000000087a00                sample_comm_svp_unload_core_binary
+ *fill*         0x0000000000087acc        0x4 1f2003d5
+ .text.stub     0x0000000000087ad0       0x10 linker stubs
+ .text          0x0000000000088ad0       0xa0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/svp_rtsp/ive/sample_ive_main.o
+                0x0000000000088b04                svp_main
+ .text          0x0000000000088b70     0x1f54 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/svp_rtsp/ive/sample/sample_ive_md.o
+                0x00000000000891c8                string_to_bmp
+                0x0000000000089460                bitmap_update
+                0x0000000000089594                osd_ttf_task
+                0x00000000000898e0                RGN_AddOsdToVenc
+                0x0000000000089bf0                udp_recv_thread
+                0x0000000000089fc8                start_udp_server
+                0x000000000008a96c                sample_ive_md
+                0x000000000008aaac                sample_ive_md_handle_sig
+ .text          0x000000000008aac4     0x1934 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/ntpclient/ntp_client.o
+                0x000000000008c180                start_ntp_client
+                0x000000000008c290                ntpc_enable
+                0x000000000008c2c8                ntpc_disable
+                0x000000000008c2f8                ntpc_set_addr
+                0x000000000008c3bc                ntpc_set_synctime
+ .text          0x000000000008c3f8     0x5040 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/bplustree/bplustree.o
+                0x000000000008c56c                _get_block_size
+                0x0000000000090334                bplus_tree_get
+                0x0000000000090358                bplus_tree_put
+                0x00000000000903c0                bplus_tree_get_range
+                0x0000000000090604                bplus_open
+                0x0000000000090628                bplus_close
+                0x0000000000090874                bplus_refresh_boot
+                0x00000000000909b8                bplus_tree_init
+                0x0000000000090e54                bplus_tree_deinit
+                0x0000000000091260                bplus_tree_dump
+ *fill*         0x0000000000091438        0x0 1f2003d5
+ .text          0x0000000000091438       0x10 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/libc_nonshared.a(fstat.oS)
+                0x0000000000091438                __fstat
+                0x0000000000091438                fstat
+ .text          0x0000000000091448        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+ .text          0x0000000000091448        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
  *(.gnu.warning)
 
-.fini           0x0000000000090348       0x10
+.fini           0x0000000000091448       0x10
  *(SORT_NONE(.fini))
- .fini          0x0000000000090348        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
-                0x0000000000090348                _fini
- .fini          0x0000000000090350        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+ .fini          0x0000000000091448        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+                0x0000000000091448                _fini
+ .fini          0x0000000000091450        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
                 [!provide]                        PROVIDE (__etext = .)
                 [!provide]                        PROVIDE (_etext = .)
                 [!provide]                        PROVIDE (etext = .)
 
-.rodata         0x0000000000090358    0x17cb9
+.rodata         0x0000000000091458    0x17cb9
  *(.rodata .rodata.* .gnu.linkonce.r.*)
- .rodata        0x0000000000090358      0x3ec build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/rtsp/gk_rtsp.o
- *fill*         0x0000000000090744        0x4 
- .rodata        0x0000000000090748      0x375 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/factory_test/factory_test.o
- *fill*         0x0000000000090abd        0x3 
- .rodata        0x0000000000090ac0      0x55d build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/gkvision/gkvision.o
- *fill*         0x000000000009101d        0x3 
- .rodata        0x0000000000091020      0xb1d build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/third/gb28181/ite_gb28181_rtp.o
- *fill*         0x0000000000091b3d        0x3 
- .rodata        0x0000000000091b40     0x443a build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/third/gb28181/ite_gb28181_sip.o
- *fill*         0x0000000000095f7a        0x6 
- .rodata        0x0000000000095f80      0x65a build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/third/gb28181/ite_gb28181_app.o
- *fill*         0x00000000000965da        0x6 
- .rodata        0x00000000000965e0      0x621 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/third/gb28181/ite_gb28181_playback.o
- *fill*         0x0000000000096c01        0x7 
- .rodata        0x0000000000096c08      0x296 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common/main.o
- *fill*         0x0000000000096e9e        0x2 
- .rodata        0x0000000000096ea0      0x7d5 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common/netcam_sys.o
- *fill*         0x0000000000097675        0x3 
- .rodata        0x0000000000097678      0x4e3 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/video/netcam_video.o
- *fill*         0x0000000000097b5b        0x5 
- .rodata        0x0000000000097b60      0x85f build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/video/netcam_video_web_stream.o
- *fill*         0x00000000000983bf        0x1 
- .rodata        0x00000000000983c0       0xb6 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/image/netcam_image.o
- *fill*         0x0000000000098476        0x2 
- .rodata        0x0000000000098478      0x10d build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/timer/netcam_timer.o
- *fill*         0x0000000000098585        0x3 
- .rodata        0x0000000000098588      0x289 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/autolight/netcam_autolight.o
- *fill*         0x0000000000098811        0x7 
- .rodata        0x0000000000098818      0x37d build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/osd/netcam_osd.o
- *fill*         0x0000000000098b95        0x3 
- .rodata        0x0000000000098b98     0x16c0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http/netcam_http_web.o
- .rodata        0x000000000009a258      0xf57 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/net/netcam_network.o
- *fill*         0x000000000009b1af        0x1 
- .rodata        0x000000000009b1b0      0x1e8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/net/net_arp.o
- .rodata        0x000000000009b398      0x170 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/net/net_dhcp.o
- .rodata        0x000000000009b508      0x1fa build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/net/net_arping.o
- *fill*         0x000000000009b702        0x6 
- .rodata        0x000000000009b708      0x4a2 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/ptz/netcam_ptz.o
- *fill*         0x000000000009bbaa        0x6 
- .rodata        0x000000000009bbb0      0x54c build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/md/netcam_motion_detect.o
- *fill*         0x000000000009c0fc        0x4 
- .rodata        0x000000000009c100       0xd8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/work_callback/system_handle.o
- .rodata        0x000000000009c1d8      0x329 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/loadbmp.o
- *fill*         0x000000000009c501        0x7 
- .rodata        0x000000000009c508      0xdb4 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_audio.o
- *fill*         0x000000000009d2bc        0x4 
- .rodata        0x000000000009d2c0      0x267 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_isp.o
- *fill*         0x000000000009d527        0x1 
- .rodata        0x000000000009d528      0x571 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_mipi_tx.o
- *fill*         0x000000000009da99        0x7 
- .rodata        0x000000000009daa0      0x921 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_region.o
- *fill*         0x000000000009e3c1        0x7 
- .rodata        0x000000000009e3c8      0x616 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_sys.o
- *fill*         0x000000000009e9de        0x2 
- .rodata        0x000000000009e9e0      0x99e build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_vdec.o
- *fill*         0x000000000009f37e        0x2 
- .rodata        0x000000000009f380     0x1767 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_venc.o
-                0x000000000009f380                g_soi
-                0x000000000009f388                g_eoi
- *fill*         0x00000000000a0ae7        0x1 
- .rodata        0x00000000000a0ae8     0x146f build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_vi.o
- *fill*         0x00000000000a1f57        0x1 
- .rodata        0x00000000000a1f58      0x86e build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_vo.o
- *fill*         0x00000000000a27c6        0x2 
- .rodata        0x00000000000a27c8      0x210 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_vpss.o
- .rodata        0x00000000000a29d8      0xcc0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/venc_audio/sample_audio.o
- .rodata        0x00000000000a3698      0x7e8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/venc_audio/sample_venc_aenc.o
- .rodata        0x00000000000a3e80      0xb05 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/venc_audio/adp/audio_aac_adp.o
- *fill*         0x00000000000a4985        0x3 
- .rodata        0x00000000000a4988       0x51 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/venc_audio/adp/audio_dl_adp.o
- *fill*         0x00000000000a49d9        0x7 
- .rodata        0x00000000000a49e0      0xbcc build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/svp_rtsp/common/sample_common_ive.o
- *fill*         0x00000000000a55ac        0x4 
- .rodata        0x00000000000a55b0     0x175b build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/svp_rtsp/common/sample_common_svp.o
- *fill*         0x00000000000a6d0b        0x5 
- .rodata        0x00000000000a6d10      0x833 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/svp_rtsp/ive/sample/sample_ive_md.o
-                0x00000000000a70c8                PORT
- *fill*         0x00000000000a7543        0x5 
- .rodata        0x00000000000a7548      0x609 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/ntpclient/ntp_client.o
- *fill*         0x00000000000a7b51        0x7 
- .rodata        0x00000000000a7b58      0x4b9 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/bplustree/bplustree.o
+ .rodata        0x0000000000091458      0x3ec build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/rtsp/gk_rtsp.o
+ *fill*         0x0000000000091844        0x4 
+ .rodata        0x0000000000091848      0x375 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/factory_test/factory_test.o
+ *fill*         0x0000000000091bbd        0x3 
+ .rodata        0x0000000000091bc0      0x55d build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/gkvision/gkvision.o
+ *fill*         0x000000000009211d        0x3 
+ .rodata        0x0000000000092120      0xb1d build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/third/gb28181/ite_gb28181_rtp.o
+ *fill*         0x0000000000092c3d        0x3 
+ .rodata        0x0000000000092c40     0x443a build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/third/gb28181/ite_gb28181_sip.o
+ *fill*         0x000000000009707a        0x6 
+ .rodata        0x0000000000097080      0x65a build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/third/gb28181/ite_gb28181_app.o
+ *fill*         0x00000000000976da        0x6 
+ .rodata        0x00000000000976e0      0x621 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/third/gb28181/ite_gb28181_playback.o
+ *fill*         0x0000000000097d01        0x7 
+ .rodata        0x0000000000097d08      0x296 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common/main.o
+ *fill*         0x0000000000097f9e        0x2 
+ .rodata        0x0000000000097fa0      0x7d5 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common/netcam_sys.o
+ *fill*         0x0000000000098775        0x3 
+ .rodata        0x0000000000098778      0x4e3 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/video/netcam_video.o
+ *fill*         0x0000000000098c5b        0x5 
+ .rodata        0x0000000000098c60      0x85f build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/video/netcam_video_web_stream.o
+ *fill*         0x00000000000994bf        0x1 
+ .rodata        0x00000000000994c0       0xb6 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/image/netcam_image.o
+ *fill*         0x0000000000099576        0x2 
+ .rodata        0x0000000000099578      0x10d build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/timer/netcam_timer.o
+ *fill*         0x0000000000099685        0x3 
+ .rodata        0x0000000000099688      0x289 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/autolight/netcam_autolight.o
+ *fill*         0x0000000000099911        0x7 
+ .rodata        0x0000000000099918      0x37d build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/osd/netcam_osd.o
+ *fill*         0x0000000000099c95        0x3 
+ .rodata        0x0000000000099c98     0x16c0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http/netcam_http_web.o
+ .rodata        0x000000000009b358      0xf57 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/net/netcam_network.o
+ *fill*         0x000000000009c2af        0x1 
+ .rodata        0x000000000009c2b0      0x1e8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/net/net_arp.o
+ .rodata        0x000000000009c498      0x170 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/net/net_dhcp.o
+ .rodata        0x000000000009c608      0x1fa build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/net/net_arping.o
+ *fill*         0x000000000009c802        0x6 
+ .rodata        0x000000000009c808      0x4a2 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/ptz/netcam_ptz.o
+ *fill*         0x000000000009ccaa        0x6 
+ .rodata        0x000000000009ccb0      0x54c build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/md/netcam_motion_detect.o
+ *fill*         0x000000000009d1fc        0x4 
+ .rodata        0x000000000009d200       0xd8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/work_callback/system_handle.o
+ .rodata        0x000000000009d2d8      0x329 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/loadbmp.o
+ *fill*         0x000000000009d601        0x7 
+ .rodata        0x000000000009d608      0xdb4 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_audio.o
+ *fill*         0x000000000009e3bc        0x4 
+ .rodata        0x000000000009e3c0      0x267 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_isp.o
+ *fill*         0x000000000009e627        0x1 
+ .rodata        0x000000000009e628      0x571 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_mipi_tx.o
+ *fill*         0x000000000009eb99        0x7 
+ .rodata        0x000000000009eba0      0x921 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_region.o
+ *fill*         0x000000000009f4c1        0x7 
+ .rodata        0x000000000009f4c8      0x616 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_sys.o
+ *fill*         0x000000000009fade        0x2 
+ .rodata        0x000000000009fae0      0x99e build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_vdec.o
+ *fill*         0x00000000000a047e        0x2 
+ .rodata        0x00000000000a0480     0x1767 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_venc.o
+                0x00000000000a0480                g_soi
+                0x00000000000a0488                g_eoi
+ *fill*         0x00000000000a1be7        0x1 
+ .rodata        0x00000000000a1be8     0x146f build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_vi.o
+ *fill*         0x00000000000a3057        0x1 
+ .rodata        0x00000000000a3058      0x86e build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_vo.o
+ *fill*         0x00000000000a38c6        0x2 
+ .rodata        0x00000000000a38c8      0x210 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_vpss.o
+ .rodata        0x00000000000a3ad8      0xcc0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/venc_audio/sample_audio.o
+ .rodata        0x00000000000a4798      0x7e8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/venc_audio/sample_venc_aenc.o
+ .rodata        0x00000000000a4f80      0xb05 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/venc_audio/adp/audio_aac_adp.o
+ *fill*         0x00000000000a5a85        0x3 
+ .rodata        0x00000000000a5a88       0x51 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/venc_audio/adp/audio_dl_adp.o
+ *fill*         0x00000000000a5ad9        0x7 
+ .rodata        0x00000000000a5ae0      0xbcc build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/svp_rtsp/common/sample_common_ive.o
+ *fill*         0x00000000000a66ac        0x4 
+ .rodata        0x00000000000a66b0     0x175b build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/svp_rtsp/common/sample_common_svp.o
+ *fill*         0x00000000000a7e0b        0x5 
+ .rodata        0x00000000000a7e10      0x833 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/svp_rtsp/ive/sample/sample_ive_md.o
+                0x00000000000a81c8                PORT
+ *fill*         0x00000000000a8643        0x5 
+ .rodata        0x00000000000a8648      0x609 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/ntpclient/ntp_client.o
+ *fill*         0x00000000000a8c51        0x7 
+ .rodata        0x00000000000a8c58      0x4b9 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/bplustree/bplustree.o
 
 .rodata1
  *(.rodata1)
 
-.eh_frame_hdr   0x00000000000a8014     0x26b4
+.eh_frame_hdr   0x00000000000a9114     0x26b4
  *(.eh_frame_hdr)
- .eh_frame_hdr  0x00000000000a8014     0x26b4 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
-                0x00000000000a8014                __GNU_EH_FRAME_HDR
+ .eh_frame_hdr  0x00000000000a9114     0x26b4 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+                0x00000000000a9114                __GNU_EH_FRAME_HDR
  *(.eh_frame_entry .eh_frame_entry.*)
 
-.eh_frame       0x00000000000aa6c8     0xa8f8
+.eh_frame       0x00000000000ab7c8     0xa8f8
  *(.eh_frame)
- .eh_frame      0x00000000000aa6c8       0x78 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
- .eh_frame      0x00000000000aa740      0x210 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/rtsp/gk_rtsp.o
+ .eh_frame      0x00000000000ab7c8       0x78 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ .eh_frame      0x00000000000ab840      0x210 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/rtsp/gk_rtsp.o
                                         0x228 (size before relaxing)
- .eh_frame      0x00000000000aa950      0x220 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/factory_test/factory_test.o
+ .eh_frame      0x00000000000aba50      0x220 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/factory_test/factory_test.o
                                         0x230 (size before relaxing)
- .eh_frame      0x00000000000aab70      0x250 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/gkvision/gkvision.o
+ .eh_frame      0x00000000000abc70      0x250 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/gkvision/gkvision.o
                                         0x260 (size before relaxing)
- .eh_frame      0x00000000000aadc0      0x7d0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/third/gb28181/ite_gb28181_rtp.o
+ .eh_frame      0x00000000000abec0      0x7d0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/third/gb28181/ite_gb28181_rtp.o
                                         0x7e0 (size before relaxing)
- .eh_frame      0x00000000000ab590      0x508 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/third/gb28181/ite_gb28181_sip.o
+ .eh_frame      0x00000000000ac690      0x508 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/third/gb28181/ite_gb28181_sip.o
                                         0x518 (size before relaxing)
- .eh_frame      0x00000000000aba98      0x3b0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/third/gb28181/ite_gb28181_app.o
+ .eh_frame      0x00000000000acb98      0x3b0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/third/gb28181/ite_gb28181_app.o
                                         0x3c0 (size before relaxing)
- .eh_frame      0x00000000000abe48      0x308 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/third/gb28181/ite_gb28181_playback.o
+ .eh_frame      0x00000000000acf48      0x308 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/third/gb28181/ite_gb28181_playback.o
                                         0x320 (size before relaxing)
- .eh_frame      0x00000000000ac150      0x148 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common/main.o
+ .eh_frame      0x00000000000ad250      0x148 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common/main.o
                                         0x160 (size before relaxing)
- .eh_frame      0x00000000000ac298      0x2c8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common/netcam_sys.o
+ .eh_frame      0x00000000000ad398      0x2c8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common/netcam_sys.o
                                         0x2e0 (size before relaxing)
- .eh_frame      0x00000000000ac560      0x358 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/video/netcam_video.o
+ .eh_frame      0x00000000000ad660      0x358 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/video/netcam_video.o
                                         0x370 (size before relaxing)
- .eh_frame      0x00000000000ac8b8      0x270 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/video/netcam_video_web_stream.o
+ .eh_frame      0x00000000000ad9b8      0x270 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/video/netcam_video_web_stream.o
                                         0x288 (size before relaxing)
- .eh_frame      0x00000000000acb28      0x1a0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/image/netcam_image.o
+ .eh_frame      0x00000000000adc28      0x1a0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/image/netcam_image.o
                                         0x1b0 (size before relaxing)
- .eh_frame      0x00000000000accc8      0x118 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/timer/netcam_timer.o
+ .eh_frame      0x00000000000addc8      0x118 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/timer/netcam_timer.o
                                         0x130 (size before relaxing)
- .eh_frame      0x00000000000acde0      0x148 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/autolight/netcam_autolight.o
+ .eh_frame      0x00000000000adee0      0x148 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/autolight/netcam_autolight.o
                                         0x158 (size before relaxing)
- .eh_frame      0x00000000000acf28      0x340 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/osd/netcam_osd.o
+ .eh_frame      0x00000000000ae028      0x340 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/osd/netcam_osd.o
                                         0x358 (size before relaxing)
- .eh_frame      0x00000000000ad268      0x6a0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http/netcam_http_web.o
+ .eh_frame      0x00000000000ae368      0x6a0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http/netcam_http_web.o
                                         0x6b8 (size before relaxing)
- .eh_frame      0x00000000000ad908      0x768 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/net/netcam_network.o
+ .eh_frame      0x00000000000aea08      0x768 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/net/netcam_network.o
                                         0x778 (size before relaxing)
- .eh_frame      0x00000000000ae070      0x190 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/net/net_arp.o
+ .eh_frame      0x00000000000af170      0x190 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/net/net_arp.o
                                         0x1a8 (size before relaxing)
- .eh_frame      0x00000000000ae200      0x118 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/net/net_dhcp.o
+ .eh_frame      0x00000000000af300      0x118 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/net/net_dhcp.o
                                         0x130 (size before relaxing)
- .eh_frame      0x00000000000ae318       0x70 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/net/net_arping.o
+ .eh_frame      0x00000000000af418       0x70 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/net/net_arping.o
                                          0x88 (size before relaxing)
- .eh_frame      0x00000000000ae388      0x3d0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/ptz/netcam_ptz.o
+ .eh_frame      0x00000000000af488      0x3d0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/ptz/netcam_ptz.o
                                         0x3e8 (size before relaxing)
- .eh_frame      0x00000000000ae758      0x348 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/md/netcam_motion_detect.o
+ .eh_frame      0x00000000000af858      0x348 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/md/netcam_motion_detect.o
                                         0x360 (size before relaxing)
- .eh_frame      0x00000000000aeaa0       0xd8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/watchdog/netcam_watchdog.o
+ .eh_frame      0x00000000000afba0       0xd8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/watchdog/netcam_watchdog.o
                                          0xf0 (size before relaxing)
- .eh_frame      0x00000000000aeb78       0x20 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/work_callback/system_handle.o
+ .eh_frame      0x00000000000afc78       0x20 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/work_callback/system_handle.o
                                          0x30 (size before relaxing)
- .eh_frame      0x00000000000aeb98      0x310 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/loadbmp.o
+ .eh_frame      0x00000000000afc98      0x310 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/loadbmp.o
                                         0x320 (size before relaxing)
- .eh_frame      0x00000000000aeea8      0x4c8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_audio.o
+ .eh_frame      0x00000000000affa8      0x4c8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_audio.o
                                         0x4e0 (size before relaxing)
- .eh_frame      0x00000000000af370      0x228 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_isp.o
+ .eh_frame      0x00000000000b0470      0x228 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_isp.o
                                         0x240 (size before relaxing)
- .eh_frame      0x00000000000af598      0x118 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_mipi_tx.o
+ .eh_frame      0x00000000000b0698      0x118 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_mipi_tx.o
                                         0x128 (size before relaxing)
- .eh_frame      0x00000000000af6b0      0x678 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_region.o
+ .eh_frame      0x00000000000b07b0      0x678 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_region.o
                                         0x690 (size before relaxing)
- .eh_frame      0x00000000000afd28      0x3e8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_sys.o
+ .eh_frame      0x00000000000b0e28      0x3e8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_sys.o
                                         0x3f8 (size before relaxing)
- .eh_frame      0x00000000000b0110      0x460 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_vdec.o
+ .eh_frame      0x00000000000b1210      0x460 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_vdec.o
                                         0x478 (size before relaxing)
- .eh_frame      0x00000000000b0570      0xde0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_venc.o
+ .eh_frame      0x00000000000b1670      0xde0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_venc.o
                                         0xdf8 (size before relaxing)
- .eh_frame      0x00000000000b1350      0xe98 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_vi.o
+ .eh_frame      0x00000000000b2450      0xe98 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_vi.o
                                         0xeb0 (size before relaxing)
- .eh_frame      0x00000000000b21e8      0x4a8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_vo.o
+ .eh_frame      0x00000000000b32e8      0x4a8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_vo.o
                                         0x4b8 (size before relaxing)
- .eh_frame      0x00000000000b2690       0xa0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_vpss.o
+ .eh_frame      0x00000000000b3790       0xa0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_vpss.o
                                          0xb0 (size before relaxing)
- .eh_frame      0x00000000000b2730      0x6a8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/venc_audio/sample_audio.o
+ .eh_frame      0x00000000000b3830      0x6a8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/venc_audio/sample_audio.o
                                         0x6b8 (size before relaxing)
- .eh_frame      0x00000000000b2dd8      0x5b0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/venc_audio/sample_venc_aenc.o
+ .eh_frame      0x00000000000b3ed8      0x5b0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/venc_audio/sample_venc_aenc.o
                                         0x5c0 (size before relaxing)
- .eh_frame      0x00000000000b3388      0x6b8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/venc_audio/adp/audio_aac_adp.o
+ .eh_frame      0x00000000000b4488      0x6b8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/venc_audio/adp/audio_aac_adp.o
                                         0x6d0 (size before relaxing)
- .eh_frame      0x00000000000b3a40       0x88 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/venc_audio/adp/audio_dl_adp.o
+ .eh_frame      0x00000000000b4b40       0x88 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/venc_audio/adp/audio_dl_adp.o
                                          0x98 (size before relaxing)
- .eh_frame      0x00000000000b3ac8      0x220 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/svp_rtsp/common/sample_common_ive.o
+ .eh_frame      0x00000000000b4bc8      0x220 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/svp_rtsp/common/sample_common_ive.o
                                         0x230 (size before relaxing)
- .eh_frame      0x00000000000b3ce8      0x558 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/svp_rtsp/common/sample_common_svp.o
+ .eh_frame      0x00000000000b4de8      0x558 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/svp_rtsp/common/sample_common_svp.o
                                         0x568 (size before relaxing)
- .eh_frame      0x00000000000b4240       0x48 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/svp_rtsp/ive/sample_ive_main.o
+ .eh_frame      0x00000000000b5340       0x48 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/svp_rtsp/ive/sample_ive_main.o
                                          0x60 (size before relaxing)
- .eh_frame      0x00000000000b4288      0x1e0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/svp_rtsp/ive/sample/sample_ive_md.o
+ .eh_frame      0x00000000000b5388      0x1e0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/svp_rtsp/ive/sample/sample_ive_md.o
                                         0x1f0 (size before relaxing)
- .eh_frame      0x00000000000b4468      0x220 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/ntpclient/ntp_client.o
+ .eh_frame      0x00000000000b5568      0x220 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/ntpclient/ntp_client.o
                                         0x238 (size before relaxing)
- .eh_frame      0x00000000000b4688      0x920 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/bplustree/bplustree.o
+ .eh_frame      0x00000000000b5788      0x920 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/bplustree/bplustree.o
                                         0x930 (size before relaxing)
- .eh_frame      0x00000000000b4fa8       0x14 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/libc_nonshared.a(fstat.oS)
+ .eh_frame      0x00000000000b60a8       0x14 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/libc_nonshared.a(fstat.oS)
                                          0x28 (size before relaxing)
- .eh_frame      0x00000000000b4fbc        0x4 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+ .eh_frame      0x00000000000b60bc        0x4 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
  *(.eh_frame.*)
 
 .gcc_except_table
@@ -1263,7 +1265,7 @@ LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
 
 .exception_ranges
  *(.exception_ranges*)
-                0x00000000000c5570                . = DATA_SEGMENT_ALIGN (CONSTANT (MAXPAGESIZE), CONSTANT (COMMONPAGESIZE))
+                0x00000000000c6570                . = DATA_SEGMENT_ALIGN (CONSTANT (MAXPAGESIZE), CONSTANT (COMMONPAGESIZE))
 
 .eh_frame
  *(.eh_frame)
@@ -1288,15 +1290,15 @@ LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
 .preinit_array
  *(.preinit_array)
 
-.init_array     0x00000000000c5570        0x8
+.init_array     0x00000000000c6570        0x8
  *(SORT_BY_INIT_PRIORITY(.init_array.*) SORT_BY_INIT_PRIORITY(.ctors.*))
  *(.init_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .ctors)
- .init_array    0x00000000000c5570        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ .init_array    0x00000000000c6570        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
 
-.fini_array     0x00000000000c5578        0x8
+.fini_array     0x00000000000c6578        0x8
  *(SORT_BY_INIT_PRIORITY(.fini_array.*) SORT_BY_INIT_PRIORITY(.dtors.*))
  *(.fini_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .dtors)
- .fini_array    0x00000000000c5578        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ .fini_array    0x00000000000c6578        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
 
 .ctors
  *crtbegin.o(.ctors)
@@ -1315,309 +1317,309 @@ LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
 .jcr
  *(.jcr)
 
-.data.rel.ro    0x00000000000c5580      0x300
+.data.rel.ro    0x00000000000c6580      0x300
  *(.data.rel.ro.local* .gnu.linkonce.d.rel.ro.local.*)
  .data.rel.ro.local
-                0x00000000000c5580      0x300 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_mipi_tx.o
+                0x00000000000c6580      0x300 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_mipi_tx.o
  *(.data.rel.ro .data.rel.ro.* .gnu.linkonce.d.rel.ro.*)
- .data.rel.ro   0x00000000000c5880        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .data.rel.ro   0x00000000000c6880        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
 
-.dynamic        0x00000000000c5880      0x250
+.dynamic        0x00000000000c6880      0x250
  *(.dynamic)
- .dynamic       0x00000000000c5880      0x250 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
-                0x00000000000c5880                _DYNAMIC
+ .dynamic       0x00000000000c6880      0x250 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+                0x00000000000c6880                _DYNAMIC
 
-.got            0x00000000000c5ad0      0x518
+.got            0x00000000000c6ad0      0x518
  *(.got)
- .got           0x00000000000c5ad0      0x518 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
-                0x00000000000c5ad0                _GLOBAL_OFFSET_TABLE_
+ .got           0x00000000000c6ad0      0x518 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+                0x00000000000c6ad0                _GLOBAL_OFFSET_TABLE_
  *(.igot)
-                0x00000000000c5fe8                . = DATA_SEGMENT_RELRO_END (., 0x18)
+                0x00000000000c6fe8                . = DATA_SEGMENT_RELRO_END (., 0x18)
 
-.got.plt        0x00000000000c5fe8     0x2348
+.got.plt        0x00000000000c6fe8     0x2348
  *(.got.plt)
- .got.plt       0x00000000000c5fe8     0x2348 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .got.plt       0x00000000000c6fe8     0x2348 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
  *(.igot.plt)
 
-.data           0x00000000000c8330     0x46d8
+.data           0x00000000000c9330     0x4890
                 [!provide]                        PROVIDE (__data_start = .)
  *(.data .data.* .gnu.linkonce.d.*)
- .data          0x00000000000c8330        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
- .data          0x00000000000c8330        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ .data          0x00000000000c9330        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .data          0x00000000000c9330        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
  .data.rel.local
-                0x00000000000c8330        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
-                0x00000000000c8330                __dso_handle
- .data          0x00000000000c8338        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/rtsp/gk_rtsp.o
- .data          0x00000000000c8338        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/factory_test/factory_test.o
- .data          0x00000000000c8338       0x24 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/gkvision/gkvision.o
- *fill*         0x00000000000c835c        0x4 
- .data          0x00000000000c8360      0x46c build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/third/gb28181/ite_gb28181_rtp.o
-                0x00000000000c8360                tsTestFd
-                0x00000000000c8368                hostAddr
-                0x00000000000c8378                tsTestIp
-                0x00000000000c83b8                tsTestPort
-                0x00000000000c83c0                s_crc32_table
- *fill*         0x00000000000c87cc        0x4 
- .data          0x00000000000c87d0      0x14d build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/third/gb28181/ite_gb28181_sip.o
-                0x00000000000c87d0                positionInterval
- *fill*         0x00000000000c891d        0x3 
- .data          0x00000000000c8920       0x78 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/third/gb28181/ite_gb28181_app.o
-                0x00000000000c8920                g_bterminate
-                0x00000000000c8928                serverIp
-                0x00000000000c8960                gDeviceId
-                0x00000000000c8994                serverPort
- .data          0x00000000000c8998        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/third/gb28181/ite_gb28181_playback.o
- .data          0x00000000000c8998        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common/main.o
- .data          0x00000000000c8998        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common/netcam_sys.o
- .data          0x00000000000c8998        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/video/netcam_video.o
- .data          0x00000000000c8998        0x4 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/video/netcam_video_web_stream.o
- .data          0x00000000000c899c        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/image/netcam_image.o
- .data          0x00000000000c899c        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/timer/netcam_timer.o
- .data          0x00000000000c899c        0x3 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/autolight/netcam_autolight.o
- *fill*         0x00000000000c899f        0x1 
- .data          0x00000000000c89a0        0x4 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/osd/netcam_osd.o
- *fill*         0x00000000000c89a4        0x4 
+                0x00000000000c9330        0x8 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+                0x00000000000c9330                __dso_handle
+ .data          0x00000000000c9338        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/rtsp/gk_rtsp.o
+ .data          0x00000000000c9338        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/factory_test/factory_test.o
+ .data          0x00000000000c9338       0x24 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/gkvision/gkvision.o
+ *fill*         0x00000000000c935c        0x4 
+ .data          0x00000000000c9360      0x46c build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/third/gb28181/ite_gb28181_rtp.o
+                0x00000000000c9360                tsTestFd
+                0x00000000000c9368                hostAddr
+                0x00000000000c9378                tsTestIp
+                0x00000000000c93b8                tsTestPort
+                0x00000000000c93c0                s_crc32_table
+ *fill*         0x00000000000c97cc        0x4 
+ .data          0x00000000000c97d0      0x14d build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/third/gb28181/ite_gb28181_sip.o
+                0x00000000000c97d0                positionInterval
+ *fill*         0x00000000000c991d        0x3 
+ .data          0x00000000000c9920       0x78 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/third/gb28181/ite_gb28181_app.o
+                0x00000000000c9920                g_bterminate
+                0x00000000000c9928                serverIp
+                0x00000000000c9960                gDeviceId
+                0x00000000000c9994                serverPort
+ .data          0x00000000000c9998        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/third/gb28181/ite_gb28181_playback.o
+ .data          0x00000000000c9998        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common/main.o
+ .data          0x00000000000c9998        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common/netcam_sys.o
+ .data          0x00000000000c9998        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/video/netcam_video.o
+ .data          0x00000000000c9998        0x4 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/video/netcam_video_web_stream.o
+ .data          0x00000000000c999c        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/image/netcam_image.o
+ .data          0x00000000000c999c        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/timer/netcam_timer.o
+ .data          0x00000000000c999c        0x3 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/autolight/netcam_autolight.o
+ *fill*         0x00000000000c999f        0x1 
+ .data          0x00000000000c99a0        0x4 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/osd/netcam_osd.o
+ *fill*         0x00000000000c99a4        0x4 
  .data.rel.local
-                0x00000000000c89a8       0x70 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/osd/netcam_osd.o
- .data          0x00000000000c8a18        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http/netcam_http_web.o
- .data.rel      0x00000000000c8a18       0xb0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http/netcam_http_web.o
- .data          0x00000000000c8ac8       0x6c build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/net/netcam_network.o
- *fill*         0x00000000000c8b34        0x4 
- .data          0x00000000000c8b38       0x10 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/net/net_arp.o
- .data          0x00000000000c8b48        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/net/net_dhcp.o
- .data          0x00000000000c8b48        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/net/net_arping.o
- .data          0x00000000000c8b48        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/ptz/netcam_ptz.o
- .data.rel      0x00000000000c8b48        0x8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/ptz/netcam_ptz.o
- .data          0x00000000000c8b50       0x40 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/md/netcam_motion_detect.o
- .data          0x00000000000c8b90        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/watchdog/netcam_watchdog.o
- .data          0x00000000000c8b90        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/work_callback/system_handle.o
- .data          0x00000000000c8b90       0x28 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/loadbmp.o
-                0x00000000000c8b90                g_osd_comp_info
- .data          0x00000000000c8bb8        0x4 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_audio.o
- *fill*         0x00000000000c8bbc        0x4 
- .data          0x00000000000c8bc0      0x30c build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_isp.o
- .data          0x00000000000c8ecc        0x4 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_mipi_tx.o
- .data          0x00000000000c8ed0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_region.o
- .data          0x00000000000c8ed0      0x140 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_sys.o
- .data          0x00000000000c9010     0x1808 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_vdec.o
- .data          0x00000000000ca818        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_venc.o
- .data          0x00000000000ca818     0x1b38 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_vi.o
- .data          0x00000000000cc350      0x3ec build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_vo.o
- .data          0x00000000000cc73c        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_vpss.o
- .data          0x00000000000cc73c       0x10 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/venc_audio/sample_audio.o
- *fill*         0x00000000000cc74c        0x4 
- .data          0x00000000000cc750       0x7c build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/venc_audio/sample_venc_aenc.o
- .data          0x00000000000cc7cc        0x8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/venc_audio/adp/audio_aac_adp.o
-                0x00000000000cc7cc                g_cnt_aenc
-                0x00000000000cc7d0                g_cnt_adec
- .data          0x00000000000cc7d4        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/venc_audio/adp/audio_dl_adp.o
- .data          0x00000000000cc7d4        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/svp_rtsp/common/sample_common_ive.o
- *fill*         0x00000000000cc7d4        0x4 
- .data          0x00000000000cc7d8       0x40 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/svp_rtsp/common/sample_common_svp.o
- .data          0x00000000000cc818        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/svp_rtsp/ive/sample_ive_main.o
- .data          0x00000000000cc818       0xcd build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/svp_rtsp/ive/sample/sample_ive_md.o
-                0x00000000000cc828                platename
- .data          0x00000000000cc8e5        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/ntpclient/ntp_client.o
- *fill*         0x00000000000cc8e5        0x3 
+                0x00000000000c99a8       0x70 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/osd/netcam_osd.o
+ .data          0x00000000000c9a18        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http/netcam_http_web.o
+ .data.rel      0x00000000000c9a18       0xb0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http/netcam_http_web.o
+ .data          0x00000000000c9ac8       0x6c build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/net/netcam_network.o
+ *fill*         0x00000000000c9b34        0x4 
+ .data          0x00000000000c9b38       0x10 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/net/net_arp.o
+ .data          0x00000000000c9b48        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/net/net_dhcp.o
+ .data          0x00000000000c9b48        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/net/net_arping.o
+ .data          0x00000000000c9b48        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/ptz/netcam_ptz.o
+ .data.rel      0x00000000000c9b48        0x8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/ptz/netcam_ptz.o
+ .data          0x00000000000c9b50       0x40 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/md/netcam_motion_detect.o
+ .data          0x00000000000c9b90        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/watchdog/netcam_watchdog.o
+ .data          0x00000000000c9b90        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/work_callback/system_handle.o
+ .data          0x00000000000c9b90       0x28 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/loadbmp.o
+                0x00000000000c9b90                g_osd_comp_info
+ .data          0x00000000000c9bb8        0x4 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_audio.o
+ *fill*         0x00000000000c9bbc        0x4 
+ .data          0x00000000000c9bc0      0x354 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_isp.o
+ .data          0x00000000000c9f14        0x4 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_mipi_tx.o
+ .data          0x00000000000c9f18        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_region.o
+ .data          0x00000000000c9f18      0x140 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_sys.o
+ .data          0x00000000000ca058     0x1808 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_vdec.o
+ .data          0x00000000000cb860        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_venc.o
+ .data          0x00000000000cb860     0x1ca8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_vi.o
+ .data          0x00000000000cd508      0x3ec build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_vo.o
+ .data          0x00000000000cd8f4        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_vpss.o
+ .data          0x00000000000cd8f4       0x10 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/venc_audio/sample_audio.o
+ *fill*         0x00000000000cd904        0x4 
+ .data          0x00000000000cd908       0x7c build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/venc_audio/sample_venc_aenc.o
+ .data          0x00000000000cd984        0x8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/venc_audio/adp/audio_aac_adp.o
+                0x00000000000cd984                g_cnt_aenc
+                0x00000000000cd988                g_cnt_adec
+ .data          0x00000000000cd98c        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/venc_audio/adp/audio_dl_adp.o
+ .data          0x00000000000cd98c        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/svp_rtsp/common/sample_common_ive.o
+ *fill*         0x00000000000cd98c        0x4 
+ .data          0x00000000000cd990       0x40 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/svp_rtsp/common/sample_common_svp.o
+ .data          0x00000000000cd9d0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/svp_rtsp/ive/sample_ive_main.o
+ .data          0x00000000000cd9d0       0xcd build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/svp_rtsp/ive/sample/sample_ive_md.o
+                0x00000000000cd9e0                platename
+ .data          0x00000000000cda9d        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/ntpclient/ntp_client.o
+ *fill*         0x00000000000cda9d        0x3 
  .data.rel.local
-                0x00000000000cc8e8      0x118 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/ntpclient/ntp_client.o
-                0x00000000000cc8e8                ntp_server
- .data          0x00000000000cca00        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/bplustree/bplustree.o
+                0x00000000000cdaa0      0x118 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/ntpclient/ntp_client.o
+                0x00000000000cdaa0                ntp_server
+ .data          0x00000000000cdbb8        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/bplustree/bplustree.o
  .data.rel.local
-                0x00000000000cca00        0x8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/bplustree/bplustree.o
- .data          0x00000000000cca08        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/libc_nonshared.a(fstat.oS)
- .data          0x00000000000cca08        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
- .data          0x00000000000cca08        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+                0x00000000000cdbb8        0x8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/bplustree/bplustree.o
+ .data          0x00000000000cdbc0        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/libc_nonshared.a(fstat.oS)
+ .data          0x00000000000cdbc0        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+ .data          0x00000000000cdbc0        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
 
 .tm_clone_table
-                0x00000000000cca08        0x0
+                0x00000000000cdbc0        0x0
  .tm_clone_table
-                0x00000000000cca08        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+                0x00000000000cdbc0        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
  .tm_clone_table
-                0x00000000000cca08        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+                0x00000000000cdbc0        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
 
 .data1
  *(.data1)
                 [!provide]                        PROVIDE (_edata = .)
                 [!provide]                        PROVIDE (edata = .)
-                0x00000000000cca08                . = .
+                0x00000000000cdbc0                . = .
                 [!provide]                        PROVIDE (__bss_start = .)
                 [!provide]                        PROVIDE (__bss_start__ = .)
 
-.bss            0x00000000000cca08     0xdcd8
+.bss            0x00000000000cdbc0     0xdcd8
  *(.dynbss)
- .dynbss        0x00000000000cca08        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .dynbss        0x00000000000cdbc0        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
  *(.bss .bss.* .gnu.linkonce.b.*)
- .bss           0x00000000000cca08        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
- .bss           0x00000000000cca08        0x1 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
- *fill*         0x00000000000cca09        0x7 
- .bss           0x00000000000cca10      0x664 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/rtsp/gk_rtsp.o
- .bss           0x00000000000cd074        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/factory_test/factory_test.o
- *fill*         0x00000000000cd074        0x4 
- .bss           0x00000000000cd078       0x6c build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/gkvision/gkvision.o
- *fill*         0x00000000000cd0e4        0x4 
- .bss           0x00000000000cd0e8     0x18c4 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/third/gb28181/ite_gb28181_rtp.o
-                0x00000000000cd0e8                g_work
-                0x00000000000cd0f0                isPlaybackSending
-                0x00000000000cd0f8                MjEvtcloudSendCnt
-                0x00000000000cd0fc                MjEvtcloudSuccessCnt
- *fill*         0x00000000000ce9ac        0x4 
- .bss           0x00000000000ce9b0       0x46 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/third/gb28181/ite_gb28181_sip.o
-                0x00000000000ce9b0                g_register_id
-                0x00000000000ce9b4                g_register_status
-                0x00000000000ce9b8                g_keepalive_flag
-                0x00000000000ce9bc                g_keepalive_outtimes
-                0x00000000000ce9c0                positionExpires
-                0x00000000000ce9c4                positionCurTime
-                0x00000000000ce9c8                MjEvtSipFailCnt
-                0x00000000000ce9cc                MjEvtSipFailTime
- *fill*         0x00000000000ce9f6        0x2 
- .bss           0x00000000000ce9f8       0x20 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/third/gb28181/ite_gb28181_app.o
-                0x00000000000ce9f8                g_recvalarm
-                0x00000000000ce9fc                g_recvalarmType
-                0x00000000000cea00                sip_gb28281Obj
- .bss           0x00000000000cea18      0x4c0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/third/gb28181/ite_gb28181_playback.o
- .bss           0x00000000000ceed8       0x20 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common/main.o
- .bss           0x00000000000ceef8       0x4c build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common/netcam_sys.o
- *fill*         0x00000000000cef44        0x4 
- .bss           0x00000000000cef48      0x120 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/video/netcam_video.o
- .bss           0x00000000000cf068       0xdc build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/video/netcam_video_web_stream.o
- .bss           0x00000000000cf144        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/image/netcam_image.o
- *fill*         0x00000000000cf144        0x4 
- .bss           0x00000000000cf148      0x278 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/timer/netcam_timer.o
-                0x00000000000cf148                timerRun
- .bss           0x00000000000cf3c0       0x1d build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/autolight/netcam_autolight.o
- *fill*         0x00000000000cf3dd        0x3 
- .bss           0x00000000000cf3e0       0xd0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/osd/netcam_osd.o
-                0x00000000000cf3e0                device_local_time
-                0x00000000000cf460                device_local_week
- .bss           0x00000000000cf4b0      0x140 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http/netcam_http_web.o
- .bss           0x00000000000cf5f0       0x78 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/net/netcam_network.o
- .bss           0x00000000000cf668       0x18 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/net/net_arp.o
- .bss           0x00000000000cf680        0x4 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/net/net_dhcp.o
-                0x00000000000cf680                g_ip_conflict_flag
- *fill*         0x00000000000cf684        0x4 
- .bss           0x00000000000cf688       0x12 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/net/net_arping.o
-                0x00000000000cf688                mac_addr
- *fill*         0x00000000000cf69a        0x6 
- .bss           0x00000000000cf6a0     0x4ca0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/ptz/netcam_ptz.o
- .bss           0x00000000000d4340       0xf4 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/md/netcam_motion_detect.o
- *fill*         0x00000000000d4434        0x4 
- .bss           0x00000000000d4438       0x30 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/watchdog/netcam_watchdog.o
- .bss           0x00000000000d4468        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/work_callback/system_handle.o
- .bss           0x00000000000d4468        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/loadbmp.o
- .bss           0x00000000000d4468      0xaa8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_audio.o
- .bss           0x00000000000d4f10       0x20 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_isp.o
- .bss           0x00000000000d4f30        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_mipi_tx.o
- .bss           0x00000000000d4f30        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_region.o
- .bss           0x00000000000d4f30        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_sys.o
- .bss           0x00000000000d4f30        0x4 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_vdec.o
- *fill*         0x00000000000d4f34        0x4 
- .bss           0x00000000000d4f38     0x108c build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_venc.o
-                0x00000000000d4f38                g_snap_cnt
-                0x00000000000d4f40                g_dst_buf
- *fill*         0x00000000000d5fc4        0x4 
- .bss           0x00000000000d5fc8       0x48 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_vi.o
- .bss           0x00000000000d6010        0x4 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_vo.o
- .bss           0x00000000000d6014        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_vpss.o
- *fill*         0x00000000000d6014        0x4 
- .bss           0x00000000000d6018      0x4c0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/venc_audio/sample_audio.o
-                0x00000000000d6018                g_ai_vqe_record_attr
-                0x00000000000d60b0                g_ai_vqe_talk_attr
-                0x00000000000d6130                g_ai_vqe_talk_v2_attr
- .bss           0x00000000000d64d8       0x7c build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/venc_audio/sample_venc_aenc.o
-                0x00000000000d64d8                g_rtsplive
-                0x00000000000d64e0                session
-                0x00000000000d64e8                aio_attr
- *fill*         0x00000000000d6554        0x4 
- .bss           0x00000000000d6558       0xa0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/venc_audio/adp/audio_aac_adp.o
- .bss           0x00000000000d65f8        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/venc_audio/adp/audio_dl_adp.o
- .bss           0x00000000000d65f8        0x4 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/svp_rtsp/common/sample_common_ive.o
- .bss           0x00000000000d65fc        0x4 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/svp_rtsp/common/sample_common_svp.o
- .bss           0x00000000000d6600        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/svp_rtsp/ive/sample_ive_main.o
- .bss           0x00000000000d6600      0xfb8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/svp_rtsp/ive/sample/sample_ive_md.o
-                0x00000000000d6600                boxcolor
- .bss           0x00000000000d75b8       0xa8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/ntpclient/ntp_client.o
-                0x00000000000d75b8                ntp_done
- .bss           0x00000000000d7660        0xc build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/bplustree/bplustree.o
- .bss           0x00000000000d766c        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/libc_nonshared.a(fstat.oS)
- .bss           0x00000000000d766c        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
- .bss           0x00000000000d766c        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
+ .bss           0x00000000000cdbc0        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
+ .bss           0x00000000000cdbc0        0x1 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
+ *fill*         0x00000000000cdbc1        0x7 
+ .bss           0x00000000000cdbc8      0x664 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/rtsp/gk_rtsp.o
+ .bss           0x00000000000ce22c        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/factory_test/factory_test.o
+ *fill*         0x00000000000ce22c        0x4 
+ .bss           0x00000000000ce230       0x6c build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/gkvision/gkvision.o
+ *fill*         0x00000000000ce29c        0x4 
+ .bss           0x00000000000ce2a0     0x18c4 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/third/gb28181/ite_gb28181_rtp.o
+                0x00000000000ce2a0                g_work
+                0x00000000000ce2a8                isPlaybackSending
+                0x00000000000ce2b0                MjEvtcloudSendCnt
+                0x00000000000ce2b4                MjEvtcloudSuccessCnt
+ *fill*         0x00000000000cfb64        0x4 
+ .bss           0x00000000000cfb68       0x46 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/third/gb28181/ite_gb28181_sip.o
+                0x00000000000cfb68                g_register_id
+                0x00000000000cfb6c                g_register_status
+                0x00000000000cfb70                g_keepalive_flag
+                0x00000000000cfb74                g_keepalive_outtimes
+                0x00000000000cfb78                positionExpires
+                0x00000000000cfb7c                positionCurTime
+                0x00000000000cfb80                MjEvtSipFailCnt
+                0x00000000000cfb84                MjEvtSipFailTime
+ *fill*         0x00000000000cfbae        0x2 
+ .bss           0x00000000000cfbb0       0x20 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/third/gb28181/ite_gb28181_app.o
+                0x00000000000cfbb0                g_recvalarm
+                0x00000000000cfbb4                g_recvalarmType
+                0x00000000000cfbb8                sip_gb28281Obj
+ .bss           0x00000000000cfbd0      0x4c0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/third/gb28181/ite_gb28181_playback.o
+ .bss           0x00000000000d0090       0x20 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common/main.o
+ .bss           0x00000000000d00b0       0x4c build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common/netcam_sys.o
+ *fill*         0x00000000000d00fc        0x4 
+ .bss           0x00000000000d0100      0x120 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/video/netcam_video.o
+ .bss           0x00000000000d0220       0xdc build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/video/netcam_video_web_stream.o
+ .bss           0x00000000000d02fc        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/image/netcam_image.o
+ *fill*         0x00000000000d02fc        0x4 
+ .bss           0x00000000000d0300      0x278 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/timer/netcam_timer.o
+                0x00000000000d0300                timerRun
+ .bss           0x00000000000d0578       0x1d build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/autolight/netcam_autolight.o
+ *fill*         0x00000000000d0595        0x3 
+ .bss           0x00000000000d0598       0xd0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/osd/netcam_osd.o
+                0x00000000000d0598                device_local_time
+                0x00000000000d0618                device_local_week
+ .bss           0x00000000000d0668      0x140 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/http/netcam_http_web.o
+ .bss           0x00000000000d07a8       0x78 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/net/netcam_network.o
+ .bss           0x00000000000d0820       0x18 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/net/net_arp.o
+ .bss           0x00000000000d0838        0x4 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/net/net_dhcp.o
+                0x00000000000d0838                g_ip_conflict_flag
+ *fill*         0x00000000000d083c        0x4 
+ .bss           0x00000000000d0840       0x12 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/net/net_arping.o
+                0x00000000000d0840                mac_addr
+ *fill*         0x00000000000d0852        0x6 
+ .bss           0x00000000000d0858     0x4ca0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/ptz/netcam_ptz.o
+ .bss           0x00000000000d54f8       0xf4 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/md/netcam_motion_detect.o
+ *fill*         0x00000000000d55ec        0x4 
+ .bss           0x00000000000d55f0       0x30 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/watchdog/netcam_watchdog.o
+ .bss           0x00000000000d5620        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/work_callback/system_handle.o
+ .bss           0x00000000000d5620        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/loadbmp.o
+ .bss           0x00000000000d5620      0xaa8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_audio.o
+ .bss           0x00000000000d60c8       0x20 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_isp.o
+ .bss           0x00000000000d60e8        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_mipi_tx.o
+ .bss           0x00000000000d60e8        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_region.o
+ .bss           0x00000000000d60e8        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_sys.o
+ .bss           0x00000000000d60e8        0x4 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_vdec.o
+ *fill*         0x00000000000d60ec        0x4 
+ .bss           0x00000000000d60f0     0x108c build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_venc.o
+                0x00000000000d60f0                g_snap_cnt
+                0x00000000000d60f8                g_dst_buf
+ *fill*         0x00000000000d717c        0x4 
+ .bss           0x00000000000d7180       0x48 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_vi.o
+ .bss           0x00000000000d71c8        0x4 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_vo.o
+ .bss           0x00000000000d71cc        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/common_venc/sample_comm_vpss.o
+ *fill*         0x00000000000d71cc        0x4 
+ .bss           0x00000000000d71d0      0x4c0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/venc_audio/sample_audio.o
+                0x00000000000d71d0                g_ai_vqe_record_attr
+                0x00000000000d7268                g_ai_vqe_talk_attr
+                0x00000000000d72e8                g_ai_vqe_talk_v2_attr
+ .bss           0x00000000000d7690       0x7c build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/venc_audio/sample_venc_aenc.o
+                0x00000000000d7690                g_rtsplive
+                0x00000000000d7698                session
+                0x00000000000d76a0                aio_attr
+ *fill*         0x00000000000d770c        0x4 
+ .bss           0x00000000000d7710       0xa0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/venc_audio/adp/audio_aac_adp.o
+ .bss           0x00000000000d77b0        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/venc_audio/adp/audio_dl_adp.o
+ .bss           0x00000000000d77b0        0x4 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/svp_rtsp/common/sample_common_ive.o
+ .bss           0x00000000000d77b4        0x4 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/svp_rtsp/common/sample_common_svp.o
+ .bss           0x00000000000d77b8        0x0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/svp_rtsp/ive/sample_ive_main.o
+ .bss           0x00000000000d77b8      0xfb8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/svp_rtsp/ive/sample/sample_ive_md.o
+                0x00000000000d77b8                boxcolor
+ .bss           0x00000000000d8770       0xa8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/ntpclient/ntp_client.o
+                0x00000000000d8770                ntp_done
+ .bss           0x00000000000d8818        0xc build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/bplustree/bplustree.o
+ .bss           0x00000000000d8824        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/libc_nonshared.a(fstat.oS)
+ .bss           0x00000000000d8824        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
+ .bss           0x00000000000d8824        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
  *(COMMON)
- *fill*         0x00000000000d766c        0x4 
- COMMON         0x00000000000d7670      0x2e8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/factory_test/factory_test.o
-                0x00000000000d7670                factory_test
- COMMON         0x00000000000d7958        0x8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/gkvision/gkvision.o
-                0x00000000000d7958                videoThreadId
- COMMON         0x00000000000d7960      0x2ec build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/third/gb28181/ite_gb28181_rtp.o
-                0x00000000000d7960                SocketInfo
-                0x00000000000d7b40                device_status
-                0x00000000000d7b68                ite_eXosip_callback
-                0x00000000000d7b98                rtcp_pkt_sr
-                0x00000000000d7bb8                device_info
-                0x00000000000d7c30                rtcp_pkt_rr
- *fill*         0x00000000000d7c4c        0x4 
- COMMON         0x00000000000d7c50     0x1448 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/third/gb28181/ite_gb28181_sip.o
-                0x00000000000d7c50                g_call_id
-                0x00000000000d7c58                g_call_id_str
-                0x00000000000d7d20                g_did_fileDown
-                0x00000000000d7d28                g_dec_surveillance_param
-                0x00000000000d7d38                g_enc_surveillance_param
-                0x00000000000d7d48                g_broadcast_invite_callid
-                0x00000000000d7dc8                g_broadcast_dstid
-                0x00000000000d7e08                g_dec_svc_param
-                0x00000000000d7e18                g_did_backPlay
-                0x00000000000d7e20                g_broadcast_callid
-                0x00000000000d7ea0                g_strAuth
-                0x00000000000d82a0                g_broadcast_srcid
-                0x00000000000d82e0                g_did_realPlay
-                0x00000000000d82e4                g_did_audioPlay
-                0x00000000000d82e8                g_svac_audio_param
-                0x00000000000d82f0                g_alarm_method
-                0x00000000000d8300                g_keepalive_callid
-                0x00000000000d8380                g_presetlist_param
-                0x00000000000d8f78                g_roi_info
-                0x00000000000d9088                g_enc_svc_param
- COMMON         0x00000000000d9098      0x180 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/third/gb28181/ite_gb28181_app.o
-                0x00000000000d9098                sys_conf
-                0x00000000000d91e8                uas_handle_Message
-                0x00000000000d91f0                uas_handle_invite_sdp
-                0x00000000000d91f8                uas_start_transport
-                0x00000000000d9200                uas_get_invite_sdp
-                0x00000000000d9208                uas_get_info
-                0x00000000000d9210                uas_stop_transport
- COMMON         0x00000000000d9218       0x38 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/image/netcam_image.o
-                0x00000000000d9218                image_lock
- COMMON         0x00000000000d9250       0x38 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/autolight/netcam_autolight.o
-                0x00000000000d9250                autolight_lock
- COMMON         0x00000000000d9288      0x3e0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/venc_audio/sample_venc_aenc.o
-                0x00000000000d9288                rtsp_handle
-                0x00000000000d92b8                runVideoCfg
- COMMON         0x00000000000d9668     0x1078 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/svp_rtsp/ive/sample/sample_ive_md.o
-                0x00000000000d9668                stBitmap
-                0x00000000000d9680                shmid_tx
-                0x00000000000d9684                random_int
-                0x00000000000d9688                sockfd
-                0x00000000000d9690                ptr_tx
-                0x00000000000d9698                buf
-                0x00000000000d96a0                region_tmp_old
-                0x00000000000d9ea8                serverAddr
-                0x00000000000d9eb8                p
-                0x00000000000d9ec0                size
-                0x00000000000d9ec4                bmp_w
-                0x00000000000d9ec8                bmp_h
-                0x00000000000d9ed0                region_tmp
-                0x00000000000da6d8                user_addr
-                0x00000000000da6e0                . = ALIGN ((. != 0x0)?0x8:0x1)
+ *fill*         0x00000000000d8824        0x4 
+ COMMON         0x00000000000d8828      0x2e8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/factory_test/factory_test.o
+                0x00000000000d8828                factory_test
+ COMMON         0x00000000000d8b10        0x8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/gkvision/gkvision.o
+                0x00000000000d8b10                videoThreadId
+ COMMON         0x00000000000d8b18      0x2ec build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/third/gb28181/ite_gb28181_rtp.o
+                0x00000000000d8b18                SocketInfo
+                0x00000000000d8cf8                device_status
+                0x00000000000d8d20                ite_eXosip_callback
+                0x00000000000d8d50                rtcp_pkt_sr
+                0x00000000000d8d70                device_info
+                0x00000000000d8de8                rtcp_pkt_rr
+ *fill*         0x00000000000d8e04        0x4 
+ COMMON         0x00000000000d8e08     0x1448 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/third/gb28181/ite_gb28181_sip.o
+                0x00000000000d8e08                g_call_id
+                0x00000000000d8e10                g_call_id_str
+                0x00000000000d8ed8                g_did_fileDown
+                0x00000000000d8ee0                g_dec_surveillance_param
+                0x00000000000d8ef0                g_enc_surveillance_param
+                0x00000000000d8f00                g_broadcast_invite_callid
+                0x00000000000d8f80                g_broadcast_dstid
+                0x00000000000d8fc0                g_dec_svc_param
+                0x00000000000d8fd0                g_did_backPlay
+                0x00000000000d8fd8                g_broadcast_callid
+                0x00000000000d9058                g_strAuth
+                0x00000000000d9458                g_broadcast_srcid
+                0x00000000000d9498                g_did_realPlay
+                0x00000000000d949c                g_did_audioPlay
+                0x00000000000d94a0                g_svac_audio_param
+                0x00000000000d94a8                g_alarm_method
+                0x00000000000d94b8                g_keepalive_callid
+                0x00000000000d9538                g_presetlist_param
+                0x00000000000da130                g_roi_info
+                0x00000000000da240                g_enc_svc_param
+ COMMON         0x00000000000da250      0x180 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/third/gb28181/ite_gb28181_app.o
+                0x00000000000da250                sys_conf
+                0x00000000000da3a0                uas_handle_Message
+                0x00000000000da3a8                uas_handle_invite_sdp
+                0x00000000000da3b0                uas_start_transport
+                0x00000000000da3b8                uas_get_invite_sdp
+                0x00000000000da3c0                uas_get_info
+                0x00000000000da3c8                uas_stop_transport
+ COMMON         0x00000000000da3d0       0x38 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/image/netcam_image.o
+                0x00000000000da3d0                image_lock
+ COMMON         0x00000000000da408       0x38 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/autolight/netcam_autolight.o
+                0x00000000000da408                autolight_lock
+ COMMON         0x00000000000da440      0x3e0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/venc_audio/sample_venc_aenc.o
+                0x00000000000da440                rtsp_handle
+                0x00000000000da470                runVideoCfg
+ COMMON         0x00000000000da820     0x1078 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/svp_rtsp/ive/sample/sample_ive_md.o
+                0x00000000000da820                stBitmap
+                0x00000000000da838                shmid_tx
+                0x00000000000da83c                random_int
+                0x00000000000da840                sockfd
+                0x00000000000da848                ptr_tx
+                0x00000000000da850                buf
+                0x00000000000da858                region_tmp_old
+                0x00000000000db060                serverAddr
+                0x00000000000db070                p
+                0x00000000000db078                size
+                0x00000000000db07c                bmp_w
+                0x00000000000db080                bmp_h
+                0x00000000000db088                region_tmp
+                0x00000000000db890                user_addr
+                0x00000000000db898                . = ALIGN ((. != 0x0)?0x8:0x1)
                 [!provide]                        PROVIDE (_bss_end__ = .)
                 [!provide]                        PROVIDE (__bss_end__ = .)
-                0x00000000000da6e0                . = ALIGN (0x8)
-                0x00000000000da6e0                . = SEGMENT_START ("ldata-segment", .)
-                0x00000000000da6e0                . = ALIGN (0x8)
+                0x00000000000db898                . = ALIGN (0x8)
+                0x00000000000db898                . = SEGMENT_START ("ldata-segment", .)
+                0x00000000000db898                . = ALIGN (0x8)
                 [!provide]                        PROVIDE (__end__ = .)
                 [!provide]                        PROVIDE (_end = .)
                 [!provide]                        PROVIDE (end = .)
-                0x00000000000da6e0                . = DATA_SEGMENT_END (.)
+                0x00000000000db898                . = DATA_SEGMENT_END (.)
 
 .stab
  *(.stab)

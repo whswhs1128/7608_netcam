@@ -45,8 +45,23 @@ extern hi_isp_sns_obj g_sns_os05a10_2l_slave_obj;
 extern hi_isp_sns_obj g_sns_imx347_slave_obj;
 extern hi_isp_sns_obj g_sns_imx485_obj;
 extern hi_isp_sns_obj g_sns_os04a10_obj;
+extern hi_isp_sns_obj g_sns_sc850sl_obj;
 
 /* IspPub attr */
+static hi_isp_pub_attr g_isp_pub_attr_sc850sl={
+    {0, 0, 3840, 2160},
+    {3840, 2160},
+    30,
+    HI_ISP_BAYER_BGGR,
+    HI_WDR_MODE_NONE,
+    0,
+    0,
+    0,
+    {
+        0,
+        {0, 0, 3840, 2160},
+    },
+};
 static hi_isp_pub_attr g_isp_pub_attr_os08a20_mipi_8m_30fps = {
     {0, 24, 3840, 2160},
     {3840, 2160},
@@ -202,6 +217,11 @@ static hi_isp_pub_attr g_isp_pub_attr_imx485_mipi_8m_30fps_wdr3to1 = {
 hi_s32 sample_comm_isp_get_pub_attr_by_sns(sample_sns_type sns_type, hi_isp_pub_attr *pub_attr)
 {
     switch (sns_type) {
+	case SC850SL_8M30:
+            (hi_void)memcpy_s(pub_attr, sizeof(hi_isp_pub_attr),
+                &g_isp_pub_attr_sc850sl, sizeof(hi_isp_pub_attr));
+            break;
+
         case OV_OS08A20_MIPI_8M_30FPS_12BIT:
             (hi_void)memcpy_s(pub_attr, sizeof(hi_isp_pub_attr),
                 &g_isp_pub_attr_os08a20_mipi_8m_30fps, sizeof(hi_isp_pub_attr));
@@ -264,6 +284,8 @@ hi_s32 sample_comm_isp_get_pub_attr_by_sns(sample_sns_type sns_type, hi_isp_pub_
 hi_isp_sns_obj *sample_comm_isp_get_sns_obj(sample_sns_type sns_type)
 {
     switch (sns_type) {
+	      case SC850SL_8M30:
+	          return &g_sns_sc850sl_obj;
         case OV_OS08A20_MIPI_8M_30FPS_12BIT:
         case OV_OS08A20_MIPI_8M_30FPS_12BIT_WDR2TO1:
             return &g_sns_os08a20_obj;
