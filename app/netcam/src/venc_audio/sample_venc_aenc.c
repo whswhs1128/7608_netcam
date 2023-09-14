@@ -527,7 +527,7 @@ static td_s32 sample_venc_init_param(ot_size *enc_size, td_s32 chn_num_max, ot_s
 {
     td_s32 i;
     td_s32 ret;
-    ot_pic_size pic_size[CHN_NUM_MAX] = {BIG_STREAM_SIZE, SMALL_STREAM_SIZE};
+    hi_pic_size pic_size[CHN_NUM_MAX] = {BIG_STREAM_SIZE, SMALL_STREAM_SIZE};
 
     for (i = 0; i < chn_num_max && i < CHN_NUM_MAX; i++)
     {
@@ -554,7 +554,7 @@ static td_void sample_venc_set_video_param(sample_comm_venc_chn_param *chn_param
 {
     td_u32 profile[CHN_NUM_MAX] = {0, 0};
     td_bool share_buf_en = TD_TRUE;
-    ot_pic_size pic_size[CHN_NUM_MAX] = {BIG_STREAM_SIZE, SMALL_STREAM_SIZE};
+    hi_pic_size pic_size[CHN_NUM_MAX] = {BIG_STREAM_SIZE, SMALL_STREAM_SIZE};
     ot_payload_type payload[CHN_NUM_MAX] = {OT_PT_H265, OT_PT_H264};
     sample_rc rc_mode[CHN_NUM_MAX];
     int i,j;
@@ -1254,7 +1254,7 @@ void rtsp_reboot()
     rtsp_del_session(rtsp_handle[i].session);
     rtsp_del_demo(rtsp_handle[i].g_rtsplive);
     }
-    ss_mpi_aenc_aac_deinit();
+    hi_mpi_aenc_aac_deinit();
     // sample_comm_sys_exit();
     printf("===========runVideoCfg.vencStream[1].h264Conf.width = %d===========\n" ,runVideoCfg.vencStream[1].h264Conf.width);
     sleep(3);
@@ -1295,7 +1295,7 @@ td_s32 venc_audio_start()
     pthread_create(&venc_audio_pthread[0], 0, sample_venc_normal, NULL);
     pthread_detach(venc_audio_pthread[0]);
     sleep(1);
-    ss_mpi_aenc_aac_init();
+    hi_mpi_aenc_aac_init();
     if (runVideoCfg.vencStream[0].avStream == 0 && runVideoCfg.vencStream[1].avStream == 0)
     {
         pthread_create(&venc_audio_pthread[1], 0, sample_audio_ai_aenc, NULL);

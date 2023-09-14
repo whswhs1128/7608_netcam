@@ -9,6 +9,7 @@
 #include <string.h>
 #include "securec.h"
 #include <limits.h>
+#include "sample_comm.h"
 
 #define BITS_NUM_PER_BYTE 8
 #define BYTE_PER_PIX_1555 2
@@ -35,11 +36,11 @@ osd_component_info g_osd_comp_info[OSD_COLOR_FORMAT_BUTT] = {
     { 8, 8, 8, 8 }  /* ARGB8888 */
 };
 
-td_u16 osd_make_color_u16(td_u8 r, td_u8 g, td_u8 b, osd_component_info comp_info)
+hi_u16 osd_make_color_u16(hi_u8 r, hi_u8 g, hi_u8 b, osd_component_info comp_info)
 {
-    td_u8 r1, g1, b1;
-    td_u16 pixel = 0;
-    td_u32 tmp = 15; /* 15bit color data */
+    hi_u8 r1, g1, b1;
+    hi_u16 pixel = 0;
+    hi_u32 tmp = 15; /* 15bit color data */
 
     r1 = r >> (BITS_NUM_PER_BYTE - comp_info.r_len);
     g1 = g >> (BITS_NUM_PER_BYTE - comp_info.g_len);
@@ -54,83 +55,83 @@ td_u16 osd_make_color_u16(td_u8 r, td_u8 g, td_u8 b, osd_component_info comp_inf
     return pixel;
 }
 
-td_s32 get_bmp_info(const td_char *filename, osd_bit_map_file_header *bmp_file_header, osd_bit_map_info *bmp_info)
+hi_s32 get_bmp_info(const hi_char *filename, osd_bit_map_file_header *bmp_file_header, osd_bit_map_info *bmp_info)
 {
-    FILE *file = TD_NULL;
-    td_u16 bf_type;
-    td_char *path = TD_NULL;
+    FILE *file = HI_NULL;
+    hi_u16 bf_type;
+    hi_char *path = HI_NULL;
 
-    if (filename == TD_NULL) {
-        printf("osd_get_bmp: filename=TD_NULL\n");
-        return TD_FAILURE;
-    }
+    check_null_ptr_return(filename);
+    check_null_ptr_return(bmp_file_header);
+    check_null_ptr_return(bmp_info);
+
     if (strlen(filename) > PATH_MAX - 1) {
         printf("file name Extra long\n");
-        return TD_FAILURE;
+        return HI_FAILURE;
     }
-    path = realpath(filename, TD_NULL);
-    if (path == TD_NULL) {
-        return TD_FAILURE;
+    path = realpath(filename, HI_NULL);
+    if (path == HI_NULL) {
+        return HI_FAILURE;
     }
 
     file = fopen(path, "rb");
-    if (file == TD_NULL) {
+    if (file == HI_NULL) {
         printf("Open file failed:%s!\n", filename);
         goto read_bmp_failed;
     }
 
-    (td_void)fread(&bf_type, 1, sizeof(bf_type), file);
+    (hi_void)fread(&bf_type, 1, sizeof(bf_type), file);
     if (bf_type != 0x4d42) { /* BM */
         printf("not bitmap file\n");
         fclose(file);
         goto read_bmp_failed;
     }
 
-    (td_void)fread(bmp_file_header, 1, sizeof(osd_bit_map_file_header), file);
-    (td_void)fread(bmp_info, 1, sizeof(osd_bit_map_info), file);
+    (hi_void)fread(bmp_file_header, 1, sizeof(osd_bit_map_file_header), file);
+    (hi_void)fread(bmp_info, 1, sizeof(osd_bit_map_info), file);
 
     fclose(file);
     free(path);
-    return TD_SUCCESS;
+    return HI_SUCCESS;
 
 read_bmp_failed:
     free(path);
-    return TD_FAILURE;
+    return HI_FAILURE;
 }
 
-static td_bool is_support_bmp_file(const osd_bit_map_info *bmp_info, td_u16 bpp_threshold)
+static hi_bool is_support_bmp_file(const osd_bit_map_info *bmp_info, hi_u16 bpp_threshold)
 {
-    td_u16 bpp;
+    hi_u16 bpp;
 
     bpp = bmp_info->bmp_header.bi_bit_count / BITS_NUM_PER_BYTE;
     if (bpp_threshold != 0 && bpp < bpp_threshold) {
         printf("bitmap format not supported!\n");
-        return TD_FALSE;
+        return HI_FALSE;
     }
 
     if (bmp_info->bmp_header.bi_compression != 0) {
         printf("not support compressed bitmap file!\n");
-        return TD_FALSE;
+        return HI_FALSE;
     }
 
     if (bmp_info->bmp_header.bi_height < 0) {
         printf("bmp_info.bmp_header.bi_height < 0\n");
-        return TD_FALSE;
+        return HI_FALSE;
     }
 
-    return TD_TRUE;
+    return HI_TRUE;
 }
 
-static td_s32 read_bmp_data(const osd_bit_map_file_header *bmp_file_header, const osd_bit_map_info *bmp_info,
+static hi_s32 read_bmp_data(const osd_bit_map_file_header *bmp_file_header, const osd_bit_map_info *bmp_info,
     FILE *file, osd_logo *video_logo)
 {
-    td_u8 *rgb_buf = video_logo->rgb_buf;
-    td_u8 *orig_bmp_buf = NULL;
-    td_u32 bmp_data_stride;
-    td_u32 bmp_data_size;
-    td_u16 bpp, dst_bpp;
-    td_u16 i, j;
-    td_s32 ret;
+    hi_u8 *rgb_buf = video_logo->rgb_buf;
+    hi_u8 *orig_bmp_buf = NULL;
+    hi_u32 bmp_data_stride;
+    hi_u32 bmp_data_size;
+    hi_u16 bpp, dst_bpp;
+    hi_u16 i, j;
+    hi_s32 ret;
 
     bpp = bmp_info->bmp_header.bi_bit_count / BITS_NUM_PER_BYTE;
     dst_bpp = (bpp > 2) ? 4 : 2; /* RGB1555: 2byte, RGB8888: 4byte */
@@ -146,10 +147,10 @@ static td_s32 read_bmp_data(const osd_bit_map_file_header *bmp_file_header, cons
     bmp_data_size = video_logo->height * bmp_data_stride;
 
     /* RGB8888 or RGB1555 */
-    orig_bmp_buf = (td_u8 *)malloc(bmp_data_size);
+    orig_bmp_buf = (hi_u8 *)malloc(bmp_data_size);
     if (orig_bmp_buf == NULL) {
         printf("not enough memory to malloc!\n");
-        return TD_FAILURE;
+        return HI_FAILURE;
     }
 
     fseek(file, bmp_file_header->bf_off_bits, 0);
@@ -165,7 +166,7 @@ static td_s32 read_bmp_data(const osd_bit_map_file_header *bmp_file_header, cons
             if (ret != EOK) {
                 free(orig_bmp_buf);
                 printf("copy bmp failed!line:%d\n", __LINE__);
-                return TD_FAILURE;
+                return HI_FAILURE;
             }
             if (dst_bpp == 4) {                                               /* 4: RGB8888 */
                 *(rgb_buf + i * video_logo->stride + j * dst_bpp + 3) = 0x80; /* 3: alpha offset */
@@ -175,27 +176,27 @@ static td_s32 read_bmp_data(const osd_bit_map_file_header *bmp_file_header, cons
 
     free(orig_bmp_buf);
 
-    return TD_SUCCESS;
+    return HI_SUCCESS;
 }
 
-td_s32 load_bmp(const td_char *filename, osd_logo *video_logo)
+hi_s32 load_bmp(const hi_char *filename, osd_logo *video_logo)
 {
     osd_bit_map_file_header bmp_file_header;
     osd_bit_map_info bmp_info;
-    FILE *file = TD_NULL;
-    td_char *path = TD_NULL;
+    FILE *file = HI_NULL;
+    hi_char *path = HI_NULL;
 
-    if (filename == TD_NULL || video_logo == TD_NULL) {
+    if (filename == HI_NULL || video_logo == HI_NULL) {
         printf("load_bmp: null ptr args!\n");
-        return TD_FAILURE;
+        return HI_FAILURE;
     }
     if (strlen(filename) > PATH_MAX - 1) {
         printf("file name Extra long\n");
-        return TD_FAILURE;
+        return HI_FAILURE;
     }
-    path = realpath(filename, TD_NULL);
-    if (path == TD_NULL) {
-        return TD_FAILURE;
+    path = realpath(filename, HI_NULL);
+    if (path == HI_NULL) {
+        return HI_FAILURE;
     }
     if (get_bmp_info(path, &bmp_file_header, &bmp_info) < 0) {
         goto read_bmp_failed;
@@ -205,30 +206,30 @@ td_s32 load_bmp(const td_char *filename, osd_logo *video_logo)
         printf("bmp info error!");
         goto read_bmp_failed;
     }
-    if (is_support_bmp_file(&bmp_info, 2) != TD_TRUE) { /* each pixel should takes 2 (or more) bytes */
+    if (is_support_bmp_file(&bmp_info, 2) != HI_TRUE) { /* each pixel should takes 2 (or more) bytes */
         goto read_bmp_failed;
     }
 
     file = fopen(path, "rb");
-    if (file == TD_NULL) {
+    if (file == HI_NULL) {
         printf("Open file failed:%s!\n", filename);
         goto read_bmp_failed;
     }
 
-    if (read_bmp_data(&bmp_file_header, &bmp_info, file, video_logo) != TD_SUCCESS) {
+    if (read_bmp_data(&bmp_file_header, &bmp_info, file, video_logo) != HI_SUCCESS) {
         fclose(file);
         goto read_bmp_failed;
     }
     fclose(file);
     free(path);
-    return TD_SUCCESS;
+    return HI_SUCCESS;
 
 read_bmp_failed:
     free(path);
-    return TD_FAILURE;
+    return HI_FAILURE;
 }
 
-static td_void updata_osd_logo_size_info(const osd_bit_map_info *bmp_info, osd_color_format fmt, osd_logo *video_logo)
+static hi_void updata_osd_logo_size_info(const osd_bit_map_info *bmp_info, osd_color_format fmt, osd_logo *video_logo)
 {
     video_logo->width = bmp_info->bmp_header.bi_width;
     video_logo->height = bmp_info->bmp_header.bi_height;
@@ -257,12 +258,12 @@ static td_void updata_osd_logo_size_info(const osd_bit_map_info *bmp_info, osd_c
     }
 }
 
-static td_s32 copy_original_bmp_data(td_u16 bpp, const td_u8 *data, const bmp_data_size_info *data_size_info,
+static hi_s32 copy_original_bmp_data(hi_u16 bpp, const hi_u8 *data, const bmp_data_size_info *data_size_info,
     osd_logo *video_logo)
 {
-    td_u32 i, j;
-    td_s32 ret;
-    td_u8 *rgb_buf = video_logo->rgb_buf;
+    hi_u32 i, j;
+    hi_s32 ret;
+    hi_u8 *rgb_buf = video_logo->rgb_buf;
 
     for (i = 0; i < data_size_info->height; ++i) {
         for (j = 0; j < data_size_info->width; ++j) {
@@ -270,21 +271,21 @@ static td_s32 copy_original_bmp_data(td_u16 bpp, const td_u8 *data, const bmp_da
                 data + ((data_size_info->height - 1) - i) * data_size_info->stride + j * bpp, bpp);
             if (ret != EOK) {
                 printf("copy bmp failed!line:%d\n", __LINE__);
-                return TD_FAILURE;
+                return HI_FAILURE;
             }
         }
     }
 
-    return TD_SUCCESS;
+    return HI_SUCCESS;
 }
 
-static td_s32 copy_clut_bmp_data(td_u16 bpp, osd_color_format fmt, const td_u8 *data,
+static hi_s32 copy_clut_bmp_data(hi_u16 bpp, osd_color_format fmt, const hi_u8 *data,
     const bmp_data_size_info *data_size_info, osd_logo *video_logo)
 {
-    td_u32 i, j;
-    td_s32 ret;
-    td_u8 *rgb_buf = video_logo->rgb_buf;
-    td_u32 width = data_size_info->width;
+    hi_u32 i, j;
+    hi_s32 ret;
+    hi_u8 *rgb_buf = video_logo->rgb_buf;
+    hi_u32 width = data_size_info->width;
 
     if (fmt == OSD_COLOR_FORMAT_CLUT4) {
         width /= PIX_PER_BYTE_CLUT4;
@@ -299,43 +300,43 @@ static td_s32 copy_clut_bmp_data(td_u16 bpp, osd_color_format fmt, const td_u8 *
                 data + ((data_size_info->height - 1) - i) * data_size_info->stride + j, bpp);
             if (ret != EOK) {
                 printf("copy bmp failed!line:%d\n", __LINE__);
-                return TD_FAILURE;
+                return HI_FAILURE;
             }
         }
     }
 
-    return TD_SUCCESS;
+    return HI_SUCCESS;
 }
 
-static td_s32 copy_2byte_bmp(td_u16 bpp, osd_color_format fmt, const td_u8 *data,
+static hi_s32 copy_2byte_bmp(hi_u16 bpp, osd_color_format fmt, const hi_u8 *data,
     const bmp_data_size_info *data_size_info, osd_logo *video_logo)
 {
-    td_u32 i, j;
-    td_u8 *rgb_buf = video_logo->rgb_buf;
-    td_u8 r, g, b;
-    td_u8 *start = TD_NULL;
-    td_u16 *dst = TD_NULL;
+    hi_u32 i, j;
+    hi_u8 *rgb_buf = video_logo->rgb_buf;
+    hi_u8 r, g, b;
+    hi_u8 *start = HI_NULL;
+    hi_u16 *dst = HI_NULL;
 
     /* start color convert */
     for (i = 0; i < data_size_info->height; ++i) {
         for (j = 0; j < data_size_info->width; ++j) {
-            start = (td_u8 *)(data + ((data_size_info->height - 1) - i) * data_size_info->stride + j * bpp);
-            dst = (td_u16 *)(rgb_buf + i * video_logo->stride + j * 2); /* 2 bytes */
+            start = (hi_u8 *)(data + ((data_size_info->height - 1) - i) * data_size_info->stride + j * bpp);
+            dst = (hi_u16 *)(rgb_buf + i * video_logo->stride + j * 2); /* 2 bytes */
             r = *(start);
             g = *(start + 1);
             b = *(start + 2); /* 2 bytes offset */
             *dst = osd_make_color_u16(r, g, b, g_osd_comp_info[fmt]);
         }
     }
-    return TD_SUCCESS;
+    return HI_SUCCESS;
 }
 
-static td_s32 copy_4byte_bmp(td_u16 bpp, const td_u8 *data, const bmp_data_size_info *data_size_info,
+static hi_s32 copy_4byte_bmp(hi_u16 bpp, const hi_u8 *data, const bmp_data_size_info *data_size_info,
     osd_logo *video_logo)
 {
-    td_u32 i, j;
-    td_s32 ret;
-    td_u8 *rgb_buf = video_logo->rgb_buf;
+    hi_u32 i, j;
+    hi_s32 ret;
+    hi_u8 *rgb_buf = video_logo->rgb_buf;
 
     for (i = 0; i < data_size_info->height; ++i) {
         for (j = 0; j < data_size_info->width; ++j) {
@@ -343,15 +344,15 @@ static td_s32 copy_4byte_bmp(td_u16 bpp, const td_u8 *data, const bmp_data_size_
                 data + ((data_size_info->height - 1) - i) * data_size_info->stride + j * bpp, bpp);
             if (ret != EOK) {
                 printf("copy bmp failed!line:%d\n", __LINE__);
-                return TD_FAILURE;
+                return HI_FAILURE;
             }
             *(rgb_buf + i * video_logo->stride + j * 4 + 3) = 0xff; /* 4 bytes data, alpha offset is 3 */
         }
     }
-    return TD_SUCCESS;
+    return HI_SUCCESS;
 }
 
-static td_s32 copy_original_bmp_data_and_fill_alpha(td_u16 bpp, osd_color_format fmt, const td_u8 *data,
+static hi_s32 copy_original_bmp_data_and_fill_alpha(hi_u16 bpp, osd_color_format fmt, const hi_u8 *data,
     const bmp_data_size_info *data_size_info, osd_logo *video_logo)
 {
     switch (fmt) {
@@ -366,18 +367,18 @@ static td_s32 copy_original_bmp_data_and_fill_alpha(td_u16 bpp, osd_color_format
             return copy_4byte_bmp(bpp, data, data_size_info, video_logo);
         default:
             printf("file(%s), line(%d), no such format!\n", __FILE__, __LINE__);
-            return TD_FAILURE;
+            return HI_FAILURE;
     }
 }
 
-static td_s32 read_bmp_data_ex(const osd_bit_map_file_header *bmp_file_header, const osd_bit_map_info *bmp_info,
+static hi_s32 read_bmp_data_ex(const osd_bit_map_file_header *bmp_file_header, const osd_bit_map_info *bmp_info,
     FILE *file, osd_logo *video_logo, osd_color_format fmt)
 {
-    td_u8 *orig_bmp_buf = NULL;
-    td_u16 bpp = bmp_info->bmp_header.bi_bit_count / BITS_NUM_PER_BYTE;
-    td_u32 bmp_data_stride;
-    td_u32 bmp_data_size;
-    td_s32 ret = TD_SUCCESS;
+    hi_u8 *orig_bmp_buf = NULL;
+    hi_u16 bpp = bmp_info->bmp_header.bi_bit_count / BITS_NUM_PER_BYTE;
+    hi_u32 bmp_data_stride;
+    hi_u32 bmp_data_size;
+    hi_s32 ret = HI_SUCCESS;
     bmp_data_size_info data_size_info;
 
     updata_osd_logo_size_info(bmp_info, fmt, video_logo);
@@ -390,10 +391,10 @@ static td_s32 read_bmp_data_ex(const osd_bit_map_file_header *bmp_file_header, c
     data_size_info.height = video_logo->height;
     data_size_info.stride = bmp_data_stride;
 
-    orig_bmp_buf = (td_u8 *)malloc(bmp_data_size);
+    orig_bmp_buf = (hi_u8 *)malloc(bmp_data_size);
     if (orig_bmp_buf == NULL) {
         printf("not enough memory to malloc!\n");
-        return TD_FAILURE;
+        return HI_FAILURE;
     }
 
     fseek(file, bmp_file_header->bf_off_bits, 0);
@@ -421,24 +422,24 @@ copy_over_exit:
     return ret;
 }
 
-td_s32 load_bmp_ex(const td_char *filename, osd_logo *video_logo, osd_color_format fmt)
+hi_s32 load_bmp_ex(const hi_char *filename, osd_logo *video_logo, osd_color_format fmt)
 {
     osd_bit_map_file_header bmp_file_header;
     osd_bit_map_info bmp_info;
-    FILE *file = TD_NULL;
-    td_char *path = TD_NULL;
+    FILE *file = HI_NULL;
+    hi_char *path = HI_NULL;
 
-    if (filename == TD_NULL || video_logo == TD_NULL) {
+    if (filename == HI_NULL || video_logo == HI_NULL) {
         printf("load_bmp_ex: null ptr args!\n");
-        return TD_FAILURE;
+        return HI_FAILURE;
     }
     if (strlen(filename) > PATH_MAX - 1) {
         printf("file name Extra long\n");
-        return TD_FAILURE;
+        return HI_FAILURE;
     }
-    path = realpath(filename, TD_NULL);
-    if (path == TD_NULL) {
-        return TD_FAILURE;
+    path = realpath(filename, HI_NULL);
+    if (path == HI_NULL) {
+        return HI_FAILURE;
     }
     if (get_bmp_info(path, &bmp_file_header, &bmp_info) < 0) {
         goto read_bmp_failed;
@@ -448,36 +449,36 @@ td_s32 load_bmp_ex(const td_char *filename, osd_logo *video_logo, osd_color_form
         printf("bmp info error!");
         goto read_bmp_failed;
     }
-    if (is_support_bmp_file(&bmp_info, 0) != TD_TRUE) {
+    if (is_support_bmp_file(&bmp_info, 0) != HI_TRUE) {
         goto read_bmp_failed;
     }
 
     file = fopen(path, "rb");
-    if (file == TD_NULL) {
+    if (file == HI_NULL) {
         printf("Open file failed:%s!\n", filename);
         goto read_bmp_failed;
     }
 
-    if (read_bmp_data_ex(&bmp_file_header, &bmp_info, file, video_logo, fmt) != TD_SUCCESS) {
+    if (read_bmp_data_ex(&bmp_file_header, &bmp_info, file, video_logo, fmt) != HI_SUCCESS) {
         fclose(file);
         goto read_bmp_failed;
     }
     fclose(file);
     free(path);
-    return TD_SUCCESS;
+    return HI_SUCCESS;
 
 read_bmp_failed:
     free(path);
-    return TD_FAILURE;
+    return HI_FAILURE;
 }
 
-static td_s32 read_bmp_canvas(const osd_bit_map_file_header *bmp_file_header, const osd_bit_map_info *bmp_info,
+static hi_s32 read_bmp_canvas(const osd_bit_map_file_header *bmp_file_header, const osd_bit_map_info *bmp_info,
     FILE *file, osd_logo *video_logo, osd_color_format fmt)
 {
-    td_u8 *orig_bmp_buf = NULL;
-    td_u16 bpp = bmp_info->bmp_header.bi_bit_count / BITS_NUM_PER_BYTE;
-    td_u32 bmp_data_size;
-    td_s32 ret = TD_SUCCESS;
+    hi_u8 *orig_bmp_buf = NULL;
+    hi_u16 bpp = bmp_info->bmp_header.bi_bit_count / BITS_NUM_PER_BYTE;
+    hi_u32 bmp_data_size;
+    hi_s32 ret = HI_SUCCESS;
     bmp_data_size_info data_size_info;
 
     data_size_info.width = bmp_info->bmp_header.bi_width;
@@ -497,10 +498,10 @@ static td_s32 read_bmp_canvas(const osd_bit_map_file_header *bmp_file_header, co
     }
 
     bmp_data_size = data_size_info.height * data_size_info.stride;
-    orig_bmp_buf = (td_u8 *)malloc(bmp_data_size);
+    orig_bmp_buf = (hi_u8 *)malloc(bmp_data_size);
     if (orig_bmp_buf == NULL) {
         printf("not enough memory to malloc!\n");
-        return TD_FAILURE;
+        return HI_FAILURE;
     }
 
     fseek(file, bmp_file_header->bf_off_bits, 0);
@@ -528,24 +529,24 @@ copy_over_exit:
     return ret;
 }
 
-td_s32 load_bmp_canvas(const td_char *filename, osd_logo *video_logo, osd_color_format fmt)
+hi_s32 load_bmp_canvas(const hi_char *filename, osd_logo *video_logo, osd_color_format fmt)
 {
     osd_bit_map_file_header bmp_file_header;
     osd_bit_map_info bmp_info;
-    FILE *file = TD_NULL;
-    td_char *path = TD_NULL;
+    FILE *file = HI_NULL;
+    hi_char *path = HI_NULL;
 
-    if (filename == TD_NULL || video_logo == TD_NULL) {
+    if (filename == HI_NULL || video_logo == HI_NULL) {
         printf("load_bmp_canvas: null ptr args!\n");
-        return TD_FAILURE;
+        return HI_FAILURE;
     }
     if (strlen(filename) > PATH_MAX - 1) {
         printf("file name Extra long\n");
-        return TD_FAILURE;
+        return HI_FAILURE;
     }
-    path = realpath(filename, TD_NULL);
-    if (path == TD_NULL) {
-        return TD_FAILURE;
+    path = realpath(filename, HI_NULL);
+    if (path == HI_NULL) {
+        return HI_FAILURE;
     }
     if (get_bmp_info(path, &bmp_file_header, &bmp_info) < 0) {
         goto read_bmp_failed;
@@ -555,42 +556,42 @@ td_s32 load_bmp_canvas(const td_char *filename, osd_logo *video_logo, osd_color_
         printf("bmp info error!");
         goto read_bmp_failed;
     }
-    if (is_support_bmp_file(&bmp_info, 0) != TD_TRUE) {
+    if (is_support_bmp_file(&bmp_info, 0) != HI_TRUE) {
         goto read_bmp_failed;
     }
 
     file = fopen(path, "rb");
-    if (file == TD_NULL) {
+    if (file == HI_NULL) {
         printf("Open file failed:%s!\n", filename);
         goto read_bmp_failed;
     }
 
-    if (read_bmp_canvas(&bmp_file_header, &bmp_info, file, video_logo, fmt) != TD_SUCCESS) {
+    if (read_bmp_canvas(&bmp_file_header, &bmp_info, file, video_logo, fmt) != HI_SUCCESS) {
         fclose(file);
         goto read_bmp_failed;
     }
     fclose(file);
     free(path);
-    return TD_SUCCESS;
+    return HI_SUCCESS;
 
 read_bmp_failed:
     free(path);
-    return TD_FAILURE;
+    return HI_FAILURE;
 }
 
-td_char *get_ext_name(const td_char *filename)
+hi_char *get_ext_name(const hi_char *filename)
 {
-    td_char *pret = TD_NULL;
-    td_u32 len;
+    hi_char *pret = HI_NULL;
+    size_t len;
 
-    if (filename == TD_NULL) {
+    if (filename == HI_NULL) {
         printf("filename can't be null!");
-        return TD_NULL;
+        return HI_NULL;
     }
 
     len = strlen(filename);
     while (len) {
-        pret = (td_char *)(filename + len);
+        pret = (hi_char *)(filename + len);
         if (*pret == '.') {
             return (pret + 1);
         }
@@ -601,10 +602,10 @@ td_char *get_ext_name(const td_char *filename)
     return pret;
 }
 
-td_s32 load_image(const td_char *filename, osd_logo *video_logo)
+hi_s32 load_image(const hi_char *filename, osd_logo *video_logo)
 {
-    td_char *ext = get_ext_name(filename);
-    if (ext == TD_NULL) {
+    hi_char *ext = get_ext_name(filename);
+    if (ext == HI_NULL) {
         printf("get_ext_name error!\n");
         return -1;
     }
@@ -622,10 +623,10 @@ td_s32 load_image(const td_char *filename, osd_logo *video_logo)
     return 0;
 }
 
-td_s32 load_image_ex(const td_char *filename, osd_logo *video_logo, osd_color_format fmt)
+hi_s32 load_image_ex(const hi_char *filename, osd_logo *video_logo, osd_color_format fmt)
 {
-    td_char *ext = get_ext_name(filename);
-    if (ext == TD_NULL) {
+    hi_char *ext = get_ext_name(filename);
+    if (ext == HI_NULL) {
         printf("load_image_ex error!\n");
         return -1;
     }
@@ -643,10 +644,10 @@ td_s32 load_image_ex(const td_char *filename, osd_logo *video_logo, osd_color_fo
     return 0;
 }
 
-td_s32 load_canvas_ex(const td_char *filename, osd_logo *video_logo, osd_color_format fmt)
+hi_s32 load_canvas_ex(const hi_char *filename, osd_logo *video_logo, osd_color_format fmt)
 {
-    td_char *ext = get_ext_name(filename);
-    if (ext == TD_NULL) {
+    hi_char *ext = get_ext_name(filename);
+    if (ext == HI_NULL) {
         printf("load_canvas_ex error!\n");
         return -1;
     }
@@ -664,19 +665,23 @@ td_s32 load_canvas_ex(const td_char *filename, osd_logo *video_logo, osd_color_f
     return 0;
 }
 
-td_s32 load_bit_map_to_surface(const td_char *file_name, const osd_surface *surface, td_u8 *virt)
+hi_s32 load_bit_map_to_surface(const hi_char *file_name, const osd_surface *surface, hi_u8 *virt)
 {
     osd_logo logo;
+    check_null_ptr_return(file_name);
+    check_null_ptr_return(surface);
     logo.stride = surface->stride;
     logo.rgb_buf = virt;
 
     return load_image(file_name, &logo);
 }
 
-td_s32 create_surface_by_bit_map(const td_char *file_name, osd_surface *surface, td_u8 *virt)
+hi_s32 create_surface_by_bit_map(const hi_char *file_name, osd_surface *surface, hi_u8 *virt)
 {
     osd_logo logo;
 
+    check_null_ptr_return(file_name);
+    check_null_ptr_return(surface);
     logo.rgb_buf = virt;
     if (load_image_ex(file_name, &logo, surface->color_format) < 0) {
         printf("load bmp error!\n");
@@ -690,11 +695,14 @@ td_s32 create_surface_by_bit_map(const td_char *file_name, osd_surface *surface,
     return 0;
 }
 
-td_s32 create_surface_by_canvas(const td_char *file_name, osd_surface *surface, td_u8 *virt,
+hi_s32 create_surface_by_canvas(const hi_char *file_name, osd_surface *surface, hi_u8 *virt,
     const canvas_size_info *canvas_size)
 {
     osd_logo logo;
 
+    check_null_ptr_return(file_name);
+    check_null_ptr_return(surface);
+    check_null_ptr_return(canvas_size);
     logo.rgb_buf = virt;
     logo.width = canvas_size->width;
     logo.height = canvas_size->height;

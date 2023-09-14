@@ -247,7 +247,7 @@ td_void sample_common_svp_stop_vo(sample_vo_cfg *vo_cfg);
 
 /* function : Start Vi/Vpss/Venc/Vo */
 td_s32 sample_common_svp_start_vi_vpss_venc_vo(sample_vi_cfg *vi_config,
-    ot_sample_svp_switch *switch_ptr, ot_pic_size *ext_pic_size_type);
+    ot_sample_svp_switch *switch_ptr, hi_pic_size *ext_pic_size_type);
 
 /* function : Stop Vi/Vpss/Venc/Vo */
 td_void sample_common_svp_stop_vi_vpss_venc_vo(sample_vi_cfg *vi_config,

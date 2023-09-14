@@ -6,7 +6,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include "sample_comm.h"
-#include "ot_mipi_tx.h"
+#include "hi_mipi_tx.h"
 
 #ifdef __cplusplus
 #if __cplusplus
@@ -22,7 +22,7 @@ extern "C" {
 #define SAMPLE_COMM_MIPI_TX_MAX_PHY_DATA_RATE 945
 #endif
 
-static td_s32 g_sample_comm_mipi_fd = OT_INVALID_VALUE;
+static hi_s32 g_sample_comm_mipi_fd = HI_INVALID_VALUE;
 
 static const combo_dev_cfg_t g_sample_comm_mipi_tx_720x576_50_config = {
     .devno = 0,
@@ -370,165 +370,164 @@ typedef struct {
 } mipi_tx_intf_sync_cfg;
 
 typedef struct {
-    ot_vo_intf_sync intf_sync;
+    hi_vo_intf_sync intf_sync;
     mipi_tx_intf_sync mipi_tx_sync;
-    td_char *mipi_fmt_name;
+    hi_char *mipi_fmt_name;
 } vo_mst_sync_mipi_tx;
 
-static const mipi_tx_intf_sync_cfg g_sample_mipi_tx_timing[OT_MIPI_TX_OUT_USER] = {
-    {OT_MIPI_TX_OUT_576P50,       &g_sample_comm_mipi_tx_720x576_50_config},
-    {OT_MIPI_TX_OUT_1024X768_60,  &g_sample_comm_mipi_tx_1024x768_60_config},
-    {OT_MIPI_TX_OUT_720P50,       &g_sample_comm_mipi_tx_1280x720_50_config},
-    {OT_MIPI_TX_OUT_720P60,       &g_sample_comm_mipi_tx_1280x720_60_config},
-    {OT_MIPI_TX_OUT_1280X1024_60, &g_sample_comm_mipi_tx_1280x1024_60_config},
-    {OT_MIPI_TX_OUT_1080P24,      &g_sample_comm_mipi_tx_1920x1080_24_config},
-    {OT_MIPI_TX_OUT_1080P25,      &g_sample_comm_mipi_tx_1920x1080_25_config},
-    {OT_MIPI_TX_OUT_1080P30,      &g_sample_comm_mipi_tx_1920x1080_30_config},
-    {OT_MIPI_TX_OUT_1080P50,      &g_sample_comm_mipi_tx_1920x1080_50_config},
-    {OT_MIPI_TX_OUT_1080P60,      &g_sample_comm_mipi_tx_1920x1080_60_config},
-    {OT_MIPI_TX_OUT_3840X2160_24, &g_sample_comm_mipi_tx_3840x2160_24_config},
-    {OT_MIPI_TX_OUT_3840X2160_25, &g_sample_comm_mipi_tx_3840x2160_25_config},
-    {OT_MIPI_TX_OUT_3840X2160_30, &g_sample_comm_mipi_tx_3840x2160_30_config},
-    {OT_MIPI_TX_OUT_3840X2160_50, &g_sample_comm_mipi_tx_3840x2160_50_config},
-    {OT_MIPI_TX_OUT_3840X2160_60, &g_sample_comm_mipi_tx_3840x2160_60_config},
+static const mipi_tx_intf_sync_cfg g_sample_mipi_tx_timing[HI_MIPI_TX_OUT_USER] = {
+    {HI_MIPI_TX_OUT_576P50,       &g_sample_comm_mipi_tx_720x576_50_config},
+    {HI_MIPI_TX_OUT_1024X768_60,  &g_sample_comm_mipi_tx_1024x768_60_config},
+    {HI_MIPI_TX_OUT_720P50,       &g_sample_comm_mipi_tx_1280x720_50_config},
+    {HI_MIPI_TX_OUT_720P60,       &g_sample_comm_mipi_tx_1280x720_60_config},
+    {HI_MIPI_TX_OUT_1280X1024_60, &g_sample_comm_mipi_tx_1280x1024_60_config},
+    {HI_MIPI_TX_OUT_1080P24,      &g_sample_comm_mipi_tx_1920x1080_24_config},
+    {HI_MIPI_TX_OUT_1080P25,      &g_sample_comm_mipi_tx_1920x1080_25_config},
+    {HI_MIPI_TX_OUT_1080P30,      &g_sample_comm_mipi_tx_1920x1080_30_config},
+    {HI_MIPI_TX_OUT_1080P50,      &g_sample_comm_mipi_tx_1920x1080_50_config},
+    {HI_MIPI_TX_OUT_1080P60,      &g_sample_comm_mipi_tx_1920x1080_60_config},
+    {HI_MIPI_TX_OUT_3840X2160_24, &g_sample_comm_mipi_tx_3840x2160_24_config},
+    {HI_MIPI_TX_OUT_3840X2160_25, &g_sample_comm_mipi_tx_3840x2160_25_config},
+    {HI_MIPI_TX_OUT_3840X2160_30, &g_sample_comm_mipi_tx_3840x2160_30_config},
+    {HI_MIPI_TX_OUT_3840X2160_50, &g_sample_comm_mipi_tx_3840x2160_50_config},
+    {HI_MIPI_TX_OUT_3840X2160_60, &g_sample_comm_mipi_tx_3840x2160_60_config},
 
-    {OT_MIPI_TX_OUT_720X1280_60,  &g_sample_comm_mipi_tx_720x1280_60_config},
-    {OT_MIPI_TX_OUT_1080X1920_60, &g_sample_comm_mipi_tx_1080x1920_60_config},
+    {HI_MIPI_TX_OUT_720X1280_60,  &g_sample_comm_mipi_tx_720x1280_60_config},
+    {HI_MIPI_TX_OUT_1080X1920_60, &g_sample_comm_mipi_tx_1080x1920_60_config},
     {0},
 };
 
 static const combo_dev_cfg_t *sample_mipi_tx_get_combo_dev_config(mipi_tx_intf_sync mipi_intf_sync)
 {
-    td_u32 loop;
-    td_u32 loop_num = sizeof(g_sample_mipi_tx_timing) / sizeof(mipi_tx_intf_sync_cfg);
-    printf("loop_num = %d\n", loop_num);
+    hi_u32 loop;
+    hi_u32 loop_num = sizeof(g_sample_mipi_tx_timing) / sizeof(mipi_tx_intf_sync_cfg);
+
     for (loop = 0; loop < loop_num; loop++) {
         if (g_sample_mipi_tx_timing[loop].index == mipi_intf_sync) {
             return g_sample_mipi_tx_timing[loop].mipi_tx_combo_dev_cfg;
         }
     }
-    return TD_NULL;
+    return HI_NULL;
 }
 
-static td_s32 vo_mst_mipi_tx_send_one_cmd(cmd_info_t *cmd_info)
+static hi_s32 vo_mst_mipi_tx_send_one_cmd(cmd_info_t *cmd_info)
 {
-    td_s32 ret;
-    ret = ioctl(g_sample_comm_mipi_fd, OT_MIPI_TX_SET_CMD, cmd_info);
-    if (ret != TD_SUCCESS) {
+    hi_s32 ret;
+    ret = ioctl(g_sample_comm_mipi_fd, HI_MIPI_TX_SET_CMD, cmd_info);
+    if (ret != HI_SUCCESS) {
         printf("MIPI_TX SET CMD failed\n");
-        return TD_FAILURE;
+        return HI_FAILURE;
     }
 
-    return TD_SUCCESS;
+    return HI_SUCCESS;
 }
 
-static td_s32 vo_mst_mipi_tx_init_screen(const sample_mipi_tx_config *tx_config)
+static hi_s32 vo_mst_mipi_tx_init_screen(const sample_mipi_tx_config *tx_config)
 {
-    td_s32 ret;
+    hi_s32 ret;
     cmd_info_t ci = { 0 };
-    td_u32 loop;
-    td_u32 loop_num = tx_config->cmd_count;
+    hi_u32 loop;
+    hi_u32 loop_num = tx_config->cmd_count;
 
     for (loop = 0; loop < loop_num; loop++) {
-        (td_void)memcpy_s(&ci, sizeof(cmd_info_t), &(tx_config->cmd_info[loop].cmd_info), sizeof(cmd_info_t));
+        (hi_void)memcpy_s(&ci, sizeof(cmd_info_t), &(tx_config->cmd_info[loop].cmd_info), sizeof(cmd_info_t));
         ret = vo_mst_mipi_tx_send_one_cmd(&ci);
-        if (ret != TD_SUCCESS) {
+        if (ret != HI_SUCCESS) {
             printf("loop(%d): MIPI_TX SET CMD failed\n", loop);
 
-            return TD_FAILURE;
+            return HI_FAILURE;
         }
         usleep(tx_config->cmd_info[loop].usleep_value);
     }
 
-    return TD_SUCCESS;
+    return HI_SUCCESS;
 }
 
-static td_s32 sample_comm_mipi_tx_check_config(const sample_mipi_tx_config *tx_config)
+static hi_s32 sample_comm_mipi_tx_check_config(const sample_mipi_tx_config *tx_config)
 {
     mipi_tx_intf_sync mipi_intf_sync;
 
     if (tx_config == NULL) {
         sample_print("tx_config is null\n");
-        return TD_FAILURE;
+        return HI_FAILURE;
     }
 
     mipi_intf_sync = tx_config->intf_sync;
-    if ((mipi_intf_sync >= OT_MIPI_TX_OUT_BUTT)) {
+    if ((mipi_intf_sync >= HI_MIPI_TX_OUT_BUTT)) {
         sample_print("mipi tx sync illegal\n");
-        return TD_FAILURE;
+        return HI_FAILURE;
     }
-    return TD_SUCCESS;
+    return HI_SUCCESS;
 }
 
-static td_s32 sample_comm_mipi_tx_get_config(const sample_mipi_tx_config *tx_config,
+static hi_s32 sample_comm_mipi_tx_get_config(const sample_mipi_tx_config *tx_config,
     const combo_dev_cfg_t **mipi_tx_config)
 {
     mipi_tx_intf_sync mipi_intf_sync;
     mipi_intf_sync = tx_config->intf_sync;
 
-    if (mipi_intf_sync == OT_MIPI_TX_OUT_USER) {
-	    printf("sample_comm_mipi_tx_get_config\n");
+    if (mipi_intf_sync == HI_MIPI_TX_OUT_USER) {
         *mipi_tx_config = &tx_config->combo_dev_cfg;
         if ((*mipi_tx_config)->phy_data_rate == 0) {
             printf("error: not set mipi tx user config\n");
-            return TD_FAILURE;
+            return HI_FAILURE;
         }
     } else {
         *mipi_tx_config = sample_mipi_tx_get_combo_dev_config(mipi_intf_sync);
-        if (*mipi_tx_config == TD_NULL) {
+        if (*mipi_tx_config == HI_NULL) {
             sample_print("error: mipi tx combo config is null\n");
-            return TD_FAILURE;
+            return HI_FAILURE;
         }
     }
-    return TD_SUCCESS;
+    return HI_SUCCESS;
 }
 
-static td_void sample_comm_mipi_tx_do_close_fd(td_void)
+static hi_void sample_comm_mipi_tx_do_close_fd(hi_void)
 {
-    if (g_sample_comm_mipi_fd != OT_INVALID_VALUE) {
+    if (g_sample_comm_mipi_fd != HI_INVALID_VALUE) {
         close(g_sample_comm_mipi_fd);
-        g_sample_comm_mipi_fd = OT_INVALID_VALUE;
+        g_sample_comm_mipi_fd = HI_INVALID_VALUE;
     }
 }
 
-td_s32 sample_comm_start_mipi_tx(const sample_mipi_tx_config *tx_config)
+hi_s32 sample_comm_start_mipi_tx(const sample_mipi_tx_config *tx_config)
 {
     mipi_tx_intf_sync mipi_intf_sync;
-    const combo_dev_cfg_t *combo_config = TD_NULL;
-    td_s32 ret;
+    const combo_dev_cfg_t *combo_config = HI_NULL;
+    hi_s32 ret;
 
     ret = sample_comm_mipi_tx_check_config(tx_config);
-    if (ret != TD_SUCCESS) {
+    if (ret != HI_SUCCESS) {
         return ret;
     }
 
     g_sample_comm_mipi_fd = open(MIPI_TX_DEV_NAME, O_RDONLY);
     if (g_sample_comm_mipi_fd < 0) {
         printf("open mipi dev file (%s) fail\n", MIPI_TX_DEV_NAME);
-        return TD_FAILURE;
+        return HI_FAILURE;
     }
 
     mipi_intf_sync = tx_config->intf_sync;
     printf("mipi intf sync = %d\n", mipi_intf_sync);
 
     ret = sample_comm_mipi_tx_get_config(tx_config, &combo_config);
-    if (ret != TD_SUCCESS) {
+    if (ret != HI_SUCCESS) {
         printf("%s,%d, get mipi tx config fail\n", __FUNCTION__, __LINE__);
         sample_comm_mipi_tx_do_close_fd();
         return ret;
     }
 
     /* step1 */
-    ret = ioctl(g_sample_comm_mipi_fd, OT_MIPI_TX_DISABLE, NULL);
-    if (ret != TD_SUCCESS) {
+    ret = ioctl(g_sample_comm_mipi_fd, HI_MIPI_TX_DISABLE, NULL);
+    if (ret != HI_SUCCESS) {
         printf("%s,%d, ioctl mipi tx (%s) fail at ret(%d)\n", __FUNCTION__, __LINE__, MIPI_TX_DEV_NAME, ret);
         sample_comm_mipi_tx_do_close_fd();
         return ret;
     }
 
     /* step2 */
-    ret = ioctl(g_sample_comm_mipi_fd, OT_MIPI_TX_SET_DEV_CFG, combo_config);
-    if (ret != TD_SUCCESS) {
+    ret = ioctl(g_sample_comm_mipi_fd, HI_MIPI_TX_SET_DEV_CFG, combo_config);
+    if (ret != HI_SUCCESS) {
         printf("%s,%d, ioctl mipi tx (%s) fail at ret(%d)\n", __FUNCTION__, __LINE__, MIPI_TX_DEV_NAME, ret);
         sample_comm_mipi_tx_do_close_fd();
         return ret;
@@ -536,15 +535,15 @@ td_s32 sample_comm_start_mipi_tx(const sample_mipi_tx_config *tx_config)
 
     /* step3 */
     ret = vo_mst_mipi_tx_init_screen(tx_config);
-    if (ret != TD_SUCCESS) {
+    if (ret != HI_SUCCESS) {
         printf("%s,%d, init screen failed\n", __FUNCTION__, __LINE__);
         sample_comm_mipi_tx_do_close_fd();
         return ret;
     }
 
     /* step4 */
-    ret = ioctl(g_sample_comm_mipi_fd, OT_MIPI_TX_ENABLE, NULL);
-    if (ret != TD_SUCCESS) {
+    ret = ioctl(g_sample_comm_mipi_fd, HI_MIPI_TX_ENABLE, NULL);
+    if (ret != HI_SUCCESS) {
         printf("%s,%d, ioctl mipi tx (%s) fail at ret(%d)\n", __FUNCTION__, __LINE__, MIPI_TX_DEV_NAME, ret);
     }
 
@@ -552,10 +551,10 @@ td_s32 sample_comm_start_mipi_tx(const sample_mipi_tx_config *tx_config)
     return ret;
 }
 
-td_void sample_comm_stop_mipi_tx(ot_vo_intf_type intf_type)
+hi_void sample_comm_stop_mipi_tx(hi_vo_intf_type intf_type)
 {
-    if (!((intf_type & OT_VO_INTF_MIPI) ||
-        (intf_type & OT_VO_INTF_MIPI_SLAVE))) {
+    if (!((intf_type & HI_VO_INTF_MIPI) ||
+        (intf_type & HI_VO_INTF_MIPI_SLAVE))) {
         sample_print("intf is not mipi\n");
         return;
     }
@@ -566,26 +565,26 @@ td_void sample_comm_stop_mipi_tx(ot_vo_intf_type intf_type)
         return;
     }
 
-    if (ioctl(g_sample_comm_mipi_fd, OT_MIPI_TX_DISABLE, NULL) < 0) {
+    if (ioctl(g_sample_comm_mipi_fd, HI_MIPI_TX_DISABLE, NULL) < 0) {
         printf("ioctl mipi tx (%s) fail\n", MIPI_TX_DEV_NAME);
         return;
     }
 
     close(g_sample_comm_mipi_fd);
-    g_sample_comm_mipi_fd = OT_INVALID_VALUE;
+    g_sample_comm_mipi_fd = HI_INVALID_VALUE;
 }
 
 #else
 
-td_void sample_comm_mipi_tx_set_intf_sync(mipi_tx_intf_sync intf_sync)
+hi_void sample_comm_mipi_tx_set_intf_sync(mipi_tx_intf_sync intf_sync)
 {
 }
 
-td_void sample_comm_start_mipi_tx(ot_vo_pub_attr *pub_attr)
+hi_void sample_comm_start_mipi_tx(hi_vo_pub_attr *pub_attr)
 {
 }
 
-td_void sample_comm_stop_mipi_tx(ot_vo_intf_type intf_type)
+hi_void sample_comm_stop_mipi_tx(hi_vo_intf_type intf_type)
 {
 }
 #endif /* end of #if VO_MIPI_SUPPORT */

@@ -5,7 +5,7 @@
 #ifndef __LOAD_BMP_H__
 #define __LOAD_BMP_H__
 
-#include "ot_type.h"
+#include "hi_type.h"
 
 /* the color format OSD supported */
 typedef enum {
@@ -22,54 +22,54 @@ typedef enum {
 } osd_color_format;
 
 typedef struct {
-    td_u8 r;
-    td_u8 g;
-    td_u8 b;
-    td_u8 reserved;
+    hi_u8 r;
+    hi_u8 g;
+    hi_u8 b;
+    hi_u8 reserved;
 } osd_rgb;
 
 typedef struct {
     osd_color_format color_format; /* color format */
-    td_u16 height;                 /* operation height */
-    td_u16 width;                  /* operation width */
-    td_u16 stride;                 /* surface stride */
-    td_u16 reserved;
-    td_u8 *virt_addr; /* virtual address */
+    hi_u16 height;                 /* operation height */
+    hi_u16 width;                  /* operation width */
+    hi_u16 stride;                 /* surface stride */
+    hi_u16 reserved;
+    hi_u8 *virt_addr; /* virtual address */
 } osd_surface;
 
 typedef struct {
-    td_u32 width;   /* out */
-    td_u32 height;  /* out */
-    td_u32 stride;  /* in */
-    td_u8 *rgb_buf; /* in/out */
+    hi_u32 width;   /* out */
+    hi_u32 height;  /* out */
+    hi_u32 stride;  /* in */
+    hi_u8 *rgb_buf; /* in/out */
 } osd_logo;
 
 typedef struct {
-    td_u16 bi_size;
-    td_u32 bi_width;
-    td_s32 bi_height;
-    td_u16 bi_planes;
-    td_u16 bi_bit_count;
-    td_u32 bi_compression;
-    td_u32 bi_size_image;
-    td_u32 bi_x_pels_per_meter;
-    td_u32 bi_y_pels_per_meter;
-    td_u32 bi_clr_used;
-    td_u32 bi_clr_important;
+    hi_u16 bi_size;
+    hi_u32 bi_width;
+    hi_s32 bi_height;
+    hi_u16 bi_planes;
+    hi_u16 bi_bit_count;
+    hi_u32 bi_compression;
+    hi_u32 bi_size_image;
+    hi_u32 bi_x_pels_per_meter;
+    hi_u32 bi_y_pels_per_meter;
+    hi_u32 bi_clr_used;
+    hi_u32 bi_clr_important;
 } osd_bit_map_info_header;
 
 typedef struct {
-    td_u32 bf_size;
-    td_u16 bf_reserved1;
-    td_u16 bf_reserved2;
-    td_u32 bf_off_bits;
+    hi_u32 bf_size;
+    hi_u16 bf_reserved1;
+    hi_u16 bf_reserved2;
+    hi_u32 bf_off_bits;
 } osd_bit_map_file_header;
 
 typedef struct {
-    td_u8 blue;
-    td_u8 green;
-    td_u8 red;
-    td_u8 reserved;
+    hi_u8 blue;
+    hi_u8 green;
+    hi_u8 red;
+    hi_u8 reserved;
 } osd_rgb_quad;
 
 typedef struct {
@@ -78,16 +78,16 @@ typedef struct {
 } osd_bit_map_info;
 
 typedef struct {
-    td_u8 a_len;
-    td_u8 r_len;
-    td_u8 g_len;
-    td_u8 b_len;
+    hi_u8 a_len;
+    hi_u8 r_len;
+    hi_u8 g_len;
+    hi_u8 b_len;
 } osd_component_info;
 
 typedef struct {
-    td_u32 width;
-    td_u32 height;
-    td_u32 stride;
+    hi_u32 width;
+    hi_u32 height;
+    hi_u32 stride;
 } canvas_size_info;
 
 typedef canvas_size_info bmp_data_size_info;
@@ -96,12 +96,12 @@ typedef canvas_size_info bmp_data_size_info;
 extern "C" {
 #endif
 
-td_s32 load_image(const td_char *filename, osd_logo *video_logo);
-td_s32 load_bit_map_to_surface(const td_char *file_name, const osd_surface *surface, td_u8 *virt);
-td_s32 create_surface_by_bit_map(const td_char *file_name, osd_surface *surface, td_u8 *virt);
-td_s32 create_surface_by_canvas(const td_char *file_name, osd_surface *surface, td_u8 *virt,
+hi_s32 load_image(const hi_char *filename, osd_logo *video_logo);
+hi_s32 load_bit_map_to_surface(const hi_char *file_name, const osd_surface *surface, hi_u8 *virt);
+hi_s32 create_surface_by_bit_map(const hi_char *file_name, osd_surface *surface, hi_u8 *virt);
+hi_s32 create_surface_by_canvas(const hi_char *file_name, osd_surface *surface, hi_u8 *virt,
     const canvas_size_info *canvas_size);
-td_s32 get_bmp_info(const td_char *filename, osd_bit_map_file_header *bmp_file_header, osd_bit_map_info *bmp_info);
+hi_s32 get_bmp_info(const hi_char *filename, osd_bit_map_file_header *bmp_file_header, osd_bit_map_info *bmp_info);
 
 #ifdef __cplusplus
 }

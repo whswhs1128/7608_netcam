@@ -206,7 +206,7 @@ td_s32 sample_common_svp_flush_cache(td_phys_addr_t phys_addr, td_void *virt_add
 /*
  * function : Init Vb
  */
-static td_s32 sample_common_svp_vb_init(ot_pic_size *pic_type, ot_size *pic_size,
+static td_s32 sample_common_svp_vb_init(hi_pic_size *pic_type, ot_size *pic_size,
                                         td_u32 vpss_chn_num)
 {
     td_s32 ret;
@@ -515,8 +515,8 @@ static td_s32 sample_common_svp_vi_unbind_multi_vpss(td_s32 vpss_grp_cnt, td_s32
     return TD_SUCCESS;
 }
 
-static td_s32 sample_common_svp_set_vi_cfg(sample_vi_cfg *vi_cfg, ot_pic_size *pic_type,
-                                           td_u32 pic_type_len, ot_pic_size *ext_pic_size_type, sample_sns_type sns_type)
+static td_s32 sample_common_svp_set_vi_cfg(sample_vi_cfg *vi_cfg, hi_pic_size *pic_type,
+                                           td_u32 pic_type_len, hi_pic_size *ext_pic_size_type, sample_sns_type sns_type)
 {
     sample_comm_vi_get_default_vi_cfg(sns_type, vi_cfg);
     sample_svp_check_exps_return(pic_type_len < OT_VPSS_CHN_NUM,
@@ -619,7 +619,7 @@ end_0:
     return ret;
 }
 
-static td_s32 sample_common_svp_get_pic_type_by_sns_type(sample_sns_type sns_type, ot_pic_size size[], td_u32 num)
+static td_s32 sample_common_svp_get_pic_type_by_sns_type(sample_sns_type sns_type, hi_pic_size size[], td_u32 num)
 {
     sample_svp_check_exps_return(num > OT_VPSS_CHN_NUM, TD_FAILURE, SAMPLE_SVP_ERR_LEVEL_ERROR,
                                  "num(%u) can't be larger than (%u)\n", num, OT_VPSS_CHN_NUM);
@@ -641,10 +641,10 @@ static td_s32 sample_common_svp_get_pic_type_by_sns_type(sample_sns_type sns_typ
  * function : Start Vi/Vpss/Venc/Vo
  */
 td_s32 sample_common_svp_start_vi_vpss_venc_vo(sample_vi_cfg *vi_cfg,
-                                               ot_sample_svp_switch *switch_ptr, ot_pic_size *ext_pic_size_type)
+                                               ot_sample_svp_switch *switch_ptr, hi_pic_size *ext_pic_size_type)
 {
     ot_size pic_size[OT_VPSS_CHN_NUM];
-    ot_pic_size pic_type[OT_VPSS_CHN_NUM];
+    hi_pic_size pic_type[OT_VPSS_CHN_NUM];
     sample_vo_cfg vo_cfg;
 
     const td_s32 vpss_grp_cnt = 1;

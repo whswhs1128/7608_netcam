@@ -938,7 +938,7 @@ static td_s32 sample_ive_md_pause(td_void)
 td_void sample_ive_md(td_void)
 {
     ot_size pic_size;
-    ot_pic_size pic_type = PIC_1080P;
+    hi_pic_size pic_type = PIC_1080P;
     td_s32 ret;
     p= malloc(sizeof(Total_result));
     (td_void) memset_s(&g_md_info, sizeof(g_md_info), 0, sizeof(g_md_info));

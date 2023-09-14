@@ -5,14 +5,14 @@
 #ifndef __AUDIO_DL_ADP_H__
 #define __AUDIO_DL_ADP_H__
 
-#include "ot_type.h"
+#include "hi_type.h"
 
-td_s32 audio_dlpath(td_char *lib_path);
+hi_s32 audio_dlpath(hi_char *lib_path);
 
-td_s32 audio_dlopen(td_void **lib_handle, td_char *lib_name);
+hi_s32 audio_dlopen(hi_void **lib_handle, hi_char *lib_name);
 
-td_s32 audio_dlsym(td_void **func_handle, td_void *lib_handle, td_char *func_name);
+hi_s32 audio_dlsym(hi_void **func_handle, hi_void *lib_handle, hi_char *func_name);
 
-td_s32 audio_dlclose(td_void *lib_handle);
+hi_s32 audio_dlclose(hi_void *lib_handle);
 
 #endif

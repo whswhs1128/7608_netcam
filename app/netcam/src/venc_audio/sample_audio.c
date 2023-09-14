@@ -689,7 +689,7 @@ td_s32 sample_audio_adec_ao(int type, ot_aio_attr aio_attr)
     const ot_ao_chn ao_chn = 0;
     const ot_adec_chn ad_chn = 0;
 
-    ss_mpi_adec_aac_init();
+    hi_mpi_adec_aac_init();
     //sample_audio_adec_ao_init_param(&aio_attr, &ao_dev);
     ao_dev = SAMPLE_AUDIO_EXTERN_AO_DEV;
 
@@ -715,7 +715,7 @@ td_s32 sample_audio_adec_ao(int type, ot_aio_attr aio_attr)
 
     sample_audio_adec_ao_inner(ao_dev, ao_chn, ad_chn, type);
 #if 0
-    ss_mpi_aenc_aac_deinit();
+    hi_mpi_aenc_aac_deinit();
 
 adec_ao_err1:
     ret = sample_comm_audio_stop_ao(ao_dev, ao_chn_cnt, g_aio_resample);
@@ -1933,7 +1933,7 @@ static td_void main_inner(td_u32 index)
 
 //     // main_inner(index);
 
-//     ss_mpi_aenc_aac_deinit();
+//     hi_mpi_aenc_aac_deinit();
 //     // ss_mpi_adec_aac_deinit();
 
 //     sample_comm_sys_exit();
