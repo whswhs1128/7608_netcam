@@ -56,7 +56,7 @@ static ot_audio_sample_rate g_out_sample_rate = OT_AUDIO_SAMPLE_RATE_BUTT;
 /* 0: close, 1: record, 2: talk, 3: talkv2 */
 static td_u32 g_ai_vqe_type = 1;
 static void change_state(int signo);
-
+td_s32 sample_snap_start_snap(td_void);
 #define BIG_STREAM_SIZE PIC_1080P
 #define SMALL_STREAM_SIZE PIC_720P
 static int aenc_open = 0;
@@ -632,12 +632,13 @@ static td_void sample_venc_set_video_param(sample_comm_venc_chn_param *chn_param
     chn_param[0].frame_rate = runVideoCfg.vencStream[0].h264Conf.fps;
     /* encode h.264 */
     chn_param[1].gop_attr = gop_attr;
-    chn_param[1].type = payload[1];
-    chn_param[1].size = pic_size[1];
+    chn_param[1].type = OT_PT_JPEG;
+//    chn_param[1].type = payload[0];
+    chn_param[1].size = PIC_1080P;
     chn_param[1].rc_mode = rc_mode[1];
     chn_param[1].profile = profile[1];
     chn_param[1].is_rcn_ref_share_buf = share_buf_en;
-    chn_param[1].frame_rate = runVideoCfg.vencStream[1].h264Conf.fps;
+    chn_param[1].frame_rate = 1;
 }
 
 static td_void sample_set_venc_vpss_chn(sample_venc_vpss_chn *venc_vpss_chn)
@@ -823,21 +824,25 @@ static td_s32 sample_venc_normal_start_encode(ot_vpss_grp vpss_grp, sample_venc_
         return ret;
     }
 
- //   ret = sample_comm_vpss_bind_venc(vpss_grp, venc_vpss_chn->vpss_chn[0], venc_vpss_chn->venc_chn[0]);
- //   if (ret != TD_SUCCESS)
- //   {
- //       sample_print("sample_comm_vpss_bind_venc failed for %#x!\n", ret);
- //       goto EXIT_VENC_H265_STOP;
- //   }
+    ret = sample_comm_vpss_bind_venc(vpss_grp, venc_vpss_chn->vpss_chn[0], venc_vpss_chn->venc_chn[0]);
+    if (ret != TD_SUCCESS)
+    {
+        sample_print("sample_comm_vpss_bind_venc failed for %#x!\n", ret);
+        goto EXIT_VENC_H265_STOP;
+    }
       /* encode h.264 */
 
-    h264_chn_param = &(chn_param[1]);
-    if ((ret = sample_comm_venc_start(venc_vpss_chn->venc_chn[1], h264_chn_param)) != TD_SUCCESS)
-    {
-        sample_print("Venc Start failed for %#x!\n", ret);
-        goto EXIT_VENC_H264_UnBind;
-    }
+//    h264_chn_param = &(chn_param[1]);
+//    if ((ret = sample_comm_venc_start(venc_vpss_chn->venc_chn[1], h264_chn_param)) != TD_SUCCESS)
+//    {
+//        sample_print("Venc Start failed for %#x!\n", ret);
+//        goto EXIT_VENC_H264_UnBind;
+//    }
 
+    ot_size venc_size;
+    venc_size.width = 1920;
+    venc_size.height = 1080;
+    sample_comm_venc_snap_start(venc_vpss_chn->venc_chn[1], &venc_size, 0);
     ret = sample_comm_vpss_bind_venc(vpss_grp, venc_vpss_chn->vpss_chn[1], venc_vpss_chn->venc_chn[1]);
     if (ret != TD_SUCCESS)
     {
@@ -864,7 +869,7 @@ static td_s32 sample_venc_normal_start_encode(ot_vpss_grp vpss_grp, sample_venc_
     pthread_create(&venc_audio_pthread[3], 0, VENC_GetVencStreamProc, NULL);
     pthread_detach(venc_audio_pthread[3]);
 
-
+    sample_snap_start_snap();
 #if 0
         printf("press s to save video\n");
     char save = getchar();
@@ -1098,48 +1103,49 @@ int load_pq_bin()
     return ret;
 }
 
-static td_s32 sample_snap_start_snap(td_void)
+td_s32 sample_snap_start_snap(td_void)
 {
     td_s32 ret;
-    const ot_venc_chn venc_chn = 0; /* 1: snap venc */
+    const ot_venc_chn venc_chn = 4; /* 1: snap venc */
 
-    ret = ss_mpi_snap_set_pipe_attr(0, &g_norm_snap_attr);
+    ret = ss_mpi_snap_set_pipe_attr(1, &g_norm_snap_attr);
     if (ret != TD_SUCCESS)
     {
         printf("ss_mpi_snap_set_pipe_attr failed, ret: 0x%x\n", ret);
         return TD_FAILURE;
     }
 
-    ret = ss_mpi_snap_enable_pipe(0);
+    ret = ss_mpi_snap_enable_pipe(1);
     if (ret != TD_SUCCESS)
     {
         printf("ss_mpi_snap_enable_pipe failed, ret: 0x%x\n", ret);
-        return TD_FAILURE;
+       // return TD_FAILURE;
     }
 
     printf("=======press Enter c to trigger=====\n");
-    char trigger;
-    trigger = getchar();
-    if (trigger == 'c')
-    {
-        ret = ss_mpi_snap_trigger_pipe(0);
+//    char trigger;
+//    trigger = getchar();
+//    if (trigger == 'c')
+//    {
+    usleep(500 * 1000);
+        ret = ss_mpi_snap_trigger_pipe(1);
         if (ret != TD_SUCCESS)
         {
             printf("ss_mpi_snap_trigger_pipe failed, ret: 0x%x\n", ret);
-            goto exit;
+        //    goto exit;
         }
 
-        ret = sample_comm_venc_snap_process(venc_chn, g_norm_snap_attr.norm_attr.frame_cnt, TD_TRUE, TD_TRUE);
+        ret = sample_comm_venc_snap_process(venc_chn, g_norm_snap_attr.norm_attr.frame_cnt, TD_TRUE, TD_FALSE);
         if (ret != TD_SUCCESS)
         {
             printf("snap venc process failed!\n");
-            goto exit;
+         //   goto exit;
         }
-    }
+//    }
     printf("snap success!\n");
 
 exit:
-    ss_mpi_snap_disable_pipe(0);
+    ss_mpi_snap_disable_pipe(1);
     return ret;
 }
 

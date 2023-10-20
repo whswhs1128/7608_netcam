@@ -1762,7 +1762,7 @@ td_s32 sample_comm_venc_snap_start(ot_venc_chn venc_chn, ot_size *size, td_bool 
         return ret;
     }
 
-    ret = ss_mpi_venc_set_jpeg_enc_mode(venc_chn, OT_VENC_JPEG_ENC_SNAP);
+    ret = ss_mpi_venc_set_jpeg_enc_mode(venc_chn, OT_VENC_JPEG_ENC_ALL);
     if (ret != TD_SUCCESS) {
         sample_print("ss_mpi_venc_set_jpeg_enc_mode faild with%#x!\n", ret);
         return TD_FAILURE;
@@ -1839,7 +1839,7 @@ static td_s32 sample_comm_save_snap_stream(ot_venc_stream stream, td_bool save_j
     FILE *file = TD_NULL;
     td_s32 fd = -1;
 
-    if (snprintf_s(stream_file, FILE_NAME_LEN, FILE_NAME_LEN - 1, "snap_%d.jpg", g_snap_cnt) < 0) {
+    if (snprintf_s(stream_file, FILE_NAME_LEN, FILE_NAME_LEN - 1, "/opt/resource/web/snapshot_dir/web.jpg") < 0) {
         free(stream.pack);
         stream.pack = NULL;
         return TD_FAILURE;
@@ -1960,7 +1960,6 @@ td_s32 sample_comm_venc_snap_process(ot_venc_chn venc_chn, td_u32 snap_cnt, td_b
      step 4:  recv picture
     ******************************************/
     venc_fd = ss_mpi_venc_get_fd(venc_chn);
-    printf("snap fd = %d\n", venc_fd);
     if (venc_fd < 0) {
         sample_print("venc_get_fd faild with%#x!\n", venc_fd);
         return TD_FAILURE;

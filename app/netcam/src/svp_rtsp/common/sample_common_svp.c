@@ -519,6 +519,15 @@ static td_s32 sample_common_svp_set_vi_cfg(sample_vi_cfg *vi_cfg, ot_pic_size *p
                                            td_u32 pic_type_len, ot_pic_size *ext_pic_size_type, sample_sns_type sns_type)
 {
     sample_comm_vi_get_default_vi_cfg(sns_type, vi_cfg);
+    vi_cfg->bind_pipe.pipe_num = 2; /* 2: double pipe */
+    vi_cfg->bind_pipe.pipe_id[0] = 0;
+    vi_cfg->bind_pipe.pipe_id[1] = 1;
+
+    (td_void)memcpy_s(&vi_cfg->pipe_info[1], sizeof(sample_vi_pipe_info),
+        &vi_cfg->pipe_info[0], sizeof(sample_vi_pipe_info));
+
+    vi_cfg->pipe_info[1].pipe_need_start = TD_FALSE;
+    vi_cfg->pipe_info[1].isp_need_run = TD_FALSE;
     sample_svp_check_exps_return(pic_type_len < OT_VPSS_CHN_NUM,
                                  TD_FAILURE, SAMPLE_SVP_ERR_LEVEL_ERROR, "pic_type_len is illegal!\n");
 

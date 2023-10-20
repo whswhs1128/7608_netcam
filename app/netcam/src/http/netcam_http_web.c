@@ -1963,8 +1963,11 @@ static int web_snapshot(HTTP_OPS* ops, void* arg)
 
 static int web_snapshotjpg(HTTP_OPS* ops, void* arg)
 {
-	netcam_video_snapshot(GK_ENC_SNAPSHOT_SIZE_MAX, GK_ENC_SNAPSHOT_SIZE_MAX, "/tmp/web_snapshot2.jpg", GK_ENC_SNAPSHOT_QUALITY_MEDIUM);
-
+	//netcam_video_snapshot(GK_ENC_SNAPSHOT_SIZE_MAX, GK_ENC_SNAPSHOT_SIZE_MAX, "/tmp/web_snapshot2.jpg", GK_ENC_SNAPSHOT_QUALITY_MEDIUM);
+	//ss_mpi_snap_disable_pipe(1);	
+	//sample_snap_start_snap();
+	sample_comm_venc_snap_process(4, 30, 1, 0);
+	//sample_comm_get_snap_stream(4, 1, 0);
     return HPE_RET_SUCCESS;
 }
 
