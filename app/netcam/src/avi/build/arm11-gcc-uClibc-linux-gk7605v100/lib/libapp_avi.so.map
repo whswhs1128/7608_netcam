@@ -1,5 +1,5 @@
 
-Discarded input sections
+舍弃的输入节
 
  .note.GNU-stack
                 0x0000000000000000        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
@@ -22,12 +22,12 @@ Discarded input sections
  .note.GNU-stack
                 0x0000000000000000        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
 
-Memory Configuration
+内存配置
 
-Name             Origin             Length             Attributes
+名称           来源             长度             属性
 *default*        0x0000000000000000 0xffffffffffffffff
 
-Linker script and memory map
+链结器命令稿和内存映射
 
 LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
 LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
@@ -283,20 +283,20 @@ LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
  *fill*         0x0000000000010529        0x7 
  .rodata.str1.8
                 0x0000000000010530     0x13f3 build/arm11-gcc-uClibc-linux-gk7605v100/obj/avi_read_api.o
-                                       0x143b (size before relaxing)
+                                       0x143b (松开之前的大小)
  *fill*         0x0000000000011923        0x5 
  .rodata.str1.8
                 0x0000000000011928     0x142f build/arm11-gcc-uClibc-linux-gk7605v100/obj/avi_rec.o
-                                       0x143f (size before relaxing)
+                                       0x143f (松开之前的大小)
  *fill*         0x0000000000012d57        0x1 
  .rodata.str1.8
                 0x0000000000012d58      0x6ed build/arm11-gcc-uClibc-linux-gk7605v100/obj/avi_search_api.o
-                                        0x79d (size before relaxing)
+                                        0x79d (松开之前的大小)
  *fill*         0x0000000000013445        0x3 
  .rodata        0x0000000000013448       0x10 build/arm11-gcc-uClibc-linux-gk7605v100/obj/avi_write_api.o
  .rodata.str1.8
                 0x0000000000013458      0x9f1 build/arm11-gcc-uClibc-linux-gk7605v100/obj/avi_write_api.o
-                                        0xad9 (size before relaxing)
+                                        0xad9 (松开之前的大小)
 
 .rodata1
  *(.rodata1)
@@ -311,17 +311,17 @@ LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
  *(.eh_frame)
  .eh_frame      0x0000000000014298       0x78 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
  .eh_frame      0x0000000000014310      0x470 build/arm11-gcc-uClibc-linux-gk7605v100/obj/avi_utility.o
-                                        0x480 (size before relaxing)
+                                        0x480 (松开之前的大小)
  .eh_frame      0x0000000000014780      0x6c0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/mmc_api.o
-                                        0x6d0 (size before relaxing)
+                                        0x6d0 (松开之前的大小)
  .eh_frame      0x0000000000014e40      0x950 build/arm11-gcc-uClibc-linux-gk7605v100/obj/avi_read_api.o
-                                        0x960 (size before relaxing)
+                                        0x960 (松开之前的大小)
  .eh_frame      0x0000000000015790      0x4e0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/avi_rec.o
-                                        0x4f8 (size before relaxing)
+                                        0x4f8 (松开之前的大小)
  .eh_frame      0x0000000000015c70      0x408 build/arm11-gcc-uClibc-linux-gk7605v100/obj/avi_search_api.o
-                                        0x420 (size before relaxing)
+                                        0x420 (松开之前的大小)
  .eh_frame      0x0000000000016078      0x310 build/arm11-gcc-uClibc-linux-gk7605v100/obj/avi_write_api.o
-                                        0x328 (size before relaxing)
+                                        0x328 (松开之前的大小)
  .eh_frame      0x0000000000016388        0x4 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
  *(.eh_frame.*)
 
@@ -503,7 +503,7 @@ LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
 .comment        0x0000000000000000       0x16
  *(.comment)
  .comment       0x0000000000000000       0x16 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
-                                         0x17 (size before relaxing)
+                                         0x17 (松开之前的大小)
  .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/avi_utility.o
  .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/mmc_api.o
  .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/avi_read_api.o

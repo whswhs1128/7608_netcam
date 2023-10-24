@@ -1,6 +1,6 @@
 
-Allocating common symbols
-Common symbol       size              file
+分配公共符号
+公共符号            大小              文件
 
 imageArr            0x780             build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_image.o
 video2Arr           0x1e00            build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_video.o
@@ -8,7 +8,7 @@ gGkSessionGlobal    0x2d0             build/arm11-gcc-uClibc-linux-gk7605v100/ob
 audioArr            0x280             build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_video.o
 DefaultNetbuf       0x8               build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_snap.o
 
-Discarded input sections
+舍弃的输入节
 
  .note.GNU-stack
                 0x0000000000000000        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
@@ -59,12 +59,12 @@ Discarded input sections
  .note.GNU-stack
                 0x0000000000000000        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
 
-Memory Configuration
+内存配置
 
-Name             Origin             Length             Attributes
+名称           来源             长度             属性
 *default*        0x0000000000000000 0xffffffffffffffff
 
-Linker script and memory map
+链结器命令稿和内存映射
 
 LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
 LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
@@ -451,79 +451,79 @@ LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
  *fill*         0x000000000001aa89        0x7 
  .rodata.str1.8
                 0x000000000001aa90      0x813 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_utility.o
-                                        0x843 (size before relaxing)
+                                        0x843 (松开之前的大小)
  *fill*         0x000000000001b2a3        0x5 
  .rodata.str1.8
                 0x000000000001b2a8      0x2d2 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_sock.o
  *fill*         0x000000000001b57a        0x6 
  .rodata.str1.8
                 0x000000000001b580     0x28e6 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_protocol.o
-                                       0x2916 (size before relaxing)
+                                       0x2916 (松开之前的大小)
  *fill*         0x000000000001de66        0x2 
  .rodata.str1.8
                 0x000000000001de68       0x52 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_media.o
  *fill*         0x000000000001deba        0x6 
  .rodata.str1.8
                 0x000000000001dec0      0x960 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_pb.o
-                                        0x990 (size before relaxing)
+                                        0x990 (松开之前的大小)
  .rodata.str1.8
                 0x000000000001e820       0x4b build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_user.o
-                                         0x7b (size before relaxing)
+                                         0x7b (松开之前的大小)
  *fill*         0x000000000001e86b        0x5 
  .rodata        0x000000000001e870       0x84 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_system.o
                 0x000000000001e870                gk_cms_time_zone
  *fill*         0x000000000001e8f4        0x4 
  .rodata.str1.8
                 0x000000000001e8f8      0x24b build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_system.o
-                                        0x293 (size before relaxing)
+                                        0x293 (松开之前的大小)
  *fill*         0x000000000001eb43        0x5 
  .rodata.str1.8
                 0x000000000001eb48      0x4c7 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_image.o
-                                        0x4f7 (size before relaxing)
+                                        0x4f7 (松开之前的大小)
  *fill*         0x000000000001f00f        0x1 
  .rodata.str1.8
                 0x000000000001f010      0x280 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_update.o
-                                        0x310 (size before relaxing)
+                                        0x310 (松开之前的大小)
  .rodata.str1.8
                 0x000000000001f290       0xb6 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_audio.o
  *fill*         0x000000000001f346        0x2 
  .rodata        0x000000000001f348       0x10 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_sd.o
  .rodata.str1.8
                 0x000000000001f358       0xf6 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_sd.o
-                                        0x186 (size before relaxing)
+                                        0x186 (松开之前的大小)
  *fill*         0x000000000001f44e        0x2 
  .rodata.str1.8
                 0x000000000001f450      0x709 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_network.o
-                                        0x751 (size before relaxing)
+                                        0x751 (松开之前的大小)
  *fill*         0x000000000001fb59        0x7 
  .rodata.str1.8
                 0x000000000001fb60       0x1e build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_alarm.o
-                                         0x4a (size before relaxing)
+                                         0x4a (松开之前的大小)
  *fill*         0x000000000001fb7e        0x2 
  .rodata.str1.8
                 0x000000000001fb80       0x69 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_md.o
-                                         0x99 (size before relaxing)
+                                         0x99 (松开之前的大小)
  *fill*         0x000000000001fbe9        0x7 
  .rodata.str1.8
                 0x000000000001fbf0      0x257 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_snap.o
-                                        0x287 (size before relaxing)
+                                        0x287 (松开之前的大小)
  *fill*         0x000000000001fe47        0x1 
  .rodata.str1.8
                 0x000000000001fe48     0x110d build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_video.o
-                                       0x1142 (size before relaxing)
+                                       0x1142 (松开之前的大小)
  *fill*         0x0000000000020f55        0x3 
  .rodata.str1.8
                 0x0000000000020f58      0x25d build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_record.o
-                                        0x28d (size before relaxing)
+                                        0x28d (松开之前的大小)
  *fill*         0x00000000000211b5        0x3 
  .rodata.str1.8
                 0x00000000000211b8       0xe1 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_channel.o
-                                        0x131 (size before relaxing)
+                                        0x131 (松开之前的大小)
  *fill*         0x0000000000021299        0x3 
  .rodata        0x000000000002129c       0x44 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_ptz.o
  .rodata.str1.8
                 0x00000000000212e0      0x8fc build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_ptz.o
-                                        0x92c (size before relaxing)
+                                        0x92c (松开之前的大小)
 
 .rodata1
  *(.rodata1)
@@ -538,45 +538,45 @@ LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
  *(.eh_frame)
  .eh_frame      0x0000000000022310       0x78 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
  .eh_frame      0x0000000000022388      0x290 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_session.o
-                                        0x2a0 (size before relaxing)
+                                        0x2a0 (松开之前的大小)
  .eh_frame      0x0000000000022618      0x420 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_utility.o
-                                        0x438 (size before relaxing)
+                                        0x438 (松开之前的大小)
  .eh_frame      0x0000000000022a38      0x5d0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_sock.o
-                                        0x5e0 (size before relaxing)
+                                        0x5e0 (松开之前的大小)
  .eh_frame      0x0000000000023008      0x350 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_protocol.o
-                                        0x368 (size before relaxing)
+                                        0x368 (松开之前的大小)
  .eh_frame      0x0000000000023358       0xd0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_media.o
-                                         0xe8 (size before relaxing)
+                                         0xe8 (松开之前的大小)
  .eh_frame      0x0000000000023428       0xd0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_pb.o
-                                         0xe0 (size before relaxing)
+                                         0xe0 (松开之前的大小)
  .eh_frame      0x00000000000234f8       0x78 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_user.o
-                                         0x90 (size before relaxing)
+                                         0x90 (松开之前的大小)
  .eh_frame      0x0000000000023570      0x4c0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_system.o
-                                        0x4d0 (size before relaxing)
+                                        0x4d0 (松开之前的大小)
  .eh_frame      0x0000000000023a30      0x258 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_image.o
-                                        0x268 (size before relaxing)
+                                        0x268 (松开之前的大小)
  .eh_frame      0x0000000000023c88      0x138 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_update.o
-                                        0x150 (size before relaxing)
+                                        0x150 (松开之前的大小)
  .eh_frame      0x0000000000023dc0       0x60 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_audio.o
-                                         0x78 (size before relaxing)
+                                         0x78 (松开之前的大小)
  .eh_frame      0x0000000000023e20      0x1b8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_sd.o
-                                        0x1c8 (size before relaxing)
+                                        0x1c8 (松开之前的大小)
  .eh_frame      0x0000000000023fd8      0x690 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_network.o
-                                        0x6a8 (size before relaxing)
+                                        0x6a8 (松开之前的大小)
  .eh_frame      0x0000000000024668      0x100 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_alarm.o
-                                        0x118 (size before relaxing)
+                                        0x118 (松开之前的大小)
  .eh_frame      0x0000000000024768      0x120 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_md.o
-                                        0x130 (size before relaxing)
+                                        0x130 (松开之前的大小)
  .eh_frame      0x0000000000024888      0x1c8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_snap.o
-                                        0x1e0 (size before relaxing)
+                                        0x1e0 (松开之前的大小)
  .eh_frame      0x0000000000024a50      0x4a8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_video.o
-                                        0x4c0 (size before relaxing)
+                                        0x4c0 (松开之前的大小)
  .eh_frame      0x0000000000024ef8      0x238 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_record.o
-                                        0x250 (size before relaxing)
+                                        0x250 (松开之前的大小)
  .eh_frame      0x0000000000025130      0x118 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_channel.o
-                                        0x130 (size before relaxing)
+                                        0x130 (松开之前的大小)
  .eh_frame      0x0000000000025248      0x38c build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_net/gk_cms_net_ptz.o
-                                        0x3a0 (size before relaxing)
+                                        0x3a0 (松开之前的大小)
  .eh_frame      0x00000000000255d4        0x4 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
  *(.eh_frame.*)
 
@@ -792,7 +792,7 @@ LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
 .comment        0x0000000000000000       0x16
  *(.comment)
  .comment       0x0000000000000000       0x16 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
-                                         0x17 (size before relaxing)
+                                         0x17 (松开之前的大小)
  .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_session.o
  .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_utility.o
  .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/gk_cms_sock.o

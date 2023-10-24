@@ -1,6 +1,6 @@
 
-Allocating common symbols
-Common symbol       size              file
+分配公共符号
+公共符号            大小              文件
 
 send_data_x         0x10c4            build/arm11-gcc-uClibc-linux-gk7605v100/obj/ttl.o
 uart                0x4               build/arm11-gcc-uClibc-linux-gk7605v100/obj/onvif_http.o
@@ -8,7 +8,7 @@ serial_data         0x410             build/arm11-gcc-uClibc-linux-gk7605v100/ob
 rtsp_url            0x40              build/arm11-gcc-uClibc-linux-gk7605v100/obj/onvif_http.o
 send_x              0x8               build/arm11-gcc-uClibc-linux-gk7605v100/obj/ttl.o
 
-Discarded input sections
+舍弃的输入节
 
  .note.GNU-stack
                 0x0000000000000000        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
@@ -31,12 +31,12 @@ Discarded input sections
  .note.GNU-stack
                 0x0000000000000000        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
 
-Memory Configuration
+内存配置
 
-Name             Origin             Length             Attributes
+名称           来源             长度             属性
 *default*        0x0000000000000000 0xffffffffffffffff
 
-Linker script and memory map
+链结器命令稿和内存映射
 
 LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
 LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
@@ -234,7 +234,7 @@ LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
  *fill*         0x000000000000c96f        0x1 
  .rodata.str1.8
                 0x000000000000c970      0x6a4 build/arm11-gcc-uClibc-linux-gk7605v100/obj/httpClient.o
-                                        0x6bc (size before relaxing)
+                                        0x6bc (松开之前的大小)
  *fill*         0x000000000000d014        0x4 
  .rodata.str1.8
                 0x000000000000d018      0x1ab build/arm11-gcc-uClibc-linux-gk7605v100/obj/net_time.o
@@ -252,17 +252,17 @@ LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
  *(.eh_frame)
  .eh_frame      0x000000000000d5c8       0x78 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
  .eh_frame      0x000000000000d640      0xda0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/onvif_adapter.o
-                                        0xdb0 (size before relaxing)
+                                        0xdb0 (松开之前的大小)
  .eh_frame      0x000000000000e3e0       0x50 build/arm11-gcc-uClibc-linux-gk7605v100/obj/onvif_http.o
-                                         0x60 (size before relaxing)
+                                         0x60 (松开之前的大小)
  .eh_frame      0x000000000000e430      0x5b8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/ttl.o
-                                        0x5c8 (size before relaxing)
+                                        0x5c8 (松开之前的大小)
  .eh_frame      0x000000000000e9e8       0xf8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/sdk_af.o
-                                        0x108 (size before relaxing)
+                                        0x108 (松开之前的大小)
  .eh_frame      0x000000000000eae0      0x478 build/arm11-gcc-uClibc-linux-gk7605v100/obj/httpClient.o
-                                        0x490 (size before relaxing)
+                                        0x490 (松开之前的大小)
  .eh_frame      0x000000000000ef58      0x15c build/arm11-gcc-uClibc-linux-gk7605v100/obj/net_time.o
-                                        0x170 (size before relaxing)
+                                        0x170 (松开之前的大小)
  .eh_frame      0x000000000000f0b4        0x4 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
  *(.eh_frame.*)
 
@@ -447,7 +447,7 @@ LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
 .comment        0x0000000000000000       0x16
  *(.comment)
  .comment       0x0000000000000000       0x16 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
-                                         0x17 (size before relaxing)
+                                         0x17 (松开之前的大小)
  .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/onvif_adapter.o
  .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/onvif_http.o
  .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/ttl.o

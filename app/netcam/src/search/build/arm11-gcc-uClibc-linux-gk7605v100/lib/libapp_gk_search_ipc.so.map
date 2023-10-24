@@ -1,5 +1,5 @@
 
-Discarded input sections
+舍弃的输入节
 
  .note.GNU-stack
                 0x0000000000000000        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
@@ -14,12 +14,12 @@ Discarded input sections
  .note.GNU-stack
                 0x0000000000000000        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
 
-Memory Configuration
+内存配置
 
-Name             Origin             Length             Attributes
+名称           来源             长度             属性
 *default*        0x0000000000000000 0xffffffffffffffff
 
-Linker script and memory map
+链结器命令稿和内存映射
 
 LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
 LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
@@ -161,11 +161,11 @@ LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
  *fill*         0x00000000000075c1        0x7 
  .rodata.str1.8
                 0x00000000000075c8     0x252b build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/ipcsearch.o
-                                       0x2533 (size before relaxing)
+                                       0x2533 (松开之前的大小)
  *fill*         0x0000000000009af3        0x5 
  .rodata.str1.8
                 0x0000000000009af8      0x6e8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/ds_search.o
-                                        0x820 (size before relaxing)
+                                        0x820 (松开之前的大小)
 
 .rodata1
  *(.rodata1)
@@ -180,9 +180,9 @@ LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
  *(.eh_frame)
  .eh_frame      0x000000000000a2d8       0x78 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
  .eh_frame      0x000000000000a350      0x728 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/ipcsearch.o
-                                        0x738 (size before relaxing)
+                                        0x738 (松开之前的大小)
  .eh_frame      0x000000000000aa78       0xf4 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/ds_search.o
-                                        0x108 (size before relaxing)
+                                        0x108 (松开之前的大小)
  .eh_frame      0x000000000000ab6c        0x4 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
  *(.eh_frame.*)
 
@@ -342,7 +342,7 @@ LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
 .comment        0x0000000000000000       0x16
  *(.comment)
  .comment       0x0000000000000000       0x16 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
-                                         0x17 (size before relaxing)
+                                         0x17 (松开之前的大小)
  .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/ipcsearch.o
  .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/ds_search.o
  .comment       0x0000000000000016       0x17 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
