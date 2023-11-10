@@ -1,12 +1,12 @@
 
-Allocating common symbols
-Common symbol       size              file
+分配公共符号
+公共符号            大小              文件
 
 g_data              0xb84             build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/upnpc.o
 g_urls              0x28              build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/upnpc.o
 g_lanaddr           0x40              build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/upnpc.o
 
-Discarded input sections
+舍弃的输入节
 
  .note.GNU-stack
                 0x0000000000000000        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
@@ -45,12 +45,12 @@ Discarded input sections
  .note.GNU-stack
                 0x0000000000000000        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
 
-Memory Configuration
+内存配置
 
-Name             Origin             Length             Attributes
+名称           来源             长度             属性
 *default*        0x0000000000000000 0xffffffffffffffff
 
-Linker script and memory map
+链结器命令稿和内存映射
 
 LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
 LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
@@ -279,11 +279,11 @@ LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
  *fill*         0x0000000000009dc5        0x3 
  .rodata.str1.8
                 0x0000000000009dc8       0xd4 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/miniwget.o
-                                         0xdc (size before relaxing)
+                                         0xdc (松开之前的大小)
  *fill*         0x0000000000009e9c        0x4 
  .rodata.str1.8
                 0x0000000000009ea0      0x2b0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/miniupnpc.o
-                                        0x2f8 (size before relaxing)
+                                        0x2f8 (松开之前的大小)
  .rodata.str1.8
                 0x000000000000a150       0x1c build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/minixml.o
  *fill*         0x000000000000a16c        0x4 
@@ -293,7 +293,7 @@ LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
                 0x000000000000a180      0x318 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/upnpc.o
  .rodata.str1.8
                 0x000000000000a498      0x57f build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/upnpcommands.o
-                                        0x597 (size before relaxing)
+                                        0x597 (松开之前的大小)
  *fill*         0x000000000000aa17        0x1 
  .rodata.str1.8
                 0x000000000000aa18        0xf build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/upnpreplyparse.o
@@ -302,14 +302,14 @@ LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
  *fill*         0x000000000000aa75        0x3 
  .rodata.str1.8
                 0x000000000000aa78      0x11a build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/minissdpc.o
-                                        0x142 (size before relaxing)
+                                        0x142 (松开之前的大小)
  *fill*         0x000000000000ab92        0x6 
  .rodata.str1.8
                 0x000000000000ab98      0x2f5 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/upnperrors.o
  *fill*         0x000000000000ae8d        0x3 
  .rodata.str1.8
                 0x000000000000ae90       0x27 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/portlistingparse.o
-                                         0x9d (size before relaxing)
+                                         0x9d (松开之前的大小)
  *fill*         0x000000000000aeb7        0x1 
  .rodata.str1.8
                 0x000000000000aeb8        0xd build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/receivedata.o
@@ -327,33 +327,33 @@ LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
  *(.eh_frame)
  .eh_frame      0x000000000000b168       0x78 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
  .eh_frame      0x000000000000b1e0       0x28 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/upnpdev.o
-                                         0x40 (size before relaxing)
+                                         0x40 (松开之前的大小)
  .eh_frame      0x000000000000b208       0xb8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/connecthostport.o
-                                         0xc8 (size before relaxing)
+                                         0xc8 (松开之前的大小)
  .eh_frame      0x000000000000b2c0       0xd8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/igd_desc_parse.o
-                                         0xe8 (size before relaxing)
+                                         0xe8 (松开之前的大小)
  .eh_frame      0x000000000000b398       0x48 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/minisoap.o
-                                         0x60 (size before relaxing)
+                                         0x60 (松开之前的大小)
  .eh_frame      0x000000000000b3e0      0x258 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/miniwget.o
-                                        0x268 (size before relaxing)
+                                        0x268 (松开之前的大小)
  .eh_frame      0x000000000000b638      0x328 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/miniupnpc.o
-                                        0x340 (size before relaxing)
+                                        0x340 (松开之前的大小)
  .eh_frame      0x000000000000b960       0x68 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/minixml.o
-                                         0x80 (size before relaxing)
+                                         0x80 (松开之前的大小)
  .eh_frame      0x000000000000b9c8      0x250 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/upnpc.o
-                                        0x260 (size before relaxing)
+                                        0x260 (松开之前的大小)
  .eh_frame      0x000000000000bc18      0x898 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/upnpcommands.o
-                                        0x8b0 (size before relaxing)
+                                        0x8b0 (松开之前的大小)
  .eh_frame      0x000000000000c4b0      0x148 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/upnpreplyparse.o
-                                        0x158 (size before relaxing)
+                                        0x158 (松开之前的大小)
  .eh_frame      0x000000000000c5f8      0x270 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/minissdpc.o
-                                        0x280 (size before relaxing)
+                                        0x280 (松开之前的大小)
  .eh_frame      0x000000000000c868       0x18 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/upnperrors.o
-                                         0x28 (size before relaxing)
+                                         0x28 (松开之前的大小)
  .eh_frame      0x000000000000c880      0x100 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/portlistingparse.o
-                                        0x118 (size before relaxing)
+                                        0x118 (松开之前的大小)
  .eh_frame      0x000000000000c980       0x4c build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/receivedata.o
-                                         0x60 (size before relaxing)
+                                         0x60 (松开之前的大小)
  .eh_frame      0x000000000000c9cc        0x4 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
  *(.eh_frame.*)
 
@@ -544,7 +544,7 @@ LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
 .comment        0x0000000000000000       0x16
  *(.comment)
  .comment       0x0000000000000000       0x16 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
-                                         0x17 (size before relaxing)
+                                         0x17 (松开之前的大小)
  .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/upnpdev.o
  .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/connecthostport.o
  .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/igd_desc_parse.o

@@ -538,7 +538,7 @@ int netcam_update_mail_style(char *binData, int length,cbFunc updateCb)
 	 }
 
 	 mailUpdateBuf = startPtr;
-
+     printf("mailUpdateBuf = %d\n",mailUpdateBuf);
 #ifdef MODULE_SUPPORT_GOKE_UPGRADE
      char str[64] = {0};
      sprintf(str, "cur:%d, len:%d", startUpdate, length);
@@ -548,8 +548,16 @@ int netcam_update_mail_style(char *binData, int length,cbFunc updateCb)
 #ifdef MODULE_SUPPORT_UPGRADE_OUT
      if (shareInfo != NULL)
         shareInfo->memOffset = mailUpdateBuf - binData;
-
-     netcam_update(mailUpdateBuf, mailUpdateLen, NULL);
+      printf("mailUpdateBuf = %d\n",mailUpdateBuf);
+      printf("binData = %d\n",binData);
+      printf("mailUpdateLen = %d\n",mailUpdateLen);
+      FILE *fp = fopen("/sharefs/netcam_1600", "wb+");
+      fwrite(mailUpdateBuf,mailUpdateLen,1,fp);
+      fclose(fp);
+      system("rm -rf /sharefs/netcam");
+      system("mv /sharefs/netcam_1600 /sharefs/netcam");
+      system("reboot");
+   //   netcam_update(mailUpdateBuf, mailUpdateLen, NULL);
 #else
 	 ret = verify_upgrade_buff(mailUpdateBuf, mailUpdateLen);
 	 if (ret < 0)

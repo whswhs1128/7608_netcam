@@ -1,10 +1,10 @@
 
-Allocating common symbols
-Common symbol       size              file
+分配公共符号
+公共符号            大小              文件
 
 ThreadZbarLinkWifi  0x8               build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zbar_qrcodelink.o
 
-Discarded input sections
+舍弃的输入节
 
  .note.GNU-stack
                 0x0000000000000000        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
@@ -35,12 +35,12 @@ Discarded input sections
  .note.GNU-stack
                 0x0000000000000000        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
 
-Memory Configuration
+内存配置
 
-Name             Origin             Length             Attributes
+名称           来源             长度             属性
 *default*        0x0000000000000000 0xffffffffffffffff
 
-Linker script and memory map
+链结器命令稿和内存映射
 
 LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
 LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
@@ -338,18 +338,18 @@ LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
  *fill*         0x000000000001243f        0x1 
  .rodata.str1.8
                 0x0000000000012440      0x46c build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/net_wifi_commom.o
-                                        0x476 (size before relaxing)
+                                        0x476 (松开之前的大小)
  *fill*         0x00000000000128ac        0x4 
  .rodata        0x00000000000128b0      0x111 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/net_wifi_host.o
  *fill*         0x00000000000129c1        0x7 
  .rodata.str1.8
                 0x00000000000129c8      0x730 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/net_wifi_host.o
-                                        0x7b8 (size before relaxing)
+                                        0x7b8 (松开之前的大小)
  .rodata        0x00000000000130f8       0x12 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/net_wifi_wpa.o
  *fill*         0x000000000001310a        0x6 
  .rodata.str1.8
                 0x0000000000013110       0x68 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/net_wifi_wpa.o
-                                        0x138 (size before relaxing)
+                                        0x138 (松开之前的大小)
  .rodata        0x0000000000013178       0xc8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/net_wifi_smartlink.o
  .rodata.str1.8
                 0x0000000000013240      0x3ac build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/net_wifi_smartlink.o
@@ -358,7 +358,7 @@ LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
  *fill*         0x00000000000137bc        0x4 
  .rodata.str1.8
                 0x00000000000137c0      0xe0b build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/network_wifi.o
-                                        0xef3 (size before relaxing)
+                                        0xef3 (松开之前的大小)
  *fill*         0x00000000000145cb        0x5 
  .rodata.str1.8
                 0x00000000000145d0      0x232 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zbar_qrcodelink.o
@@ -382,25 +382,25 @@ LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
  *(.eh_frame)
  .eh_frame      0x0000000000014ef0       0x78 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
  .eh_frame      0x0000000000014f68      0x178 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/net_utils.o
-                                        0x190 (size before relaxing)
+                                        0x190 (松开之前的大小)
  .eh_frame      0x00000000000150e0      0xd18 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/net_wifi_sta.o
-                                        0xd28 (size before relaxing)
+                                        0xd28 (松开之前的大小)
  .eh_frame      0x0000000000015df8      0x468 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/net_wifi_commom.o
-                                        0x480 (size before relaxing)
+                                        0x480 (松开之前的大小)
  .eh_frame      0x0000000000016260      0x520 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/net_wifi_host.o
-                                        0x538 (size before relaxing)
+                                        0x538 (松开之前的大小)
  .eh_frame      0x0000000000016780      0x2e0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/net_wifi_wpa.o
-                                        0x2f8 (size before relaxing)
+                                        0x2f8 (松开之前的大小)
  .eh_frame      0x0000000000016a60      0x290 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/net_wifi_smartlink.o
-                                        0x2a8 (size before relaxing)
+                                        0x2a8 (松开之前的大小)
  .eh_frame      0x0000000000016cf0      0x960 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/network_wifi.o
-                                        0x978 (size before relaxing)
+                                        0x978 (松开之前的大小)
  .eh_frame      0x0000000000017650      0x188 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zbar_qrcodelink.o
-                                        0x198 (size before relaxing)
+                                        0x198 (松开之前的大小)
  .eh_frame      0x00000000000177d8       0xd8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/net_ping.o
-                                         0xe8 (size before relaxing)
+                                         0xe8 (松开之前的大小)
  .eh_frame      0x00000000000178b0       0xa0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/net_gateway.o
-                                         0xb8 (size before relaxing)
+                                         0xb8 (松开之前的大小)
  .eh_frame      0x0000000000017950        0x4 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
  *(.eh_frame.*)
 
@@ -586,7 +586,7 @@ LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
 .comment        0x0000000000000000       0x16
  *(.comment)
  .comment       0x0000000000000000       0x16 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
-                                         0x17 (size before relaxing)
+                                         0x17 (松开之前的大小)
  .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/net_utils.o
  .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/net_wifi_sta.o
  .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/net_wifi_commom.o

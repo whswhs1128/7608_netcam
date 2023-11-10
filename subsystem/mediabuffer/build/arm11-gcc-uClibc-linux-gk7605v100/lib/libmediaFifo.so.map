@@ -1,5 +1,5 @@
 
-Discarded input sections
+舍弃的输入节
 
  .note.GNU-stack
                 0x0000000000000000        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
@@ -14,12 +14,12 @@ Discarded input sections
  .note.GNU-stack
                 0x0000000000000000        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
 
-Memory Configuration
+内存配置
 
-Name             Origin             Length             Attributes
+名称           来源             长度             属性
 *default*        0x0000000000000000 0xffffffffffffffff
 
-Linker script and memory map
+链结器命令稿和内存映射
 
 LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
 LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
@@ -189,9 +189,9 @@ LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
  *(.eh_frame)
  .eh_frame      0x0000000000005e68       0x78 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
  .eh_frame      0x0000000000005ee0      0x240 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/media_fifo.o
-                                        0x258 (size before relaxing)
+                                        0x258 (松开之前的大小)
  .eh_frame      0x0000000000006120      0x298 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/zfifo.o
-                                        0x2b0 (size before relaxing)
+                                        0x2b0 (松开之前的大小)
  .eh_frame      0x00000000000063b8        0x4 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
  *(.eh_frame.*)
 
@@ -350,7 +350,7 @@ LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
 .comment        0x0000000000000000       0x16
  *(.comment)
  .comment       0x0000000000000000       0x16 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
-                                         0x17 (size before relaxing)
+                                         0x17 (松开之前的大小)
  .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/media_fifo.o
  .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/zfifo.o
  .comment       0x0000000000000016       0x17 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o

@@ -1,6 +1,6 @@
 
-Allocating common symbols
-Common symbol       size              file
+分配公共符号
+公共符号            大小              文件
 
 g_EventCallBackRegister
                     0x40              build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_priv.o
@@ -31,7 +31,7 @@ g_PtzCallBackRegister
                     0x80              build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_priv.o
 g_http_srv          0x28              build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_priv.o
 
-Discarded input sections
+舍弃的输入节
 
  .note.GNU-stack
                 0x0000000000000000        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
@@ -88,12 +88,12 @@ Discarded input sections
  .note.GNU-stack
                 0x0000000000000000        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
 
-Memory Configuration
+内存配置
 
-Name             Origin             Length             Attributes
+名称           来源             长度             属性
 *default*        0x0000000000000000 0xffffffffffffffff
 
-Linker script and memory map
+链结器命令稿和内存映射
 
 LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
 LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
@@ -834,31 +834,31 @@ LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
  *fill*         0x000000000004e98a        0x6 
  .rodata.str1.8
                 0x000000000004e990     0x237f build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/soap_proc.o
-                                       0x2387 (size before relaxing)
+                                       0x2387 (松开之前的大小)
  *fill*         0x0000000000050d0f        0x1 
  .rodata.str1.8
                 0x0000000000050d10      0xb91 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/soap_parse.o
-                                        0xdc9 (size before relaxing)
+                                        0xdc9 (松开之前的大小)
  *fill*         0x00000000000518a1        0x7 
  .rodata.str1.8
                 0x00000000000518a8     0x750b build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/soap_packet.o
-                                       0x760b (size before relaxing)
+                                       0x760b (松开之前的大小)
  *fill*         0x0000000000058db3        0x5 
  .rodata.str1.8
                 0x0000000000058db8     0x20d9 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/config.o
-                                       0x25c9 (size before relaxing)
+                                       0x25c9 (松开之前的大小)
  *fill*         0x000000000005ae91        0x7 
  .rodata.str1.8
                 0x000000000005ae98      0xa5d build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/event_handle.o
-                                        0xa8d (size before relaxing)
+                                        0xa8d (松开之前的大小)
  *fill*         0x000000000005b8f5        0x3 
  .rodata.str1.8
                 0x000000000005b8f8     0x1522 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_priv.o
-                                       0x1542 (size before relaxing)
+                                       0x1542 (松开之前的大小)
  *fill*         0x000000000005ce1a        0x6 
  .rodata.str1.8
                 0x000000000005ce20     0x18a1 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_device.o
-                                       0x1924 (size before relaxing)
+                                       0x1924 (松开之前的大小)
  *fill*         0x000000000005e6c1        0x7 
  .rodata.str1.8
                 0x000000000005e6c8      0x739 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_media.o
@@ -874,11 +874,11 @@ LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
  *fill*         0x000000000005fc83        0x5 
  .rodata.str1.8
                 0x000000000005fc88      0xa0c build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_ptz.o
-                                        0xab8 (size before relaxing)
+                                        0xab8 (松开之前的大小)
  *fill*         0x0000000000060694        0x4 
  .rodata.str1.8
                 0x0000000000060698      0x20d build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_analytics.o
-                                        0x25d (size before relaxing)
+                                        0x25d (松开之前的大小)
  *fill*         0x00000000000608a5        0x3 
  .rodata.str1.8
                 0x00000000000608a8      0x262 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif.o
@@ -891,7 +891,7 @@ LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
  *fill*         0x0000000000060f72        0x6 
  .rodata.str1.8
                 0x0000000000060f78      0x1a2 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/xml.o
-                                        0x1aa (size before relaxing)
+                                        0x1aa (松开之前的大小)
  *fill*         0x000000000006111a        0x6 
  .rodata.str1.8
                 0x0000000000061120      0x1d0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/http_client.o
@@ -901,7 +901,7 @@ LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
  .rodata        0x0000000000061838      0x140 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/http_parse.o
  .rodata.str1.8
                 0x0000000000061978      0x26f build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/http_parse.o
-                                        0x287 (size before relaxing)
+                                        0x287 (松开之前的大小)
 
 .rodata1
  *(.rodata1)
@@ -916,51 +916,51 @@ LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
  *(.eh_frame)
  .eh_frame      0x0000000000062eb8       0x78 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
  .eh_frame      0x0000000000062f30     0x3008 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/soap_proc.o
-                                       0x3018 (size before relaxing)
+                                       0x3018 (松开之前的大小)
  .eh_frame      0x0000000000065f38     0x1110 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/soap_parse.o
-                                       0x1120 (size before relaxing)
+                                       0x1120 (松开之前的大小)
  .eh_frame      0x0000000000067048     0x1d80 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/soap_packet.o
-                                       0x1d90 (size before relaxing)
+                                       0x1d90 (松开之前的大小)
  .eh_frame      0x0000000000068dc8      0x908 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/config.o
-                                        0x920 (size before relaxing)
+                                        0x920 (松开之前的大小)
  .eh_frame      0x00000000000696d0      0x378 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/event_handle.o
-                                        0x388 (size before relaxing)
+                                        0x388 (松开之前的大小)
  .eh_frame      0x0000000000069a48      0x568 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_priv.o
-                                        0x578 (size before relaxing)
+                                        0x578 (松开之前的大小)
  .eh_frame      0x0000000000069fb0      0xb28 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_device.o
-                                        0xb40 (size before relaxing)
+                                        0xb40 (松开之前的大小)
  .eh_frame      0x000000000006aad8     0x14e0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_media.o
-                                       0x14f8 (size before relaxing)
+                                       0x14f8 (松开之前的大小)
  .eh_frame      0x000000000006bfb8      0x1c0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_deviceio.o
-                                        0x1d8 (size before relaxing)
+                                        0x1d8 (松开之前的大小)
  .eh_frame      0x000000000006c178      0x1f0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_image.o
-                                        0x208 (size before relaxing)
+                                        0x208 (松开之前的大小)
  .eh_frame      0x000000000006c368      0x138 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_event.o
-                                        0x148 (size before relaxing)
+                                        0x148 (松开之前的大小)
  .eh_frame      0x000000000006c4a0      0x988 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_ptz.o
-                                        0x998 (size before relaxing)
+                                        0x998 (松开之前的大小)
  .eh_frame      0x000000000006ce28      0x1f0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif_analytics.o
-                                        0x200 (size before relaxing)
+                                        0x200 (松开之前的大小)
  .eh_frame      0x000000000006d018       0x40 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/onvif.o
-                                         0x58 (size before relaxing)
+                                         0x58 (松开之前的大小)
  .eh_frame      0x000000000006d058       0x60 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/base64.o
-                                         0x70 (size before relaxing)
+                                         0x70 (松开之前的大小)
  .eh_frame      0x000000000006d0b8      0x4c8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/mpool.o
-                                        0x4d8 (size before relaxing)
+                                        0x4d8 (松开之前的大小)
  .eh_frame      0x000000000006d580       0xe0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/sha1.o
-                                         0xf0 (size before relaxing)
+                                         0xf0 (松开之前的大小)
  .eh_frame      0x000000000006d660       0x60 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/word_analyse.o
-                                         0x78 (size before relaxing)
+                                         0x78 (松开之前的大小)
  .eh_frame      0x000000000006d6c0      0x7c8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/xml.o
-                                        0x7e0 (size before relaxing)
+                                        0x7e0 (松开之前的大小)
  .eh_frame      0x000000000006de88       0x98 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/http_client.o
-                                         0xa8 (size before relaxing)
+                                         0xa8 (松开之前的大小)
  .eh_frame      0x000000000006df20      0x1a0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/http_server.o
-                                        0x1b8 (size before relaxing)
+                                        0x1b8 (松开之前的大小)
  .eh_frame      0x000000000006e0c0      0x1f8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/http_parse.o
-                                        0x210 (size before relaxing)
+                                        0x210 (松开之前的大小)
  .eh_frame      0x000000000006e2b8      0x194 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/sys/http_bm.o
-                                        0x1a8 (size before relaxing)
+                                        0x1a8 (松开之前的大小)
  .eh_frame      0x000000000006e44c        0x4 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
  *(.eh_frame.*)
 
@@ -1219,7 +1219,7 @@ LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
 .comment        0x0000000000000000       0x16
  *(.comment)
  .comment       0x0000000000000000       0x16 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
-                                         0x17 (size before relaxing)
+                                         0x17 (松开之前的大小)
  .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/soap_proc.o
  .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/soap_parse.o
  .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/soap_packet.o

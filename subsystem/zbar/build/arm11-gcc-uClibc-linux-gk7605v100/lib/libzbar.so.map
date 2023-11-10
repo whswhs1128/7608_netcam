@@ -1,5 +1,5 @@
 
-Discarded input sections
+舍弃的输入节
 
  .note.GNU-stack
                 0x0000000000000000        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
@@ -40,12 +40,12 @@ Discarded input sections
  .note.GNU-stack
                 0x0000000000000000        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
 
-Memory Configuration
+内存配置
 
-Name             Origin             Length             Attributes
+名称           来源             长度             属性
 *default*        0x0000000000000000 0xffffffffffffffff
 
-Linker script and memory map
+链结器命令稿和内存映射
 
 LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
 LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
@@ -341,35 +341,35 @@ LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
  *(.eh_frame)
  .eh_frame      0x000000000001ee88       0x78 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
  .eh_frame      0x000000000001ef00      0x2c0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/decoder.o
-                                        0x2d0 (size before relaxing)
+                                        0x2d0 (松开之前的大小)
  .eh_frame      0x000000000001f1c0      0x2d8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/img_scanner.o
-                                        0x2f0 (size before relaxing)
+                                        0x2f0 (松开之前的大小)
  .eh_frame      0x000000000001f498      0x1a0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/scanner.o
-                                        0x1b8 (size before relaxing)
+                                        0x1b8 (松开之前的大小)
  .eh_frame      0x000000000001f638      0x2f8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/image.o
-                                        0x308 (size before relaxing)
+                                        0x308 (松开之前的大小)
  .eh_frame      0x000000000001f930       0x18 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/refcnt.o
-                                         0x28 (size before relaxing)
+                                         0x28 (松开之前的大小)
  .eh_frame      0x000000000001f948       0xb0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/error.o
-                                         0xc8 (size before relaxing)
+                                         0xc8 (松开之前的大小)
  .eh_frame      0x000000000001f9f8      0x360 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/symbol.o
-                                        0x378 (size before relaxing)
+                                        0x378 (松开之前的大小)
  .eh_frame      0x000000000001fd58       0xb0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/decoder/qr_finder.o
-                                         0xc8 (size before relaxing)
+                                         0xc8 (松开之前的大小)
  .eh_frame      0x000000000001fe08       0xf0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/qrcode/bch15_5.o
-                                        0x100 (size before relaxing)
+                                        0x100 (松开之前的大小)
  .eh_frame      0x000000000001fef8       0x28 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/qrcode/binarize.o
-                                         0x38 (size before relaxing)
+                                         0x38 (松开之前的大小)
  .eh_frame      0x000000000001ff20       0xa0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/qrcode/isaac.o
-                                         0xb8 (size before relaxing)
+                                         0xb8 (松开之前的大小)
  .eh_frame      0x000000000001ffc0      0x858 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/qrcode/qrdec.o
-                                        0x870 (size before relaxing)
+                                        0x870 (松开之前的大小)
  .eh_frame      0x0000000000020818       0xb8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/qrcode/qrdectxt.o
-                                         0xc8 (size before relaxing)
+                                         0xc8 (松开之前的大小)
  .eh_frame      0x00000000000208d0      0x2b0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/qrcode/rs.o
-                                        0x2c8 (size before relaxing)
+                                        0x2c8 (松开之前的大小)
  .eh_frame      0x0000000000020b80       0x54 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/qrcode/util.o
-                                         0x68 (size before relaxing)
+                                         0x68 (松开之前的大小)
  .eh_frame      0x0000000000020bd4        0x4 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
  *(.eh_frame.*)
 
@@ -558,7 +558,7 @@ LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
 .comment        0x0000000000000000       0x16
  *(.comment)
  .comment       0x0000000000000000       0x16 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
-                                         0x17 (size before relaxing)
+                                         0x17 (松开之前的大小)
  .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/decoder.o
  .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/img_scanner.o
  .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/src/scanner.o

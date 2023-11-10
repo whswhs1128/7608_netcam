@@ -1,5 +1,5 @@
 
-Discarded input sections
+舍弃的输入节
 
  .note.GNU-stack
                 0x0000000000000000        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
@@ -36,12 +36,12 @@ Discarded input sections
  .note.GNU-stack
                 0x0000000000000000        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
 
-Memory Configuration
+内存配置
 
-Name             Origin             Length             Attributes
+名称           来源             长度             属性
 *default*        0x0000000000000000 0xffffffffffffffff
 
-Linker script and memory map
+链结器命令稿和内存映射
 
 LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
 LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
@@ -265,7 +265,7 @@ LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
  *fill*         0x000000000000fe5d        0x3 
  .rodata.str1.8
                 0x000000000000fe60       0x23 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/gzio.o
-                                         0x33 (size before relaxing)
+                                         0x33 (松开之前的大小)
  *fill*         0x000000000000fe83        0x5 
  .rodata.str1.8
                 0x000000000000fe88       0x54 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/inffast.o
@@ -274,7 +274,7 @@ LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
  *fill*         0x00000000000107c6        0x2 
  .rodata.str1.8
                 0x00000000000107c8      0x18f build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/inflate.o
-                                        0x1e7 (size before relaxing)
+                                        0x1e7 (松开之前的大小)
  *fill*         0x0000000000010957        0x1 
  .rodata        0x0000000000010958      0x8a6 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/infback.o
  .rodata.str1.8
@@ -291,7 +291,7 @@ LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
  *fill*         0x0000000000011d6c        0x4 
  .rodata.str1.8
                 0x0000000000011d70       0x8d build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/zutil.o
-                                         0x9d (size before relaxing)
+                                         0x9d (松开之前的大小)
 
 .rodata1
  *(.rodata1)
@@ -306,31 +306,31 @@ LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
  *(.eh_frame)
  .eh_frame      0x00000000000120f0       0x78 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
  .eh_frame      0x0000000000012168      0x200 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/csp_zlib.o
-                                        0x210 (size before relaxing)
+                                        0x210 (松开之前的大小)
  .eh_frame      0x0000000000012368       0x30 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/adler32.o
-                                         0x40 (size before relaxing)
+                                         0x40 (松开之前的大小)
  .eh_frame      0x0000000000012398       0x80 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/compress.o
-                                         0x90 (size before relaxing)
+                                         0x90 (松开之前的大小)
  .eh_frame      0x0000000000012418       0x28 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/crc32.o
-                                         0x40 (size before relaxing)
+                                         0x40 (松开之前的大小)
  .eh_frame      0x0000000000012440      0x4a0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/deflate.o
-                                        0x4b8 (size before relaxing)
+                                        0x4b8 (松开之前的大小)
  .eh_frame      0x00000000000128e0      0x6a0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/gzio.o
-                                        0x6b8 (size before relaxing)
+                                        0x6b8 (松开之前的大小)
  .eh_frame      0x0000000000012f80       0x90 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/inffast.o
-                                         0xa8 (size before relaxing)
+                                         0xa8 (松开之前的大小)
  .eh_frame      0x0000000000013010      0x2e8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/inflate.o
-                                        0x2f8 (size before relaxing)
+                                        0x2f8 (松开之前的大小)
  .eh_frame      0x00000000000132f8      0x108 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/infback.o
-                                        0x120 (size before relaxing)
+                                        0x120 (松开之前的大小)
  .eh_frame      0x0000000000013400       0xb8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/inftrees.o
-                                         0xd0 (size before relaxing)
+                                         0xd0 (松开之前的大小)
  .eh_frame      0x00000000000134b8      0x1a8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/trees.o
-                                        0x1c0 (size before relaxing)
+                                        0x1c0 (松开之前的大小)
  .eh_frame      0x0000000000013660       0x78 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/uncompr.o
-                                         0x88 (size before relaxing)
+                                         0x88 (松开之前的大小)
  .eh_frame      0x00000000000136d8       0x64 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/zutil.o
-                                         0x78 (size before relaxing)
+                                         0x78 (松开之前的大小)
  .eh_frame      0x000000000001373c        0x4 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
  *(.eh_frame.*)
 
@@ -517,7 +517,7 @@ LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
 .comment        0x0000000000000000       0x16
  *(.comment)
  .comment       0x0000000000000000       0x16 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
-                                         0x17 (size before relaxing)
+                                         0x17 (松开之前的大小)
  .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/csp_zlib.o
  .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/adler32.o
  .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/zlib121/compress.o

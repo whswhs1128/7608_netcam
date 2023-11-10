@@ -1,5 +1,5 @@
 
-Discarded input sections
+舍弃的输入节
 
  .note.GNU-stack
                 0x0000000000000000        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
@@ -40,12 +40,12 @@ Discarded input sections
  .note.GNU-stack
                 0x0000000000000000        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
 
-Memory Configuration
+内存配置
 
-Name             Origin             Length             Attributes
+名称           来源             长度             属性
 *default*        0x0000000000000000 0xffffffffffffffff
 
-Linker script and memory map
+链结器命令稿和内存映射
 
 LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
 LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
@@ -262,31 +262,31 @@ LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
  *(.eh_frame)
  .eh_frame      0x00000000000044a8       0x78 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
  .eh_frame      0x0000000000004520       0xe0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./buff_utils/queue.o
-                                         0xf0 (size before relaxing)
+                                         0xf0 (松开之前的大小)
  .eh_frame      0x0000000000004600      0x108 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./buff_utils/ring_buff.o
-                                        0x120 (size before relaxing)
+                                        0x120 (松开之前的大小)
  .eh_frame      0x0000000000004708       0x18 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./checksum_utils/crc_codec.o
-                                         0x28 (size before relaxing)
+                                         0x28 (松开之前的大小)
  .eh_frame      0x0000000000004720       0x28 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./checksum_utils/parity_codec.o
-                                         0x40 (size before relaxing)
+                                         0x40 (松开之前的大小)
  .eh_frame      0x0000000000004748       0xf0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./kiss_fft/kiss_fastfir.o
-                                        0x100 (size before relaxing)
+                                        0x100 (松开之前的大小)
  .eh_frame      0x0000000000004838      0x1e8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./kiss_fft/kiss_fft.o
-                                        0x1f8 (size before relaxing)
+                                        0x1f8 (松开之前的大小)
  .eh_frame      0x0000000000004a20      0x100 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./kiss_fft/kiss_fftr.o
-                                        0x110 (size before relaxing)
+                                        0x110 (松开之前的大小)
  .eh_frame      0x0000000000004b20       0xa8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./proto_utils/wt_proto_link_layer.o
-                                         0xb8 (size before relaxing)
+                                         0xb8 (松开之前的大小)
  .eh_frame      0x0000000000004bc8      0x1c0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./proto_utils/wt_proto_physical_layer.o
-                                        0x1d8 (size before relaxing)
+                                        0x1d8 (松开之前的大小)
  .eh_frame      0x0000000000004d88       0x88 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./transceiver/recv/wt_recv_link_layer.o
-                                         0x98 (size before relaxing)
+                                         0x98 (松开之前的大小)
  .eh_frame      0x0000000000004e10      0x140 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./transceiver/recv/wt_recv_physical_layer.o
-                                        0x158 (size before relaxing)
+                                        0x158 (松开之前的大小)
  .eh_frame      0x0000000000004f50       0x70 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./interface/wave_trans_recv.o
-                                         0x88 (size before relaxing)
+                                         0x88 (松开之前的大小)
  .eh_frame      0x0000000000004fc0       0x44 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./audio_codec/pcm_to_wav.o
-                                         0x58 (size before relaxing)
+                                         0x58 (松开之前的大小)
  .eh_frame      0x0000000000005004        0x4 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
  *(.eh_frame.*)
 
@@ -473,7 +473,7 @@ LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
 .comment        0x0000000000000000       0x16
  *(.comment)
  .comment       0x0000000000000000       0x16 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
-                                         0x17 (size before relaxing)
+                                         0x17 (松开之前的大小)
  .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./buff_utils/queue.o
  .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./buff_utils/ring_buff.o
  .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./checksum_utils/crc_codec.o

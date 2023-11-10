@@ -1,6 +1,6 @@
 
-Allocating common symbols
-Common symbol       size              file
+分配公共符号
+公共符号            大小              文件
 
 lv_style_btn_ina    0x50              build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_style.o
 lv_style_transp     0x50              build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_style.o
@@ -26,7 +26,7 @@ lv_style_btn_rel    0x50              build/arm11-gcc-uClibc-linux-gk7605v100/ob
 lv_style_plain      0x50              build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_style.o
 lv_style_btn_pr     0x50              build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_style.o
 
-Discarded input sections
+舍弃的输入节
 
  .note.GNU-stack
                 0x0000000000000000        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
@@ -149,12 +149,12 @@ Discarded input sections
  .note.GNU-stack
                 0x0000000000000000        0x0 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
 
-Memory Configuration
+内存配置
 
-Name             Origin             Length             Attributes
+名称           来源             长度             属性
 *default*        0x0000000000000000 0xffffffffffffffff
 
-Linker script and memory map
+链结器命令稿和内存映射
 
 LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crti.o
 LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
@@ -929,7 +929,7 @@ LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
                 0x000000000002f890       0x10 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_draw/lv_draw.o
  .rodata.str1.8
                 0x000000000002f8a0       0x10 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_fs.o
-                                          0x1 (size before relaxing)
+                                          0x1 (松开之前的大小)
  .rodata.str1.8
                 0x000000000002f8a0        0x8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_txt.o
  .rodata        0x000000000002f8a8       0xb4 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_trigo.o
@@ -947,7 +947,7 @@ LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
  *fill*         0x00000000000d36f3        0x5 
  .rodata.str1.8
                 0x00000000000d36f8      0x37a build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_kb.o
-                                        0x38a (size before relaxing)
+                                        0x38a (松开之前的大小)
  *fill*         0x00000000000d3a72        0x6 
  .rodata.str1.8
                 0x00000000000d3a78        0x8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_line.o
@@ -958,7 +958,7 @@ LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
  *fill*         0x00000000000d3a9a        0x6 
  .rodata.str1.8
                 0x00000000000d3aa0        0xb build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_tabview.o
-                                         0x11 (size before relaxing)
+                                         0x11 (松开之前的大小)
  *fill*         0x00000000000d3aab        0x5 
  .rodata.str1.8
                 0x00000000000d3ab0        0x7 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_btn.o
@@ -982,13 +982,13 @@ LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
  *fill*         0x00000000000d3b16        0x2 
  .rodata.str1.8
                 0x00000000000d3b18       0x25 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_btnm.o
-                                         0x31 (size before relaxing)
+                                         0x31 (松开之前的大小)
  *fill*         0x00000000000d3b3d        0x3 
  .rodata.str1.8
                 0x00000000000d3b40        0x8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_cont.o
  .rodata.str1.8
                 0x00000000000d3b48        0x7 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_img.o
-                                          0xf (size before relaxing)
+                                          0xf (松开之前的大小)
  *fill*         0x00000000000d3b4f        0x1 
  .rodata.str1.8
                 0x00000000000d3b50        0x7 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_led.o
@@ -1027,111 +1027,111 @@ LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
  *(.eh_frame)
  .eh_frame      0x00000000000d4fb0       0x78 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
  .eh_frame      0x00000000000d5028      0x2c8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_group.o
-                                        0x2d8 (size before relaxing)
+                                        0x2d8 (松开之前的大小)
  .eh_frame      0x00000000000d52f0      0x2f8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_indev.o
-                                        0x310 (size before relaxing)
+                                        0x310 (松开之前的大小)
  .eh_frame      0x00000000000d55e8      0x920 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_obj.o
-                                        0x938 (size before relaxing)
+                                        0x938 (松开之前的大小)
  .eh_frame      0x00000000000d5f08      0x290 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_refr.o
-                                        0x2a8 (size before relaxing)
+                                        0x2a8 (松开之前的大小)
  .eh_frame      0x00000000000d6198       0x40 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_style.o
-                                         0x58 (size before relaxing)
+                                         0x58 (松开之前的大小)
  .eh_frame      0x00000000000d61d8       0x58 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_vdb.o
-                                         0x68 (size before relaxing)
+                                         0x68 (松开之前的大小)
  .eh_frame      0x00000000000d6230      0x198 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_draw/lv_draw_vbasic.o
-                                        0x1b0 (size before relaxing)
+                                        0x1b0 (松开之前的大小)
  .eh_frame      0x00000000000d63c8      0x208 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_draw/lv_draw.o
-                                        0x220 (size before relaxing)
+                                        0x220 (松开之前的大小)
  .eh_frame      0x00000000000d65d0      0x148 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_draw/lv_draw_rbasic.o
-                                        0x158 (size before relaxing)
+                                        0x158 (松开之前的大小)
  .eh_frame      0x00000000000d6718       0xd0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_hal/lv_hal_disp.o
-                                         0xe8 (size before relaxing)
+                                         0xe8 (松开之前的大小)
  .eh_frame      0x00000000000d67e8       0x70 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_hal/lv_hal_indev.o
-                                         0x80 (size before relaxing)
+                                         0x80 (松开之前的大小)
  .eh_frame      0x00000000000d6858       0x68 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_hal/lv_hal_tick.o
-                                         0x78 (size before relaxing)
+                                         0x78 (松开之前的大小)
  .eh_frame      0x00000000000d68c0       0xf8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_font.o
-                                        0x108 (size before relaxing)
+                                        0x108 (松开之前的大小)
  .eh_frame      0x00000000000d69b8       0x40 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_circ.o
-                                         0x50 (size before relaxing)
+                                         0x50 (松开之前的大小)
  .eh_frame      0x00000000000d69f8       0xe0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_area.o
-                                         0xf0 (size before relaxing)
+                                         0xf0 (松开之前的大小)
  .eh_frame      0x00000000000d6ad8      0x1f0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_task.o
-                                        0x208 (size before relaxing)
+                                        0x208 (松开之前的大小)
  .eh_frame      0x00000000000d6cc8      0x378 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_fs.o
-                                        0x388 (size before relaxing)
+                                        0x388 (松开之前的大小)
  .eh_frame      0x00000000000d7040       0xb0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_mem.o
-                                         0xc0 (size before relaxing)
+                                         0xc0 (松开之前的大小)
  .eh_frame      0x00000000000d70f0      0x210 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_ll.o
-                                        0x220 (size before relaxing)
+                                        0x220 (松开之前的大小)
  .eh_frame      0x00000000000d7300       0x28 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_color.o
-                                         0x40 (size before relaxing)
+                                         0x40 (松开之前的大小)
  .eh_frame      0x00000000000d7328      0x330 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_txt.o
-                                        0x340 (size before relaxing)
+                                        0x340 (松开之前的大小)
  .eh_frame      0x00000000000d7658      0x320 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_ufs.o
-                                        0x338 (size before relaxing)
+                                        0x338 (松开之前的大小)
  .eh_frame      0x00000000000d7978       0x18 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_trigo.o
-                                         0x28 (size before relaxing)
+                                         0x28 (松开之前的大小)
  .eh_frame      0x00000000000d7990       0x18 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_misc/lv_math.o
-                                         0x28 (size before relaxing)
+                                         0x28 (松开之前的大小)
  .eh_frame      0x00000000000d79a8      0x228 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_bar.o
-                                        0x240 (size before relaxing)
+                                        0x240 (松开之前的大小)
  .eh_frame      0x00000000000d7bd0      0x228 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_cb.o
-                                        0x238 (size before relaxing)
+                                        0x238 (松开之前的大小)
  .eh_frame      0x00000000000d7df8      0x4e0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_ddlist.o
-                                        0x4f8 (size before relaxing)
+                                        0x4f8 (松开之前的大小)
  .eh_frame      0x00000000000d82d8      0x2a8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_kb.o
-                                        0x2b8 (size before relaxing)
+                                        0x2b8 (松开之前的大小)
  .eh_frame      0x00000000000d8580      0x1d8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_line.o
-                                        0x1e8 (size before relaxing)
+                                        0x1e8 (松开之前的大小)
  .eh_frame      0x00000000000d8758      0x320 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_mbox.o
-                                        0x338 (size before relaxing)
+                                        0x338 (松开之前的大小)
  .eh_frame      0x00000000000d8a78      0x260 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_roller.o
-                                        0x270 (size before relaxing)
+                                        0x270 (松开之前的大小)
  .eh_frame      0x00000000000d8cd8      0x528 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_tabview.o
-                                        0x538 (size before relaxing)
+                                        0x538 (松开之前的大小)
  .eh_frame      0x00000000000d9200      0x2c0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_btn.o
-                                        0x2d0 (size before relaxing)
+                                        0x2d0 (松开之前的大小)
  .eh_frame      0x00000000000d94c0      0x438 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_chart.o
-                                        0x448 (size before relaxing)
+                                        0x448 (松开之前的大小)
  .eh_frame      0x00000000000d98f8      0x240 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_gauge.o
-                                        0x258 (size before relaxing)
+                                        0x258 (松开之前的大小)
  .eh_frame      0x00000000000d9b38      0x5c8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_label.o
-                                        0x5d8 (size before relaxing)
+                                        0x5d8 (松开之前的大小)
  .eh_frame      0x00000000000da100      0x498 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_list.o
-                                        0x4a8 (size before relaxing)
+                                        0x4a8 (松开之前的大小)
  .eh_frame      0x00000000000da598      0x2d0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_slider.o
-                                        0x2e8 (size before relaxing)
+                                        0x2e8 (松开之前的大小)
  .eh_frame      0x00000000000da868      0x640 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_ta.o
-                                        0x650 (size before relaxing)
+                                        0x650 (松开之前的大小)
  .eh_frame      0x00000000000daea8      0x3d8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_btnm.o
-                                        0x3e8 (size before relaxing)
+                                        0x3e8 (松开之前的大小)
  .eh_frame      0x00000000000db280      0x2c8 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_cont.o
-                                        0x2e0 (size before relaxing)
+                                        0x2e0 (松开之前的大小)
  .eh_frame      0x00000000000db548      0x190 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_img.o
-                                        0x1a8 (size before relaxing)
+                                        0x1a8 (松开之前的大小)
  .eh_frame      0x00000000000db6d8      0x168 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_led.o
-                                        0x178 (size before relaxing)
+                                        0x178 (松开之前的大小)
  .eh_frame      0x00000000000db840      0x238 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_lmeter.o
-                                        0x250 (size before relaxing)
+                                        0x250 (松开之前的大小)
  .eh_frame      0x00000000000dba78      0x470 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_page.o
-                                        0x480 (size before relaxing)
+                                        0x480 (松开之前的大小)
  .eh_frame      0x00000000000dbee8      0x1a0 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_sw.o
-                                        0x1b0 (size before relaxing)
+                                        0x1b0 (松开之前的大小)
  .eh_frame      0x00000000000dc088      0x418 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_objx/lv_win.o
-                                        0x428 (size before relaxing)
+                                        0x428 (松开之前的大小)
  .eh_frame      0x00000000000dc4a0       0x58 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_themes/lv_theme_alien.o
-                                         0x70 (size before relaxing)
+                                         0x70 (松开之前的大小)
  .eh_frame      0x00000000000dc4f8       0x28 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_themes/lv_theme.o
-                                         0x40 (size before relaxing)
+                                         0x40 (松开之前的大小)
  .eh_frame      0x00000000000dc520       0x60 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_themes/lv_theme_default.o
-                                         0x70 (size before relaxing)
+                                         0x70 (松开之前的大小)
  .eh_frame      0x00000000000dc580       0x58 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_themes/lv_theme_night.o
-                                         0x70 (size before relaxing)
+                                         0x70 (松开之前的大小)
  .eh_frame      0x00000000000dc5d8       0x58 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_themes/lv_theme_zen.o
-                                         0x70 (size before relaxing)
+                                         0x70 (松开之前的大小)
  .eh_frame      0x00000000000dc630       0x58 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_themes/lv_theme_material.o
-                                         0x70 (size before relaxing)
+                                         0x70 (松开之前的大小)
  .eh_frame      0x00000000000dc688        0x4 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtendS.o
  *(.eh_frame.*)
 
@@ -1428,7 +1428,7 @@ LOAD /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../target/usr/lib/crtn.o
 .comment        0x0000000000000000       0x16
  *(.comment)
  .comment       0x0000000000000000       0x16 /opt/linux/x86-arm/aarch64-mix210-linux/host_bin/../lib/gcc/aarch64-linux-gnu/7.3.0/crtbeginS.o
-                                         0x17 (size before relaxing)
+                                         0x17 (松开之前的大小)
  .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_group.o
  .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_indev.o
  .comment       0x0000000000000016       0x17 build/arm11-gcc-uClibc-linux-gk7605v100/obj/./src/lv_core/lv_obj.o

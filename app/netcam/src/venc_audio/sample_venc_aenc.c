@@ -860,6 +860,7 @@ static td_s32 sample_venc_normal_start_encode(ot_vpss_grp vpss_grp, sample_venc_
     {
 	sprintf(rtsp_name, "%s%d","/stream",i);
 	printf("========rtsp_name=============%s\n",rtsp_name);
+	printf("========rtsp_name=============%s\n",rtsp_name);
         if (chn_param[i].type == OT_PT_H265)
             rtsp_handle[i].session = create_rtsp_session(rtsp_handle[i].g_rtsplive, rtsp_name, 1);
         else

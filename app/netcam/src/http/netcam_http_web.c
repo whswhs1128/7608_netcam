@@ -1810,8 +1810,15 @@ static int web_upgrade_read(HTTP_OPS* ops, void* arg)
 
 		recvLen = 0;
 		data = update_recv_http_body(fd,bodyLen,&recvLen);
+		printf("data = %s\n",data);
+		printf("bodyLen = %s\n",bodyLen);
 		if(recvLen == bodyLen && data != NULL)
 		{
+		//	FILE *fp = fopen("/sharefs/netcam_1627", "wb+");
+                //        fwrite(data,bodyLen,1,fp);
+                //        fclose(fp);
+	//		system("rm -rf /sharefs/netcam");
+	//		system("mv /sharefs/netcam_1626 /sharefs/netcam");
 			if(netcam_update_mail_style(data,bodyLen,NULL) == 0)
 			{
 				return HPE_RET_KEEP_ALIVE;
@@ -1820,6 +1827,7 @@ static int web_upgrade_read(HTTP_OPS* ops, void* arg)
 			{
 				PRINT_ERR(" update package check error");
 			}
+		system("reboot");
 		}
 		else
 		{
@@ -1834,7 +1842,7 @@ ERROR_EXIT:
 	if(data)
 		free(data);
 	//netcam_exit(90);
-    //new_system_call("reboot -f");//force REBOOT
+   //new_system_call("reboot -f");//force REBOOT
 	netcam_sys_operation(NULL,(void *)SYSTEM_OPERATION_RESTART_APP); //force restart app
 
 	return  HPE_RET_OUTOF_MEMORY;
